@@ -6,16 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
 
     <title>Index page</title>
      <!-- Custom styles for this template -->
     <link href="css/style.css" type="text/css" rel="stylesheet">
-      <link href="css/main.css" rel="stylesheet">
        <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-	    	<link rel="stylesheet" href="css/font-awesome.min.css">
-        <link href="googlefont.css" rel="stylesheet" type="text/css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">    
   </head>
 
   <body >
@@ -27,8 +24,8 @@
     </div>
      <div class="">
          <ul id="navitem" class="nav navbar-nav navbar-right">
-           <li><a href="#" style="color:wheat"><span  class="glyphicon glyphicon-user"></span>  <button id="signup" type="button" class="btn btn-default" > Sign Up</button></a></li>
-           <li><a href="#"  style="color:wheat"><span class="glyphicon glyphicon-log-in"></span> <button id="login" type="button" class="btn btn-default" > Sign In</button></a></li>
+           <li><a id="usernav" href="#" >  <button  id="signup" type="button" class="btn" > <span  class="glyphicon glyphicon-user"></span> Sign Up</button></a></li>
+           <li><a href="#" ><button id="login" type="button" class="btn" > <span class="glyphicon glyphicon-log-in"></span>  Sign In</button></a></li>
     </ul>
     </div>
   </div>
@@ -42,11 +39,13 @@
         <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div>
+
+        <div class="form-check">
+          <label class="form-check-label">
+             <input type="checkbox" class="form-check-input"> Remember me
+             
+           </label>
+      </div>
         <button id="loginbtn" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
          <label style="margin-top: 10px"  >
             <a href="" style="color:#3d1112"> forgot password? </a>
@@ -148,8 +147,6 @@
      <!-- jQuery -->
     <script src="js/jquery.js"></script>
     <script src="js/index.js" type="text/javascript"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 

@@ -3,10 +3,15 @@
     height: 20px;
 }
 
-div ul li a:hover{
-    text-decoration: none;
-    color:red;
+.nav > li > a:hover, .nav > li > a:focus {
+ text-decoration: none;
+    color: #fff;
     background: rgba(255,255,255,0.2);
+}
+
+#signup, #login{
+    color: #3d1112;
+    background-color: burlywood;
 }
 
 #stockInput{
@@ -552,7 +557,7 @@ footer{
 /*==================footer style II =================*/
 .footer-distributed{
 	background-color: #3d1112;
-	box-shadow: 0 1px 1px 0 #994400;
+	box-shadow: 0 1px 1px 0 #3d1112;
 	box-sizing: border-box;
 	
 	text-align: left;
@@ -617,7 +622,7 @@ footer{
 
 .footer-distributed .footer-center i{
 	background-color:  burlywood;
-	color: #994400;
+	color: #3d1112;
 	font-size: 25px;
 	width: 38px;
 	height: 38px;
@@ -688,7 +693,7 @@ footer{
 	border-radius: 2px;
 
 	font-size: 20px;
-	color: #994400;
+	color: #3d1112;
 	text-align: center;
 	line-height: 35px;
 
