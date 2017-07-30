@@ -19,7 +19,7 @@
 
 </head>
 
-<body>
+<body style="background-color: wheat" >
      <nav style="background-color: #3d1112" class="navbar navbar-fixed-top text-white">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -81,6 +81,7 @@
                 <button id="adminsearchbtn" type="submit" class="col-md-2 col-sm-4 col-xs-8 form-control  btn-default" style="width:50px" ><span class="glyphicon glyphicon-search"> </span></button>
             </form>
         </div>
+            
            <div id="editbook">
             <div class="container-fluid">
                 <div class="row">
@@ -107,6 +108,10 @@
                             <label for="estock">Number in stock</label>
                              <input type="number" class="form-control " id="estock" placeholder="Number in stock">
                           </div>
+                            <div class="form-group">
+                            <label for="Name">Cover image</label>
+                            <input type="file" class="form" style="background-color: transparent" >
+                        </div>
                          <div class="form-inline">
                              <button id="updatebtn" type="button" class="btn btn-primary pbtn">Update</button>
                         </div>
@@ -142,6 +147,10 @@
                             <label for="ustock">Number in stock</label>
                              <input type="number" class="form-control " id="ustock" placeholder="Number in stock">
                           </div>
+                         <div class="form-group">
+                            <label for="Name">Cover image</label>
+                            <input type="file" class="form" style="background-color: transparent" >
+                        </div>
                          <div class="form-inline">
                              <button id="uploadbtn" type="button" class="btn btn-success pbtn">Upload</button>
                         </div>
@@ -197,10 +206,14 @@
               </tbody>
             </table>
           </div>
+
+          
                     </div>
                 </div>
             </div>
         </div>
+
+        
 
         
 
