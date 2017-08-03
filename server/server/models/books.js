@@ -1,17 +1,36 @@
 'use strict';
-module.exports = function(sequelize, DataTypes) {
-  var Books = sequelize.define('Books', {
-    bookTitle: DataTypes.STRING,
-    author: DataTypes.STRING,
-    category: DataTypes.STRING,
-    isbn: DataTypes.STRING,
-    stocknumber: DataTypes.INTEGER
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
-  });
-  return Books;
+module.exports = (sequelize, DataTypes) => {
+    var Books = sequelize.define('Books', {
+        bookTitle: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        author: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        category: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        isbn: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
+        },
+        stocknumber: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+    }, {
+        classMethods: {
+            associate: (models) => {
+                Books.hasMany(models.tranc, {
+                    foreignKey: 'bookId',
+                    as: 'tranc',
+                });
+            },
+        },
+    });
+    return Books;
 };
