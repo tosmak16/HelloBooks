@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,36 +12,36 @@
     <title>Admin Page</title>
 
     <!-- Bootstrap Core CSS -->
-     <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <!-- Custom styles for this template -->
-     <link href="css/style.css" rel="stylesheet">
+    <link href="css/admin.css" rel="stylesheet">
 
 </head>
 
-<body style="background-color: wheat" >
-     <nav style="background-color: #3d1112" class="navbar navbar-fixed-top text-white">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a id="hello" class="navbar-brand" href="#"><span class="glyphicon glyphicon-book"></span>  Hello Books <span id="menu-toggle" class="glyphicon glyphicon-menu-hamburger"></span></a>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-         <ul id="navitem" class="nav navbar-nav navbar-right">
-      <li><a href="admin.html" style="color:wheat"><span class="glyphicon glyphicon-user"></span> admin@gmail.com</a></li>
-      <li><a href="index.html" style="color:wheat"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
-    </ul>
-    </div>
-   
-  </div>
-</nav>
+<body style="background-color: wheat">
+    <nav style="background-color: #3d1112" class="navbar navbar-fixed-top text-white">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a id="hello" class="navbar-brand" href="#"><span class="glyphicon glyphicon-book"></span>  Hello Books <span id="menu-toggle" class="glyphicon glyphicon-menu-hamburger"></span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul id="navitem" class="nav navbar-nav navbar-right">
+                    <li><a href="admin.html" style="color:wheat"><span class="glyphicon glyphicon-user"></span> admin@gmail.com</a></li>
+                    <li><a href="index.html" style="color:wheat"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
+                </ul>
+            </div>
 
-    <div id="wrapper"> 
+        </div>
+    </nav>
+
+    <div id="wrapper">
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li style="margin-top: 20px">
                     <a id="dash" href="#">
-                       <span class="glyphicon glyphicon-home"></span> Book Store
+                        <span class="glyphicon glyphicon-home"></span> Book Store
                     </a>
                 </li>
                 <li>
@@ -62,171 +61,171 @@
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        
 
-      <div id="adminsearchbar" class="container-fluid" style="margin-left: 65px">
+
+        <div id="adminsearchbar" class="container-fluid" style="margin-left: 65px">
             <form class="row" style="margin-top:50px">
-                <div style="width: 100px" >
-                     <select class=" col-sm-4 col-xs-8 form-control" id="inlineFormCustomSelect">
+                <div style="width: 100px">
+                    <select class=" col-sm-4 col-xs-8 form-control" id="inlineFormCustomSelect">
                         <option selected>Title</option>
                         <option value="1">Author</option>
                         <option value="2">Category</option>
                         <option value="3">ISBN</option>
                     </select>
                 </div>
-                   
-                 <div >
-                        <input id="adminsearchinput" class=" col-md-2 col-sm-4 col-xs-8 form-control" type="text" name="search" placeholder="Search..">
-                 </div>
-                <button id="adminsearchbtn" type="submit" class="col-md-2 col-sm-4 col-xs-8 form-control  btn-default" style="width:50px" ><span class="glyphicon glyphicon-search"> </span></button>
+
+                <div>
+                    <input id="adminsearchinput" class=" col-md-2 col-sm-4 col-xs-8 form-control" type="text" name="search" placeholder="Search..">
+                </div>
+                <button id="adminsearchbtn" type="submit" class="col-md-2 col-sm-4 col-xs-8 form-control  btn-default" style="width:50px"><span class="glyphicon glyphicon-search"> </span></button>
             </form>
         </div>
-            
-           <div id="editbook">
+
+        <div id="editbook">
             <div class="container-fluid">
                 <div class="row">
                     <div class=" col-md-12 col-sm-10 col-xs-6">
-                           <h3 class="sub-header"> Edit book</h3>
-                       <form>
-                           <div class="form-group">
-                            <label for="ebookTitle">Title</label>
-                            <input type="name" class="form-control" id="ebookTitle" placeholder="Book Title">
+                        <h3 class="sub-header"> Edit book</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="ebookTitle">Title</label>
+                                <input type="name" class="form-control" id="ebookTitle" placeholder="Book Title">
                             </div>
-                         <div class="form-group">
-                            <label for="ebookAuthor">Author</label>
-                            <input type="name" class="form-control " id="ebookAuthor"  placeholder="Author">
-                        </div>
-                        <div class="form-group">
-                            <label for="ebookCat">Category</label>
-                             <input type="name" class="form-control " id="ebookCat" placeholder="Category">
-                          </div>
                             <div class="form-group">
-                            <label for="eISBN">ISBN</label>
-                            <input type="name" class="form-control " id="eISBN"  placeholder="ISBN">
-                        </div>
-                            <div class="form-group">
-                            <label for="estock">Number in stock</label>
-                             <input type="number" class="form-control " id="estock" placeholder="Number in stock">
-                          </div>
-                            <div class="form-group">
-                            <label for="Name">Cover image</label>
-                            <input type="file" class="form" style="background-color: transparent" >
-                        </div>
-                         <div class="form-inline">
-                             <button id="updatebtn" type="button" class="btn btn-primary pbtn">Update</button>
-                        </div>
-                       </form>
-                    </div>
-                </div>
-            </div>
-         </div>
-
-         <div id="uploadbook">
-            <div class="container-fluid">
-                <div class="row">
-                     <div class=" col-md-12 col-sm-10 col-xs-6">
-                           <h3 class="sub-header"> Upload Book</h3>
-                       <form>
-                           <div class="form-group">
-                            <label for="ubookTitle">Title</label>
-                            <input type="name" class="form-control" id="ubookTitle" placeholder="Book Title">
+                                <label for="ebookAuthor">Author</label>
+                                <input type="name" class="form-control " id="ebookAuthor" placeholder="Author">
                             </div>
-                         <div class="form-group">
-                            <label for="ubookAuthor">Author</label>
-                            <input type="name" class="form-control " id="ubookAuthor"  placeholder="Author">
-                        </div>
-                        <div class="form-group">
-                            <label for="ubookCat">Category</label>
-                             <input type="name" class="form-control " id="ubookCat" placeholder="Category">
-                          </div>
-                             <div class="form-group">
-                            <label for="uISBN">ISBN</label>
-                            <input type="name" class="form-control " id="uISBN"  placeholder="ISBN">
-                        </div>
                             <div class="form-group">
-                            <label for="ustock">Number in stock</label>
-                             <input type="number" class="form-control " id="ustock" placeholder="Number in stock">
-                          </div>
-                         <div class="form-group">
-                            <label for="Name">Cover image</label>
-                            <input type="file" class="form" style="background-color: transparent" >
-                        </div>
-                         <div class="form-inline">
-                             <button id="uploadbtn" type="button" class="btn btn-success pbtn">Upload</button>
-                        </div>
-                       </form>
-                    </div>
-                </div>
-            </div>
-         </div>
-           
-
-        <div id="page-content-wrapper" >
-            <div class="container-fluid">
-                <div class="row">
-                     <div class=" col-md-12 col-sm-10 col-xs-9">
-                        <h3 class="sub-header">Available Books</h3>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th><span class="glyphicon glyphicon-education"></span></th>
-                  <th>Title</th>
-                  <th>Author</th>
-                  <th>Category</th>
-                   <th>ISBN</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Rise of the fallen</td>
-                  <td>Breanna Ashacraft</td>
-                  <td>Fantasy</td>
-                  <td>1234-4573-179-3</td>
-                   <td><button type="button" class=" btn-danger btn-sm returnbtn">Delete</button></td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Borrowing brillance</td>
-                  <td>David Kord Murry</td>
-                  <td>Educational</td>
-                  <td>8834-3573-179-3</td>
-                  <td><button type="button" class="btn-danger btn-sm returnbtn">Delete</button></td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Learn and master guitar</td>
-                  <td>Steve Krenz</td>
-                  <td>Art and music</td>
-                  <td>2234-4573-19-17</td>
-                   <td><button type="button" class=" btn-danger btn-sm returnbtn">Delete</button></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          
+                                <label for="ebookCat">Category</label>
+                                <input type="name" class="form-control " id="ebookCat" placeholder="Category">
+                            </div>
+                            <div class="form-group">
+                                <label for="eISBN">ISBN</label>
+                                <input type="name" class="form-control " id="eISBN" placeholder="ISBN">
+                            </div>
+                            <div class="form-group">
+                                <label for="estock">Number in stock</label>
+                                <input type="number" class="form-control " id="estock" placeholder="Number in stock">
+                            </div>
+                            <div class="form-group">
+                                <label for="Name">Cover image</label>
+                                <input type="file" class="form" style="background-color: transparent">
+                            </div>
+                            <div class="form-inline">
+                                <button id="updatebtn" type="button" class="btn btn-primary pbtn">Update</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
 
-        
+        <div id="uploadbook">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class=" col-md-12 col-sm-10 col-xs-6">
+                        <h3 class="sub-header"> Upload Book</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="ubookTitle">Title</label>
+                                <input type="name" class="form-control" id="ubookTitle" placeholder="Book Title">
+                            </div>
+                            <div class="form-group">
+                                <label for="ubookAuthor">Author</label>
+                                <input type="name" class="form-control " id="ubookAuthor" placeholder="Author">
+                            </div>
+                            <div class="form-group">
+                                <label for="ubookCat">Category</label>
+                                <input type="name" class="form-control " id="ubookCat" placeholder="Category">
+                            </div>
+                            <div class="form-group">
+                                <label for="uISBN">ISBN</label>
+                                <input type="name" class="form-control " id="uISBN" placeholder="ISBN">
+                            </div>
+                            <div class="form-group">
+                                <label for="ustock">Number in stock</label>
+                                <input type="number" class="form-control " id="ustock" placeholder="Number in stock">
+                            </div>
+                            <div class="form-group">
+                                <label for="Name">Cover image</label>
+                                <input type="file" class="form" style="background-color: transparent">
+                            </div>
+                            <div class="form-inline">
+                                <button id="uploadbtn" type="button" class="btn btn-success pbtn">Upload</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        
+
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class=" col-md-12 col-sm-10 col-xs-9">
+                        <h3 class="sub-header">Available Books</h3>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th><span class="glyphicon glyphicon-education"></span></th>
+                                        <th>Title</th>
+                                        <th>Author</th>
+                                        <th>Category</th>
+                                        <th>ISBN</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Rise of the fallen</td>
+                                        <td>Breanna Ashacraft</td>
+                                        <td>Fantasy</td>
+                                        <td>1234-4573-179-3</td>
+                                        <td><button type="button" class=" btn-danger btn-sm returnbtn">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Borrowing brillance</td>
+                                        <td>David Kord Murry</td>
+                                        <td>Educational</td>
+                                        <td>8834-3573-179-3</td>
+                                        <td><button type="button" class="btn-danger btn-sm returnbtn">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Learn and master guitar</td>
+                                        <td>Steve Krenz</td>
+                                        <td>Art and music</td>
+                                        <td>2234-4573-19-17</td>
+                                        <td><button type="button" class=" btn-danger btn-sm returnbtn">Delete</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
 
     </div>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="js/admin.js" type="text/javascript"></script>
+    <script src="js/admin.js" type="text/javascript"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
-    
+
 
 </body>
 
