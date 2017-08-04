@@ -1,39 +1,35 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-    var Users = sequelize.define('Users', {
-        username: {
+    var Books = sequelize.define('Books', {
+        bookTitle: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        password: {
+        author: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        email: {
+        category: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        firstName: {
+        isbn: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        lastName: {
-            type: DataTypes.STRING,
+        stocknumber: {
+            type: DataTypes.INTEGER,
             allowNull: false
         },
-        membershipType: {
-            type: DataTypes.STRING,
-            allowNull: false
-        }
     }, {
         classMethods: {
             associate: (models) => {
-                Users.hasMany(models.Transaction, {
-                    foreignKey: 'usersId',
-                    as: 'transactions',
+                Books.hasMany(models.Tranc, {
+                    foreignKey: 'bookId',
+                    as: 'trancs',
                 });
             }
         }
     });
-    return Users;
+    return Books;
 };

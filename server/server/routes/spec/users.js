@@ -28,9 +28,9 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         classMethods: {
             associate: (models) => {
-                Users.hasMany(models.Transaction, {
-                    foreignKey: 'usersId',
-                    as: 'transactions',
+                Users.hasMany(models.Tranc, {
+                    foreignKey: 'userId',
+                    as: 'trancs',
                 });
             }
         }
