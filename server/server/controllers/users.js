@@ -65,5 +65,16 @@ module.exports = {
 
             })
             .catch((error) => res.status(400).send(error));
+    },
+
+    getUnreturnBooks(req, res) {
+        return Transaction
+            .findAll({
+                where: {
+                    retype: req.query.returned
+                }
+            }).then((result) =>
+                res.status(200).send(result))
+            .catch((error) => res.status(400).send(error));
     }
 };
