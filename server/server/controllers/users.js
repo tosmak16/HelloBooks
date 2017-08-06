@@ -72,12 +72,21 @@ module.exports = {
                             });
                         }
 
+                        if (result.stocknumber === 0) {
+                            return res.status(404).send({
+                                message: 'Book Not available in stock',
+                            });
+                        }
+
+
+                        result.update({ stocknumber: (result.stocknumber - 1) });
+
                         return Transaction
                             .create({
                                 brdate: Date.now(),
                                 retype: false,
                                 userId: req.params.userId,
-                                bookId: req.body.bookId
+                                bookId: result.id
 
 
                             })
@@ -125,6 +134,11 @@ module.exports = {
                                 message: 'Record Not Found',
                             });
                         }
+                        if (result.retype === true) {
+                            return res.status(404).send({
+                                message: 'This book have beem returned before',
+                            });
+                        }
 
                         return result
                             .update({
@@ -132,7 +146,17 @@ module.exports = {
                                 rdate: Date.now(),
 
                             })
-                            .then((re) => res.status(200).send(re))
+                            .then((result) => {
+                                Book
+                                    .findById(result.bookId)
+                                    .then(report => {
+                                        report
+                                            .update({
+                                                stocknumber: (report.stocknumber + 1)
+                                            })
+                                    }).catch((error) => res.status(400).send(error));
+                                res.status(200).send(result)
+                            })
                             .catch((error) => res.status(400).send(error));
 
                     })
