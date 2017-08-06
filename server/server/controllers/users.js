@@ -1,6 +1,8 @@
 const User = require('../models').Users;
 const Book = require('../models').Books;
 const Transaction = require('../models').Transaction;
+const jwt = require('jsonwebtoken');
+var myt;
 
 module.exports = {
     signup(req, res) {
@@ -19,7 +21,7 @@ module.exports = {
     },
 
     signin(req, res) {
-        return User
+        User
             .findAll({
                 attributes: ['username'],
                 where: {
@@ -29,8 +31,18 @@ module.exports = {
 
 
             })
-            .then(result => res.status(201).send(result))
+            .then(result => {
+                // create a token
+                jwt.sign("1", "hello", (err, token) => {
+                    myt = token;
+                    console.log(myt);
+
+                });
+                res.status(201).send({ result, myt })
+            })
             .catch(error => res.status(400).send(error));
+
+
     },
 
     list(req, res) {
@@ -41,6 +53,7 @@ module.exports = {
     },
 
     borrowBooks(req, res) {
+
         return Book
             .findById(req.body.bookId)
             .then(result => {
@@ -76,5 +89,6 @@ module.exports = {
             }).then((result) =>
                 res.status(200).send(result))
             .catch((error) => res.status(400).send(error));
-    }
+    },
+
 };
