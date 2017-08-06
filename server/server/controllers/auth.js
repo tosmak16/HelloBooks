@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const user = require('../models').users;
 
 module.exports = {
 
@@ -10,7 +11,9 @@ module.exports = {
                     console.error('JWT Verification Error', err);
                     return res.status(403).send(err);
                 } else {
+
                     req.decoded = decoded;
+
                     return next();
                 }
             });
