@@ -67,7 +67,6 @@ module.exports = {
                     .create({
                         brdate: Date.now(),
                         retype: false,
-                        rdate: "2",
                         userId: req.params.userId,
                         bookId: req.body.bookId
 
@@ -90,5 +89,30 @@ module.exports = {
                 res.status(200).send(result))
             .catch((error) => res.status(400).send(error));
     },
+      
+    returnBooks(req, res) {
+
+        return Transaction
+            .findById(req.body.Id)
+            .then(result => {
+                if (!result) {
+                    return res.status(404).send({
+                        message: 'Record Not Found',
+                    });
+                }
+
+                return result
+                    .update({
+                        retype: true,
+                        rdate: Date.now(),
+
+                    })
+                    .then((re) => res.status(200).send(re))
+                    .catch((error) => res.status(400).send(error));
+
+            })
+            .catch((error) => res.status(400).send(error));
+
+    }
 
 };
