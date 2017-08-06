@@ -17,6 +17,7 @@ module.exports = (app) => {
 
     app.post('/api/books', booksController.addBook);
     app.post('/api/users/:userId/books', usersController.borrowBooks);
+    app.delete('/api/users/:userId/books', usersController.deleteBooks);
     app.get('/api/users/:userId/books', usersController.getUnreturnBooks);
     app.put('/api/users/:userId/books', usersController.returnBooks);
     app.get('/api/books', booksController.getAllBooks);
