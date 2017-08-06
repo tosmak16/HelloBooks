@@ -14,6 +14,7 @@ module.exports = {
                 lastName: req.body.lastName,
                 email: req.body.email,
                 membershipType: req.body.membershipType,
+                role: req.body.role
 
             })
             .then(result => res.status(201).send(result))
@@ -53,65 +54,90 @@ module.exports = {
     },
 
     borrowBooks(req, res) {
-
-        return Book
-            .findById(req.body.bookId)
+        return User
+            .findById(req.params.userId)
             .then(result => {
-                if (!result) {
+                if (result.username !== req.decoded)
                     return res.status(404).send({
-                        message: 'book Not Found',
+                        message: 'Invalid Identity',
                     });
-                }
 
-                return Transaction
-                    .create({
-                        brdate: Date.now(),
-                        retype: false,
-                        userId: req.params.userId,
-                        bookId: req.body.bookId
 
+                return Book
+                    .findById(req.body.bookId)
+                    .then(result => {
+                        if (!result) {
+                            return res.status(404).send({
+                                message: 'book Not Found',
+                            });
+                        }
+
+                        return Transaction
+                            .create({
+                                brdate: Date.now(),
+                                retype: false,
+                                userId: req.params.userId,
+                                bookId: req.body.bookId
+
+
+                            })
+                            .then((re) => res.status(200).send(re))
+                            .catch((error) => res.status(400).send(error));
 
                     })
-                    .then((re) => res.status(200).send(re))
                     .catch((error) => res.status(400).send(error));
-
-            })
-            .catch((error) => res.status(400).send(error));
+            }).catch((error) => res.status(400).send(error));
     },
 
     getUnreturnBooks(req, res) {
-        return Transaction
-            .findAll({
-                where: {
-                    retype: req.query.returned
-                }
-            }).then((result) =>
-                res.status(200).send(result))
-            .catch((error) => res.status(400).send(error));
+        return User
+            .findById(req.params.userId)
+            .then(result => {
+                if (result.username !== req.decoded)
+                    return res.status(404).send({
+                        message: 'Invalid Identity',
+                    });
+                return Transaction
+                    .findAll({
+                        where: {
+                            retype: req.query.returned,
+                            userId: req.params.userId
+                        }
+                    }).then((result) =>
+                        res.status(200).send(result))
+                    .catch((error) => res.status(400).send(error));
+            }).catch((error) => res.status(400).send(error));
     },
 
     returnBooks(req, res) {
-
-        return Transaction
-            .findById(req.body.Id)
+        return User
+            .findById(req.params.userId)
             .then(result => {
-                if (!result) {
+                if (result.username !== req.decoded)
                     return res.status(404).send({
-                        message: 'Record Not Found',
+                        message: 'Invalid Identity',
                     });
-                }
+                return Transaction
+                    .findById(req.body.Id)
+                    .then(result => {
+                        if (!result) {
+                            return res.status(404).send({
+                                message: 'Record Not Found',
+                            });
+                        }
 
-                return result
-                    .update({
-                        retype: true,
-                        rdate: Date.now(),
+                        return result
+                            .update({
+                                retype: true,
+                                rdate: Date.now(),
+
+                            })
+                            .then((re) => res.status(200).send(re))
+                            .catch((error) => res.status(400).send(error));
 
                     })
-                    .then((re) => res.status(200).send(re))
                     .catch((error) => res.status(400).send(error));
-
-            })
-            .catch((error) => res.status(400).send(error));
+            }).catch((error) => res.status(400).send(error));
 
     }
 
