@@ -1,6 +1,8 @@
 const User = require('../models').Users;
 const Book = require('../models').Books;
 const Transaction = require('../models').Transaction;
+const jwt = require('jsonwebtoken');
+var myt;
 
 module.exports = {
     signup(req, res) {
@@ -18,8 +20,8 @@ module.exports = {
             .catch(error => res.status(400).send(error));
     },
 
-    signin(req, res, next) {
-        return User
+    signin(req, res) {
+        User
             .findAll({
                 attributes: ['username'],
                 where: {
@@ -29,7 +31,15 @@ module.exports = {
 
 
             })
-            .then(result => res.status(201).send(result))
+            .then(result => {
+                // create a token
+                jwt.sign("1", "hello", (err, token) => {
+                    myt = token;
+                    console.log(myt);
+
+                });
+                res.status(201).send({ result, myt })
+            })
             .catch(error => res.status(400).send(error));
 
 
@@ -43,6 +53,7 @@ module.exports = {
     },
 
     borrowBooks(req, res) {
+
         return Book
             .findById(req.body.bookId)
             .then(result => {
@@ -67,6 +78,18 @@ module.exports = {
             })
             .catch((error) => res.status(400).send(error));
     },
+
+    getUnreturnBooks(req, res) {
+        return Transaction
+            .findAll({
+                where: {
+                    retype: req.query.returned
+                }
+            }).then((result) =>
+                res.status(200).send(result))
+            .catch((error) => res.status(400).send(error));
+    },
+      
     returnBooks(req, res) {
 
         return Transaction
@@ -91,6 +114,5 @@ module.exports = {
             .catch((error) => res.status(400).send(error));
 
     }
-
 
 };
