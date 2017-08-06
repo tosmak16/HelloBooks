@@ -136,7 +136,7 @@ module.exports = {
                         }
                         if (result.retype === true) {
                             return res.status(404).send({
-                                message: 'This book have beem returned before',
+                                message: 'This book have been returned before',
                             });
                         }
 
@@ -163,6 +163,32 @@ module.exports = {
                     .catch((error) => res.status(400).send(error));
             }).catch((error) => res.status(400).send(error));
 
+    },
+
+    deleteBooks(req, res) {
+        return User
+            .findById(req.params.userId)
+            .then(result => {
+                if (result.username !== req.decoded)
+                    return res.status(404).send({
+                        message: 'Invalid Identity',
+                    });
+
+                if (result.role !== 'admin') {
+                    return res.status(404).send({
+                        message: 'Error not allowed!',
+                    });
+                }
+
+                Book
+                    .findById(req.body.bookId)
+                    .then(result => {
+                        result
+                            .destroy()
+                            .then(() => res.status(204).send({ message: 'deleted' }))
+                            .catch(error => res.status(400).send(error));
+                    })
+            })
     }
 
 };
