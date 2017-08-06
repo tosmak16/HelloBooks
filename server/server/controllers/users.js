@@ -33,7 +33,7 @@ module.exports = {
             })
             .then(result => {
                 // create a token
-                jwt.sign("1", "hello", (err, token) => {
+                jwt.sign(req.body.username, "encoded", (err, token) => {
                     myt = token;
                     console.log(myt);
 
@@ -89,7 +89,7 @@ module.exports = {
                 res.status(200).send(result))
             .catch((error) => res.status(400).send(error));
     },
-      
+
     returnBooks(req, res) {
 
         return Transaction
