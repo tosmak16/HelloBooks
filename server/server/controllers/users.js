@@ -54,7 +54,7 @@ module.exports = {
     },
 
     borrowBooks(req, res) {
-        return User
+        User
             .findById(req.params.userId)
             .then(result => {
                 if (result.username !== req.decoded)
@@ -63,7 +63,7 @@ module.exports = {
                     });
 
 
-                return Book
+                Book
                     .findById(req.body.bookId)
                     .then(result => {
                         if (!result) {
@@ -99,7 +99,7 @@ module.exports = {
     },
 
     getUnreturnBooks(req, res) {
-        return User
+        User
             .findById(req.params.userId)
             .then(result => {
                 if (result.username !== req.decoded)
@@ -119,7 +119,7 @@ module.exports = {
     },
 
     returnBooks(req, res) {
-        return User
+        User
             .findById(req.params.userId)
             .then(result => {
                 if (result.username !== req.decoded)
@@ -166,7 +166,7 @@ module.exports = {
     },
 
     deleteBooks(req, res) {
-        return User
+        User
             .findById(req.params.userId)
             .then(result => {
                 if (result.username !== req.decoded)

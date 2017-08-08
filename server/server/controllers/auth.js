@@ -13,6 +13,21 @@ module.exports = {
                 } else {
 
                     req.decoded = decoded;
+                    if (req.params.userId)
+                        return User
+                            .findById(req.params.userId)
+                            .then(result => {
+                                if (result.username.length === 0) {
+                                    return res.status(404).send({
+                                        message: 'Invalid User',
+                                    });
+                                }
+
+                                if (result.username !== req.decoded)
+                                    return res.status(404).send({
+                                        message: 'Invalid Identity',
+                                    });
+                            })
 
                     return next();
                 }
