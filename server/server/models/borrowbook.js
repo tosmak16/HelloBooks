@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-    var Transaction = sequelize.define('Transaction', {
+    var borrowbook = sequelize.define('borrowbook', {
         brdate: {
             type: DataTypes.DATE,
             allowNull: false
@@ -29,18 +29,18 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         classMethods: {
             associate: (models) => {
-                Transaction.belongsTo(models.Users, {
+                borrowbook.belongsTo(models.Users, {
                     foreignKey: 'userId',
                     onDelete: 'CASCADE',
                 });
             },
             associate: (models) => {
-                Transaction.belongsTo(models.Books, {
+                borrowbook.belongsTo(models.Books, {
                     foreignKey: 'bookId',
                     onDelete: 'CASCADE',
                 });
             }
         }
     });
-    return Transaction;
+    return borrowbook;
 };

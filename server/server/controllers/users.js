@@ -1,6 +1,6 @@
 const User = require('../models').Users;
 const Book = require('../models').Books;
-const Transaction = require('../models').Transaction;
+const borrowbook = require('../models').borrowbook;
 const jwt = require('jsonwebtoken');
 const { SHA256 } = require('crypto-js');
 var myt;
@@ -82,7 +82,7 @@ module.exports = {
 
                         result.update({ stocknumber: (result.stocknumber - 1) });
 
-                        return Transaction
+                        return borrowbook
                             .create({
                                 brdate: Date.now(),
                                 retype: false,
@@ -107,7 +107,7 @@ module.exports = {
                     return res.status(404).send({
                         message: 'Invalid Identity',
                     });
-                return Transaction
+                return borrowbook
                     .findAll({
                         where: {
                             retype: req.query.returned,
@@ -127,7 +127,7 @@ module.exports = {
                     return res.status(404).send({
                         message: 'Invalid Identity',
                     });
-                return Transaction
+                return borrowbook
                     .findById(req.body.Id)
                     .then(result => {
                         if (!result) {
