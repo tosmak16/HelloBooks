@@ -2,6 +2,7 @@ const User = require('../models').Users;
 const Book = require('../models').Books;
 const Transaction = require('../models').Transaction;
 const jwt = require('jsonwebtoken');
+const { SHA256 } = require('crypto-js');
 var myt;
 
 module.exports = {
@@ -9,7 +10,7 @@ module.exports = {
         return User
             .create({
                 username: req.body.username,
-                password: req.body.password,
+                password: SHA256(req.body.password).toString(),
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 email: req.body.email,
@@ -27,7 +28,7 @@ module.exports = {
                 attributes: ['username'],
                 where: {
                     username: req.body.username,
-                    password: req.body.password,
+                    password: SHA256(req.body.password).toString(),
                 },
 
 
