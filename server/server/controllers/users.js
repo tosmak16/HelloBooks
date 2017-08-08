@@ -7,7 +7,7 @@ var myt;
 
 module.exports = {
     signup(req, res) {
-        return User
+        User
             .create({
                 username: req.body.username,
                 password: SHA256(req.body.password).toString(),
@@ -34,13 +34,16 @@ module.exports = {
 
             })
             .then(result => {
-                // create a token
-                jwt.sign(req.body.username, "encoded", (err, token) => {
-                    myt = token;
-                    console.log(myt);
+                if (result.length === 0) {
+                    res.status(400).send();
+                } else {
+                    // create a token
+                    jwt.sign(req.body.username, "encoded", (err, token) => {
 
-                });
-                res.status(201).send({ result, myt })
+                        res.status(201).send({ result, token })
+                    });
+
+                }
             })
             .catch(error => res.status(400).send(error));
 
@@ -91,7 +94,7 @@ module.exports = {
 
 
                             })
-                            .then((re) => res.status(200).send(re))
+                            .then((result) => res.status(200).send(result))
                             .catch((error) => res.status(400).send(error));
 
                     })
