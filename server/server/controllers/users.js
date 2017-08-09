@@ -58,6 +58,7 @@ module.exports = {
     },
 
     borrowBooks(req, res) {
+        console.log(req.params.userId);
         User
             .findById(req.params.userId)
             .then(result => {
@@ -102,7 +103,7 @@ module.exports = {
             }).catch((error) => res.status(400).send(error));
     },
 
-    getUnreturnBooks(req, res) {
+    getUnreturnedBooks(req, res) {
         User
             .findById(req.params.userId)
             .then(result => {
@@ -140,7 +141,7 @@ module.exports = {
                         }
                         if (result.retype === true) {
                             return res.status(404).send({
-                                message: 'This book have been returned before',
+                                message: 'This book has been returned before',
                             });
                         }
 
@@ -179,8 +180,8 @@ module.exports = {
                     });
 
                 if (result.role !== 'admin') {
-                    return res.status(404).send({
-                        message: 'Error not allowed!',
+                    return res.status(403).send({
+                        message: 'Access Denied!',
                     });
                 }
 
@@ -191,8 +192,8 @@ module.exports = {
                             .destroy()
                             .then(() => res.status(204).send({ message: 'deleted' }))
                             .catch(error => res.status(400).send(error));
-                    })
-            })
+                    }).catch(error => res.status(400).send(error));
+            }).catch(error => res.status(400).send(error));
     }
 
 };
