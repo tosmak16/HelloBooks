@@ -1,42 +1,44 @@
-export default (sequelize, DataTypes) => {
-  const Books = sequelize.define('Books', {
+'use strict';
+
+module.exports = function (sequelize, DataTypes) {
+  var Books = sequelize.define('Books', {
     bookTitle: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     author: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     category: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     isbn: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     stocknumber: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: false
     },
     image: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: true
     },
     summary: {
       type: DataTypes.STRING,
-      allowNull: true,
-    },
+      allowNull: true
+    }
   }, {
     classMethods: {
-      associate: (models) => {
+      associate: function associate(models) {
         Books.hasMany(models.borrowbook, {
           foreignKey: 'bookId',
-          as: 'borrowbooks',
+          as: 'borrowbooks'
         });
-      },
-    },
+      }
+    }
   });
   return Books;
 };
