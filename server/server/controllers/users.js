@@ -55,59 +55,46 @@ export default {
 
   borrowBooks(req, res) {
     console.log(req.params.userId);
-    return db.borrowbook
-      .findAll({
-        where: {
-          userId: req.params.Id,
-          bookId: req.body.bookId,
-          retype: false,
-        },
-      })
-      .then((result) => {
-        if (result) {
-          res.status(400).send('You cant borrow this book');
-        } else {
-          db.Users
-            .findById(req.params.userId)
-            .then((report) => {
-              if (report.username !== req.decoded) {
-                return res.status(404).send({
-                  message: 'Invalid Identity',
-                });
-              }
-              return db.Books
-                .findById(req.body.bookId)
-                .then((result) => {
-                  if (!result) {
-                    return res.status(404).send({
-                      message: 'book Not Found',
-                    });
-                  }
 
-                  if (result.stocknumber === 0) {
-                    return res.status(404).send({
-                      message: 'Book Not available in stock',
-                    });
-                  }
-
-
-                  result.update({ stocknumber: (result.stocknumber - 1) });
-
-                  return db.borrowbook
-                    .create({
-                      brdate: Date.now(),
-                      retype: false,
-                      userId: req.params.userId,
-                      bookId: result.id,
-
-
-                    })
-                    .then(ouput => res.status(200).send(ouput))
-                    .catch(error => res.status(400).send(error));
-                })
-                .catch(error => res.status(400).send(error));
-            }).catch(error => res.status(400).send(error));
+    db.Users
+      .findById(req.params.userId)
+      .then((report) => {
+        if (report.username !== req.decoded) {
+          return res.status(404).send({
+            message: 'Invalid Identity',
+          });
         }
+        return db.Books
+          .findById(req.body.bookId)
+          .then((result) => {
+            if (!result) {
+              return res.status(404).send({
+                message: 'book Not Found',
+              });
+            }
+
+            if (result.stocknumber === 0) {
+              return res.status(404).send({
+                message: 'Book Not available in stock',
+              });
+            }
+
+
+            result.update({ stocknumber: (result.stocknumber - 1) });
+
+            return db.borrowbook
+              .create({
+                brdate: Date.now(),
+                retype: false,
+                userId: req.params.userId,
+                bookId: result.id,
+
+
+              })
+              .then(ouput => res.status(200).send(ouput))
+              .catch(error => res.status(400).send(error));
+          })
+          .catch(error => res.status(400).send(error));
       }).catch(error => res.status(400).send(error));
   },
 
@@ -206,4 +193,3 @@ export default {
   },
 
 };
-
