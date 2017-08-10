@@ -7,7 +7,7 @@ import sinon from 'sinon';
 import chaiHttp from 'chai-http';
 import { SHA256 } from 'crypto-js';
 
-import server from '../app';
+import server from '../../app';
 import auth from '../server/controllers/auth';
 import User from '../server/models/users';
 import Book from '../server/models/books';
