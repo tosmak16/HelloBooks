@@ -1,44 +1,46 @@
-export default (sequelize, DataTypes) => {
-  const Users = sequelize.define('Users', {
+'use strict';
+
+module.exports = function (sequelize, DataTypes) {
+  var Users = sequelize.define('Users', {
     username: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     firstName: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     lastName: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     role: {
       type: DataTypes.ENUM,
-      values: ['user', 'admin', 'disabled'],
+      values: ['user', 'admin', 'disabled']
     },
 
     membershipType: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
+      allowNull: false
+    }
   }, {
     classMethods: {
-      associate: (models) => {
+      associate: function associate(models) {
         Users.hasMany(models.borrowbook, {
           foreignKey: 'userId',
-          as: 'borrowbooks',
+          as: 'borrowbooks'
 
         });
-      },
-    },
+      }
+    }
   });
   return Users;
 };

@@ -1,11 +1,15 @@
-import usersController from '../controllers/users';
-import booksController from '../controllers/books';
-import authController from '../controllers/auth';
+'use strict';
 
-export default (app) => {
-  app.get('/api', (req, res) => res.status(200).send({
-    message: 'Welcome!',
-  }));
+var usersController = require('../controllers').users;
+var booksController = require('../controllers').books;
+var authController = require('../controllers').auth;
+
+module.exports = function (app) {
+  app.get('/api', function (req, res) {
+    return res.status(200).send({
+      message: 'Welcome!'
+    });
+  });
 
   app.post('/api/users/signup', usersController.signup);
   app.post('/api/users/signin', usersController.signin);
@@ -13,7 +17,6 @@ export default (app) => {
   app.get('/api/users', usersController.list);
 
   app.use('*', authController.auth);
-
 
   app.post('/api/users/:userId/books', usersController.borrowBooks);
   app.put('/api/users/:userId/books', usersController.returnBooks);

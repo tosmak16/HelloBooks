@@ -1,0 +1,12 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  "window.zoomLevel": -1,
+  // Controls whether eslint is enabled for JavaScript files or not.
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "eslint.autoFixOnSave": true,
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "eslint.enable": true,
+  "files.autoSave": "onFocusChange"
+}

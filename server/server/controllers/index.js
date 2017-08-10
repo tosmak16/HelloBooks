@@ -1,9 +1,9 @@
-const users = require('./users');
-const books = require('./books');
-const auth = require('./auth');
+import users from './users';
+import books from './books';
+import auth from './auth';
 
-module.exports = {
-    users,
-    books,
-    auth
+export {
+  users,
+  books,
+  auth,
 };
