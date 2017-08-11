@@ -1,5 +1,3 @@
-// import dotenv from 'dotenv';
-// const config = dotenv.config();
 require('dotenv').config();
 module.exports = {
   development: {

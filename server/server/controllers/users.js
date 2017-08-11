@@ -5,17 +5,19 @@ import Book from '../models/books';
 import borrowbook from '../models/borrowbook';
 import db from '../models/index';
 
-
 export default {
   signup(req, res) {
+    if (!(req.body.password && req.body.username && req.body.email && req.body.firstName && req.body.lastName && req.body.membershipType)) {
+      return res.status(400).send(' please enter the required fields');
+    }
     db.Users.create({
-      username: req.body.username,
+      username: req.body.username.toLowerCase(),
       password: SHA256(req.body.password).toString(),
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      email: req.body.email,
+      email: req.body.email.toLowerCase(),
       membershipType: req.body.membershipType,
-      role: req.body.role,
+      role: 'user',
 
     })
       .then(result => res.status(201).send(result))
@@ -23,14 +25,16 @@ export default {
   },
 
   signin(req, res) {
+    if (!(req.body.password && req.body.username)) {
+      return res.status(400).send(' please enter the required fields');
+    }
     db.Users
       .findAll({
         attributes: ['username'],
         where: {
-          username: req.body.username,
+          username: req.body.username.toLowerCase(),
           password: SHA256(req.body.password).toString(),
         },
-
 
       })
       .then((result) => {
@@ -54,8 +58,6 @@ export default {
   },
 
   borrowBooks(req, res) {
-    console.log(req.params.userId);
-
     db.Users
       .findById(req.params.userId)
       .then((report) => {
@@ -78,7 +80,6 @@ export default {
                 message: 'Book Not available in stock',
               });
             }
-
 
             result.update({ stocknumber: (result.stocknumber - 1) });
 

@@ -1,63 +1,54 @@
-'use strict';
 
-var Book = require('../models').Books;
-var User = require('../models').Users;
+
+const Book = require('../models').Books;
+const User = require('../models').Users;
 
 module.exports = {
-    addBook: function addBook(req, res) {
-        User.findOne({
-            // attributes: ['role'],
-            where: {
-                username: req.decoded
+  addBook: function addBook(req, res) {
+    User.findOne({
+      where: {
+        username: req.decoded,
 
-            }
-        }).then(function (result) {
-            console.log(result.role);
-            if (result.role === 'user') {
-                console.log('Access Denied!');
-                return res.status(403).send({
-                    message: 'Access Denied!'
-                });
-            }
+      },
+    }).then((result) => {
+      if (result.role === 'user') {
+        return res.status(403).send({
+          message: 'Access Denied!',
+        });
+      }
 
-            return Book.create({
-                bookTitle: req.body.bookTitle,
-                author: req.body.author,
-                category: req.body.category,
-                isbn: req.body.isbn,
-                stocknumber: req.body.stocknumber
-            }).then(function (result) {
+      return Book.create({
+        bookTitle: req.body.bookTitle,
+        author: req.body.author,
+        category: req.body.category,
+        isbn: req.body.isbn,
+        stocknumber: req.body.stocknumber,
+      }).then((result) => {
                 return res.status(201).send(result);
-            }).catch(function (error) {
+            }).catch((error) => {
                 return res.status(400).send(error);
             });
-        }).catch(function (error) {
-            return error;
-        });
-    },
-    getAllBooks: function getAllBooks(req, res) {
-        return Book.all().then(function (result) {
-            return res.status(200).send(result);
-        }).catch(function (error) {
-            return res.status(400).send(error);
-        });
-    },
-    updateBook: function updateBook(req, res) {
-        User.findOne({
-            // attributes: ['role'],
-            where: {
-                username: req.decoded
+    }).catch((error) => error);
+  },
+  getAllBooks: function getAllBooks(req, res) {
+    return Book.all().then((result) => res.status(200).send(result)).catch((error) => res.status(400).send(error));
+  },
+  updateBook: function updateBook(req, res) {
+    User.findOne({
+      // attributes: ['role'],
+      where: {
+        username: req.decoded,
 
-            }
-        }).then(function (result) {
-            console.log(result.role);
-            if (result.role === 'user') {
-                console.log('Access Denied!');
-                return res.status(403).send({
-                    message: 'Access Denied!'
-                });
-            }
-            return Book.findById(req.params.bookId).then(function (result) {
+      },
+    }).then((result) => {
+      console.log(result.role);
+      if (result.role === 'user') {
+        console.log('Access Denied!');
+        return res.status(403).send({
+          message: 'Access Denied!',
+        });
+      }
+      return Book.findById(req.params.bookId).then((result) => {
                 if (!result) {
                     return res.status(404).send({
                         message: 'book does not exist'
@@ -72,14 +63,12 @@ module.exports = {
                 }).then(function () {
                     return res.status(200).send(result);
                 }) // Send back the updated book
-                .catch(function (error) {
-                    return res.status(400).send(error);
-                });
-            }).catch(function (error) {
+                    .catch(function (error) {
+                        return res.status(400).send(error);
+                    });
+            }).catch((error) => {
                 return res.status(400).send(error);
             });
-        }).catch(function (error) {
-            return res.status(400).send(error);
-        });
-    }
+    }).catch((error) => res.status(400).send(error));
+  },
 };

@@ -2,21 +2,16 @@ import Book from '../models/books';
 import User from '../models/users';
 import db from '../models/index';
 
-
 export default {
   addBook(req, res) {
     db.Users
       .findOne({
-        // attributes: ['role'],
         where: {
           username: req.decoded,
-
         },
       })
       .then((result) => {
-        console.log(result.role);
         if (result.role === 'user') {
-          console.log('Access Denied!');
           return res.status(403).send({
             message: 'Access Denied!',
           });
@@ -47,16 +42,12 @@ export default {
   updateBook(req, res) {
     db.Users
       .findOne({
-        // attributes: ['role'],
         where: {
           username: req.decoded,
-
         },
       })
       .then((output) => {
-        console.log(output.role);
         if (output.role === 'user') {
-          console.log('Access Denied!');
           return res.status(403).send({
             message: 'Access Denied!',
           });

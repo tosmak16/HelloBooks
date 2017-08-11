@@ -85,8 +85,7 @@ Document Management System API is built with the following technologies;
 - Push to the remote branch
 - Open a Pull Request
 
-## Limitations
-The limitations of the API are:
+
 
 
 ## LICENSE
