@@ -1,0 +1,16 @@
+sudo: required
+dist: trusty
+language: node_js
+node_js:
+  - "6"
+services:
+  - postgresql
+before_script:
+  - psql -c 'drop database if exists hellodb;' -U postgres
+  - psql -c 'create database hellodb;' -U postgres
+script:
+  - npm test
+after_script:
+
+addons:
+  postgresql: "9.3"
