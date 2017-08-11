@@ -6,8 +6,8 @@ node_js:
 services:
   - postgresql
 before_script:
-  - psql -c 'drop database if exists docman_test;' -U postgres
-  - psql -c 'create database docman_test;' -U postgres
+  - psql -c 'drop database if exists hellodb;' -U postgres
+  - psql -c 'create database hellodb;' -U postgres
 script:
   - npm test
 after_script:
