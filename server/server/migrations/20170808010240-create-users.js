@@ -30,10 +30,12 @@ module.exports = {
     membershipType: {
       type: Sequelize.STRING,
       allowNull: true,
+      defaultValue: 'Basic',
     },
     role: {
       type: Sequelize.ENUM,
       values: ['user', 'admin', 'disabled'],
+      defaultValue: 'user',
     },
     createdAt: {
       allowNull: false,

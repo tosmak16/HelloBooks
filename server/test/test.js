@@ -173,8 +173,8 @@ describe('check borrowbooks route', () => {
         done();
       });
   });
-  it('should not borrow a book if number in stock is zero', (done) => {
-    const bookId = '7';
+  it('should borrow a book if number in stock is not zero', (done) => {
+    const bookId = '4';
     chai.request(server)
       .post('/api/users/26/books')
       .set('token', token)
@@ -390,7 +390,7 @@ describe('Check for Add books API route', () => {
 });
 // Test Edit books API route
 
-describe('Check for Add books API route', () => {
+describe('Check for Update books API route', () => {
   it('should return 403 Acceess denied if the user is not an admin', (done) => {
     chai.request(server)
       .put('/api/books/1/')
@@ -424,7 +424,7 @@ describe('Check for Add books API route', () => {
   it('should return update the book if the user is an admin and the book exist', (done) => {
     const author = 'David murray';
     chai.request(server)
-      .put('/api/books/38')
+      .put('/api/books/5')
       .set('token', adminToken)
       .send({ author })
       .end((err, res) => {
