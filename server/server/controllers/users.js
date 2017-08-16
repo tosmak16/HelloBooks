@@ -9,7 +9,21 @@ let membershipType;
 let print;
 let length;
 let info;
+
+/**
+  * @param { object } req
+  * @param { object} res
+  * @returns { object } response
+  * 
+  */
 export default {
+  /**
+  * @method signup
+  * @desc it's a method used for user registration
+  * @param { object } req
+  * @param { object} res
+  * @returns { object } response
+  */
   signup(req, res) {
     if (!(req.body.password && req.body.username && req.body.email && req.body.firstName && req.body.lastName && req.body.membershipType)) {
       return res.status(400).send(' please enter the required fields');
@@ -27,6 +41,13 @@ export default {
       .then(result => res.status(201).send(result))
       .catch(error => res.status(400).send(error));
   },
+  /**
+* @method signin
+* @desc it's a method that ensure registered users can login
+* @param { object } req
+* @param { object} res
+* @returns { object } response
+*/
 
   signin(req, res) {
     if (!(req.body.password && req.body.username)) {
@@ -53,13 +74,26 @@ export default {
       })
       .catch(error => res.status(400).send(error));
   },
-
+  /**
+  * @method list
+  * @desc This is a method used for displaying list of users
+  * @param { object } req
+  * @param { object} res
+  * @returns { object } response
+  */
   list(req, res) {
     return db.Users
       .all()
       .then(result => res.status(200).send(result))
       .catch(error => res.status(400).send(error));
   },
+  /**
+* @method borrowbooks
+* @desc This is a method that peroforms the action of borrowing books
+* @param { object } req
+* @param { object} res
+* @returns { object } response
+*/
 
   borrowBooks(req, res) {
     db.borrowbook
@@ -73,15 +107,8 @@ export default {
 
       })
       .then((output) => {
-        console.log('*********************************8');
-
-        console.log(`user${output.length}`);
-        console.log(output.length);
-        console.log('*********************************8');
-
         if ((output.length !== 0)) {
           info = 'You have borrowed this book before';
-          console.log(`++++++++++++++++++++${info}`);
           return res.status(404).send({
             message: 'You have borrowed this book before',
           });
@@ -97,12 +124,6 @@ export default {
 
           })
           .then((rep) => {
-            console.log('*********************************8');
-
-            console.log(`user${rep.userId}`);
-            console.log(rep.length);
-            console.log('*********************************8');
-
             length = rep.length;
 
             db.Users
@@ -135,7 +156,6 @@ export default {
                   }
                 }
 
-                console.log(membershipType);
                 if (print === 0) {
                   return res.status(400).send({
                     message: `Sorry you can not borrow more than ${length} books`,
@@ -185,6 +205,13 @@ export default {
       }).catch(error => res.status(400).send(error));
   },
 
+  /**
+* @method getUnreturnedbooks
+* @desc This is a method that peroforms the action of listing all borrowed books that are yet to be returned
+* @param { object } req
+* @param { object} res
+* @returns { object } response
+*/
   getUnreturnedBooks(req, res) {
     db.Users
       .findById(req.params.userId)
@@ -206,6 +233,13 @@ export default {
       }).catch(error => res.status(400).send(error));
   },
 
+  /**
+* @method returnBooks
+* @desc This is a method that peroforms the action of returning borrowed books
+* @param { object } req
+* @param { object} res
+* @returns { object } response
+*/
   returnBooks(req, res) {
     db.Users
       .findById(req.params.userId)
@@ -252,6 +286,13 @@ export default {
       }).catch(error => res.status(400).send(error));
   },
 
+  /**
+* @method deletebooks
+* @desc This is a method that allows only admin to delete books
+* @param { object } req
+* @param { object} res
+* @returns { object } response
+*/
   deleteBooks(req, res) {
     db.Users
       .findById(req.params.userId)

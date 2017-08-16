@@ -2,6 +2,13 @@ import jwt from 'jsonwebtoken';
 import User from '../models/users';
 import db from '../models/index';
 
+/**
+* @method auth
+* @desc This is a methodwhich performs the fuction of a middle ware to ensure secure authentication
+* @param { object } req
+* @param { object} res
+* @returns { object } response
+*/
 export default {
   auth(req, res, next) {
     const token = req.body.token || req.headers.token;

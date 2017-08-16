@@ -3,6 +3,13 @@ import User from '../models/users';
 import db from '../models/index';
 
 export default {
+  /**
+* @method addbook
+* @desc This is a method that allows only admin to add books
+* @param { object } req
+* @param { object} res
+* @returns { object } response
+*/
   addBook(req, res) {
     db.Users
       .findOne({
@@ -31,6 +38,13 @@ export default {
       .catch(error => error);
   },
 
+  /**
+* @method getAllBooks
+* @desc This is a method that allows users to get all available books
+* @param { object } req
+* @param { object} res
+* @returns { object } response
+*/
 
   getAllBooks(req, res) {
     return db.Books
@@ -39,6 +53,13 @@ export default {
       .catch(error => res.status(400).send(error));
   },
 
+  /**
+* @method UpdateBook
+* @desc This is a method that allows only admin to edit a book
+* @param { object } req
+* @param { object} res
+* @returns { object } response
+*/
   updateBook(req, res) {
     db.Users
       .findOne({
