@@ -5,6 +5,10 @@ import Book from '../models/books';
 import borrowbook from '../models/borrowbook';
 import db from '../models/index';
 
+let membershipType;
+let print;
+let length;
+let info;
 export default {
   signup(req, res) {
     if (!(req.body.password && req.body.username && req.body.email && req.body.firstName && req.body.lastName && req.body.membershipType)) {
@@ -58,44 +62,126 @@ export default {
   },
 
   borrowBooks(req, res) {
-    db.Users
-      .findById(req.params.userId)
-      .then((report) => {
-        if (report.username !== req.decoded) {
+    db.borrowbook
+      .findAll({
+        attributes: ['userId', 'bookId'],
+        where: {
+          bookId: req.body.bookId,
+          userId: req.params.userId,
+          retype: false,
+        },
+
+      })
+      .then((output) => {
+        console.log('*********************************8');
+
+        console.log(`user${output.length}`);
+        console.log(output.length);
+        console.log('*********************************8');
+
+        if ((output.length !== 0)) {
+          info = 'You have borrowed this book before';
+          console.log(`++++++++++++++++++++${info}`);
           return res.status(404).send({
-            message: 'Invalid Identity',
+            message: 'You have borrowed this book before',
           });
         }
-        return db.Books
-          .findById(req.body.bookId)
-          .then((result) => {
-            if (!result) {
-              return res.status(404).send({
-                message: 'book Not Found',
-              });
-            }
 
-            if (result.stocknumber === 0) {
-              return res.status(404).send({
-                message: 'Book Not available in stock',
-              });
-            }
+        db.borrowbook
+          .findAll({
+            attributes: ['userId'],
+            where: {
+              userId: req.params.userId,
+              retype: false,
+            },
 
-            result.update({ stocknumber: (result.stocknumber - 1) });
-
-            return db.borrowbook
-              .create({
-                brdate: Date.now(),
-                retype: false,
-                userId: req.params.userId,
-                bookId: result.id,
-
-
-              })
-              .then(ouput => res.status(200).send(ouput))
-              .catch(error => res.status(400).send(error));
           })
-          .catch(error => res.status(400).send(error));
+          .then((rep) => {
+            console.log('*********************************8');
+
+            console.log(`user${rep.userId}`);
+            console.log(rep.length);
+            console.log('*********************************8');
+
+            length = rep.length;
+
+            db.Users
+              .findOne({
+                attributes: ['membershipType'],
+                where: {
+                  id: req.params.userId,
+                },
+
+              }).then((out) => {
+                print = 0;
+                membershipType = out.membershipType;
+                if (membershipType === 'Basic') {
+                  if (length !== 3) {
+                    print = 1;
+                  } else {
+                    print = 0;
+                  }
+                } else if (membershipType === 'Silver') {
+                  if (length !== 4) {
+                    print = 1;
+                  } else {
+                    print = 0;
+                  }
+                } else if (membershipType === 'Gold') {
+                  if (length !== 10) {
+                    print = 1;
+                  } else {
+                    print = 0;
+                  }
+                }
+
+                console.log(membershipType);
+                if (print === 0) {
+                  return res.status(400).send({
+                    message: `Sorry you can not borrow more than ${length} books`,
+                  });
+                }
+                db.Users
+                  .findById(req.params.userId)
+                  .then((report) => {
+                    if (report.username !== req.decoded) {
+                      return res.status(404).send({
+                        message: 'Invalid Identity',
+                      });
+                    }
+                    return db.Books
+                      .findById(req.body.bookId)
+                      .then((result) => {
+                        if (!result) {
+                          return res.status(404).send({
+                            message: 'book Not Found',
+                          });
+                        }
+
+                        if (result.stocknumber === 0) {
+                          return res.status(404).send({
+                            message: 'Book Not available in stock',
+                          });
+                        }
+
+                        result.update({ stocknumber: (result.stocknumber - 1) });
+
+                        return db.borrowbook
+                          .create({
+                            brdate: Date.now(),
+                            retype: false,
+                            userId: req.params.userId,
+                            bookId: result.id,
+
+
+                          })
+                          .then(ouput => res.status(200).send(ouput))
+                          .catch(error => res.status(400).send(error));
+                      })
+                      .catch(error => res.status(400).send(error));
+                  }).catch(error => res.status(400).send(error));
+              }).catch(error => res.status(400).send(error));
+          }).catch(error => res.status(400).send(error));
       }).catch(error => res.status(400).send(error));
   },
 
