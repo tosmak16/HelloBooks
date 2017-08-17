@@ -60,7 +60,263 @@ PUT  | [ /api/books/:bookId](#modify-book-infor) |  API route that allow u
 
 The following are some sample request and response from the API.
 
+## Users
+Endpoint for Users resource.
 
+### Register User
+
+#### Request
+- Endpoint: POST: `/users/signup`
+- Body `(application/json)`
+json{
+       "username": "tosmak",
+        "password": "password",
+        "firstName": "Tosin",
+        "lastName": "Akinola",
+        "email": "tosmak@gmail.com",
+        "membershipType": "Basic",
+        "role": "user",
+}
+#### Response
+- Status: `201: Created`
+- Body `(application/json)`
+json{
+    "message": "Account created",
+    "result": {
+        "id": 36,
+        "username": "tosmak",
+        "password": "da6e2f539726fabd1f8cd7c9469a22b36769137975b28abc65fe2dc29e659b77",
+        "firstName": "Tosin",
+        "lastName": "Akinola",
+        "email": "tosmak@gmail.com",
+        "membershipType": "Basic",
+        "role": "user",
+        "updatedAt": "2017-08-17T04:43:57.988Z",
+        "createdAt": "2017-08-17T04:43:57.988Z"
+    }
+}
+
+### Login
+
+#### Request
+- Endpoint: POST: `/users/signin`
+- Body `(application/json)`
+json
+{
+  "username": "tosmak",
+  "password": "password",
+}
+
+
+#### Response
+- Status: `200: Ok`
+- Body `(application/json)`
+json{
+    "message": "You have successfully logged in",
+    "result": [
+        {
+            "username": "tosmak"
+        }
+    ],
+    "token": "eyJhbGciOiJIUzI1NiJ9.dG9zbWFr._e0TwSaIo2RkWC_PntbkEB-rMbgsuGWi7BnuRiBPRcM"
+}
+
+### Borrow books
+
+#### Request
+- Endpoint: POST: `/users/userId/books`
+- Requires: Authentication
+- Body `(application/json)`
+json
+{
+        "bookId": 20
+}
+
+
+#### Response
+- Status: `200: Ok`
+- Body `(application/json)`
+
+json
+{
+    "message": "Book added to personal archive. happy reading!",
+    "ouput": {
+        "id": 1,
+        "brdate": "2017-08-17T05:26:50.083Z",
+        "retype": false,
+        "userId": 36,
+        "bookId": 20,
+        "updatedAt": "2017-08-17T05:26:50.084Z",
+        "createdAt": "2017-08-17T05:26:50.084Z",
+    }
+}
+
+### getUnreturnedbooks
+
+#### Request
+- Endpoint: GET: `/users/userId/books?returned=false`
+- Requires: Authentication
+
+#### Response
+- Status: `200: Ok`
+- Body `(application/json)`
+
+json
+{
+    "message": "Borrowed books history retrieved",
+    "result": [
+        {
+            "id": 14,
+            "brdate": "2017-08-17T05:26:50.083Z",
+            "retype": false,
+            "userId": 36,
+            "bookId": 20,
+            "createdAt": "2017-08-17T05:26:50.084Z",
+            "updatedAt": "2017-08-17T05:26:50.084Z"
+        }
+    ]
+}
+### returnBooks
+
+#### Request
+- Endpoint: PUT: `/users/userId/books`
+- Requires: Authentication
+- Body `(application/json)`
+json
+{
+        Id: 1
+}
+
+
+#### Response
+- Status: `200: Ok`
+- Body `(application/json)`
+
+json
+{
+    "message": "book has been returned succesfully"
+}
+
+### addBook
+
+#### Request
+- Endpoint: POST: `/books`
+- Requires: Authentication
+- Body `(application/json)`
+json
+{
+        "bookTitle": "Thinkers Tools",
+        "author": "Tosmak Pac",
+        "category": "psychology ",
+        "isbn": "1235-4-12746-8",
+        "stocknumber": 10,
+}
+
+
+#### Response
+- Status: `200: Ok`
+- Body `(application/json)`
+
+json
+{
+    "message": "Book has been added to store",
+    "report": {
+        "id": 20,
+        "bookTitle": "Thinkers Tools",
+        "author": "Tosmak Pac",
+        "category": "psychology ",
+        "isbn": "1235-4-12746-8",
+        "stocknumber": 10,
+        "updatedAt": "2017-08-17T05:24:12.944Z",
+        "createdAt": "2017-08-17T05:24:12.944Z",
+    }
+}
+
+## Users
+Endpoint for Books resource.
+
+### addBook
+
+#### Request
+- Endpoint: POST: `/books`
+- Requires: Authentication
+- Body `(application/json)`
+json
+{
+        "bookTitle": "Thinkers Tools",
+        "author": "Tosmak Pac",
+        "category": "psychology ",
+        "isbn": "1235-4-12746-8",
+        "stocknumber": 10,
+}
+
+
+#### Response
+- Status: `200: Ok`
+- Body `(application/json)`
+
+json
+{
+    "message": "Book has been added to store",
+    "report": {
+        "id": 1,
+        "bookTitle": "Thinkers Tools",
+        "author": "Tosmak Pac",
+        "category": "psychology ",
+        "isbn": "1235-4-12746-8",
+        "stocknumber": 10,
+        "updatedAt": "2017-08-17T05:24:12.944Z",
+        "createdAt": "2017-08-17T05:24:12.944Z",
+    }
+}
+
+### UpdateBooks
+
+#### Request
+- Endpoint: PUT: `/books/bookId`
+- Requires: Authentication
+- Body `(application/json)`
+
+json
+{
+    "report": {
+        "stocknumber": 5,
+    }
+}
+
+#### Response
+- Status: `200: Ok`
+- Body `(application/json)`
+
+json
+{
+    "message": "Book has been updated",
+    "result": {
+        "id": 1,
+        "bookTitle": "Thinkers Tools",
+        "author": "Tosmak Pac",
+        "category": "psychology ",
+        "isbn": "1235-4-12746-8",
+        "stocknumber": "5",
+        "createdAt": "2017-08-17T05:24:12.944Z",
+        "updatedAt": "2017-08-17T07:37:32.217Z"
+    }
+}
+
+### DeleteBooks
+
+#### Request
+- Endpoint: PUT: `/books/bookId`
+- Requires: Authentication
+
+#### Response
+- Status: `200: Ok`
+- Body `(application/json)`
+json{
+  {
+    "message": "Deleted"
+  }
+}
 
 
 ## Development
@@ -73,6 +329,7 @@ Document Management System API is built with the following technologies;
 
 ## Installation
   - Install [NodeJs](https://nodejs.org/en/) and [Postgres](https://www.postgresql.org/) on your machine
+   - Clone the repository
   - Change into the directory `$ cd /dms`
   - Install all required dependencies with `$ npm install`
   - Create a `.env` file in your root directory as described in `.env.sample` file

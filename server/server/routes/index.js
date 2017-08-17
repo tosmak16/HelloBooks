@@ -18,7 +18,7 @@ export default (app) => {
   app.post('/api/v2/users/:userId/books', usersController.borrowBooks);
   app.put('/api/v2/users/:userId/books', usersController.returnBooks);
   app.get('/api/v2/users/:userId/books', usersController.getUnreturnedBooks);
-  app.delete('/api/v2/users/:userId/books', usersController.deleteBooks);
+  app.delete('/api/v2/books/:bookId/', booksController.deleteBooks);
   app.post('/api/v2/books', booksController.addBook);
   app.put('/api/v2/books/:bookId/', booksController.updateBook);
   app.get('/api/v2/books', booksController.getAllBooks);
