@@ -1,4 +1,9 @@
 node_modules
+coverage
+.coveralls.yml
+README.md
+package.json
 test
+template/
 
 
