@@ -202,8 +202,8 @@ export default {
 
   /**
 * @method getUnreturnedbooks
-* @desc This is a method that peroforms the action of listing all 
-  borrowed books that are yet to be returned
+* @desc This is a method that peroforms the action of listing 
+* @desc all borrowed books that are yet to be returned
 * @param { object } req
 * @param { object} res
 * @returns { object } response
