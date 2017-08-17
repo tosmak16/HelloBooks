@@ -232,7 +232,7 @@ json
     }
 }
 
-## Users
+## Books
 Endpoint for Books resource.
 
 ### addBook
