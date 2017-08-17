@@ -20,7 +20,8 @@ export default {
   * @returns { object } response
   */
   signup(req, res) {
-    if (!(req.body.password && req.body.username && req.body.email && req.body.firstName && req.body.lastName && req.body.membershipType)) {
+    if (!(req.body.password && req.body.username && req.body.email &&
+      req.body.firstName && req.body.lastName && req.body.membershipType)) {
       return res.status(400).send(' please enter the required fields');
     }
     db.Users.create({
@@ -201,7 +202,8 @@ export default {
 
   /**
 * @method getUnreturnedbooks
-* @desc This is a method that peroforms the action of listing all borrowed books that are yet to be returned
+* @desc This is a method that peroforms the action of listing all 
+  borrowed books that are yet to be returned
 * @param { object } req
 * @param { object} res
 * @returns { object } response
