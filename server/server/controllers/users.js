@@ -1,20 +1,15 @@
 import jwt from 'jsonwebtoken';
 import { SHA256 } from 'crypto-js';
-import User from '../models/users';
-import Book from '../models/books';
-import borrowbook from '../models/borrowbook';
 import db from '../models/index';
 
 let membershipType;
 let print;
 let length;
-let info;
 
 /**
   * @param { object } req
   * @param { object} res
   * @returns { object } response
-  * 
   */
 export default {
   /**
