@@ -60,7 +60,7 @@ export default (sequelize, DataTypes) => {
         },
         len: {
           args: [6 - 9],
-          msg: 'Isbn should be 6 and 9 digits',
+          msg: 'Isbn should be 6 and 13 digits',
         },
       },
     },

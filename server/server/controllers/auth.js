@@ -1,6 +1,4 @@
 import jwt from 'jsonwebtoken';
-import User from '../models/users';
-import db from '../models/index';
 
 /**
 * @method auth
@@ -15,7 +13,6 @@ export default {
     if (token) {
       jwt.verify(token, 'encoded', (err, decoded) => {
         if (err) {
-          console.error('JWT Verification Error');
           req.decoded = '0';
           return res.status(403).send(err);
         }

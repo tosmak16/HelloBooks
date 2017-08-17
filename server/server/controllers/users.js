@@ -1,20 +1,15 @@
 import jwt from 'jsonwebtoken';
 import { SHA256 } from 'crypto-js';
-import User from '../models/users';
-import Book from '../models/books';
-import borrowbook from '../models/borrowbook';
 import db from '../models/index';
 
 let membershipType;
 let print;
 let length;
-let info;
 
 /**
   * @param { object } req
   * @param { object} res
   * @returns { object } response
-  * 
   */
 export default {
   /**
@@ -38,7 +33,7 @@ export default {
       role: 'user',
 
     })
-      .then(result => res.status(201).send(result))
+      .then(result => res.status(201).send({ message: 'Account created', result }))
       .catch(error => res.status(400).send(error));
   },
   /**
@@ -68,7 +63,7 @@ export default {
         } else {
           // create a token
           jwt.sign(req.body.username, 'encoded', (err, token) => {
-            res.status(201).send({ result, token });
+            res.status(200).send({ message: 'You have successfully logged in', result, token });
           });
         }
       })
@@ -108,7 +103,6 @@ export default {
       })
       .then((output) => {
         if ((output.length !== 0)) {
-          info = 'You have borrowed this book before';
           return res.status(404).send({
             message: 'You have borrowed this book before',
           });
@@ -195,7 +189,7 @@ export default {
 
 
                           })
-                          .then(ouput => res.status(200).send(ouput))
+                          .then(ouput => res.status(200).send({ message: 'Book added to personal archive. happy reading!', ouput }))
                           .catch(error => res.status(400).send(error));
                       })
                       .catch(error => res.status(400).send(error));
@@ -228,7 +222,7 @@ export default {
               userId: req.params.userId,
             },
           }).then(result =>
-            res.status(200).send(result))
+            res.status(200).send({ message: 'Borrowed books history retrieved', result }))
           .catch(error => res.status(400).send(error));
       }).catch(error => res.status(400).send(error));
   },
@@ -278,7 +272,7 @@ export default {
                         stocknumber: (re.stocknumber + 1),
                       });
                   }).catch(error => res.status(400).send(error));
-                res.status(200).send(result);
+                res.status(200).send({ message: 'book has been returned successfully' });
               })
               .catch(error => res.status(400).send(error));
           })
@@ -286,38 +280,5 @@ export default {
       }).catch(error => res.status(400).send(error));
   },
 
-  /**
-* @method deletebooks
-* @desc This is a method that allows only admin to delete books
-* @param { object } req
-* @param { object} res
-* @returns { object } response
-*/
-  deleteBooks(req, res) {
-    db.Users
-      .findById(req.params.userId)
-      .then((report) => {
-        if (report.username !== req.decoded) {
-          return res.status(404).send({
-            message: 'Invalid Identity',
-          });
-        }
-
-        if (report.role !== 'admin') {
-          return res.status(403).send({
-            message: 'Access Denied!',
-          });
-        }
-
-        return db.Books
-          .findById(req.body.bookId)
-          .then((result) => {
-            result
-              .destroy()
-              .then(() => res.status(204).send({ message: 'deleted' }))
-              .catch(error => res.status(400).send(error));
-          }).catch(error => res.status(400).send(error));
-      }).catch(error => res.status(400).send(error));
-  },
 
 };
