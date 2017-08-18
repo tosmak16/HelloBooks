@@ -117,9 +117,6 @@ h2 {
 
 /* Move down content because we have a fixed navbar that is 50px tall */
 
-body {
-    padding-top: 50px;
-}
 
 a.heada {
     color: wheat;
@@ -259,7 +256,7 @@ div.vol {
 /* ================================================ sign in style=========== */
 
 body {
-    padding-top: 40px;
+   
     padding-bottom: 40px;
     background-color: #eee;
 }
@@ -346,9 +343,11 @@ body {
     display: none;
 }
 
-.returnbtn {
+.deletebtn {
     padding-bottom: 10px;
+    background-color: red;
 }
+
 
 #pa,
 #editbook,

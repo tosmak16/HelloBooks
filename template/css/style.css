@@ -87,11 +87,11 @@ h2,h3{
     
 }
 #loginbtn{
-   
+  background-color: #337ab7;
     width: 300px;
 }
 #createbtn{
-     background-color: burlywood;
+     background-color: #5cb85c;
     width: 300px;
 }
 #searchinput{
@@ -116,8 +116,7 @@ h2,h3{
     
 
     body {
-
-  background-color: wheat;
+  background-color:lightgoldenrodyellow;
 }
 
 .form-signin {

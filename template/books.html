@@ -14,7 +14,7 @@
     <link href="css/detail.css" rel="stylesheet">
 </head>
 
-<body style="background-color:#f1ede2">
+<body style="background-color:lightgoldenrodyellow;">
     <div class="navbar-fixed">
         <nav style="background-color: #3d1112">
             <div class="nav-wrapper">
@@ -58,27 +58,27 @@
 
     <div class="container">
         <div class="row">
-            <div class="col m10 offset-m2 col l10 offset-l2 main">
+            <div class="col m10 offset-m2 col l10 offset-l2 col s12 main">
                 <h4 class="page-header">Latest Books</h4>
                 <hr style="border-color: #3d1112;">
                 <div class="row placeholders">
-                    <div class="col m5 col l3 placeholder">
-                        <a href="detail.html"> <img src="img/l1.jpg" width="150" height="200" alt="Generic placeholder thumbnail"></a>
+                    <div class="col m5 col l3 col s12 placeholder ">
+                        <a href="detail.html"> <img class="materialboxed"  src="img/l1.jpg" width="150" height="200" alt="Generic placeholder thumbnail"></a>
                         <h5>Abraham Lincoln</h5>
                         <span class="text-muted">By Carl Sandburg</span>
                     </div>
-                    <div class="col m5 col l3 placeholder">
-                        <a href="detail.html"> <img src="img/l2.jpg" width="150" height="200" alt="Generic placeholder thumbnail"></a>
+                    <div class="col m5 col l3 col s12 placeholder">
+                        <a href="detail.html"> <img class="materialboxed" src="img/l2.jpg" width="150" height="200" alt="Generic placeholder thumbnail"></a>
                         <h5>The Time Machine</h5>
                         <span class="text-muted">By H. G. Wells</span>
                     </div>
-                    <div class="col m5 col l3 placeholder">
-                        <a href="detail.html"> <img src="img/l3.jpg" width="150" height="200" alt="Generic placeholder thumbnail"></a>
+                    <div class="col m5 col l3 col s12 placeholder">
+                        <a href="detail.html"> <img class="materialboxed" src="img/l3.jpg" width="150" height="200" alt="Generic placeholder thumbnail"></a>
                         <h5>Little Boy Lost</h5>
                         <span class="text-muted">By J.D Trafford</span>
                     </div>
-                    <div class="col m5 col l3 placeholder">
-                        <a href="detail.html"> <img src="img/l4.jpg" width="150" height="200" alt="Generic placeholder thumbnail"></a>
+                    <div class="col m5 col l3  col s12 placeholder">
+                        <a href="detail.html"> <img class="materialboxed" src="img/l4.jpg" width="150" height="200" alt="Generic placeholder thumbnail"></a>
                         <h5>Undercover</h5>
                         <span class="text-muted">By Danielle Steel</span>
                     </div>
@@ -89,16 +89,14 @@
 
             <div id="booksearchbar" class="container-fluid">
                 <form class="row">
-                    <div class="col l10  offset-l2  col m10  offset-m2  col s6 ">
+                    <div class="col l8  offset-l2  col m8  offset-m2  col s12 ">
+                        <form>
+                            <div class="input-field">
+                                <input id="search" type="search" required>
+                                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                            </div>
+                        </form>
                         <hr style="border-color: #3d1112;">
-                        <select class="form-control" id="inlineFormCustomSelect">
-                        <option selected>Title</option>
-                        <option value="1">Author</option>
-                        <option value="2">Category</option>
-                         <option value="2">ISBN</option>
-                         </select>
-                        <input id="booksearchinput" class=" form-control" type="text" name="search" placeholder="Search..">
-                        <button id="booksearchbtn" type="submit" class="form-control btn waves-effect" style="width:20px"><i class="material-icons ">search</i></button>
                     </div>
                 </form>
             </div>
