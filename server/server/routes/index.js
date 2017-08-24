@@ -1,18 +1,17 @@
 import usersController from '../controllers/users';
 import booksController from '../controllers/books';
 import authController from '../controllers/auth';
+import path from 'path';
 
 export default (app) => {
-  app.get('/api', (req, res) => res.status(200).send({
-    message: 'Welcome!',
-  }));
+  app.get('/*', (req, res) => res.sendFile(path.join(__dirname, '../../../client/public/index.html')));
 
   app.post('/api/v2/users/signup', usersController.signup);
   app.post('/api/v2/users/signin', usersController.signin);
   app.get('/api/v2/books', booksController.getAllBooks);
   app.get('/api/v2/users', usersController.list);
 
-  app.use('*', authController.auth);
+  app.use('/api/v2', authController.auth);
 
 
   app.post('/api/v2/users/:userId/books', usersController.borrowBooks);
