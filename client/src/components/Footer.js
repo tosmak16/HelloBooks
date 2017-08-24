@@ -43,7 +43,7 @@ class Footer extends React.Component {
 
             </div>
 
-            <div className="footer-right col l4 col m4 col s12">
+            <div className="footer-right col l4 col m14 col s12">
 
               <p className="footer-company-about">
                 <span>About Hello Book</span>  it's a simple application that helps manage  a libraryand its processes like stocking,
