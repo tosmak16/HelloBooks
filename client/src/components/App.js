@@ -5,11 +5,14 @@ import NavigationBar from './NavigationBar';
 class App extends React.Component {
   render() {
     return (
+
       <div>
+
         <NavigationBar />
         {this.props.children}
 
       </div>
+
 
     );
   }

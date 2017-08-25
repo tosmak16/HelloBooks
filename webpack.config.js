@@ -12,13 +12,18 @@ module.exports = {
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery'
+    })
   ],
   module: {
     loaders: [
       {
         test: /\.js?$/,
         include: path.join(__dirname, 'client'),
+        exclude: path.join(__dirname, 'node_modules/asx/js/'),
         loader: 'babel-loader',
         query: {
           presets: ['es2015', 'react']
@@ -38,7 +43,6 @@ module.exports = {
           loader: 'sass-loader' // compiles Sass to CSS
         }]
       }
-
     ]
   }
 };

@@ -3,11 +3,12 @@ import { Link } from 'react-router';
 
 
 export default () => (
+
   <div className="navbar-fixed">
     <nav id="nav_id" className="navbar-fixed">
       <div className="nav-wrapper">
         <div>
-          <Link id="hello" className="brand-logo" to="/"><i className="material-icons left"> collections</i>HelloBooks</Link>
+          <a id="hello" className="brand-logo" href="#"><i className="material-icons left"> collections</i>HelloBooks</a>
         </div>
         <div>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
