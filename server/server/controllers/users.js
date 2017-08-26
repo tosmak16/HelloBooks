@@ -1,5 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { SHA256 } from 'crypto-js';
+
+
 import db from '../models/index';
 
 let membershipType;
@@ -24,26 +26,42 @@ export default {
       req.body.firstName && req.body.lastName && req.body.membershipType)) {
       return res.status(400).send(' please enter the required fields');
     }
-    db.Users.create({
-      username: req.body.username.toLowerCase(),
-      password: SHA256(req.body.password).toString(),
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email.toLowerCase(),
-      membershipType: req.body.membershipType,
-      role: 'user',
+    db.Users
+      .findOne({
+        attributes: ['username'],
+        where: {
+          username: req.body.username.toLowerCase(),
+        },
 
-    })
-      .then(result => res.status(201).send({ message: 'Account created', result }))
-      .catch(error => res.status(400).send(error));
+      }).then((m) => {
+        if (m.username) {
+          res.status(400).send('username already exist');
+        }
+      }).catch((error) => {
+        db.Users.create({
+          username: req.body.username.toLowerCase(),
+          password: SHA256(req.body.password).toString(),
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.email.toLowerCase(),
+          membershipType: req.body.membershipType,
+
+
+        })
+          .then(result => res.status(201).send({ message: 'Account created', result, error }))
+          .catch((e) => {
+            res.status(400).send(e.errors[0].message);
+          });
+      }
+      );
   },
   /**
-* @method signin
-* @desc it's a method that ensure registered users can login
-* @param { object } req
-* @param { object} res
-* @returns { object } response
-*/
+  * @method signin
+  * @desc it's a method that ensure registered users can login
+  * @param { object } req
+  * @param { object} res
+  * @returns { object } response
+  */
 
   signin(req, res) {
     if (!(req.body.password && req.body.username)) {
@@ -84,12 +102,12 @@ export default {
       .catch(error => res.status(400).send(error));
   },
   /**
-* @method borrowbooks
-* @desc This is a method that peroforms the action of borrowing books
-* @param { object } req
-* @param { object} res
-* @returns { object } response
-*/
+  * @method borrowbooks
+  * @desc This is a method that peroforms the action of borrowing books
+  * @param { object } req
+  * @param { object} res
+  * @returns { object } response
+  */
 
   borrowBooks(req, res) {
     db.borrowbook
@@ -201,13 +219,13 @@ export default {
   },
 
   /**
-* @method getUnreturnedbooks
-* @desc This is a method that peroforms the action of listing 
-* @desc all borrowed books that are yet to be returned
-* @param { object } req
-* @param { object} res
-* @returns { object } response
-*/
+  * @method getUnreturnedbooks
+  * @desc This is a method that peroforms the action of listing 
+  * @desc all borrowed books that are yet to be returned
+  * @param { object } req
+  * @param { object} res
+  * @returns { object } response
+  */
   getUnreturnedBooks(req, res) {
     db.Users
       .findById(req.params.userId)
@@ -230,12 +248,12 @@ export default {
   },
 
   /**
-* @method returnBooks
-* @desc This is a method that peroforms the action of returning borrowed books
-* @param { object } req
-* @param { object} res
-* @returns { object } response
-*/
+  * @method returnBooks
+  * @desc This is a method that peroforms the action of returning borrowed books
+  * @param { object } req
+  * @param { object} res
+  * @returns { object } response
+  */
   returnBooks(req, res) {
     db.Users
       .findById(req.params.userId)

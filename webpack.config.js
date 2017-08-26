@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-
 const path = require('path');
 
 module.exports = {
@@ -15,7 +14,9 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
       $: 'jquery',
-      jQuery: 'jquery'
+      jQuery: 'jquery',
+      'window.$': 'jquery',
+      'window.jQuery': 'jquery'
     })
   ],
   module: {
@@ -34,6 +35,28 @@ module.exports = {
         loader: 'style-loader!css-loader'
       },
       {
+        test: /\.(ttf|woff|woff2|eot|otf)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'fonts/',
+            publicPath: './'
+          }
+        }
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/i,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'images/',
+            publicPath: './'
+          }
+        }
+      },
+      {
         test: /\.scss$/,
         use: [{
           loader: 'style-loader' // creates style nodes from JS strings
@@ -44,6 +67,9 @@ module.exports = {
         }]
       }
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.vue', '.json']
   }
 };
 

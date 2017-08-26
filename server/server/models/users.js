@@ -10,7 +10,7 @@ export default (sequelize, DataTypes) => {
         },
         len: {
           args: [3, 100],
-          msg: 'Firstname should be longer than two characters',
+          msg: 'username should be longer than two characters',
         },
       },
     },
@@ -70,7 +70,7 @@ export default (sequelize, DataTypes) => {
         },
         len: {
           args: [3, 100],
-          msg: 'Firstname should be longer than two characters',
+          msg: 'Lastname should be longer than two characters',
         },
       },
     },

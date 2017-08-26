@@ -1,5 +1,9 @@
 import React from 'react';
+import classnames from 'classnames';
+import { Button, Icon, Input } from 'react-materialize';
+
 import map from 'lodash/map';
+import PropTypes from 'prop-types';
 
 const membershipType = {
   Basic: 'Basic',
@@ -16,7 +20,8 @@ class SignUpForm extends React.Component {
       firstName: '',
       lastName: '',
       email: '',
-      membershipType: ''
+      membershipType: '',
+      errors: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -26,10 +31,18 @@ class SignUpForm extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
+    this.setState({ errors: '' });
+    this.props.userSignup(this.state).then(
+      () => { },
+      (data) => {
+        this.setState({ errors: data.response.data });
+      }
+    );
   }
+
 
   render() {
     const options = map(membershipType, (val, key) =>
@@ -37,16 +50,18 @@ class SignUpForm extends React.Component {
     return (
       <form onSubmit={ this.handleSubmit } className="form-signin" action="index.html">
         <h4 className="form-signin-heading">Create an account</h4>
-        <div className="input-field">
+        {this.state.errors && <p style={{ color: 'red' }} className="help-block">*{this.state.errors}*</p>}
+        <div >
           <label htmlFor="firstname" className="sr-only">First Name</label>
           <input
             type="text" id="firstname"
             name="firstName"
             value={ this.state.firstName }
             onChange={ this.handleChange }
-            className="form-control validate" placeholder="First Name" required
-            autoFocus
+            className="form-control validate" placeholder="First Name"
+            required
           />
+
         </div>
         <div className="input-field">
           <label htmlFor="lastname" className="sr-only">Last Name</label>
@@ -56,8 +71,8 @@ class SignUpForm extends React.Component {
             value={ this.state.lastName }
             onChange={ this.handleChange }
             className="form-control validate"
-            placeholder="Last Name" required
-            autoFocus
+            placeholder="Last Name"
+            required
           />
         </div>
         <div className="input-field">
@@ -69,8 +84,8 @@ class SignUpForm extends React.Component {
             onChange={ this.handleChange }
             id="inputSignUpEmail"
             className="form-control validate"
-            placeholder="Email address" required
-            autoFocus
+            placeholder="Email address"
+            required
           />
         </div>
         <div className="input-field">
@@ -82,8 +97,8 @@ class SignUpForm extends React.Component {
             onChange={ this.handleChange }
             id="inputUsername"
             className="form-control validate"
-            placeholder="Username" required
-            autoFocus
+            placeholder="Username"
+            required
           />
         </div>
         <div className="input-field">
@@ -95,26 +110,32 @@ class SignUpForm extends React.Component {
             value={ this.state.password }
             onChange={ this.handleChange }
             className="form-control validate"
-            placeholder="Password" required
-            autoFocus
+            placeholder="Password"
+            required
           />
         </div>
-        <label className="sr-only">Mmebership Type</label>
+        <label htmlFor="inputSignUpselect" className="sr-only">Mmebership Type</label>
         <select
           name="membershipType"
+          id="inputSignUpselect"
           className="browser-default"
           onChange={ this.handleChange }
           value={ this.state.membershipType }
-
+          required
         >
-          <option value="" disabled selected>Membership Type</option>
+          <option defaultValue="" disabled>Membership Type</option>
           {options}
         </select>
 
-        <a href="/login"><button id="signUbtn" className="btn btn-lg btn-success btn-block" type="submit">Sign up</button></a>
+        <a href="/login"><Button waves="light" id="signUbtn" className="btn btn-lg btn-success btn-block" type="submit">Sign up</Button></a>
       </form >
     );
   }
 }
 
+SignUpForm.propTypes = {
+  userSignup: PropTypes.func.isRequired
+};
+
 export default SignUpForm;
+

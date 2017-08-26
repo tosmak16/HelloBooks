@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button, Icon, Input } from 'react-materialize'
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -23,14 +24,14 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={ this.handleSubmit } className="form-signin" action="books.html" >
+      <form onSubmit={this.handleSubmit} className="form-signin" action="books.html" >
         <h4 className="form-signin-heading">Please log in</h4>
         <div className="input-field">
           <label htmlFor="inputUsernamelog" className="sr-only">Username</label>
           <input
-            type="text" value={ this.state.username } name="username" id="inputUsernamelog" className="form-control validate"
+            type="text" value={this.state.username} name="username" id="inputUsernamelog" className="form-control validate"
             placeholder="Username"
-            onChange={ this.handleChange }
+            onChange={this.handleChange}
             required
             autoFocus
           />
@@ -41,16 +42,15 @@ class LoginForm extends React.Component {
             type="password" id="inputPassword" className="form-control validate" placeholder="Password" required
             autoFocus
             name="password"
-            value={ this.state.password }
-            onChange={ this.handleChange }
+            value={this.state.password}
+            onChange={this.handleChange}
           />
         </div>
 
         <p>
-          <input type="checkbox" className="filled-in" id="filled-in-box logincheck" />
-          <label htmlFor="filled-in-box">Remember me ?</label>
+          <Input name='group1' type='checkbox' value='' label='Remember me?' className='filled-in' defaultChecked='checked' />
         </p>
-        <button id="loginbtn" className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button id="loginbtn" className="btn btn-lg btn-primary  btn-block" type="submit">Sign in</button>
         <p>
           <label>
             <a href=""> Forgot Password ? </a>
