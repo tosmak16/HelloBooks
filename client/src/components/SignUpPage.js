@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 class SignUpPage extends React.Component {
   render() {
     const { userSignup } = this.props;
-    console.log(userSignup);
     return (
       <div>
         <div id="signUpForm" className="row">

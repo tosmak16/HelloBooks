@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
-import { Button, Icon, Input } from 'react-materialize';
+import { Button, Icon, Input, Row } from 'react-materialize';
+import { browserHistory } from 'react-router';
 
 import map from 'lodash/map';
 import PropTypes from 'prop-types';
@@ -36,7 +37,7 @@ class SignUpForm extends React.Component {
     e.preventDefault();
     this.setState({ errors: '' });
     this.props.userSignup(this.state).then(
-      () => { },
+      () => { browserHistory.push('/'); },
       (data) => {
         this.setState({ errors: data.response.data });
       }
@@ -48,86 +49,90 @@ class SignUpForm extends React.Component {
     const options = map(membershipType, (val, key) =>
       <option key={ val } value={ val }>{key}</option>);
     return (
-      <form onSubmit={ this.handleSubmit } className="form-signin" action="index.html">
+      <form onSubmit={ this.handleSubmit } className="form-signin" action="/login">
         <h4 className="form-signin-heading">Create an account</h4>
         {this.state.errors && <p style={{ color: 'red' }} className="help-block">*{this.state.errors}*</p>}
-        <div >
-          <label htmlFor="firstname" className="sr-only">First Name</label>
-          <input
-            type="text" id="firstname"
-            name="firstName"
+        <Row>
+          <Input
+            placeholder="Firstname"
+            id="firstname" name="firstName"
+            s={ 12 } label="First Name"
             value={ this.state.firstName }
             onChange={ this.handleChange }
-            className="form-control validate" placeholder="First Name"
+            className="form-control sr-only validate"
             required
           />
 
-        </div>
-        <div className="input-field">
-          <label htmlFor="lastname" className="sr-only">Last Name</label>
-          <input
-            type="text" id="lastname"
-            name="lastName"
+        </Row>
+        <Row>
+          <Input
+            placeholder="Last name"
+            id="lastname" name="lastName"
+            s={ 12 } label="Last Name"
+            type="text"
             value={ this.state.lastName }
             onChange={ this.handleChange }
             className="form-control validate"
-            placeholder="Last Name"
             required
           />
-        </div>
-        <div className="input-field">
-          <label htmlFor="inputSignUpEmail" className="sr-only">Email address</label>
-          <input
+        </Row>
+        <Row>
+          <Input
             type="email"
-            name="email"
+            name="email" s={ 12 }
             value={ this.state.email }
             onChange={ this.handleChange }
             id="inputSignUpEmail"
             className="form-control validate"
             placeholder="Email address"
             required
+            label="Email address"
           />
-        </div>
-        <div className="input-field">
-          <label htmlFor="inputUsername" className="sr-only">Username</label>
-          <input
+        </Row>
+
+        <Row>
+          <Input
             type="text"
-            name="username"
+            name="username" s={ 12 }
             value={ this.state.username }
             onChange={ this.handleChange }
             id="inputUsername"
             className="form-control validate"
             placeholder="Username"
             required
+            label="Username"
           />
-        </div>
-        <div className="input-field">
-          <label htmlFor="inputSignUpPassword" className="sr-only">Password</label>
-          <input
+        </Row>
+
+        <Row>
+          <Input
             type="password"
             id="inputsSignUpPassword"
-            name="password"
+            name="password" s={ 12 }
             value={ this.state.password }
             onChange={ this.handleChange }
             className="form-control validate"
             placeholder="Password"
             required
+            label="Password"
           />
-        </div>
-        <label htmlFor="inputSignUpselect" className="sr-only">Mmebership Type</label>
-        <select
-          name="membershipType"
-          id="inputSignUpselect"
-          className="browser-default"
-          onChange={ this.handleChange }
-          value={ this.state.membershipType }
-          required
-        >
-          <option defaultValue="" disabled>Membership Type</option>
-          {options}
-        </select>
+        </Row>
 
-        <a href="/login"><Button waves="light" id="signUbtn" className="btn btn-lg btn-success btn-block" type="submit">Sign up</Button></a>
+        <Row>
+          <Input
+            name="membershipType"
+            id="inputSignUpselect"
+            onChange={ this.handleChange }
+            value={ this.state.membershipType }
+            required
+            s={ 12 } type="select"
+          >
+            <option defaultValue="" disabled>Membership Type</option>
+            {options}
+          </Input>
+        </Row>
+
+        <a href=""><Button waves="light" id="signUbtn" className="btn btn-lg btn-success btn-block" type="submit">Sign up</Button></a>
       </form >
     );
   }
