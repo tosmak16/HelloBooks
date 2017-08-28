@@ -78,7 +78,7 @@ export default {
       })
       .then((result) => {
         if (result.length === 0) {
-          res.status(400).send();
+          res.status(400).send('username and password is incorrect');
         } else {
           // create a token
           jwt.sign(req.body.username, 'encoded', (err, token) => {
@@ -86,7 +86,7 @@ export default {
           });
         }
       })
-      .catch(error => res.status(400).send(error));
+      .catch(error => res.status(400).send({ message: 'username and password is incorrect', error }));
   },
   /**
   * @method list

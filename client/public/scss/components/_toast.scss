@@ -8,13 +8,13 @@
     bottom: 0%;
   }
   @media #{$medium-only} {
-    left: 5%;
-    bottom: 7%;
+    top: 10%;
+    bottom: 0%;
     max-width: 90%;
   }
   @media #{$large-and-up} {
     top: 10%;
-    right: 7%;
+    right: 0%;
     max-width: 86%;
   }
 }

@@ -1,12 +1,18 @@
 import React from 'react';
-import { Button, Icon, Input } from 'react-materialize'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
+import { Button, Icon, Input, Row } from 'react-materialize';
+
+import userSignin from '../actions/loginAction';
 
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      errors: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -19,37 +25,51 @@ class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
+    this.props.userSignin(this.state).then(
+      () => {
+        //  browserHistory.push('/books');
+      },
+      (data) => {
+        this.setState({ errors: data.response.data });
+      }
+    );
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className="form-signin" action="books.html" >
+      <form onSubmit={ this.handleSubmit } className="form-signin" action="books.html" >
         <h4 className="form-signin-heading">Please log in</h4>
-        <div className="input-field">
-          <label htmlFor="inputUsernamelog" className="sr-only">Username</label>
-          <input
-            type="text" value={this.state.username} name="username" id="inputUsernamelog" className="form-control validate"
+        {this.state.errors && <p style={{ color: 'red' }} className="help-block">*{this.state.errors}*</p>}
+        <Row>
+          <Input
+            s={ 12 } label="Username"
+            type="text" value={ this.state.username } name="username" id="inputUsernamelog" className="form-control validate"
             placeholder="Username"
-            onChange={this.handleChange}
+            onChange={ this.handleChange }
             required
             autoFocus
           />
-        </div>
-        <div className="input-field">
-          <label htmlFor="inputPassword" className="sr-only">Password</label>
-          <input
-            type="password" id="inputPassword" className="form-control validate" placeholder="Password" required
+        </Row>
+
+        <Row>
+          <Input
+            s={ 12 } label="Password"
+            type="password"
+            id="inputPassword"
+            className="form-control validate"
+            placeholder="Password" required
             autoFocus
             name="password"
-            value={this.state.password}
-            onChange={this.handleChange}
+            value={ this.state.password }
+            onChange={ this.handleChange }
           />
-        </div>
-
-        <p>
-          <Input name='group1' type='checkbox' value='' label='Remember me?' className='filled-in' defaultChecked='checked' />
-        </p>
+        </Row>
+        <Row>
+          <Input
+            name="group1" type="checkbox" value="" label="Remember me?" className="filled-in"
+            defaultChecked="checked"
+          />
+        </Row>
         <button id="loginbtn" className="btn btn-lg btn-primary  btn-block" type="submit">Sign in</button>
         <p>
           <label>
@@ -64,4 +84,8 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm;
+LoginForm.propTypes = {
+  userSignin: PropTypes.func.isRequired
+};
+
+export default connect(null, { userSignin })(LoginForm);

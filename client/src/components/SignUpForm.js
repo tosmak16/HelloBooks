@@ -37,7 +37,13 @@ class SignUpForm extends React.Component {
     e.preventDefault();
     this.setState({ errors: '' });
     this.props.userSignup(this.state).then(
-      () => { browserHistory.push('/'); },
+      () => {
+        this.props.addFlashMessage({
+          type: 'success',
+          text: 'Registration succesful !'
+        });
+        browserHistory.push('/');
+      },
       (data) => {
         this.setState({ errors: data.response.data });
       }
@@ -62,7 +68,6 @@ class SignUpForm extends React.Component {
             className="form-control sr-only validate"
             required
           />
-
         </Row>
         <Row>
           <Input
@@ -139,7 +144,9 @@ class SignUpForm extends React.Component {
 }
 
 SignUpForm.propTypes = {
-  userSignup: PropTypes.func.isRequired
+  addFlashMessage: PropTypes.func.isRequired,
+  userSignup: PropTypes.func.isRequired,
+
 };
 
 export default SignUpForm;
