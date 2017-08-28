@@ -25,6 +25,7 @@ class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.setState({ errors: '' });
     this.props.userSignin(this.state).then(
       () => {
         //  browserHistory.push('/books');

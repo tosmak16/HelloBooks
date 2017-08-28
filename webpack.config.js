@@ -70,6 +70,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.vue', '.json']
+  },
+  node: {
+    net: 'empty',
+    dns: 'empty'
   }
 };
 

@@ -81,7 +81,7 @@ export default {
           res.status(400).send('username and password is incorrect');
         } else {
           // create a token
-          jwt.sign(req.body.username, 'encoded', (err, token) => {
+          jwt.sign({ user: req.body.username }, 'encoded', (err, token) => {
             res.status(200).send({ message: 'You have successfully logged in', result, token });
           });
         }
