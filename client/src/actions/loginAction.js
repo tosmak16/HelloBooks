@@ -1,5 +1,5 @@
 import axios from 'axios';
-import jwt from 'jsonwebtoken';
+import jwtDecode from 'jwt-decode';
 
 import setAuthToken from '../../shield/setAuthToken';
 import { setCurrentuser } from '../../actions/setCurrentuser';
@@ -10,8 +10,7 @@ export default function userSignin(userData) {
     localStorage.setItem('jwtToken', token);
     setAuthToken(token);
 
-    const x = jwt.decode(token);
-    console.log(x);
+    const x = jwtDecode(token);
     dispatch(setCurrentuser(x));
   });
 }

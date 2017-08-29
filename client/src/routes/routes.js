@@ -9,7 +9,7 @@ import BooksPage from '../components/Books/BooksPage';
 import BookDetailsPage from '../components/BookDetail/BookDetailsPage';
 import DashboardPage from '../components/Dashboard/DashboardPage';
 import AdminPage from '../components/Admin/AdminPage';
-
+import cAuth from '../components/middlewares/cAuth';
 
 export default
 (
@@ -18,10 +18,10 @@ export default
     <IndexRoute component={ Login } />
     <Route path="login" component={ Login } />
     <Route path="signup" component={ SignUpPage } />
-    <Route path="books" component={ BooksPage } />
-    <Route path="details" component={ BookDetailsPage } />
-    <Route path="dashboard" component={ DashboardPage } />
-    <Route path="admin" component={ AdminPage } />
+    <Route path="books" component={ cAuth(BooksPage) } />
+    <Route path="details" component={ cAuth(BookDetailsPage) } />
+    <Route path="dashboard" component={ cAuth(DashboardPage) } />
+    <Route path="admin" component={ cAuth(AdminPage) } />
   </Route>
 
 

@@ -28,7 +28,7 @@ class LoginForm extends React.Component {
     this.setState({ errors: '' });
     this.props.userSignin(this.state).then(
       () => {
-        //  browserHistory.push('/books');
+        browserHistory.push('/books');
       },
       (data) => {
         this.setState({ errors: data.response.data });

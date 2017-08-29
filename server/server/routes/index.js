@@ -8,12 +8,12 @@ export default (app) => {
 
   app.post('/api/v2/users/signup', usersController.signup);
   app.post('/api/v2/users/signin', usersController.signin);
-  app.get('/api/v2/books', booksController.getAllBooks);
-  app.get('/api/v2/users', usersController.list);
+
 
   app.use('/api/v2', authController.auth);
 
-
+  app.get('/api/v2/books', booksController.getAllBooks);
+  app.get('/api/v2/users', usersController.list);
   app.post('/api/v2/users/:userId/books', usersController.borrowBooks);
   app.put('/api/v2/users/:userId/books', usersController.returnBooks);
   app.get('/api/v2/users/:userId/books', usersController.getUnreturnedBooks);

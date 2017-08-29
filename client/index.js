@@ -4,7 +4,7 @@ import { Router, browserHistory } from 'react-router';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import jwt from 'jsonwebtoken';
+import jwtDecode from 'jwt-decode';
 
 
 import 'materialize-css/dist/js/materialize.min';
@@ -24,7 +24,7 @@ const store = createStore(
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
-  store.dispatch(setCurrentuser(jwt.decode(localStorage.jwtToken)));
+  store.dispatch(setCurrentuser(jwtDecode(localStorage.jwtToken)));
 }
 export default store;
 render(
