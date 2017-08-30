@@ -24,7 +24,7 @@ export default {
   signup(req, res) {
     if (!(req.body.password && req.body.username && req.body.email &&
       req.body.firstName && req.body.lastName && req.body.membershipType)) {
-      return res.status(400).send(' please enter the required fields');
+      return res.status(400).send('please enter the required fields');
     }
     db.Users
       .findOne({
@@ -45,6 +45,7 @@ export default {
           lastName: req.body.lastName,
           email: req.body.email.toLowerCase(),
           membershipType: req.body.membershipType,
+          role: req.body.role ? 'admin' : 'user',
 
 
         })
@@ -52,8 +53,8 @@ export default {
           .catch((e) => {
             res.status(400).send(e.errors[0].message);
           });
-      }
-      );
+      },
+    );
   },
   /**
   * @method signin
@@ -65,11 +66,11 @@ export default {
 
   signin(req, res) {
     if (!(req.body.password && req.body.username)) {
-      return res.status(400).send(' please enter the required fields');
+      return res.status(400).send('please enter the required fields');
     }
     db.Users
-      .findAll({
-        attributes: ['username'],
+      .findOne({
+        attributes: ['username', 'id', 'role'],
         where: {
           username: req.body.username.toLowerCase(),
           password: SHA256(req.body.password).toString(),
@@ -78,15 +79,15 @@ export default {
       })
       .then((result) => {
         if (result.length === 0) {
-          res.status(400).send('username and password is incorrect');
+          res.status(404).send('username and password is incorrect');
         } else {
           // create a token
-          jwt.sign({ user: req.body.username }, 'encoded', (err, token) => {
+          jwt.sign({ id: result.id, user: result.username, role: result.role }, 'encoded', (err, token) => {
             res.status(200).send({ message: 'You have successfully logged in', result, token });
           });
         }
       })
-      .catch(error => res.status(400).send({ message: 'username and password is incorrect', error }));
+      .catch(error => res.status(404).send('username and password is incorrect'));
   },
   /**
   * @method list
@@ -96,9 +97,12 @@ export default {
   * @returns { object } response
   */
   list(req, res) {
+    if (req.decoded.role === 'user') {
+      return res.status(403).send('Access Denied!');
+    }
     return db.Users
       .all()
-      .then(result => res.status(200).send(result))
+      .then(result => res.status(200).send({ message: 'Success!', result }))
       .catch(error => res.status(400).send(error));
   },
   /**
@@ -110,6 +114,12 @@ export default {
   */
 
   borrowBooks(req, res) {
+    if (req.params.userId != req.decoded.id) {
+      return res.status(403).send('Invalid Identity');
+    }
+    if (!(req.params.userId && req.body.bookId)) {
+      return res.status(403).send('Book process not allowed');
+    }
     db.borrowbook
       .findAll({
         attributes: ['userId', 'bookId'],
@@ -122,9 +132,7 @@ export default {
       })
       .then((output) => {
         if ((output.length !== 0)) {
-          return res.status(404).send({
-            message: 'You have borrowed this book before',
-          });
+          return res.status(403).send('You have borrowed this book before please return it before you can borrow again!');
         }
 
         db.borrowbook
@@ -150,7 +158,7 @@ export default {
                 print = 0;
                 membershipType = out.membershipType;
                 if (membershipType === 'Basic') {
-                  if (length !== 3) {
+                  if (length !== 1) {
                     print = 1;
                   } else {
                     print = 0;
@@ -170,49 +178,34 @@ export default {
                 }
 
                 if (print === 0) {
-                  return res.status(400).send({
-                    message: `Sorry you can not borrow more than ${length} books`,
-                  });
+                  return res.status(403).send(`Sorry you can not borrow more than ${length} books`);
                 }
-                db.Users
-                  .findById(req.params.userId)
-                  .then((report) => {
-                    if (report.username !== req.decoded) {
-                      return res.status(404).send({
-                        message: 'Invalid Identity',
-                      });
+                return db.Books
+                  .findById(req.body.bookId)
+                  .then((result) => {
+                    if (!result) {
+                      return res.status(404).send('Book Not Found');
                     }
-                    return db.Books
-                      .findById(req.body.bookId)
-                      .then((result) => {
-                        if (!result) {
-                          return res.status(404).send({
-                            message: 'book Not Found',
-                          });
-                        }
 
-                        if (result.stocknumber === 0) {
-                          return res.status(404).send({
-                            message: 'Book Not available in stock',
-                          });
-                        }
+                    if (result.stocknumber === 0) {
+                      return res.status(404).send('Book Not available in stock');
+                    }
 
-                        result.update({ stocknumber: (result.stocknumber - 1) });
+                    result.update({ stocknumber: (result.stocknumber - 1) });
 
-                        return db.borrowbook
-                          .create({
-                            brdate: Date.now(),
-                            retype: false,
-                            userId: req.params.userId,
-                            bookId: result.id,
+                    return db.borrowbook
+                      .create({
+                        brdate: Date.now(),
+                        retype: false,
+                        userId: req.params.userId,
+                        bookId: result.id,
 
 
-                          })
-                          .then(ouput => res.status(200).send({ message: 'Book added to personal archive. happy reading!', ouput }))
-                          .catch(error => res.status(400).send(error));
                       })
+                      .then(ouput => res.status(200).send({ message: 'Book added to personal archive. happy reading!', ouput }))
                       .catch(error => res.status(400).send(error));
-                  }).catch(error => res.status(400).send(error));
+                  })
+                  .catch(error => res.status(400).send(error));
               }).catch(error => res.status(400).send(error));
           }).catch(error => res.status(400).send(error));
       }).catch(error => res.status(400).send(error));
@@ -227,24 +220,21 @@ export default {
   * @returns { object } response
   */
   getUnreturnedBooks(req, res) {
-    db.Users
-      .findById(req.params.userId)
-      .then((report) => {
-        if (report.username !== req.decoded) {
-          return res.status(404).send({
-            message: 'Invalid Identity',
-          });
-        }
-        return db.borrowbook
-          .findAll({
-            where: {
-              retype: req.query.returned,
-              userId: req.params.userId,
-            },
-          }).then(result =>
-            res.status(200).send({ message: 'Borrowed books history retrieved', result }))
-          .catch(error => res.status(400).send(error));
-      }).catch(error => res.status(400).send(error));
+    if (req.params.userId != req.decoded.id) {
+      return res.status(403).send('Invalid Identity');
+    }
+    if (!(req.params.userId && req.query.returned)) {
+      return res.status(403).send('Book process not allowed');
+    }
+    return db.borrowbook
+      .findAll({
+        where: {
+          retype: req.query.returned,
+          userId: req.params.userId,
+        },
+      }).then(result =>
+        res.status(200).send({ message: 'Borrowed books history retrieved', result }))
+      .catch(error => res.status(400).send(error));
   },
 
   /**
@@ -255,49 +245,42 @@ export default {
   * @returns { object } response
   */
   returnBooks(req, res) {
-    db.Users
-      .findById(req.params.userId)
-      .then((report) => {
-        if (report.username !== req.decoded) {
-          return res.status(404).send({
-            message: 'Invalid Identity',
-          });
+    if (req.params.userId != req.decoded.id) {
+      return res.status(403).send('Invalid Identity');
+    }
+    if (!(req.params.userId && req.body.bookId)) {
+      return res.status(403).send('Book process not allowed');
+    }
+    return db.borrowbook
+      .findById(req.body.Id)
+      .then((ouput) => {
+        if (!ouput) {
+          return res.status(404).send('Record Not Found');
         }
-        return db.borrowbook
-          .findById(req.body.Id)
-          .then((ouput) => {
-            if (!ouput) {
-              return res.status(404).send({
-                message: 'Record Not Found',
-              });
-            }
-            if (ouput.retype === true) {
-              return res.status(404).send({
-                message: 'This book has been returned before',
-              });
-            }
+        if (ouput.retype === true) {
+          return res.status(403).send('This book has been returned before');
+        }
 
-            return ouput
-              .update({
-                retype: true,
-                rdate: Date.now(),
+        return ouput
+          .update({
+            retype: true,
+            rdate: Date.now(),
 
-              })
-              .then((result) => {
-                db.Books
-                  .findById(result.bookId)
-                  .then((re) => {
-                    re
-                      .update({
-                        stocknumber: (re.stocknumber + 1),
-                      });
-                  }).catch(error => res.status(400).send(error));
-                res.status(200).send({ message: 'book has been returned successfully' });
-              })
-              .catch(error => res.status(400).send(error));
+          })
+          .then((result) => {
+            db.Books
+              .findById(result.bookId)
+              .then((re) => {
+                re
+                  .update({
+                    stocknumber: (re.stocknumber + 1),
+                  });
+              }).catch(error => res.status(400).send(error));
+            res.status(200).send({ message: 'book has been returned successfully' });
           })
           .catch(error => res.status(400).send(error));
-      }).catch(error => res.status(400).send(error));
+      })
+      .catch(error => res.status(400).send(error));
   },
 
 

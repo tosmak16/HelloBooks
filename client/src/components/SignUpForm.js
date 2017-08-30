@@ -32,32 +32,21 @@ class SignUpForm extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-
   handleSubmit(e) {
     e.preventDefault();
     this.setState({ errors: '' });
-    this.props.userSignup(this.state).then(
-      () => {
-        this.props.addFlashMessage({
-          type: 'success',
-          text: 'Registration succesful !'
-        });
-        browserHistory.push('/');
-      },
-      (data) => {
-        this.setState({ errors: data.response.data });
-      }
-    );
+    this.props.userSignup(this.state);
   }
 
-
   render() {
+    const { error } = this.props.reg;
+    console.log(error);
     const options = map(membershipType, (val, key) =>
       <option key={ val } value={ val }>{key}</option>);
     return (
       <form onSubmit={ this.handleSubmit } className="form-signin" action="/login">
         <h4 className="form-signin-heading">Create an account</h4>
-        {this.state.errors && <p style={{ color: 'red' }} className="help-block">*{this.state.errors}*</p>}
+        {error && <p style={{ color: 'red' }} className="help-block">*{error}*</p>}
         <Row>
           <Input
             placeholder="Firstname"
@@ -145,7 +134,9 @@ class SignUpForm extends React.Component {
 
 SignUpForm.propTypes = {
   addFlashMessage: PropTypes.func.isRequired,
+  reg: PropTypes.object.isRequired,
   userSignup: PropTypes.func.isRequired,
+
 
 };
 

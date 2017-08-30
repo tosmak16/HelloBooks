@@ -21,7 +21,6 @@ class NavigationBar extends React.Component {
 
   render() {
     const { isAuthenticated, user } = this.props.auth;
-    console.log(isAuthenticated);
     const userLinks = (
       <ul id="nav-mobile" className="right hide-on-med-and-down">
         <li><Link href="books" >Catalog</Link></li>

@@ -10,15 +10,16 @@ export default (app) => {
   app.post('/api/v2/users/signin', usersController.signin);
 
 
-  app.use('/api/v2', authController.auth);
+  app.use('/api/v2/', authController.auth);
 
   app.get('/api/v2/books', booksController.getAllBooks);
   app.get('/api/v2/users', usersController.list);
+  app.get('/api/v2/users/:userId/books', usersController.getUnreturnedBooks);
   app.post('/api/v2/users/:userId/books', usersController.borrowBooks);
   app.put('/api/v2/users/:userId/books', usersController.returnBooks);
-  app.get('/api/v2/users/:userId/books', usersController.getUnreturnedBooks);
-  app.delete('/api/v2/books/:bookId/', booksController.deleteBooks);
+
+  app.delete('/api/v2/books/:bookId', booksController.deleteBooks);
   app.post('/api/v2/books', booksController.addBook);
-  app.put('/api/v2/books/:bookId/', booksController.updateBook);
+  app.put('/api/v2/books/:bookId', booksController.updateBook);
   app.get('/api/v2/books', booksController.getAllBooks);
 };
