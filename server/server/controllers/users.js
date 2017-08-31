@@ -83,7 +83,7 @@ export default {
         } else {
           // create a token
           jwt.sign({ id: result.id, user: result.username, role: result.role }, 'encoded', (err, token) => {
-            res.status(200).send({ message: 'You have successfully logged in', result, token });
+            res.status(200).send({ message: 'You have successfully logged in', token });
           });
         }
       })

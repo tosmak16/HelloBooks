@@ -1,8 +1,8 @@
 import React from 'react';
 import LoginForm from './LoginForm';
 import Footer from './Footer';
-// import '../../public/scss/index.scss';
-import '../../public/scss/materialize.scss';
+
+
 import FlashMessagesList from './flash/FlashMessagesList';
 
 

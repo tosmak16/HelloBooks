@@ -22,7 +22,7 @@ FlashMessagesList.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    messages: state.flashMessages
+    messages: state.popMessages
   };
 }
 

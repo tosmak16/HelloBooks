@@ -1,6 +1,7 @@
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
+import path from 'path';
 
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
@@ -27,5 +28,8 @@ app.use(webpackHotMiddleware(compiler));
 // Require our routes into the application.
 route(app);
 
+
 // Setup a default catch-all route that sends back a welcome message in JSON format.
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, './client/public/index.html')));
+
 export default app;

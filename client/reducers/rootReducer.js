@@ -1,11 +1,15 @@
 import { combineReducers } from 'redux';
 
-import flashMessages from './flashMessages';
+import popMessages from './popMessages';
 import auth from './auth';
 import reg from './reg';
+import log from './log';
+import books from './books';
 
 export default combineReducers({
-  flashMessages,
+  popMessages,
   auth,
-  reg
+  reg,
+  log,
+  books
 });

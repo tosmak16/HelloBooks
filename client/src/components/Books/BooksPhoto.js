@@ -1,4 +1,5 @@
 import React from 'react';
+import { CardTitle, Card } from 'react-materialize';
 
 class BooksPhoto extends React.Component {
   render() {
@@ -8,25 +9,46 @@ class BooksPhoto extends React.Component {
         <hr />
         <div className="row placeholders">
           <div className="col m5 col l3 col s12 placeholder ">
-            <a href="detail.html"> <img className="materialboxed" src="/img/l1.jpg" width="150" height="200" alt="Generic placeholder thumbnail" /></a>
-            <h5>Abraham Lincoln</h5>
-            <span className="text-muted">By Carl Sandburg</span>
+            <Card
+              className="small"
+              header={ <CardTitle image={ require('../../../public/img/l2.jpg') }>Card Title</CardTitle> }
+              actions={ <a href="#">This is a Link</a> }
+            >
+              I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.
+            </Card>
           </div>
-          <div className="col m5 col l3 col s12 placeholder">
-            <a href="detail.html"> <img className="materialboxed" src="img/l2.jpg" width="150" height="200" alt="Generic placeholder thumbnail" /></a>
-            <h5>The Time Machine</h5>
-            <span className="text-muted">By H. G. Wells</span>
+          <div className="col m5 col l3 col s12 placeholder ">
+            <Card
+              className="small"
+              header={ <CardTitle image={ require('../../../public/img/l2.jpg') }>Card Title</CardTitle> }
+              actions={ <a href="#">This is a Link</a> }
+            >
+              I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.
+            </Card>
           </div>
-          <div className="col m5 col l3 col s12 placeholder">
-            <a href="detail.html"> <img className="materialboxed" src="img/l3.jpg" width="150" height="200" alt="Generic placeholder thumbnail" /></a>
-            <h5>Little Boy Lost</h5>
-            <span className="text-muted">By J.D Trafford</span>
+          <div className="col m5 col l3 col s12 placeholder ">
+            <Card
+              className="small"
+              header={ <CardTitle image={ require('../../../public/img/l2.jpg') }>Card Title</CardTitle> }
+              actions={ <a href="#">This is a Link</a> }
+            >
+              I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.
+            </Card>
           </div>
-          <div className="col m5 col l3  col s12 placeholder">
-            <a href="detail.html"> <img className="materialboxed" src="img/l4.jpg" width="150" height="200" alt="Generic placeholder thumbnail" /></a>
-            <h5>Undercover</h5>
-            <span className="text-muted">By Danielle Steel</span>
+          <div className="col m5 col l3 col s12 placeholder ">
+            <Card
+              className="small"
+              header={ <CardTitle image={ require('../../../public/img/l2.jpg') }>Card Title</CardTitle> }
+              actions={ <a href="#">This is a Link</a> }
+            >
+              I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.
+            </Card>
           </div>
+
         </div>
       </div>
     );

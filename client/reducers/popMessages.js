@@ -1,11 +1,11 @@
 import shortid from 'shortid';
 
-import { ADD_FLASH_MESSAGE } from '../actions/actionTypes';
+import { POP_MESSAGE } from '../actions/actionTypes';
 
 
 export default (state = [], action = {}) => {
   switch (action.type) {
-    case ADD_FLASH_MESSAGE:
+    case POP_MESSAGE:
       return [...state, {
         id: shortid,
         type: action.message.type,

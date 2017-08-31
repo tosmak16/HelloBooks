@@ -4,7 +4,7 @@ import authController from '../controllers/auth';
 import path from 'path';
 
 export default (app) => {
-  app.get('/*', (req, res) => res.sendFile(path.join(__dirname, '../../../client/public/index.html')));
+  app.get('/api/v2/books', booksController.getAllBooks);
 
   app.post('/api/v2/users/signup', usersController.signup);
   app.post('/api/v2/users/signin', usersController.signin);
@@ -12,7 +12,6 @@ export default (app) => {
 
   app.use('/api/v2/', authController.auth);
 
-  app.get('/api/v2/books', booksController.getAllBooks);
   app.get('/api/v2/users', usersController.list);
   app.get('/api/v2/users/:userId/books', usersController.getUnreturnedBooks);
   app.post('/api/v2/users/:userId/books', usersController.borrowBooks);
@@ -21,5 +20,4 @@ export default (app) => {
   app.delete('/api/v2/books/:bookId', booksController.deleteBooks);
   app.post('/api/v2/books', booksController.addBook);
   app.put('/api/v2/books/:bookId', booksController.updateBook);
-  app.get('/api/v2/books', booksController.getAllBooks);
 };

@@ -1,7 +1,6 @@
 import React from 'react';
-import classnames from 'classnames';
 import { Button, Icon, Input, Row } from 'react-materialize';
-import { browserHistory } from 'react-router';
+
 
 import map from 'lodash/map';
 import PropTypes from 'prop-types';
@@ -40,7 +39,6 @@ class SignUpForm extends React.Component {
 
   render() {
     const { error } = this.props.reg;
-    console.log(error);
     const options = map(membershipType, (val, key) =>
       <option key={ val } value={ val }>{key}</option>);
     return (
@@ -133,7 +131,6 @@ class SignUpForm extends React.Component {
 }
 
 SignUpForm.propTypes = {
-  addFlashMessage: PropTypes.func.isRequired,
   reg: PropTypes.object.isRequired,
   userSignup: PropTypes.func.isRequired,
 
