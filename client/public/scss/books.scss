@@ -49,6 +49,16 @@ div #searchinpt{
     margin-bottom: 250px;
 }
 
+#sidenava{
+  width: 1000px;
+}
+@media (min-width: 605px) {
+  #sidenava {
+    width: 150px;
+   
+  }
+}
+
 .jumbotron p{
     color:white;
 }
@@ -149,9 +159,17 @@ div.vol{
 
 /* Hide for mobile, show later */
 .sidebar {
-  display: none;
+  display: block;
+
+  top: 51px;
+  bottom: 0;
+  left: 0;
+width: 1000px;
+  padding: 20px;
+  padding-top: 100px; 
+  background-color: #3d1112;
 }
-@media (min-width: 900px) {
+@media (min-width: 600px) {
   .sidebar {
     position: fixed;
     top: 51px;
@@ -160,8 +178,7 @@ div.vol{
     z-index: 1000;
     display: block;
     padding: 20px;
-    overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    
     background-color: #3d1112;
    
   }
@@ -169,9 +186,12 @@ div.vol{
 
 /* Sidebar navigation */
 .nav-sidebar {
-  margin-right: -51px; /* 20px padding + 1px border */
+  /* 20px padding + 1px border */
   margin-bottom: 20px;
   margin-left: -20px;
+  margin-top: 50px;
+  width: 500px;
+  
 }
 .nav-sidebar > li > a {
   padding-right: 0px;

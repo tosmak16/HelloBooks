@@ -22,15 +22,34 @@ class NavigationBar extends React.Component {
   render() {
     const { isAuthenticated, user } = this.props.auth;
     const userLinks = (
-      <ul id="nav-mobile" className="right hide-on-med-and-down">
-        <li><Link href="books" >Catalog</Link></li>
-        <li><Link href="dashboard"><i className="material-icons left">account_circle</i>{user.user} profile</Link></li>
-        <li><Link href="/signup" onClick={ this.handleLogout } ><i className="material-icons left">exit_to_app</i> Log out</Link></li>
-      </ul>
+      <div>
+        <ul id="nav-mobile" className="right hide-on-small-only ">
+          <li><Link href="books" >Catalog</Link></li>
+          <li><Link href=""><i className="material-icons left">account_circle</i>{user.user} profile</Link></li>
+          <li><Link href="/signup" onClick={ this.handleLogout } ><i className="material-icons left">exit_to_app</i> Log out</Link></li>
+        </ul>
+      </div >
+    );
+    const userLinks2 = (
+      <div>
+        <ul id="nav-mobile" className="left hide-on-med-and-up">
+          <li><Link href="books" >Catalog</Link></li>
+          <li><Link href=""><i className="material-icons left">account_circle</i>{user.user} profile</Link></li>
+          <li><Link href="/signup" onClick={ this.handleLogout } ><i className="material-icons left">exit_to_app</i> Log out</Link></li>
+        </ul>
+      </div >
     );
 
     const guestLinks = (
-      <ul id="nav-mobile" className="right hide-on-med-and-down">
+      <ul id="nav-mobile" className="right hide-on-small-only ">
+        <li>
+          <Link href="/signup" id="signup" className="waves-effect waves-light btn-sm btn-flat"><i className="material-icons left">account_box</i> Sign Up</Link>
+        </li>
+        <li><Link href="/login" id="login" className="waves-effect waves-light btn-sm btn-flat"><i className="material-icons left">exit_to_app</i> Sign In</Link></li>
+      </ul>
+    );
+    const guestLinks2 = (
+      <ul id="nav-mobile" className="left hide-on-med-and-up ">
         <li>
           <Link href="/signup" id="signup" className="waves-effect waves-light btn-sm btn-flat"><i className="material-icons left">account_box</i> Sign Up</Link>
         </li>
@@ -38,18 +57,31 @@ class NavigationBar extends React.Component {
       </ul>
     );
     return (
-      <div className="navbar-fixed">
-        <nav id="nav_id" className="navbar-fixed">
-          <div className="nav-wrapper">
-            <div>
-              <Link id="hello" className="brand-logo" href="#"><i className="material-icons left"> collections</i>HelloBooks</Link>
+      <div>
+        <div className="navbar-fixed">
+          <nav id="nav_id" className="navbar-fixed">
+            <div className="nav-wrapper">
+              <div>
+                <Link id="hello" className="brand-logo left" href="#"><i className="material-icons left"> collections</i>HelloBooks</Link>
+              </div>
+              <div>
+                {isAuthenticated ? userLinks : guestLinks}
+              </div>
             </div>
-            <div>
-              {isAuthenticated ? userLinks : guestLinks}
+          </nav>
+
+        </div>
+        <div className="navbar-fixed hide-on-med-and-up">
+          <nav id="nav_id" className="navbar-fixed">
+            <div className="nav-wrapper">
+              <div>
+                {isAuthenticated ? userLinks2 : guestLinks2}
+              </div>
             </div>
-          </div>
-        </nav>
+          </nav>
+        </div>
       </div>
+
     );
   }
 }
