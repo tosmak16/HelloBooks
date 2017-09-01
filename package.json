@@ -5,12 +5,16 @@
     "main": "app.js",
     "scripts": {
         "lint": "markdownlint --config linters/.markdownlint.json",
-        "start": "babel-node ./config/server --exec babel-node --presets es2015",
         "test": "babel-watch ./node_modules/mocha/bin/_mocha server/test/test.js --timeout 10000  --presets es2015,stage-2",
         "build": "babel ./server/server --out-dir build",
         "start:prod": "NODE_ENV=production&& ./node_modules/.bin/babel-node ./server/server.js",
         "start:development": "babel-watch ./config/server --presets es2015,stage-2",
-        "server": "nodemon --watch server --exec babel-node -- ./config/server.js"
+        "server": "nodemon --watch server --exec babel-node -- ./config/server.js",
+        "start": " npm run db:test:drop && npm run migrate:test:db && npm run db:test:seed && npm run server ",
+        "migrate:db": "sequelize db:migrate",
+        "db:test:seed": "sequelize db:seed:all",
+        "db:test:drop": "sequelize db:migrate:undo:all",
+        "migrate:test:db": "sequelize db:migrate"
     },
     "keywords": [
         "style guide",
