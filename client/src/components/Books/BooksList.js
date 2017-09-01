@@ -1,11 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import orderBy from 'lodash/orderBy';
+
 import Table from './Table';
 
 class BooksList extends React.Component {
   render() {
     const { products } = this.props;
+    // const a = products;
 
+
+    // const x = orderBy(a, 'createdAt', 'desc');
+    // const y = [];
+    // let i = 0;
+    // x.forEach((element) => {
+    //   if (i < 4) { y.push(element); }
+    //   i++;
+    // }, this);
+
+    // console.log(y);
 
     return (
       <div>
