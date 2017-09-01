@@ -6,7 +6,7 @@ import Table from './Table';
 
 class BooksList extends React.Component {
   render() {
-    const { products } = this.props;
+    const { data } = this.props;
     // const a = products;
 
 
@@ -26,7 +26,7 @@ class BooksList extends React.Component {
           <div className=" col l9 offset-l2 col m9  offset-m2  col s9 offset-s2">
             <h4 className="sub-header">Available books</h4>
             <div className="responsive-table" />
-            <Table products={ products } />
+            <Table data={ data } />
           </div>
         </div>
       </div >
@@ -35,7 +35,7 @@ class BooksList extends React.Component {
 }
 
 BooksList.propTypes = {
-  products: PropTypes.array.isRequired
+  data: PropTypes.array.isRequired
 };
 
 export default BooksList;

@@ -6,10 +6,14 @@ import TableRow from './TableRow';
 
 class Table extends React.Component {
   render() {
-    const { products } = this.props;
+    const { data } = this.props;
 
-    const tablerow = products.map(row =>
-      <TableRow row={ row } key={ row.id } value={ row.id } />
+    const tablerow = data.map(row =>
+      (<TableRow
+        key={ row.id }
+        row={ row }
+        value={ row.id }
+      />)
     );
 
     return (
@@ -33,7 +37,7 @@ class Table extends React.Component {
 }
 
 Table.propTypes = {
-  products: PropTypes.array.isRequired
+  data: PropTypes.array.isRequired
 };
 
 export default Table;
