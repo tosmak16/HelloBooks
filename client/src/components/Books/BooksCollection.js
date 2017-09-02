@@ -10,7 +10,7 @@ class BooksCollection extends React.Component {
       <img src={ require(`../../../public/img/${item.image}`) } alt="" className="circle" />
       <span className="title">{item.bookTitle}</span>
       <p>{item.author}</p>
-      <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a>
+      <a href="#!" className="secondary-content"><i className="material-icons ">grade</i></a>
     </li>));
 
     return (
@@ -18,9 +18,11 @@ class BooksCollection extends React.Component {
         <h4 className="page-header">Available Books</h4>
         <hr />
         <div className=" row ">
-          <ul className="collection">
-            {litt}
-          </ul>
+          <div className="">
+            <ul className="collection ">
+              {litt}
+            </ul>
+          </div>
         </div>
       </div>
     );

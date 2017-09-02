@@ -19,12 +19,27 @@ class BooksPage extends React.Component {
 
 
   render() {
+    // const filterBy = 'bookTitle';
+    // const searchText = 'The late'.toUpperCase();
+    // const z = [];
+    // data.forEach((element) => {
+    //   z.push(element.bookTitle);
+    // }, this);
+
+    // const c = z;
+    // const x = c.toString().search(searchText);
+    // const y = c.toString().slice(x, -1).toString().search(',');
+    // const k = c.toString().slice(x, x + y);
+    // const sortedData = lodash.orderBy(data, 'createdAt', 'desc');
+
+    // const s = lodash.filter(sortedData, [filterBy, k]);
+    // console.log(s);
     return (
       <div>
         <div className="container-fluid ">
           <SideBar />
         </div>
-        <div className="container">
+        <div id="book_body" className="">
           <div className="row">
             {this.props.isFetched && <BooksPhoto data={ this.props.data } />}
             {this.props.isFetched && <SearchBar />}

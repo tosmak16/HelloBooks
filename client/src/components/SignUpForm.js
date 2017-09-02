@@ -45,6 +45,7 @@ class SignUpForm extends React.Component {
       <form onSubmit={ this.handleSubmit } className="form-signin" action="/login">
         <h4 className="form-signin-heading">Create an account</h4>
         {error && <p style={{ color: 'red' }} className="help-block">*{error}*</p>}
+
         <Row>
           <Input
             placeholder="Firstname"
@@ -68,6 +69,7 @@ class SignUpForm extends React.Component {
             required
           />
         </Row>
+
         <Row>
           <Input
             type="email"

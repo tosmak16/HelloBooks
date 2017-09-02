@@ -7,11 +7,13 @@ class Cardbox extends React.Component {
   render() {
     const { item } = this.props;
     return (
-      <div>
+      <div id="card_div">
         <Card
+
           key={ item.id } value={ item.id }
-          className="small"
-          header={ <CardTitle key={ item.id } image={ require(`../../../public/img/${item.image}`) } /> }
+
+          className="small card_holder"
+          header={ <CardTitle key={ item.id } id="card_box" image={ require(`../../../public/img/${item.image}`) } /> }
           actions={ <a href="#">{item.author}</a> }
         > {item.bookTitle}</Card>
       </div>

@@ -6,7 +6,7 @@ class SideBar extends React.Component {
     return (
       <div className="row">
         <div id="sidenava" className="col m2 col l2 sidebar ">
-          <ul className="nav nav-sidebar">
+          <ul className="nav  nav-sidebar">
             <li><a className="heada" href="#">SCIENCE & TECH</a></li>
             <li><a className="boda" href="#">Science</a></li>
             <li><a className="boda" href="#">Tech</a></li>
@@ -24,6 +24,8 @@ class SideBar extends React.Component {
             <li><a className="boda" href="">Management</a></li>
             <li><a className="boda" href="">Accounting</a></li>
           </ul>
+
+
         </div>
       </div>
     );
