@@ -11,7 +11,7 @@ export default function (Comp) {
       if (!this.props.isAuthenticated) {
         this.props.popMessage({
           type: 'error',
-          text: 'You need to login to access this page'
+          text: 'You need to login'
         });
 
         browserHistory.push('/');
