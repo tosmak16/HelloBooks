@@ -1,11 +1,11 @@
-import { GET_FILTERED_BOOKS } from '../actions/getFilteredBooks';
+import { SEARCH_BOOKS } from '../actions/getFilteredBooks';
 
 const initialState = {
   filteredData: ''
 };
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case GET_FILTERED_BOOKS:
+    case SEARCH_BOOKS:
       return {
         filteredData: action.data,
       };

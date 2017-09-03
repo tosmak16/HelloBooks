@@ -1,8 +1,8 @@
-export const GET_FILTERED_BOOKS = 'GET_FILTERED_BOOKS'
+export const SEARCH_BOOKS = 'SEARCH_BOOKS'
 
 export function getFilteredBooks(data) {
   return {
-    type: GET_FILTERED_BOOKS,
+    type: SEARCH_BOOKS,
     data
   };
 }
