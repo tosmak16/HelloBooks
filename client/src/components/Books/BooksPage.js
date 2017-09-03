@@ -29,8 +29,8 @@ class BooksPage extends React.Component {
           </div>
           <div id="book_body" className="">
             <div className="row">
-              {this.props.isFetched && <BooksPhoto data={ this.props.data } />}
               {this.props.isFetched && <BooksCategory />}
+              {this.props.isFetched && <BooksPhoto data={ this.props.data } />}
               {this.props.isFetched && <BooksFilter data={ this.props.data } />}
               {this.props.isFetched && <BooksCollection heading={ 'Available books' } data={ this.props.data } />}
             </div>
@@ -42,8 +42,6 @@ class BooksPage extends React.Component {
 }
 
 BooksPage.propTypes = {
-  getbooks: PropTypes.func.isRequired,
-  isFetched: PropTypes.bool.isRequired,
 
 
 };

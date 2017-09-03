@@ -37,7 +37,7 @@ class Table extends React.Component {
 }
 
 Table.propTypes = {
-  data: PropTypes.array.isRequired
+
 };
 
 export default Table;

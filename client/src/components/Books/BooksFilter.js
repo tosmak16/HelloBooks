@@ -66,7 +66,7 @@ class BooksFilter extends React.Component {
 }
 
 BooksFilter.propTypes = {
-  searchbooks: PropTypes.func.isRequired,
+
 
 };
 

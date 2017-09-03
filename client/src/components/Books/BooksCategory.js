@@ -17,7 +17,7 @@ class BooksCategory extends React.Component {
   }
 }
 BooksCategory.propTypes = {
-  category: PropTypes.string.isRequired
+
 };
 
 function mapStateToProps(state) {

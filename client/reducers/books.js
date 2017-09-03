@@ -3,7 +3,7 @@ import { GET_ALL_BOOKS_FAILURE, GET_ALL_BOOKS_SUCCESS, GET_ALL_BOOKS_REQUEST } f
 const initialState = {
   isFetching: false,
   isFetched: false,
-  data: {},
+  data: [],
   error: '',
 };
 export default (state = initialState, action = {}) => {
@@ -12,7 +12,7 @@ export default (state = initialState, action = {}) => {
       return {
         isFetching: true,
         isFetched: false,
-        data: {},
+        data: [],
         error: '',
       };
     case GET_ALL_BOOKS_SUCCESS:
@@ -26,7 +26,7 @@ export default (state = initialState, action = {}) => {
       return {
         isFetching: false,
         isFetched: false,
-        data: {},
+        data: [],
         error: action.error,
       };
     default:

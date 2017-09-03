@@ -6,11 +6,11 @@ class BooksCollection extends React.Component {
   render() {
     const { data } = this.props;
 
-    const litt = data.map(item => (<li className="collection-item avatar">
-      <img src={ require(`../../../public/img/${item.image}`) } alt="" className="circle" />
+    const litt = data.map(item => (<li key={ item.id } className="collection-item avatar">
+      <img key={ item.id } src={ require(`../../../public/img/${item.image}`) } alt="" className="circle" />
       <span className="title">{item.bookTitle}</span>
       <p>{item.author}</p>
-      <a href="#!" className="secondary-content"><i style={{ color: 'orange' }} className="material-icons ">grade</i></a>
+      <a href="#!" className="secondary-content"><i key={ item.id } style={{ color: 'orange' }} className="material-icons ">grade</i></a>
     </li>));
 
     return (
@@ -30,8 +30,8 @@ class BooksCollection extends React.Component {
 }
 
 BooksCollection.propTypes = {
-  data: PropTypes.array.isRequired,
-  heading: PropTypes.string.isRequired
+
+
 };
 
 export default BooksCollection;
