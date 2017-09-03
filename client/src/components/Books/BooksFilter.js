@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import SearchBar from '../SearchBar';
 import searchbooks from '../../actions/searchbooks';
+import BooksCollection from './BooksCollection';
 
 class BooksFilter extends React.Component {
   constructor(props) {
@@ -23,7 +25,7 @@ class BooksFilter extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
     if (e.target.value.length > 3 && this.state.filterBy !== '') {
       this.setState({ error: '' });
-      searchbooks(this.state.filterBy, this.state.searchText, this.props.data);
+      this.props.searchbooks(this.state.filterBy, this.state.searchText, this.props.data);
     }
   }
 
@@ -55,16 +57,27 @@ class BooksFilter extends React.Component {
             <SearchBar onChange={ this.handleChange } name="searchText" value={ this.state.searchText } />
           </div>
         </div >
+        <div className="row">
+          {this.props.filteredData && <BooksCollection heading={ 'Search result' } data={ this.props.filteredData } />}
+        </div>
       </div >
     );
   }
 }
 
 BooksFilter.propTypes = {
+  searchbooks: PropTypes.func.isRequired,
 
 };
 
-export default BooksFilter;
+function mapStateToProps(state) {
+  return {
+    filteredData: state.getFilteredBooks.filteredData
+  };
+}
+
+
+export default connect(mapStateToProps, { searchbooks })(BooksFilter);
 
 
 // name="membershipType"

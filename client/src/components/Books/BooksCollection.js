@@ -15,7 +15,7 @@ class BooksCollection extends React.Component {
 
     return (
       <div className="col m10 offset-m2 col l10 offset-l2 col s12 main">
-        <h4 className="page-header">Available Books</h4>
+        <h4 className="page-header">{this.props.heading}</h4>
         <hr />
         <div className=" row ">
           <div className="">
@@ -31,7 +31,7 @@ class BooksCollection extends React.Component {
 
 BooksCollection.propTypes = {
   data: PropTypes.array.isRequired,
-
+  heading: PropTypes.string.isRequired
 };
 
 export default BooksCollection;

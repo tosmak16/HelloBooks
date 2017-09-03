@@ -1,7 +1,7 @@
 import lodash from 'lodash'
 
-import books from '../../reducers/books'
-
+import books from '../../reducers/books';
+import { getFilteredBooks } from '../../actions/getFilteredBooks';
 
 
 export default function searchbooks(filterBy, searchText, data) {
@@ -31,5 +31,9 @@ export default function searchbooks(filterBy, searchText, data) {
 
   const filteredData = lodash.filter(sortedData, [filterBy, k]);
   console.log(filteredData);
+  return (dispatch) => {
+    dispatch(getFilteredBooks(filteredData));
+  }
+
 }
 

@@ -44,7 +44,7 @@ class BooksPage extends React.Component {
           <div className="row">
             {this.props.isFetched && <BooksPhoto data={ this.props.data } />}
             {this.props.isFetched && <BooksFilter data={ this.props.data } />}
-            {this.props.isFetched && <BooksCollection data={ this.props.data } />}
+            {this.props.isFetched && <BooksCollection heading={ 'Available books' } data={ this.props.data } />}
           </div>
         </div>
       </div>

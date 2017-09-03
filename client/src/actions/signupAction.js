@@ -13,7 +13,7 @@ export function userSignup(userData) {
         dispatch(signupResponse(res));
         dispatch(popMessage({
           type: 'success',
-          text: 'Registration succesful !'
+          text: 'Registration successful!'
         }));
         browserHistory.push('/');
       }
