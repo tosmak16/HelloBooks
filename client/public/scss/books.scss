@@ -8,6 +8,10 @@ text-decoration: none;
   background: rgba(255,255,255,0.2);
 }
 
+#upper_nav{
+  margin-top: 50px;
+}
+
 #wishbtn{
 background-color: #f0ad4e;
 }
@@ -54,19 +58,33 @@ width: 1000px;
 }
 @media (min-width: 600px) {
 #sidenava {
-  width: 150px;
+  width: 170px;
  
 }
 }
+
+@media (max-width: 600px) {
+  #sidenava {
+    width: 600px;
+   
+  }
+  }
+
 
 
 
 @media (min-width: 600px) {
 #book_body{
-  padding-left: 70px;
-  margin-left: 70px;
+  padding-left: 50px;
+  margin-left: 50px;
+  
+ 
 
 }
+}
+
+.collapsible{
+  color: #3d1112;
 }
 
 #card_div{
@@ -190,7 +208,7 @@ display: block;
 top: 51px;
 bottom: 0;
 left: 0;
-width: 1000px;
+
 padding: 20px;
 padding-top: 100px; 
 background-color: #3d1112;
@@ -215,7 +233,7 @@ background-color: #3d1112;
 /* 20px padding + 1px border */
 margin-bottom: 20px;
 margin-left: -20px;
-margin-top: 50px;
+
 width: 500px;
 
 }

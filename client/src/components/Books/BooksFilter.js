@@ -58,7 +58,7 @@ class BooksFilter extends React.Component {
           </div>
         </div >
         <div className="row">
-          {this.props.filteredData && <BooksCollection heading={ 'Search result' } data={ this.props.filteredData } />}
+          {this.props.filteredData && <BooksCollection heading={ 'Search results' } data={ this.props.filteredData } />}
         </div>
       </div >
     );

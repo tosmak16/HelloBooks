@@ -25,14 +25,21 @@ export default function searchbooks(filterBy, searchText, data) {
   const parseArray = newArray;
   const x = parseArray.toString().toUpperCase().search(searchText.toUpperCase());
   const y = parseArray.toString().toUpperCase().slice(x, -1).toString().search(',');
-  const k = parseArray.toString().slice(x, x + y);
-  console.log(k.toString().toUpperCase());
+  let k = parseArray.toString().slice(x, x + y);
   const sortedData = lodash.orderBy(data, 'createdAt', 'desc');
-
-  const filteredData = lodash.filter(sortedData, [filterBy, k]);
-  console.log(filteredData);
-  return (dispatch) => {
-    dispatch(getFilteredBooks(filteredData));
+  if (k.length === 0) {
+    k = parseArray.toString().slice(x, -1).toString();
+    let k2 = parseArray.toString().slice(-1).toString();
+    const filteredData = lodash.filter(sortedData, [filterBy, k + k2]);
+    return (dispatch) => {
+      dispatch(getFilteredBooks(filteredData));
+    }
+  }
+  else {
+    const filteredData = lodash.filter(sortedData, [filterBy, k]);
+    return (dispatch) => {
+      dispatch(getFilteredBooks(filteredData));
+    }
   }
 
 }

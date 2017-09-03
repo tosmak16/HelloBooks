@@ -36,15 +36,17 @@ class BooksPage extends React.Component {
     // const s = lodash.filter(sortedData, [filterBy, k]);
     // console.log(s);
     return (
-      <div>
-        <div className="container-fluid ">
-          <SideBar />
-        </div>
-        <div id="book_body" className="">
-          <div className="row">
-            {this.props.isFetched && <BooksPhoto data={ this.props.data } />}
-            {this.props.isFetched && <BooksFilter data={ this.props.data } />}
-            {this.props.isFetched && <BooksCollection heading={ 'Available books' } data={ this.props.data } />}
+      <div className="">
+        <div className="row">
+          <div className="">
+            <SideBar />
+          </div>
+          <div id="book_body" className="">
+            <div className="row">
+              {this.props.isFetched && <BooksPhoto data={ this.props.data } />}
+              {this.props.isFetched && <BooksFilter data={ this.props.data } />}
+              {this.props.isFetched && <BooksCollection heading={ 'Available books' } data={ this.props.data } />}
+            </div>
           </div>
         </div>
       </div>
