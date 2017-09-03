@@ -15,7 +15,7 @@ class BooksPhoto extends React.Component {
       if (i < 4) { filteredData.push(element); }
       i++;
     }, this);
-    const cardbox = filteredData.map(item => <div key={ item.id } className="col m5 col l3 col s12  "> <Cardbox key={ item.id } item={ item } /> </div>);
+    const cardbox = filteredData.map(item => <div key={ item.id } className="col m5 col l3 col s6  "> <Cardbox key={ item.id } item={ item } /> </div>);
     return (
       <div className="col m10 offset-m2 col l10 offset-l2 col s12 main">
         <h4 className="page-header">Latest Books</h4>

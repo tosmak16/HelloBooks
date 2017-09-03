@@ -1,25 +1,31 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class SearchBar extends React.Component {
   render() {
     return (
-      <div id="booksearchbar" className="container-fluid">
-        <div className="row">
-          <div className="col l8  offset-l2  col m8  offset-m2  col s12 ">
-            <form>
-              <div className="input-field">
-                <input id="search" type="search" required />
-                <label className="label-icon" htmlFor="search">
-                  <i className="material-icons">search</i></label>
-              </div>
-            </form>
-            <hr />
-          </div>
-        </div>
+      <div className="input-field">
+        <input
+          id="search" type="search"
+          style={{ backgroundColor: 'white', textAlign: 'center' }}
+          required
+          name={ this.props.name }
+          onChange={ this.props.onChange }
+          value={ this.props.value }
+        />
+        <label className="label-icon" htmlFor="search">
+          <i className="material-icons">search</i></label>
       </div>
     );
   }
 }
+
+SearchBar.propTypes = {
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+
+};
 
 
 export default SearchBar;

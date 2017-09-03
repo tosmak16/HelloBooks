@@ -6,6 +6,7 @@ import BooksPhoto from './BooksPhoto';
 import '../../../public/scss/materialize.scss';
 import SideBar from '../SideBar';
 import SearchBar from '../SearchBar';
+import BooksFilter from './BooksFilter';
 import getbooks from '../../actions/getBooks';
 import BooksCollection from './BooksCollection';
 
@@ -42,7 +43,7 @@ class BooksPage extends React.Component {
         <div id="book_body" className="">
           <div className="row">
             {this.props.isFetched && <BooksPhoto data={ this.props.data } />}
-            {this.props.isFetched && <SearchBar />}
+            {this.props.isFetched && <BooksFilter data={ this.props.data } />}
             {this.props.isFetched && <BooksCollection data={ this.props.data } />}
           </div>
         </div>
