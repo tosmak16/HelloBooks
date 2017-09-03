@@ -10,7 +10,7 @@ class BooksCollection extends React.Component {
       <img src={ require(`../../../public/img/${item.image}`) } alt="" className="circle" />
       <span className="title">{item.bookTitle}</span>
       <p>{item.author}</p>
-      <a href="#!" className="secondary-content"><i className="material-icons ">grade</i></a>
+      <a href="#!" className="secondary-content"><i style={{ color: 'orange' }} className="material-icons ">grade</i></a>
     </li>));
 
     return (

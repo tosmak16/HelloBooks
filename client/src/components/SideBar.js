@@ -1,70 +1,93 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Collapsible, CollapsibleItem } from 'react-materialize';
 
 class SideBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filterBy: '',
+      searchText: '',
+      error: ''
+    };
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    console.log(e.target.name);
+    // this.setState({ [e.target.name]: e.target.value });
+    // if (e.target.value.length > 3 && this.state.filterBy !== '') {
+    //   this.setState({ error: '' });
+    //   this.props.searchbooks(this.state.filterBy, this.state.searchText, this.props.data);
+    // }
+  }
   render() {
     return (
       <div className="row">
         <div id="sidenava" className="col s12 col m2 col l2 sidebar ">
           <Collapsible accordion>
-            <CollapsibleItem header={ <li><a className="heada" href="#"><b>SCIENCE&TECH</b></a></li> } >
-              <li><a className="boda" href="#">Science</a></li>
+            <CollapsibleItem header={<li><a className="heada" href="#"><b>SCIENCE&TECH</b></a></li>} >
+              <li><a className="boda" name="Science" onClick={this.handleClick} href="#">Science</a></li>
               <hr />
-              <li><a className="boda" href="#">Tech</a></li>
+              <li><a className="boda" name="Technology" onClick={this.handleClick} href="#">Technology</a></li>
               <hr />
-              <li><a className="boda" href="#">Computer</a></li>
+              <li><a className="boda" name="Computer" onClick={this.handleClick} href="#">Computer</a></li>
             </CollapsibleItem>
             <hr />
-            <CollapsibleItem header={ <li><a className="heada" href="#"><b>LITERATURE</b></a></li> } >
-              <li><a className="boda" href="">Fiction</a></li>
+            <CollapsibleItem header={<li><a className="heada" href="#"><b>LITERATURE</b></a></li>} >
+              <li><a className="boda" name="Fiction" onClick={this.handleClick} href="#">Fiction</a></li>
               <hr />
-              <li><a className="boda" href="">Mystery</a></li>
+              <li><a className="boda" name="Mystery" onClick={this.handleClick} href="#">Mystery</a></li>
               <hr />
-              <li><a className="boda" href="">Romance</a></li>
+              <li><a className="boda" name="Romance" onClick={this.handleClick} href="#">Romance</a></li>
               <hr />
-              <li><a className="boda" href="">Science Fiction</a></li>
+              <li><a className="boda" name="Sci-Fiction" onClick={this.handleClick} href="#">Sci-Fiction</a></li>
               <hr />
-              <li><a className="boda" href="">Adventure</a></li>
+              <li><a className="boda" name="Adventure" onClick={this.handleClick} href="#">Adventure</a></li>
               <hr />
-              <li><a className="boda" href="">Action</a></li>
+              <li><a className="boda" name="Action" onClick={this.handleClick} href="#">Action</a></li>
             </CollapsibleItem>
             <hr />
-            <CollapsibleItem header={ <li><a className="heada" href="#"><b>LIFE STYLE</b></a></li> } >
-              <li><a className="boda" href="">Arts and Languages</a></li>
+            <CollapsibleItem header={<li><a className="heada" href="#"><b>LIFE STYLE</b></a></li>} >
+              <li><a className="boda" name="Arts" onClick={this.handleClick} href="#">Arts</a></li>
               <hr />
-              <li><a className="boda" href="">Fashion and beauty</a></li>
+              <li><a className="boda" name="Languages" onClick={this.handleClick} href="#">Languages</a></li>
               <hr />
-              <li><a className="boda" href="">Food</a></li>
+              <li><a className="boda" name="Fashion" onClick={this.handleClick} href="#">Fashion</a></li>
               <hr />
-              <li><a className="boda" href="">Games</a></li>
+              <li><a className="boda" name="Food" onClick={this.handleClick} href="#">Food</a></li>
+              <hr />
+              <li><a className="boda" name="Games" onClick={this.handleClick} href="#">Games</a></li>
             </CollapsibleItem>
             <hr />
-            <CollapsibleItem header={ <li><a className="heada" href="#"><b>CAREER & MONEY</b></a></li> } >
-              <li><a className="boda" href="">Management</a></li>
+            <CollapsibleItem header={<li><a className="heada" href="#"><b>CAREER & MONEY</b></a></li>} >
+              <li><a className="boda" name="Management" onClick={this.handleClick} href="#">Management</a></li>
               <hr />
-              <li><a className="boda" href="">Accounting</a></li>
+              <li><a className="boda" name="Accounting" onClick={this.handleClick} href="#">Accounting</a></li>
               <hr />
-              <li><a className="boda" href="">Entrepreneurship</a></li>
+              <li><a className="boda" name="Entrepreneurship" onClick={this.handleClick} href="#">Entrepreneurship</a></li>
               <hr />
-              <li><a className="boda" href="">Leadership</a></li>
+              <li><a className="boda" name="Leadership" onClick={this.handleClick} href="#">Leadership</a></li>
             </CollapsibleItem>
             <hr />
-            <CollapsibleItem header={ <li><a className="heada" href="#"><b>PERSONAL GROWTH</b></a></li> } >
-              <li><a className="boda" href="">Psychology</a></li>
+            <CollapsibleItem header={<li><a className="heada" href="#"><b>PERSONAL GROWTH</b></a></li>} >
+              <li><a className="boda" name="Psychology" onClick={this.handleClick} href="#">Psychology</a></li>
               <hr />
-              <li><a className="boda" href="">Relationships</a></li>
+              <li><a className="boda" name="Relationships" onClick={this.handleClick} href="#">Relationships</a></li>
               <hr />
-              <li><a className="boda" href="">Self-Improvement</a></li>
+              <li><a className="boda" name="Self-Improvement" onClick={this.handleClick} href="#">Self-Improvement</a></li>
               <hr />
-              <li><a className="boda" href="">Religion</a></li>
+              <li><a className="boda" name="Religion" onClick={this.handleClick} href="#">Religion</a></li>
             </CollapsibleItem>
             <hr />
-            <CollapsibleItem header={ <li><a className="heada" href="#"><b>HEALTH & FITNESS</b></a></li> } >
-              <li><a className="boda" href="">Fitness</a></li>
+            <CollapsibleItem header={<li><a className="heada" href="#"><b>HEALTH & FITNESS</b></a></li>} >
+              <li><a className="boda" name="Fitness" onClick={this.handleClick} href="#">Fitness</a></li>
               <hr />
-              <li><a className="boda" href="">Nutrition</a></li>
+              <li><a className="boda" name="Nutrition" onClick={this.handleClick} href="#">Nutrition</a></li>
               <hr />
-              <li><a className="boda" href="">Sports</a></li>
+              <li><a className="boda" name="Sports" onClick={this.handleClick} href="#">Sports</a></li>
             </CollapsibleItem>
             <hr />
 
@@ -75,5 +98,8 @@ class SideBar extends React.Component {
     );
   }
 }
+
+SideBar.propTypes = {
+};
 
 export default SideBar;

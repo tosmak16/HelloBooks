@@ -14,8 +14,8 @@ class Cardbox extends React.Component {
 
           className="small card_holder"
           header={ <CardTitle key={ item.id } id="card_box" image={ require(`../../../public/img/${item.image}`) } /> }
-          actions={ <a href="#">{item.author}</a> }
-        > {item.bookTitle}</Card>
+          actions={ <a style={{ fontSize: '10px' }} href="#">{item.author}</a> }
+        > {<a style={{ fontSize: '10px', color: 'black', fontStyle: 'bold' }} href="#">{item.bookTitle}</a>}</Card>
       </div>
     );
   }
