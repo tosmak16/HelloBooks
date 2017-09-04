@@ -1,20 +1,25 @@
 import React from 'react';
+import { CardTitle, Card } from 'react-materialize';
+
 
 class DetailsForm extends React.Component {
   render() {
     return (
-      <div className="container">
+      <div className="container" id="book_details_wrapper">
         <div className="row">
-          <div className="col m10 offset-m2  col l10 offset-l2 col s10 offset-s2 ">
+          <div className="col m10  col l10 col s12 ">
             <div className="placeholders  ">
-              <div className=" col s2 col m2 col l2 placeholder" id="photo">
-                <img src="img/blank.png" width="200" height="300" alt="Generic placeholder thumbnail" />
-                <h4>Title:</h4>
-                <span className="text-muted">Author:</span>
+              <div className=" col s12 col m2 col l2 placeholder" id="photo">
+                <Card
+                  className="small card_holder_details"
+                  header={ <CardTitle id="card_box_details" image={ require('../../../public/img/l1.jpg') } /> }
+                  actions={ <a style={{ fontSize: '15px' }} href="#">author</a> }
+                > {<a style={{ fontSize: '15px', color: 'black', fontStyle: 'bold' }} href="#">title</a>}</Card>
+
               </div>
             </div>
 
-            <div className=" col s8 col m8 col l8">
+            <div className=" col s10 col m7 col l7">
               <h4 className="page-header">Title</h4>
               <hr />
               <h5>Summary</h5>

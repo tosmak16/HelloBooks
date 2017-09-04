@@ -5,16 +5,17 @@ import lodash from 'lodash';
 
 import BooksCollection from './BooksCollection';
 
-let i = -2;
+let i = 0;
 let sortedData = '';
 let display = null;
 class BooksCategory extends React.Component {
   render() {
-    i++;
     sortedData = this.props.data[i];
+    console.log(i);
 
     if (lodash.isObject(sortedData)) {
       display = <BooksCollection heading={ `${sortedData.category} Books` } data={ sortedData.categoryData } />;
+      i += 1;
     }
     return (
       <div className="row">
@@ -28,11 +29,5 @@ BooksCategory.propTypes = {
 
 };
 
-function mapStateToProps(state) {
-  return {
-    data: state.category,
 
-  };
-}
-
-export default connect(mapStateToProps, null)(BooksCategory);
+export default BooksCategory;

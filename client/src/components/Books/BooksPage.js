@@ -29,7 +29,7 @@ class BooksPage extends React.Component {
           </div>
           <div id="book_body" className="">
             <div className="row">
-              {this.props.isFetched && <BooksCategory />}
+              {this.props.isFetched && <BooksCategory data={ this.props.categoryData } />}
               {this.props.isFetched && <BooksPhoto data={ this.props.data } />}
               {this.props.isFetched && <BooksFilter data={ this.props.data } />}
               {this.props.isFetched && <BooksCollection heading={ 'Available books' } data={ this.props.data } />}
@@ -50,7 +50,8 @@ BooksPage.propTypes = {
 function mapStateToProps(state) {
   return {
     isFetched: state.books.isFetched,
-    data: state.books.data
+    data: state.books.data,
+    categoryData: state.category,
   };
 }
 

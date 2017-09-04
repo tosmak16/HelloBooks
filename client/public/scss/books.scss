@@ -11,6 +11,12 @@ text-decoration: none;
 #upper_nav{
   margin-top: 50px;
 }
+@media (min-width: 600px) {
+#book_details_wrapper{
+  margin-left: 200px;
+
+}
+}
 
 #wishbtn{
 background-color: #f0ad4e;
@@ -32,7 +38,7 @@ margin-right: 100px;
 }
 
 #sum{
-width: 500px;
+width: 300px;
 }
 
 #create-btn{
@@ -98,8 +104,16 @@ padding-right: 10px;
   padding-right: 10px;
   width: 150px;
 }
+#card_box_details{
+  padding-right: 10px;
+  width: 150px;
+}
 .card_holder{
   width: 150px;
+}
+.card_holder_details{
+  width: 150px;
+  height: 500px;
 }
 
 

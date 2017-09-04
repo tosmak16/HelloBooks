@@ -3,13 +3,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class BooksCollection extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+  }
   render() {
     const { data } = this.props;
 
     const litt = data.map(item => (<li key={ item.id } className="collection-item avatar">
-      <img key={ item.id } src={ require(`../../../public/img/${item.image}`) } alt="" className="circle" />
+      <img
+        key={ item.id } name={ item.id } onClick={ this.handleClick } src={ require(`../../../public/img/${item.image}`) }
+        alt="" className="circle"
+      />
       <span className="title">{item.bookTitle}</span>
       <p>{item.author}</p>
+      <button id="wishbtn" name={ item.id } onClick={ this.handleClick } type="button" className="btn-sm btn-warning shop">Check details</button>
       <a href="#!" className="secondary-content"><i key={ item.id } style={{ color: 'orange' }} className="material-icons ">grade</i></a>
     </li>));
 
