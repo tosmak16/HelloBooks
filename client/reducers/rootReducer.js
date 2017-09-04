@@ -6,6 +6,7 @@ import reg from './reg';
 import log from './log';
 import books from './books';
 import getFilteredBooks from '../reducers/getFilteredBooks';
+import category from './category';
 
 export default combineReducers({
   popMessages,
@@ -14,4 +15,5 @@ export default combineReducers({
   log,
   books,
   getFilteredBooks,
+  category,
 });
