@@ -28,7 +28,7 @@ export default function borrowBooks(token, bookId) {
       .post('/api/v2/users/' + userId + '/books', { bookId: bookId })
       .then(res => {
         console.log(res.data);
-        dispatch(borrowBookResponse(res.data));
+        dispatch(borrowBookResponse(res.data.message));
       })
       .catch(error => {
         dispatch(borrowBookError(error.response.data));

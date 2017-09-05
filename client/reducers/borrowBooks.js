@@ -7,7 +7,7 @@ const initialState = {
   data: {},
   error: '',
   isSending: false,
-  response: {}
+  response: ''
 };
 export default (state = initialState, action = {}) => {
   switch (action.type) {
@@ -17,7 +17,7 @@ export default (state = initialState, action = {}) => {
         data: action.userData,
         error: '',
         isSending: true,
-        response: {}
+        response: ''
       };
     case BORROW_BOOK_SUCCESS:
       return {
@@ -33,7 +33,7 @@ export default (state = initialState, action = {}) => {
         error: action.error,
         data: {},
         isSending: false,
-        response: {}
+        response: ''
 
       };
     default:

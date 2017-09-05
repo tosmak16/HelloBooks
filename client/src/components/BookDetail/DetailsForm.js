@@ -27,6 +27,7 @@ class DetailsForm extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleExit = this.handleExit.bind(this);
   }
   handleClick(e) {
     e.preventDefault();
@@ -42,6 +43,12 @@ class DetailsForm extends React.Component {
   handleClose(e) {
     e.preventDefault();
     document.getElementById('modal1').style.display = 'none';
+  }
+
+  handleExit(e) {
+    e.preventDefault();
+    document.getElementById('modal2').style.display = 'none';
+    document.getElementById('modal3').style.display = 'none';
   }
 
 
@@ -97,7 +104,38 @@ class DetailsForm extends React.Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!lodash.isEmpty(nextProps.error)) {
+      document.getElementById('modal2').style.display = 'block';
+    }
+    if (!lodash.isEmpty(nextProps.message.toString())) {
+      document.getElementById('modal3').style.display = 'block';
+      console.log(`hello${nextProps.message.toString()}`);
+    }
+  }
+
+
   render() {
+    const displayError = (<div id="modal2" className="modal">
+      <div className="modal-content">
+        <h5>Oh!</h5>
+        <p>{this.props.error}</p>
+      </div>
+      <div className="modal-footer">
+        <a href="" onClick={ this.handleExit } className="modal-action modal-close waves-effect waves-brown btn-flat">Close</a>
+      </div>
+    </div>);
+    const displaySuccess = (<div id="modal3" className="modal">
+      <div className="modal-content">
+        <h5>Wow!</h5>
+        <p>{this.props.message.toString()}</p>
+      </div>
+      <div className="modal-footer">
+        <a href="" onClick={ this.handleExit } className="modal-action modal-close waves-effect waves-brown btn-flat">Close</a>
+      </div>
+    </div>);
+    console.log(`render: ${this.props.message}`);
+
     return (
       <div className="container" id="book_details_wrapper">
         <div className="row">
@@ -117,6 +155,8 @@ class DetailsForm extends React.Component {
               <h5 className="page-header">{bookTitle}</h5>
               <hr />
               <h5>Summary</h5>
+              {displayError}
+              {displaySuccess}
               <div id="modal1" className="modal">
                 <div className="modal-content">
                   <h5>Do you want to add this book to your archives?</h5>
@@ -157,6 +197,8 @@ function mapStateToProps(state) {
     data: state.books.data,
     book: state.selectedbook,
     counter: state.counter.count,
+    error: state.borrowBooks.error,
+    message: state.borrowBooks.response
   };
 }
 
