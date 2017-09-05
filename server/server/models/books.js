@@ -85,6 +85,12 @@ export default (sequelize, DataTypes) => {
     summary: {
       type: DataTypes.STRING,
       allowNull: true,
+      validate: {
+        len: {
+          args: [0, 500],
+          msg: 'summary should be more than 3 characters long',
+        },
+      },
 
     },
   }, {

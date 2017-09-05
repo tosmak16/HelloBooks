@@ -18,7 +18,7 @@ let isbn = '';
 let stocknumber = 0;
 let author = '';
 let image = '';
-
+let summary = '';
 
 class DetailsForm extends React.Component {
   constructor(props) {
@@ -74,6 +74,7 @@ class DetailsForm extends React.Component {
           stocknumber = filteredData[0].stocknumber;
           author = filteredData[0].author;
           image = filteredData[0].image;
+          summary = filteredData[0].summary;
           localStorage.setItem('image', image);
           localStorage.setItem('bookTitle', bookTitle);
           localStorage.setItem('id', id);
@@ -81,6 +82,7 @@ class DetailsForm extends React.Component {
           localStorage.setItem('isbn', isbn);
           localStorage.setItem('stocknumber', stocknumber);
           localStorage.setItem('author', author);
+          localStorage.setItem('summary', summary);
         }
       }
     }
@@ -93,6 +95,7 @@ class DetailsForm extends React.Component {
       isbn = localStorage.getItem('isbn');
       stocknumber = localStorage.getItem('stocknumber');
       author = localStorage.getItem('author');
+      summary = localStorage.getItem('summary');
     }
   }
 
@@ -167,13 +170,7 @@ class DetailsForm extends React.Component {
                   <a href="" onClick={ this.handleClick } className="modal-action modal-close waves-effect waves-brown btn-flat">YES</a>
                 </div>
               </div>
-              <span id="sum" className="text-muted">The Time Traveller, a dreamer
-                 obsessed with traveling through time, builds himself a time machine and,
-                  much to his surprise, travels over 800,000 years into the future. He lands
-                  in the year 802701: the world has been transformed by a society living in apparent
-                  harmony and bliss, but as the Traveler stays in the future he discovers a hidden
-                  barbaric and depraved subterranean class. Wells's transparent commentary on the
-                  capitalist society was an instant bestseller and launched the time-travel genre.</span>
+              <span id="sum" className="text-muted">{summary}</span>
               <div className="">
                 <p className="bookinfo">Category: {category} </p>
                 <p className="bookinfo">ISBN: {isbn} </p>

@@ -10,6 +10,7 @@ module.exports = {
         image: 'l1.jpg',
         createdAt: new Date(),
         updatedAt: new Date(),
+        summary: 'Lorem Ipronic typesetting, remaininised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
       },
       {
         bookTitle: 'THE LATE PARADE',
@@ -20,6 +21,7 @@ module.exports = {
         image: 'l2.jpg',
         createdAt: new Date(),
         updatedAt: new Date(),
+        summary: 'It is a long established fact thaorem Ipsu uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)',
       },
       {
         bookTitle: 'I AM THE WOLF',
@@ -30,6 +32,8 @@ module.exports = {
         image: 'l3.jpg',
         createdAt: new Date(),
         updatedAt: new Date(),
+        summary: 'There are many variations of passages of Lorem Ipsum available, but the majority orem Ipsum generators on the Internet tend to repeat predefined chunks as necessary',
+
       },
       {
         bookTitle: 'THE PALE NORTH',
@@ -40,6 +44,7 @@ module.exports = {
         image: 'l4.jpg',
         createdAt: new Date(),
         updatedAt: new Date(),
+        summary: 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from ',
       },
       {
         bookTitle: 'ADULTOLESENCE',
@@ -50,6 +55,7 @@ module.exports = {
         image: 'l5.jpg',
         createdAt: new Date(),
         updatedAt: new Date(),
+        summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Urum.'
       },
       {
         bookTitle: 'WHAT IT MEANS WHEN A MAN FALL FROM SKY',
@@ -60,6 +66,7 @@ module.exports = {
         image: 'l6.jpg',
         createdAt: new Date(),
         updatedAt: new Date(),
+        summary: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium?'
       },
       {
         bookTitle: 'THE SONG AND THE SILENCE',
@@ -70,6 +77,7 @@ module.exports = {
         image: 'l7.jpg',
         createdAt: new Date(),
         updatedAt: new Date(),
+        summary: 'But I must explain to you how all this mists no resultant pleasure  ducimus qui blanditiis praesentium voluptatum culpa qui officia ?'
       },
       {
         bookTitle: 'THE ILIAD HOMMER',
@@ -80,6 +88,7 @@ module.exports = {
         image: 'l8.jpg',
         createdAt: new Date(),
         updatedAt: new Date(),
+        summary: 'At vero eos et accusamus et iuse delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
       },
 
     ], {}),
