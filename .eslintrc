@@ -1,4 +1,10 @@
 {
+    "globals": {
+        "document": true,
+        "foo": true,
+        "window": true,
+        "localStorage": true
+    },
     "parserOptions": {
         "ecmaVersion": 6,
         "sourceType": "module",

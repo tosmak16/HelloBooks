@@ -15,8 +15,7 @@ let isbn = '';
 let stocknumber = 0;
 let author = '';
 let image = '';
-const data = '';
-let imageUrl = '';
+
 
 class DetailsForm extends React.Component {
   componentWillMount() {
@@ -42,8 +41,6 @@ class DetailsForm extends React.Component {
           author = filteredData[0].author;
           image = filteredData[0].image;
           localStorage.setItem('image', image);
-
-          imageUrl = `../../../public/img/${localStorage.getItem('image')}`;
           localStorage.setItem('bookTitle', bookTitle);
           localStorage.setItem('id', id);
           localStorage.setItem('category', category);
@@ -56,7 +53,6 @@ class DetailsForm extends React.Component {
 
 
     if (this.props.data.length == 0) {
-      imageUrl = `../../../public/img/${localStorage.getItem('image')}`;
       bookTitle = localStorage.getItem('bookTitle');
       id = localStorage.getItem('id');
       category = localStorage.getItem('category');
