@@ -1,6 +1,11 @@
 import React from 'react';
 // import { CardTitle, Card } from 'react-materialize';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
+
+import checkBookDetails from '../../actions/checkBookDetails';
+
 
 class BooksCollection extends React.Component {
   constructor(props) {
@@ -11,6 +16,10 @@ class BooksCollection extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
+
+    this.props.checkBookDetails(e.target.name);
+    // localStorage.setItem('bookId', e.target.name);
+    browserHistory.push('/details');
   }
   render() {
     const { data } = this.props;
@@ -25,6 +34,7 @@ class BooksCollection extends React.Component {
       <button id="wishbtn" name={ item.id } onClick={ this.handleClick } type="button" className="btn-sm btn-warning shop">Check details</button>
       <a href="#!" className="secondary-content"><i key={ item.id } style={{ color: 'orange' }} className="material-icons ">grade</i></a>
     </li>));
+
 
     return (
       <div className="col m10 offset-m2 col l10 offset-l2 col s12 main">
@@ -43,8 +53,8 @@ class BooksCollection extends React.Component {
 }
 
 BooksCollection.propTypes = {
-
+  checkBookDetails: PropTypes.func.isRequired
 
 };
 
-export default BooksCollection;
+export default connect(null, { checkBookDetails })(BooksCollection);

@@ -7,6 +7,8 @@ import log from './log';
 import books from './books';
 import getFilteredBooks from '../reducers/getFilteredBooks';
 import category from './category';
+import selectedbook from './selectedbook';
+import counter from './counter';
 
 export default combineReducers({
   popMessages,
@@ -16,4 +18,6 @@ export default combineReducers({
   books,
   getFilteredBooks,
   category,
+  selectedbook,
+  counter,
 });

@@ -11,8 +11,6 @@ let display = null;
 class BooksCategory extends React.Component {
   render() {
     sortedData = this.props.data[i];
-    console.log(i);
-
     if (lodash.isObject(sortedData)) {
       display = <BooksCollection heading={ `${sortedData.category} Books` } data={ sortedData.categoryData } />;
       i += 1;
