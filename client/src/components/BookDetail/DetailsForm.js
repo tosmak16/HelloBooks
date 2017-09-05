@@ -2,9 +2,12 @@ import React from 'react';
 import { CardTitle, Card } from 'react-materialize';
 import { connect } from 'react-redux';
 import lodash from 'lodash';
+import $ from 'jquery';
+
 
 import checkBookDetails from '../../actions/checkBookDetails';
 import getbooks from '../../actions/getBooks';
+import borrowBooks from '../../actions/borrowBooks';
 
 let bookId = '';
 let filteredData = '';
@@ -18,6 +21,30 @@ let image = '';
 
 
 class DetailsForm extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+  }
+  handleClick(e) {
+    e.preventDefault();
+    this.props.borrowBooks(localStorage.jwtToken, localStorage.bookId);
+    document.getElementById('modal1').style.display = 'none';
+  }
+
+  handleOpen(e) {
+    e.preventDefault();
+    document.getElementById('modal1').style.display = 'block';
+  }
+
+  handleClose(e) {
+    e.preventDefault();
+    document.getElementById('modal1').style.display = 'none';
+  }
+
+
   componentWillMount() {
     if (!lodash.isEmpty(localStorage.bookId)) {
       this.props.checkBookDetails(localStorage.bookId);
@@ -86,18 +113,35 @@ class DetailsForm extends React.Component {
               </div>
             </div>
             <div className=" col s10 col m7 col l7">
+
               <h5 className="page-header">{bookTitle}</h5>
               <hr />
               <h5>Summary</h5>
-              <span id="sum" className="text-muted">The Time Traveller, a dreamer obsessed with traveling through time, builds himself a time machine and, much to his surprise, travels over 800,000 years into the future. He lands in the year 802701: the world has been transformed by a society living in apparent harmony and bliss, but as the Traveler stays in the future he discovers a hidden barbaric and depraved subterranean class. Wells's transparent commentary on the capitalist society was an instant bestseller and launched the time-travel genre.</span>
+              <div id="modal1" className="modal">
+                <div className="modal-content">
+                  <h5>Do you want to add this book to your archives?</h5>
+                  <p>{bookTitle}</p>
+                </div>
+                <div className="modal-footer">
+                  <a href="" onClick={ this.handleClose } className="modal-action modal-close waves-effect waves-brown btn-flat">NO</a>
+                  <a href="" onClick={ this.handleClick } className="modal-action modal-close waves-effect waves-brown btn-flat">YES</a>
+                </div>
+              </div>
+              <span id="sum" className="text-muted">The Time Traveller, a dreamer
+                 obsessed with traveling through time, builds himself a time machine and,
+                  much to his surprise, travels over 800,000 years into the future. He lands
+                  in the year 802701: the world has been transformed by a society living in apparent
+                  harmony and bliss, but as the Traveler stays in the future he discovers a hidden
+                  barbaric and depraved subterranean class. Wells's transparent commentary on the
+                  capitalist society was an instant bestseller and launched the time-travel genre.</span>
               <div className="">
                 <p className="bookinfo">Category: {category} </p>
                 <p className="bookinfo">ISBN: {isbn} </p>
                 <p className="bookinfo">Number in Stock: {stocknumber} </p>
               </div>
               <div className="form-inline">
-                <button id="wishbtn" type="button" className="btn-sm btn-warning shop">Wishlist</button>
-                <button id="borrowbtn" type="submit" className="btn-sm btn-success shop">Borrow</button>
+                <button id="wishbtn" type="button" className="btn-sm btn-warning shop modal-trigger" href="#modal1">Wishlist</button>
+                <button onClick={ this.handleOpen } id="borrowbtn" type="submit" className="btn-sm btn-success shop">Borrow</button>
               </div>
             </div>
 
@@ -116,5 +160,5 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { checkBookDetails, getbooks })(DetailsForm);
+export default connect(mapStateToProps, { checkBookDetails, getbooks, borrowBooks })(DetailsForm);
 

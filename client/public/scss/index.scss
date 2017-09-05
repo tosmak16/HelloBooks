@@ -8,12 +8,15 @@ background-color: #3d1112;
 }
 
 #toast-container {
-  top: 10% !important;
-  right: 5%!important;
+  top: 15% !important;
+  right: auto!important;
   bottom: auto !important;
   left:auto !important;
-  width: 250px;
+  width: 350px;
 }
+
+
+
 
 .nav > li > a:hover, .nav > li > a:focus {
  text-decoration: none;

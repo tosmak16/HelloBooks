@@ -9,6 +9,7 @@ import getFilteredBooks from '../reducers/getFilteredBooks';
 import category from './category';
 import selectedbook from './selectedbook';
 import counter from './counter';
+import borrowBooks from './borrowBooks';
 
 export default combineReducers({
   popMessages,
@@ -20,4 +21,5 @@ export default combineReducers({
   category,
   selectedbook,
   counter,
+  borrowBooks,
 });

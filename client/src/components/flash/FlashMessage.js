@@ -6,7 +6,7 @@ import classnames from 'classnames';
 class FlashMessage extends React.Component {
   render() {
     const { id, type, text } = this.props.message;
-    Materialize.toast(text, 5000, 'rounded');
+    Materialize.toast(text, 2000, 'rounded');
     return (
       <div />
     );
