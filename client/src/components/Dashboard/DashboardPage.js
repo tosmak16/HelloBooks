@@ -8,11 +8,15 @@ import UserProfile from './UserProfile';
 class DashboardPage extends React.Component {
   render() {
     return (
-      <div id="wrapper">
-        <DashboardSidebar />
-        <BorrowedbooksTable />
-        <UserProfile />
-        <BookHistoryTable />
+      <div >
+        <div className="row">
+          <div className="col s12 col m12 col l12">
+            <DashboardSidebar />
+            <BorrowedbooksTable />
+            <UserProfile />
+            <BookHistoryTable />
+          </div>
+        </div>
       </div>
     );
   }

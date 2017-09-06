@@ -133,29 +133,42 @@ h2{
 }
 
 
-
 #sidebar-wrapper {
-    z-index: 1000;
-    position: fixed;
-    left: 250px;
-    width: 50px;
-    height: 100%;
-    margin-left: -250px;
-  
-    background: #3d1112;
+    width: 1000px;
+    display: block;
+   
+
+    margin-left: -22px;
+ 
+
+    
+    background-color: #3d1112;
+    height: 450px;
 
     
 }
 
-#wrapper #sidebar-wrapper {
+@media (min-width: 600px) {
+    #sidebar-wrapper {
+      width: 250px;
+      position: fixed;
+     
+      display: block;
+      height: 1000px;  
+      background-color: #3d1112;    
+    }
+   
+    }
+    @media (max-width: 600px) {
+    .sidebar-nav
+    {
+        margin-top: 150px !important;
+    }
+}
+#wrapper {
     width: 250px;
 }
 
-
-#page-content-wrapper {
-    width: 1000px;
- 
-}
 
 
 

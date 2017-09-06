@@ -104,6 +104,14 @@ class DetailsForm extends React.Component {
     if (localStorage.bookId) {
       localStorage.removeItem('bookId');
       localStorage.removeItem('id');
+
+      localStorage.removeItem('category');
+      localStorage.removeItem('isbn');
+      localStorage.removeItem('stocknumber');
+      localStorage.removeItem('author');
+      localStorage.removeItem('summary');
+      localStorage.removeItem('bookTitle');
+      localStorage.removeItem('image');
     }
   }
 
