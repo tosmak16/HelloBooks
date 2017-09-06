@@ -1,38 +1,38 @@
-$(document).ready(function () {
+$(document).ready(() => {
   $('select').material_select();
 });
 // Menu Toggle Script 
 
-$("#menu-toggle").click(function (e) {
+$('#menu-toggle').click((e) => {
   e.preventDefault();
   $("#wrapper").toggleClass("toggled");
 });
 
-var rapper = $("#page-content-wrapper");
-var pa = $("#pa");
-var par = $("#par");
-var rap = $("#rap");
-$("#menu-toggle").click(function (e) {
+let rapper = $('#page-content-wrapper');
+let pa = $('#pa');
+let par = $('#par');
+let rap = $('#rap');
+$('#menu-toggle').click((e) => {
 
   e.preventDefault();
   //  rapper.toggle();
 });
 
-$("#dash").click(function (e) {
+$('#dash').click((e) => {
 
   // e.preventDefault();
   rapper.show();
   par.hide();
   pa.hide();
 });
-$("#myP").click(function (e) {
+$('#myP').click((e) => {
 
   e.preventDefault();
   rapper.hide();
   par.hide();
   pa.show();
 });
-$("#bor").click(function (e) {
+$('#bor').click((e) => {
 
   rapper.hide();
   par.show();
@@ -42,15 +42,14 @@ $("#bor").click(function (e) {
 
 $('.modal').modal({
   dismissible: true, // Modal can be dismissed by clicking outside of the modal
-  opacity: .5, // Opacity of modal background
+  opacity: 0.5, // Opacity of modal background
   inDuration: 300, // Transition in duration
   outDuration: 200, // Transition out duration
   startingTop: '4%', // Starting top style attribute
   endingTop: '10%', // Ending top style attribute
-  ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+  ready (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
     alert("Ready");
-    console.log(modal, trigger);
   },
-  complete: function() { alert('Closed'); } // Callback for Modal close
+  complete () { alert('Closed'); } // Callback for Modal close
 }
 );

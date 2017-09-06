@@ -14,8 +14,18 @@ class SignUpPage extends React.Component {
     const { userSignup, reg } = this.props;
     return (
       <div>
-        <div id="signUpForm" className="row">
-          <SignUpForm userSignup={ userSignup } reg={ reg } />
+        <div className="row">
+          <div className="col s12 col l12 col m12">
+            <div className="col s12 col l6 col m6">
+              <h4 />
+
+            </div>
+            <div id="signup_border" className="col s12 col m6 col l6">
+              <div id="signUpForm" className="row">
+                <SignUpForm userSignup={ userSignup } reg={ reg } />
+              </div>
+            </div>
+          </div>
         </div>
         <Footer />
       </div>

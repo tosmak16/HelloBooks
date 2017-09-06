@@ -15,24 +15,19 @@ import { popMessage } from '../../actions/popMessages';
 
 export default function borrowBooks(token, bookId) {
 
-  console.log('token: ' + token + ' bookId: ' + bookId);
-
   let decodedToken = jwtDecode(token);
-  console.log(decodedToken);
   let userId = decodedToken.id;
-  console.log(userId);
+
 
   return (dispatch) => {
     dispatch(borrowBookRequest(bookId));
     axios
       .post('/api/v2/users/' + userId + '/books', { bookId: bookId })
       .then(res => {
-        console.log(res.data);
         dispatch(borrowBookResponse(res.data.message));
       })
       .catch(error => {
         dispatch(borrowBookError(error.response.data));
-        console.log(error.response.data);
       })
   }
 

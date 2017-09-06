@@ -113,7 +113,6 @@ class DetailsForm extends React.Component {
     }
     if (!lodash.isEmpty(nextProps.message.toString())) {
       document.getElementById('modal3').style.display = 'block';
-      console.log(`hello${nextProps.message.toString()}`);
     }
   }
 
@@ -137,7 +136,7 @@ class DetailsForm extends React.Component {
         <a href="" onClick={ this.handleExit } className="modal-action modal-close waves-effect waves-brown btn-flat">Close</a>
       </div>
     </div>);
-    console.log(`render: ${this.props.message}`);
+
 
     return (
       <div className="container" id="book_details_wrapper">
