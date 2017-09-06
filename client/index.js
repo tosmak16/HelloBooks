@@ -15,6 +15,12 @@ import rootReducer from './reducers/rootReducer';
 import './public/scss/materialize.scss';
 import setAuthToken from './shield/setAuthToken';
 import { setCurrentuser } from './actions/setCurrentuser';
+import './public/font-awesome-4.7.0/fonts/fontawesome-webfont.eot';
+import './public/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf';
+import './public/font-awesome-4.7.0/fonts/fontawesome-webfont.woff';
+import './public/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2';
+import './public/font-awesome-4.7.0/fonts/fontawesome-webfont.svg';
+import './public/font-awesome-4.7.0/scss/font-awesome.scss';
 
 
 const store = createStore(

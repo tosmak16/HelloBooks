@@ -53,3 +53,4 @@ $('.modal').modal({
   complete () { alert('Closed'); } // Callback for Modal close
 }
 );
+

@@ -149,6 +149,12 @@ h2{
 }
 
 @media (min-width: 600px) {
+#bb_table,#bh_table,#b_page{
+    margin-left: 200px;
+}
+}
+
+@media (min-width: 600px) {
     #sidebar-wrapper {
       width: 250px;
       position: fixed;

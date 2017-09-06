@@ -5,7 +5,7 @@ class Userprofile extends React.Component {
     return (
 
       <div id="b_page" className="row">
-        <div className=" col col l7 offset-l2 col m7 offset-m2 col s12">
+        <div className=" col col l10 offset-l1 col m11 offset-m2 col s12">
           <form className="form-signin" action="">
             <h4 className="sub-header form-signin-heading"> Personal Info</h4>
             <div className="input-field">

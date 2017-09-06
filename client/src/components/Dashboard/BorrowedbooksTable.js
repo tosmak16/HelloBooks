@@ -4,7 +4,7 @@ class BorrowedbooksTable extends React.Component {
   render() {
     return (
       <div id="bb_table" className="row">
-        <div className="  col l7 offset-l3 col m7 offset-m3 col s12">
+        <div className="  col l10 offset-l2 col m10 offset-m2 col s12">
           <h4 className="sub-header"> Borrowed books</h4>
           <div className="responsive-table">
             <table className="table responsive-table bordered highlight striped">
