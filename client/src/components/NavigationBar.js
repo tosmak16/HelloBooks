@@ -24,7 +24,7 @@ class NavigationBar extends React.Component {
     const userLinks = (
       <div>
         <ul id="nav-mobile" className="right hide-on-small-only ">
-          <li><Link href="books" >Catalog</Link></li>
+          <li><Link href="books" >Catalogue</Link></li>
           <li><Link href=""><i className="material-icons left">account_circle</i>{user.user} profile</Link></li>
           <li><Link href="/signup" onClick={ this.handleLogout } ><i className="material-icons left">exit_to_app</i> Log out</Link></li>
         </ul>
@@ -33,7 +33,7 @@ class NavigationBar extends React.Component {
     const userLinks2 = (
       <div>
         <ul id="nav-mobile" className="left hide-on-med-and-up">
-          <li><Link href="books" >Catalog</Link></li>
+          <li><Link href="books" >Catalogue</Link></li>
           <li><Link href=""><i className="material-icons left">account_circle</i>{user.user} profile</Link></li>
           <li><Link href="/signup" onClick={ this.handleLogout } ><i className="material-icons left">exit_to_app</i> Log out</Link></li>
         </ul>
