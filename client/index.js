@@ -21,6 +21,16 @@ import './public/font-awesome-4.7.0/fonts/fontawesome-webfont.woff';
 import './public/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2';
 import './public/font-awesome-4.7.0/fonts/fontawesome-webfont.svg';
 import './public/font-awesome-4.7.0/scss/font-awesome.scss';
+import './public/fonts/roboto/Roboto-Bold.woff';
+import './public/fonts/roboto/Roboto-Bold.woff2';
+import './public/fonts/roboto/Roboto-Light.woff';
+import './public/fonts/roboto/Roboto-Light.woff2';
+import './public/fonts/roboto/Roboto-Medium.woff';
+import './public/fonts/roboto/Roboto-Medium.woff2';
+import './public/fonts/roboto/Roboto-Regular.woff';
+import './public/fonts/roboto/Roboto-Regular.woff2';
+import './public/fonts/roboto/Roboto-Thin.woff';
+import './public/fonts/roboto/Roboto-Thin.woff2';
 
 
 const store = createStore(
