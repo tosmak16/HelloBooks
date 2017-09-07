@@ -23,7 +23,7 @@ class NavigationBar extends React.Component {
     const { isAuthenticated, user } = this.props.auth;
     const userLinks = (
       <div>
-        <ul id="nav-mobile" className="right hide-on-small-only ">
+        <ul id="nav-mobile" className="right hide-on-small-only navbar_list">
           <li><Link href="books" >Catalogue</Link></li>
           <li><Link href=""><i className="material-icons left">account_circle</i>{user.user} profile</Link></li>
           <li><Link href="/signup" onClick={ this.handleLogout } ><i className="material-icons left">exit_to_app</i> Log out</Link></li>
@@ -32,7 +32,7 @@ class NavigationBar extends React.Component {
     );
     const userLinks2 = (
       <div>
-        <ul id="nav-mobile" className="left hide-on-med-and-up">
+        <ul id="nav-mobile" className="left hide-on-med-and-up navbar_list ">
           <li><Link href="books" >Catalogue</Link></li>
           <li><Link href=""><i className="material-icons left">account_circle</i>{user.user} profile</Link></li>
           <li><Link href="/signup" onClick={ this.handleLogout } ><i className="material-icons left">exit_to_app</i> Log out</Link></li>

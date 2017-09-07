@@ -41,7 +41,7 @@ class Cardbox extends React.Component {
 }
 
 Cardbox.propTypes = {
-  checkBookDetails: PropTypes.func.isRequired
+  checkBookDetails: PropTypes.func.isRequired,
 };
 
 export default connect(null, { checkBookDetails })(Cardbox);

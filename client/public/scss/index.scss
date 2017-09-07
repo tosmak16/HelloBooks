@@ -110,13 +110,40 @@ h2,h3{
     
 }
 #loginbtn{
-  background-color: #337ab7;
+  background-color: #3d1112;
     width: 300px;
 }
 #createbtn{
-     background-color: #5cb85c;
+     background-color: burlywood;
     width: 300px;
 }
+#filled-in-box{
+	background-color: #3D1111 !important;
+	color: burlywood !important;
+}
+
+.checkbox-orange[type="checkbox"].filled-in:checked + label:after{
+	border: 2px solid #3D1111 !important;
+	background-color:#3D1111 !important;
+}
+
+.navbar_list li a {
+    display: block;
+    text-decoration: none;
+    color:wheat;
+}
+
+.navbar_list li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.navbar_list li a:active,
+.navbar_list li a:focus {
+    text-decoration: none;
+}
+
 #searchinput{
     width: 130px;
     box-sizing: border-box;

@@ -1,4 +1,8 @@
 import React from 'react';
+import isEmpty from 'lodash/isEmpty';
+
+import TableRow from '../Books/TableRow';
+
 
 class BorrowHistoryTable extends React.Component {
   render() {
@@ -24,13 +28,6 @@ class BorrowHistoryTable extends React.Component {
                   <td>Breanna Ashacraft</td>
                   <td>12-10-1998</td>
                   <td>14-10-1998</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Borrowing brillance</td>
-                  <td>David Kord Murry</td>
-                  <td>1-1-1999</td>
-                  <td>5-1-1999</td>
                 </tr>
               </tbody>
             </table>

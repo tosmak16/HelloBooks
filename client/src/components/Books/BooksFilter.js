@@ -46,8 +46,8 @@ class BooksFilter extends React.Component {
               onChange={ this.handleSelected }
               value={ this.state.filterBy }
             >
-              <option defaultValue="" disabled>Search by</option>
-              <option value="bookTitle" selected>Title</option>
+              <option defaultValue="bookTitle">Search by</option>
+              <option value="bookTitle">Title</option>
               <option value="author">Author</option>
               <option value="category">Category</option>
               <option value="isbn">ISBN</option>

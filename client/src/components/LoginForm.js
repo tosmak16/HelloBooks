@@ -61,12 +61,16 @@ class LoginForm extends React.Component {
             onChange={ this.handleChange }
           />
         </Row>
-        <Row>
-          <Input
-            name="group1" type="checkbox" value="" label="Remember me?" className="filled-in"
-            defaultChecked="checked"
-          />
-        </Row>
+
+        <div className="row">
+          <div>
+            <input
+              defaultChecked="checked" name="group1" type="checkbox" value="" label="Remember me?"
+              className="filled-in checkbox-orange" id="filled-in-box"
+            />
+            <label htmlFor="filled-in-box">Remember me?</label>
+          </div>
+        </div>
         <button id="loginbtn" className="btn btn-lg btn-primary  btn-block" type="submit">Sign in</button>
         <p>
           <label>
