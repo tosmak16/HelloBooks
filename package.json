@@ -15,7 +15,7 @@
         "db:seed": "sequelize db:seed:all",
         "db:drop": "sequelize db:migrate:undo:all",
         "migrate:test:db": "sequelize db:migrate",
-        "heroku": " babel-node ./config/server --exec babel-node --presets es2015"
+        "heroku": " babel-node ./config/server"
     },
     "keywords": [
         "style guide",
