@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Collapsible, CollapsibleItem } from 'react-materialize';
+import { browserHistory } from 'react-router';
 
 import showbooksByCategory from '../actions/showbooksByCategory';
 
@@ -14,6 +15,7 @@ class SideBar extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
+    browserHistory.push('/books');
     this.props.showbooksByCategory(e.target.name, this.props.data);
   }
   render() {

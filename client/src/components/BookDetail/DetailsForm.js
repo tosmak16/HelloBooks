@@ -133,7 +133,7 @@ class DetailsForm extends React.Component {
         <p>{this.props.error}</p>
       </div>
       <div className="modal-footer">
-        <a href="" onClick={this.handleExit} className="modal-action modal-close waves-effect waves-brown btn-flat">Close</a>
+        <a href="" onClick={ this.handleExit } className="modal-action modal-close waves-effect waves-brown btn-flat">Close</a>
       </div>
     </div>);
     const displaySuccess = (<div id="modal3" className="modal">
@@ -142,7 +142,7 @@ class DetailsForm extends React.Component {
         <p>{this.props.message.toString()}</p>
       </div>
       <div className="modal-footer">
-        <a href="" onClick={this.handleExit} className="modal-action modal-close waves-effect waves-brown btn-flat">Close</a>
+        <a href="" onClick={ this.handleExit } className="modal-action modal-close waves-effect waves-brown btn-flat">Close</a>
       </div>
     </div>);
 
@@ -155,8 +155,8 @@ class DetailsForm extends React.Component {
               <div className=" col s12 col m2 col l2 placeholder" id="photo">
                 <Card
                   className="small card_holder_details"
-                  header={<CardTitle id="card_box_details" image={require(`../../../public/img/${localStorage.getItem('image')}`)} />}
-                  actions={<a style={{ fontSize: '12px' }} href="#">{author}</a>}
+                  header={ <CardTitle id="card_box_details" image={ require(`../../../public/img/${localStorage.getItem('image')}`) } /> }
+                  actions={ <a style={{ fontSize: '12px' }} href="#">{author}</a> }
                 > {<a style={{ fontSize: '15px', color: 'black', fontStyle: 'bold' }} href="#" />}</Card>
 
               </div>
@@ -174,8 +174,8 @@ class DetailsForm extends React.Component {
                   <p>{bookTitle}</p>
                 </div>
                 <div className="modal-footer">
-                  <a href="" onClick={this.handleClose} className="modal-action modal-close waves-effect waves-brown btn-flat">NO</a>
-                  <a href="" onClick={this.handleClick} className="modal-action modal-close waves-effect waves-brown btn-flat">YES</a>
+                  <a href="" onClick={ this.handleClose } className="modal-action modal-close waves-effect waves-brown btn-flat">NO</a>
+                  <a href="" onClick={ this.handleClick } className="modal-action modal-close waves-effect waves-brown btn-flat">YES</a>
                 </div>
               </div>
               <span id="sum" className="text-muted">{summary}</span>
@@ -186,7 +186,7 @@ class DetailsForm extends React.Component {
               </div>
               <div className="form-inline">
                 <button id="wishbtn" type="button" className="btn-sm btn-warning shop modal-trigger" href="#modal1">Wishlist</button>
-                <button onClick={this.handleOpen} id="borrowbtn" type="submit" className="btn-sm btn-success shop">Borrow</button>
+                <button onClick={ this.handleOpen } id="borrowbtn" type="submit" className="btn-sm btn-success shop">Borrow</button>
               </div>
             </div>
 

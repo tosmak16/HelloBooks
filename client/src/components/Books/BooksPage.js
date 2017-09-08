@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import BooksPhoto from './BooksPhoto';
 import '../../../public/scss/materialize.scss';
 import SideBar from '../SideBar';
-import SearchBar from '../SearchBar';
 import BooksFilter from './BooksFilter';
 import getbooks from '../../actions/getBooks';
 import BooksCollection from './BooksCollection';

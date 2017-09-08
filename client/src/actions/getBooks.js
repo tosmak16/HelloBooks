@@ -12,10 +12,7 @@ export default function getbooks() {
       .then(
       (res) => {
         dispatch(getbooksReponse(res.data.result));
-
-
         browserHistory.push('/books');
-
       }
       ).catch(error => {
         dispatch(getbooksError(error.response.data))
