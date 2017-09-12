@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class DoubleActionModal extends React.Component {
   render() {
     return (
-      <div id="modal1" className="modal">
+      <div id={ this.props.id } className="modal">
         <div className="modal-content">
           <h5>{this.props.heading}</h5>
           <p>{this.props.bookTitle}</p>
@@ -21,6 +21,7 @@ class DoubleActionModal extends React.Component {
 DoubleActionModal.propTypes = {
   bookTitle: PropTypes.string.isRequired,
   heading: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   onHandleClick: PropTypes.func.isRequired,
   onHandleClose: PropTypes.func.isRequired,
 

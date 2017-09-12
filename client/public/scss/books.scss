@@ -77,7 +77,7 @@ width: 1000px;
   }
   }
 
-#modal2,#modal1,#modal3 {
+#modal2,#modal1,#modal3, #modalOpen,#modalSuccess,#modalError {
     border: 20px;
     border-color: burlywood;
     opacity: 50%;
@@ -92,7 +92,7 @@ width: 1000px;
   }
 
   @media (max-width: 600px) {
-    #modal2,#modal1,#modal3 {
+    #modal2,#modal1,#modal3, #modalOpen,#modalSuccess,#modalError {
       border: 20px;
       border-color: burlywood;
       opacity: 50%;

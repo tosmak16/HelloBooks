@@ -13,14 +13,14 @@ class TableRow extends React.Component {
         <td >{row.author}</td>
         <td>{row.category}</td>
         <td >{row.stocknumber}</td>
-        <td><button type="button" className=" btn-danger btn-sm deletebtn">Delete</button></td>
+        <td><button name={ row.id } onClick={ this.props.onDelete } type="button" className=" btn-danger btn-sm deletebtn">Delete</button></td>
       </tr >
     );
   }
 }
 
 TableRow.propTypes = {
-
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default TableRow;

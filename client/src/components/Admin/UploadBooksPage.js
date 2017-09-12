@@ -7,6 +7,7 @@ import { uploadImage } from '../../actions/uploadImage';
 import lodash from 'lodash';
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
+import getbooks from '../../actions/getBooks';
 
 
 class UploadBooksPage extends React.Component {
@@ -51,33 +52,34 @@ class UploadBooksPage extends React.Component {
       imageWidth: 0,
       imageSize: 0,
     });
-    document.getElementById('modal1').style.display = 'none';
+    document.getElementById('modalOpen').style.display = 'none';
   }
 
   handleOpen(e) {
     e.preventDefault();
     if (this.state.imageHeight !== 200 || this.state.imageWidth !== 150) {
       this.setState({ modalErrorMessage: 'Please image height  and width must be 200 and 150 respectively' });
-      document.getElementById('modal2').style.display = 'block';
+      document.getElementById('modalError').style.display = 'block';
     } else if (this.state.imageSize > 500000) {
       this.setState({ modalErrorMessage: 'Please image size must not be more than 500kb' });
-      document.getElementById('modal2').style.display = 'block';
+      document.getElementById('modalError').style.display = 'block';
     } else if (this.state.bookTitle && this.state.isbn && this.state.stocknumber &&
       this.state.file) {
       this.setState({ modalErrorMessage: '' });
-      document.getElementById('modal1').style.display = 'block';
+      document.getElementById('modalOpen').style.display = 'block';
     }
   }
 
   handleClose(e) {
     e.preventDefault();
-    document.getElementById('modal1').style.display = 'none';
+    document.getElementById('modalOpen').style.display = 'none';
   }
 
   handleExit(e) {
     e.preventDefault();
-    document.getElementById('modal2').style.display = 'none';
-    document.getElementById('modal3').style.display = 'none';
+    document.getElementById('modalError').style.display = 'none';
+    document.getElementById('modalSuccess').style.display = 'none';
+    setTimeout(() => { this.props.getbooks(true); }, 3000);
   }
 
   handleChange(e) {
@@ -115,14 +117,14 @@ class UploadBooksPage extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (!lodash.isEmpty(nextProps.error)) {
-      document.getElementById('modal2').style.display = 'block';
+      document.getElementById('modalError').style.display = 'block';
     }
     if (!lodash.isEmpty(nextProps.message.toString())) {
       this.props.uploadImage(this.state.file);
       this.setState({
         file: ''
       });
-      document.getElementById('modal3').style.display = 'block';
+      document.getElementById('modalSuccess').style.display = 'block';
     }
   }
 
@@ -217,16 +219,17 @@ class UploadBooksPage extends React.Component {
             </div>
           </div> */}
           <SingleActionModal
-            id={ 'modal2' } heading={ 'Oh!' }
+            id={ 'modalError' } heading={ 'Oh!' }
             message={ this.props.error ? this.props.error : this.state.modalErrorMessage }
             onHandleExit={ this.handleExit }
           />
           <SingleActionModal
-            id={ 'modal3' } heading={ 'Done!' }
+            id={ 'modalSuccess' } heading={ 'Done!' }
             message={ this.props.message.toString() }
             onHandleExit={ this.handleExit }
           />
           <DoubleActionModal
+            id={ 'modalOpen' }
             onHandleClick={ this.handleClick }
             onHandleClose={ this.handleClose }
             bookTitle={ this.state.bookTitle }
@@ -246,7 +249,7 @@ class UploadBooksPage extends React.Component {
   }
 }
 UploadBooksPage.propTypes = {
-
+  getbooks: PropTypes.func.isRequired,
   uploadBook: PropTypes.func.isRequired,
   uploadImage: PropTypes.func.isRequired,
 };
@@ -258,4 +261,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { uploadBook, uploadImage })(UploadBooksPage);
+export default connect(mapStateToProps, { uploadBook, uploadImage, getbooks })(UploadBooksPage);
