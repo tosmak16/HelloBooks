@@ -14,7 +14,7 @@ import BooksCategory from './BooksCategory';
 class BooksPage extends React.Component {
   componentWillMount() {
     if (!this.props.isFetched) {
-      this.props.getbooks();
+      this.props.getbooks(false);
     }
   }
 

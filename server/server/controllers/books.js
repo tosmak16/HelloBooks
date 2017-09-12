@@ -1,5 +1,24 @@
+import multer from 'multer';
+
 import isEmpty from 'lodash/isEmpty';
 import db from '../models/index';
+
+// const upload = multer({ dest: 'client/public/' });
+
+let filename = '';
+
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, './client/public/img/');
+  },
+  filename(req, file, cb) {
+    cb(null, filename);
+  }
+});
+
+export const upload = multer({
+  storage
+}).single('file');
 
 
 export default {
@@ -11,6 +30,7 @@ export default {
 * @returns { object } response
 */
   addBook(req, res) {
+    filename = req.body.image;
     if (req.decoded.user === 'user') {
       return res.status(403).send('Access Denied!');
     }
@@ -27,6 +47,8 @@ export default {
         category: req.body.category,
         isbn: req.body.isbn,
         stocknumber: req.body.stocknumber,
+        image: req.body.image,
+        summary: req.body.summary
       })
       .then(report => res.status(201).send({ message: 'Book has been added to store', report }))
       .catch(error => res.status(400).send('error! check the book information'));
@@ -101,5 +123,17 @@ export default {
           .catch(error => res.status(400).send(error));
       }).catch(error => res.status(400).send(error));
   },
+  // / upload image
+  uploadImage(req, res) {
+    upload(req, res, (err) => {
+      if (err) {
+        // An error occurred when uploading
+        res.status(400).send('Invalid input field');
+      }
+      // Everything went fine
+
+      res.status(200).send({ message: 'Image uploaded successfully' });
+    });
+  }
 
 };

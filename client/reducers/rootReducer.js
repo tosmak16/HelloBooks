@@ -11,6 +11,9 @@ import selectedbook from './selectedbook';
 import counter from './counter';
 import borrowBooks from './borrowBooks';
 import displayMessages from './displayMessages';
+import uploadBooks from './uploadBooks';
+import uploadImages from './uploadImages';
+import toastMessages from './toastMessages';
 
 export default combineReducers({
   popMessages,
@@ -24,4 +27,7 @@ export default combineReducers({
   counter,
   borrowBooks,
   displayMessages,
+  uploadBooks,
+  uploadImages,
+  toastMessages,
 });

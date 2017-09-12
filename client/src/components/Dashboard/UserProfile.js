@@ -38,15 +38,15 @@ class Userprofile extends React.Component {
             </div>
 
             <select className="browser-default" >
-              <option value="" disabled selected>Membership Type</option>
-              <option value="1">Basic</option>
-              <option value="2">Silver</option>
-              <option value="3">Gold</option>
+              <option defaultValue="Basic" disabled>Membership Type</option>
+              <option value="Basic">Basic</option>
+              <option value="Silver">Silver</option>
+              <option value="Gold">Gold</option>
             </select>
             <div className="file-field input-field">
               <div id="filebtn" className="btn">
                 <span>File</span>
-                <input type="file" multiple />
+                <input type="file" />
               </div>
               <div className="file-path-wrapper">
                 <input className="file-path validate" type="text" placeholder="Upload your picture" />

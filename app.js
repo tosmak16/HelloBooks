@@ -3,6 +3,9 @@ import logger from 'morgan';
 import bodyParser from 'body-parser';
 import path from 'path';
 
+
+// import busboy from 'connect-busboy';
+
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackConfig from './webpack.config';
@@ -13,11 +16,14 @@ import route from './server/server/routes';
 // Set up the express app
 const app = express();
 
+
 // Log requests to the console.
 app.use(logger('dev'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+
 const compiler = webpack(webpackConfig);
 app.use(webpackMiddleware(compiler, {
   hot: true,

@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 import { getbooksError, getbooksRequest, getbooksReponse } from '../../actions/getBooks';
 
 
-export default function getbooks() {
+export default function getbooks(set) {
   return (dispatch) => {
     dispatch(getbooksRequest());
     axios
@@ -12,7 +12,11 @@ export default function getbooks() {
       .then(
       (res) => {
         dispatch(getbooksReponse(res.data.result));
-        browserHistory.push('/books');
+        if (!set)
+        { browserHistory.push('/books'); }
+        else if (set) {
+
+        }
       }
       ).catch(error => {
         dispatch(getbooksError(error.response.data))

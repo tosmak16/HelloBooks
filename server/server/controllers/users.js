@@ -283,5 +283,29 @@ export default {
       .catch(error => res.status(400).send(error));
   },
 
+  /**
+* @method getBorrowedbooks
+* @desc This is a method that peroforms the action of listing 
+* @desc all borrowed boks by a user
+* @param { object } req
+* @param { object} res
+* @returns { object } response
+*/
+  getBorrowedBooks(req, res) {
+    if (req.params.userId != req.decoded.id) {
+      return res.status(403).send('Invalid Identity');
+    }
+    if (!(req.params.userId)) {
+      return res.status(403).send('Book process not allowed');
+    }
+    return db.borrowbook
+      .findAll({
+        where: {
+          userId: req.params.userId,
+        },
+      }).then(result =>
+        res.status(200).send({ message: 'Borrowed books history retrieved', result }))
+      .catch(error => res.status(400).send(error));
+  },
 
 };

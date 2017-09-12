@@ -154,6 +154,13 @@ h2{
 }
 }
 
+#bh_table,#b_page{
+   display: none;
+}
+#filebtn,#editbtn{
+    background-color: #3d1112;
+}
+
 @media (min-width: 600px) {
     #sidebar-wrapper {
       width: 250px;

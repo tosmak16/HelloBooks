@@ -5,35 +5,31 @@ $(document).ready(() => {
 
 $('#menu-toggle').click((e) => {
   e.preventDefault();
-  $("#wrapper").toggleClass("toggled");
+  $('#wrapper').toggleClass('toggled');
 });
 
-let rapper = $('#page-content-wrapper');
-let pa = $('#pa');
-let par = $('#par');
-let rap = $('#rap');
+const rapper = $('#page-content-wrapper');
+const pa = $('#pa');
+const par = $('#par');
+const rap = $('#rap');
 $('#menu-toggle').click((e) => {
-
   e.preventDefault();
   //  rapper.toggle();
 });
 
 $('#dash').click((e) => {
-
   // e.preventDefault();
   rapper.show();
   par.hide();
   pa.hide();
 });
 $('#myP').click((e) => {
-
   e.preventDefault();
   rapper.hide();
   par.hide();
   pa.show();
 });
 $('#bor').click((e) => {
-
   rapper.hide();
   par.show();
   pa.hide();
@@ -47,10 +43,9 @@ $('.modal').modal({
   outDuration: 200, // Transition out duration
   startingTop: '4%', // Starting top style attribute
   endingTop: '10%', // Ending top style attribute
-  ready (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-    alert("Ready");
+  ready(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+    alert('Ready');
   },
-  complete () { alert('Closed'); } // Callback for Modal close
+  complete() { alert('Closed'); } // Callback for Modal close
 }
 );
-
