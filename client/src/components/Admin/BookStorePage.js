@@ -10,9 +10,14 @@ import { deleteBook } from '../../actions/deleteBooks';
 import SingleActionModal from '../modal/SingleActionModal';
 import getbooks from '../../actions/getBooks';
 import refreshPage from '../../actions/refreshPage';
+import MembershipSelect from '../select/MembershipSelect';
+import SearchBar from '../SearchBar';
+import searchbooks from '../../actions/searchbooks';
 
 
 let pointer = false;
+let tablerow = '';
+let tableholder = '';
 class BookStorePage extends React.Component {
   constructor(props) {
     super(props);
@@ -22,8 +27,30 @@ class BookStorePage extends React.Component {
     this.handleExit = this.handleExit.bind(this);
     this.state = {
       bookId: '',
+      filterBy: '',
+      searchText: '',
+      error: ''
     };
+    this.handleChange = this.handleChange.bind(this);
+
+    this.handleSelected = this.handleChange.bind(this);
   }
+
+  handleChange(e) {
+    e.preventDefault();
+    this.setState({ [e.target.name]: e.target.value });
+    if (e.target.value.length > 3 && this.state.filterBy !== '') {
+      this.setState({ error: '' });
+      console.log(this.state.filterBy + this.state.searchText);
+      this.props.searchbooks(this.state.filterBy, this.state.searchText, this.props.data);
+    }
+  }
+
+  handleSelected(e) {
+    e.preventDefault();
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
   handleExit(e) {
     e.preventDefault();
 
@@ -68,37 +95,53 @@ class BookStorePage extends React.Component {
     }
   }
   render() {
-    const { data } = this.props;
+    if (this.props.filteredData) {
+      const { filteredData } = this.props;
+      tablerow = filteredData.map(row =>
+        (<TableRow
+          key={ row.id }
+          row={ row }
+          value={ row.id }
+          onDelete={ this.handleDelete }
+        />)
+      );
 
-    const tablerow = data.map(row =>
-      (<TableRow
-        key={ row.id }
-        row={ row }
-        value={ row.id }
-        onDelete={ this.handleDelete }
-      />)
-    );
+      tableholder = (<div className="table-responsive">
+        <table className="table responsive-table bordered highlight striped">
+          <thead>
+            <tr>
+              <th><span className="glyphicon glyphicon-education" /></th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Category</th>
+              <th>No in Stock</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tablerow}
+          </tbody>
+        </table>
+      </div>);
+    }
     return (
       <div id="bb_table" className="row">
         <div className=" col l10 offset-l2 col m10 offset-m2 col s12">
-          <h4 className="sub-header">Available Books</h4>
-          <div className="table-responsive">
-            <table className="table responsive-table bordered highlight striped">
-              <thead>
-                <tr>
-                  <th><span className="glyphicon glyphicon-education" /></th>
-                  <th>Title</th>
-                  <th>Author</th>
-                  <th>Category</th>
-                  <th>No in Stock</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {tablerow}
-              </tbody>
-            </table>
-          </div>
+          <div className="row">
+            <div className="col l3  col m3 col s12 ">
+              <MembershipSelect
+                onHandleSelected={ this.handleSelected }
+                value={ this.state.filterBy }
+              />
+            </div>
+            <div className="col l6 col m6 col s12 ">
+              <SearchBar onChange={ this.handleChange } name="searchText" value={ this.state.searchText } />
+            </div>
+          </div >
+          {!this.props.filteredData ? <p>.</p> : <h4 className="sub-header">Search result</h4>}
+
+          {this.props.filteredData && tableholder}
+
           <SingleActionModal
             id={ 'modal3' } heading={ 'Done!' }
             message={ this.props.message.toString() }
@@ -136,10 +179,11 @@ BookStorePage.propTypes = {
 function mapStateToProps(state) {
   return {
     error: state.deleteBooks.error,
+    filteredData: state.getFilteredBooks.filteredData,
     message: state.deleteBooks.response,
     isRefreshed: state.refreshPage.isRefreshed
   };
 }
-export default connect(mapStateToProps, { deleteBook, getbooks, refreshPage })(BookStorePage);
+export default connect(mapStateToProps, { deleteBook, getbooks, refreshPage, searchbooks })(BookStorePage);
 
 // <td><button type="button" className=" btn-danger btn-sm deletebtn">Delete</button></td>

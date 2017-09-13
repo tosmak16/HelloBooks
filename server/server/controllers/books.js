@@ -77,6 +77,7 @@ export default {
   * @returns { object } response
   */
   updateBook(req, res) {
+    filename = req.body.image;
     if (req.decoded.role === 'user') {
       return res.status(403).send('Access Denied!');
     }
@@ -93,6 +94,8 @@ export default {
             category: req.body.category || result.category,
             isbn: req.body.isbn || result.isbn,
             stocknumber: req.body.stocknumber || result.stocknumber,
+            image: req.body.image || result.image,
+            summary: req.body.summary || result.summary
           })
           .then(() => res.status(200).send({ message: 'Book has been updated', result })) // Send back the updated book
           .catch(error => res.status(400).send(error));

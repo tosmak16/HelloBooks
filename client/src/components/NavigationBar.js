@@ -61,10 +61,10 @@ class NavigationBar extends React.Component {
         <div className="navbar-fixed">
           <nav id="nav_id" className="navbar-fixed">
             <div className="nav-wrapper">
-              <div>
+              <div style={{ marginLeft: '50px' }}>
                 <Link id="hello" className="brand-logo left" href="#"><i className="material-icons left"> collections</i>HelloBooks</Link>
               </div>
-              <div>
+              <div style={{ marginRight: '30px' }}>
                 {isAuthenticated ? userLinks : guestLinks}
               </div>
             </div>

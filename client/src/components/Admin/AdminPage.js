@@ -21,7 +21,7 @@ class AdminPage extends React.Component {
             <AdminSidebar />
             <BookStorePage data={ this.props.data } />
             <UploadBooksPage />
-            <UpdateBooksPage />
+            <UpdateBooksPage data={ this.props.data } />
           </div>
         </div>
       </div>

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import SearchBar from '../SearchBar';
 import searchbooks from '../../actions/searchbooks';
 import BooksCollection from './BooksCollection';
+import MembershipSelect from '../select/MembershipSelect';
 
 class BooksFilter extends React.Component {
   constructor(props) {
@@ -40,18 +41,10 @@ class BooksFilter extends React.Component {
       <div id="booksearchbar" className="container-fluid">
         <div className="row">
           <div className="col l3  offset-l2  col m3  offset-m2  col s12 ">
-            <select
-              className="browser-default input-field"
-              name="filterBy"
-              onChange={ this.handleSelected }
+            <MembershipSelect
+              onHandleSelected={ this.handleSelected }
               value={ this.state.filterBy }
-            >
-              <option defaultValue="bookTitle">Search by</option>
-              <option value="bookTitle">Title</option>
-              <option value="author">Author</option>
-              <option value="category">Category</option>
-              <option value="isbn">ISBN</option>
-            </select>
+            />
           </div>
           <div className="col l6 col m6 col s12 ">
             <SearchBar onChange={ this.handleChange } name="searchText" value={ this.state.searchText } />

@@ -16,6 +16,7 @@ import uploadImages from './uploadImages';
 import toastMessages from './toastMessages';
 import deleteBooks from './deleteBooks';
 import refreshPage from './refreshPage';
+import updateBooks from './updateBooks';
 
 export default combineReducers({
   popMessages,
@@ -34,4 +35,5 @@ export default combineReducers({
   toastMessages,
   deleteBooks,
   refreshPage,
+  updateBooks,
 });

@@ -78,7 +78,7 @@ class LoginForm extends React.Component {
           </label>
         </p>
 
-        <a href="/signup" id="createbtn" className="btn btn-lg btn-success btn-block" >Create an account</a>
+        <a href="/signup" id="createbtn" className="" > <b>Create account</b></a>
 
       </form >
     );

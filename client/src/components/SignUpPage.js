@@ -16,11 +16,7 @@ class SignUpPage extends React.Component {
       <div>
         <div className="row">
           <div className="col s12 col l12 col m12">
-            <div className="col s12 col l6 col m6">
-              <h4 />
-
-            </div>
-            <div id="signup_border" className="col s12 col m6 col l6">
+            <div id="signup_border" className="col s12 col m6 offset-m4 col 16 offset-l4">
               <div id="signUpForm" className="row">
                 <SignUpForm userSignup={ userSignup } reg={ reg } />
               </div>
