@@ -110,7 +110,7 @@ export default {
   * @returns { object } response
   */
   deleteBooks(req, res) {
-    if (req.decoded.role === 'admin') {
+    if (req.decoded.role === 'user') {
       return res.status(403).send('Access Denied!');
     }
 
