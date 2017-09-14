@@ -41,7 +41,6 @@ class BookStorePage extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
     if (e.target.value.length > 3 && this.state.filterBy !== '') {
       this.setState({ error: '' });
-      console.log(this.state.filterBy + this.state.searchText);
       this.props.searchbooks(this.state.filterBy, this.state.searchText, this.props.data);
     }
   }
@@ -84,7 +83,6 @@ class BookStorePage extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (!lodash.isEmpty(nextProps.error) && this.state.pointer) {
-      console.log(nextProps.error + this.state.pointer);
       document.getElementById('modal2').style.display = 'block';
       this.setState({
         pointer: false,

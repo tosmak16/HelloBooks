@@ -9,7 +9,6 @@ import { popMessage } from '../../../actions/popMessages';
 export default function (Comp) {
   class AdminShield extends React.Component {
     componentWillMount() {
-      //  console.log(!(jwtDecode(localStorage.jwtToken).role === 'admin'));
       if (!this.props.isAuthenticated || !(jwtDecode(localStorage.jwtToken).role === 'admin')) {
         if (localStorage.jwtToken) {
           browserHistory.push('/books');

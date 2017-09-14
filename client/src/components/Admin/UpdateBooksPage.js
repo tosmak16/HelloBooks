@@ -205,7 +205,6 @@ class UpdateBooksPage extends React.Component {
       });
     }
     if (!lodash.isEmpty(nextProps.message.toString()) && this.state.display) {
-      console.log(`file:  ${this.state.file}`);
       this.props.uploadImage(this.state.file);
       this.setState({
         filterBy: '',
@@ -231,10 +230,6 @@ class UpdateBooksPage extends React.Component {
     }
   }
   render() {
-    console.log(this.props.filteredData);
-
-    console.log(this.state);
-
     return (
       <div id="bh_table" className="row">
         <form onSubmit={ this.handleSubmit } className="form-signin col l11 offset-l1 col m11 offset-m2 col s12" action="" encType="multipart/form-data">

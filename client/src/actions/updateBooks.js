@@ -6,7 +6,6 @@ import { updatebookError, updatebookRequest, updatebookResponse } from '../../ac
 
 
 export function updateBook(bookData) {
-  console.log(bookData.bookId);
   return (dispatch) => {
     dispatch(updatebookRequest(bookData));
     axios.put('/api/v2/books/' + bookData.bookId, bookData).then(
