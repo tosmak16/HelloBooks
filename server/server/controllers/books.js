@@ -31,7 +31,7 @@ export default {
 */
   addBook(req, res) {
     filename = req.body.image;
-    if (req.decoded.user === 'user') {
+    if (req.decoded.role === 'user') {
       return res.status(403).send('Access Denied!');
     }
 
