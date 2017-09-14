@@ -156,7 +156,7 @@ class DetailsForm extends React.Component {
                 <Card
                   className="small card_holder_details"
                   header={ <CardTitle id="card_box_details" image={ require(`../../../public/img/${localStorage.getItem('image')}`) } /> }
-                  actions={ <a style={{ fontSize: '12px' }} href="#">{author}</a> }
+
                 > {<a style={{ fontSize: '15px', color: 'black', fontStyle: 'bold' }} href="#" />}</Card>
 
               </div>

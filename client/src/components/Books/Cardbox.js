@@ -31,7 +31,6 @@ class Cardbox extends React.Component {
             key={ item.id } id="card_box"
             image={ require(`../../../public/img/${item.image}`) }
           /> }
-          actions={ <a style={{ fontSize: '10px' }} href="#">{item.author}</a> }
         > {<button id="wishbtn" name={ item.id } onClick={ this.handleClick } type="button" className="btn-sm btn-warning shop">Read</button>
           }</Card>
         {/* <text className="text-muted" disabled style={{ fontStyle: 'Bold', border: '10px', fontSize: '12px', }}>{item.bookTitle}</text> */}

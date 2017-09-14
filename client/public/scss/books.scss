@@ -64,7 +64,7 @@ width: 1000px;
 }
 @media (min-width: 600px) {
 #sidenava {
-  width: 170px;
+  width: 200px;
   margin-top: 5px;
  
 }
@@ -229,8 +229,8 @@ h2{
 
 
 a.heada{
-color:#3d1112;
-background-color:white;
+color: burlywood;
+
 }
 
 a.boda{
@@ -238,6 +238,8 @@ color: wheat;
 
 
 }
+
+
 div.vol{
 float: left;
 }
@@ -386,4 +388,13 @@ display: inline-block;
   color: grey;
 }
  
+ .heada{
+  color: wheat;
+}
+.heada:hover{
+  background-color: #502829;
+}
+.boda:hover{
+  background-color: #634041;
+}
 
