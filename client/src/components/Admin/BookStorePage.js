@@ -15,7 +15,6 @@ import SearchBar from '../SearchBar';
 import searchbooks from '../../actions/searchbooks';
 
 
-let pointer = false;
 let tablerow = '';
 let tableholder = '';
 class BookStorePage extends React.Component {
@@ -29,7 +28,8 @@ class BookStorePage extends React.Component {
       bookId: '',
       filterBy: '',
       searchText: '',
-      error: ''
+      error: '',
+      pointer: false,
     };
     this.handleChange = this.handleChange.bind(this);
 
@@ -72,8 +72,10 @@ class BookStorePage extends React.Component {
   handleYes(e) {
     e.preventDefault();
     this.props.deleteBook(this.state.bookId);
+    this.setState({
+      pointer: true,
+    });
     document.getElementById('modal1').style.display = 'none';
-    pointer = true;
   }
   handleNo(e) {
     e.preventDefault();
@@ -81,13 +83,18 @@ class BookStorePage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!lodash.isEmpty(nextProps.error && pointer)) {
+    if (!lodash.isEmpty(nextProps.error) && this.state.pointer) {
+      console.log(nextProps.error + this.state.pointer);
       document.getElementById('modal2').style.display = 'block';
-      pointer = false;
+      this.setState({
+        pointer: false,
+      });
     }
-    if (!lodash.isEmpty(nextProps.message.toString()) && pointer) {
+    if (!lodash.isEmpty(nextProps.message.toString()) && this.state.pointer) {
       document.getElementById('modal3').style.display = 'block';
-      pointer = false;
+      this.setState({
+        pointer: false,
+      });
     }
     if (nextProps.isRefreshed) {
       this.props.refreshPage(false);

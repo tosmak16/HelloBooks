@@ -7,6 +7,7 @@
   @extend .z-depth-1;
 }
 
+
 .collapsible-header {
   display: flex;
   cursor: pointer;
@@ -31,6 +32,13 @@
   box-sizing: border-box;
   padding: 2rem;
   line-height: 0.1;
+}
+.collapsible-body:hover{
+  background-color: #634041 ;
+}
+
+.collapsible-header:hover{
+  background-color: #634041;
 }
 
 // sideNav collapsible styling
