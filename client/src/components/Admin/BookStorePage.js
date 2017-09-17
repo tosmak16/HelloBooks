@@ -56,7 +56,7 @@ class BookStorePage extends React.Component {
     document.getElementById('modal2').style.display = 'none';
     document.getElementById('modal3').style.display = 'none';
 
-    setTimeout(() => { this.props.refreshPage(true); }, 3000);
+    setTimeout(() => { this.props.refreshPage(true); }, 2000);
 
     // this.props.refreshPage(true);
   }

@@ -17,6 +17,9 @@ import toastMessages from './toastMessages';
 import deleteBooks from './deleteBooks';
 import refreshPage from './refreshPage';
 import updateBooks from './updateBooks';
+import getborrowedBooks from './getborrowedBooks';
+import getunreturnedBooks from './getunreturnedBooks';
+import returnBooks from './returnBooks';
 
 export default combineReducers({
   popMessages,
@@ -36,4 +39,7 @@ export default combineReducers({
   deleteBooks,
   refreshPage,
   updateBooks,
+  getborrowedBooks,
+  getunreturnedBooks,
+  returnBooks,
 });

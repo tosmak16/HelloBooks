@@ -59,8 +59,8 @@ export default (sequelize, DataTypes) => {
           msg: 'Isbn cannot be empty',
         },
         len: {
-          args: [6 - 9],
-          msg: 'Isbn should be 6 and 13 digits',
+          args: [6 - 12],
+          msg: 'Isbn should be 6 and 12 digits',
         },
       },
     },
