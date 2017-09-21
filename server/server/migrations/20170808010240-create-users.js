@@ -18,6 +18,7 @@ module.exports = {
     email: {
       type: Sequelize.STRING,
       allowNull: false,
+      unique: true,
     },
     firstName: {
       type: Sequelize.STRING,
@@ -37,6 +38,16 @@ module.exports = {
       values: ['user', 'admin', 'disabled'],
       defaultValue: 'user',
     },
+    profileImage: {
+      type: Sequelize.STRING,
+      allowNull: true,
+    },
+
+    mobileNumber: {
+      type: Sequelize.STRING,
+      allowNull: true,
+    },
+
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,

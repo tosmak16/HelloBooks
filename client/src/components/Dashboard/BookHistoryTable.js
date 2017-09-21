@@ -45,7 +45,7 @@ class BorrowHistoryTable extends React.Component {
         <div className=" col l10 offset-l2 col m10 offset-m2 col s12">
           <h4 className="sub-header">Read List</h4>
           <div className="table-responsive">
-            <table className="table responsive-table bordered highlight striped">
+            <table id="table_bh" className="table responsive-table bordered highlight striped">
               <thead>
                 <tr>
                   <th><span className="glyphicon glyphicon-education" /></th>

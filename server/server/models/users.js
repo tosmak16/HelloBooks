@@ -85,6 +85,26 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
       defaultValue: 'Basic',
     },
+    profileImage: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+
+    mobileNumber: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        isNumeric: {
+          args: true,
+          msg: 'mobile number must be a number',
+        },
+        len: {
+          args: [2, 15],
+          msg: 'mobile number should be 2 to 15 digits',
+        },
+
+      },
+    },
   }, {
     classMethods: {
       associate: (models) => {

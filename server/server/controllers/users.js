@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { SHA256 } from 'crypto-js';
+import isEmpty from 'lodash/isEmpty';
 
 
 import db from '../models/index';
@@ -7,6 +8,7 @@ import db from '../models/index';
 let membershipType;
 let print;
 let length;
+let filename = '';
 
 /**
   * @param { object } req
@@ -105,6 +107,9 @@ export default {
       .then(result => res.status(200).send({ message: 'Success!', result }))
       .catch(error => res.status(400).send(error));
   },
+
+
+
   /**
   * @method borrowbooks
   * @desc This is a method that peroforms the action of borrowing books
@@ -308,4 +313,42 @@ export default {
       .catch(error => res.status(400).send(error));
   },
 
+  getUserDetails(req, res) {
+    if (req.params.userId != req.decoded.id) {
+      return res.status(403).send('Invalid Identity');
+    }
+    return db.Users
+      .findAll({
+        attributes: ['firstName', 'lastName', 'email', 'mobileNumber', 'membershipType', 'profileImage'],
+        where: {
+          id: req.params.userId,
+        },
+      }).then(result => res.status(200).send({ message: 'Success!', result }))
+      .catch(error => res.status(400).send(error))
+  },
+
+  updateUser(req, res) {
+    //filename = req.body.image;
+    if (req.params.userId != req.decoded.id) {
+      return res.status(403).send('Invalid Identity');
+    }
+    return db.Users
+      .findById(req.params.userId)
+      .then((result) => {
+        if (isEmpty(result)) {
+          return res.status(404).send('User does not exist');
+        }
+        return result
+          .update({
+            firstName: req.body.firstName || result.firstName,
+            lastName: req.body.lastName || result.lastName,
+            mobileNumber: req.body.mobileNumber || result.mobileNumber,
+            membershipType: req.body.membershipType || result.membershipType,
+            profileImage: req.body.profileImage || result.profileImage,
+          })
+          .then(() => res.status(200).send({ message: 'Details has been updated', result }))
+          .catch(error => res.status(400).send(error));
+      })
+      .catch(error => res.status(400).send(error));
+  },
 };

@@ -20,6 +20,8 @@ import updateBooks from './updateBooks';
 import getborrowedBooks from './getborrowedBooks';
 import getunreturnedBooks from './getunreturnedBooks';
 import returnBooks from './returnBooks';
+import UserDetails from './UserDetails';
+import updateUser from './updateUser';
 
 export default combineReducers({
   popMessages,
@@ -42,4 +44,6 @@ export default combineReducers({
   getborrowedBooks,
   getunreturnedBooks,
   returnBooks,
+  UserDetails,
+  updateUser,
 });

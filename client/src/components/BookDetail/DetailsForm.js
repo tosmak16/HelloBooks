@@ -58,7 +58,6 @@ class DetailsForm extends React.Component {
       this.props.checkBookDetails(localStorage.bookId);
     }
 
-
     if (this.props.counter > -1) {
       if (!lodash.isEmpty(this.props.book[this.props.counter])) {
         if (lodash.isEmpty(localStorage.id)) {
