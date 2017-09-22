@@ -203,8 +203,7 @@ class UpdateBooksPage extends React.Component {
         modalErrorMessage: '',
         display: false,
       });
-    }
-    if (!lodash.isEmpty(nextProps.message.toString()) && this.state.display) {
+    } else if (!lodash.isEmpty(nextProps.message) && this.state.display) {
       this.props.uploadImage(this.state.file);
       this.setState({
         filterBy: '',
@@ -329,7 +328,7 @@ class UpdateBooksPage extends React.Component {
           />
           <SingleActionModal
             id={ 'modalS' } heading={ 'Done!' }
-            message={ this.props.message.toString() }
+            message={ this.props.message ? this.props.message : '' }
             onHandleExit={ this.handleExit }
           />
           <DoubleActionModal

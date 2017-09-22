@@ -118,8 +118,7 @@ class UploadBooksPage extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (!lodash.isEmpty(nextProps.error)) {
       document.getElementById('modalError').style.display = 'block';
-    }
-    if (!lodash.isEmpty(nextProps.message.toString())) {
+    } else if (!lodash.isEmpty(nextProps.message)) {
       this.props.uploadImage(this.state.file);
       this.setState({
         file: ''
@@ -225,7 +224,7 @@ class UploadBooksPage extends React.Component {
           />
           <SingleActionModal
             id={ 'modalSuccess' } heading={ 'Done!' }
-            message={ this.props.message.toString() }
+            message={ this.props.message ? this.props.message : '' }
             onHandleExit={ this.handleExit }
           />
           <DoubleActionModal

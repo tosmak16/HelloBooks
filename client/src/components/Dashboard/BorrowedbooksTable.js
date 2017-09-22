@@ -80,8 +80,7 @@ class BorrowedbooksTable extends React.Component {
       this.setState({
         pointer: false,
       });
-    }
-    if (!isEmpty(nextProps.message.toString()) && this.state.pointer) {
+    } else if (!isEmpty(nextProps.message) && this.state.pointer) {
       document.getElementById('modal3').style.display = 'block';
       this.setState({
         pointer: false,
@@ -131,12 +130,12 @@ class BorrowedbooksTable extends React.Component {
 
           <SingleActionModal
             id={ 'modal3' } heading={ 'Done!' }
-            message={ this.props.message.toString() }
+            message={ this.props.message ? this.props.message : '' }
             onHandleExit={ this.handleExit }
           />
           <SingleActionModal
             id={ 'modal2' } heading={ 'Oh!' }
-            message={ this.props.errors }
+            message={ this.props.errors ? this.props.errors : '' }
             onHandleExit={ this.handleExit }
           />
 
