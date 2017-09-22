@@ -29,7 +29,7 @@ export default function searchbooks(filterBy, searchText, data) {
   // let l = arraysss.toString().slice(c, c + k);
   // let p = arraysss.toString().slice(0, c).lastIndexOf(',');
   // let u = arraysss.toString().slice(p + 1, c + k)
-  // console.log(u);
+
   const parseArray = newArray;
   const x = parseArray.toString().toUpperCase().search(searchText.toUpperCase());
   let j = parseArray.toString().slice(x, -1)

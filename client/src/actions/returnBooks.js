@@ -10,7 +10,7 @@ import { returnbookError, returnbookRequest, returnbookResponse } from '../../ac
 export default function returnbook(bookData) {
   let decodedToken = jwtDecode(localStorage.jwtToken);
   let userId = decodedToken.id;
-  console.log(bookData.bookId);
+
   return (dispatch) => {
     dispatch(returnbookRequest(bookData));
     axios.put('/api/v2/users/' + userId + '/books', bookData).then(

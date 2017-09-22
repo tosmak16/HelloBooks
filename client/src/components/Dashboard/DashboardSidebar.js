@@ -7,24 +7,35 @@ class DashboardSidebar extends React.Component {
     this.handleClickBookShelf = this.handleClickBookShelf.bind(this);
     this.handleClickAccount = this.handleClickAccount.bind(this);
     this.handleClickHistory = this.handleClickHistory.bind(this);
+    this.handleChangePassword = this.handleChangePassword.bind(this);
   }
   handleClickBookShelf(e) {
     e.preventDefault();
     document.getElementById('bb_table').style.display = 'block';
     document.getElementById('b_page').style.display = 'none';
     document.getElementById('bh_table').style.display = 'none';
+    document.getElementById('ch_pas').style.display = 'none';
   }
   handleClickAccount(e) {
     e.preventDefault();
     document.getElementById('b_page').style.display = 'block';
     document.getElementById('bb_table').style.display = 'none';
     document.getElementById('bh_table').style.display = 'none';
+    document.getElementById('ch_pas').style.display = 'none';
   }
   handleClickHistory(e) {
     e.preventDefault();
     document.getElementById('bh_table').style.display = 'block';
     document.getElementById('bb_table').style.display = 'none';
     document.getElementById('b_page').style.display = 'none';
+    document.getElementById('ch_pas').style.display = 'none';
+  }
+  handleChangePassword(e) {
+    e.preventDefault();
+    document.getElementById('bh_table').style.display = 'none';
+    document.getElementById('bb_table').style.display = 'none';
+    document.getElementById('b_page').style.display = 'none';
+    document.getElementById('ch_pas').style.display = 'block';
   }
   render() {
     return (
@@ -49,7 +60,7 @@ class DashboardSidebar extends React.Component {
                 <a id="bor" onClick={ this.handleClickHistory } href="#"><i className="material-icons left">data_usage</i>History</a>
               </li>
               <li>
-                <a href="#"><i className="material-icons left">lock</i>Change Password</a>
+                <a href="#" onClick={ this.handleChangePassword } ><i className="material-icons left">lock</i>Change Password</a>
               </li>
               <li>
                 <a href="index.html"><i className="material-icons left">exit_to_app</i>Logout</a>

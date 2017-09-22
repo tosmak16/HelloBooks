@@ -10,16 +10,16 @@ import { updateuserError, updateuserRequest, updateuserResponse } from '../../ac
 export default function updateUser(userData) {
   let decodedToken = jwtDecode(localStorage.jwtToken);
   let userId = decodedToken.id;
-  console.log(userData);
+
   return (dispatch) => {
     dispatch(updateuserRequest(userData));
     axios.put('/api/v2/users/' + userId, userData).then(
       (res) => {
-        console.log(res.data.message);
+
         dispatch(updateuserResponse(res.data.message));
       }
     ).catch(error => {
-      console.log(error.response.data);
+
       dispatch(updateuserError(error.response.data));
     });
   }

@@ -2,7 +2,7 @@ import { GET_USER_DETAILS_FAILURE, GET_USER_DETAILS_SUCCESS, GET_USER_DETAILS_RE
 
 const initialState = {
   isFetching: false,
-  data: [],
+  data: '',
   error: '',
 };
 export default (state = initialState, action = {}) => {
@@ -10,7 +10,7 @@ export default (state = initialState, action = {}) => {
     case GET_USER_DETAILS_REQUEST:
       return {
         isFetching: true,
-        data: [],
+        data: '',
         error: '',
       };
     case GET_USER_DETAILS_SUCCESS:
@@ -22,7 +22,7 @@ export default (state = initialState, action = {}) => {
     case GET_USER_DETAILS_FAILURE:
       return {
         isFetching: false,
-        data: [],
+        data: '',
         error: action.error,
       };
     default:

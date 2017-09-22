@@ -34,6 +34,7 @@ export default (app) => {
   app.put('/api/v2/users/:userId/books', usersController.returnBooks);
   app.put('/api/v2/users/:userId', usersController.updateUser);
   app.get('/api/v2/users/:userId', usersController.getUserDetails);
+  app.put('/api/v2/users/:userId/password', usersController.changePassword);
 
   app.delete('/api/v2/books/:bookId', booksController.deleteBooks);
   app.post('/api/v2/books', booksController.addBook);

@@ -3,7 +3,7 @@ import DashboardSidebar from './DashboardSidebar';
 import BorrowedbooksTable from './BorrowedbooksTable';
 import BookHistoryTable from './BookHistoryTable';
 import UserProfile from './UserProfile';
-
+import ChangePasswordPage from './ChangePasswordPage';
 
 class DashboardPage extends React.Component {
   render() {
@@ -15,6 +15,7 @@ class DashboardPage extends React.Component {
             <BorrowedbooksTable />
             <UserProfile />
             <BookHistoryTable />
+            <ChangePasswordPage />
           </div>
         </div>
       </div>

@@ -43,7 +43,6 @@ class Userprofile extends React.Component {
   handleInputChange(e) {
     e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
-    console.log(e.target.value);
   }
 
   handleClose(e) {
@@ -68,6 +67,7 @@ class Userprofile extends React.Component {
       this.setState({
         disabled: false,
         buttonText: 'Save',
+        display: true,
       });
     }
 
@@ -77,7 +77,6 @@ class Userprofile extends React.Component {
         buttonText: 'Edit',
       });
       document.getElementById('modalO').style.display = 'block';
-      console.log(this.state);
     }
   }
 
@@ -105,28 +104,21 @@ class Userprofile extends React.Component {
 
       });
     }
-
-    if (!isEmpty(nextProps.messages.toString()) && this.state.display) {
+    if (!isEmpty(nextProps.errors) && this.state.display) {
+      document.getElementById('modalE').style.display = 'block';
+      this.setState({
+        display: false,
+      });
+    } else if (!isEmpty(nextProps.messages) && this.state.display) {
       this.setState({
         display: false,
       });
       document.getElementById('modalS').style.display = 'block';
     }
-
-    if (isEmpty(nextProps.errors) && this.state.display) {
-      document.getElementById('modalE').style.display = 'block';
-      this.setState({
-        display: false,
-      });
-    }
   }
 
 
   render() {
-    console.log(`render data:${this.props.data}`);
-    console.log(this.state.firstName);
-    console.log(this.state.show);
-
     return (
 
       <div id="b_page" className="row">
@@ -174,12 +166,12 @@ class Userprofile extends React.Component {
 
           <SingleActionModal
             id={ 'modalE' } heading={ 'Oh!' }
-            message={ this.props.errors }
+            message={ this.props.errors ? this.props.errors : '' }
             onHandleExit={ this.handleExit }
           />
           <SingleActionModal
             id={ 'modalS' } heading={ 'Done!' }
-            message={ this.props.messages.toString() }
+            message={ this.props.messages ? this.props.messages : '' }
             onHandleExit={ this.handleExit }
           />
           <DoubleActionModal

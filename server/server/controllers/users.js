@@ -347,8 +347,34 @@ export default {
             profileImage: req.body.profileImage || result.profileImage,
           })
           .then(() => res.status(200).send({ message: 'Details has been updated', result }))
-          .catch(error => res.status(400).send(error));
+          .catch(error => res.status(400).send(error.errors[0].message));
       })
-      .catch(error => res.status(400).send(error));
+      .catch(error => res.status(400).send(error.errors[0].message));
+  },
+
+
+  changePassword(req, res) {
+    if (req.params.userId != req.decoded.id) {
+      return res.status(403).send('Invalid Identity');
+    }
+    return db.Users
+      .findOne({
+        where: {
+          id: req.params.userId,
+          password: SHA256(req.body.oldPassword).toString()
+        },
+      }).then(result => {
+        if (isEmpty(result)) {
+          return res.status(404).send('Current password is wrong');
+        }
+
+        return result
+          .update({
+            password: SHA256(req.body.newPassword).toString() || result.password,
+          })
+          .then(() => res.status(200).send({ message: 'Password has been changed', result }))
+          .catch(error => res.status(400).send(error.errors[0].message));
+      })
+      .catch(error => res.status(400).send(error.errors[0].message))
   },
 };

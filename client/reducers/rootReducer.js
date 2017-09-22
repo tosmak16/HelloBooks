@@ -22,6 +22,7 @@ import getunreturnedBooks from './getunreturnedBooks';
 import returnBooks from './returnBooks';
 import UserDetails from './UserDetails';
 import updateUser from './updateUser';
+import passwordChange from './passwordChange';
 
 export default combineReducers({
   popMessages,
@@ -46,4 +47,5 @@ export default combineReducers({
   returnBooks,
   UserDetails,
   updateUser,
+  passwordChange,
 });

@@ -1,27 +1,27 @@
-import { UPDATE_USER_FAILURE, UPDATE_USER_SUCCESS, UPDATE_USER_REQUEST } from '../actions/updateUser';
+import { CHANGE_PASSWORD_FAILURE, CHANGE_PASSWORD_SUCCESS, CHANGE_PASSWORD_REQUEST } from '../actions/changePassword';
 
 const initialState = {
-  isUpdating: false,
+  isSending: false,
   data: '',
   error: '',
 };
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case UPDATE_USER_REQUEST:
+    case CHANGE_PASSWORD_REQUEST:
       return {
-        isUpdating: true,
+        isSending: true,
         data: action.data,
         error: '',
       };
-    case UPDATE_USER_SUCCESS:
+    case CHANGE_PASSWORD_SUCCESS:
       return {
-        isUpdating: false,
+        isSending: false,
         data: action.response,
         error: '',
       };
-    case UPDATE_USER_FAILURE:
+    case CHANGE_PASSWORD_FAILURE:
       return {
-        isUpdating: false,
+        isSending: false,
         data: '',
         error: action.error,
       };
