@@ -12,30 +12,30 @@ const initialState = {
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case BORROW_BOOK_REQUEST:
-      return {
+      return [...state, {
         isStored: false,
         data: action.userData,
         error: '',
         isSending: true,
         response: ''
-      };
+      }];
     case BORROW_BOOK_SUCCESS:
-      return {
+      return [...state, {
         isStored: !isEmpty(action.response),
         response: action.response,
         data: {},
         error: '',
         isSending: false,
-      };
+      }];
     case BORROW_BOOK_FAILURE:
-      return {
+      return [...state, {
         isStored: isEmpty(action.error),
         error: action.error,
         data: {},
         isSending: false,
         response: ''
 
-      };
+      }];
     default:
       return state;
   }

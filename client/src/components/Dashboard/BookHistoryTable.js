@@ -22,9 +22,9 @@ class BorrowHistoryTable extends React.Component {
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.isRefreshed) {
-      setTimeout(() => { this.props.refreshPage(true); }, 2000);
+      setTimeout(() => { this.props.refreshPage(true); }, 1000);
       this.props.getborrowedBooks();
-      setTimeout(() => { this.props.refreshPage(false); }, 2000);
+      setTimeout(() => { this.props.refreshPage(false); }, 1000);
       // this.props.getbooks(true);
     }
   }

@@ -9,6 +9,8 @@ import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
 import getbooks from '../../actions/getBooks';
 
+let i = 1;
+let sortedData = '';
 
 class UploadBooksPage extends React.Component {
   constructor(props) {
@@ -27,6 +29,9 @@ class UploadBooksPage extends React.Component {
       imageWidth: 0,
       imageSize: 0,
       modalErrorMessage: '',
+      error: '',
+      message: '',
+      display: false,
     };
     this.handleImageChange = this.handleImageChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -51,6 +56,7 @@ class UploadBooksPage extends React.Component {
       imageHeight: 0,
       imageWidth: 0,
       imageSize: 0,
+      display: true,
     });
     document.getElementById('modalOpen').style.display = 'none';
   }
@@ -79,6 +85,10 @@ class UploadBooksPage extends React.Component {
     e.preventDefault();
     document.getElementById('modalError').style.display = 'none';
     document.getElementById('modalSuccess').style.display = 'none';
+    this.setState({
+      error: '',
+      message: '',
+    });
     setTimeout(() => { this.props.getbooks(true); }, 3000);
   }
 
@@ -116,14 +126,25 @@ class UploadBooksPage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!lodash.isEmpty(nextProps.error)) {
-      document.getElementById('modalError').style.display = 'block';
-    } else if (!lodash.isEmpty(nextProps.message)) {
-      this.props.uploadImage(this.state.file);
-      this.setState({
-        file: ''
-      });
-      document.getElementById('modalSuccess').style.display = 'block';
+    sortedData = nextProps.item[i];
+    if (this.state.display) {
+      if (!lodash.isEmpty(sortedData.error)) {
+        this.setState({
+          display: false,
+          error: sortedData.error
+        });
+        document.getElementById('modalError').style.display = 'block';
+        i += 2;
+      } else if (!lodash.isEmpty(sortedData.response)) {
+        this.props.uploadImage(this.state.file);
+        this.setState({
+          file: '',
+          display: false,
+          message: sortedData.response,
+        });
+        document.getElementById('modalSuccess').style.display = 'block';
+        i += 2;
+      }
     }
   }
 
@@ -219,12 +240,12 @@ class UploadBooksPage extends React.Component {
           </div> */}
           <SingleActionModal
             id={ 'modalError' } heading={ 'Oh!' }
-            message={ this.props.error ? this.props.error : this.state.modalErrorMessage }
+            message={ this.state.error ? this.state.error : this.state.modalErrorMessage }
             onHandleExit={ this.handleExit }
           />
           <SingleActionModal
             id={ 'modalSuccess' } heading={ 'Done!' }
-            message={ this.props.message ? this.props.message : '' }
+            message={ this.state.message ? this.state.message : '' }
             onHandleExit={ this.handleExit }
           />
           <DoubleActionModal
@@ -255,8 +276,7 @@ UploadBooksPage.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    error: state.uploadBooks.error,
-    message: state.uploadBooks.response
+    item: state.uploadBooks,
   };
 }
 

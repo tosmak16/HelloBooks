@@ -9,27 +9,27 @@ const initialState = {
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case UPLOAD_BOOK_REQUEST:
-      return {
+      return [...state, {
         data: action.bookData,
         error: '',
         isUploading: true,
         response: ''
-      };
+      }];
     case UPLOAD_BOOK_SUCCESS:
-      return {
+      return [...state, {
         response: action.response,
         data: '',
         error: '',
         isUploading: false,
-      };
+      }];
     case UPLOAD_BOOK_FAILURE:
-      return {
+      return [...state, {
         error: action.error,
         data: '',
         isUploading: false,
         response: ''
 
-      };
+      }];
     default:
       return state;
   }

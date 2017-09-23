@@ -21,9 +21,17 @@ let author = '';
 let image = '';
 let summary = '';
 
+let i = 1;
+let sortedData = '';
+
 class DetailsForm extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      message: '',
+      error: '',
+      display: false,
+    };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
@@ -32,12 +40,16 @@ class DetailsForm extends React.Component {
   }
   handleClick(e) {
     e.preventDefault();
+    this.setState({
+      display: true,
+    });
     this.props.borrowBooks(localStorage.jwtToken, localStorage.bookId);
     document.getElementById('modal1').style.display = 'none';
   }
 
   handleOpen(e) {
     e.preventDefault();
+
     document.getElementById('modal1').style.display = 'block';
   }
 
@@ -116,11 +128,26 @@ class DetailsForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!lodash.isEmpty(nextProps.error)) {
-      document.getElementById('modal2').style.display = 'block';
-    }
-    if (!lodash.isEmpty(nextProps.message.toString())) {
-      document.getElementById('modal3').style.display = 'block';
+    console.log(nextProps.item[i]);
+    sortedData = nextProps.item[i];
+
+
+    if (this.state.display) {
+      if (!lodash.isEmpty(sortedData.error) && this.state.display) {
+        this.setState({
+          error: sortedData.error,
+          display: false,
+        });
+        document.getElementById('modal2').style.display = 'block';
+        i += 2;
+      } else if (!lodash.isEmpty(sortedData.response) && this.state.display) {
+        this.setState({
+          message: sortedData.response,
+          display: false,
+        });
+        document.getElementById('modal3').style.display = 'block';
+        i += 2;
+      }
     }
   }
 
@@ -129,7 +156,7 @@ class DetailsForm extends React.Component {
     const displayError = (<div id="modal2" className="modal">
       <div className="modal-content">
         <h5>Oh!</h5>
-        <p>{this.props.error}</p>
+        <p>{this.state.error}</p>
       </div>
       <div className="modal-footer">
         <a href="" onClick={ this.handleExit } className="modal-action modal-close waves-effect waves-brown btn-flat">Close</a>
@@ -138,7 +165,7 @@ class DetailsForm extends React.Component {
     const displaySuccess = (<div id="modal3" className="modal">
       <div className="modal-content">
         <h5>Wow!</h5>
-        <p>{this.props.message.toString()}</p>
+        <p>{this.state.message}</p>
       </div>
       <div className="modal-footer">
         <a href="" onClick={ this.handleExit } className="modal-action modal-close waves-effect waves-brown btn-flat">Close</a>
@@ -201,8 +228,8 @@ function mapStateToProps(state) {
     data: state.books.data,
     book: state.selectedbook,
     counter: state.counter.count,
-    error: state.borrowBooks.error,
-    message: state.borrowBooks.response
+    item: state.borrowBooks,
+
   };
 }
 

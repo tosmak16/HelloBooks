@@ -17,6 +17,8 @@ import searchbooks from '../../actions/searchbooks';
 
 let tablerow = '';
 let tableholder = '';
+let sortedData = '';
+let i = 1;
 class BookStorePage extends React.Component {
   constructor(props) {
     super(props);
@@ -30,6 +32,8 @@ class BookStorePage extends React.Component {
       searchText: '',
       error: '',
       pointer: false,
+      errors: '',
+      message: '',
     };
     this.handleChange = this.handleChange.bind(this);
 
@@ -82,16 +86,23 @@ class BookStorePage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!lodash.isEmpty(nextProps.error) && this.state.pointer) {
-      document.getElementById('modal2').style.display = 'block';
-      this.setState({
-        pointer: false,
-      });
-    } else if (!lodash.isEmpty(nextProps.message) && this.state.pointer) {
-      document.getElementById('modal3').style.display = 'block';
-      this.setState({
-        pointer: false,
-      });
+    sortedData = nextProps.item[i];
+    if (this.state.pointer) {
+      if (!lodash.isEmpty(sortedData.error) && this.state.pointer) {
+        document.getElementById('modal2').style.display = 'block';
+        this.setState({
+          pointer: false,
+          errors: sortedData.error,
+        });
+        i += 2;
+      } else if (!lodash.isEmpty(sortedData.response) && this.state.pointer) {
+        document.getElementById('modal3').style.display = 'block';
+        this.setState({
+          pointer: false,
+          message: sortedData.response,
+        });
+        i += 2;
+      }
     }
     if (nextProps.isRefreshed) {
       this.props.refreshPage(false);
@@ -148,12 +159,12 @@ class BookStorePage extends React.Component {
 
           <SingleActionModal
             id={ 'modal3' } heading={ 'Done!' }
-            message={ this.props.message ? this.props.message : '' }
+            message={ this.state.message ? this.state.message : '' }
             onHandleExit={ this.handleExit }
           />
           <SingleActionModal
             id={ 'modal2' } heading={ 'Oh!' }
-            message={ this.props.error ? this.props.error : '' }
+            message={ this.state.errors ? this.state.errors : '' }
             onHandleExit={ this.handleExit }
           />
 
@@ -182,10 +193,9 @@ BookStorePage.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    error: state.deleteBooks.error,
     filteredData: state.getFilteredBooks.filteredData,
-    message: state.deleteBooks.response,
-    isRefreshed: state.refreshPage.isRefreshed
+    isRefreshed: state.refreshPage.isRefreshed,
+    item: state.deleteBooks,
   };
 }
 export default connect(mapStateToProps, { deleteBook, getbooks, refreshPage, searchbooks })(BookStorePage);

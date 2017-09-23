@@ -9,27 +9,27 @@ const initialState = {
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case DELETE_BOOK_REQUEST:
-      return {
+      return [...state, {
         data: action.bookData,
         error: '',
         isDeleting: true,
         response: ''
-      };
+      }];
     case DELETE_BOOK_SUCCESS:
-      return {
+      return [...state, {
         response: action.response,
         data: '',
         error: '',
         isDeleting: false,
-      };
+      }];
     case DELETE_BOOK_FAILURE:
-      return {
+      return [...state, {
         error: action.error,
         data: '',
         isDeleting: false,
         response: ''
 
-      };
+      }];
     default:
       return state;
   }
