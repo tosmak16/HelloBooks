@@ -5,11 +5,11 @@ export const UPDATE_USER_FAILURE = 'UPDATE_USER_FAILURE'
 
 
 //Action creators
-export function updateuserRequest(userData) {
+export function updateuserRequest(data) {
   return {
     type: UPDATE_USER_REQUEST,
     isUpdating: true,
-    userData
+    data
   }
 }
 

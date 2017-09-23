@@ -8,6 +8,8 @@ import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
 import updateUser from '../../actions/updateuserDetails';
 
+let i = 1;
+let sortedData = '';
 
 class Userprofile extends React.Component {
   constructor(props) {
@@ -23,6 +25,8 @@ class Userprofile extends React.Component {
       disabled: true,
       buttonText: 'Edit',
       display: false,
+      error: '',
+      message: '',
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -67,7 +71,7 @@ class Userprofile extends React.Component {
       this.setState({
         disabled: false,
         buttonText: 'Save',
-        display: true,
+
       });
     }
 
@@ -104,16 +108,23 @@ class Userprofile extends React.Component {
 
       });
     }
-    if (!isEmpty(nextProps.errors) && this.state.display) {
-      document.getElementById('modalE').style.display = 'block';
-      this.setState({
-        display: false,
-      });
-    } else if (!isEmpty(nextProps.messages) && this.state.display) {
-      this.setState({
-        display: false,
-      });
-      document.getElementById('modalS').style.display = 'block';
+    sortedData = nextProps.item[i];
+    if (this.state.display) {
+      if (!isEmpty(sortedData.error) && this.state.display) {
+        document.getElementById('modalE').style.display = 'block';
+        this.setState({
+          display: false,
+          error: sortedData.error,
+        });
+        i += 2;
+      } else if (!isEmpty(sortedData.data) && this.state.display) {
+        this.setState({
+          display: false,
+          message: sortedData.data,
+        });
+        i += 2;
+        document.getElementById('modalS').style.display = 'block';
+      }
     }
   }
 
@@ -166,12 +177,12 @@ class Userprofile extends React.Component {
 
           <SingleActionModal
             id={ 'modalE' } heading={ 'Oh!' }
-            message={ this.props.errors ? this.props.errors : '' }
+            message={ this.state.error ? this.state.error : '' }
             onHandleExit={ this.handleExit }
           />
           <SingleActionModal
             id={ 'modalS' } heading={ 'Done!' }
-            message={ this.props.messages ? this.props.messages : '' }
+            message={ this.state.message ? this.state.message : '' }
             onHandleExit={ this.handleExit }
           />
           <DoubleActionModal
@@ -202,8 +213,7 @@ function mapStateToProps(state) {
     data: state.UserDetails.data,
     bookData: state.books.data,
     isRefreshed: state.refreshPage.isRefreshed,
-    messages: state.updateUser.data,
-    errors: state.updateUser.error,
+    item: state.updateUser,
   };
 }
 

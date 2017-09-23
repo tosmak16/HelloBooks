@@ -8,23 +8,23 @@ const initialState = {
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case UPDATE_USER_REQUEST:
-      return {
+      return [...state, {
         isUpdating: true,
         data: action.data,
         error: '',
-      };
+      }];
     case UPDATE_USER_SUCCESS:
-      return {
+      return [...state, {
         isUpdating: false,
         data: action.response,
         error: '',
-      };
+      }];
     case UPDATE_USER_FAILURE:
-      return {
+      return [...state, {
         isUpdating: false,
         data: '',
         error: action.error,
-      };
+      }];
     default:
       return state;
   }

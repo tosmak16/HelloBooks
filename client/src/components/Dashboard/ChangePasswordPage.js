@@ -7,6 +7,9 @@ import SingleActionModal from '../modal/SingleActionModal';
 import changePassword from '../../actions/changePassword';
 
 
+let sortedData = '';
+let i = 1;
+
 class ChangePasswordPage extends React.Component {
   constructor(props) {
     super(props);
@@ -16,6 +19,8 @@ class ChangePasswordPage extends React.Component {
       confirmPassword: '',
       error: '',
       display: false,
+      errors: '',
+      message: '',
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -75,19 +80,25 @@ class ChangePasswordPage extends React.Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    if (!isEmpty(nextProps.error) && this.state.display) {
-      document.getElementById('modalError').style.display = 'block';
-      this.setState({
-        display: false,
-      });
-    } else if (!isEmpty(nextProps.messages) && this.state.display) {
-      this.setState({
-        display: false,
-        oldPassword: '',
-        newPassword: '',
-        confirmPassword: '',
-      });
-      document.getElementById('modalSuccess').style.display = 'block';
+    sortedData = nextProps.item[i];
+    if (this.state.display) {
+      if (!isEmpty(sortedData.error) && this.state.display) {
+        document.getElementById('modalError').style.display = 'block';
+        this.setState({
+          display: false,
+          errors: sortedData.error,
+        });
+        i += 2;
+      } else if (!isEmpty(sortedData.data) && this.state.display) {
+        this.setState({
+          display: false,
+          oldPassword: '',
+          newPassword: '',
+          confirmPassword: '',
+          message: sortedData.data,
+        });
+        document.getElementById('modalSuccess').style.display = 'block';
+      }
     }
   }
   render() {
@@ -123,12 +134,12 @@ class ChangePasswordPage extends React.Component {
           </div>
           <SingleActionModal
             id={ 'modalError' } heading={ 'Oh!' }
-            message={ this.props.error ? this.props.error : '' }
+            message={ this.state.errors ? this.state.errors : '' }
             onHandleExit={ this.handleExit }
           />
           <SingleActionModal
             id={ 'modalSuccess' } heading={ 'Done!' }
-            message={ this.props.messages ? this.props.messages : '' }
+            message={ this.state.message ? this.state.message : '' }
             onHandleExit={ this.handleExit }
           />
           <DoubleActionModal
@@ -150,8 +161,7 @@ class ChangePasswordPage extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    error: state.passwordChange.error,
-    messages: state.passwordChange.data,
+    item: state.passwordChange,
   };
 }
 
