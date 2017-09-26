@@ -1,10 +1,7 @@
-import usersController from '../controllers/users';
-import booksController from '../controllers/books';
+import usersController, { uploadAvatar } from '../controllers/users';
+import booksController, { upload } from '../controllers/books';
 import authController from '../controllers/auth';
-import path from 'path';
-import multer from 'multer';
 
-import { upload } from '../controllers/books';
 
 // const upload = multer();
 // const storage = multer.diskStorage({
@@ -22,7 +19,8 @@ export default (app) => {
 
   app.post('/api/v2/users/signup', usersController.signup);
   app.post('/api/v2/users/signin', usersController.signin);
-  app.post('/api/v2/book', upload, booksController.uploadImage);
+  app.post('/api/v2/books/image', upload, booksController.uploadImage);
+  app.post('/api/v2/users/image', uploadAvatar, usersController.uploadAvatar);
 
 
   app.use('/api/v2/', authController.auth);

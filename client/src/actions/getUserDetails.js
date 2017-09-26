@@ -19,7 +19,7 @@ export default function getUserdetails() {
         dispatch(getuserdetailsReponse(res.data.result));
       }
       ).catch(error => {
-        dispatch(getuserdetailsError(error.response.data))
+        dispatch(getuserdetailsError('Error in getting data'))
       });
   };
 }

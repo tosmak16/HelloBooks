@@ -93,7 +93,7 @@ NavigationBar.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    auth: state.auth
+    auth: state.auth[0]
   };
 }
 

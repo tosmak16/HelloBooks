@@ -65,7 +65,7 @@ BooksFilter.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    filteredData: state.getFilteredBooks.filteredData
+    filteredData: state.getFilteredBooks[0].filteredData
   };
 }
 

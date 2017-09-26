@@ -8,23 +8,23 @@ const initialState = {
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case CHANGE_PASSWORD_REQUEST:
-      return [...state, {
+      return [{
         isSending: true,
         data: action.data,
         error: '',
-      }];
+      }, ...state];
     case CHANGE_PASSWORD_SUCCESS:
-      return [...state, {
+      return [{
         isSending: false,
         data: action.response,
         error: '',
-      }];
+      }, ...state];
     case CHANGE_PASSWORD_FAILURE:
-      return [...state, {
+      return [{
         isSending: false,
         data: '',
         error: action.error,
-      }];
+      }, ...state];
     default:
       return state;
   }

@@ -18,7 +18,7 @@ import searchbooks from '../../actions/searchbooks';
 let tablerow = '';
 let tableholder = '';
 let sortedData = '';
-let i = 1;
+
 class BookStorePage extends React.Component {
   constructor(props) {
     super(props);
@@ -86,7 +86,7 @@ class BookStorePage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    sortedData = nextProps.item[i];
+    sortedData = nextProps.item[0];
     if (this.state.pointer) {
       if (!lodash.isEmpty(sortedData.error) && this.state.pointer) {
         document.getElementById('modal2').style.display = 'block';
@@ -94,14 +94,12 @@ class BookStorePage extends React.Component {
           pointer: false,
           errors: sortedData.error,
         });
-        i += 2;
       } else if (!lodash.isEmpty(sortedData.response) && this.state.pointer) {
         document.getElementById('modal3').style.display = 'block';
         this.setState({
           pointer: false,
           message: sortedData.response,
         });
-        i += 2;
       }
     }
     if (nextProps.isRefreshed) {
@@ -193,8 +191,8 @@ BookStorePage.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    filteredData: state.getFilteredBooks.filteredData,
-    isRefreshed: state.refreshPage.isRefreshed,
+    filteredData: state.getFilteredBooks[0].filteredData,
+    isRefreshed: state.refreshPage[0].isRefreshed,
     item: state.deleteBooks,
   };
 }

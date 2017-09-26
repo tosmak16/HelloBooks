@@ -106,7 +106,7 @@ SideBar.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  data: state.books.data
+  data: state.books[0].data
 });
 export default connect(mapStateToProps, { showbooksByCategory })(SideBar);
 

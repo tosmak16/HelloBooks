@@ -8,7 +8,7 @@ import changePassword from '../../actions/changePassword';
 
 
 let sortedData = '';
-let i = 1;
+
 
 class ChangePasswordPage extends React.Component {
   constructor(props) {
@@ -80,7 +80,7 @@ class ChangePasswordPage extends React.Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    sortedData = nextProps.item[i];
+    sortedData = nextProps.item[0];
     if (this.state.display) {
       if (!isEmpty(sortedData.error) && this.state.display) {
         document.getElementById('modalError').style.display = 'block';
@@ -88,7 +88,6 @@ class ChangePasswordPage extends React.Component {
           display: false,
           errors: sortedData.error,
         });
-        i += 2;
       } else if (!isEmpty(sortedData.data) && this.state.display) {
         this.setState({
           display: false,

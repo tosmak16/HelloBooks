@@ -75,10 +75,10 @@ BorrowHistoryTable.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    error: state.getborrowedBooks.error,
-    data: state.getborrowedBooks.data,
-    bookData: state.books.data,
-    isRefreshed: state.refreshPage.isRefreshed
+    error: state.getborrowedBooks[0].error,
+    data: state.getborrowedBooks[0].data,
+    bookData: state.books[0].data,
+    isRefreshed: state.refreshPage[0].isRefreshed
   };
 }
 

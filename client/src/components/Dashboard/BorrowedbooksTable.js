@@ -15,7 +15,7 @@ import refreshPage from '../../actions/refreshPage';
 
 let tablerow = '';
 let co = '';
-let i = 1;
+
 let sortedData = '';
 class BorrowedbooksTable extends React.Component {
   constructor(props) {
@@ -79,7 +79,7 @@ class BorrowedbooksTable extends React.Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    sortedData = nextProps.item[i];
+    sortedData = nextProps.item[0];
     if (this.state.pointer) {
       if (!isEmpty(sortedData.error) && this.state.pointer) {
         document.getElementById('modal2').style.display = 'block';
@@ -87,14 +87,12 @@ class BorrowedbooksTable extends React.Component {
           pointer: false,
           errors: sortedData.error,
         });
-        i += 2;
       } else if (!isEmpty(sortedData.response) && this.state.pointer) {
         document.getElementById('modal3').style.display = 'block';
         this.setState({
           pointer: false,
           message: sortedData.response,
         });
-        i += 2;
       }
     }
     if (nextProps.isRefreshed) {
@@ -174,10 +172,10 @@ BorrowedbooksTable.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    error: state.getunreturnedBooks.error,
-    data: state.getunreturnedBooks.data,
-    bookData: state.books.data,
-    isRefreshed: state.refreshPage.isRefreshed,
+    error: state.getunreturnedBooks[0].error,
+    data: state.getunreturnedBooks[0].data,
+    bookData: state.books[0].data,
+    isRefreshed: state.refreshPage[0].isRefreshed,
     item: state.returnBooks,
   };
 }

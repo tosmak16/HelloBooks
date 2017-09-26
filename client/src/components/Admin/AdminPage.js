@@ -32,8 +32,8 @@ class AdminPage extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    isFetched: state.books.isFetched,
-    data: state.books.data,
+    isFetched: state.books[0].isFetched,
+    data: state.books[0].data,
   };
 }
 

@@ -5,10 +5,31 @@ import isEmpty from 'lodash/isEmpty';
 
 import db from '../models/index';
 
+
+import multer from 'multer';
+
+
+// const upload = multer({ dest: 'client/public/' });
+
+let filename = '';
+
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, './client/public/img/');
+  },
+  filename(req, file, cb) {
+    cb(null, filename);
+  }
+});
+
+export const uploadAvatar = multer({
+  storage
+}).single('file');
+
 let membershipType;
 let print;
 let length;
-let filename = '';
+
 
 /**
   * @param { object } req
@@ -328,7 +349,7 @@ export default {
   },
 
   updateUser(req, res) {
-    //filename = req.body.image;
+    filename = req.body.profileImage;
     if (req.params.userId != req.decoded.id) {
       return res.status(403).send('Invalid Identity');
     }
@@ -377,4 +398,17 @@ export default {
       })
       .catch(error => res.status(400).send(error.errors[0].message))
   },
+
+  // / upload user profile image
+  uploadAvatar(req, res) {
+    uploadAvatar(req, res, (err) => {
+      if (err) {
+        // An error occurred when uploading
+        res.status(400).send('Invalid input field');
+      }
+      // Everything went fine
+
+      res.status(200).send({ message: 'Image uploaded successfully' });
+    });
+  }
 };

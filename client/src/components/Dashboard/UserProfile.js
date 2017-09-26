@@ -3,13 +3,18 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 
-import getUserdetails from '../../actions/getUserDetails';
+
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
 import updateUser from '../../actions/updateuserDetails';
+import { uploadAvatar } from '../../actions/uploadUserAvatar';
+import refreshPage from '../../actions/refreshPage';
+import getUserdetails from '../../actions/getUserDetails';
 
-let i = 1;
+
 let sortedData = '';
+let pointer = false;
+
 
 class Userprofile extends React.Component {
   constructor(props) {
@@ -27,21 +32,63 @@ class Userprofile extends React.Component {
       display: false,
       error: '',
       message: '',
+      image: '',
+      summary: '',
+      imageHeight: 0,
+      imageWidth: 0,
+      imageSize: 0,
+      file: '',
+      imagePreviewUrl: '',
+      modalErrorMessage: '',
+      imageloaded: false,
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     // this.handleSelected = this.handleChange.bind(this);
-    // this.handleImageChange = this.handleImageChange.bind(this);
+    this.handleImageChange = this.handleImageChange.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     // this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleExit = this.handleExit.bind(this);
   }
 
+  handleImageChange(e) {
+    e.preventDefault();
+    const reader = new FileReader();
+    const file = e.target.files[0];
+    reader.onload = () => {
+      const image = new Image();
+
+      image.src = reader.result;
+
+      image.onload = () => {
+        this.setState({
+          imageHeight: image.height,
+          imageWidth: image.width,
+          imageSize: file.size,
+        });
+      };
+    };
+    reader.onloadend = () => {
+      this.setState({
+        file,
+        imagePreviewUrl: reader.result,
+        profileImage: Date.now() + file.name,
+      });
+    };
+
+    reader.readAsDataURL(file);
+  }
+
   handleExit(e) {
     e.preventDefault();
     document.getElementById('modalE').style.display = 'none';
     document.getElementById('modalS').style.display = 'none';
+    this.setState({
+      error: '',
+      message: '',
+      file: '',
+    });
   }
 
   handleInputChange(e) {
@@ -54,18 +101,9 @@ class Userprofile extends React.Component {
     document.getElementById('modalO').style.display = 'none';
   }
 
-  handleExit(e) {
-    e.preventDefault();
-    document.getElementById('modalE').style.display = 'none';
-    document.getElementById('modalS').style.display = 'none';
-  }
-  componentWillMount() {
-    if (isEmpty(this.props.data)) {
-      this.props.getUserdetails();
-    }
-  }
 
   handleEdit(e) {
+    pointer = true;
     e.preventDefault();
     if (this.state.disabled) {
       this.setState({
@@ -76,11 +114,27 @@ class Userprofile extends React.Component {
     }
 
     if (!this.state.disabled) {
-      this.setState({
-        disabled: true,
-        buttonText: 'Edit',
-      });
-      document.getElementById('modalO').style.display = 'block';
+      if (this.state.file) {
+        if (this.state.imageHeight !== 200 || this.state.imageWidth !== 150) {
+          pointer = false;
+          this.setState({ modalErrorMessage: 'Please image height  and width must be 200 and 150 respectively' });
+          document.getElementById('modalE').style.display = 'block';
+        } else if (this.state.imageSize > 500000) {
+          pointer = false;
+          this.setState({ modalErrorMessage: 'Please image size must not be more than 500kb' });
+          document.getElementById('modalE').style.display = 'block';
+        }
+      }
+
+      if (this.state.firstName && this.state.lastName && this.state.email && this.state.membershipType && pointer) {
+        this.setState({
+          modalErrorMessage: '',
+          disabled: true,
+          buttonText: 'Edit',
+        });
+        document.getElementById('modalO').style.display = 'block';
+        pointer = false;
+      }
     }
   }
 
@@ -104,11 +158,12 @@ class Userprofile extends React.Component {
         email: nextProps.data[0].email,
         mobileNumber: nextProps.data[0].mobileNumber ? nextProps.data[0].mobileNumber : 0,
         membershipType: nextProps.data[0].membershipType,
+        profileImage: nextProps.data[0].profileImage,
         show: false,
 
       });
     }
-    sortedData = nextProps.item[i];
+    sortedData = nextProps.item[0];
     if (this.state.display) {
       if (!isEmpty(sortedData.error) && this.state.display) {
         document.getElementById('modalE').style.display = 'block';
@@ -116,14 +171,28 @@ class Userprofile extends React.Component {
           display: false,
           error: sortedData.error,
         });
-        i += 2;
       } else if (!isEmpty(sortedData.data) && this.state.display) {
         this.setState({
           display: false,
           message: sortedData.data,
+          imageloaded: true
         });
-        i += 2;
+        this.state.file ? this.props.uploadAvatar(this.state.file) : '';
+
         document.getElementById('modalS').style.display = 'block';
+      }
+    }
+
+    if (this.state.imageloaded) {
+      if (nextProps.image.status === 200) {
+        //  setTimeout(() => { this.props.getUserdetails(); }, 3000);
+        // this.props.getUserdetails();
+        this.setState({
+          imageloaded: false,
+        });
+        // this.props.getbooks(true);
+
+        this.props.getUserdetails();
       }
     }
   }
@@ -175,9 +244,23 @@ class Userprofile extends React.Component {
             <option value="Gold">Gold</option>
           </select>
 
+          <div className="file-field input-field">
+            <div id="filebtn" className="btn">
+              <span>File</span>
+
+              <input
+                disabled={ this.state.disabled } className="fileInput" id="photoInput" onChange={ this.handleImageChange } type="file"
+                accept=".png, .jpg, .jpeg"
+              />
+            </div>
+            <div className="file-path-wrapper">
+              <input className="file-path validate" type="text" placeholder="Upload profile image" />
+            </div>
+          </div>
+
           <SingleActionModal
             id={ 'modalE' } heading={ 'Oh!' }
-            message={ this.state.error ? this.state.error : '' }
+            message={ this.state.error ? this.state.error : this.state.modalErrorMessage }
             onHandleExit={ this.handleExit }
           />
           <SingleActionModal
@@ -204,17 +287,16 @@ class Userprofile extends React.Component {
 }
 
 Userprofile.propTypes = {
-  getUserdetails: PropTypes.func.isRequired,
+
 };
 
 function mapStateToProps(state) {
   return {
-    error: state.UserDetails.error,
-    data: state.UserDetails.data,
-    bookData: state.books.data,
-    isRefreshed: state.refreshPage.isRefreshed,
+    bookData: state.books[0].data,
+    isRefreshed: state.refreshPage[0].isRefreshed,
     item: state.updateUser,
+    image: state.userProfileImage[0].response
   };
 }
 
-export default connect(mapStateToProps, { getUserdetails, updateUser })(Userprofile);
+export default connect(mapStateToProps, { updateUser, uploadAvatar, refreshPage, getUserdetails })(Userprofile);

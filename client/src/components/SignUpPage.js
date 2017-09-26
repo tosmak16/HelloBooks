@@ -36,7 +36,7 @@ SignUpPage.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    reg: state.reg
+    reg: state.reg[0]
   };
 }
 export default connect(mapStateToProps, { userSignup })(SignUpPage);

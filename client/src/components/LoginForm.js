@@ -93,7 +93,7 @@ LoginForm.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  log: state.log
+  log: state.log[0]
 });
 
 export default connect(mapStateToProps, { userSignin, getbooks })(LoginForm);

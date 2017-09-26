@@ -6,9 +6,9 @@ const initialState = {
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case NAVIGATE_TO_DETAILS_PAGE:
-      return [...state, {
+      return [{
         bookId: action.data,
-      }];
+      }, ...state];
     default: return state;
   }
 };

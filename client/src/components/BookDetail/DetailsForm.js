@@ -21,7 +21,6 @@ let author = '';
 let image = '';
 let summary = '';
 
-let i = 1;
 let sortedData = '';
 
 class DetailsForm extends React.Component {
@@ -71,10 +70,10 @@ class DetailsForm extends React.Component {
     }
 
     if (this.props.counter > -1) {
-      if (!lodash.isEmpty(this.props.book[this.props.counter])) {
+      if (!lodash.isEmpty(this.props.book[0])) {
         if (lodash.isEmpty(localStorage.id)) {
           const { data } = this.props;
-          bookId = this.props.book[this.props.counter].bookId;
+          bookId = this.props.book[0].bookId;
           localStorage.setItem('bookId', bookId);
           filteredData = lodash.filter(data, item => item.id == bookId);
 
@@ -128,8 +127,7 @@ class DetailsForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.item[i]);
-    sortedData = nextProps.item[i];
+    sortedData = nextProps.item[0];
 
 
     if (this.state.display) {
@@ -139,14 +137,12 @@ class DetailsForm extends React.Component {
           display: false,
         });
         document.getElementById('modal2').style.display = 'block';
-        i += 2;
       } else if (!lodash.isEmpty(sortedData.response) && this.state.display) {
         this.setState({
           message: sortedData.response,
           display: false,
         });
         document.getElementById('modal3').style.display = 'block';
-        i += 2;
       }
     }
   }
@@ -225,9 +221,9 @@ class DetailsForm extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    data: state.books.data,
+    data: state.books[0].data,
     book: state.selectedbook,
-    counter: state.counter.count,
+    counter: state.counter[0].count,
     item: state.borrowBooks,
 
   };

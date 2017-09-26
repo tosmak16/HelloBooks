@@ -13,7 +13,6 @@ import { uploadImage } from '../../actions/uploadImage';
 import { updateBook } from '../../actions/updateBooks';
 
 let sortedData = '';
-let i = 1;
 let pointer = true;
 
 class UpdateBooksPage extends React.Component {
@@ -199,7 +198,7 @@ class UpdateBooksPage extends React.Component {
       });
     }
 
-    sortedData = nextProps.item[i];
+    sortedData = nextProps.item[0];
     if (this.state.display) {
       if (!lodash.isEmpty(sortedData.error) && this.state.display) {
         document.getElementById('modalE').style.display = 'block';
@@ -223,7 +222,6 @@ class UpdateBooksPage extends React.Component {
           display: false,
           errors: sortedData.error,
         });
-        i += 2;
       } else if (!lodash.isEmpty(sortedData.response) && this.state.display) {
         this.state.file ? this.props.uploadImage(this.state.file) : '';
         this.setState({
@@ -248,75 +246,73 @@ class UpdateBooksPage extends React.Component {
           message: sortedData.response
         });
         document.getElementById('modalS').style.display = 'block';
-        i += 2;
       }
     }
   }
   render() {
-    console.log(this.state.file);
     return (
       <div id="bh_table" className="row">
-        <form onSubmit={this.handleSubmit} className="form-signin col l11 offset-l1 col m11 offset-m2 col s12" action="" encType="multipart/form-data">
+        <form onSubmit={ this.handleSubmit } className="form-signin col l11 offset-l1 col m11 offset-m2 col s12" action="" encType="multipart/form-data">
           <div className="">
             <div className="">
               <MembershipSelect
-                onHandleSelected={this.handleSelected}
-                value={this.state.filterBy}
+                onHandleSelected={ this.handleSelected }
+                value={ this.state.filterBy }
               />
             </div>
             <div className="">
-              <SearchBar onChange={this.handleChange} name="searchText" value={this.state.searchText} />
+              <SearchBar onChange={ this.handleChange } name="searchText" value={ this.state.searchText } />
             </div>
           </div >
           <h4 className="sub-header"> Edit book</h4>
           <div className="form-group input-field">
             <label htmlFor="ebookTitle">Title</label>
             <input
-              disabled={!this.state.pointer} name="bookTitle"
-              type="text" value={this.state.bookTitle}
+              disabled={ !this.state.pointer } name="bookTitle"
+              type="text" value={ this.state.bookTitle }
               className="form-control validate" id="ebookTitle"
               placeholder="Book Title" required
-              onChange={this.handleInputChange}
+              onChange={ this.handleInputChange }
             />
           </div>
           <div className="form-group input-field">
             <label htmlFor="ebookAuthor">Author</label>
             <input
-              name="author" disabled={!this.state.pointer}
-              type="text" value={this.state.author}
+              name="author" disabled={ !this.state.pointer }
+              type="text" value={ this.state.author }
               className="form-control validate" id="ebookAuthor"
               placeholder="Author" required
-              onChange={this.handleInputChange}
+              onChange={ this.handleInputChange }
             />
           </div>
           <div className="form-group input-field">
             <label htmlFor="ebookCat">Category</label>
             <input
-              name="category" disabled={!this.state.pointer}
-              type="text" value={this.state.category}
+              name="category" disabled={ !this.state.pointer }
+              type="text" value={ this.state.category }
               className="form-control validate" id="ebookCat"
               placeholder="Category" required
-              onChange={this.handleInputChange}
+              onChange={ this.handleInputChange }
             />
           </div>
           <div className="form-group input-field">
             <label htmlFor="eISBN">ISBN</label>
             <input
-              name="isbn" disabled={!this.state.pointer}
-              type="text" value={this.state.isbn}
+              name="isbn" disabled={ !this.state.pointer }
+              type="text" value={ this.state.isbn }
               className="form-control validate" id="eISBN"
               placeholder="ISBN" required
-              onChange={this.handleInputChange}
+              onChange={ this.handleInputChange }
             />
           </div>
           <div className="form-group input-field">
             <label htmlFor="estock">Number in stock</label>
             <input
-              name="stocknumber" disabled={!this.state.pointer}
-              type="number" value={this.state.stocknumber}
+              name="stocknumber" disabled={ !this.state.pointer }
+              type="number" value={ this.state.stocknumber }
               className="form-control validate"
               id="estock" placeholder="Number in stock" required
-              onChange={this.handleInputChange}
+              onChange={ this.handleInputChange }
             />
           </div>
 
@@ -326,18 +322,18 @@ class UpdateBooksPage extends React.Component {
               type="textarea" name="summary"
               className="form-control validate"
               id="ebookSummary" placeholder="Summary"
-              required disabled={!this.state.pointer}
-              value={this.state.summary}
-              onChange={this.handleInputChange}
+              required disabled={ !this.state.pointer }
+              value={ this.state.summary }
+              onChange={ this.handleInputChange }
             />
           </div>
           <div className="file-field input-field">
             <div id="filebtn" className="btn">
               <span>File</span>
               <input
-                disabled={!this.state.pointer}
+                disabled={ !this.state.pointer }
                 className="fileInput" type="file"
-                id="photoInput" onChange={this.handleImageChange}
+                id="photoInput" onChange={ this.handleImageChange }
                 accept=".png, .jpg, .jpeg"
               />
             </div>
@@ -347,27 +343,27 @@ class UpdateBooksPage extends React.Component {
           </div>
 
           <SingleActionModal
-            id={'modalE'} heading={'Oh!'}
-            message={this.state.errors ? this.state.errors : this.state.modalErrorMessage}
-            onHandleExit={this.handleExit}
+            id={ 'modalE' } heading={ 'Oh!' }
+            message={ this.state.errors ? this.state.errors : this.state.modalErrorMessage }
+            onHandleExit={ this.handleExit }
           />
           <SingleActionModal
-            id={'modalS'} heading={'Done!'}
-            message={this.state.message ? this.state.message : ''}
-            onHandleExit={this.handleExit}
+            id={ 'modalS' } heading={ 'Done!' }
+            message={ this.state.message ? this.state.message : '' }
+            onHandleExit={ this.handleExit }
           />
           <DoubleActionModal
-            id={'modalO'}
-            onHandleClick={this.handleClick}
-            onHandleClose={this.handleClose}
-            bookTitle={this.state.bookTitle}
-            heading={'Do you want to Update this book?'}
+            id={ 'modalO' }
+            onHandleClick={ this.handleClick }
+            onHandleClose={ this.handleClose }
+            bookTitle={ this.state.bookTitle }
+            heading={ 'Do you want to Update this book?' }
           />
 
           <div className="form-inline">
             <button
-              disabled={!this.state.pointer}
-              onClick={this.handleOpen} style={{ marginTop: '10px', width: '300px' }} id="updatebtn" type="button"
+              disabled={ !this.state.pointer }
+              onClick={ this.handleOpen } style={{ marginTop: '10px', width: '300px' }} id="updatebtn" type="button"
               className="btn-sm pbtn"
             >Update</button>
           </div>
@@ -387,9 +383,8 @@ UpdateBooksPage.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    filteredData: state.getFilteredBooks.filteredData,
+    filteredData: state.getFilteredBooks[0].filteredData,
     item: state.updateBooks,
-
   };
 }
 export default connect(mapStateToProps, {

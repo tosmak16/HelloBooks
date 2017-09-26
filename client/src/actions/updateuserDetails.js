@@ -20,7 +20,7 @@ export default function updateUser(userData) {
       }
     ).catch(error => {
 
-      dispatch(updateuserError(error.response.data));
+      dispatch(updateuserError(error.response.data ? error.response.data : 'Error'));
     });
   }
 

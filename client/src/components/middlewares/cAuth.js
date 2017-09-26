@@ -38,7 +38,7 @@ export default function (Comp) {
 
   function mapStateToProps(state) {
     return {
-      isAuthenticated: state.auth.isAuthenticated
+      isAuthenticated: state.auth[0].isAuthenticated
     };
   }
   return connect(mapStateToProps, { popMessage })(Authenticate);

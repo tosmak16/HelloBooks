@@ -5,15 +5,14 @@ import lodash from 'lodash';
 
 import BooksCollection from './BooksCollection';
 
-let i = 0;
+
 let sortedData = '';
 let display = null;
 class BooksCategory extends React.Component {
   render() {
-    sortedData = this.props.data[i];
+    sortedData = this.props.data[0];
     if (lodash.isObject(sortedData)) {
       display = <BooksCollection heading={ `${sortedData.category} Books` } data={ sortedData.categoryData } />;
-      i += 1;
     }
     return (
       <div className="row">

@@ -1,14 +1,29 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import isEmpty from 'lodash/isEmpty';
+
+import getUserdetails from '../../actions/getUserDetails';
+
+let imgName = '';
+let display = true;
+const show = true;
 
 class DashboardSidebar extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      show: true,
+      imageName: '',
+    };
 
     this.handleClickBookShelf = this.handleClickBookShelf.bind(this);
     this.handleClickAccount = this.handleClickAccount.bind(this);
     this.handleClickHistory = this.handleClickHistory.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
   }
+
+
   handleClickBookShelf(e) {
     e.preventDefault();
     document.getElementById('bb_table').style.display = 'block';
@@ -37,6 +52,31 @@ class DashboardSidebar extends React.Component {
     document.getElementById('b_page').style.display = 'none';
     document.getElementById('ch_pas').style.display = 'block';
   }
+
+
+  componentWillMount() {
+    if (!this.props.data) {
+      this.props.getUserdetails();
+    }
+  }
+
+  componentDidMount() {
+    //  imgName = this.props.data[0];
+
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.data && display) {
+      imgName = nextProps.data[0];
+      display = false;
+    }
+  }
+
+  componentWillUpdate() {
+
+  }
+
+
   render() {
     return (
       <div className="row">
@@ -45,7 +85,7 @@ class DashboardSidebar extends React.Component {
             <ul className="sidebar-nav" style={{ marginTop: '10px' }} >
               <li>
                 <div id="imageborder">
-                  <img id="userimg" src={ require('../../../public/img/userimg.jpg') } width="120" height="120" alt="images" />
+                  <img id="userimg" src={ !isEmpty(imgName.profileImage) ? require(`../../../public/img/${imgName.profileImage}`) : require('../../../public/img/userimg.png') } width="120" height="120" alt="images" />
                 </div>
               </li>
               <li>
@@ -73,5 +113,13 @@ class DashboardSidebar extends React.Component {
     );
   }
 }
+function mapStateToProps(state) {
+  return {
+    data: state.UserDetails[0].data,
+    userDataError: state.UserDetails[0].error,
+    isRefreshed: state.refreshPage[0].isRefreshed,
+    image: state.userProfileImage[0].response
+  };
+}
 
-export default DashboardSidebar;
+export default connect(mapStateToProps, { getUserdetails })(DashboardSidebar);

@@ -8,7 +8,7 @@ export function uploadImage(file) {
   data.append('file', file);
   return (dispatch) => {
     dispatch(uploadimageRequest(data));
-    axios.post('/api/v2/book', data).then(
+    axios.post('/api/v2/books/image', data).then(
       (res) => {
         dispatch(uploadimageResponse(res));
       }

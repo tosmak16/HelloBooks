@@ -9,27 +9,27 @@ const initialState = {
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case UPDATE_BOOK_REQUEST:
-      return [...state, {
+      return [{
         data: action.bookData,
         error: '',
         isUpdating: true,
         response: ''
-      }];
+      }, ...state];
     case UPDATE_BOOK_SUCCESS:
-      return [...state, {
+      return [{
         response: action.response,
         data: '',
         error: '',
         isUpdating: false,
-      }];
+      }, ...state];
     case UPDATE_BOOK_FAILURE:
-      return [...state, {
+      return [{
         error: action.error,
         data: '',
         isUpdating: false,
         response: ''
 
-      }];
+      }, ...state];
     default:
       return state;
   }

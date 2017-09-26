@@ -9,7 +9,7 @@ import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
 import getbooks from '../../actions/getBooks';
 
-let i = 1;
+
 let sortedData = '';
 
 class UploadBooksPage extends React.Component {
@@ -126,7 +126,7 @@ class UploadBooksPage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    sortedData = nextProps.item[i];
+    sortedData = nextProps.item[0];
     if (this.state.display) {
       if (!lodash.isEmpty(sortedData.error)) {
         this.setState({
@@ -134,7 +134,6 @@ class UploadBooksPage extends React.Component {
           error: sortedData.error
         });
         document.getElementById('modalError').style.display = 'block';
-        i += 2;
       } else if (!lodash.isEmpty(sortedData.response)) {
         this.props.uploadImage(this.state.file);
         this.setState({
@@ -143,7 +142,6 @@ class UploadBooksPage extends React.Component {
           message: sortedData.response,
         });
         document.getElementById('modalSuccess').style.display = 'block';
-        i += 2;
       }
     }
   }
