@@ -16,6 +16,17 @@ class BooksPage extends React.Component {
     if (!this.props.isFetched) {
       this.props.getbooks(false);
     }
+
+    localStorage.removeItem('bookId');
+    localStorage.removeItem('id');
+
+    localStorage.removeItem('category');
+    localStorage.removeItem('isbn');
+    localStorage.removeItem('stocknumber');
+    localStorage.removeItem('author');
+    localStorage.removeItem('summary');
+    localStorage.removeItem('bookTitle');
+    localStorage.removeItem('image');
   }
 
 

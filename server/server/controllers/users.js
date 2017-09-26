@@ -184,26 +184,26 @@ export default {
                 print = 0;
                 membershipType = out.membershipType;
                 if (membershipType === 'Basic') {
-                  if (length !== 1) {
+                  if (length >= 1) {
                     print = 1;
                   } else {
                     print = 0;
                   }
                 } else if (membershipType === 'Silver') {
-                  if (length !== 4) {
+                  if (length >= 4) {
                     print = 1;
                   } else {
                     print = 0;
                   }
                 } else if (membershipType === 'Gold') {
-                  if (length !== 10) {
+                  if (length >= 7) {
                     print = 1;
                   } else {
                     print = 0;
                   }
                 }
 
-                if (print === 0) {
+                if (print === 1) {
                   return res.status(403).send(`Sorry you can not borrow more than ${length} books`);
                 }
                 return db.Books
