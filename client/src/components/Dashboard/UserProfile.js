@@ -7,7 +7,6 @@ import isEmpty from 'lodash/isEmpty';
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
 import updateUser from '../../actions/updateuserDetails';
-import { uploadAvatar } from '../../actions/uploadUserAvatar';
 import refreshPage from '../../actions/refreshPage';
 import getUserdetails from '../../actions/getUserDetails';
 
@@ -44,41 +43,11 @@ class Userprofile extends React.Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
-    // this.handleSelected = this.handleChange.bind(this);
-    this.handleImageChange = this.handleImageChange.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
-    // this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleExit = this.handleExit.bind(this);
   }
 
-  handleImageChange(e) {
-    e.preventDefault();
-    const reader = new FileReader();
-    const file = e.target.files[0];
-    reader.onload = () => {
-      const image = new Image();
-
-      image.src = reader.result;
-
-      image.onload = () => {
-        this.setState({
-          imageHeight: image.height,
-          imageWidth: image.width,
-          imageSize: file.size,
-        });
-      };
-    };
-    reader.onloadend = () => {
-      this.setState({
-        file,
-        imagePreviewUrl: reader.result,
-        profileImage: Date.now() + file.name,
-      });
-    };
-
-    reader.readAsDataURL(file);
-  }
 
   handleExit(e) {
     e.preventDefault();
@@ -114,18 +83,6 @@ class Userprofile extends React.Component {
     }
 
     if (!this.state.disabled) {
-      if (this.state.file) {
-        if (this.state.imageHeight !== 200 || this.state.imageWidth !== 150) {
-          pointer = false;
-          this.setState({ modalErrorMessage: 'Please image height  and width must be 200 and 150 respectively' });
-          document.getElementById('modalE').style.display = 'block';
-        } else if (this.state.imageSize > 500000) {
-          pointer = false;
-          this.setState({ modalErrorMessage: 'Please image size must not be more than 500kb' });
-          document.getElementById('modalE').style.display = 'block';
-        }
-      }
-
       if (this.state.firstName && this.state.lastName && this.state.email && this.state.membershipType && pointer) {
         this.setState({
           modalErrorMessage: '',
@@ -177,8 +134,6 @@ class Userprofile extends React.Component {
           message: sortedData.data,
           imageloaded: true
         });
-        this.state.file ? this.props.uploadAvatar(this.state.file) : '';
-
         document.getElementById('modalS').style.display = 'block';
       }
     }
@@ -244,20 +199,6 @@ class Userprofile extends React.Component {
             <option value="Gold">Gold</option>
           </select>
 
-          <div className="file-field input-field">
-            <div id="filebtn" className="btn">
-              <span>File</span>
-
-              <input
-                disabled={ this.state.disabled } className="fileInput" id="photoInput" onChange={ this.handleImageChange } type="file"
-                accept=".png, .jpg, .jpeg"
-              />
-            </div>
-            <div className="file-path-wrapper">
-              <input className="file-path validate" type="text" placeholder="Upload profile image" />
-            </div>
-          </div>
-
           <SingleActionModal
             id={ 'modalE' } heading={ 'Oh!' }
             message={ this.state.error ? this.state.error : this.state.modalErrorMessage }
@@ -299,4 +240,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { updateUser, uploadAvatar, refreshPage, getUserdetails })(Userprofile);
+export default connect(mapStateToProps, { updateUser, refreshPage, getUserdetails })(Userprofile);
