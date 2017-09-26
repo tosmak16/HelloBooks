@@ -1,10 +1,35 @@
 import jwt from 'jsonwebtoken';
 import { SHA256 } from 'crypto-js';
+import isEmpty from 'lodash/isEmpty';
+
+
 import db from '../models/index';
+
+
+import multer from 'multer';
+
+
+// const upload = multer({ dest: 'client/public/' });
+
+let filename = '';
+
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, './client/public/img/');
+  },
+  filename(req, file, cb) {
+    cb(null, filename);
+  }
+});
+
+export const uploadAvatar = multer({
+  storage
+}).single('file');
 
 let membershipType;
 let print;
 let length;
+
 
 /**
   * @param { object } req
@@ -22,36 +47,53 @@ export default {
   signup(req, res) {
     if (!(req.body.password && req.body.username && req.body.email &&
       req.body.firstName && req.body.lastName && req.body.membershipType)) {
-      return res.status(400).send(' please enter the required fields');
+      return res.status(400).send('please enter the required fields');
     }
-    db.Users.create({
-      username: req.body.username.toLowerCase(),
-      password: SHA256(req.body.password).toString(),
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email.toLowerCase(),
-      membershipType: req.body.membershipType,
-      role: 'user',
+    db.Users
+      .findOne({
+        attributes: ['username'],
+        where: {
+          username: req.body.username.toLowerCase(),
+        },
 
-    })
-      .then(result => res.status(201).send({ message: 'Account created', result }))
-      .catch(error => res.status(400).send(error));
+      }).then((m) => {
+        if (m.username) {
+          res.status(400).send('username already exist');
+        }
+      }).catch((error) => {
+        db.Users.create({
+          username: req.body.username.toLowerCase(),
+          password: SHA256(req.body.password).toString(),
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.email.toLowerCase(),
+          membershipType: req.body.membershipType,
+          role: req.body.role ? 'admin' : 'user',
+
+
+        })
+          .then(result => res.status(201).send({ message: 'Account created', result, error }))
+          .catch((e) => {
+            res.status(400).send(e.errors[0].message);
+          });
+      },
+    );
   },
   /**
-* @method signin
-* @desc it's a method that ensure registered users can login
-* @param { object } req
-* @param { object} res
-* @returns { object } response
-*/
+  * @method signin
+  * @desc it's a method that ensure registered users can login
+  * @param { object } req
+  * @param { object} res
+  * @returns { object } response
+  */
 
   signin(req, res) {
     if (!(req.body.password && req.body.username)) {
-      return res.status(400).send(' please enter the required fields');
+      return res.status(400).send('please enter the required fields');
     }
     db.Users
-      .findAll({
-        attributes: ['username'],
+      .findOne({
+        attributes: ['username', 'id', 'role'],
         where: {
           username: req.body.username.toLowerCase(),
           password: SHA256(req.body.password).toString(),
@@ -60,15 +102,15 @@ export default {
       })
       .then((result) => {
         if (result.length === 0) {
-          res.status(400).send();
+          res.status(404).send('username and password is incorrect');
         } else {
           // create a token
-          jwt.sign(req.body.username, 'encoded', (err, token) => {
-            res.status(200).send({ message: 'You have successfully logged in', result, token });
+          jwt.sign({ id: result.id, user: result.username, role: result.role }, 'encoded', (err, token) => {
+            res.status(200).send({ message: 'You have successfully logged in', token });
           });
         }
       })
-      .catch(error => res.status(400).send(error));
+      .catch(error => res.status(404).send('username and password is incorrect'));
   },
   /**
   * @method list
@@ -78,20 +120,32 @@ export default {
   * @returns { object } response
   */
   list(req, res) {
+    if (req.decoded.role === 'user') {
+      return res.status(403).send('Access Denied!');
+    }
     return db.Users
       .all()
-      .then(result => res.status(200).send(result))
+      .then(result => res.status(200).send({ message: 'Success!', result }))
       .catch(error => res.status(400).send(error));
   },
+
+
+
   /**
-* @method borrowbooks
-* @desc This is a method that peroforms the action of borrowing books
-* @param { object } req
-* @param { object} res
-* @returns { object } response
-*/
+  * @method borrowbooks
+  * @desc This is a method that peroforms the action of borrowing books
+  * @param { object } req
+  * @param { object} res
+  * @returns { object } response
+  */
 
   borrowBooks(req, res) {
+    if (req.params.userId != req.decoded.id) {
+      return res.status(403).send('Invalid Identity');
+    }
+    if (!(req.params.userId && req.body.bookId)) {
+      return res.status(403).send('Book process not allowed');
+    }
     db.borrowbook
       .findAll({
         attributes: ['userId', 'bookId'],
@@ -104,9 +158,7 @@ export default {
       })
       .then((output) => {
         if ((output.length !== 0)) {
-          return res.status(404).send({
-            message: 'You have borrowed this book before',
-          });
+          return res.status(403).send('You have borrowed this book before please return it before you can borrow again!');
         }
 
         db.borrowbook
@@ -132,7 +184,7 @@ export default {
                 print = 0;
                 membershipType = out.membershipType;
                 if (membershipType === 'Basic') {
-                  if (length !== 3) {
+                  if (length !== 1) {
                     print = 1;
                   } else {
                     print = 0;
@@ -152,135 +204,211 @@ export default {
                 }
 
                 if (print === 0) {
-                  return res.status(400).send({
-                    message: `Sorry you can not borrow more than ${length} books`,
-                  });
+                  return res.status(403).send(`Sorry you can not borrow more than ${length} books`);
                 }
-                db.Users
-                  .findById(req.params.userId)
-                  .then((report) => {
-                    if (report.username !== req.decoded) {
-                      return res.status(404).send({
-                        message: 'Invalid Identity',
-                      });
+                return db.Books
+                  .findById(req.body.bookId)
+                  .then((result) => {
+                    if (!result) {
+                      return res.status(404).send('Book Not Found');
                     }
-                    return db.Books
-                      .findById(req.body.bookId)
-                      .then((result) => {
-                        if (!result) {
-                          return res.status(404).send({
-                            message: 'book Not Found',
-                          });
-                        }
 
-                        if (result.stocknumber === 0) {
-                          return res.status(404).send({
-                            message: 'Book Not available in stock',
-                          });
-                        }
+                    if (result.stocknumber === 0) {
+                      return res.status(404).send('Book Not available in stock');
+                    }
 
-                        result.update({ stocknumber: (result.stocknumber - 1) });
+                    result.update({ stocknumber: (result.stocknumber - 1) });
 
-                        return db.borrowbook
-                          .create({
-                            brdate: Date.now(),
-                            retype: false,
-                            userId: req.params.userId,
-                            bookId: result.id,
+                    return db.borrowbook
+                      .create({
+                        brdate: Date.now(),
+                        retype: false,
+                        userId: req.params.userId,
+                        bookId: result.id,
 
 
-                          })
-                          .then(ouput => res.status(200).send({ message: 'Book added to personal archive. happy reading!', ouput }))
-                          .catch(error => res.status(400).send(error));
                       })
+                      .then(ouput => res.status(200).send({ message: 'Book added to personal archive. happy reading!', ouput }))
                       .catch(error => res.status(400).send(error));
-                  }).catch(error => res.status(400).send(error));
+                  })
+                  .catch(error => res.status(400).send(error));
               }).catch(error => res.status(400).send(error));
           }).catch(error => res.status(400).send(error));
       }).catch(error => res.status(400).send(error));
   },
 
   /**
-* @method getUnreturnedbooks
-* @desc This is a method that peroforms the action of listing all 
-  borrowed books that are yet to be returned
-* @param { object } req
-* @param { object} res
-* @returns { object } response
-*/
+  * @method getUnreturnedbooks
+  * @desc This is a method that peroforms the action of listing 
+  * @desc all borrowed books that are yet to be returned
+  * @param { object } req
+  * @param { object} res
+  * @returns { object } response
+  */
   getUnreturnedBooks(req, res) {
-    db.Users
-      .findById(req.params.userId)
-      .then((report) => {
-        if (report.username !== req.decoded) {
-          return res.status(404).send({
-            message: 'Invalid Identity',
-          });
-        }
-        return db.borrowbook
-          .findAll({
-            where: {
-              retype: req.query.returned,
-              userId: req.params.userId,
-            },
-          }).then(result =>
-            res.status(200).send({ message: 'Borrowed books history retrieved', result }))
-          .catch(error => res.status(400).send(error));
-      }).catch(error => res.status(400).send(error));
+    if (req.params.userId != req.decoded.id) {
+      return res.status(403).send('Invalid Identity');
+    }
+    if (!(req.params.userId && req.query.returned)) {
+      return res.status(403).send('Book process not allowed');
+    }
+    return db.borrowbook
+      .findAll({
+        where: {
+          retype: req.query.returned,
+          userId: req.params.userId,
+        },
+      }).then(result =>
+        res.status(200).send({ message: 'Borrowed books history retrieved', result }))
+      .catch(error => res.status(400).send(error));
   },
 
   /**
-* @method returnBooks
-* @desc This is a method that peroforms the action of returning borrowed books
+  * @method returnBooks
+  * @desc This is a method that peroforms the action of returning borrowed books
+  * @param { object } req
+  * @param { object} res
+  * @returns { object } response
+  */
+  returnBooks(req, res) {
+    if (req.params.userId != req.decoded.id) {
+      return res.status(403).send('Invalid Identity');
+    }
+    if (!(req.params.userId && req.body.bookId)) {
+      return res.status(403).send('Book process not allowed');
+    }
+    return db.borrowbook
+      .findById(req.body.Id)
+      .then((ouput) => {
+        if (!ouput) {
+          return res.status(404).send('Record Not Found');
+        }
+        if (ouput.retype === true) {
+          return res.status(403).send('This book has been returned before');
+        }
+
+        return ouput
+          .update({
+            retype: true,
+            rdate: Date.now(),
+
+          })
+          .then((result) => {
+            db.Books
+              .findById(result.bookId)
+              .then((re) => {
+                re
+                  .update({
+                    stocknumber: (re.stocknumber + 1),
+                  });
+              }).catch(error => res.status(400).send(error));
+            res.status(200).send({ message: 'book has been returned successfully' });
+          })
+          .catch(error => res.status(400).send(error));
+      })
+      .catch(error => res.status(400).send(error));
+  },
+
+  /**
+* @method getBorrowedbooks
+* @desc This is a method that peroforms the action of listing 
+* @desc all borrowed boks by a user
 * @param { object } req
 * @param { object} res
 * @returns { object } response
 */
-  returnBooks(req, res) {
-    db.Users
+  getBorrowedBooks(req, res) {
+    if (req.params.userId != req.decoded.id) {
+      return res.status(403).send('Invalid Identity');
+    }
+    if (!(req.params.userId)) {
+      return res.status(403).send('Book process not allowed');
+    }
+    return db.borrowbook
+      .findAll({
+        where: {
+          userId: req.params.userId,
+        },
+      }).then(result =>
+        res.status(200).send({ message: 'Borrowed books history retrieved', result }))
+      .catch(error => res.status(400).send(error));
+  },
+
+  getUserDetails(req, res) {
+    if (req.params.userId != req.decoded.id) {
+      return res.status(403).send('Invalid Identity');
+    }
+    return db.Users
+      .findAll({
+        attributes: ['firstName', 'lastName', 'email', 'mobileNumber', 'membershipType', 'profileImage'],
+        where: {
+          id: req.params.userId,
+        },
+      }).then(result => res.status(200).send({ message: 'Success!', result }))
+      .catch(error => res.status(400).send(error))
+  },
+
+  updateUser(req, res) {
+    filename = req.body.profileImage;
+    if (req.params.userId != req.decoded.id) {
+      return res.status(403).send('Invalid Identity');
+    }
+    return db.Users
       .findById(req.params.userId)
-      .then((report) => {
-        if (report.username !== req.decoded) {
-          return res.status(404).send({
-            message: 'Invalid Identity',
-          });
+      .then((result) => {
+        if (isEmpty(result)) {
+          return res.status(404).send('User does not exist');
         }
-        return db.borrowbook
-          .findById(req.body.Id)
-          .then((ouput) => {
-            if (!ouput) {
-              return res.status(404).send({
-                message: 'Record Not Found',
-              });
-            }
-            if (ouput.retype === true) {
-              return res.status(404).send({
-                message: 'This book has been returned before',
-              });
-            }
-
-            return ouput
-              .update({
-                retype: true,
-                rdate: Date.now(),
-
-              })
-              .then((result) => {
-                db.Books
-                  .findById(result.bookId)
-                  .then((re) => {
-                    re
-                      .update({
-                        stocknumber: (re.stocknumber + 1),
-                      });
-                  }).catch(error => res.status(400).send(error));
-                res.status(200).send({ message: 'book has been returned successfully' });
-              })
-              .catch(error => res.status(400).send(error));
+        return result
+          .update({
+            firstName: req.body.firstName || result.firstName,
+            lastName: req.body.lastName || result.lastName,
+            mobileNumber: req.body.mobileNumber || result.mobileNumber,
+            membershipType: req.body.membershipType || result.membershipType,
+            profileImage: req.body.profileImage || result.profileImage,
           })
-          .catch(error => res.status(400).send(error));
-      }).catch(error => res.status(400).send(error));
+          .then(() => res.status(200).send({ message: 'Details has been updated', result }))
+          .catch(error => res.status(400).send(error.errors[0].message));
+      })
+      .catch(error => res.status(400).send(error.errors[0].message));
   },
 
 
+  changePassword(req, res) {
+    if (req.params.userId != req.decoded.id) {
+      return res.status(403).send('Invalid Identity');
+    }
+    return db.Users
+      .findOne({
+        where: {
+          id: req.params.userId,
+          password: SHA256(req.body.oldPassword).toString()
+        },
+      }).then(result => {
+        if (isEmpty(result)) {
+          return res.status(404).send('Current password is wrong');
+        }
+
+        return result
+          .update({
+            password: SHA256(req.body.newPassword).toString() || result.password,
+          })
+          .then(() => res.status(200).send({ message: 'Password has been changed', result }))
+          .catch(error => res.status(400).send(error.errors[0].message));
+      })
+      .catch(error => res.status(400).send(error.errors[0].message))
+  },
+
+  // / upload user profile image
+  uploadAvatar(req, res) {
+    uploadAvatar(req, res, (err) => {
+      if (err) {
+        // An error occurred when uploading
+        res.status(400).send('Invalid input field');
+      }
+      // Everything went fine
+
+      res.status(200).send({ message: 'Image uploaded successfully' });
+    });
+  }
 };

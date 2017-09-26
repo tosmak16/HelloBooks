@@ -4,5 +4,7 @@ README.md
 package.json
 test
 template/
+client/actions/
+client/src/actions
 
 

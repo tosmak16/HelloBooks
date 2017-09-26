@@ -1,3 +1,4 @@
+process.env.NODE_ENV = 'test';
 import jwt from 'jsonwebtoken';
 import sequelise from 'sequelize';
 import pg from 'pg';
@@ -19,74 +20,148 @@ const expect = chai.expect;
 
 
 chai.use(chaiHttp);
-let token;
+let userToken;
 let adminToken;
 const next = sinon.spy();
 
+
+
+
 // Registration test
 describe('Check for user registration', () => {
-  it('it should not register the user because no required parameter was inputed', (done) => {
+  it('should register user if username does not exist and if all required parameters are inputed', (done) => {
+    const user = {
+      username: 'user',
+      password: SHA256('user').toString(),
+      firstName: 'bayren',
+      lastName: 'helen',
+      email: 'user@gmail.com',
+      membershipType: 'Basic',
+    };
     chai.request(server)
-      .post('/api/users/signup')
+      .post('/api/v2/users/signup')
+      .send(user)
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(201);
+        expect(res.body.message).to.equal('Account created')
         done();
       });
   });
-  it('should register user if username does not exist and if all required parameters are inputed', (done) => {
+
+  it('should register admin if username does not exist and if all required parameters are inputed', (done) => {
     const user = {
-      username: 'y34',
-      password: SHA256('hello').toString(),
+      username: 'admin',
+      password: SHA256('admin').toString(),
+      firstName: 'bayren',
+      lastName: 'helen',
+      email: 'user@gmail.com',
+      membershipType: 'Basic',
+      role: 'admin',
+    };
+    chai.request(server)
+      .post('/api/v2/users/signup')
+      .send(user)
+      .end((err, res) => {
+        res.should.have.status(201);
+        expect(res.body.message).to.equal('Account created')
+        done();
+      });
+  });
+
+  it('it should not register the user because no required parameter was inputed', (done) => {
+    chai.request(server)
+      .post('/api/v2/users/signup')
+      .end((err, res) => {
+        res.should.have.status(400);
+        expect(res.text).to.equal('please enter the required fields')
+        done();
+      });
+  });
+
+
+
+  it('should not register user if username does exist and if all required parameters are inputed', (done) => {
+    const user = {
+      username: 'admin',
+      password: SHA256('admin').toString(),
       firstName: 'bayren',
       lastName: 'helen',
       email: 'user@gmail.com',
       membershipType: 'basic',
-      role: 'user',
+      role: 'admin',
     };
     chai.request(server)
-      .post('/api/users/signup')
+      .post('/api/v2/users/signup')
       .send(user)
       .end((err, res) => {
-        if (!err) {
-          res.text;
-          res.should.have.status(201);
-        } else {
-          res.should.have.status(400);
-        }
-
+        res.should.have.status(400);
+        expect(res.text).to.equal('username already exist')
         done();
       });
   });
+  it('should not register user if the length of firstname is less than 3 and if all required parameters are inputed', (done) => {
+    const user = {
+      username: 'admins',
+      password: SHA256('admin').toString(),
+      firstName: 'b',
+      lastName: 'helen',
+      email: 'user@gmail.com',
+      membershipType: 'basic',
+      role: 'admin',
+    };
+    chai.request(server)
+      .post('/api/v2/users/signup')
+      .send(user)
+      .end((err, res) => {
+        res.should.have.status(400);
+        expect(res.text).to.equal('Firstname should be longer than two characters')
+        done();
+      });
+  });
+
+
 });
 
 // sign in test
 
 describe('Check for login ', () => {
-  it('should not allow the user to login', (done) => {
+  it('should not allow the user to login if the required fields are not inputed', (done) => {
     chai.request(server)
-      .post('/api/users/signin')
+      .post('/api/v2/users/signin')
       .end((err, res) => {
+        expect(res.text).to.equal('please enter the required fields')
         res.should.have.status(400);
         done();
       });
   });
   it('should generate token and allow the user to login', (done) => {
     const user = {
-      username: 'y34',
-      password: SHA256('hello').toString(),
+      username: 'user',
+      password: SHA256('user').toString(),
     };
     chai.request(server)
-      .post('/api/users/signin')
+      .post('/api/v2/users/signin')
       .send(user)
       .end((err, res) => {
-        if (err) {
-          res.should.have.status(400);
-        } else {
-          console.log(res.text);
-          token = res.body.token;
-          res.should.have.status(201);
-          console.log(token);
-        }
+        userToken = res.body.token
+        res.should.have.status(200)
+        expect(res.body.message).to.equal('You have successfully logged in')
+        done();
+      });
+  });
+
+
+  it('should not allow the user to login if username and password are incorrct', (done) => {
+    const user = {
+      username: 'user',
+      password: SHA256('user22').toString(),
+    };
+    chai.request(server)
+      .post('/api/v2/users/signin')
+      .send(user)
+      .end((err, res) => {
+        res.should.have.status(404)
+        expect(res.text).to.equal('username and password is incorrect')
         done();
       });
   });
@@ -94,57 +169,143 @@ describe('Check for login ', () => {
   it('should generate token for admin to login', (done) => {
     const user = {
       username: 'admin',
-      password: SHA256('hello').toString(),
+      password: SHA256('admin').toString(),
     };
     chai.request(server)
-      .post('/api/users/signin')
+      .post('/api/v2/users/signin')
       .send(user)
       .end((err, res) => {
-        if (err) {
-          res.should.have.status(400);
-        } else {
-          console.log(res.text);
-          adminToken = res.body.token;
-          res.should.have.status(201);
-          console.log(adminToken);
-        }
+        adminToken = res.body.token;
+        expect(res.body.message).to.equal('You have successfully logged in')
+        res.should.have.status(200);
         done();
       });
   });
 });
 
-// Authetication middleware
+// //Authetication middleware
 describe('Check for token for user authentication', () => {
-  it('should return token not provided if no token was entered', (done) => {
+  it('should return token not provided if no token in the request', (done) => {
     chai.request(server)
-      .post('/')
+      .post('/api/v2/users/1/books')
       .end((err, res) => {
-        console.log(res.text);
+        expect(res.text).to.equal('Token not provided')
         res.should.have.status(404);
         done();
       });
   });
+  it('should return Invalid user if wrong token  is provided in the request', (done) => {
+    chai.request(server)
+      .post('/api/v2/users/1/books')
+      .set('token', userToken + '1')
+      .end((err, res) => {
+        expect(res.text).to.equal('Invalid user')
+        res.should.have.status(403);
+        done();
+      });
+  });
 });
 
-// borrow books API route Test
+
+// Test for add books API route
+describe('Check for Add books API route', () => {
+  it('should return add new books if the user is an admin and the required book information are inputed', (done) => {
+    const books = {
+      bookTitle: 'Borrowing brilliance',
+      author: 'David kord Murray',
+      category: 'Educational',
+      isbn: '1225467890876567',
+      stocknumber: '2',
+    };
+    chai.request(server)
+      .post('/api/v2/books')
+      .send(books)
+      .set('token', adminToken)
+      .end((err, res) => {
+        expect(res.body.message).to.equal('Book has been added to store')
+        res.should.have.status(201);
+        done();
+      });
+  });
+  it('should return add new books if the user is an admin and the required book information are inputed', (done) => {
+    const books = {
+      bookTitle: 'Borrowing brilliance',
+      author: 'David kord Murray',
+      category: 'Educational',
+      isbn: '1225467890976567',
+      stocknumber: '0',
+    };
+    chai.request(server)
+      .post('/api/v2/books')
+      .send(books)
+      .set('token', adminToken)
+      .end((err, res) => {
+        expect(res.body.message).to.equal('Book has been added to store')
+        res.should.have.status(201);
+        done();
+      });
+  });
+  it('should return 403 Acceess denied if the user is not an admin', (done) => {
+    chai.request(server)
+      .post('/api/v2/books')
+      .set('token', userToken)
+      .end((err, res) => {
+        res.should.have.status(403)
+        expect(res.text).to.equal('Access Denied!')
+        done();
+      });
+  });
+  it('should return 400 bad request if the user is an admin but the required book information are not inputed', (done) => {
+    chai.request(server)
+      .post('/api/v2/books')
+      .set('token', adminToken)
+      .end((err, res) => {
+        res.should.have.status(400);
+        expect(res.text).to.equal('please enter the required book details')
+        done();
+      });
+  });
+
+
+  it('should return error if the same isbn number is used for another book', (done) => {
+    const books = {
+      bookTitle: 'Time Mchine',
+      author: 'David lome',
+      category: 'Educational',
+      isbn: '1225467890876567',
+      stocknumber: '2',
+    };
+    chai.request(server)
+      .post('/api/v2/books')
+      .send(books)
+      .set('token', adminToken)
+      .end((err, res) => {
+        res.should.have.status(400);
+        expect(res.text).to.equal('error! check the book information')
+        done();
+      });
+  });
+});
+
+// // borrow books API route Test
 describe('check borrowbooks route', () => {
   it('should return 404 invalid user ', (done) => {
     chai.request(server)
-      .post('/api/users/1/books')
-      .set('token', token)
+      .post('/api/v2/users/2/books')
+      .set('token', userToken)
       .end((err, res) => {
-        res.should.have.status(404);
-        console.log(res.text);
+        res.should.have.status(403);
+        expect(res.text).to.equal('Invalid Identity')
         done();
       });
   });
-  it('should not borrow a book if bookId is not specified', (done) => {
+  it('should not borrow a book if bookId and userId is not specified', (done) => {
     chai.request(server)
-      .post('/api/users/26/books')
-      .set('token', token)
+      .post('/api/v2/users/1/books')
+      .set('token', userToken)
       .end((err, res) => {
-        res.should.have.status(404);
-        console.log(res.text);
+        res.should.have.status(403);
+        expect(res.text).to.equal('Book process not allowed')
         done();
       });
   });
@@ -152,61 +313,85 @@ describe('check borrowbooks route', () => {
   it('should not borrow a book if bookId is specified but user is invalid', (done) => {
     const bookId = '7';
     chai.request(server)
-      .post('/api/users/1/books')
-      .set('token', token)
+      .post('/api/v2/users/1/books')
+      .set('token', userToken)
       .send({ bookId })
       .end((err, res) => {
         res.should.have.status(404);
-        console.log(res.text);
+        expect(res.text).to.equal('Book Not Found')
         done();
       });
   });
   it('should not borrow a book if the number in stock is zero', (done) => {
-    const bookId = '1';
+    const bookId = '2';
     chai.request(server)
-      .post('/api/users/26/books')
-      .set('token', token)
+      .post('/api/v2/users/1/books')
+      .set('token', userToken)
       .send({ bookId })
       .end((err, res) => {
         res.should.have.status(404);
-        console.log(res.text);
+        expect(res.text).to.equal('Book Not available in stock')
         done();
       });
   });
   it('should borrow a book if number in stock is not zero', (done) => {
-    const bookId = '4';
+    const bookId = '1';
     chai.request(server)
-      .post('/api/users/26/books')
-      .set('token', token)
+      .post('/api/v2/users/1/books')
+      .set('token', userToken)
       .send({ bookId })
       .end((err, res) => {
         res.should.have.status(200);
-        console.log(res.text);
+        expect(res.body.message).to.equal('Book added to personal archive. happy reading!')
+        done();
+      });
+  });
+  it('should not allow user to borrow a book more than once if not returned', (done) => {
+    const bookId = '1';
+    chai.request(server)
+      .post('/api/v2/users/1/books')
+      .set('token', userToken)
+      .send({ bookId })
+      .end((err, res) => {
+        res.should.have.status(403);
+        expect(res.text).to.equal('You have borrowed this book before please return it before you can borrow again!')
+        done();
+      });
+  });
+  it('should not borrow a book if user has exceeded borrowing limit', (done) => {
+    const bookId = '2';
+    chai.request(server)
+      .post('/api/v2/users/1/books')
+      .set('token', userToken)
+      .send({ bookId })
+      .end((err, res) => {
+        res.should.have.status(403);
+        expect(res.text).to.equal('Sorry you can not borrow more than 1 books')
         done();
       });
   });
 });
 
-// Test for return borrowed books
+// // Test for return borrowed books
 
 describe('Check for return borrowed books API route', () => {
-  it('should return 404 invalid user if user used the wrong route ', (done) => {
+  it('should return 403 invalid user if user used the wrong route ', (done) => {
     chai.request(server)
-      .put('/api/users/1/books')
-      .set('token', token)
+      .put('/api/v2/users/2/books')
+      .set('token', userToken)
       .end((err, res) => {
-        res.should.have.status(404);
-        console.log(res.text);
+        res.should.have.status(403);
+        expect(res.text).to.equal('Invalid Identity');
         done();
       });
   });
   it('should not allow user to return borrowed book if bookId is not specified', (done) => {
     chai.request(server)
-      .put('/api/users/26/books')
-      .set('token', token)
+      .put('/api/v2/users/1/books')
+      .set('token', userToken)
       .end((err, res) => {
-        res.should.have.status(404);
-        console.log(res.text);
+        res.should.have.status(403);
+        expect(res.text).to.equal('Book process not allowed')
         done();
       });
   });
@@ -214,87 +399,98 @@ describe('Check for return borrowed books API route', () => {
   it('should not return borrowed book if bookId is specified but user is invalid', (done) => {
     const bookId = '7';
     chai.request(server)
-      .put('/api/users/1/books')
-      .set('token', token)
+      .put('/api/v2/users/2/books')
+      .set('token', userToken)
       .send({ bookId })
       .end((err, res) => {
-        res.should.have.status(404);
-        console.log(res.text);
+        res.should.have.status(403);
+        expect(res.text).to.equal('Invalid Identity');
         done();
       });
   });
   it('should return borrowed book if the book has not been returned before or vice versa', (done) => {
-    const bookId = '7';
-    const Id = 26;
+    const bookId = 1;
+    const Id = 1;
     chai.request(server)
-      .put('/api/users/26/books')
-      .set('token', token)
+      .put('/api/v2/users/1/books')
+      .set('token', userToken)
       .send({ bookId, Id })
       .end((err, res) => {
-        if (!err) {
-          res.should.have.status(200);
-          console.log(res.text);
-        } else {
-          res.should.have.status(404);
-          console.log(res.text);
-        }
-
+        res.should.have.status(200);
+        expect(res.body.message).to.equal('book has been returned successfully');
         done();
       });
   });
 
   it('should return record not found if the book was not borrowed', (done) => {
-    const bookId = '7';
+    const bookId = '1';
     const Id = 100;
     chai.request(server)
-      .put('/api/users/26/books')
-      .set('token', token)
+      .put('/api/v2/users/1/books')
+      .set('token', userToken)
       .send({ bookId, Id })
       .end((err, res) => {
         res.should.have.status(404);
-        console.log(res.text);
-
+        expect(res.text).to.equal('Record Not Found');
+        done();
+      });
+  });
+  it('should not return book that has been returned', (done) => {
+    const bookId = 1;
+    const Id = 1;
+    chai.request(server)
+      .put('/api/v2/users/1/books')
+      .set('token', userToken)
+      .send({ bookId, Id })
+      .end((err, res) => {
+        res.should.have.status(403);
+        expect(res.text).to.equal('This book has been returned before');
         done();
       });
   });
 });
 
-// Test for unreturned books
+// // Test for unreturned books
 
 describe('Check for unreturned books API route', () => {
-  it('should return 404 invalid Identity', (done) => {
+  it('should return 403 invalid Identity', (done) => {
     chai.request(server)
-      .get('/api/users/1/books')
-      .set('token', token)
+      .get('/api/v2/users/2/books')
+      .set('token', userToken)
       .end((err, res) => {
-        res.should.have.status(404);
-        console.log(res.text);
+        res.should.have.status(403);
+        expect(res.text).to.equal('Invalid Identity');
         done();
       });
   });
-  it('should return Jwt Authentication error (Invalid signature)', (done) => {
+  it('should not return borrowed book if bookId is not specified', (done) => {
     chai.request(server)
-      .get('/api/users/1/books')
-      .set('token', `${token}1`)
+      .get('/api/v2/users/1/books')
+      .set('token', userToken)
       .end((err, res) => {
         res.should.have.status(403);
-        console.log(res.text);
+        expect(res.text).to.equal('Book process not allowed')
+        done();
+      });
+  });
+  it('should return Jwt Authentication error (Invalid user)', (done) => {
+    chai.request(server)
+      .get('/api/v2/users/1/books')
+      .set('token', `${userToken}1`)
+      .end((err, res) => {
+        res.should.have.status(403);
+        expect(res.text).to.equal('Invalid user')
         done();
       });
   });
   it('should return all books that are yet to be returned', (done) => {
     const returned = false;
     chai.request(server)
-      .get('/api/users/26/books?returned=false')
-      .set('token', token)
+      .get('/api/v2/users/1/books?returned=false')
+      .set('token', userToken)
       .end((err, res) => {
-        if (!err) {
-          res.should.have.status(200);
-          console.log(res.body);
-        } else {
-          res.should.have.status(404);
-          console.log(res.text);
-        }
+        res.should.have.status(200);
+        expect(res.body.message).to.equal('Borrowed books history retrieved')
         done();
       });
   });
@@ -302,139 +498,113 @@ describe('Check for unreturned books API route', () => {
 
 // To test for delete book API route
 describe('Check for Delete books API route', () => {
-  it('should return 404 invalid Identity', (done) => {
+  it('should return 403 Access denied if the user is not an admin', (done) => {
     chai.request(server)
-      .delete('/api/users/1/books')
-      .set('token', token)
+      .delete('/api/v2/books/2')
+      .set('token', userToken)
+      .end((err, res) => {
+        res.should.have.status(403);
+        expect(res.text).to.equal('Access Denied!')
+        done();
+      });
+  });
+
+  it('should not allow an admin to delete a book if book specified does not exist', (done) => {
+    chai.request(server)
+      .delete('/api/v2/books/5')
+      .set('token', adminToken)
       .end((err, res) => {
         res.should.have.status(404);
-        console.log(res.text);
+        expect(res.text).to.equal('Book does not exist')
         done();
       });
   });
-  it('should return 403 Access denied if the user is not an admin and vice versa', (done) => {
-    const bookId = '5';
+
+  it('should allow an admin to delete a book if book specified does exist', (done) => {
     chai.request(server)
-      .delete('/api/users/26/books')
-      .set('token', token)
-      .send({ bookId })
+      .delete('/api/v2/books/2')
+      .set('token', adminToken)
       .end((err, res) => {
-        if (err) {
-          res.should.have.status(403);
-          console.log(res.body.message);
-        } else {
-          res.should.have.status(204);
-          console.log(res.text);
-        }
+        res.should.have.status(204);
+        expect(res.text).to.equal('')
         done();
       });
   });
 });
 
-// Test for add books API route
-describe('Check for Add books API route', () => {
-  it('should return 403 Acceess denied if the user is not an admin', (done) => {
-    chai.request(server)
-      .post('/api/books')
-      .set('token', token)
-      .end((err, res) => {
-        if (err) {
-          res.should.have.status(403) || res.should.have.status(400);
-          console.log(res.text);
-        } else {
-          res.should.have.status(201);
-          console.log(res.text);
-        }
-        done();
-      });
-  });
-  it('should return 400 bad request if the user is an admin but the required book information are not inputed', (done) => {
-    chai.request(server)
-      .post('/api/books')
-      .set('token', adminToken)
-      .end((err, res) => {
-        if (err) {
-          res.should.have.status(400);
-          console.log(res.text);
-        } else {
-          res.should.have.status(201);
-          console.log(res.text);
-        }
-        done();
-      });
-  });
-
-  it('should return add new books if the user is an admin and the required book information are inputed', (done) => {
-    const books = {
-      bookTitle: 'Borrowing brilliance',
-      author: 'David kord Murray',
-      category: 'Educational',
-      isbn: 'fjhbkjjkjbj',
-      stocknumber: '30',
-    };
-    chai.request(server)
-      .post('/api/books')
-      .send(books)
-      .set('token', adminToken)
-      .end((err, res) => {
-        if (err) {
-          res.should.have.status(400);
-          console.log(res.text);
-        } else {
-          res.should.have.status(201);
-          console.log(res.body);
-        }
-        done();
-      });
-  });
-});
-// Test Edit books API route
+// // Test Edit books API route
 
 describe('Check for Update books API route', () => {
   it('should return 403 Acceess denied if the user is not an admin', (done) => {
     chai.request(server)
-      .put('/api/books/1/')
-      .set('token', token)
+      .put('/api/v2/books/1')
+      .set('token', userToken)
       .end((err, res) => {
-        if (err) {
-          res.should.have.status(403) || res.should.have.status(400);
-          console.log(res.text);
-        } else {
-          res.should.have.status(201);
-          console.log(res.text);
-        }
+        res.should.have.status(403);
+        expect(res.text).to.equal('Access Denied!');
         done();
       });
   });
-  it('should return 403 book does not exist if the user is an admin but the book has not been added', (done) => {
+  it('should return 404 book does not exist if the user is an admin but the book has not been added', (done) => {
     chai.request(server)
-      .put('/api/books/30')
+      .put('/api/v2/books/30')
       .set('token', adminToken)
       .end((err, res) => {
-        if (err) {
-          res.should.have.status(404);
-          console.log(res.text);
-        } else {
-          res.should.have.status(201);
-          console.log(res.text);
-        }
+        res.should.have.status(404);
+        expect(res.text).to.equal('Book does not exist');
         done();
       });
   });
   it('should return update the book if the user is an admin and the book exist', (done) => {
     const author = 'David murray';
     chai.request(server)
-      .put('/api/books/5')
+      .put('/api/v2/books/1')
       .set('token', adminToken)
       .send({ author })
       .end((err, res) => {
-        if (err) {
-          res.should.have.status(400);
-          console.log(res.text);
-        } else {
-          res.should.have.status(200);
-          console.log(res.text);
-        }
+        res.should.have.status(200);
+        expect(res.body.message).to.equal('Book has been updated');
+        done();
+      });
+  });
+});
+
+//Test for get all books
+
+describe('Check for get all books api', () => {
+  it('should return status 200 for getting all books', (done) => {
+    chai.request(server)
+      .get('/api/v2/books')
+      .set('token', userToken)
+      .end((err, res) => {
+        res.should.have.status(200);
+        expect(res.body.message).to.equal('Success!');
+        done();
+      });
+  });
+});
+
+//Test for get all user
+
+describe('Check for get all books api', () => {
+  it('should return status 200 for getting all users', (done) => {
+    chai.request(server)
+      .get('/api/v2/users')
+      .set('token', adminToken)
+      .end((err, res) => {
+        res.should.have.status(200);
+        expect(res.body.message).to.equal('Success!');
+        done();
+      });
+  });
+
+  it('should return 403 Access denied if the user is not an admin', (done) => {
+    chai.request(server)
+      .get('/api/v2/users')
+      .set('token', userToken)
+      .end((err, res) => {
+        res.should.have.status(403);
+        expect(res.text).to.equal('Access Denied!')
         done();
       });
   });

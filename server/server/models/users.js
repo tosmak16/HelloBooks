@@ -10,7 +10,7 @@ export default (sequelize, DataTypes) => {
         },
         len: {
           args: [3, 100],
-          msg: 'Firstname should be longer than two characters',
+          msg: 'username should be longer than two characters',
         },
       },
     },
@@ -70,7 +70,7 @@ export default (sequelize, DataTypes) => {
         },
         len: {
           args: [3, 100],
-          msg: 'Firstname should be longer than two characters',
+          msg: 'Lastname should be longer than two characters',
         },
       },
     },
@@ -84,6 +84,26 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       defaultValue: 'Basic',
+    },
+    profileImage: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+
+    mobileNumber: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        isNumeric: {
+          args: true,
+          msg: 'mobile number must be a number',
+        },
+        len: {
+          args: [2, 15],
+          msg: 'mobile number should be 2 to 15 digits',
+        },
+
+      },
     },
   }, {
     classMethods: {
