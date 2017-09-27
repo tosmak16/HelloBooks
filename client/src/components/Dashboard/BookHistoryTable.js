@@ -67,15 +67,18 @@ class BorrowHistoryTable extends React.Component {
 }
 
 BorrowHistoryTable.propTypes = {
+  bookData: PropTypes.array.isRequired,
+  data: PropTypes.array.isRequired,
   getbooks: PropTypes.func.isRequired,
   getborrowedBooks: PropTypes.func.isRequired,
+  isRefreshed: PropTypes.bool.isRequired,
   refreshPage: PropTypes.func.isRequired,
+
 
 };
 
 function mapStateToProps(state) {
   return {
-    error: state.getborrowedBooks[0].error,
     data: state.getborrowedBooks[0].data,
     bookData: state.books[0].data,
     isRefreshed: state.refreshPage[0].isRefreshed

@@ -52,7 +52,10 @@ class BooksPage extends React.Component {
 }
 
 BooksPage.propTypes = {
-
+  categoryData: PropTypes.array.isRequired,
+  data: PropTypes.array.isRequired,
+  getbooks: PropTypes.func.isRequired,
+  isFetched: PropTypes.bool.isRequired,
 
 };
 

@@ -1,11 +1,11 @@
 import { UPLOAD_BOOK_FAILURE, UPLOAD_BOOK_SUCCESS, UPLOAD_BOOK_REQUEST } from '../actions/uploadBooks';
 
-const initialState = {
+const initialState = [{
   data: '',
   error: '',
   isUploading: false,
   response: ''
-};
+}];
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case UPLOAD_BOOK_REQUEST:

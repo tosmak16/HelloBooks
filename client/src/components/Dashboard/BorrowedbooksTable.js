@@ -163,16 +163,20 @@ class BorrowedbooksTable extends React.Component {
 }
 
 BorrowedbooksTable.propTypes = {
+  bookData: PropTypes.array.isRequired,
+  data: PropTypes.array.isRequired,
   getbooks: PropTypes.func.isRequired,
   getunreturnedBooks: PropTypes.func.isRequired,
+  isRefreshed: PropTypes.bool.isRequired,
+  item: PropTypes.array.isRequired,
   refreshPage: PropTypes.func.isRequired,
   returnbook: PropTypes.func.isRequired,
+
 
 };
 
 function mapStateToProps(state) {
   return {
-    error: state.getunreturnedBooks[0].error,
     data: state.getunreturnedBooks[0].data,
     bookData: state.books[0].data,
     isRefreshed: state.refreshPage[0].isRefreshed,

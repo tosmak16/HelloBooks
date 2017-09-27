@@ -375,10 +375,14 @@ class UpdateBooksPage extends React.Component {
 }
 
 UpdateBooksPage.propTypes = {
+  filteredData: PropTypes.array.isRequired,
   getbooks: PropTypes.func.isRequired,
+  item: PropTypes.array.isRequired,
   searchbooks: PropTypes.func.isRequired,
   updateBook: PropTypes.func.isRequired,
   uploadImage: PropTypes.func.isRequired,
+
+
 };
 
 function mapStateToProps(state) {

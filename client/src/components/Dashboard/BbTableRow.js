@@ -20,7 +20,10 @@ class BbTableRow extends React.Component {
 }
 
 BbTableRow.propTypes = {
+  bookItem: PropTypes.array.isRequired,
   onHandleClick: PropTypes.func.isRequired,
+  row: PropTypes.object.isRequired,
+
 };
 
 export default BbTableRow;

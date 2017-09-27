@@ -21,6 +21,7 @@ class TableRow extends React.Component {
 
 TableRow.propTypes = {
   onDelete: PropTypes.func.isRequired,
+  row: PropTypes.object.isRequired,
 };
 
 export default TableRow;

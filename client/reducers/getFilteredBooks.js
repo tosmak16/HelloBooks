@@ -1,7 +1,7 @@
 import { SEARCH_BOOKS } from '../actions/getFilteredBooks';
 
 const initialState = [{
-  filteredData: '',
+  filteredData: [],
 }];
 export default (state = initialState, action = {}) => {
   switch (action.type) {

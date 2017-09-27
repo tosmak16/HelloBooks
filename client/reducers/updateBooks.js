@@ -1,11 +1,11 @@
 import { UPDATE_BOOK_FAILURE, UPDATE_BOOK_SUCCESS, UPDATE_BOOK_REQUEST } from '../actions/updateBooks';
 
-const initialState = {
+const initialState = [{
   data: '',
   error: '',
   isUpdating: false,
   response: ''
-};
+}];
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case UPDATE_BOOK_REQUEST:

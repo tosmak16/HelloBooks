@@ -53,8 +53,9 @@ class BooksCollection extends React.Component {
 }
 
 BooksCollection.propTypes = {
-  checkBookDetails: PropTypes.func.isRequired
-
+  checkBookDetails: PropTypes.func.isRequired,
+  data: PropTypes.array.isRequired,
+  heading: PropTypes.string.isRequired,
 };
 
 export default connect(null, { checkBookDetails })(BooksCollection);

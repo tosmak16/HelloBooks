@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
+import PropTypes from 'prop-types';
 
 import getUserdetails from '../../actions/getUserDetails';
 import DoubleActionModal from '../modal/DoubleActionModal';
@@ -122,52 +123,17 @@ class DashboardSidebar extends React.Component {
   }
 
 
-  handleClickBookShelf(e) {
-    e.preventDefault();
-    document.getElementById('bb_table').style.display = 'block';
-    document.getElementById('b_page').style.display = 'none';
-    document.getElementById('bh_table').style.display = 'none';
-    document.getElementById('ch_pas').style.display = 'none';
-  }
-  handleClickAccount(e) {
-    e.preventDefault();
-    document.getElementById('b_page').style.display = 'block';
-    document.getElementById('bb_table').style.display = 'none';
-    document.getElementById('bh_table').style.display = 'none';
-    document.getElementById('ch_pas').style.display = 'none';
-  }
-  handleClickHistory(e) {
-    e.preventDefault();
-    document.getElementById('bh_table').style.display = 'block';
-    document.getElementById('bb_table').style.display = 'none';
-    document.getElementById('b_page').style.display = 'none';
-    document.getElementById('ch_pas').style.display = 'none';
-  }
-  handleChangePassword(e) {
-    e.preventDefault();
-    document.getElementById('bh_table').style.display = 'none';
-    document.getElementById('bb_table').style.display = 'none';
-    document.getElementById('b_page').style.display = 'none';
-    document.getElementById('ch_pas').style.display = 'block';
-  }
-
-
   componentWillMount() {
-    if (!this.props.data) {
-      this.props.getUserdetails();
-      this.setState({
-        display: true,
-      });
-    }
+
   }
 
   componentDidMount() {
-    //  imgName = this.props.data[0];
+
 
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.data && this.state.display) {
+    if (!isEmpty(nextProps.data)) {
       imgName = nextProps.data[0];
       this.setState({
         display: false,
@@ -205,6 +171,36 @@ class DashboardSidebar extends React.Component {
 
   componentWillUpdate() {
 
+  }
+
+
+  handleClickBookShelf(e) {
+    e.preventDefault();
+    document.getElementById('bb_table').style.display = 'block';
+    document.getElementById('b_page').style.display = 'none';
+    document.getElementById('bh_table').style.display = 'none';
+    document.getElementById('ch_pas').style.display = 'none';
+  }
+  handleClickAccount(e) {
+    e.preventDefault();
+    document.getElementById('b_page').style.display = 'block';
+    document.getElementById('bb_table').style.display = 'none';
+    document.getElementById('bh_table').style.display = 'none';
+    document.getElementById('ch_pas').style.display = 'none';
+  }
+  handleClickHistory(e) {
+    e.preventDefault();
+    document.getElementById('bh_table').style.display = 'block';
+    document.getElementById('bb_table').style.display = 'none';
+    document.getElementById('b_page').style.display = 'none';
+    document.getElementById('ch_pas').style.display = 'none';
+  }
+  handleChangePassword(e) {
+    e.preventDefault();
+    document.getElementById('bh_table').style.display = 'none';
+    document.getElementById('bb_table').style.display = 'none';
+    document.getElementById('b_page').style.display = 'none';
+    document.getElementById('ch_pas').style.display = 'block';
   }
 
 
@@ -283,15 +279,24 @@ class DashboardSidebar extends React.Component {
     );
   }
 }
+
+DashboardSidebar.propTypes = {
+  data: PropTypes.array.isRequired,
+  error: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  updateUser: PropTypes.func.isRequired,
+  uploadAvatar: PropTypes.func.isRequired
+
+};
+
 function mapStateToProps(state) {
   return {
-    data: state.UserDetails[0].data,
-    userDataError: state.UserDetails[0].error,
-    isRefreshed: state.refreshPage[0].isRefreshed,
+    //  data: state.UserDetails[0].data,
     image: state.userProfileImage[0].response,
     error: state.updateUser[0].error,
     message: state.updateUser[0].data,
   };
 }
 
-export default connect(mapStateToProps, { getUserdetails, updateUser, uploadAvatar })(DashboardSidebar);
+export default connect(mapStateToProps, { updateUser, uploadAvatar })(DashboardSidebar);

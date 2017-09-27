@@ -1,11 +1,11 @@
 import { DELETE_BOOK_FAILURE, DELETE_BOOK_SUCCESS, DELETE_BOOK_REQUEST } from '../actions/deleteBooks';
 
-const initialState = {
+const initialState = [{
   data: '',
   error: '',
   isDeleting: false,
   response: ''
-};
+}];
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case DELETE_BOOK_REQUEST:

@@ -268,6 +268,7 @@ class UploadBooksPage extends React.Component {
 }
 UploadBooksPage.propTypes = {
   getbooks: PropTypes.func.isRequired,
+  item: PropTypes.array.isRequired,
   uploadBook: PropTypes.func.isRequired,
   uploadImage: PropTypes.func.isRequired,
 };

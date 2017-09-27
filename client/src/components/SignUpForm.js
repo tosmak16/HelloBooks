@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Icon, Input, Row } from 'react-materialize';
+import { Button, Input, Row } from 'react-materialize';
 
 
 import map from 'lodash/map';

@@ -7,8 +7,6 @@ import isEmpty from 'lodash/isEmpty';
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
 import updateUser from '../../actions/updateuserDetails';
-import refreshPage from '../../actions/refreshPage';
-import getUserdetails from '../../actions/getUserDetails';
 
 
 let sortedData = '';
@@ -108,7 +106,7 @@ class Userprofile extends React.Component {
     // this.setState({
     //   firstName: nextProps.data.firstName
     // });
-    if (!isEmpty(this.props.data) && this.state.show) {
+    if (!isEmpty(nextProps.data) && this.state.show) {
       this.setState({
         firstName: nextProps.data[0].firstName,
         lastName: nextProps.data[0].lastName,
@@ -135,19 +133,6 @@ class Userprofile extends React.Component {
           imageloaded: true
         });
         document.getElementById('modalS').style.display = 'block';
-      }
-    }
-
-    if (this.state.imageloaded) {
-      if (nextProps.image.status === 200) {
-        //  setTimeout(() => { this.props.getUserdetails(); }, 3000);
-        // this.props.getUserdetails();
-        this.setState({
-          imageloaded: false,
-        });
-        // this.props.getbooks(true);
-
-        this.props.getUserdetails();
       }
     }
   }
@@ -228,16 +213,17 @@ class Userprofile extends React.Component {
 }
 
 Userprofile.propTypes = {
+  item: PropTypes.array.isRequired,
+  updateUser: PropTypes.func.isRequired,
+
 
 };
 
 function mapStateToProps(state) {
   return {
-    bookData: state.books[0].data,
-    isRefreshed: state.refreshPage[0].isRefreshed,
     item: state.updateUser,
-    image: state.userProfileImage[0].response
+
   };
 }
 
-export default connect(mapStateToProps, { updateUser, refreshPage, getUserdetails })(Userprofile);
+export default connect(mapStateToProps, { updateUser })(Userprofile);

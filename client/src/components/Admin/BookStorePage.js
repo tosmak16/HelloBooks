@@ -183,9 +183,13 @@ class BookStorePage extends React.Component {
 BookStorePage.propTypes = {
 
   deleteBook: PropTypes.func.isRequired,
+  filteredData: PropTypes.array.isRequired,
   getbooks: PropTypes.func.isRequired,
   isRefreshed: PropTypes.bool.isRequired,
+  item: PropTypes.array.isRequired,
   refreshPage: PropTypes.func.isRequired,
+  searchbooks: PropTypes.func.isRequired,
+
 
 };
 

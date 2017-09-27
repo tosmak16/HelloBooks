@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
+import PropTypes from 'prop-types';
 
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
@@ -157,6 +158,13 @@ class ChangePasswordPage extends React.Component {
     );
   }
 }
+
+ChangePasswordPage.propTypes = {
+  changePassword: PropTypes.func.isRequired,
+  item: PropTypes.array.isRequired,
+
+};
+
 
 function mapStateToProps(state) {
   return {
