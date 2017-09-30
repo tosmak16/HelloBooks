@@ -5,21 +5,46 @@ import jwtDecode from 'jwt-decode';
 import { getuserdetailsError, getuserdetailsReponse, getuserdetailsRequest } from '../../actions/getUserDetails';
 
 
-export default function getUserdetails() {
-  let decodedToken = jwtDecode(localStorage.jwtToken);
+export default function getUserdetails(token) {
+  let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;
 
   return (dispatch) => {
     dispatch(getuserdetailsRequest());
-    axios
-      .get('/api/v2/users/' + userId)
-      .then(
-      (res) => {
 
-        dispatch(getuserdetailsReponse(res.data.result));
-      }
-      ).catch(error => {
-        dispatch(getuserdetailsError('Error in getting data'))
+    return fetch('http://localhost:8000/api/v2/users/' + userId, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+        token: token
+      },
+    })
+      .then(
+      (res) => res.json())
+      .then((response) => {
+        if (response.status >= 400) {
+          throw response.message
+        }
+        else if (response.status === 200) {
+          dispatch(getuserdetailsReponse(response.result));
+        }
+      })
+      .catch(error => {
+        dispatch(getuserdetailsError(error))
       });
+
+
+
+    // axios
+    //   .get('/api/v2/users/' + userId)
+    //   .then(
+    //   (res) => {
+
+    //     dispatch(getuserdetailsReponse(res.data.result));
+    //   }
+    //   ).catch(error => {
+    //     dispatch(getuserdetailsError('Error in getting data'))
+    //   });
   };
 }

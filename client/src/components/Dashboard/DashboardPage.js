@@ -15,16 +15,10 @@ import refreshPage from '../../actions/refreshPage';
 class DashboardPage extends React.Component {
   componentWillMount() {
     if (isEmpty(this.props.userData)) {
-      this.props.getUserdetails();
+      this.props.getUserdetails(localStorage.jwtToken);
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.data && nextProps.isRefreshed) {
-      this.props.refreshPage(false);
-      this.props.getUserdetails();
-    }
-  }
   render() {
     return (
       <div >

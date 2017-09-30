@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1506785572984" clover="3.2.0">
+  <project timestamp="1506785572985" name="All files">
+    <metrics statements="359" coveredstatements="355" conditionals="164" coveredconditionals="126" methods="134" coveredmethods="134" elements="657" coveredelements="615" complexity="0" loc="359" ncloc="359" packages="5" files="53" classes="53">
+      <package name="hellobooks">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <file name="sum.js" path="C:\Users\Tosmak\desktop\hellobooks\sum.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="2" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="hellobooks.client.__mock__">
+        <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <file name="book.js" path="C:\Users\Tosmak\desktop\hellobooks\client\__mock__\book.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="21" type="stmt"/>
+        </file>
+        <file name="localStorage.js" path="C:\Users\Tosmak\desktop\hellobooks\client\__mock__\localStorage.js">
+          <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="26" type="stmt"/>
+          <line num="5" count="36" type="stmt"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="15" count="0" type="stmt"/>
+        </file>
+        <file name="user.js" path="C:\Users\Tosmak\desktop\hellobooks\client\__mock__\user.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="9" type="stmt"/>
+        </file>
+      </package>
+      <package name="hellobooks.client.actions">
+        <metrics statements="94" coveredstatements="94" conditionals="0" coveredconditionals="0" methods="45" coveredmethods="45"/>
+        <file name="UploadImages.js" path="C:\Users\Tosmak\desktop\hellobooks\client\actions\UploadImages.js">
+          <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+          <line num="2" count="9" type="stmt"/>
+          <line num="3" count="9" type="stmt"/>
+          <line num="4" count="9" type="stmt"/>
+          <line num="9" count="3" type="stmt"/>
+          <line num="17" count="2" type="stmt"/>
+          <line num="25" count="2" type="stmt"/>
+        </file>
+        <file name="actionTypes.js" path="C:\Users\Tosmak\desktop\hellobooks\client\actions\actionTypes.js">
+          <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="11" type="stmt"/>
+          <line num="2" count="11" type="stmt"/>
+          <line num="3" count="11" type="stmt"/>
+          <line num="4" count="11" type="stmt"/>
+        </file>
+        <file name="borrowBook.js" path="C:\Users\Tosmak\desktop\hellobooks\client\actions\borrowBook.js">
+          <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+          <line num="2" count="3" type="stmt"/>
+          <line num="3" count="3" type="stmt"/>
+          <line num="4" count="3" type="stmt"/>
+          <line num="9" count="3" type="stmt"/>
+          <line num="18" count="2" type="stmt"/>
+          <line num="27" count="2" type="stmt"/>
+        </file>
+        <file name="changePassword.js" path="C:\Users\Tosmak\desktop\hellobooks\client\actions\changePassword.js">
+          <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+          <line num="2" count="3" type="stmt"/>
+          <line num="3" count="3" type="stmt"/>
+          <line num="4" count="3" type="stmt"/>
+          <line num="9" count="3" type="stmt"/>
+          <line num="17" count="2" type="stmt"/>
+          <line num="25" count="2" type="stmt"/>
+        </file>
+        <file name="deleteBooks.js" path="C:\Users\Tosmak\desktop\hellobooks\client\actions\deleteBooks.js">
+          <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+          <line num="2" count="3" type="stmt"/>
+          <line num="3" count="3" type="stmt"/>
+          <line num="4" count="3" type="stmt"/>
+          <line num="9" count="3" type="stmt"/>
+          <line num="17" count="2" type="stmt"/>
+          <line num="25" count="2" type="stmt"/>
+        </file>
+        <file name="displayMessages.js" path="C:\Users\Tosmak\desktop\hellobooks\client\actions\displayMessages.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="4" count="2" type="stmt"/>
+        </file>
+        <file name="getBooks.js" path="C:\Users\Tosmak\desktop\hellobooks\client\actions\getBooks.js">
+          <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+          <line num="1" count="3" type="stmt"/>
+          <line num="2" count="3" type="stmt"/>
+          <line num="3" count="3" type="stmt"/>
+          <line num="7" count="3" type="stmt"/>
+          <line num="15" count="2" type="stmt"/>
+          <line num="24" count="2" type="stmt"/>
+        </file>
+        <file name="getUserDetails.js" path="C:\Users\Tosmak\desktop\hellobooks\client\actions\getUserDetails.js">
+          <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+          <line num="1" count="3" type="stmt"/>
+          <line num="2" count="3" type="stmt"/>
+          <line num="3" count="3" type="stmt"/>
+          <line num="7" count="3" type="stmt"/>
+          <line num="14" count="2" type="stmt"/>
+          <line num="22" count="2" type="stmt"/>
+        </file>
+        <file name="getborrowedBooks.js" path="C:\Users\Tosmak\desktop\hellobooks\client\actions\getborrowedBooks.js">
+          <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+          <line num="1" count="3" type="stmt"/>
+          <line num="2" count="3" type="stmt"/>
+          <line num="3" count="3" type="stmt"/>
+          <line num="7" count="3" type="stmt"/>
+          <line num="15" count="2" type="stmt"/>
+          <line num="24" count="2" type="stmt"/>
+        </file>
+        <file name="getunreturnedBooks.js" path="C:\Users\Tosmak\desktop\hellobooks\client\actions\getunreturnedBooks.js">
+          <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+          <line num="1" count="3" type="stmt"/>
+          <line num="2" count="3" type="stmt"/>
+          <line num="3" count="3" type="stmt"/>
+          <line num="7" count="3" type="stmt"/>
+          <line num="15" count="2" type="stmt"/>
+          <line num="24" count="2" type="stmt"/>
+        </file>
+        <file name="loginActions.js" path="C:\Users\Tosmak\desktop\hellobooks\client\actions\loginActions.js">
+          <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+          <line num="2" count="3" type="stmt"/>
+          <line num="3" count="3" type="stmt"/>
+          <line num="4" count="3" type="stmt"/>
+          <line num="9" count="3" type="stmt"/>
+          <line num="18" count="2" type="stmt"/>
+          <line num="27" count="2" type="stmt"/>
+        </file>
+        <file name="popMessages.js" path="C:\Users\Tosmak\desktop\hellobooks\client\actions\popMessages.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="4" count="1" type="stmt"/>
+        </file>
+        <file name="returnBook.js" path="C:\Users\Tosmak\desktop\hellobooks\client\actions\returnBook.js">
+          <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+          <line num="2" count="3" type="stmt"/>
+          <line num="3" count="3" type="stmt"/>
+          <line num="4" count="3" type="stmt"/>
+          <line num="9" count="3" type="stmt"/>
+          <line num="17" count="2" type="stmt"/>
+          <line num="25" count="2" type="stmt"/>
+        </file>
+        <file name="setCurrentuser.js" path="C:\Users\Tosmak\desktop\hellobooks\client\actions\setCurrentuser.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="4" count="2" type="stmt"/>
+        </file>
+        <file name="signupActions.js" path="C:\Users\Tosmak\desktop\hellobooks\client\actions\signupActions.js">
+          <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+          <line num="2" count="3" type="stmt"/>
+          <line num="3" count="3" type="stmt"/>
+          <line num="4" count="3" type="stmt"/>
+          <line num="8" count="3" type="stmt"/>
+          <line num="9" count="3" type="stmt"/>
+          <line num="17" count="3" type="stmt"/>
+          <line num="18" count="2" type="stmt"/>
+          <line num="26" count="3" type="stmt"/>
+          <line num="27" count="3" type="stmt"/>
+        </file>
+        <file name="updateBooks.js" path="C:\Users\Tosmak\desktop\hellobooks\client\actions\updateBooks.js">
+          <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+          <line num="2" count="3" type="stmt"/>
+          <line num="3" count="3" type="stmt"/>
+          <line num="4" count="3" type="stmt"/>
+          <line num="9" count="3" type="stmt"/>
+          <line num="17" count="2" type="stmt"/>
+          <line num="25" count="2" type="stmt"/>
+        </file>
+        <file name="uploadAvatar.js" path="C:\Users\Tosmak\desktop\hellobooks\client\actions\uploadAvatar.js">
+          <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+          <line num="2" count="3" type="stmt"/>
+          <line num="3" count="3" type="stmt"/>
+          <line num="4" count="3" type="stmt"/>
+          <line num="9" count="3" type="stmt"/>
+          <line num="17" count="2" type="stmt"/>
+          <line num="25" count="2" type="stmt"/>
+        </file>
+        <file name="uploadBooks.js" path="C:\Users\Tosmak\desktop\hellobooks\client\actions\uploadBooks.js">
+          <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+          <line num="2" count="3" type="stmt"/>
+          <line num="3" count="3" type="stmt"/>
+          <line num="4" count="3" type="stmt"/>
+          <line num="9" count="3" type="stmt"/>
+          <line num="17" count="2" type="stmt"/>
+          <line num="25" count="2" type="stmt"/>
+        </file>
+      </package>
+      <package name="hellobooks.client.reducers">
+        <metrics statements="92" coveredstatements="92" conditionals="92" coveredconditionals="76" methods="16" coveredmethods="16"/>
+        <file name="UserDetails.js" path="C:\Users\Tosmak\desktop\hellobooks\client\reducers\UserDetails.js">
+          <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="9" count="4" type="cond" truecount="4" falsecount="0"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="17" count="1" type="stmt"/>
+          <line num="23" count="1" type="stmt"/>
+          <line num="29" count="1" type="stmt"/>
+        </file>
+        <file name="books.js" path="C:\Users\Tosmak\desktop\hellobooks\client\reducers\books.js">
+          <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="10" count="4" type="cond" truecount="4" falsecount="0"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="26" count="1" type="stmt"/>
+          <line num="33" count="1" type="stmt"/>
+        </file>
+        <file name="borrowBooks.js" path="C:\Users\Tosmak\desktop\hellobooks\client\reducers\borrowBooks.js">
+          <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+          <line num="5" count="1" type="stmt"/>
+          <line num="13" count="4" type="cond" truecount="4" falsecount="0"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="23" count="1" type="stmt"/>
+          <line num="31" count="1" type="stmt"/>
+          <line num="40" count="1" type="stmt"/>
+        </file>
+        <file name="deleteBooks.js" path="C:\Users\Tosmak\desktop\hellobooks\client\reducers\deleteBooks.js">
+          <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="10" count="4" type="cond" truecount="4" falsecount="0"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="26" count="1" type="stmt"/>
+          <line num="34" count="1" type="stmt"/>
+        </file>
+        <file name="displayMessages.js" path="C:\Users\Tosmak\desktop\hellobooks\client\reducers\displayMessages.js">
+          <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="3" methods="1" coveredmethods="1"/>
+          <line num="5" count="1" type="stmt"/>
+          <line num="13" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="21" count="1" type="stmt"/>
+        </file>
+        <file name="getborrowedBooks.js" path="C:\Users\Tosmak\desktop\hellobooks\client\reducers\getborrowedBooks.js">
+          <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="10" count="4" type="cond" truecount="4" falsecount="0"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="26" count="1" type="stmt"/>
+          <line num="33" count="1" type="stmt"/>
+        </file>
+        <file name="getunreturnedBooks.js" path="C:\Users\Tosmak\desktop\hellobooks\client\reducers\getunreturnedBooks.js">
+          <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="10" count="4" type="cond" truecount="4" falsecount="0"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="26" count="1" type="stmt"/>
+          <line num="33" count="1" type="stmt"/>
+        </file>
+        <file name="log.js" path="C:\Users\Tosmak\desktop\hellobooks\client\reducers\log.js">
+          <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+          <line num="5" count="1" type="stmt"/>
+          <line num="13" count="4" type="cond" truecount="4" falsecount="0"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="23" count="1" type="stmt"/>
+          <line num="31" count="1" type="stmt"/>
+          <line num="39" count="1" type="stmt"/>
+        </file>
+        <file name="passwordChange.js" path="C:\Users\Tosmak\desktop\hellobooks\client\reducers\passwordChange.js">
+          <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="9" count="4" type="cond" truecount="4" falsecount="0"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="17" count="1" type="stmt"/>
+          <line num="23" count="1" type="stmt"/>
+          <line num="29" count="1" type="stmt"/>
+        </file>
+        <file name="popMessages.js" path="C:\Users\Tosmak\desktop\hellobooks\client\reducers\popMessages.js">
+          <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="3" methods="1" coveredmethods="1"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="14" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="22" count="1" type="stmt"/>
+        </file>
+        <file name="reg.js" path="C:\Users\Tosmak\desktop\hellobooks\client\reducers\reg.js">
+          <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+          <line num="5" count="1" type="stmt"/>
+          <line num="13" count="4" type="cond" truecount="4" falsecount="0"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="23" count="1" type="stmt"/>
+          <line num="31" count="1" type="stmt"/>
+          <line num="40" count="1" type="stmt"/>
+        </file>
+        <file name="returnBooks.js" path="C:\Users\Tosmak\desktop\hellobooks\client\reducers\returnBooks.js">
+          <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="10" count="4" type="cond" truecount="4" falsecount="0"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="26" count="1" type="stmt"/>
+          <line num="34" count="1" type="stmt"/>
+        </file>
+        <file name="updateBooks.js" path="C:\Users\Tosmak\desktop\hellobooks\client\reducers\updateBooks.js">
+          <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="10" count="4" type="cond" truecount="4" falsecount="0"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="26" count="1" type="stmt"/>
+          <line num="34" count="1" type="stmt"/>
+        </file>
+        <file name="uploadBooks.js" path="C:\Users\Tosmak\desktop\hellobooks\client\reducers\uploadBooks.js">
+          <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="10" count="4" type="cond" truecount="4" falsecount="0"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="26" count="1" type="stmt"/>
+          <line num="34" count="1" type="stmt"/>
+        </file>
+        <file name="uploadImages.js" path="C:\Users\Tosmak\desktop\hellobooks\client\reducers\uploadImages.js">
+          <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="10" count="4" type="cond" truecount="4" falsecount="0"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="26" count="1" type="stmt"/>
+          <line num="34" count="1" type="stmt"/>
+        </file>
+        <file name="userProfileImage.js" path="C:\Users\Tosmak\desktop\hellobooks\client\reducers\userProfileImage.js">
+          <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="10" count="4" type="cond" truecount="4" falsecount="0"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="26" count="1" type="stmt"/>
+          <line num="34" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="hellobooks.client.src.actions">
+        <metrics statements="165" coveredstatements="162" conditionals="72" coveredconditionals="50" methods="72" coveredmethods="72"/>
+        <file name="borrowBooks.js" path="C:\Users\Tosmak\desktop\hellobooks\client\src\actions\borrowBooks.js">
+          <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5"/>
+          <line num="13" count="2" type="stmt"/>
+          <line num="14" count="2" type="stmt"/>
+          <line num="16" count="2" type="stmt"/>
+          <line num="17" count="2" type="stmt"/>
+          <line num="18" count="2" type="stmt"/>
+          <line num="28" count="2" type="stmt"/>
+          <line num="30" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="31" count="1" type="stmt"/>
+          <line num="33" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="34" count="1" type="stmt"/>
+          <line num="38" count="1" type="stmt"/>
+        </file>
+        <file name="changePassword.js" path="C:\Users\Tosmak\desktop\hellobooks\client\src\actions\changePassword.js">
+          <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5"/>
+          <line num="10" count="2" type="stmt"/>
+          <line num="11" count="2" type="stmt"/>
+          <line num="12" count="2" type="stmt"/>
+          <line num="13" count="2" type="stmt"/>
+          <line num="15" count="2" type="stmt"/>
+          <line num="25" count="2" type="stmt"/>
+          <line num="27" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="28" count="1" type="stmt"/>
+          <line num="30" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="31" count="1" type="stmt"/>
+          <line num="35" count="1" type="stmt"/>
+        </file>
+        <file name="deleteBooks.js" path="C:\Users\Tosmak\desktop\hellobooks\client\src\actions\deleteBooks.js">
+          <metrics statements="11" coveredstatements="11" conditionals="8" coveredconditionals="6" methods="5" coveredmethods="5"/>
+          <line num="10" count="2" type="stmt"/>
+          <line num="11" count="2" type="stmt"/>
+          <line num="12" count="2" type="stmt"/>
+          <line num="22" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="23" count="1" type="stmt"/>
+          <line num="25" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="26" count="1" type="stmt"/>
+          <line num="30" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="31" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="32" count="1" type="stmt"/>
+          <line num="37" count="1" type="stmt"/>
+        </file>
+        <file name="getBooks.js" path="C:\Users\Tosmak\desktop\hellobooks\client\src\actions\getBooks.js">
+          <metrics statements="12" coveredstatements="12" conditionals="8" coveredconditionals="5" methods="5" coveredmethods="5"/>
+          <line num="9" count="2" type="stmt"/>
+          <line num="10" count="2" type="stmt"/>
+          <line num="11" count="2" type="stmt"/>
+          <line num="12" count="2" type="stmt"/>
+          <line num="18" count="2" type="stmt"/>
+          <line num="20" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="22" count="1" type="stmt"/>
+          <line num="24" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="25" count="1" type="stmt"/>
+          <line num="26" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="27" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="33" count="1" type="stmt"/>
+        </file>
+        <file name="getUserDetails.js" path="C:\Users\Tosmak\desktop\hellobooks\client\src\actions\getUserDetails.js">
+          <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5"/>
+          <line num="9" count="2" type="stmt"/>
+          <line num="10" count="2" type="stmt"/>
+          <line num="12" count="2" type="stmt"/>
+          <line num="13" count="2" type="stmt"/>
+          <line num="15" count="2" type="stmt"/>
+          <line num="24" count="2" type="stmt"/>
+          <line num="26" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="27" count="1" type="stmt"/>
+          <line num="29" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="30" count="1" type="stmt"/>
+          <line num="34" count="1" type="stmt"/>
+        </file>
+        <file name="getborrowedBooks.js" path="C:\Users\Tosmak\desktop\hellobooks\client\src\actions\getborrowedBooks.js">
+          <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5"/>
+          <line num="11" count="2" type="stmt"/>
+          <line num="12" count="2" type="stmt"/>
+          <line num="13" count="2" type="stmt"/>
+          <line num="14" count="2" type="stmt"/>
+          <line num="16" count="2" type="stmt"/>
+          <line num="22" count="2" type="stmt"/>
+          <line num="24" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="26" count="1" type="stmt"/>
+          <line num="28" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="29" count="1" type="stmt"/>
+          <line num="33" count="1" type="stmt"/>
+        </file>
+        <file name="getunreturnedBooks.js" path="C:\Users\Tosmak\desktop\hellobooks\client\src\actions\getunreturnedBooks.js">
+          <metrics statements="15" coveredstatements="13" conditionals="10" coveredconditionals="5" methods="5" coveredmethods="5"/>
+          <line num="11" count="2" type="stmt"/>
+          <line num="12" count="2" type="stmt"/>
+          <line num="13" count="2" type="stmt"/>
+          <line num="14" count="2" type="stmt"/>
+          <line num="15" count="2" type="stmt"/>
+          <line num="21" count="2" type="stmt"/>
+          <line num="23" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="24" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="25" count="1" type="stmt"/>
+          <line num="28" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="29" count="1" type="stmt"/>
+          <line num="32" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="33" count="0" type="stmt"/>
+          <line num="37" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="38" count="1" type="stmt"/>
+        </file>
+        <file name="loginAction.js" path="C:\Users\Tosmak\desktop\hellobooks\client\src\actions\loginAction.js">
+          <metrics statements="15" coveredstatements="14" conditionals="6" coveredconditionals="4" methods="5" coveredmethods="5"/>
+          <line num="13" count="2" type="stmt"/>
+          <line num="14" count="2" type="stmt"/>
+          <line num="16" count="2" type="stmt"/>
+          <line num="25" count="2" type="stmt"/>
+          <line num="27" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="29" count="1" type="stmt"/>
+          <line num="31" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="32" count="1" type="stmt"/>
+          <line num="33" count="1" type="stmt"/>
+          <line num="34" count="1" type="stmt"/>
+          <line num="35" count="1" type="stmt"/>
+          <line num="36" count="1" type="stmt"/>
+          <line num="37" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="38" count="0" type="stmt"/>
+          <line num="43" count="1" type="stmt"/>
+        </file>
+        <file name="logoutAction.js" path="C:\Users\Tosmak\desktop\hellobooks\client\src\actions\logoutAction.js">
+          <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="10" count="1" type="stmt"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+        </file>
+        <file name="returnBooks.js" path="C:\Users\Tosmak\desktop\hellobooks\client\src\actions\returnBooks.js">
+          <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5"/>
+          <line num="12" count="2" type="stmt"/>
+          <line num="13" count="2" type="stmt"/>
+          <line num="15" count="2" type="stmt"/>
+          <line num="16" count="2" type="stmt"/>
+          <line num="18" count="2" type="stmt"/>
+          <line num="28" count="2" type="stmt"/>
+          <line num="30" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="31" count="1" type="stmt"/>
+          <line num="33" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="34" count="1" type="stmt"/>
+          <line num="38" count="1" type="stmt"/>
+        </file>
+        <file name="signupAction.js" path="C:\Users\Tosmak\desktop\hellobooks\client\src\actions\signupAction.js">
+          <metrics statements="13" coveredstatements="13" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5"/>
+          <line num="13" count="2" type="stmt"/>
+          <line num="14" count="2" type="stmt"/>
+          <line num="15" count="2" type="stmt"/>
+          <line num="17" count="2" type="stmt"/>
+          <line num="26" count="2" type="stmt"/>
+          <line num="28" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="30" count="1" type="stmt"/>
+          <line num="32" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="33" count="1" type="stmt"/>
+          <line num="34" count="1" type="stmt"/>
+          <line num="35" count="1" type="stmt"/>
+          <line num="39" count="1" type="stmt"/>
+          <line num="44" count="2" type="stmt"/>
+        </file>
+        <file name="updateBooks.js" path="C:\Users\Tosmak\desktop\hellobooks\client\src\actions\updateBooks.js">
+          <metrics statements="9" coveredstatements="9" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5"/>
+          <line num="9" count="2" type="stmt"/>
+          <line num="10" count="2" type="stmt"/>
+          <line num="12" count="2" type="stmt"/>
+          <line num="22" count="2" type="stmt"/>
+          <line num="24" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="25" count="1" type="stmt"/>
+          <line num="27" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="28" count="1" type="stmt"/>
+          <line num="32" count="1" type="stmt"/>
+        </file>
+        <file name="uploadBooks.js" path="C:\Users\Tosmak\desktop\hellobooks\client\src\actions\uploadBooks.js">
+          <metrics statements="9" coveredstatements="9" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5"/>
+          <line num="9" count="2" type="stmt"/>
+          <line num="10" count="2" type="stmt"/>
+          <line num="12" count="2" type="stmt"/>
+          <line num="22" count="2" type="stmt"/>
+          <line num="24" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="25" count="1" type="stmt"/>
+          <line num="27" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="28" count="1" type="stmt"/>
+          <line num="32" count="1" type="stmt"/>
+        </file>
+        <file name="uploadImage.js" path="C:\Users\Tosmak\desktop\hellobooks\client\src\actions\uploadImage.js">
+          <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5"/>
+          <line num="7" count="2" type="stmt"/>
+          <line num="8" count="2" type="stmt"/>
+          <line num="9" count="2" type="stmt"/>
+          <line num="10" count="2" type="stmt"/>
+          <line num="12" count="2" type="stmt"/>
+          <line num="17" count="2" type="stmt"/>
+          <line num="19" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="20" count="1" type="stmt"/>
+          <line num="22" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="23" count="1" type="stmt"/>
+          <line num="27" count="1" type="stmt"/>
+        </file>
+        <file name="uploadUserAvatar.js" path="C:\Users\Tosmak\desktop\hellobooks\client\src\actions\uploadUserAvatar.js">
+          <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5"/>
+          <line num="7" count="2" type="stmt"/>
+          <line num="8" count="2" type="stmt"/>
+          <line num="9" count="2" type="stmt"/>
+          <line num="10" count="2" type="stmt"/>
+          <line num="12" count="2" type="stmt"/>
+          <line num="17" count="2" type="stmt"/>
+          <line num="19" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="20" count="1" type="stmt"/>
+          <line num="22" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="23" count="1" type="stmt"/>
+          <line num="27" count="1" type="stmt"/>
+        </file>
+      </package>
+    </metrics>
+  </project>
+</coverage>

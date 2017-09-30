@@ -1,10 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
 
-import auth from '../../reducers/auth';
+
 import logout from '../actions/logoutAction';
 
 
@@ -17,6 +16,7 @@ class NavigationBar extends React.Component {
   handleLogout(e) {
     e.preventDefault();
     this.props.logout();
+    browserHistory.push('/login');
   }
 
   render() {

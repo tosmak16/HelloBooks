@@ -51,7 +51,7 @@ class ChangePasswordPage extends React.Component {
     });
     document.getElementById('modalOpen').style.display = 'none';
 
-    this.props.changePassword(this.state);
+    this.props.changePassword(this.state, localStorage.jwtToken);
   }
 
   handleInputChange(e) {

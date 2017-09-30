@@ -13,7 +13,7 @@ let tablerow = '';
 class BorrowHistoryTable extends React.Component {
   componentWillMount() {
     if (isEmpty(this.props.data)) {
-      this.props.getborrowedBooks();
+      this.props.getborrowedBooks(localStorage.jwtToken);
     }
 
     if (isEmpty(this.props.bookData)) {
@@ -23,7 +23,7 @@ class BorrowHistoryTable extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.isRefreshed) {
       setTimeout(() => { this.props.refreshPage(true); }, 1000);
-      this.props.getborrowedBooks();
+      this.props.getborrowedBooks(localStorage.jwtToken);
       setTimeout(() => { this.props.refreshPage(false); }, 1000);
       // this.props.getbooks(true);
     }

@@ -4,7 +4,7 @@ const initialState = [{
   data: '',
   error: '',
   isUploading: false,
-  response: ''
+  response: {}
 }];
 export default (state = initialState, action = {}) => {
   switch (action.type) {
@@ -13,7 +13,7 @@ export default (state = initialState, action = {}) => {
         data: action.data,
         error: '',
         isUploading: true,
-        response: ''
+        response: {}
       }, ...state];
     case UPLOAD_AVATAR_SUCCESS:
       return [{
@@ -27,7 +27,7 @@ export default (state = initialState, action = {}) => {
         error: action.error,
         data: '',
         isUploading: false,
-        response: ''
+        response: {}
 
       }, ...state];
     default:

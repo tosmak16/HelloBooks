@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
 import PropTypes from 'prop-types';
 
-import getUserdetails from '../../actions/getUserDetails';
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
 import updateUser from '../../actions/updateuserDetails';
@@ -283,7 +282,7 @@ class DashboardSidebar extends React.Component {
 DashboardSidebar.propTypes = {
   data: PropTypes.array.isRequired,
   error: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  image: PropTypes.object.isRequired,
   message: PropTypes.string.isRequired,
   updateUser: PropTypes.func.isRequired,
   uploadAvatar: PropTypes.func.isRequired
@@ -294,8 +293,8 @@ function mapStateToProps(state) {
   return {
     //  data: state.UserDetails[0].data,
     image: state.userProfileImage[0].response,
-    error: state.updateUser[0].error,
-    message: state.updateUser[0].data,
+    error: state.updateUser[0].error.toString(),
+    message: state.updateUser[0].data.toString(),
   };
 }
 

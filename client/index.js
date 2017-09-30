@@ -13,7 +13,6 @@ import './public/js/jquery';
 import './public/js/dashboard';
 import rootReducer from './reducers/rootReducer';
 import './public/scss/materialize.scss';
-import setAuthToken from './shield/setAuthToken';
 import { setCurrentuser } from './actions/setCurrentuser';
 import './public/font-awesome-4.7.0/fonts/fontawesome-webfont.eot';
 import './public/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf';
@@ -39,7 +38,6 @@ const store = createStore(
     window.devToolsExtension ? window.devToolsExtension() : f => f));
 
 if (localStorage.jwtToken) {
-  setAuthToken(localStorage.jwtToken);
   store.dispatch(setCurrentuser(jwtDecode(localStorage.jwtToken)));
 }
 export default store;

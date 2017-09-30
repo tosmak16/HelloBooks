@@ -74,7 +74,7 @@ class BookStorePage extends React.Component {
 
   handleYes(e) {
     e.preventDefault();
-    this.props.deleteBook(this.state.bookId);
+    this.props.deleteBook(this.state.bookId, localStorage.jwtToken);
     this.setState({
       pointer: true,
     });

@@ -19,7 +19,7 @@ export default
     <IndexRoute component={ Login } />
     <Route path="login" component={ Login } />
     <Route path="signup" component={ SignUpPage } />
-    <Route path="books" component={ cAuth(BooksPage) } />
+    <Route path="books" component={ BooksPage } />
     <Route path="details" component={ cAuth(BookDetailsPage) } />
     <Route path="dashboard" component={ cAuth(DashboardPage) } />
     <Route path="admin" component={ adminAuth(AdminPage) } />

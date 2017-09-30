@@ -17,6 +17,7 @@ class BooksPage extends React.Component {
       this.props.getbooks(false);
     }
 
+
     localStorage.removeItem('bookId');
     localStorage.removeItem('id');
 

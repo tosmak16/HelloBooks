@@ -8,13 +8,33 @@ export function uploadAvatar(file) {
   data.append('file', file);
   return (dispatch) => {
     dispatch(uploadProfileImageRequest(data));
-    axios.post('/api/v2/users/image', data).then(
-      (res) => {
-        dispatch(uploadProfileImageResponse(res));
-      }
-    ).catch(error => {
-      dispatch(uploadProfileImageError(error));
-    });
+
+    return fetch('http://localhost:8000/api/v2/users/image', {
+      method: 'POST',
+      body: data
+    })
+      .then(
+      (res) => res.json())
+      .then((response) => {
+        if (response.status >= 400) {
+          throw response.message
+        }
+        else if (response.status === 200) {
+          dispatch(uploadProfileImageResponse(response));
+        }
+      })
+      .catch(error => {
+        dispatch(uploadProfileImageError(error));
+      });
+
+
+    // axios.post('/api/v2/users/image', data).then(
+    //   (res) => {
+    //     dispatch(uploadProfileImageResponse(res));
+    //   }
+    // ).catch(error => {
+    //   dispatch(uploadProfileImageError(error));
+    // });
 
   }
 }

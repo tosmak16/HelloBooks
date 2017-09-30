@@ -42,7 +42,7 @@ class UploadBooksPage extends React.Component {
   }
   handleClick(e) {
     e.preventDefault();
-    this.props.uploadBook(this.state);
+    this.props.uploadBook(this.state, localStorage.jwtToken);
 
     this.setState({
       imagePreviewUrl: '',
@@ -148,13 +148,13 @@ class UploadBooksPage extends React.Component {
 
 
   render() {
-    const { imagePreviewUrl } = this.state;
-    let $imagePreview = null;
-    if (imagePreviewUrl) {
-      $imagePreview = (<img style={{ width: '100px', height: '100px' }} src={ imagePreviewUrl } />);
-    } else {
-      $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
-    }
+    // const { imagePreviewUrl } = this.state;
+    // let $imagePreview = null;
+    // if (imagePreviewUrl) {
+    //   $imagePreview = (<img style={{ width: '100px', height: '100px' }} src={ imagePreviewUrl } />);
+    // } else {
+    //   $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
+    // }
     return (
       <div id="b_page" className="row">
 

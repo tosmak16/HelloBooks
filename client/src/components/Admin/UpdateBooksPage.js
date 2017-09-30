@@ -54,7 +54,7 @@ class UpdateBooksPage extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    this.props.updateBook(this.state);
+    this.props.updateBook(this.state, localStorage.jwtToken);
 
     this.setState({
       filterBy: '',
