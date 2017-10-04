@@ -33,16 +33,5 @@ export default function getborrowedBooks(token) {
         dispatch(getborrowedbooksError(error))
       });
 
-    // axios
-    //   .get('/api/v2/user/' + userId + '/books')
-    //   .then(
-    //   (res) => {
-
-    //     dispatch(getborrowedbooksReponse(res.data.result));
-    //   }
-    //   ).catch(error => {
-
-    //     // dispatch(getborrowedbooksError(error.response.data))
-    //   });
   };
 }

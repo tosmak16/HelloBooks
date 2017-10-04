@@ -148,13 +148,6 @@ class UploadBooksPage extends React.Component {
 
 
   render() {
-    // const { imagePreviewUrl } = this.state;
-    // let $imagePreview = null;
-    // if (imagePreviewUrl) {
-    //   $imagePreview = (<img style={{ width: '100px', height: '100px' }} src={ imagePreviewUrl } />);
-    // } else {
-    //   $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
-    // }
     return (
       <div id="b_page" className="row">
 
@@ -231,11 +224,6 @@ class UploadBooksPage extends React.Component {
           </div>
           <label htmlFor="filebtn">image format *jpg, *png</label>
           <div />
-          {/* <div className="previewComponent">
-            <div className="imgPreview" >
-              {$imagePreview}
-            </div>
-          </div> */}
           <SingleActionModal
             id={ 'modalError' } heading={ 'Oh!' }
             message={ this.state.error ? this.state.error : this.state.modalErrorMessage }

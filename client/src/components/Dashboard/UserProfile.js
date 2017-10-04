@@ -47,6 +47,38 @@ class Userprofile extends React.Component {
   }
 
 
+  componentWillReceiveProps(nextProps) {
+    if (!isEmpty(nextProps.data) && this.state.show) {
+      this.setState({
+        firstName: nextProps.data[0].firstName,
+        lastName: nextProps.data[0].lastName,
+        email: nextProps.data[0].email,
+        mobileNumber: nextProps.data[0].mobileNumber ? nextProps.data[0].mobileNumber : 0,
+        membershipType: nextProps.data[0].membershipType,
+        profileImage: nextProps.data[0].profileImage,
+        show: false,
+
+      });
+    }
+    sortedData = nextProps.item[0];
+    if (this.state.display) {
+      if (!isEmpty(sortedData.error) && this.state.display) {
+        document.getElementById('modalE').style.display = 'block';
+        this.setState({
+          display: false,
+          error: sortedData.error,
+        });
+      } else if (!isEmpty(sortedData.data) && this.state.display) {
+        this.setState({
+          display: false,
+          message: sortedData.data,
+          imageloaded: true
+        });
+        document.getElementById('modalS').style.display = 'block';
+      }
+    }
+  }
+
   handleExit(e) {
     e.preventDefault();
     document.getElementById('modalE').style.display = 'none';
@@ -98,43 +130,8 @@ class Userprofile extends React.Component {
     this.setState({
       display: true,
     });
-    this.props.updateUser(this.state);
+    this.props.updateUser(this.state, localStorage.jwtToken);
     document.getElementById('modalO').style.display = 'none';
-  }
-
-  componentWillReceiveProps(nextProps) {
-    // this.setState({
-    //   firstName: nextProps.data.firstName
-    // });
-    if (!isEmpty(nextProps.data) && this.state.show) {
-      this.setState({
-        firstName: nextProps.data[0].firstName,
-        lastName: nextProps.data[0].lastName,
-        email: nextProps.data[0].email,
-        mobileNumber: nextProps.data[0].mobileNumber ? nextProps.data[0].mobileNumber : 0,
-        membershipType: nextProps.data[0].membershipType,
-        profileImage: nextProps.data[0].profileImage,
-        show: false,
-
-      });
-    }
-    sortedData = nextProps.item[0];
-    if (this.state.display) {
-      if (!isEmpty(sortedData.error) && this.state.display) {
-        document.getElementById('modalE').style.display = 'block';
-        this.setState({
-          display: false,
-          error: sortedData.error,
-        });
-      } else if (!isEmpty(sortedData.data) && this.state.display) {
-        this.setState({
-          display: false,
-          message: sortedData.data,
-          imageloaded: true
-        });
-        document.getElementById('modalS').style.display = 'block';
-      }
-    }
   }
 
 

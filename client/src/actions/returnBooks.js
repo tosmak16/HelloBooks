@@ -38,15 +38,6 @@ export default function returnbook(bookData, token) {
         dispatch(returnbookError(error));
       });
 
-
-    // axios.put('/api/v2/users/' + userId + '/books', bookData).then(
-    //   (res) => {
-    //     dispatch(returnbookResponse(res.data.message));
-
-    //   }
-    // ).catch(error => {
-    //   dispatch(returnbookError(error.response.data));
-    // });
   }
 
 }

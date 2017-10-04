@@ -54,8 +54,6 @@ class BorrowedbooksTable extends React.Component {
     document.getElementById('modal2').style.display = 'none';
     document.getElementById('modal3').style.display = 'none';
 
-    // setTimeout(() => { this.props.refreshPage(true); }, 2000);
-
     this.props.refreshPage(true);
   }
 
@@ -101,7 +99,6 @@ class BorrowedbooksTable extends React.Component {
       this.props.refreshPage(false);
       this.props.getunreturnedBooks(localStorage.jwtToken);
       this.props.getborrowedBooks(localStorage.jwtToken);
-      // this.props.getbooks(true);
     }
   }
   render() {

@@ -34,17 +34,5 @@ export default function getUserdetails(token) {
         dispatch(getuserdetailsError(error))
       });
 
-
-
-    // axios
-    //   .get('/api/v2/users/' + userId)
-    //   .then(
-    //   (res) => {
-
-    //     dispatch(getuserdetailsReponse(res.data.result));
-    //   }
-    //   ).catch(error => {
-    //     dispatch(getuserdetailsError('Error in getting data'))
-    //   });
   };
 }

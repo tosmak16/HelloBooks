@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for HelloBooks/client/actions/returnBook.js</title>
+    <title>Code coverage report for HelloBooks/client/actions/updateUser.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../index.html">All files</a> / <a href="index.html">HelloBooks/client/actions</a> returnBook.js
+      <a href="../../../index.html">All files</a> / <a href="index.html">HelloBooks/client/actions</a> updateUser.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
@@ -74,17 +74,9 @@
 29
 30
 31</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -98,38 +90,46 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">//Action types
-export const RETURN_BOOK_REQUEST = 'RETURN_BOOK_REQUEST'
-export const RETURN_BOOK_SUCCESS = 'RETURN_BOOK_SUCCESS'
-export const RETURN_BOOK_FAILURE = 'RETURN_BOOK_FAILURE'
+export const UPDATE_USER_REQUEST = 'UPDATE_USER_REQUEST'
+export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS'
+export const UPDATE_USER_FAILURE = 'UPDATE_USER_FAILURE'
 &nbsp;
 &nbsp;
 //Action creators
-export function returnbookRequest(bookData) {
+export function updateuserRequest(data) {
   return {
-    type: RETURN_BOOK_REQUEST,
-    isReturning: true,
-    bookData
+    type: UPDATE_USER_REQUEST,
+    isUpdating: true,
+    data
   }
 }
 &nbsp;
-export function returnbookResponse(response) {
+export function updateuserResponse(response) {
   return {
-    type: RETURN_BOOK_SUCCESS,
-    isReturning: false,
+    type: UPDATE_USER_SUCCESS,
+    isUpdating: false,
     response
   }
 }
 &nbsp;
-export function returnbookError(error) {
+export function updateuserError(error) {
   return {
-    type: RETURN_BOOK_FAILURE,
-    isReturning: false,
+    type: UPDATE_USER_FAILURE,
+    isUpdating: false,
     error
   }
 }

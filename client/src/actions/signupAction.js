@@ -30,7 +30,6 @@ export function userSignup(userData) {
           throw response.message
         }
         else if (response.status === 201) {
-          console.log(response.status);
           dispatch(signupResponse(response.message));
           dispatch(displayMessage({
             type: 'success',
@@ -43,17 +42,5 @@ export function userSignup(userData) {
 
         dispatch(signupError(error))
       });
-    // return axios.post('/api/v2/users/signup', userData).then(
-    //   (response) => {
-    //     dispatch(signupResponse(response));
-    //     // dispatch(displayMessage({
-    //     //   type: 'success',
-    //     //   text: 'Registration successful'
-    //     // }));
-    //     browserHistory.push('/');
-    //   }
-    // ).catch(error => {
-    //   dispatch(signupError(error.response.data))
-    // });
   };
 }

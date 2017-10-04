@@ -3,7 +3,6 @@ import multer from 'multer';
 import isEmpty from 'lodash/isEmpty';
 import db from '../models/index';
 
-// const upload = multer({ dest: 'client/public/' });
 
 let filename = '';
 

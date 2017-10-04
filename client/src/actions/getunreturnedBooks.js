@@ -39,18 +39,5 @@ export default function getunreturnedBooks(token) {
         }
       });
 
-
-
-    // axios
-    //   .get('/api/v2/users/' + userId + '/books?returned=false')
-    //   .then(
-    //   (res) => {
-
-    //     dispatch(getunreturnedbooksReponse(res.data.result));
-    //   }
-    //   ).catch(error => {
-
-    //     // dispatch(getunreturnedbooksError(error.response.data))
-    //   });
   };
 }

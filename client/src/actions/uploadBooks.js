@@ -32,15 +32,6 @@ export function uploadBook(bookData, token) {
         dispatch(uploadbookError(error));
       });
 
-
-    // axios.post('/api/v2/books', bookData).then(
-    //   (res) => {
-    //     dispatch(uploadbookResponse(res.data.message));
-
-    //   }
-    // ).catch(error => {
-    //   dispatch(uploadbookError(error.response.data));
-    // });
   }
 
 }

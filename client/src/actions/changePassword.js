@@ -35,14 +35,6 @@ export default function changePassword(userData, token) {
         dispatch(changepasswordError(error))
       });
 
-    // axios.put('/api/v2/users/' + userId + '/password', userData).then(
-    //   (res) => {
-
-    //     dispatch(changepasswordResponse(res.data.message));
-    //   }
-    // ).catch(error => {
-    //   dispatch(changepasswordError(error.response.data));
-    // });
   }
 
 }

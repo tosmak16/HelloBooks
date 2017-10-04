@@ -291,7 +291,6 @@ DashboardSidebar.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    //  data: state.UserDetails[0].data,
     image: state.userProfileImage[0].response,
     error: state.updateUser[0].error.toString(),
     message: state.updateUser[0].data.toString(),

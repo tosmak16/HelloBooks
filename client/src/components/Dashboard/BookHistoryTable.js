@@ -25,7 +25,6 @@ class BorrowHistoryTable extends React.Component {
       setTimeout(() => { this.props.refreshPage(true); }, 1000);
       this.props.getborrowedBooks(localStorage.jwtToken);
       setTimeout(() => { this.props.refreshPage(false); }, 1000);
-      // this.props.getbooks(true);
     }
   }
   render() {

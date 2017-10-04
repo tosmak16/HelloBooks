@@ -25,10 +25,7 @@ class ChangePasswordPage extends React.Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
-    // this.handleSelected = this.handleChange.bind(this);
-    // this.handleImageChange = this.handleImageChange.bind(this);
     this.handleSave = this.handleSave.bind(this);
-    // // this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleExit = this.handleExit.bind(this);
   }

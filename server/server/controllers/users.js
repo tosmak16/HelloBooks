@@ -9,8 +9,6 @@ import db from '../models/index';
 import multer from 'multer';
 
 
-// const upload = multer({ dest: 'client/public/' });
-
 let filename = '';
 
 const storage = multer.diskStorage({
@@ -139,8 +137,6 @@ export default {
   */
 
   borrowBooks(req, res) {
-    console.log(req.params.userId);
-    console.log(req.body.bookId);
     if (req.params.userId != req.decoded.id) {
       return res.status(403).send({ status: 403, message: 'Invalid Identity' });
     }
@@ -352,13 +348,13 @@ export default {
   updateUser(req, res) {
     filename = req.body.profileImage;
     if (req.params.userId != req.decoded.id) {
-      return res.status(403).send('Invalid Identity');
+      return res.status(403).send({ status: 403, message: 'Invalid Identity' });
     }
     return db.Users
       .findById(req.params.userId)
       .then((result) => {
         if (isEmpty(result)) {
-          return res.status(404).send('User does not exist');
+          return res.status(404).send({ status: 404, message: 'User does not exist' });
         }
         return result
           .update({
@@ -368,10 +364,10 @@ export default {
             membershipType: req.body.membershipType || result.membershipType,
             profileImage: req.body.profileImage || result.profileImage,
           })
-          .then(() => res.status(200).send({ message: 'Details has been updated', result }))
-          .catch(error => res.status(400).send(error.errors[0].message));
+          .then(() => res.status(200).send({ status: 200, message: 'Details has been updated', result }))
+          .catch(error => res.status(400).send({ status: 400, message: error.errors[0].message }));
       })
-      .catch(error => res.status(400).send(error.errors[0].message));
+      .catch(error => res.status(400).send({ status: 400, message: error.errors[0].message }));
   },
 
 

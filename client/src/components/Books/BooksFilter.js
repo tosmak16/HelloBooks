@@ -79,8 +79,3 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, { searchbooks })(BooksFilter);
 
-
-// name="membershipType"
-// id="inputSignUpselect"
-// onChange={this.handleChange}
-// value={ this.state.membershipType }

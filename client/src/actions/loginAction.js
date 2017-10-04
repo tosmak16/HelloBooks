@@ -41,24 +41,6 @@ export default function userSignin(userData) {
       .catch(error => {
         dispatch(loginError(error));
       });
-
-    // axios
-    //   .post('/api/v2/users/signin', userData)
-    //   .then((res) => {
-    //     const token = res.data.token;
-    //     localStorage.setItem('jwtToken', token);
-    //     getbooks(false);
-    //     const x = jwtDecode(token);
-    //     dispatch(setCurrentuser(x));
-    //     dispatch(loginResponse(res.data));
-    //     if (localStorage.jwtToken) {
-    //       browserHistory.push('/books')
-    //     }
-
-    //   })
-    //   .catch(error => {
-    //     dispatch(loginError(error.response.data));
-    //   });
   }
 
 }

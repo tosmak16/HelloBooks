@@ -37,15 +37,6 @@ export default function borrowBooks(token, bookId) {
       .catch(error => {
         dispatch(borrowBookError(error));
       })
-
-    // axios
-    //   .post('/api/v2/users/' + userId + '/books', { bookId: bookId })
-    //   .then(res => {
-    //     dispatch(borrowBookResponse(res.data.message));
-    //   })
-    //   .catch(error => {
-    //     dispatch(borrowBookError(error.response.data));
-    //   })
   }
 
 }

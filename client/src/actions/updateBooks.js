@@ -31,15 +31,6 @@ export function updateBook(bookData, token) {
       .catch(error => {
         dispatch(updatebookError(error));
       });
-
-    //   axios.put('/api/v2/books/' + bookData.bookId, bookData).then(
-    //     (res) => {
-    //       dispatch(updatebookResponse(res.data.message));
-
-    //     }
-    //   ).catch(error => {
-    //     dispatch(updatebookError(error.response.data));
-    //   });
   }
 
 }

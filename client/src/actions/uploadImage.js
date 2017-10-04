@@ -27,14 +27,5 @@ export function uploadImage(file) {
         dispatch(uploadimageError(error));
       });
 
-
-    // axios.post('/api/v2/books/image', data).then(
-    //   (res) => {
-    //     dispatch(uploadimageResponse(res));
-    //   }
-    // ).catch(error => {
-    //   dispatch(uploadimageError(error));
-    // });
-
   }
 }

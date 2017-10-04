@@ -16,7 +16,6 @@ class Cardbox extends React.Component {
   handleClick(e) {
     e.preventDefault();
     this.props.checkBookDetails(e.target.name);
-    // localStorage.setItem('bookId', e.target.name);
     browserHistory.push('/details');
   }
   render() {

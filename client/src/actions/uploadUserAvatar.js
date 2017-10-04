@@ -26,15 +26,5 @@ export function uploadAvatar(file) {
       .catch(error => {
         dispatch(uploadProfileImageError(error));
       });
-
-
-    // axios.post('/api/v2/users/image', data).then(
-    //   (res) => {
-    //     dispatch(uploadProfileImageResponse(res));
-    //   }
-    // ).catch(error => {
-    //   dispatch(uploadProfileImageError(error));
-    // });
-
   }
 }

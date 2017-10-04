@@ -33,19 +33,5 @@ export default function getbooks(set) {
         dispatch(getbooksError(error))
       }
       )
-
-    // return axios
-    //   .get('/api/v2/books')
-    //   .then(
-    //   (res) => {
-    //     dispatch(getbooksReponse(res.data.result));
-    //     if (!set) { browserHistory.push('/books'); }
-    //     else if (set) {
-
-    //     }
-    //   }
-    //   ).catch(error => {
-    //     dispatch(getbooksError(error.response.data))
-    //   });
   };
 }

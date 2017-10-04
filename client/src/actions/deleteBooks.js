@@ -37,15 +37,6 @@ export function deleteBook(bookData, token) {
         dispatch(deletebookError(error));
       });
 
-
-    // axios.delete('/api/v2/books/' + bookData).then(
-    //   (res) => {
-    //     dispatch(deletebookResponse('book has been deleted'));
-
-    //   }
-    // ).catch(error => {
-    //   dispatch(deletebookError(error.response.data));
-    // });
   }
 
 }
