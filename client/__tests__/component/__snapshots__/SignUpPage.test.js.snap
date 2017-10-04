@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SignupPage should test adn take snapshot of SignUpPage 1`] = `
+exports[`SignupPage should test and take snapshot of SignUpPage 1`] = `
 <div>
   <div
     className="row"
