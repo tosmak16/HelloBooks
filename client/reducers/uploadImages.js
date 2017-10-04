@@ -6,7 +6,7 @@ const initialState = [{
   isUploading: false,
   response: ''
 }];
-export default (state = initialState, action = {}) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case UPLOAD_IMAGE_REQUEST:
       return [{

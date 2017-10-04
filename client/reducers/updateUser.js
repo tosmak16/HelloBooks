@@ -5,7 +5,7 @@ const initialState = [{
   data: '',
   error: '',
 }];
-export default (state = initialState, action = {}) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_USER_REQUEST:
       return [{

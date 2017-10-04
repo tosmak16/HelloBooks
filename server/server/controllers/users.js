@@ -76,8 +76,8 @@ export default {
           .catch((e) => {
             res.status(400).send({ status: 400, message: e.errors[0].message.toString(), e });
           });
-      },
-    );
+      }
+      );
   },
   /**
   * @method signin
@@ -110,7 +110,7 @@ export default {
           });
         }
       })
-      .catch(error => res.status(404).send({ status: 404, message: 'username and password is incorrect' }));
+      .catch(error => res.status(404).send({ status: 404, message: 'username and password is incorrect', error }));
   },
   /**
   * @method list
@@ -128,7 +128,6 @@ export default {
       .then(result => res.status(200).send({ message: 'Success!', result }))
       .catch(error => res.status(400).send(error));
   },
-
 
 
   /**
@@ -347,7 +346,7 @@ export default {
           id: req.params.userId,
         },
       }).then(result => res.status(200).send({ status: 200, message: 'Success!', result }))
-      .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }))
+      .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
   },
 
   updateUser(req, res) {
@@ -386,7 +385,7 @@ export default {
           id: req.params.userId,
           password: SHA256(req.body.oldPassword).toString()
         },
-      }).then(result => {
+      }).then((result) => {
         if (isEmpty(result)) {
           return res.status(404).send({ status: 404, message: 'Current password is wrong' });
         }
@@ -398,7 +397,7 @@ export default {
           .then(() => res.status(200).send({ status: 200, message: 'Password has been changed', result }))
           .catch(error => res.status(400).send({ status: 400, message: error.errors[0].message }));
       })
-      .catch(error => res.status(400).send({ status: 400, message: error.errors[0].message }))
+      .catch(error => res.status(400).send({ status: 400, message: error.errors[0].message }));
   },
 
   // / upload user profile image

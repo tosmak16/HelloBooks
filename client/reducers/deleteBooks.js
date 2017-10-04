@@ -6,7 +6,7 @@ const initialState = [{
   isDeleting: false,
   response: ''
 }];
-export default (state = initialState, action = {}) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case DELETE_BOOK_REQUEST:
       return [{

@@ -6,7 +6,7 @@ const initialState = [{
   isReturning: false,
   response: ''
 }];
-export default (state = initialState, action = {}) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case RETURN_BOOK_REQUEST:
       return [{

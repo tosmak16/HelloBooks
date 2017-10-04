@@ -28,6 +28,7 @@ describe('Test LoginActions', () => {
     localStorage.setItem('summary', '123');
     localStorage.setItem('bookTitle', '123');
     localStorage.setItem('image', '123');
+    localStorage.removeItem('image');
   });
 
 

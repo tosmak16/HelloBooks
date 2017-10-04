@@ -5,7 +5,7 @@ const initialState = [{
   categoryData: '',
   selectedCategory: false,
 }];
-export default (state = initialState, action = {}) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case SHOW_BOOKS_BY_CATEGORY:
       return [{
