@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import render from 'react-test-renderer';
 
 
-import { SignUpPage } from '../src/components/SignUpPage';
+import { SignUpPage } from '../../src/components/SignUpPage';
 
 const mockFuction = jest.fn();
 
@@ -12,7 +12,7 @@ describe('SignupPage', () => {
     expect(SignUpPage).toBeDefined();
   });
 
-  it('should test adn take snapshot of SignUpPage', () => {
+  it('should test and take snapshot of SignUpPage', () => {
     const tree = render.create(<SignUpPage userSignup={ mockFuction } reg={{ error: '' }} />);
 
     expect(tree).toMatchSnapshot();

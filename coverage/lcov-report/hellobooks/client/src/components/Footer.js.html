@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for HelloBooks/client/__mock__/book.js</title>
+    <title>Code coverage report for HelloBooks/client/src/components/Footer.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../index.html">All files</a> / <a href="index.html">HelloBooks/client/__mock__</a> book.js
+      <a href="../../../../index.html">All files</a> / <a href="index.html">HelloBooks/client/src/components</a> Footer.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
@@ -32,7 +32,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -114,24 +114,11 @@
 69
 70
 71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86</td><td class="line-coverage quiet"><span class="cline-any cline-yes">21x</span>
+72</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -198,106 +185,77 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const books = [
-  {
-    bookId: 1,
-    bookTitle: 'THE PEOPLE IN THE TREE',
-    author: 'Y. Hayan',
-    category: 'Adventure',
-    isbn: '345798465',
-    stocknumber: '2',
-    image: 'l1.jpg',
-    summary: 'Lorem Ipronic typesetting, remaininised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
-  },
-  {
-    bookId: 2,
-    bookTitle: 'THE LATE PARADE',
-    author: 'F. Adam',
-    category: 'Adventure',
-    isbn: '234560878',
-    stocknumber: '0',
-    image: 'l2.jpg',
-    summary: 'It is a long established fact thaorem Ipsu uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)',
-  },
-  {
-    bookId: 3,
-    bookTitle: 'I AM THE WOLF',
-    author: 'L. Mark',
-    category: 'Music',
-    isbn: '4678980976',
-    stocknumber: '5',
-    image: 'l3.jpg',
-    summary: 'There are many variations of passages of Lorem Ipsum available, but the majority orem Ipsum generators on the Internet tend to repeat predefined chunks as necessary',
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
 &nbsp;
-  },
-  {
-    bookId: 4,
-    bookTitle: 'THE PALE NORTH',
-    author: 'H. Clayton',
-    category: 'Adventure',
-    isbn: '34567887655',
-    stocknumber: '3',
-    image: 'l4.jpg',
-    summary: 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from ',
-  },
-  {
-    bookId: 5,
-    bookTitle: 'ADULTOLESENCE',
-    author: 'G. Hannah',
-    category: 'Romance',
-    isbn: '45678974567',
-    stocknumber: '10',
-    image: 'l5.jpg',
-    summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Urum.'
-  },
-  {
-    bookId: 6,
-    bookTitle: 'WHAT IT MEANS WHEN A MAN FALL FROM SKY',
-    author: 'L. Nneka',
-    category: 'Adventure',
-    isbn: '567244567',
-    stocknumber: '10',
-    image: 'l6.jpg',
-    summary: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium?'
-  },
-  {
-    bookId: 7,
-    bookTitle: 'THE SONG AND THE SILENCE',
-    author: 'Y. Johnson',
-    category: 'Music',
-    isbn: '64578974567',
-    stocknumber: '10',
-    image: 'l7.jpg',
-    summary: 'But I must explain to you how all this mists no resultant pleasure  ducimus qui blanditiis praesentium voluptatum culpa qui officia ?'
-  },
-  {
-    bookId: 8,
-    bookTitle: 'THE ILIAD HOMMER',
-    author: 'P. Green',
-    category: 'Action',
-    isbn: '787890974567',
-    stocknumber: '8',
-    image: 'l8.jpg',
-    summary: 'At vero eos et accusamus et iuse delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
-  },
-];
+class Footer extends React.Component {
+  render() {
+    return (
+      &lt;footer className="footer-distributed "&gt;
 &nbsp;
-export default books;
+        &lt;div className="row"&gt;
+          &lt;div className=" col l12 col m12 col s12"&gt;
+&nbsp;
+            &lt;div className="footer-left col l4 col m4 col s12"&gt;
+&nbsp;
+              &lt;h3&gt;Hello&lt;span&gt;Books&lt;/span&gt;&lt;/h3&gt;
+&nbsp;
+              &lt;p className="footer-links"&gt;
+                &lt;a href="#"&gt;Home&lt;/a&gt; ·
+                &lt;a href="#"&gt;Blog&lt;/a&gt; ·
+                &lt;a href="#"&gt;Pricing&lt;/a&gt; ·
+                &lt;a href="#"&gt;About&lt;/a&gt; ·
+                &lt;a href="#"&gt;Faq&lt;/a&gt; ·
+                &lt;a href="#"&gt;Contact&lt;/a&gt;
+              &lt;/p&gt;
+&nbsp;
+              &lt;p className="footer-company-name"&gt;Tosmak &amp;copy; 2017&lt;/p&gt;
+            &lt;/div&gt;
+&nbsp;
+            &lt;div className="footer-center col l4 col m4 col s12"&gt;
+&nbsp;
+              &lt;div&gt;
+                &lt;i className="fa fa-map-marker" /&gt;
+                &lt;p&gt;&lt;span&gt;21 Ori-oke Street&lt;/span&gt; Lagos, Nigeria&lt;/p&gt;
+              &lt;/div&gt;
+&nbsp;
+              &lt;div&gt;
+                &lt;i className="fa fa-phone" /&gt;
+                &lt;p&gt;08127112053&lt;/p&gt;
+              &lt;/div&gt;
+&nbsp;
+              &lt;div&gt;
+                &lt;i className="fa fa-envelope" /&gt;
+                &lt;p&gt;&lt;a href="tosmak16@gmail.com"&gt;tosmak16@gmail.com&lt;/a&gt;&lt;/p&gt;
+              &lt;/div&gt;
+&nbsp;
+            &lt;/div&gt;
+&nbsp;
+            &lt;div className="footer-right col l4 col m14 col s12"&gt;
+&nbsp;
+              &lt;p className="footer-company-about"&gt;
+                &lt;span&gt;About Hello Book&lt;/span&gt;  it's a simple application that helps manage  a libraryand its processes like stocking,
+                tracking and renting books
+              &lt;/p&gt;
+&nbsp;
+              &lt;div className="footer-icons"&gt;
+&nbsp;
+                &lt;a href="#"&gt;&lt;i className="fa fa-facebook" /&gt;&lt;/a&gt;
+                &lt;a href="#"&gt;&lt;i className="fa fa-twitter" /&gt;&lt;/a&gt;
+                &lt;a href="#"&gt;&lt;i className="fa fa-linkedin" /&gt;&lt;/a&gt;
+                &lt;a href="#"&gt;&lt;i className="fa fa-github" /&gt;&lt;/a&gt;
+&nbsp;
+              &lt;/div&gt;
+&nbsp;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+&nbsp;
+      &lt;/footer&gt;
+    );
+  }
+}
+&nbsp;
+export default Footer;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
@@ -307,7 +265,7 @@ export default books;
   generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 04 2017 21:33:19 GMT+0100 (WAT)
 </div>
 </div>
-<script src="../../../prettify.js"></script>
+<script src="../../../../prettify.js"></script>
 <script>
 window.onload = function () {
         if (typeof prettyPrint === 'function') {
@@ -315,6 +273,6 @@ window.onload = function () {
         }
 };
 </script>
-<script src="../../../sorter.js"></script>
+<script src="../../../../sorter.js"></script>
 </body>
 </html>
