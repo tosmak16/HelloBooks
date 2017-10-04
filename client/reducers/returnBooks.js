@@ -1,12 +1,12 @@
 import { RETURN_BOOK_FAILURE, RETURN_BOOK_SUCCESS, RETURN_BOOK_REQUEST } from '../actions/returnBook';
 
-const initialState = {
+const initialState = [{
   data: '',
   error: '',
   isReturning: false,
   response: ''
-};
-export default (state = initialState, action = {}) => {
+}];
+export default (state = initialState, action) => {
   switch (action.type) {
     case RETURN_BOOK_REQUEST:
       return [{

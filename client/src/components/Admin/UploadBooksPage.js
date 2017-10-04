@@ -42,7 +42,7 @@ class UploadBooksPage extends React.Component {
   }
   handleClick(e) {
     e.preventDefault();
-    this.props.uploadBook(this.state);
+    this.props.uploadBook(this.state, localStorage.jwtToken);
 
     this.setState({
       imagePreviewUrl: '',
@@ -148,13 +148,6 @@ class UploadBooksPage extends React.Component {
 
 
   render() {
-    const { imagePreviewUrl } = this.state;
-    let $imagePreview = null;
-    if (imagePreviewUrl) {
-      $imagePreview = (<img style={{ width: '100px', height: '100px' }} src={ imagePreviewUrl } />);
-    } else {
-      $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
-    }
     return (
       <div id="b_page" className="row">
 
@@ -231,11 +224,6 @@ class UploadBooksPage extends React.Component {
           </div>
           <label htmlFor="filebtn">image format *jpg, *png</label>
           <div />
-          {/* <div className="previewComponent">
-            <div className="imgPreview" >
-              {$imagePreview}
-            </div>
-          </div> */}
           <SingleActionModal
             id={ 'modalError' } heading={ 'Oh!' }
             message={ this.state.error ? this.state.error : this.state.modalErrorMessage }
@@ -268,6 +256,7 @@ class UploadBooksPage extends React.Component {
 }
 UploadBooksPage.propTypes = {
   getbooks: PropTypes.func.isRequired,
+  item: PropTypes.array.isRequired,
   uploadBook: PropTypes.func.isRequired,
   uploadImage: PropTypes.func.isRequired,
 };

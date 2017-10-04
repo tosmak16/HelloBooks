@@ -2,14 +2,14 @@ import isEmpty from 'lodash/isEmpty';
 
 import { BORROW_BOOK_FAILURE, BORROW_BOOK_SUCCESS, BORROW_BOOK_REQUEST } from '../actions/borrowBook';
 
-const initialState = {
+const initialState = [{
   isStored: false,
   data: {},
   error: '',
   isSending: false,
   response: ''
-};
-export default (state = initialState, action = {}) => {
+}];
+export default (state = initialState, action) => {
   switch (action.type) {
     case BORROW_BOOK_REQUEST:
       return [{

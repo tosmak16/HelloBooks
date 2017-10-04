@@ -13,7 +13,8 @@ class BooksFilter extends React.Component {
     this.state = {
       filterBy: '',
       searchText: '',
-      error: ''
+      error: '',
+      pointer: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -26,7 +27,10 @@ class BooksFilter extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
     if (e.target.value.length > 3 && this.state.filterBy !== '') {
       this.setState({ error: '' });
-      this.props.searchbooks(this.state.filterBy, this.state.searchText, this.props.data);
+      if (this.state.filterBy && this.state.searchText && this.props.data) {
+        this.props.searchbooks(this.state.filterBy, this.state.searchText, this.props.data);
+        this.setState({ pointer: true });
+      }
     }
   }
 
@@ -51,7 +55,8 @@ class BooksFilter extends React.Component {
           </div>
         </div >
         <div className="row">
-          {this.props.filteredData && <BooksCollection heading={ 'Search results' } data={ this.props.filteredData } />}
+          {this.props.filteredData.length !== 0 && <BooksCollection heading={ 'Search results' } data={ this.props.filteredData } />}
+          {this.props.filteredData.length === 0 && this.state.pointer && <BooksCollection heading={ 'No search results' } data={ this.props.filteredData } />}
         </div>
       </div >
     );
@@ -59,7 +64,9 @@ class BooksFilter extends React.Component {
 }
 
 BooksFilter.propTypes = {
-
+  data: PropTypes.array.isRequired,
+  filteredData: PropTypes.array.isRequired,
+  searchbooks: PropTypes.func.isRequired,
 
 };
 
@@ -72,8 +79,3 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, { searchbooks })(BooksFilter);
 
-
-// name="membershipType"
-// id="inputSignUpselect"
-// onChange={this.handleChange}
-// value={ this.state.membershipType }

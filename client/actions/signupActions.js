@@ -5,7 +5,7 @@ export const SIGNUP_FAILURE = 'SIGNUP_FAILURE'
 
 
 //Action creators
-export function signupRequest(userData) {
+export const signupRequest = (userData) => {
   return {
     type: SIGNUP_REQUEST,
     isFetching: true,
@@ -14,7 +14,7 @@ export function signupRequest(userData) {
   }
 }
 
-export function signupResponse(response) {
+export const signupResponse = (response) => {
   return {
     type: SIGNUP_SUCCESS,
     isFetching: false,
@@ -23,7 +23,7 @@ export function signupResponse(response) {
   }
 }
 
-export function signupError(error) {
+export const signupError = (error) => {
   return {
     type: SIGNUP_FAILURE,
     isFetching: false,

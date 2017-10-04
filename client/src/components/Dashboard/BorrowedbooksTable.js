@@ -12,6 +12,8 @@ import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
 import returnbook from '../../actions/returnBooks';
 import refreshPage from '../../actions/refreshPage';
+import getborrowedBooks from '../../actions/getborrowedBooks';
+
 
 let tablerow = '';
 let co = '';
@@ -52,14 +54,12 @@ class BorrowedbooksTable extends React.Component {
     document.getElementById('modal2').style.display = 'none';
     document.getElementById('modal3').style.display = 'none';
 
-    setTimeout(() => { this.props.refreshPage(true); }, 2000);
-
-    // this.props.refreshPage(true);
+    this.props.refreshPage(true);
   }
 
   handleYes(e) {
     e.preventDefault();
-    this.props.returnbook(this.state);
+    this.props.returnbook(this.state, localStorage.jwtToken);
     this.setState({
       pointer: true,
     });
@@ -71,7 +71,7 @@ class BorrowedbooksTable extends React.Component {
   }
   componentWillMount() {
     if (isEmpty(this.props.data)) {
-      this.props.getunreturnedBooks();
+      this.props.getunreturnedBooks(localStorage.jwtToken);
     }
 
     if (isEmpty(this.props.bookData)) {
@@ -97,8 +97,8 @@ class BorrowedbooksTable extends React.Component {
     }
     if (nextProps.isRefreshed) {
       this.props.refreshPage(false);
-      this.props.getunreturnedBooks();
-      // this.props.getbooks(true);
+      this.props.getunreturnedBooks(localStorage.jwtToken);
+      this.props.getborrowedBooks(localStorage.jwtToken);
     }
   }
   render() {
@@ -163,16 +163,21 @@ class BorrowedbooksTable extends React.Component {
 }
 
 BorrowedbooksTable.propTypes = {
+  bookData: PropTypes.array.isRequired,
+  data: PropTypes.array.isRequired,
   getbooks: PropTypes.func.isRequired,
+  getborrowedBooks: PropTypes.func.isRequired,
   getunreturnedBooks: PropTypes.func.isRequired,
+  isRefreshed: PropTypes.bool.isRequired,
+  item: PropTypes.array.isRequired,
   refreshPage: PropTypes.func.isRequired,
   returnbook: PropTypes.func.isRequired,
+
 
 };
 
 function mapStateToProps(state) {
   return {
-    error: state.getunreturnedBooks[0].error,
     data: state.getunreturnedBooks[0].data,
     bookData: state.books[0].data,
     isRefreshed: state.refreshPage[0].isRefreshed,
@@ -180,4 +185,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { getunreturnedBooks, getbooks, returnbook, refreshPage })(BorrowedbooksTable);
+export default connect(mapStateToProps, { getborrowedBooks, getunreturnedBooks, getbooks, returnbook, refreshPage })(BorrowedbooksTable);

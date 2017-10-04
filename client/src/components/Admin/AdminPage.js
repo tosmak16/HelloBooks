@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import BookStorePage from './BookStorePage';
 import AdminSidebar from './AdminSidebar';
@@ -28,6 +29,12 @@ class AdminPage extends React.Component {
     );
   }
 }
+
+AdminPage.propTypes = {
+  data: PropTypes.array.isRequired,
+  getbooks: PropTypes.func.isRequired,
+  isFetched: PropTypes.bool.isRequired
+};
 
 
 function mapStateToProps(state) {

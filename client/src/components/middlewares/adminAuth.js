@@ -42,8 +42,6 @@ export default function (Comp) {
   AdminShield.propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
     popMessage: PropTypes.func.isRequired,
-
-
   };
 
   function mapStateToProps(state) {

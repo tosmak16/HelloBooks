@@ -4,12 +4,11 @@ import { connect } from 'react-redux';
 
 import SignUpForm from './SignUpForm';
 import Footer from './Footer';
-import '../../public/scss/materialize.scss';
 import { userSignup } from '../actions/signupAction';
 import PropTypes from 'prop-types';
-import reg from '../../reducers/reg';
 
-class SignUpPage extends React.Component {
+
+export class SignUpPage extends React.Component {
   render() {
     const { userSignup, reg } = this.props;
     return (

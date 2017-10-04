@@ -3,7 +3,6 @@ import multer from 'multer';
 import isEmpty from 'lodash/isEmpty';
 import db from '../models/index';
 
-// const upload = multer({ dest: 'client/public/' });
 
 let filename = '';
 
@@ -32,12 +31,12 @@ export default {
   addBook(req, res) {
     filename = req.body.image;
     if (req.decoded.role === 'user') {
-      return res.status(403).send('Access Denied!');
+      return res.status(403).send({ status: 403, message: 'Access Denied!' });
     }
 
     if (!(req.body.bookTitle && req.body.author && req.body.category &&
       req.body.stocknumber && req.body.isbn)) {
-      return res.status(400).send('please enter the required book details');
+      return res.status(400).send({ status: 400, message: 'please enter the required book details' });
     }
 
     return db.Books
@@ -50,8 +49,8 @@ export default {
         image: req.body.image,
         summary: req.body.summary
       })
-      .then(report => res.status(201).send({ message: 'Book has been added to store', report }))
-      .catch(error => res.status(400).send('error! check the book information'));
+      .then(report => res.status(201).send({ status: 201, message: 'Book has been added to store', report }))
+      .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message }));
   },
 
   /**
@@ -65,8 +64,8 @@ export default {
   getAllBooks(req, res) {
     return db.Books
       .all()
-      .then(result => res.status(200).send({ message: 'Success!', result }))
-      .catch(error => res.status(400).send(error));
+      .then(result => res.status(200).send({ status: 200, message: 'Success!', result }))
+      .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
   },
 
   /**
@@ -79,13 +78,13 @@ export default {
   updateBook(req, res) {
     filename = req.body.image;
     if (req.decoded.role === 'user') {
-      return res.status(403).send('Access Denied!');
+      return res.status(403).send({ status: 403, message: 'Access Denied!' });
     }
     return db.Books
       .findById(req.params.bookId)
       .then((result) => {
         if (isEmpty(result)) {
-          return res.status(404).send('Book does not exist');
+          return res.status(404).send({ status: 404, message: 'Book does not exist' });
         }
         return result
           .update({
@@ -97,10 +96,10 @@ export default {
             image: req.body.image || result.image,
             summary: req.body.summary || result.summary
           })
-          .then(() => res.status(200).send({ message: 'Book has been updated', result })) // Send back the updated book
-          .catch(error => res.status(400).send(error));
+          .then(() => res.status(200).send({ status: 200, message: 'Book has been updated', result })) // Send back the updated book
+          .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
       })
-      .catch(error => res.status(400).send(error));
+      .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
   },
   /**
   * @method deletebooks
@@ -111,31 +110,31 @@ export default {
   */
   deleteBooks(req, res) {
     if (req.decoded.role === 'user') {
-      return res.status(403).send('Access Denied!');
+      return res.status(403).send({ status: 403, message: 'Access Denied!' });
     }
 
     return db.Books
       .findById(req.params.bookId)
       .then((result) => {
         if (isEmpty(result)) {
-          return res.status(404).send('Book does not exist');
+          return res.status(404).send({ status: 404, message: 'Book does not exist' });
         }
         result
           .destroy()
-          .then(() => res.status(204).send(''))
-          .catch(error => res.status(400).send(error));
-      }).catch(error => res.status(400).send(error));
+          .then(() => res.status(204).send({ status: 204, message: 'book has been deleted' }))
+          .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
+      }).catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
   },
   // / upload image
   uploadImage(req, res) {
     upload(req, res, (err) => {
       if (err) {
         // An error occurred when uploading
-        res.status(400).send('Invalid input field');
+        res.status(400).send({ status: 400, message: 'upload Failed' });
       }
       // Everything went fine
 
-      res.status(200).send({ message: 'Image uploaded successfully' });
+      res.status(200).send({ status: 200, message: 'Image uploaded successfully' });
     });
   }
 

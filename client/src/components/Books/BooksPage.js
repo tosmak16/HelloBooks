@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import isEmpty from 'lodash/isEmpty';
 
 import BooksPhoto from './BooksPhoto';
 import '../../../public/scss/materialize.scss';
@@ -16,6 +17,18 @@ class BooksPage extends React.Component {
     if (!this.props.isFetched) {
       this.props.getbooks(false);
     }
+
+
+    localStorage.removeItem('bookId');
+    localStorage.removeItem('id');
+
+    localStorage.removeItem('category');
+    localStorage.removeItem('isbn');
+    localStorage.removeItem('stocknumber');
+    localStorage.removeItem('author');
+    localStorage.removeItem('summary');
+    localStorage.removeItem('bookTitle');
+    localStorage.removeItem('image');
   }
 
 
@@ -41,7 +54,10 @@ class BooksPage extends React.Component {
 }
 
 BooksPage.propTypes = {
-
+  categoryData: PropTypes.array.isRequired,
+  data: PropTypes.array.isRequired,
+  getbooks: PropTypes.func.isRequired,
+  isFetched: PropTypes.bool.isRequired,
 
 };
 

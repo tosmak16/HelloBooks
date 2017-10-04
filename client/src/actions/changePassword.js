@@ -6,19 +6,35 @@ import { changepasswordError, changepasswordRequest, changepasswordResponse } fr
 
 
 
-export default function changePassword(userData) {
-  let decodedToken = jwtDecode(localStorage.jwtToken);
+export default function changePassword(userData, token) {
+  let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;
   return (dispatch) => {
     dispatch(changepasswordRequest(userData));
-    axios.put('/api/v2/users/' + userId + '/password', userData).then(
-      (res) => {
 
-        dispatch(changepasswordResponse(res.data.message));
-      }
-    ).catch(error => {
-      dispatch(changepasswordError(error.response.data));
-    });
+    return fetch('http://localhost:8000/api/v2/users/' + userId + '/password', {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+        token: token
+      },
+      body: JSON.stringify(userData)
+    })
+      .then(
+      (res) => res.json())
+      .then((response) => {
+        if (response.status >= 400) {
+          throw response.message
+        }
+        else if (response.status === 200) {
+          dispatch(changepasswordResponse(response.message));
+        }
+      })
+      .catch(error => {
+        dispatch(changepasswordError(error))
+      });
+
   }
 
 }

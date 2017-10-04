@@ -28,7 +28,7 @@ class LoginForm extends React.Component {
     e.preventDefault();
     this.setState({ errors: '' });
     this.props.userSignin(this.state);
-    this.props.getbooks(false);
+    this.props.getbooks(true);
   }
 
   render() {

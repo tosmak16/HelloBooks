@@ -4,16 +4,16 @@ const initialState = [{
   data: '',
   error: '',
   isUploading: false,
-  response: ''
+  response: {}
 }];
-export default (state = initialState, action = {}) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case UPLOAD_AVATAR_REQUEST:
       return [{
         data: action.data,
         error: '',
         isUploading: true,
-        response: ''
+        response: {}
       }, ...state];
     case UPLOAD_AVATAR_SUCCESS:
       return [{
@@ -27,7 +27,7 @@ export default (state = initialState, action = {}) => {
         error: action.error,
         data: '',
         isUploading: false,
-        response: ''
+        response: {}
 
       }, ...state];
     default:

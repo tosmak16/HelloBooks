@@ -11,16 +11,17 @@ export default function (Comp) {
       if (!this.props.isAuthenticated) {
         this.props.popMessage({
           type: 'error',
-          text: 'Try to login again with valid information'
+          text: 'you need to sign in'
         });
 
-        browserHistory.push('/');
+
+        browserHistory.push('/login');
       }
     }
 
     componentWillUpdate(nextProps) {
       if (!nextProps.isAuthenticated) {
-        browserHistory.push('/');
+        browserHistory.push('/login');
       }
     }
     render() {

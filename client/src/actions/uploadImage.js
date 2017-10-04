@@ -8,13 +8,24 @@ export function uploadImage(file) {
   data.append('file', file);
   return (dispatch) => {
     dispatch(uploadimageRequest(data));
-    axios.post('/api/v2/books/image', data).then(
-      (res) => {
-        dispatch(uploadimageResponse(res));
-      }
-    ).catch(error => {
-      dispatch(uploadimageError(error));
-    });
+
+    return fetch('http://localhost:8000/api/v2/books/image', {
+      method: 'POST',
+      body: data
+    })
+      .then(
+      (res) => res.json())
+      .then((response) => {
+        if (response.status >= 400) {
+          throw response.message
+        }
+        else if (response.status === 200) {
+          dispatch(uploadimageResponse(response));
+        }
+      })
+      .catch(error => {
+        dispatch(uploadimageError(error));
+      });
 
   }
 }

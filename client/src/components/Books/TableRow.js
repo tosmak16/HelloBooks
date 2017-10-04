@@ -9,7 +9,7 @@ class TableRow extends React.Component {
     return (
       <tr >
         <td key={ row.id }>{row.id}</td>
-        <td key={ row.bookTitle }><a href="#"> {row.bookTitle}</a></td>
+        <td key={ row.bookTitle }><a href=""> {row.bookTitle}</a></td>
         <td key={ row.author }>{row.author}</td>
         <td key={ row.category }>{row.category}</td>
         <td key={ row.isbn }>{row.isbn}</td>
@@ -20,7 +20,7 @@ class TableRow extends React.Component {
 }
 
 TableRow.propTypes = {
-
+  row: PropTypes.object.isRequired
 };
 
 export default TableRow;

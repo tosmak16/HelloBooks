@@ -1,5 +1,4 @@
 import React from 'react';
-// import { CardTitle, Card } from 'react-materialize';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
@@ -18,7 +17,6 @@ class BooksCollection extends React.Component {
     e.preventDefault();
 
     this.props.checkBookDetails(e.target.name);
-    // localStorage.setItem('bookId', e.target.name);
     browserHistory.push('/details');
   }
   render() {
@@ -26,12 +24,17 @@ class BooksCollection extends React.Component {
 
     const litt = data.map(item => (<li key={ item.id } className="collection-item avatar">
       <img
-        key={ item.id } name={ item.id } onClick={ this.handleClick } src={ require(`../../../public/img/${item.image}`) }
+        key={ item.id } name={ item.id }
+        src={ require(`../../../public/img/${item.image}`) }
         alt="" className="circle"
       />
       <span className="title">{item.bookTitle}</span>
       <p>{item.author}</p>
-      <button id="wishbtn" name={ item.id } onClick={ this.handleClick } type="button" className="btn-sm btn-warning shop">Check details</button>
+      <button
+        id="wishbtn" name={ item.id }
+        onClick={ this.handleClick } type="button"
+        className="btn-sm btn-warning shop"
+      >Check details</button>
       <a href="#!" className="secondary-content"><i key={ item.id } style={{ color: 'orange' }} className="material-icons ">grade</i></a>
     </li>));
 
@@ -53,8 +56,9 @@ class BooksCollection extends React.Component {
 }
 
 BooksCollection.propTypes = {
-  checkBookDetails: PropTypes.func.isRequired
-
+  checkBookDetails: PropTypes.func.isRequired,
+  data: PropTypes.array.isRequired,
+  heading: PropTypes.string.isRequired,
 };
 
 export default connect(null, { checkBookDetails })(BooksCollection);

@@ -23,7 +23,7 @@ class BooksList extends React.Component {
 }
 
 BooksList.propTypes = {
-
+  data: PropTypes.array.isRequired,
 };
 
 export default BooksList;

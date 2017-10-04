@@ -3,7 +3,7 @@ import { COUNTER_ACTION } from '../actions/counter';
 const initialState = [{
   count: '',
 }];
-export default (state = initialState, action = {}) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case COUNTER_ACTION:
       return [{

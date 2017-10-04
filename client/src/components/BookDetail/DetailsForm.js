@@ -3,6 +3,7 @@ import { CardTitle, Card } from 'react-materialize';
 import { connect } from 'react-redux';
 import lodash from 'lodash';
 import $ from 'jquery';
+import PropTypes from 'prop-types';
 
 
 import checkBookDetails from '../../actions/checkBookDetails';
@@ -37,6 +38,88 @@ class DetailsForm extends React.Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleExit = this.handleExit.bind(this);
   }
+  componentWillMount() {
+    if (!lodash.isEmpty(localStorage.bookId)) {
+      this.props.checkBookDetails(localStorage.bookId);
+    }
+
+
+    if (!lodash.isEmpty(this.props.book[0])) {
+      if (lodash.isEmpty(localStorage.id)) {
+        const { data } = this.props;
+        bookId = this.props.book[0].bookId;
+        localStorage.setItem('bookId', bookId);
+        filteredData = lodash.filter(data, item => item.id == bookId);
+
+
+        bookTitle = filteredData[0].bookTitle;
+        id = filteredData[0].id;
+        category = filteredData[0].category;
+        isbn = filteredData[0].isbn;
+        stocknumber = filteredData[0].stocknumber;
+        author = filteredData[0].author;
+        image = filteredData[0].image;
+        summary = filteredData[0].summary;
+        localStorage.setItem('image', image);
+        localStorage.setItem('bookTitle', bookTitle);
+        localStorage.setItem('id', id);
+        localStorage.setItem('category', category);
+        localStorage.setItem('isbn', isbn);
+        localStorage.setItem('stocknumber', stocknumber);
+        localStorage.setItem('author', author);
+        localStorage.setItem('summary', summary);
+      }
+    }
+
+
+    if (this.props.data.length == 0) {
+      bookTitle = localStorage.getItem('bookTitle');
+      id = localStorage.getItem('id');
+      category = localStorage.getItem('category');
+      isbn = localStorage.getItem('isbn');
+      stocknumber = localStorage.getItem('stocknumber');
+      author = localStorage.getItem('author');
+      summary = localStorage.getItem('summary');
+    }
+  }
+
+
+  componentWillReceiveProps(nextProps) {
+    sortedData = nextProps.item[0];
+
+
+    if (this.state.display) {
+      if (!lodash.isEmpty(sortedData.error) && this.state.display) {
+        this.setState({
+          error: sortedData.error,
+          display: false,
+        });
+        document.getElementById('modal2').style.display = 'block';
+      } else if (!lodash.isEmpty(sortedData.response) && this.state.display) {
+        this.setState({
+          message: sortedData.response,
+          display: false,
+        });
+        document.getElementById('modal3').style.display = 'block';
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    if (localStorage.bookId) {
+      localStorage.removeItem('bookId');
+      localStorage.removeItem('id');
+
+      localStorage.removeItem('category');
+      localStorage.removeItem('isbn');
+      localStorage.removeItem('stocknumber');
+      localStorage.removeItem('author');
+      localStorage.removeItem('summary');
+      localStorage.removeItem('bookTitle');
+      localStorage.removeItem('image');
+    }
+  }
+
   handleClick(e) {
     e.preventDefault();
     this.setState({
@@ -61,90 +144,6 @@ class DetailsForm extends React.Component {
     e.preventDefault();
     document.getElementById('modal2').style.display = 'none';
     document.getElementById('modal3').style.display = 'none';
-  }
-
-
-  componentWillMount() {
-    if (!lodash.isEmpty(localStorage.bookId)) {
-      this.props.checkBookDetails(localStorage.bookId);
-    }
-
-    if (this.props.counter > -1) {
-      if (!lodash.isEmpty(this.props.book[0])) {
-        if (lodash.isEmpty(localStorage.id)) {
-          const { data } = this.props;
-          bookId = this.props.book[0].bookId;
-          localStorage.setItem('bookId', bookId);
-          filteredData = lodash.filter(data, item => item.id == bookId);
-
-
-          bookTitle = filteredData[0].bookTitle;
-          id = filteredData[0].id;
-          category = filteredData[0].category;
-          isbn = filteredData[0].isbn;
-          stocknumber = filteredData[0].stocknumber;
-          author = filteredData[0].author;
-          image = filteredData[0].image;
-          summary = filteredData[0].summary;
-          localStorage.setItem('image', image);
-          localStorage.setItem('bookTitle', bookTitle);
-          localStorage.setItem('id', id);
-          localStorage.setItem('category', category);
-          localStorage.setItem('isbn', isbn);
-          localStorage.setItem('stocknumber', stocknumber);
-          localStorage.setItem('author', author);
-          localStorage.setItem('summary', summary);
-        }
-      }
-    }
-
-
-    if (this.props.data.length == 0) {
-      bookTitle = localStorage.getItem('bookTitle');
-      id = localStorage.getItem('id');
-      category = localStorage.getItem('category');
-      isbn = localStorage.getItem('isbn');
-      stocknumber = localStorage.getItem('stocknumber');
-      author = localStorage.getItem('author');
-      summary = localStorage.getItem('summary');
-    }
-  }
-
-
-  componentWillUnmount() {
-    if (localStorage.bookId) {
-      localStorage.removeItem('bookId');
-      localStorage.removeItem('id');
-
-      localStorage.removeItem('category');
-      localStorage.removeItem('isbn');
-      localStorage.removeItem('stocknumber');
-      localStorage.removeItem('author');
-      localStorage.removeItem('summary');
-      localStorage.removeItem('bookTitle');
-      localStorage.removeItem('image');
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    sortedData = nextProps.item[0];
-
-
-    if (this.state.display) {
-      if (!lodash.isEmpty(sortedData.error) && this.state.display) {
-        this.setState({
-          error: sortedData.error,
-          display: false,
-        });
-        document.getElementById('modal2').style.display = 'block';
-      } else if (!lodash.isEmpty(sortedData.response) && this.state.display) {
-        this.setState({
-          message: sortedData.response,
-          display: false,
-        });
-        document.getElementById('modal3').style.display = 'block';
-      }
-    }
   }
 
 
@@ -219,15 +218,22 @@ class DetailsForm extends React.Component {
   }
 }
 
+DetailsForm.propTypes = {
+  book: PropTypes.array.isRequired,
+  borrowBooks: PropTypes.func.isRequired,
+  checkBookDetails: PropTypes.func.isRequired,
+  data: PropTypes.array.isRequired,
+  item: PropTypes.array.isRequired,
+};
+
 function mapStateToProps(state) {
   return {
     data: state.books[0].data,
     book: state.selectedbook,
-    counter: state.counter[0].count,
     item: state.borrowBooks,
 
   };
 }
 
-export default connect(mapStateToProps, { checkBookDetails, getbooks, borrowBooks })(DetailsForm);
+export default connect(mapStateToProps, { checkBookDetails, borrowBooks })(DetailsForm);
 

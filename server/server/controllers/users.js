@@ -9,8 +9,6 @@ import db from '../models/index';
 import multer from 'multer';
 
 
-// const upload = multer({ dest: 'client/public/' });
-
 let filename = '';
 
 const storage = multer.diskStorage({
@@ -47,7 +45,7 @@ export default {
   signup(req, res) {
     if (!(req.body.password && req.body.username && req.body.email &&
       req.body.firstName && req.body.lastName && req.body.membershipType)) {
-      return res.status(400).send('please enter the required fields');
+      return res.status(400).send({ status: 400, message: 'please enter the required fields' });
     }
     db.Users
       .findOne({
@@ -58,7 +56,7 @@ export default {
 
       }).then((m) => {
         if (m.username) {
-          res.status(400).send('username already exist');
+          res.status(400).send({ status: 400, message: 'username already exist' });
         }
       }).catch((error) => {
         db.Users.create({
@@ -72,12 +70,12 @@ export default {
 
 
         })
-          .then(result => res.status(201).send({ message: 'Account created', result, error }))
+          .then(result => res.status(201).send({ status: 201, message: 'Account created', result, error }))
           .catch((e) => {
-            res.status(400).send(e.errors[0].message);
+            res.status(400).send({ status: 400, message: e.errors[0].message.toString(), e });
           });
-      },
-    );
+      }
+      );
   },
   /**
   * @method signin
@@ -89,7 +87,7 @@ export default {
 
   signin(req, res) {
     if (!(req.body.password && req.body.username)) {
-      return res.status(400).send('please enter the required fields');
+      return res.status(400).send({ status: 400, message: 'please enter the required fields' });
     }
     db.Users
       .findOne({
@@ -102,15 +100,15 @@ export default {
       })
       .then((result) => {
         if (result.length === 0) {
-          res.status(404).send('username and password is incorrect');
+          res.status(404).send({ status: 404, message: 'username and password is incorrect' });
         } else {
           // create a token
           jwt.sign({ id: result.id, user: result.username, role: result.role }, 'encoded', (err, token) => {
-            res.status(200).send({ message: 'You have successfully logged in', token });
+            res.status(200).send({ status: 200, message: 'You have successfully logged in', token });
           });
         }
       })
-      .catch(error => res.status(404).send('username and password is incorrect'));
+      .catch(error => res.status(404).send({ status: 404, message: 'username and password is incorrect', error }));
   },
   /**
   * @method list
@@ -121,14 +119,13 @@ export default {
   */
   list(req, res) {
     if (req.decoded.role === 'user') {
-      return res.status(403).send('Access Denied!');
+      return res.status(403).send({ message: 'Access Denied!' });
     }
     return db.Users
       .all()
       .then(result => res.status(200).send({ message: 'Success!', result }))
       .catch(error => res.status(400).send(error));
   },
-
 
 
   /**
@@ -141,10 +138,10 @@ export default {
 
   borrowBooks(req, res) {
     if (req.params.userId != req.decoded.id) {
-      return res.status(403).send('Invalid Identity');
+      return res.status(403).send({ status: 403, message: 'Invalid Identity' });
     }
     if (!(req.params.userId && req.body.bookId)) {
-      return res.status(403).send('Book process not allowed');
+      return res.status(403).send({ status: 403, message: 'Book process not allowed' });
     }
     db.borrowbook
       .findAll({
@@ -158,7 +155,7 @@ export default {
       })
       .then((output) => {
         if ((output.length !== 0)) {
-          return res.status(403).send('You have borrowed this book before please return it before you can borrow again!');
+          return res.status(403).send({ status: 403, message: 'You have borrowed this book before please return it before you can borrow again!' });
         }
 
         db.borrowbook
@@ -184,37 +181,37 @@ export default {
                 print = 0;
                 membershipType = out.membershipType;
                 if (membershipType === 'Basic') {
-                  if (length !== 1) {
+                  if (length >= 1) {
                     print = 1;
                   } else {
                     print = 0;
                   }
                 } else if (membershipType === 'Silver') {
-                  if (length !== 4) {
+                  if (length >= 4) {
                     print = 1;
                   } else {
                     print = 0;
                   }
                 } else if (membershipType === 'Gold') {
-                  if (length !== 10) {
+                  if (length >= 7) {
                     print = 1;
                   } else {
                     print = 0;
                   }
                 }
 
-                if (print === 0) {
-                  return res.status(403).send(`Sorry you can not borrow more than ${length} books`);
+                if (print === 1) {
+                  return res.status(403).send({ status: 403, message: `Sorry you can not borrow more than ${length} books` });
                 }
                 return db.Books
                   .findById(req.body.bookId)
                   .then((result) => {
                     if (!result) {
-                      return res.status(404).send('Book Not Found');
+                      return res.status(404).send({ status: 404, message: 'Book Not Found' });
                     }
 
                     if (result.stocknumber === 0) {
-                      return res.status(404).send('Book Not available in stock');
+                      return res.status(404).send({ status: 404, message: 'Book Not available in stock' });
                     }
 
                     result.update({ stocknumber: (result.stocknumber - 1) });
@@ -228,13 +225,13 @@ export default {
 
 
                       })
-                      .then(ouput => res.status(200).send({ message: 'Book added to personal archive. happy reading!', ouput }))
-                      .catch(error => res.status(400).send(error));
+                      .then(ouput => res.status(200).send({ status: 200, message: 'Book added to personal archive. happy reading!', ouput }))
+                      .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
                   })
-                  .catch(error => res.status(400).send(error));
-              }).catch(error => res.status(400).send(error));
-          }).catch(error => res.status(400).send(error));
-      }).catch(error => res.status(400).send(error));
+                  .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
+              }).catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
+          }).catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
+      }).catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
   },
 
   /**
@@ -247,10 +244,10 @@ export default {
   */
   getUnreturnedBooks(req, res) {
     if (req.params.userId != req.decoded.id) {
-      return res.status(403).send('Invalid Identity');
+      return res.status(403).send({ status: 403, message: 'Invalid Identity' });
     }
     if (!(req.params.userId && req.query.returned)) {
-      return res.status(403).send('Book process not allowed');
+      return res.status(403).send({ status: 403, message: 'Book process not allowed' });
     }
     return db.borrowbook
       .findAll({
@@ -259,8 +256,8 @@ export default {
           userId: req.params.userId,
         },
       }).then(result =>
-        res.status(200).send({ message: 'Borrowed books history retrieved', result }))
-      .catch(error => res.status(400).send(error));
+        res.status(200).send({ status: 200, message: 'Borrowed books history retrieved', result }))
+      .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
   },
 
   /**
@@ -272,19 +269,19 @@ export default {
   */
   returnBooks(req, res) {
     if (req.params.userId != req.decoded.id) {
-      return res.status(403).send('Invalid Identity');
+      return res.status(403).send({ status: 403, message: 'Invalid Identity' });
     }
     if (!(req.params.userId && req.body.bookId)) {
-      return res.status(403).send('Book process not allowed');
+      return res.status(403).send({ status: 403, message: 'Book process not allowed' });
     }
     return db.borrowbook
       .findById(req.body.Id)
       .then((ouput) => {
         if (!ouput) {
-          return res.status(404).send('Record Not Found');
+          return res.status(404).send({ status: 404, message: 'Record Not Found' });
         }
         if (ouput.retype === true) {
-          return res.status(403).send('This book has been returned before');
+          return res.status(403).send({ status: 403, message: 'This book has been returned before' });
         }
 
         return ouput
@@ -301,12 +298,12 @@ export default {
                   .update({
                     stocknumber: (re.stocknumber + 1),
                   });
-              }).catch(error => res.status(400).send(error));
-            res.status(200).send({ message: 'book has been returned successfully' });
+              }).catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
+            res.status(200).send({ status: 200, message: 'book has been returned successfully' });
           })
-          .catch(error => res.status(400).send(error));
+          .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
       })
-      .catch(error => res.status(400).send(error));
+      .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
   },
 
   /**
@@ -319,10 +316,10 @@ export default {
 */
   getBorrowedBooks(req, res) {
     if (req.params.userId != req.decoded.id) {
-      return res.status(403).send('Invalid Identity');
+      return res.status(403).send({ status: 403, message: 'Invalid Identity' });
     }
     if (!(req.params.userId)) {
-      return res.status(403).send('Book process not allowed');
+      return res.status(403).send({ status: 403, message: 'Book process not allowed' });
     }
     return db.borrowbook
       .findAll({
@@ -330,13 +327,13 @@ export default {
           userId: req.params.userId,
         },
       }).then(result =>
-        res.status(200).send({ message: 'Borrowed books history retrieved', result }))
-      .catch(error => res.status(400).send(error));
+        res.status(200).send({ status: 200, message: 'Borrowed books history retrieved', result }))
+      .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
   },
 
   getUserDetails(req, res) {
     if (req.params.userId != req.decoded.id) {
-      return res.status(403).send('Invalid Identity');
+      return res.status(403).send({ status: 403, message: 'Invalid Identity' });
     }
     return db.Users
       .findAll({
@@ -344,20 +341,20 @@ export default {
         where: {
           id: req.params.userId,
         },
-      }).then(result => res.status(200).send({ message: 'Success!', result }))
-      .catch(error => res.status(400).send(error))
+      }).then(result => res.status(200).send({ status: 200, message: 'Success!', result }))
+      .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
   },
 
   updateUser(req, res) {
     filename = req.body.profileImage;
     if (req.params.userId != req.decoded.id) {
-      return res.status(403).send('Invalid Identity');
+      return res.status(403).send({ status: 403, message: 'Invalid Identity' });
     }
     return db.Users
       .findById(req.params.userId)
       .then((result) => {
         if (isEmpty(result)) {
-          return res.status(404).send('User does not exist');
+          return res.status(404).send({ status: 404, message: 'User does not exist' });
         }
         return result
           .update({
@@ -367,16 +364,16 @@ export default {
             membershipType: req.body.membershipType || result.membershipType,
             profileImage: req.body.profileImage || result.profileImage,
           })
-          .then(() => res.status(200).send({ message: 'Details has been updated', result }))
-          .catch(error => res.status(400).send(error.errors[0].message));
+          .then(() => res.status(200).send({ status: 200, message: 'Details has been updated', result }))
+          .catch(error => res.status(400).send({ status: 400, message: error.errors[0].message }));
       })
-      .catch(error => res.status(400).send(error.errors[0].message));
+      .catch(error => res.status(400).send({ status: 400, message: error.errors[0].message }));
   },
 
 
   changePassword(req, res) {
     if (req.params.userId != req.decoded.id) {
-      return res.status(403).send('Invalid Identity');
+      return res.status(403).send({ status: 403, message: 'Invalid Identity' });
     }
     return db.Users
       .findOne({
@@ -384,19 +381,19 @@ export default {
           id: req.params.userId,
           password: SHA256(req.body.oldPassword).toString()
         },
-      }).then(result => {
+      }).then((result) => {
         if (isEmpty(result)) {
-          return res.status(404).send('Current password is wrong');
+          return res.status(404).send({ status: 404, message: 'Current password is wrong' });
         }
 
         return result
           .update({
             password: SHA256(req.body.newPassword).toString() || result.password,
           })
-          .then(() => res.status(200).send({ message: 'Password has been changed', result }))
-          .catch(error => res.status(400).send(error.errors[0].message));
+          .then(() => res.status(200).send({ status: 200, message: 'Password has been changed', result }))
+          .catch(error => res.status(400).send({ status: 400, message: error.errors[0].message }));
       })
-      .catch(error => res.status(400).send(error.errors[0].message))
+      .catch(error => res.status(400).send({ status: 400, message: error.errors[0].message }));
   },
 
   // / upload user profile image
@@ -404,11 +401,11 @@ export default {
     uploadAvatar(req, res, (err) => {
       if (err) {
         // An error occurred when uploading
-        res.status(400).send('Invalid input field');
+        res.status(400).send({ status: 400, message: 'Upload failed!' });
       }
       // Everything went fine
 
-      res.status(200).send({ message: 'Image uploaded successfully' });
+      res.status(200).send({ status: 200, message: 'Image uploaded successfully' });
     });
   }
 };

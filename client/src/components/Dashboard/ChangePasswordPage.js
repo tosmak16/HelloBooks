@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
+import PropTypes from 'prop-types';
 
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
@@ -24,10 +25,7 @@ class ChangePasswordPage extends React.Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
-    // this.handleSelected = this.handleChange.bind(this);
-    // this.handleImageChange = this.handleImageChange.bind(this);
     this.handleSave = this.handleSave.bind(this);
-    // // this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleExit = this.handleExit.bind(this);
   }
@@ -50,7 +48,7 @@ class ChangePasswordPage extends React.Component {
     });
     document.getElementById('modalOpen').style.display = 'none';
 
-    this.props.changePassword(this.state);
+    this.props.changePassword(this.state, localStorage.jwtToken);
   }
 
   handleInputChange(e) {
@@ -157,6 +155,13 @@ class ChangePasswordPage extends React.Component {
     );
   }
 }
+
+ChangePasswordPage.propTypes = {
+  changePassword: PropTypes.func.isRequired,
+  item: PropTypes.array.isRequired,
+
+};
+
 
 function mapStateToProps(state) {
   return {

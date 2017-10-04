@@ -5,17 +5,33 @@ import { uploadbookError, uploadbookRequest, uploadbookResponse } from '../../ac
 
 
 
-export function uploadBook(bookData) {
+export function uploadBook(bookData, token) {
   return (dispatch) => {
     dispatch(uploadbookRequest(bookData));
-    axios.post('/api/v2/books', bookData).then(
-      (res) => {
-        dispatch(uploadbookResponse(res.data.message));
 
-      }
-    ).catch(error => {
-      dispatch(uploadbookError(error.response.data));
-    });
+    return fetch('http://localhost:8000/api/v2/books', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+        token: token
+      },
+      body: JSON.stringify(bookData)
+    })
+      .then(
+      (res) => res.json())
+      .then((response) => {
+        if (response.status >= 400) {
+          throw response.message
+        }
+        else if (response.status === 201) {
+          dispatch(uploadbookResponse(response.message));
+        }
+      })
+      .catch(error => {
+        dispatch(uploadbookError(error));
+      });
+
   }
 
 }

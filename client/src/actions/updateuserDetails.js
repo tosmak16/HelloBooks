@@ -7,21 +7,35 @@ import { updateuserError, updateuserRequest, updateuserResponse } from '../../ac
 
 
 
-export default function updateUser(userData) {
-  let decodedToken = jwtDecode(localStorage.jwtToken);
+export default function updateUser(userData, token) {
+  let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;
 
   return (dispatch) => {
     dispatch(updateuserRequest(userData));
-    axios.put('/api/v2/users/' + userId, userData).then(
-      (res) => {
 
-        dispatch(updateuserResponse(res.data.message));
-      }
-    ).catch(error => {
-
-      dispatch(updateuserError(error.response.data ? error.response.data : 'Error'));
-    });
+    return fetch('http://localhost:8000/api/v2/users/' + userId, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+        token: token
+      },
+      body: JSON.stringify(userData)
+    })
+      .then(
+      (res) => res.json())
+      .then((response) => {
+        if (response.status >= 400) {
+          throw response.message
+        }
+        else if (response.status === 200) {
+          dispatch(updateuserResponse(response.message));
+        }
+      })
+      .catch(error => {
+        dispatch(uupdateuserError(error));
+      });
   }
 
 }

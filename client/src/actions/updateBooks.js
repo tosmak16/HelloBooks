@@ -5,17 +5,32 @@ import { updatebookError, updatebookRequest, updatebookResponse } from '../../ac
 
 
 
-export function updateBook(bookData) {
+export function updateBook(bookData, token) {
   return (dispatch) => {
     dispatch(updatebookRequest(bookData));
-    axios.put('/api/v2/books/' + bookData.bookId, bookData).then(
-      (res) => {
-        dispatch(updatebookResponse(res.data.message));
 
-      }
-    ).catch(error => {
-      dispatch(updatebookError(error.response.data));
-    });
+    return fetch('http://localhost:8000/api/v2/books/' + bookData.bookId, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+        token: token
+      },
+      body: JSON.stringify(bookData)
+    })
+      .then(
+      (res) => res.json())
+      .then((response) => {
+        if (response.status >= 400) {
+          throw response.message
+        }
+        else if (response.status === 200) {
+          dispatch(updatebookResponse(response.message));
+        }
+      })
+      .catch(error => {
+        dispatch(updatebookError(error));
+      });
   }
 
 }

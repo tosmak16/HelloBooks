@@ -24,6 +24,8 @@ class BhTableRow extends React.Component {
 }
 
 BhTableRow.propTypes = {
+  bookItem: PropTypes.array.isRequired,
+  row: PropTypes.object.isRequired,
 };
 
 export default BhTableRow;

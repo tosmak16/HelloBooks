@@ -61,8 +61,6 @@ class BookStorePage extends React.Component {
     document.getElementById('modal3').style.display = 'none';
 
     setTimeout(() => { this.props.refreshPage(true); }, 2000);
-
-    // this.props.refreshPage(true);
   }
   handleDelete(e) {
     e.preventDefault();
@@ -74,7 +72,7 @@ class BookStorePage extends React.Component {
 
   handleYes(e) {
     e.preventDefault();
-    this.props.deleteBook(this.state.bookId);
+    this.props.deleteBook(this.state.bookId, localStorage.jwtToken);
     this.setState({
       pointer: true,
     });
@@ -112,10 +110,10 @@ class BookStorePage extends React.Component {
       const { filteredData } = this.props;
       tablerow = filteredData.map(row =>
         (<TableRow
-          key={ row.id }
-          row={ row }
-          value={ row.id }
-          onDelete={ this.handleDelete }
+          key={row.id}
+          row={row}
+          value={row.id}
+          onDelete={this.handleDelete}
         />)
       );
 
@@ -143,12 +141,12 @@ class BookStorePage extends React.Component {
           <div className="row">
             <div className="col l3  col m3 col s12 ">
               <MembershipSelect
-                onHandleSelected={ this.handleSelected }
-                value={ this.state.filterBy }
+                onHandleSelected={this.handleSelected}
+                value={this.state.filterBy}
               />
             </div>
             <div className="col l6 col m6 col s12 ">
-              <SearchBar onChange={ this.handleChange } name="searchText" value={ this.state.searchText } />
+              <SearchBar onChange={this.handleChange} name="searchText" value={this.state.searchText} />
             </div>
           </div >
           {!this.props.filteredData ? <p>.</p> : <h4 className="sub-header">Search result</h4>}
@@ -156,23 +154,23 @@ class BookStorePage extends React.Component {
           {this.props.filteredData && tableholder}
 
           <SingleActionModal
-            id={ 'modal3' } heading={ 'Done!' }
-            message={ this.state.message ? this.state.message : '' }
-            onHandleExit={ this.handleExit }
+            id={'modal3'} heading={'Done!'}
+            message={this.state.message ? this.state.message : ''}
+            onHandleExit={this.handleExit}
           />
           <SingleActionModal
-            id={ 'modal2' } heading={ 'Oh!' }
-            message={ this.state.errors ? this.state.errors : '' }
-            onHandleExit={ this.handleExit }
+            id={'modal2'} heading={'Oh!'}
+            message={this.state.errors ? this.state.errors : ''}
+            onHandleExit={this.handleExit}
           />
 
 
           <DoubleActionModal
-            id={ 'modal1' }
-            onHandleClick={ this.handleYes }
-            onHandleClose={ this.handleNo }
-            bookTitle={ '' }
-            heading={ 'Do you want to remove this book from store?' }
+            id={'modal1'}
+            onHandleClick={this.handleYes}
+            onHandleClose={this.handleNo}
+            bookTitle={''}
+            heading={'Do you want to remove this book from store?'}
           />
         </div>
       </div>
@@ -183,9 +181,13 @@ class BookStorePage extends React.Component {
 BookStorePage.propTypes = {
 
   deleteBook: PropTypes.func.isRequired,
+  filteredData: PropTypes.array.isRequired,
   getbooks: PropTypes.func.isRequired,
   isRefreshed: PropTypes.bool.isRequired,
+  item: PropTypes.array.isRequired,
   refreshPage: PropTypes.func.isRequired,
+  searchbooks: PropTypes.func.isRequired,
+
 
 };
 
@@ -197,5 +199,3 @@ function mapStateToProps(state) {
   };
 }
 export default connect(mapStateToProps, { deleteBook, getbooks, refreshPage, searchbooks })(BookStorePage);
-
-// <td><button type="button" className=" btn-danger btn-sm deletebtn">Delete</button></td>

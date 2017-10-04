@@ -1,5 +1,6 @@
 import React from 'react';
 import lodash from 'lodash';
+import PropTypes from 'prop-types';
 
 
 import Cardbox from './Cardbox';
@@ -29,6 +30,10 @@ class BooksPhoto extends React.Component {
     );
   }
 }
+
+BooksPhoto.propTypes = {
+  data: PropTypes.array.isRequired,
+};
 
 
 export default BooksPhoto;

@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from '../components/App';
-// import Welcome from '../components/Welcome';
 import Login from '../components/Login';
 import SignUpPage from '../components/SignUpPage';
 import BooksPage from '../components/Books/BooksPage';
@@ -19,7 +18,7 @@ export default
     <IndexRoute component={ Login } />
     <Route path="login" component={ Login } />
     <Route path="signup" component={ SignUpPage } />
-    <Route path="books" component={ cAuth(BooksPage) } />
+    <Route path="books" component={ BooksPage } />
     <Route path="details" component={ cAuth(BookDetailsPage) } />
     <Route path="dashboard" component={ cAuth(DashboardPage) } />
     <Route path="admin" component={ adminAuth(AdminPage) } />
