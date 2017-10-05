@@ -1,10 +1,6 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import render from 'react-test-renderer';
-import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
-import fetchMock from 'fetch-mock';
-import { Provider } from 'react-redux';
 import expect from 'expect';
 
 
@@ -15,15 +11,6 @@ const mockFuction = jest.fn();
 
 
 describe('Signup Form Component test', () => {
-  const initialState = {
-    reg: [{
-      isRegistered: false,
-      data: {},
-      error: '',
-      isFetching: false,
-      response: {}
-    }]
-  };
   let wrapper;
 
 
