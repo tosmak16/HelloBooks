@@ -1,0 +1,209 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Signup Form Component test should test and take snapshot of SignUpPage 1`] = `
+<form
+  action="/login"
+  className="form-signin"
+  onSubmit={[Function]}
+>
+  <h4
+    className="form-signin-heading"
+  >
+    Create an account
+  </h4>
+  
+  <div
+    className="row"
+  >
+    <div
+      className="col input-field s12"
+    >
+      <input
+        className="form-control sr-only validate"
+        defaultValue={undefined}
+        id="firstname"
+        name="firstName"
+        onChange={[Function]}
+        placeholder="Firstname"
+        required={true}
+        type="text"
+        value=""
+      />
+      <label
+        className=""
+        data-error={undefined}
+        data-success={undefined}
+        htmlFor="firstname"
+      >
+        First Name
+      </label>
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col input-field s12"
+    >
+      <input
+        className="form-control validate"
+        defaultValue={undefined}
+        id="lastname"
+        name="lastName"
+        onChange={[Function]}
+        placeholder="Last name"
+        required={true}
+        type="text"
+        value=""
+      />
+      <label
+        className=""
+        data-error={undefined}
+        data-success={undefined}
+        htmlFor="lastname"
+      >
+        Last Name
+      </label>
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col input-field s12"
+    >
+      <input
+        className="form-control validate"
+        defaultValue={undefined}
+        id="inputSignUpEmail"
+        name="email"
+        onChange={[Function]}
+        placeholder="Email address"
+        required={true}
+        type="email"
+        value=""
+      />
+      <label
+        className=""
+        data-error={undefined}
+        data-success={undefined}
+        htmlFor="inputSignUpEmail"
+      >
+        Email address
+      </label>
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col input-field s12"
+    >
+      <input
+        className="form-control validate"
+        defaultValue={undefined}
+        id="inputUsername"
+        name="username"
+        onChange={[Function]}
+        placeholder="Username"
+        required={true}
+        type="text"
+        value=""
+      />
+      <label
+        className=""
+        data-error={undefined}
+        data-success={undefined}
+        htmlFor="inputUsername"
+      >
+        Username
+      </label>
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col input-field s12"
+    >
+      <input
+        className="form-control validate"
+        defaultValue={undefined}
+        id="inputsSignUpPassword"
+        name="password"
+        onChange={[Function]}
+        placeholder="Password"
+        required={true}
+        type="password"
+        value=""
+      />
+      <label
+        className=""
+        data-error={undefined}
+        data-success={undefined}
+        htmlFor="inputsSignUpPassword"
+      >
+        Password
+      </label>
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col input-field s12"
+    >
+      <select
+        className=""
+        defaultValue={undefined}
+        id="inputSignUpselect"
+        multiple={undefined}
+        name="membershipType"
+        onChange={[Function]}
+        required={true}
+        value=""
+      >
+        <option
+          defaultValue=""
+          disabled={true}
+        >
+          Membership Type
+        </option>
+        <option
+          value="Basic"
+        >
+          Basic
+        </option>
+        <option
+          value="Silver"
+        >
+          Silver
+        </option>
+        <option
+          value="Gold"
+        >
+          Gold
+        </option>
+        <option
+          value="Bronze"
+        >
+          Bronze
+        </option>
+      </select>
+    </div>
+  </div>
+  <a
+    href=""
+  >
+    <button
+      className="btn waves-effect waves-light btn btn-lg btn-success btn-block"
+      disabled={false}
+      id="signUbtn"
+      onClick={undefined}
+      type="submit"
+    >
+      Sign up
+    </button>
+  </a>
+</form>
+`;
