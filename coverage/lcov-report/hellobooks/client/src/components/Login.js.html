@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for HelloBooks/client/src/actions/getUserDetails.js</title>
+    <title>Code coverage report for HelloBooks/client/src/components/Login.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -16,28 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../../index.html">All files</a> / <a href="index.html">HelloBooks/client/src/actions</a> getUserDetails.js
+      <a href="../../../../index.html">All files</a> / <a href="index.html">HelloBooks/client/src/components</a> Login.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>11/11</span>
+        <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>3/4</span>
+        <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>5/5</span>
+        <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>11/11</span>
+        <span class='fraction'>3/3</span>
       </div>
     </div>
   </div>
@@ -79,23 +79,7 @@
 34
 35
 36
-37
-38
-39</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+37</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -104,13 +88,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -119,44 +108,49 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import axios from 'axios';
-import { browserHistory } from 'react-router';
-import jwtDecode from 'jwt-decode';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 &nbsp;
-import { getuserdetailsError, getuserdetailsReponse, getuserdetailsRequest } from '../../actions/getUserDetails';
+&nbsp;
+import { LoginForm } from './LoginForm';
+import Footer from './Footer';
+import userSignin from '../actions/loginAction';
+import getbooks from '../actions/getBooks';
 &nbsp;
 &nbsp;
-export default function getUserdetails(token) {
-  let decodedToken = jwtDecode(token);
-  let userId = decodedToken.id;
-&nbsp;
-  return (dispatch) =&gt; {
-    dispatch(getuserdetailsRequest());
-&nbsp;
-    return fetch('http://localhost:8000/api/v2/users/' + userId, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json',
-        token: token
-      },
-    })
-      .then(
-      (res) =&gt; res.json())
-      .then((response) =&gt; {
-        if (response.status &gt;= 400) {
-          throw response.message
-        }
-        else <span class="missing-if-branch" title="else path not taken" >E</span>if (response.status === 200) {
-          dispatch(getuserdetailsReponse(response.result));
-        }
-      })
-      .catch(error =&gt; {
-        dispatch(getuserdetailsError(error))
-      });
-&nbsp;
-  };
+export class Login extends React.Component {
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;div id="loginForm" className="row"&gt;
+          &lt;LoginForm getbooks={ this.props.getbooks } userSignin={ this.props.userSignin } log={ this.props.log } /&gt;
+        &lt;/div&gt;
+        &lt;Footer /&gt;
+      &lt;/div&gt;
+    );
+  }
 }
+&nbsp;
+Login.propTypes = {
+  getbooks: PropTypes.func.isRequired,
+  log: PropTypes.object.isRequired,
+  userSignin: PropTypes.func.isRequired,
+&nbsp;
+};
+&nbsp;
+function mapStateToProps(state) {
+  return { log: state.log[0] };
+}
+&nbsp;
+export default connect((mapStateToProps), { userSignin, getbooks })(Login);
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
