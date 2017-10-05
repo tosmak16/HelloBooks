@@ -1,12 +1,10 @@
 import jwt from 'jsonwebtoken';
 import { SHA256 } from 'crypto-js';
 import isEmpty from 'lodash/isEmpty';
+import multer from 'multer';
 
 
 import db from '../models/index';
-
-
-import multer from 'multer';
 
 
 let filename = '';
@@ -397,7 +395,7 @@ export default {
   },
 
   // / upload user profile image
-  uploadAvatar(req, res) {
+  uploadImage(req, res) {
     uploadAvatar(req, res, (err) => {
       if (err) {
         // An error occurred when uploading

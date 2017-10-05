@@ -44,7 +44,7 @@
     "crypto-js": "^3.1.9-1",
     "css-loader": "^0.28.5",
     "dotenv": "^4.0.0",
-    "enzyme": "^3.1.0",
+    "enzyme": "^2.7.0",
     "es6-promise": "^4.1.1",
     "expect": "^21.2.0",
     "express": "^4.15.4",
