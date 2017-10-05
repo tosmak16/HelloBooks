@@ -1,18 +1,20 @@
 import React from 'react';
-import LoginForm from './LoginForm';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+
+import { LoginForm } from './LoginForm';
 import Footer from './Footer';
+import userSignin from '../actions/loginAction';
+import getbooks from '../actions/getBooks';
 
 
-import FlashMessagesList from './flash/FlashMessagesList';
-
-
-class Login extends React.Component {
+export class Login extends React.Component {
   render() {
     return (
       <div>
-        <FlashMessagesList />
         <div id="loginForm" className="row">
-          <LoginForm />
+          <LoginForm getbooks={ this.props.getbooks } userSignin={ this.props.userSignin } log={ this.props.log } />
         </div>
         <Footer />
       </div>
@@ -20,4 +22,15 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+Login.propTypes = {
+  getbooks: PropTypes.func.isRequired,
+  log: PropTypes.object.isRequired,
+  userSignin: PropTypes.func.isRequired,
+
+};
+
+function mapStateToProps(state) {
+  return { log: state.log[0] };
+}
+
+export default connect((mapStateToProps), { userSignin, getbooks })(Login);

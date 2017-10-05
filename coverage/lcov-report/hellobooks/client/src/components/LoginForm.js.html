@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for HelloBooks/client/__mock__/book.js</title>
+    <title>Code coverage report for HelloBooks/client/src/components/LoginForm.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -16,28 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../index.html">All files</a> / <a href="index.html">HelloBooks/client/__mock__</a> book.js
+      <a href="../../../../index.html">All files</a> / <a href="index.html">HelloBooks/client/src/components</a> LoginForm.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>1/1</span>
+        <span class='fraction'>12/12</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>1/1</span>
+        <span class='fraction'>12/12</span>
       </div>
     </div>
   </div>
@@ -128,7 +128,15 @@
 83
 84
 85
-86</td><td class="line-coverage quiet"><span class="cline-any cline-yes">21x</span>
+86
+87
+88
+89
+90
+91
+92
+93
+94</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -136,20 +144,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -201,6 +220,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -209,95 +229,99 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const books = [
-  {
-    bookId: 1,
-    bookTitle: 'THE PEOPLE IN THE TREE',
-    author: 'Y. Hayan',
-    category: 'Adventure',
-    isbn: '345798465',
-    stocknumber: '2',
-    image: 'l1.jpg',
-    summary: 'Lorem Ipronic typesetting, remaininised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
-  },
-  {
-    bookId: 2,
-    bookTitle: 'THE LATE PARADE',
-    author: 'F. Adam',
-    category: 'Adventure',
-    isbn: '234560878',
-    stocknumber: '0',
-    image: 'l2.jpg',
-    summary: 'It is a long established fact thaorem Ipsu uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)',
-  },
-  {
-    bookId: 3,
-    bookTitle: 'I AM THE WOLF',
-    author: 'L. Mark',
-    category: 'Music',
-    isbn: '4678980976',
-    stocknumber: '5',
-    image: 'l3.jpg',
-    summary: 'There are many variations of passages of Lorem Ipsum available, but the majority orem Ipsum generators on the Internet tend to repeat predefined chunks as necessary',
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import PropTypes from 'prop-types';
 &nbsp;
-  },
-  {
-    bookId: 4,
-    bookTitle: 'THE PALE NORTH',
-    author: 'H. Clayton',
-    category: 'Adventure',
-    isbn: '34567887655',
-    stocknumber: '3',
-    image: 'l4.jpg',
-    summary: 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from ',
-  },
-  {
-    bookId: 5,
-    bookTitle: 'ADULTOLESENCE',
-    author: 'G. Hannah',
-    category: 'Romance',
-    isbn: '45678974567',
-    stocknumber: '10',
-    image: 'l5.jpg',
-    summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Urum.'
-  },
-  {
-    bookId: 6,
-    bookTitle: 'WHAT IT MEANS WHEN A MAN FALL FROM SKY',
-    author: 'L. Nneka',
-    category: 'Adventure',
-    isbn: '567244567',
-    stocknumber: '10',
-    image: 'l6.jpg',
-    summary: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium?'
-  },
-  {
-    bookId: 7,
-    bookTitle: 'THE SONG AND THE SILENCE',
-    author: 'Y. Johnson',
-    category: 'Music',
-    isbn: '64578974567',
-    stocknumber: '10',
-    image: 'l7.jpg',
-    summary: 'But I must explain to you how all this mists no resultant pleasure  ducimus qui blanditiis praesentium voluptatum culpa qui officia ?'
-  },
-  {
-    bookId: 8,
-    bookTitle: 'THE ILIAD HOMMER',
-    author: 'P. Green',
-    category: 'Action',
-    isbn: '787890974567',
-    stocknumber: '8',
-    image: 'l8.jpg',
-    summary: 'At vero eos et accusamus et iuse delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
-  },
-];
+import { Input, Row } from 'react-materialize';
 &nbsp;
-export default books;
+&nbsp;
+export class LoginForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: '',
+      errors: ''
+    };
+&nbsp;
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+&nbsp;
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+&nbsp;
+  handleSubmit(e) {
+    e.preventDefault();
+    this.setState({ errors: '' });
+    this.props.userSignin(this.state);
+    this.props.getbooks(true);
+  }
+&nbsp;
+  render() {
+    const { error } = this.props.log;
+    return (
+      &lt;form onSubmit={ this.handleSubmit } className="form-signin" action="books.html" &gt;
+        &lt;h4 className="form-signin-heading"&gt;Please log in&lt;/h4&gt;
+        {error &amp;&amp; &lt;p style={{ color: 'red' }} className="help-block"&gt;*{error}*&lt;/p&gt;}
+        &lt;Row&gt;
+          &lt;Input
+            s={ 12 } label="Username"
+            type="text" value={ this.state.username } name="username" id="inputUsernamelog" className="form-control validate"
+            placeholder="Username"
+            onChange={ this.handleChange }
+            required
+            autoFocus
+          /&gt;
+        &lt;/Row&gt;
+&nbsp;
+        &lt;Row&gt;
+          &lt;Input
+            s={ 12 } label="Password"
+            type="password"
+            id="inputPassword"
+            className="form-control validate"
+            placeholder="Password" required
+            autoFocus
+            name="password"
+            value={ this.state.password }
+            onChange={ this.handleChange }
+          /&gt;
+        &lt;/Row&gt;
+&nbsp;
+        &lt;div className="row"&gt;
+          &lt;div&gt;
+            &lt;input
+              defaultChecked="checked" name="group1" type="checkbox" value="" label="Remember me?"
+              className="filled-in checkbox-orange" id="filled-in-box"
+            /&gt;
+            &lt;label htmlFor="filled-in-box"&gt;Remember me?&lt;/label&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;button id="loginbtn" className="btn btn-lg btn-primary  btn-block" type="submit"&gt;Sign in&lt;/button&gt;
+        &lt;p&gt;
+          &lt;label&gt;
+            &lt;a href=""&gt; Forgot Password ? &lt;/a&gt;
+          &lt;/label&gt;
+        &lt;/p&gt;
+&nbsp;
+        &lt;a href="/signup" id="createbtn" className="" &gt; &lt;b&gt;Create account&lt;/b&gt;&lt;/a&gt;
+&nbsp;
+      &lt;/form &gt;
+    );
+  }
+}
+&nbsp;
+LoginForm.propTypes = {
+  getbooks: PropTypes.func.isRequired,
+  log: PropTypes.object.isRequired,
+  userSignin: PropTypes.func.isRequired,
+&nbsp;
+};
+&nbsp;
+&nbsp;
+export default LoginForm;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
@@ -307,7 +331,7 @@ export default books;
   generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 05 2017 12:09:23 GMT+0100 (WAT)
 </div>
 </div>
-<script src="../../../prettify.js"></script>
+<script src="../../../../prettify.js"></script>
 <script>
 window.onload = function () {
         if (typeof prettyPrint === 'function') {
@@ -315,6 +339,6 @@ window.onload = function () {
         }
 };
 </script>
-<script src="../../../sorter.js"></script>
+<script src="../../../../sorter.js"></script>
 </body>
 </html>

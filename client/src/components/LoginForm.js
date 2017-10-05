@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Button, Icon, Input, Row } from 'react-materialize';
 
-import userSignin from '../actions/loginAction';
-import getbooks from '../actions/getBooks';
-import log from '../../reducers/log';
+import { Input, Row } from 'react-materialize';
 
-class LoginForm extends React.Component {
+
+export class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -92,8 +89,5 @@ LoginForm.propTypes = {
 
 };
 
-const mapStateToProps = state => ({
-  log: state.log[0]
-});
 
-export default connect(mapStateToProps, { userSignin, getbooks })(LoginForm);
+export default LoginForm;
