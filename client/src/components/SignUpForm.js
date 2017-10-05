@@ -11,7 +11,7 @@ const membershipType = {
   Gold: 'Gold',
   Bronze: 'Bronze'
 };
-class SignUpForm extends React.Component {
+export class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -135,8 +135,6 @@ class SignUpForm extends React.Component {
 SignUpForm.propTypes = {
   reg: PropTypes.object.isRequired,
   userSignup: PropTypes.func.isRequired,
-
-
 };
 
 export default SignUpForm;
