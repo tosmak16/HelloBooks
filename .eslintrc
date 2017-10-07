@@ -47,7 +47,7 @@
         "react/no-deprecated": "error",
         "react/no-did-mount-set-state": "error",
         "react/no-did-update-set-state": "error",
-        "react/no-direct-mutation-state": "error",
+        "react/no-direct-mutation-state": "off",
         "react/no-find-dom-node": "error",
         "react/no-is-mounted": "error",
         "react/no-multi-comp": [
@@ -57,7 +57,7 @@
             }
         ],
         "react/no-render-return-value": "error",
-        "react/no-set-state": "error",
+        "react/no-set-state": "off",
         "react/no-string-refs": "error",
         "react/no-unescaped-entities": "error",
         "react/no-unknown-property": "error",
@@ -71,7 +71,7 @@
         "react/prefer-es6-class": "error",
         "react/prefer-stateless-function": "off",
         "react/prop-types": "error",
-        "react/react-in-jsx-scope": "error",
+        "react/react-in-jsx-scope": "off",
         "react/require-default-props": "off",
         "react/require-optimization": "off",
         "react/require-render-return": "error",

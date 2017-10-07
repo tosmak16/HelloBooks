@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
-
-import checkBookDetails from '../../actions/checkBookDetails';
 
 
 class BooksCollection extends React.Component {
@@ -16,7 +13,7 @@ class BooksCollection extends React.Component {
   handleClick(e) {
     e.preventDefault();
 
-    this.props.checkBookDetails(e.target.name);
+    this.props.checkBookDetails(e.target.name, true);
     browserHistory.push('/details');
   }
   render() {
@@ -24,15 +21,19 @@ class BooksCollection extends React.Component {
 
     const litt = data.map(item => (<li key={ item.id } className="collection-item avatar">
       <img
-        key={ item.id } name={ item.id }
-        src={ require(`../../../public/img/${item.image}`) }
-        alt="" className="circle"
+        key={ item.id }
+        name={ item.id }
+        src={ item.image ? item.image : '' }
+        alt=""
+        className="circle"
       />
       <span className="title">{item.bookTitle}</span>
       <p>{item.author}</p>
       <button
-        id="wishbtn" name={ item.id }
-        onClick={ this.handleClick } type="button"
+        id="wishbtn"
+        name={ item.id }
+        onClick={ this.handleClick }
+        type="button"
         className="btn-sm btn-warning shop"
       >Check details</button>
       <a href="#!" className="secondary-content"><i key={ item.id } style={{ color: 'orange' }} className="material-icons ">grade</i></a>
@@ -61,4 +62,4 @@ BooksCollection.propTypes = {
   heading: PropTypes.string.isRequired,
 };
 
-export default connect(null, { checkBookDetails })(BooksCollection);
+export default BooksCollection;

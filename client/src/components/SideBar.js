@@ -14,13 +14,11 @@ class SideBar extends React.Component {
   }
 
   handleClick(e) {
-    e.preventDefault();
     browserHistory.push('/books');
     this.props.showbooksByCategory(e.target.name, this.props.data);
   }
 
   handleCollapse(e) {
-    e.preventDefault();
     $('.collapsible').collapsible();
   }
   render() {
@@ -102,11 +100,10 @@ class SideBar extends React.Component {
 }
 
 SideBar.propTypes = {
-  showbooksByCategory: PropTypes.func.isRequired
+  data: PropTypes.array.isRequired,
+  showbooksByCategory: PropTypes.func.isRequired,
+
 };
 
-const mapStateToProps = state => ({
-  data: state.books[0].data
-});
-export default connect(mapStateToProps, { showbooksByCategory })(SideBar);
+export default SideBar;
 

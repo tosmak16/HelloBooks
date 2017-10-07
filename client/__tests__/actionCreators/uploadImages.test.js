@@ -28,16 +28,19 @@ const mockStore = configureMockStore(middlewares);
 const action = {
   response: 'image uploaded successfully',
   bookData: book[0].image,
-  error: 'Bad request'
+  error: 'Bad request',
+  secure_url: 'image'
 };
 
 const data = new FormData();
 data.append('file', action.bookData);
+data.append('upload_preset', 'bjfllgrd');
 
 const response = {
   status: 200,
   message: 'image uploaded successfully',
-  result: book[0].image
+  result: book[0].image,
+  secure_url: 'image'
 };
 
 describe('Test upload cover image Actions', () => {
@@ -69,8 +72,8 @@ describe('Test upload cover image Actions', () => {
   });
 
   it('should return books resources if the request is successful', () => {
-    fetchMock.post('http://localhost:8000/api/v2/books/image',
-      JSON.stringify(response));
+    fetchMock.post('https://api.cloudinary.com/v1_1/tosmak/upload',
+      { body: response, status: 200 });
 
     const initialState = {};
     const store = mockStore(initialState);
@@ -84,7 +87,7 @@ describe('Test upload cover image Actions', () => {
       {
         type: UPLOAD_IMAGE_SUCCESS,
         isUploading: false,
-        response
+        response: action.secure_url
       },
     ];
     return store.dispatch(uploadImage(action.bookData))

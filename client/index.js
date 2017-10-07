@@ -5,7 +5,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import jwtDecode from 'jwt-decode';
-
+import cloudinary from 'cloudinary-core';
 
 import 'materialize-css/dist/js/materialize.min';
 import routes from './src/routes/routes';

@@ -22,8 +22,8 @@ class BooksFilter extends React.Component {
     this.handleSelected = this.handleChange.bind(this);
   }
 
+
   handleChange(e) {
-    e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
     if (e.target.value.length > 3 && this.state.filterBy !== '') {
       this.setState({ error: '' });
@@ -35,7 +35,6 @@ class BooksFilter extends React.Component {
   }
 
   handleSelected(e) {
-    e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
   }
 
@@ -55,7 +54,7 @@ class BooksFilter extends React.Component {
           </div>
         </div >
         <div className="row">
-          {this.props.filteredData.length !== 0 && <BooksCollection heading={ 'Search results' } data={ this.props.filteredData } />}
+          {this.props.filteredData.length !== 0 && <BooksCollection checkBookDetails={ this.props.checkBookDetails } heading={ 'Search results' } data={ this.props.filteredData } />}
           {this.props.filteredData.length === 0 && this.state.pointer && <BooksCollection heading={ 'No search results' } data={ this.props.filteredData } />}
         </div>
       </div >
@@ -64,18 +63,13 @@ class BooksFilter extends React.Component {
 }
 
 BooksFilter.propTypes = {
+  checkBookDetails: PropTypes.func.isRequired,
   data: PropTypes.array.isRequired,
   filteredData: PropTypes.array.isRequired,
   searchbooks: PropTypes.func.isRequired,
 
 };
 
-function mapStateToProps(state) {
-  return {
-    filteredData: state.getFilteredBooks[0].filteredData
-  };
-}
 
-
-export default connect(mapStateToProps, { searchbooks })(BooksFilter);
+export default BooksFilter;
 

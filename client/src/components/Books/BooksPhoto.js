@@ -16,7 +16,7 @@ class BooksPhoto extends React.Component {
       if (i < 8) { filteredData.push(element); }
       i++;
     }, this);
-    const cardbox = filteredData.map(item => <div key={ item.id } className="col m5 col l3 col s6"> <Cardbox item={ item } /> </div>);
+    const cardbox = filteredData.map(item => <div key={ item.id } className="col m5 col l3 col s6"> <Cardbox checkBookDetails={ this.props.checkBookDetails } item={ item } /> </div>);
     return (
       <div className="col m10 offset-m2 col l10 offset-l2 col s12 main">
         <h4 className="page-header">Latest Books</h4>
@@ -32,6 +32,7 @@ class BooksPhoto extends React.Component {
 }
 
 BooksPhoto.propTypes = {
+  checkBookDetails: PropTypes.func.isRequired,
   data: PropTypes.array.isRequired,
 };
 

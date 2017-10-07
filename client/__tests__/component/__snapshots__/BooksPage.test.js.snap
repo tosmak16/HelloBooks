@@ -1,0 +1,1613 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test BooksPage component should test and take snapshot of Card box 1`] = `
+<div
+  id="card_div"
+>
+  <div
+    className="small card_holder card"
+    value={1}
+  >
+    <div
+      className="card-image"
+      id="card_box"
+    >
+      <img
+        className=""
+        src="hello"
+      />
+      <span
+        className="card-title"
+      />
+    </div>
+    <div
+      className="card-content"
+    >
+      <div>
+         
+        <button
+          className="btn-sm btn-warning shop"
+          id="wishbtn"
+          name={1}
+          onClick={[Function]}
+          type="button"
+        >
+          Read
+        </button>
+      </div>
+    </div>
+    <div
+      className="card-reveal"
+    >
+      <span
+        className="card-title grey-text text-darken-4"
+      >
+        <i
+          className="material-icons right"
+        >
+          close
+        </i>
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col s12 col m2 col l2 sidebar "
+    id="sidenava"
+  >
+    <ul
+      className="collapsible"
+      data-collapsible="accordion"
+    >
+      <li>
+         
+        <div
+          className="collapsible-header"
+        >
+           
+          <label
+            className="heada"
+            onClick={[Function]}
+          >
+            <b>
+              SCIENCE&TECH
+            </b>
+          </label>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+          <a
+            className="boda"
+            href="#"
+            name="Science"
+            onClick={[Function]}
+          >
+            Science
+          </a>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+          <a
+            className="boda"
+            href="#"
+            name="Technology"
+            onClick={[Function]}
+          >
+            Technology
+          </a>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Computer"
+            onClick={[Function]}
+          >
+            Computer
+          </a>
+           
+        </div>
+      </li>
+      <li>
+         
+        <div
+          className="collapsible-header"
+        >
+           
+          <label
+            className="heada"
+            onClick={[Function]}
+          >
+            <b>
+              LITERATURE
+            </b>
+          </label>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Fiction"
+            onClick={[Function]}
+          >
+            Fiction
+          </a>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Mystery"
+            onClick={[Function]}
+          >
+            Mystery
+          </a>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Romance"
+            onClick={[Function]}
+          >
+            Romance
+          </a>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Sci-Fiction"
+            onClick={[Function]}
+          >
+            Sci-Fiction
+          </a>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Adventure"
+            onClick={[Function]}
+          >
+            Adventure
+          </a>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Action"
+            onClick={[Function]}
+          >
+            Action
+          </a>
+           
+        </div>
+      </li>
+      <li>
+         
+        <div
+          className="collapsible-header"
+        >
+           
+          <label
+            className="heada"
+            onClick={[Function]}
+          >
+            <b>
+              STYLE AND ART
+            </b>
+          </label>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Arts"
+            onClick={[Function]}
+          >
+            Arts
+          </a>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Languages"
+            onClick={[Function]}
+          >
+            Languages
+          </a>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Fashion"
+            onClick={[Function]}
+          >
+            Fashion
+          </a>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Food"
+            onClick={[Function]}
+          >
+            Food
+          </a>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Games"
+            onClick={[Function]}
+          >
+            Games
+          </a>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Music"
+            onClick={[Function]}
+          >
+            Music
+          </a>
+           
+        </div>
+      </li>
+      <li>
+         
+        <div
+          className="collapsible-header"
+        >
+           
+          <label
+            className="heada"
+            onClick={[Function]}
+          >
+            <b>
+              CAREER & MONEY
+            </b>
+          </label>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Management"
+            onClick={[Function]}
+          >
+            Management
+          </a>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Accounting"
+            onClick={[Function]}
+          >
+            Accounting
+          </a>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Entrepreneurship"
+            onClick={[Function]}
+          >
+            Entrepreneurship
+          </a>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Leadership"
+            onClick={[Function]}
+          >
+            Leadership
+          </a>
+           
+        </div>
+      </li>
+      <li>
+         
+        <div
+          className="collapsible-header"
+        >
+           
+          <label
+            className="heada"
+            onClick={[Function]}
+          >
+            <b>
+              PERSONAL GROWTH
+            </b>
+          </label>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Psychology"
+            onClick={[Function]}
+          >
+            Psychology
+          </a>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Relationships"
+            onClick={[Function]}
+          >
+            Relationships
+          </a>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Self-Improvement"
+            onClick={[Function]}
+          >
+            Self-Improvement
+          </a>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Religion"
+            onClick={[Function]}
+          >
+            Religion
+          </a>
+           
+        </div>
+      </li>
+      <li>
+         
+        <div
+          className="collapsible-header"
+        >
+           
+          <label
+            className="heada"
+            onClick={[Function]}
+          >
+            <b>
+              HEALTH & FITNESS
+            </b>
+          </label>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Fitness"
+            onClick={[Function]}
+          >
+            Fitness
+          </a>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Nutrition"
+            onClick={[Function]}
+          >
+            Nutrition
+          </a>
+           
+        </div>
+        <div
+          className="collapsible-body"
+        >
+           
+          <a
+            className="boda"
+            href="#"
+            name="Sports"
+            onClick={[Function]}
+          >
+            Sports
+          </a>
+           
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Test BooksPage component should test and take snapshot of booksCategoryPage 1`] = `
+<div
+  className="row"
+>
+  <h4>
+    
+  </h4>
+</div>
+`;
+
+exports[`Test BooksPage component should test and take snapshot of booksCollectionPage 1`] = `
+<div
+  className="col m10 offset-m2 col l10 offset-l2 col s12 main"
+>
+  <h4
+    className="page-header"
+  >
+    hello
+  </h4>
+  <hr />
+  <div
+    className=" row "
+  >
+    <div
+      className=""
+    >
+      <ul
+        className="collection "
+      >
+        <li
+          className="collection-item avatar"
+        >
+          <img
+            alt=""
+            className="circle"
+            name={1}
+            src=""
+          />
+          <span
+            className="title"
+          />
+          <p />
+          <button
+            className="btn-sm btn-warning shop"
+            id="wishbtn"
+            name={1}
+            onClick={[Function]}
+            type="button"
+          >
+            Check details
+          </button>
+          <a
+            className="secondary-content"
+            href="#!"
+          >
+            <i
+              className="material-icons "
+              style={
+                Object {
+                  "color": "orange",
+                }
+              }
+            >
+              grade
+            </i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test BooksPage component should test and take snapshot of booksFilterPage 1`] = `
+<div
+  className="container-fluid"
+  id="booksearchbar"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col l3  offset-l2  col m3  offset-m2  col s12 "
+    >
+      <div>
+        <select
+          className="browser-default input-field"
+          name="filterBy"
+          onChange={[Function]}
+          value=""
+        >
+          <option
+            defaultValue="bookTitle"
+          >
+            Search by
+          </option>
+          <option
+            value="bookTitle"
+          >
+            Title
+          </option>
+          <option
+            value="author"
+          >
+            Author
+          </option>
+          <option
+            value="category"
+          >
+            Category
+          </option>
+          <option
+            value="isbn"
+          >
+            ISBN
+          </option>
+        </select>
+      </div>
+    </div>
+    <div
+      className="col l6 col m6 col s12 "
+    >
+      <div
+        className="input-field"
+      >
+        <input
+          id="search"
+          name="searchText"
+          onChange={[Function]}
+          required={true}
+          style={
+            Object {
+              "backgroundColor": "white",
+              "textAlign": "center",
+            }
+          }
+          type="search"
+          value=""
+        />
+        <label
+          className="label-icon"
+          htmlFor="search"
+        >
+          <i
+            className="material-icons"
+          >
+            search
+          </i>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col m10 offset-m2 col l10 offset-l2 col s12 main"
+    >
+      <h4
+        className="page-header"
+      >
+        Search results
+      </h4>
+      <hr />
+      <div
+        className=" row "
+      >
+        <div
+          className=""
+        >
+          <ul
+            className="collection "
+          >
+            <li
+              className="collection-item avatar"
+            >
+              <img
+                alt=""
+                className="circle"
+                name={1}
+                src=""
+              />
+              <span
+                className="title"
+              >
+                love
+              </span>
+              <p />
+              <button
+                className="btn-sm btn-warning shop"
+                id="wishbtn"
+                name={1}
+                onClick={[Function]}
+                type="button"
+              >
+                Check details
+              </button>
+              <a
+                className="secondary-content"
+                href="#!"
+              >
+                <i
+                  className="material-icons "
+                  style={
+                    Object {
+                      "color": "orange",
+                    }
+                  }
+                >
+                  grade
+                </i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test BooksPage component should test and take snapshot of booksPage 1`] = `
+<div
+  className=""
+>
+  <div
+    className="row"
+  >
+    <div
+      className=""
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col s12 col m2 col l2 sidebar "
+          id="sidenava"
+        >
+          <ul
+            className="collapsible"
+            data-collapsible="accordion"
+          >
+            <li>
+               
+              <div
+                className="collapsible-header"
+              >
+                 
+                <label
+                  className="heada"
+                  onClick={[Function]}
+                >
+                  <b>
+                    SCIENCE&TECH
+                  </b>
+                </label>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                <a
+                  className="boda"
+                  href="#"
+                  name="Science"
+                  onClick={[Function]}
+                >
+                  Science
+                </a>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                <a
+                  className="boda"
+                  href="#"
+                  name="Technology"
+                  onClick={[Function]}
+                >
+                  Technology
+                </a>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Computer"
+                  onClick={[Function]}
+                >
+                  Computer
+                </a>
+                 
+              </div>
+            </li>
+            <li>
+               
+              <div
+                className="collapsible-header"
+              >
+                 
+                <label
+                  className="heada"
+                  onClick={[Function]}
+                >
+                  <b>
+                    LITERATURE
+                  </b>
+                </label>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Fiction"
+                  onClick={[Function]}
+                >
+                  Fiction
+                </a>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Mystery"
+                  onClick={[Function]}
+                >
+                  Mystery
+                </a>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Romance"
+                  onClick={[Function]}
+                >
+                  Romance
+                </a>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Sci-Fiction"
+                  onClick={[Function]}
+                >
+                  Sci-Fiction
+                </a>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Adventure"
+                  onClick={[Function]}
+                >
+                  Adventure
+                </a>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Action"
+                  onClick={[Function]}
+                >
+                  Action
+                </a>
+                 
+              </div>
+            </li>
+            <li>
+               
+              <div
+                className="collapsible-header"
+              >
+                 
+                <label
+                  className="heada"
+                  onClick={[Function]}
+                >
+                  <b>
+                    STYLE AND ART
+                  </b>
+                </label>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Arts"
+                  onClick={[Function]}
+                >
+                  Arts
+                </a>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Languages"
+                  onClick={[Function]}
+                >
+                  Languages
+                </a>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Fashion"
+                  onClick={[Function]}
+                >
+                  Fashion
+                </a>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Food"
+                  onClick={[Function]}
+                >
+                  Food
+                </a>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Games"
+                  onClick={[Function]}
+                >
+                  Games
+                </a>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Music"
+                  onClick={[Function]}
+                >
+                  Music
+                </a>
+                 
+              </div>
+            </li>
+            <li>
+               
+              <div
+                className="collapsible-header"
+              >
+                 
+                <label
+                  className="heada"
+                  onClick={[Function]}
+                >
+                  <b>
+                    CAREER & MONEY
+                  </b>
+                </label>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Management"
+                  onClick={[Function]}
+                >
+                  Management
+                </a>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Accounting"
+                  onClick={[Function]}
+                >
+                  Accounting
+                </a>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Entrepreneurship"
+                  onClick={[Function]}
+                >
+                  Entrepreneurship
+                </a>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Leadership"
+                  onClick={[Function]}
+                >
+                  Leadership
+                </a>
+                 
+              </div>
+            </li>
+            <li>
+               
+              <div
+                className="collapsible-header"
+              >
+                 
+                <label
+                  className="heada"
+                  onClick={[Function]}
+                >
+                  <b>
+                    PERSONAL GROWTH
+                  </b>
+                </label>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Psychology"
+                  onClick={[Function]}
+                >
+                  Psychology
+                </a>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Relationships"
+                  onClick={[Function]}
+                >
+                  Relationships
+                </a>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Self-Improvement"
+                  onClick={[Function]}
+                >
+                  Self-Improvement
+                </a>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Religion"
+                  onClick={[Function]}
+                >
+                  Religion
+                </a>
+                 
+              </div>
+            </li>
+            <li>
+               
+              <div
+                className="collapsible-header"
+              >
+                 
+                <label
+                  className="heada"
+                  onClick={[Function]}
+                >
+                  <b>
+                    HEALTH & FITNESS
+                  </b>
+                </label>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Fitness"
+                  onClick={[Function]}
+                >
+                  Fitness
+                </a>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Nutrition"
+                  onClick={[Function]}
+                >
+                  Nutrition
+                </a>
+                 
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                 
+                <a
+                  className="boda"
+                  href="#"
+                  name="Sports"
+                  onClick={[Function]}
+                >
+                  Sports
+                </a>
+                 
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div
+      className=""
+      id="book_body"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="container-fluid"
+          id="booksearchbar"
+        >
+          <div
+            className="row"
+          >
+            <div
+              className="col l3  offset-l2  col m3  offset-m2  col s12 "
+            >
+              <div>
+                <select
+                  className="browser-default input-field"
+                  name="filterBy"
+                  onChange={[Function]}
+                  value=""
+                >
+                  <option
+                    defaultValue="bookTitle"
+                  >
+                    Search by
+                  </option>
+                  <option
+                    value="bookTitle"
+                  >
+                    Title
+                  </option>
+                  <option
+                    value="author"
+                  >
+                    Author
+                  </option>
+                  <option
+                    value="category"
+                  >
+                    Category
+                  </option>
+                  <option
+                    value="isbn"
+                  >
+                    ISBN
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div
+              className="col l6 col m6 col s12 "
+            >
+              <div
+                className="input-field"
+              >
+                <input
+                  id="search"
+                  name="searchText"
+                  onChange={[Function]}
+                  required={true}
+                  style={
+                    Object {
+                      "backgroundColor": "white",
+                      "textAlign": "center",
+                    }
+                  }
+                  type="search"
+                  value=""
+                />
+                <label
+                  className="label-icon"
+                  htmlFor="search"
+                >
+                  <i
+                    className="material-icons"
+                  >
+                    search
+                  </i>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div
+            className="row"
+          >
+            <div
+              className="col m10 offset-m2 col l10 offset-l2 col s12 main"
+            >
+              <h4
+                className="page-header"
+              >
+                Search results
+              </h4>
+              <hr />
+              <div
+                className=" row "
+              >
+                <div
+                  className=""
+                >
+                  <ul
+                    className="collection "
+                  >
+                    <li
+                      className="collection-item avatar"
+                    >
+                      <img
+                        alt=""
+                        className="circle"
+                        name={1}
+                        src=""
+                      />
+                      <span
+                        className="title"
+                      >
+                        love
+                      </span>
+                      <p />
+                      <button
+                        className="btn-sm btn-warning shop"
+                        id="wishbtn"
+                        name={1}
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        Check details
+                      </button>
+                      <a
+                        className="secondary-content"
+                        href="#!"
+                      >
+                        <i
+                          className="material-icons "
+                          style={
+                            Object {
+                              "color": "orange",
+                            }
+                          }
+                        >
+                          grade
+                        </i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <h4>
+            
+          </h4>
+        </div>
+        <div
+          className="col m10 offset-m2 col l10 offset-l2 col s12 main"
+        >
+          <h4
+            className="page-header"
+          >
+            Latest Books
+          </h4>
+          <hr />
+          <div
+            className="row"
+          >
+            <div
+              className="col m5 col l3 col s6"
+            >
+               
+              <div
+                id="card_div"
+              >
+                <div
+                  className="small card_holder card"
+                  value={1}
+                >
+                  <div
+                    className="card-image"
+                    id="card_box"
+                  >
+                    <img
+                      className=""
+                      src=""
+                    />
+                    <span
+                      className="card-title"
+                    />
+                  </div>
+                  <div
+                    className="card-content"
+                  >
+                    <div>
+                       
+                      <button
+                        className="btn-sm btn-warning shop"
+                        id="wishbtn"
+                        name={1}
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        Read
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    className="card-reveal"
+                  >
+                    <span
+                      className="card-title grey-text text-darken-4"
+                    >
+                      <i
+                        className="material-icons right"
+                      >
+                        close
+                      </i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+               
+            </div>
+          </div>
+        </div>
+        <div
+          className="col m10 offset-m2 col l10 offset-l2 col s12 main"
+        >
+          <h4
+            className="page-header"
+          >
+            Available books
+          </h4>
+          <hr />
+          <div
+            className=" row "
+          >
+            <div
+              className=""
+            >
+              <ul
+                className="collection "
+              >
+                <li
+                  className="collection-item avatar"
+                >
+                  <img
+                    alt=""
+                    className="circle"
+                    name={1}
+                    src=""
+                  />
+                  <span
+                    className="title"
+                  />
+                  <p />
+                  <button
+                    className="btn-sm btn-warning shop"
+                    id="wishbtn"
+                    name={1}
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    Check details
+                  </button>
+                  <a
+                    className="secondary-content"
+                    href="#!"
+                  >
+                    <i
+                      className="material-icons "
+                      style={
+                        Object {
+                          "color": "orange",
+                        }
+                      }
+                    >
+                      grade
+                    </i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test BooksPage component should test and take snapshot of booksphotoPage 1`] = `
+<div
+  className="col m10 offset-m2 col l10 offset-l2 col s12 main"
+>
+  <h4
+    className="page-header"
+  >
+    Latest Books
+  </h4>
+  <hr />
+  <div
+    className="row"
+  >
+    <div
+      className="col m5 col l3 col s6"
+    >
+       
+      <div
+        id="card_div"
+      >
+        <div
+          className="small card_holder card"
+          value={1}
+        >
+          <div
+            className="card-image"
+            id="card_box"
+          >
+            <img
+              className=""
+              src=""
+            />
+            <span
+              className="card-title"
+            />
+          </div>
+          <div
+            className="card-content"
+          >
+            <div>
+               
+              <button
+                className="btn-sm btn-warning shop"
+                id="wishbtn"
+                name={1}
+                onClick={[Function]}
+                type="button"
+              >
+                Read
+              </button>
+            </div>
+          </div>
+          <div
+            className="card-reveal"
+          >
+            <span
+              className="card-title grey-text text-darken-4"
+            >
+              <i
+                className="material-icons right"
+              >
+                close
+              </i>
+            </span>
+          </div>
+        </div>
+      </div>
+       
+    </div>
+  </div>
+</div>
+`;

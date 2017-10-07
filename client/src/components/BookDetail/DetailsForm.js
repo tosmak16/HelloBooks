@@ -1,14 +1,8 @@
 import React from 'react';
 import { CardTitle, Card } from 'react-materialize';
-import { connect } from 'react-redux';
 import lodash from 'lodash';
 import $ from 'jquery';
 import PropTypes from 'prop-types';
-
-
-import checkBookDetails from '../../actions/checkBookDetails';
-import getbooks from '../../actions/getBooks';
-import borrowBooks from '../../actions/borrowBooks';
 
 
 let bookId = '';
@@ -80,6 +74,7 @@ class DetailsForm extends React.Component {
       stocknumber = localStorage.getItem('stocknumber');
       author = localStorage.getItem('author');
       summary = localStorage.getItem('summary');
+      image = localStorage.getItem('image');
     }
   }
 
@@ -176,7 +171,7 @@ class DetailsForm extends React.Component {
               <div className=" col s12 col m2 col l2 placeholder" id="photo">
                 <Card
                   className="small card_holder_details"
-                  header={ <CardTitle id="card_box_details" image={ require(`../../../public/img/${localStorage.getItem('image')}`) } /> }
+                  header={ <CardTitle id="card_box_details" image={ image } /> }
 
                 > {<a style={{ fontSize: '15px', color: 'black', fontStyle: 'bold' }} href="#" />}</Card>
 
@@ -226,14 +221,6 @@ DetailsForm.propTypes = {
   item: PropTypes.array.isRequired,
 };
 
-function mapStateToProps(state) {
-  return {
-    data: state.books[0].data,
-    book: state.selectedbook,
-    item: state.borrowBooks,
 
-  };
-}
-
-export default connect(mapStateToProps, { checkBookDetails, borrowBooks })(DetailsForm);
+export default DetailsForm;
 

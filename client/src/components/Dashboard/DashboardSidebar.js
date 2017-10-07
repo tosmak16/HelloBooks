@@ -51,9 +51,11 @@ class DashboardSidebar extends React.Component {
   handleClick(e) {
     e.preventDefault();
     this.setState({
-      show: true,
+      show: false,
+      imageloaded: true,
+      profileImage: '',
     });
-    this.props.updateUser(this.state);
+    this.props.uploadAvatar(this.state.file);
     document.getElementById('modaO').style.display = 'none';
   }
 
@@ -73,6 +75,7 @@ class DashboardSidebar extends React.Component {
       error: '',
       message: '',
       file: '',
+      imagePreviewUrl: '',
     });
   }
 
@@ -80,7 +83,7 @@ class DashboardSidebar extends React.Component {
   handleEdit(e) {
     e.preventDefault();
     if (this.state.file) {
-      if (this.state.imageHeight !== 200 || this.state.imageWidth !== 150) {
+      if (this.state.imageHeight > 200 || this.state.imageWidth > 150) {
         this.setState({ modalErrorMessage: 'Please image height  and width must be 200 and 150 respectively' });
 
         document.getElementById('modaE').style.display = 'block';
@@ -114,7 +117,6 @@ class DashboardSidebar extends React.Component {
       this.setState({
         file,
         imagePreviewUrl: reader.result,
-        profileImage: Date.now() + file.name,
       });
     };
 
@@ -150,26 +152,23 @@ class DashboardSidebar extends React.Component {
       } else if (!isEmpty(this.props.message)) {
         this.setState({
           show: false,
-          imageloaded: true
+          message: 'Image uploaded successfully',
         });
-        this.state.file ? this.props.uploadAvatar(this.state.file) : '';
+        document.getElementById('modaS').style.display = 'block';
       }
     }
 
     if (this.state.imageloaded) {
-      if (nextProps.image.status === 200) {
+      if (!isEmpty(nextProps.imageUrl)) {
         this.setState({
           imageloaded: false,
-          message: 'Image uploaded successfully',
+          profileImage: nextProps.imageUrl,
+          show: true,
         });
 
-        document.getElementById('modaS').style.display = 'block';
+        this.props.updateUser({ profileImage: nextProps.imageUrl }, localStorage.jwtToken);
       }
     }
-  }
-
-  componentWillUpdate() {
-
   }
 
 
@@ -214,7 +213,7 @@ class DashboardSidebar extends React.Component {
                   <div className="file-field input-field">
                     <div id="filebtn" style={{ marginLeft: '5px', color: 'white' }} className="">
                       <span />
-                      <img id="userimg" src={ this.state.imagePreviewUrl ? this.state.imagePreviewUrl : !isEmpty(imgName.profileImage) ? require(`../../../public/img/${imgName.profileImage}`) : require('../../../public/img/userimg.png') } width="120" height="120" alt="images" />
+                      <img id="userimg" src={ this.state.imagePreviewUrl ? this.state.imagePreviewUrl : !isEmpty(imgName.profileImage) ? imgName.profileImage : 'http://res.cloudinary.com/tosmak/image/upload/v1507297483/userimg_cxeszl.png' } width="120" height="120" alt="images" />
 
 
                       <input
@@ -282,7 +281,7 @@ class DashboardSidebar extends React.Component {
 DashboardSidebar.propTypes = {
   data: PropTypes.array.isRequired,
   error: PropTypes.string.isRequired,
-  image: PropTypes.object.isRequired,
+  imageUrl: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
   updateUser: PropTypes.func.isRequired,
   uploadAvatar: PropTypes.func.isRequired
@@ -291,7 +290,7 @@ DashboardSidebar.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    image: state.userProfileImage[0].response,
+    imageUrl: state.userProfileImage[0].response,
     error: state.updateUser[0].error.toString(),
     message: state.updateUser[0].data.toString(),
   };

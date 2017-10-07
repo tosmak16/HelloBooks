@@ -33,6 +33,7 @@ const action = {
 
 const data = new FormData();
 data.append('file', action.bookData);
+data.append('upload_preset', 'bjfllgrd');
 
 const response = {
   status: 400,
@@ -42,8 +43,9 @@ const response = {
 
 describe('Test upload cover image Actions', () => {
   it('should return books resources if the request is successful', () => {
-    fetchMock.post('http://localhost:8000/api/v2/books/image',
-      JSON.stringify(response));
+    fetchMock.post('https://api.cloudinary.com/v1_1/tosmak/upload',
+      { body: response, status: 400 });
+
 
     const initialState = {};
     const store = mockStore(initialState);

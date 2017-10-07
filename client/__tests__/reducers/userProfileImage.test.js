@@ -30,7 +30,7 @@ describe('upload profile image reducer', () => {
         data: '',
         error: '',
         isUploading: false,
-        response: {}
+        response: ''
       }
     ]);
   });
@@ -44,13 +44,13 @@ describe('upload profile image reducer', () => {
         data: action.data,
         error: '',
         isUploading: true,
-        response: {}
+        response: ''
       },
       {
         data: '',
         error: '',
         isUploading: false,
-        response: {}
+        response: ''
       }
     ]);
   });
@@ -70,7 +70,7 @@ describe('upload profile image reducer', () => {
         data: '',
         error: '',
         isUploading: false,
-        response: {}
+        response: ''
       }
     ]);
   });
@@ -84,13 +84,13 @@ describe('upload profile image reducer', () => {
         error: action.error,
         data: '',
         isUploading: false,
-        response: {}
+        response: ''
       },
       {
         data: '',
         error: '',
         isUploading: false,
-        response: {}
+        response: ''
       }
     ]);
   });

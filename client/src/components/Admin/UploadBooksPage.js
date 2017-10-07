@@ -32,6 +32,7 @@ class UploadBooksPage extends React.Component {
       error: '',
       message: '',
       display: false,
+      show: false,
     };
     this.handleImageChange = this.handleImageChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -40,23 +41,56 @@ class UploadBooksPage extends React.Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleExit = this.handleExit.bind(this);
   }
+  componentWillReceiveProps(nextProps) {
+    sortedData = nextProps.item[0];
+    if (this.state.display) {
+      if (!lodash.isEmpty(sortedData.error)) {
+        this.setState({
+          display: false,
+          error: sortedData.error
+        });
+        document.getElementById('modalError').style.display = 'block';
+      } else if (!lodash.isEmpty(sortedData.response)) {
+        this.setState({
+          file: '',
+          display: false,
+          message: sortedData.response,
+          imagePreviewUrl: '',
+          bookTitle: '',
+          author: '',
+          category: '',
+          isbn: '',
+          stocknumber: '',
+          image: '',
+          summary: '',
+          imageHeight: 0,
+          imageWidth: 0,
+          imageSize: 0,
+        });
+        document.getElementById('modalSuccess').style.display = 'block';
+      }
+    }
+
+
+    if (this.state.show) {
+      if (!lodash.isEmpty(nextProps.imageUrl)) {
+        this.setState({
+          show: false,
+          image: nextProps.imageUrl,
+          display: true,
+        });
+
+        setTimeout(() => { this.props.uploadBook(this.state, localStorage.jwtToken); }, 5000);
+      }
+    }
+  }
+
   handleClick(e) {
     e.preventDefault();
-    this.props.uploadBook(this.state, localStorage.jwtToken);
-
+    this.props.uploadImage(this.state.file);
     this.setState({
-      imagePreviewUrl: '',
-      bookTitle: '',
-      author: '',
-      category: '',
-      isbn: '',
-      stocknumber: '',
-      image: '',
-      summary: '',
-      imageHeight: 0,
-      imageWidth: 0,
-      imageSize: 0,
-      display: true,
+      show: true,
+      display: false,
     });
     document.getElementById('modalOpen').style.display = 'none';
   }
@@ -118,32 +152,10 @@ class UploadBooksPage extends React.Component {
       this.setState({
         file,
         imagePreviewUrl: reader.result,
-        image: Date.now() + file.name,
       });
     };
 
     reader.readAsDataURL(file);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    sortedData = nextProps.item[0];
-    if (this.state.display) {
-      if (!lodash.isEmpty(sortedData.error)) {
-        this.setState({
-          display: false,
-          error: sortedData.error
-        });
-        document.getElementById('modalError').style.display = 'block';
-      } else if (!lodash.isEmpty(sortedData.response)) {
-        this.props.uploadImage(this.state.file);
-        this.setState({
-          file: '',
-          display: false,
-          message: sortedData.response,
-        });
-        document.getElementById('modalSuccess').style.display = 'block';
-      }
-    }
   }
 
 
@@ -159,8 +171,8 @@ class UploadBooksPage extends React.Component {
                 type="text" name="bookTitle"
                 className="form-control validate col l12  col m5  col s12"
                 id="ubookTitle" placeholder="Title"
-                required value={ this.state.bookTitle }
-                onChange={ this.handleChange }
+                required value={this.state.bookTitle}
+                onChange={this.handleChange}
               />
             </div>
             <div className="form-group input-field">
@@ -168,18 +180,18 @@ class UploadBooksPage extends React.Component {
                 type="text" name="author"
                 className="form-control validate col l12 col m5 offset-m1 col s12"
                 id="ubookAuthor" placeholder="Author"
-                required value={ this.state.author }
-                onChange={ this.handleChange }
+                required value={this.state.author}
+                onChange={this.handleChange}
               />
             </div>
           </div>
           <div className="row">
             <div className="form-group input-field">
               <input
-                type="text" name="category" value={ this.state.category }
+                type="text" name="category" value={this.state.category}
                 className="form-control validate col l5  col m5 col s12"
                 id="ubookCat" placeholder="Category" required
-                onChange={ this.handleChange }
+                onChange={this.handleChange}
               />
             </div>
             <div className="form-group input-field">
@@ -187,16 +199,16 @@ class UploadBooksPage extends React.Component {
                 type="text" name="isbn"
                 className="form-control validate col l5 offset-l1 col m5 offset-m1 col s12"
                 id="uISBN" placeholder="ISBN"
-                required value={ this.state.isbn }
-                onChange={ this.handleChange }
+                required value={this.state.isbn}
+                onChange={this.handleChange}
               />
             </div>
           </div>
           <div className="form-group input-field">
             <input
               type="number" name="stocknumber" className="form-control validate" id="ustock" placeholder="Number in stock"
-              required value={ this.state.stocknumber }
-              onChange={ this.handleChange }
+              required value={this.state.stocknumber}
+              onChange={this.handleChange}
             />
           </div>
 
@@ -206,15 +218,15 @@ class UploadBooksPage extends React.Component {
               type="textarea" name="summary"
               className="form-control validate"
               id="ubookSummary" placeholder="Summary"
-              required value={ this.state.summary }
-              onChange={ this.handleChange }
+              required value={this.state.summary}
+              onChange={this.handleChange}
             />
           </div>
           <div className="file-field input-field">
             <div id="filebtn" className="btn">
               <span>File</span>
 
-              <input className="fileInput" id="photoInput" onChange={ this.handleImageChange } type="file" accept=".png, .jpg, .jpeg" />
+              <input className="fileInput" id="photoInput" onChange={this.handleImageChange} type="file" accept=".png, .jpg, .jpeg" />
             </div>
             <div className="file-path-wrapper">
               <input className="file-path validate" type="text" placeholder="Upload cover" />
@@ -225,25 +237,25 @@ class UploadBooksPage extends React.Component {
           <label htmlFor="filebtn">image format *jpg, *png</label>
           <div />
           <SingleActionModal
-            id={ 'modalError' } heading={ 'Oh!' }
-            message={ this.state.error ? this.state.error : this.state.modalErrorMessage }
-            onHandleExit={ this.handleExit }
+            id={'modalError'} heading={'Oh!'}
+            message={this.state.error ? this.state.error : this.state.modalErrorMessage}
+            onHandleExit={this.handleExit}
           />
           <SingleActionModal
-            id={ 'modalSuccess' } heading={ 'Done!' }
-            message={ this.state.message ? this.state.message : '' }
-            onHandleExit={ this.handleExit }
+            id={'modalSuccess'} heading={'Done!'}
+            message={this.state.message ? this.state.message : ''}
+            onHandleExit={this.handleExit}
           />
           <DoubleActionModal
-            id={ 'modalOpen' }
-            onHandleClick={ this.handleClick }
-            onHandleClose={ this.handleClose }
-            bookTitle={ this.state.bookTitle }
-            heading={ 'Do you want to add this book to store?' }
+            id={'modalOpen'}
+            onHandleClick={this.handleClick}
+            onHandleClose={this.handleClose}
+            bookTitle={this.state.bookTitle}
+            heading={'Do you want to add this book to store?'}
           />
 
           <div className="form-inline">
-            <button onClick={ this.handleOpen } style={{ marginTop: '10px', width: '300px' }} id="uploadbtn" type="button" className="btn-sm pbtn">Upload</button>
+            <button onClick={this.handleOpen} style={{ marginTop: '10px', width: '300px' }} id="uploadbtn" type="button" className="btn-sm pbtn">Upload</button>
           </div>
 
 
@@ -256,6 +268,7 @@ class UploadBooksPage extends React.Component {
 }
 UploadBooksPage.propTypes = {
   getbooks: PropTypes.func.isRequired,
+  imageUrl: PropTypes.string.isRequired,
   item: PropTypes.array.isRequired,
   uploadBook: PropTypes.func.isRequired,
   uploadImage: PropTypes.func.isRequired,
@@ -263,6 +276,7 @@ UploadBooksPage.propTypes = {
 
 function mapStateToProps(state) {
   return {
+    imageUrl: state.uploadImages[0].response,
     item: state.uploadBooks,
   };
 }

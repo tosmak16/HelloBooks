@@ -17,7 +17,7 @@ class BooksCategory extends React.Component {
   }
   render() {
     if (sortedData.categoryData) {
-      display = <BooksCollection heading={ `${sortedData.category} Books` } data={ sortedData.categoryData } />;
+      display = <BooksCollection checkBookDetails={ this.props.checkBookDetails } heading={ `${sortedData.category} Books` } data={ sortedData.categoryData } />;
     }
     return (
       <div className="row">
@@ -28,6 +28,7 @@ class BooksCategory extends React.Component {
   }
 }
 BooksCategory.propTypes = {
+  checkBookDetails: PropTypes.func.isRequired,
   data: PropTypes.array.isRequired,
 };
 
