@@ -12,7 +12,7 @@ export default {
   },
 
   removeItem(key) {
-    delete localStorage[key];
+    return delete localStorage[key];
   }
 
 };

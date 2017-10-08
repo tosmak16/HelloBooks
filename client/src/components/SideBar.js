@@ -13,13 +13,15 @@ class SideBar extends React.Component {
     this.handleCollapse = this.handleCollapse.bind(this);
   }
 
-  handleClick(e) {
-    browserHistory.push('/books');
+  handleClick(e, set = true) {
+    if (set) { browserHistory.push('/books'); }
     this.props.showbooksByCategory(e.target.name, this.props.data);
   }
 
-  handleCollapse(e) {
-    $('.collapsible').collapsible();
+  handleCollapse(e, set = true) {
+    if (set) {
+      $('.collapsible').collapsible();
+    }
   }
   render() {
     return (

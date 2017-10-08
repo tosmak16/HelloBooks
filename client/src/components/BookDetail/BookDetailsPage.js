@@ -10,7 +10,7 @@ import borrowBooks from '../../actions/borrowBooks';
 import showbooksByCategory from '../../actions/showbooksByCategory';
 
 
-class BookDetailsPage extends React.Component {
+export class BookDetailsPage extends React.Component {
   render() {
     return (
       <div>

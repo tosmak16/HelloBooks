@@ -1,0 +1,1841 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test book Details page components and container should test and take snapshot of Details form 1`] = `
+<div
+  className="container"
+  id="book_details_wrapper"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col m10  col l10 col s12 "
+    >
+      <div
+        className="placeholders  "
+      >
+        <div
+          className=" col s12 col m2 col l2 placeholder"
+          id="photo"
+        >
+          <div
+            className="small card_holder_details card"
+          >
+            <div
+              className="card-image"
+              id="card_box_details"
+            >
+              <img
+                className=""
+                src="l1.jpg"
+              />
+              <span
+                className="card-title"
+              />
+            </div>
+            <div
+              className="card-content"
+            >
+              <div>
+                 
+                <a
+                  href="#"
+                  style={
+                    Object {
+                      "color": "black",
+                      "fontSize": "15px",
+                      "fontStyle": "bold",
+                    }
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="card-reveal"
+            >
+              <span
+                className="card-title grey-text text-darken-4"
+              >
+                <i
+                  className="material-icons right"
+                >
+                  close
+                </i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className=" col s10 col m7 col l7"
+      >
+        <h5
+          className="page-header"
+        >
+          THE PEOPLE IN THE TREE
+        </h5>
+        <hr />
+        <h5>
+          Summary
+        </h5>
+        <div
+          className="modal"
+          id="modal2"
+        >
+          <div
+            className="modal-content"
+          >
+            <h5>
+              Oh!
+            </h5>
+            <p>
+              
+            </p>
+          </div>
+          <div
+            className="modal-footer"
+          >
+            <a
+              className="modal-action modal-close waves-effect waves-brown btn-flat"
+              href=""
+              onClick={[Function]}
+            >
+              Close
+            </a>
+          </div>
+        </div>
+        <div
+          className="modal"
+          id="modal3"
+        >
+          <div
+            className="modal-content"
+          >
+            <h5>
+              Wow!
+            </h5>
+            <p>
+              
+            </p>
+          </div>
+          <div
+            className="modal-footer"
+          >
+            <a
+              className="modal-action modal-close waves-effect waves-brown btn-flat"
+              href=""
+              onClick={[Function]}
+            >
+              Close
+            </a>
+          </div>
+        </div>
+        <div
+          className="modal"
+          id="modal1"
+        >
+          <div
+            className="modal-content"
+          >
+            <h5>
+              Do you want to add this book to your archives?
+            </h5>
+            <p>
+              THE PEOPLE IN THE TREE
+            </p>
+          </div>
+          <div
+            className="modal-footer"
+          >
+            <a
+              className="modal-action modal-close waves-effect waves-brown btn-flat"
+              href=""
+              onClick={[Function]}
+            >
+              NO
+            </a>
+            <a
+              className="modal-action modal-close waves-effect waves-brown btn-flat"
+              href=""
+              onClick={[Function]}
+            >
+              YES
+            </a>
+          </div>
+        </div>
+        <span
+          className="text-muted"
+          id="sum"
+        >
+          Lorem Ipronic typesetting, remaininised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+        </span>
+        <div
+          className=""
+        >
+          <p
+            className="bookinfo"
+          >
+            Category: 
+            Adventure
+             
+          </p>
+          <p
+            className="bookinfo"
+          >
+            ISBN: 
+            345798465
+             
+          </p>
+          <p
+            className="bookinfo"
+          >
+            Number in Stock: 
+            2
+             
+          </p>
+        </div>
+        <div
+          className="form-inline"
+        >
+          <button
+            className="btn-sm btn-warning shop modal-trigger"
+            href="#modal1"
+            id="wishbtn"
+            type="button"
+          >
+            Wishlist
+          </button>
+          <button
+            className="btn-sm btn-success shop"
+            id="borrowbtn"
+            onClick={[Function]}
+            type="submit"
+          >
+            Borrow
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test book Details page components and container should test and take snapshot of books detailsPage when data and book array are empty 1`] = `
+<div>
+  <div
+    className="row"
+  >
+    <div
+      className="col s12 col m2 col l2 sidebar "
+      id="sidenava"
+    >
+      <ul
+        className="collapsible"
+        data-collapsible="accordion"
+      >
+        <li>
+           
+          <div
+            className="collapsible-header"
+          >
+             
+            <label
+              className="heada"
+              onClick={[Function]}
+            >
+              <b>
+                SCIENCE&TECH
+              </b>
+            </label>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              href="#"
+              name="Science"
+              onClick={[Function]}
+            >
+              Science
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              href="#"
+              name="Technology"
+              onClick={[Function]}
+            >
+              Technology
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Computer"
+              onClick={[Function]}
+            >
+              Computer
+            </a>
+             
+          </div>
+        </li>
+        <li>
+           
+          <div
+            className="collapsible-header"
+          >
+             
+            <label
+              className="heada"
+              onClick={[Function]}
+            >
+              <b>
+                LITERATURE
+              </b>
+            </label>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Fiction"
+              onClick={[Function]}
+            >
+              Fiction
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Mystery"
+              onClick={[Function]}
+            >
+              Mystery
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Romance"
+              onClick={[Function]}
+            >
+              Romance
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Sci-Fiction"
+              onClick={[Function]}
+            >
+              Sci-Fiction
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Adventure"
+              onClick={[Function]}
+            >
+              Adventure
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Action"
+              onClick={[Function]}
+            >
+              Action
+            </a>
+             
+          </div>
+        </li>
+        <li>
+           
+          <div
+            className="collapsible-header"
+          >
+             
+            <label
+              className="heada"
+              onClick={[Function]}
+            >
+              <b>
+                STYLE AND ART
+              </b>
+            </label>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Arts"
+              onClick={[Function]}
+            >
+              Arts
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Languages"
+              onClick={[Function]}
+            >
+              Languages
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Fashion"
+              onClick={[Function]}
+            >
+              Fashion
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Food"
+              onClick={[Function]}
+            >
+              Food
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Games"
+              onClick={[Function]}
+            >
+              Games
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Music"
+              onClick={[Function]}
+            >
+              Music
+            </a>
+             
+          </div>
+        </li>
+        <li>
+           
+          <div
+            className="collapsible-header"
+          >
+             
+            <label
+              className="heada"
+              onClick={[Function]}
+            >
+              <b>
+                CAREER & MONEY
+              </b>
+            </label>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Management"
+              onClick={[Function]}
+            >
+              Management
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Accounting"
+              onClick={[Function]}
+            >
+              Accounting
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Entrepreneurship"
+              onClick={[Function]}
+            >
+              Entrepreneurship
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Leadership"
+              onClick={[Function]}
+            >
+              Leadership
+            </a>
+             
+          </div>
+        </li>
+        <li>
+           
+          <div
+            className="collapsible-header"
+          >
+             
+            <label
+              className="heada"
+              onClick={[Function]}
+            >
+              <b>
+                PERSONAL GROWTH
+              </b>
+            </label>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Psychology"
+              onClick={[Function]}
+            >
+              Psychology
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Relationships"
+              onClick={[Function]}
+            >
+              Relationships
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Self-Improvement"
+              onClick={[Function]}
+            >
+              Self-Improvement
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Religion"
+              onClick={[Function]}
+            >
+              Religion
+            </a>
+             
+          </div>
+        </li>
+        <li>
+           
+          <div
+            className="collapsible-header"
+          >
+             
+            <label
+              className="heada"
+              onClick={[Function]}
+            >
+              <b>
+                HEALTH & FITNESS
+              </b>
+            </label>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Fitness"
+              onClick={[Function]}
+            >
+              Fitness
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Nutrition"
+              onClick={[Function]}
+            >
+              Nutrition
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Sports"
+              onClick={[Function]}
+            >
+              Sports
+            </a>
+             
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    className="container"
+    id="book_details_wrapper"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col m10  col l10 col s12 "
+      >
+        <div
+          className="placeholders  "
+        >
+          <div
+            className=" col s12 col m2 col l2 placeholder"
+            id="photo"
+          >
+            <div
+              className="small card_holder_details card"
+            >
+              <div
+                className="card-image"
+                id="card_box_details"
+              >
+                <img
+                  className=""
+                  src="l1.jpg"
+                />
+                <span
+                  className="card-title"
+                />
+              </div>
+              <div
+                className="card-content"
+              >
+                <div>
+                   
+                  <a
+                    href="#"
+                    style={
+                      Object {
+                        "color": "black",
+                        "fontSize": "15px",
+                        "fontStyle": "bold",
+                      }
+                    }
+                  />
+                </div>
+              </div>
+              <div
+                className="card-reveal"
+              >
+                <span
+                  className="card-title grey-text text-darken-4"
+                >
+                  <i
+                    className="material-icons right"
+                  >
+                    close
+                  </i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className=" col s10 col m7 col l7"
+        >
+          <h5
+            className="page-header"
+          >
+            THE PEOPLE IN THE TREE
+          </h5>
+          <hr />
+          <h5>
+            Summary
+          </h5>
+          <div
+            className="modal"
+            id="modal2"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Oh!
+              </h5>
+              <p>
+                
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                Close
+              </a>
+            </div>
+          </div>
+          <div
+            className="modal"
+            id="modal3"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Wow!
+              </h5>
+              <p>
+                
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                Close
+              </a>
+            </div>
+          </div>
+          <div
+            className="modal"
+            id="modal1"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Do you want to add this book to your archives?
+              </h5>
+              <p>
+                THE PEOPLE IN THE TREE
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                NO
+              </a>
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                YES
+              </a>
+            </div>
+          </div>
+          <span
+            className="text-muted"
+            id="sum"
+          >
+            Lorem Ipronic typesetting, remaininised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+          </span>
+          <div
+            className=""
+          >
+            <p
+              className="bookinfo"
+            >
+              Category: 
+              Adventure
+               
+            </p>
+            <p
+              className="bookinfo"
+            >
+              ISBN: 
+              345798465
+               
+            </p>
+            <p
+              className="bookinfo"
+            >
+              Number in Stock: 
+              2
+               
+            </p>
+          </div>
+          <div
+            className="form-inline"
+          >
+            <button
+              className="btn-sm btn-warning shop modal-trigger"
+              href="#modal1"
+              id="wishbtn"
+              type="button"
+            >
+              Wishlist
+            </button>
+            <button
+              className="btn-sm btn-success shop"
+              id="borrowbtn"
+              onClick={[Function]}
+              type="submit"
+            >
+              Borrow
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test book Details page components and container should test and take snapshot of booksDetailsPage 1`] = `
+<div>
+  <div
+    className="row"
+  >
+    <div
+      className="col s12 col m2 col l2 sidebar "
+      id="sidenava"
+    >
+      <ul
+        className="collapsible"
+        data-collapsible="accordion"
+      >
+        <li>
+           
+          <div
+            className="collapsible-header"
+          >
+             
+            <label
+              className="heada"
+              onClick={[Function]}
+            >
+              <b>
+                SCIENCE&TECH
+              </b>
+            </label>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              href="#"
+              name="Science"
+              onClick={[Function]}
+            >
+              Science
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              href="#"
+              name="Technology"
+              onClick={[Function]}
+            >
+              Technology
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Computer"
+              onClick={[Function]}
+            >
+              Computer
+            </a>
+             
+          </div>
+        </li>
+        <li>
+           
+          <div
+            className="collapsible-header"
+          >
+             
+            <label
+              className="heada"
+              onClick={[Function]}
+            >
+              <b>
+                LITERATURE
+              </b>
+            </label>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Fiction"
+              onClick={[Function]}
+            >
+              Fiction
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Mystery"
+              onClick={[Function]}
+            >
+              Mystery
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Romance"
+              onClick={[Function]}
+            >
+              Romance
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Sci-Fiction"
+              onClick={[Function]}
+            >
+              Sci-Fiction
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Adventure"
+              onClick={[Function]}
+            >
+              Adventure
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Action"
+              onClick={[Function]}
+            >
+              Action
+            </a>
+             
+          </div>
+        </li>
+        <li>
+           
+          <div
+            className="collapsible-header"
+          >
+             
+            <label
+              className="heada"
+              onClick={[Function]}
+            >
+              <b>
+                STYLE AND ART
+              </b>
+            </label>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Arts"
+              onClick={[Function]}
+            >
+              Arts
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Languages"
+              onClick={[Function]}
+            >
+              Languages
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Fashion"
+              onClick={[Function]}
+            >
+              Fashion
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Food"
+              onClick={[Function]}
+            >
+              Food
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Games"
+              onClick={[Function]}
+            >
+              Games
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Music"
+              onClick={[Function]}
+            >
+              Music
+            </a>
+             
+          </div>
+        </li>
+        <li>
+           
+          <div
+            className="collapsible-header"
+          >
+             
+            <label
+              className="heada"
+              onClick={[Function]}
+            >
+              <b>
+                CAREER & MONEY
+              </b>
+            </label>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Management"
+              onClick={[Function]}
+            >
+              Management
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Accounting"
+              onClick={[Function]}
+            >
+              Accounting
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Entrepreneurship"
+              onClick={[Function]}
+            >
+              Entrepreneurship
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Leadership"
+              onClick={[Function]}
+            >
+              Leadership
+            </a>
+             
+          </div>
+        </li>
+        <li>
+           
+          <div
+            className="collapsible-header"
+          >
+             
+            <label
+              className="heada"
+              onClick={[Function]}
+            >
+              <b>
+                PERSONAL GROWTH
+              </b>
+            </label>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Psychology"
+              onClick={[Function]}
+            >
+              Psychology
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Relationships"
+              onClick={[Function]}
+            >
+              Relationships
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Self-Improvement"
+              onClick={[Function]}
+            >
+              Self-Improvement
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Religion"
+              onClick={[Function]}
+            >
+              Religion
+            </a>
+             
+          </div>
+        </li>
+        <li>
+           
+          <div
+            className="collapsible-header"
+          >
+             
+            <label
+              className="heada"
+              onClick={[Function]}
+            >
+              <b>
+                HEALTH & FITNESS
+              </b>
+            </label>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Fitness"
+              onClick={[Function]}
+            >
+              Fitness
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Nutrition"
+              onClick={[Function]}
+            >
+              Nutrition
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+             
+            <a
+              className="boda"
+              href="#"
+              name="Sports"
+              onClick={[Function]}
+            >
+              Sports
+            </a>
+             
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    className="container"
+    id="book_details_wrapper"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col m10  col l10 col s12 "
+      >
+        <div
+          className="placeholders  "
+        >
+          <div
+            className=" col s12 col m2 col l2 placeholder"
+            id="photo"
+          >
+            <div
+              className="small card_holder_details card"
+            >
+              <div
+                className="card-image"
+                id="card_box_details"
+              >
+                <img
+                  className=""
+                  src="l1.jpg"
+                />
+                <span
+                  className="card-title"
+                />
+              </div>
+              <div
+                className="card-content"
+              >
+                <div>
+                   
+                  <a
+                    href="#"
+                    style={
+                      Object {
+                        "color": "black",
+                        "fontSize": "15px",
+                        "fontStyle": "bold",
+                      }
+                    }
+                  />
+                </div>
+              </div>
+              <div
+                className="card-reveal"
+              >
+                <span
+                  className="card-title grey-text text-darken-4"
+                >
+                  <i
+                    className="material-icons right"
+                  >
+                    close
+                  </i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className=" col s10 col m7 col l7"
+        >
+          <h5
+            className="page-header"
+          >
+            THE PEOPLE IN THE TREE
+          </h5>
+          <hr />
+          <h5>
+            Summary
+          </h5>
+          <div
+            className="modal"
+            id="modal2"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Oh!
+              </h5>
+              <p>
+                
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                Close
+              </a>
+            </div>
+          </div>
+          <div
+            className="modal"
+            id="modal3"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Wow!
+              </h5>
+              <p>
+                
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                Close
+              </a>
+            </div>
+          </div>
+          <div
+            className="modal"
+            id="modal1"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Do you want to add this book to your archives?
+              </h5>
+              <p>
+                THE PEOPLE IN THE TREE
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                NO
+              </a>
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                YES
+              </a>
+            </div>
+          </div>
+          <span
+            className="text-muted"
+            id="sum"
+          >
+            Lorem Ipronic typesetting, remaininised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+          </span>
+          <div
+            className=""
+          >
+            <p
+              className="bookinfo"
+            >
+              Category: 
+              Adventure
+               
+            </p>
+            <p
+              className="bookinfo"
+            >
+              ISBN: 
+              345798465
+               
+            </p>
+            <p
+              className="bookinfo"
+            >
+              Number in Stock: 
+              2
+               
+            </p>
+          </div>
+          <div
+            className="form-inline"
+          >
+            <button
+              className="btn-sm btn-warning shop modal-trigger"
+              href="#modal1"
+              id="wishbtn"
+              type="button"
+            >
+              Wishlist
+            </button>
+            <button
+              className="btn-sm btn-success shop"
+              id="borrowbtn"
+              onClick={[Function]}
+              type="submit"
+            >
+              Borrow
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test book Details page components and container should test and take snapshot of details form when data and book array are empty 1`] = `
+<div
+  className="container"
+  id="book_details_wrapper"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col m10  col l10 col s12 "
+    >
+      <div
+        className="placeholders  "
+      >
+        <div
+          className=" col s12 col m2 col l2 placeholder"
+          id="photo"
+        >
+          <div
+            className="small card_holder_details card"
+          >
+            <div
+              className="card-image"
+              id="card_box_details"
+            >
+              <img
+                className=""
+                src="l1.jpg"
+              />
+              <span
+                className="card-title"
+              />
+            </div>
+            <div
+              className="card-content"
+            >
+              <div>
+                 
+                <a
+                  href="#"
+                  style={
+                    Object {
+                      "color": "black",
+                      "fontSize": "15px",
+                      "fontStyle": "bold",
+                    }
+                  }
+                />
+              </div>
+            </div>
+            <div
+              className="card-reveal"
+            >
+              <span
+                className="card-title grey-text text-darken-4"
+              >
+                <i
+                  className="material-icons right"
+                >
+                  close
+                </i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className=" col s10 col m7 col l7"
+      >
+        <h5
+          className="page-header"
+        >
+          THE PEOPLE IN THE TREE
+        </h5>
+        <hr />
+        <h5>
+          Summary
+        </h5>
+        <div
+          className="modal"
+          id="modal2"
+        >
+          <div
+            className="modal-content"
+          >
+            <h5>
+              Oh!
+            </h5>
+            <p>
+              
+            </p>
+          </div>
+          <div
+            className="modal-footer"
+          >
+            <a
+              className="modal-action modal-close waves-effect waves-brown btn-flat"
+              href=""
+              onClick={[Function]}
+            >
+              Close
+            </a>
+          </div>
+        </div>
+        <div
+          className="modal"
+          id="modal3"
+        >
+          <div
+            className="modal-content"
+          >
+            <h5>
+              Wow!
+            </h5>
+            <p>
+              
+            </p>
+          </div>
+          <div
+            className="modal-footer"
+          >
+            <a
+              className="modal-action modal-close waves-effect waves-brown btn-flat"
+              href=""
+              onClick={[Function]}
+            >
+              Close
+            </a>
+          </div>
+        </div>
+        <div
+          className="modal"
+          id="modal1"
+        >
+          <div
+            className="modal-content"
+          >
+            <h5>
+              Do you want to add this book to your archives?
+            </h5>
+            <p>
+              THE PEOPLE IN THE TREE
+            </p>
+          </div>
+          <div
+            className="modal-footer"
+          >
+            <a
+              className="modal-action modal-close waves-effect waves-brown btn-flat"
+              href=""
+              onClick={[Function]}
+            >
+              NO
+            </a>
+            <a
+              className="modal-action modal-close waves-effect waves-brown btn-flat"
+              href=""
+              onClick={[Function]}
+            >
+              YES
+            </a>
+          </div>
+        </div>
+        <span
+          className="text-muted"
+          id="sum"
+        >
+          Lorem Ipronic typesetting, remaininised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+        </span>
+        <div
+          className=""
+        >
+          <p
+            className="bookinfo"
+          >
+            Category: 
+            Adventure
+             
+          </p>
+          <p
+            className="bookinfo"
+          >
+            ISBN: 
+            345798465
+             
+          </p>
+          <p
+            className="bookinfo"
+          >
+            Number in Stock: 
+            2
+             
+          </p>
+        </div>
+        <div
+          className="form-inline"
+        >
+          <button
+            className="btn-sm btn-warning shop modal-trigger"
+            href="#modal1"
+            id="wishbtn"
+            type="button"
+          >
+            Wishlist
+          </button>
+          <button
+            className="btn-sm btn-success shop"
+            id="borrowbtn"
+            onClick={[Function]}
+            type="submit"
+          >
+            Borrow
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

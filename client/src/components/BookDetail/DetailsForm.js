@@ -37,14 +37,14 @@ class DetailsForm extends React.Component {
       this.props.checkBookDetails(localStorage.bookId);
     }
 
-
     if (!lodash.isEmpty(this.props.book[0])) {
       if (lodash.isEmpty(localStorage.id)) {
         const { data } = this.props;
         bookId = this.props.book[0].bookId;
-        localStorage.setItem('bookId', bookId);
-        filteredData = lodash.filter(data, item => item.id == bookId);
+        window.localStorage.setItem('bookId', bookId);
 
+
+        filteredData = lodash.filter(data, item => item.id == bookId);
 
         bookTitle = filteredData[0].bookTitle;
         id = filteredData[0].id;
@@ -79,7 +79,7 @@ class DetailsForm extends React.Component {
   }
 
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps, set = true) {
     sortedData = nextProps.item[0];
 
 
@@ -89,56 +89,55 @@ class DetailsForm extends React.Component {
           error: sortedData.error,
           display: false,
         });
-        document.getElementById('modal2').style.display = 'block';
+        if (set) { document.getElementById('modal2').style.display = 'block'; }
       } else if (!lodash.isEmpty(sortedData.response) && this.state.display) {
         this.setState({
           message: sortedData.response,
           display: false,
         });
-        document.getElementById('modal3').style.display = 'block';
+        if (set) { document.getElementById('modal3').style.display = 'block'; }
       }
     }
   }
 
   componentWillUnmount() {
-    if (localStorage.bookId) {
-      localStorage.removeItem('bookId');
-      localStorage.removeItem('id');
+    localStorage.removeItem('bookId');
+    localStorage.removeItem('id');
 
-      localStorage.removeItem('category');
-      localStorage.removeItem('isbn');
-      localStorage.removeItem('stocknumber');
-      localStorage.removeItem('author');
-      localStorage.removeItem('summary');
-      localStorage.removeItem('bookTitle');
-      localStorage.removeItem('image');
-    }
+    localStorage.removeItem('category');
+    localStorage.removeItem('isbn');
+    localStorage.removeItem('stocknumber');
+    localStorage.removeItem('author');
+    localStorage.removeItem('summary');
+    localStorage.removeItem('bookTitle');
+    localStorage.removeItem('image');
   }
 
-  handleClick(e) {
+  handleClick(e, set = true) {
     e.preventDefault();
     this.setState({
       display: true,
     });
     this.props.borrowBooks(localStorage.jwtToken, localStorage.bookId);
-    document.getElementById('modal1').style.display = 'none';
+    if (set) { document.getElementById('modal1').style.display = 'none'; }
   }
 
-  handleOpen(e) {
+  handleOpen(e, set = true) {
     e.preventDefault();
-
-    document.getElementById('modal1').style.display = 'block';
+    if (set) { document.getElementById('modal1').style.display = 'block'; }
   }
 
-  handleClose(e) {
+  handleClose(e, set = true) {
     e.preventDefault();
-    document.getElementById('modal1').style.display = 'none';
+    if (set) { document.getElementById('modal1').style.display = 'none'; }
   }
 
-  handleExit(e) {
+  handleExit(e, set = true) {
     e.preventDefault();
-    document.getElementById('modal2').style.display = 'none';
-    document.getElementById('modal3').style.display = 'none';
+    if (set) {
+      document.getElementById('modal2').style.display = 'none';
+      document.getElementById('modal3').style.display = 'none';
+    }
   }
 
 

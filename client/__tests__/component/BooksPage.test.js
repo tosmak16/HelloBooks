@@ -44,9 +44,6 @@ describe('Test BooksPage component', () => {
   const mockStore = configureMockStore(middlewares);
   let store;
   let wrapper;
-  let bookFilterContainer;
-  let bookCollectionContainer;
-
 
   beforeEach(() => {
     store = mockStore(initialState);
@@ -143,7 +140,7 @@ describe('Test BooksPage component', () => {
     wrapper.update();
   });
 
-  it('should test for handle selected function', () => {
+  it('should test for functios in book filter', () => {
     wrapper = shallow(<BooksFilter
       data={ [{ name: 'hello' }] }
       filteredData={ [{ id: 1, bookTitle: 'love' }] }
@@ -172,5 +169,18 @@ describe('Test BooksPage component', () => {
     />);
 
     expect(component).toMatchSnapshot();
+  });
+
+  it('should test for handle selected function', () => {
+    wrapper = shallow(<SideBar
+      data={ [{ name: 'hello', image: '', id: 1 }] }
+      showbooksByCategory={ mockFuction }
+    />);
+    wrapper.instance().handleFuction = mockFuction;
+    wrapper.update();
+    wrapper.instance().handleClick(e, false);
+    wrapper.update();
+    wrapper.instance().handleCollapse(e, false);
+    wrapper.update();
   });
 });
