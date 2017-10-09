@@ -70,6 +70,16 @@ describe('Test book Details page components and container', () => {
     item: [{
       isStored: false,
       data: {},
+      error: 'error',
+      isSending: false,
+      response: 'helo'
+    }]
+  };
+
+  const nextProp = {
+    item: [{
+      isStored: false,
+      data: {},
       error: '',
       isSending: false,
       response: 'helo'
@@ -147,20 +157,55 @@ describe('Test book Details page components and container', () => {
     />);
     wrapper.instance().handleFuction = mockFuction;
     wrapper.update();
-    wrapper.instance().handleClick(event, false);
+    wrapper.instance().handleClick(event);
     wrapper.update();
-    wrapper.instance().handleOpen(event, false);
+    wrapper.instance().handleOpen(event);
     wrapper.update();
-    wrapper.instance().handleClose(event, false);
+    wrapper.instance().handleClose(event);
     wrapper.update();
-    wrapper.instance().handleExit(event, false);
+    wrapper.instance().handleExit(event);
     wrapper.update();
-    wrapper.contains('document.getElementById(\'modal1\').style.display = \'block\'');
+    wrapper.instance().setState({
+      display: true
+    });
     wrapper.update();
     localStorage.setItem('bookId', '1');
     wrapper.instance().componentWillMount();
     wrapper.update();
-    wrapper.instance().componentWillReceiveProps(nextProps, false);
+    wrapper.instance().componentWillReceiveProps(nextProps);
+    wrapper.update();
+    wrapper.instance().componentWillUnmount();
+    wrapper.update();
+  });
+
+
+  it('should test for handle change function', () => {
+    wrapper = shallow(<DetailsForm
+      data={ initialState.books[0].data }
+      book={ initialState.selectedbook }
+      item={ initialState.borrowBooks }
+      borrowBooks={ mockFuction }
+      checkBookDetails={ mockFuction }
+      showbooksByCategory={ mockFuction }
+    />);
+    wrapper.instance().handleFuction = mockFuction;
+    wrapper.update();
+    wrapper.instance().handleClick(event);
+    wrapper.update();
+    wrapper.instance().handleOpen(event);
+    wrapper.update();
+    wrapper.instance().handleClose(event);
+    wrapper.update();
+    wrapper.instance().handleExit(event);
+    wrapper.update();
+    wrapper.instance().setState({
+      display: true
+    });
+    wrapper.update();
+    localStorage.setItem('bookId', '1');
+    wrapper.instance().componentWillMount();
+    wrapper.update();
+    wrapper.instance().componentWillReceiveProps(nextProp);
     wrapper.update();
     wrapper.instance().componentWillUnmount();
     wrapper.update();

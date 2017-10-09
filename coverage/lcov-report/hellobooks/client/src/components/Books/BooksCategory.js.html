@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">70% </span>
+        <span class="strong">90% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>7/10</span>
+        <span class='fraction'>9/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">62.5% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>4/8</span>
+        <span class='fraction'>5/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">66.67% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/3</span>
+        <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75% </span>
+        <span class="strong">87.5% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>6/8</span>
+        <span class='fraction'>7/8</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -79,7 +79,31 @@
 34
 35
 36
-37</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -90,17 +114,41 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -124,14 +172,38 @@ import BooksCollection from './BooksCollection';
 &nbsp;
 let sortedData = '';
 let display = null;
+&nbsp;
+/**
+ * 
+ * 
+ * @class BooksCategory
+ * @extends {React.Component}
+ */
 class BooksCategory extends React.Component {
+  /**
+   * 
+   * @function componentWillMount
+   * @memberof BooksCategory
+   */
   componentWillMount() {
     if (this.props.data[0]) { sortedData = this.props.data[0]; }
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  co</span>mponentWillReceiveProps(nextProps) {
-<span class="cstat-no" title="statement not covered" >    if (nextProps.data[0]) { <span class="cstat-no" title="statement not covered" >sortedData = nextProps.data[0]; </span>}</span>
+  /**
+   * 
+   * @function componentWillReceiveProps
+   * @param {any} nextProps 
+   * @memberof BooksCategory
+   */
+  componentWillReceiveProps(nextProps) {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (nextProps.data[0]) { sortedData = nextProps.data[0]; }
   }
+  /**
+   * 
+   * @function render
+   * @returns 
+   * @memberof BooksCategory
+   */
   render() {
     <span class="missing-if-branch" title="if path not taken" >I</span>if (sortedData.categoryData) {
 <span class="cstat-no" title="statement not covered" >      display = &lt;BooksCollection checkBookDetails={ this.props.checkBookDetails } heading={ `${sortedData.category} Books` } data={ sortedData.categoryData } /&gt;;</span>
@@ -139,11 +211,11 @@ class BooksCategory extends React.Component {
     return (
       &lt;div className="row"&gt;
         {!lodash.isEmpty(sortedData.categoryData) ? <span class="branch-0 cbranch-no" title="branch not covered" >display </span>: &lt;h4&gt;{''}&lt;/h4&gt;}
-&nbsp;
       &lt;/div&gt;
     );
   }
 }
+&nbsp;
 BooksCategory.propTypes = {
   checkBookDetails: PropTypes.func.isRequired,
   data: PropTypes.array.isRequired,
@@ -157,7 +229,7 @@ export default BooksCategory;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Oct 08 2017 08:09:05 GMT+0100 (WAT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Oct 09 2017 15:23:42 GMT+0100 (WAT)
 </div>
 </div>
 <script src="../../../../../prettify.js"></script>

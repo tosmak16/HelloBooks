@@ -1,11 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
 import PropTypes from 'prop-types';
+import $ from 'jquery';
 
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
-import changePassword from '../../actions/changePassword';
 
 
 let sortedData = '';
@@ -30,15 +29,39 @@ class ChangePasswordPage extends React.Component {
     this.handleExit = this.handleExit.bind(this);
   }
 
+
+  componentWillReceiveProps(nextProps) {
+    sortedData = nextProps.item[0];
+    if (this.state.display) {
+      if (!isEmpty(sortedData.error) && this.state.display) {
+        $('#modalError').show();
+        this.setState({
+          display: false,
+          errors: sortedData.error,
+        });
+      } else if (!isEmpty(sortedData.data) && this.state.display) {
+        this.setState({
+          display: false,
+          oldPassword: '',
+          newPassword: '',
+          confirmPassword: '',
+          message: sortedData.data,
+        });
+        $('#modalSuccess').show();
+      }
+    }
+  }
+
   handleClose(e) {
     e.preventDefault();
-    document.getElementById('modalOpen').style.display = 'none';
+    $('#modalOpen').hide();
   }
 
   handleExit(e) {
     e.preventDefault();
-    document.getElementById('modalError').style.display = 'none';
-    document.getElementById('modalSuccess').style.display = 'none';
+
+    $('#modalError').hide();
+    $('#modalSuccess').hide();
   }
 
   handleClick(e) {
@@ -46,13 +69,12 @@ class ChangePasswordPage extends React.Component {
     this.setState({
       display: true,
     });
-    document.getElementById('modalOpen').style.display = 'none';
+    $('#modalOpen').hide();
 
     this.props.changePassword(this.state, localStorage.jwtToken);
   }
 
   handleInputChange(e) {
-    e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
   }
   handleSave(e) {
@@ -74,28 +96,7 @@ class ChangePasswordPage extends React.Component {
         error: '',
       });
 
-      document.getElementById('modalOpen').style.display = 'block';
-    }
-  }
-  componentWillReceiveProps(nextProps) {
-    sortedData = nextProps.item[0];
-    if (this.state.display) {
-      if (!isEmpty(sortedData.error) && this.state.display) {
-        document.getElementById('modalError').style.display = 'block';
-        this.setState({
-          display: false,
-          errors: sortedData.error,
-        });
-      } else if (!isEmpty(sortedData.data) && this.state.display) {
-        this.setState({
-          display: false,
-          oldPassword: '',
-          newPassword: '',
-          confirmPassword: '',
-          message: sortedData.data,
-        });
-        document.getElementById('modalSuccess').style.display = 'block';
-      }
+      $('#modalOpen').show();
     }
   }
   render() {
@@ -163,11 +164,4 @@ ChangePasswordPage.propTypes = {
 };
 
 
-function mapStateToProps(state) {
-  return {
-    item: state.passwordChange,
-  };
-}
-
-
-export default connect(mapStateToProps, { changePassword })(ChangePasswordPage);
+export default ChangePasswordPage;

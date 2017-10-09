@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+
 
 import SearchBar from '../SearchBar';
-import searchbooks from '../../actions/searchbooks';
 import BooksCollection from './BooksCollection';
 import MembershipSelect from '../select/MembershipSelect';
 
@@ -22,9 +21,15 @@ class BooksFilter extends React.Component {
     this.handleSelected = this.handleChange.bind(this);
   }
 
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof BooksFilter
+   */
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+
     if (e.target.value.length > 3 && this.state.filterBy !== '') {
       this.setState({ error: '' });
       if (this.state.filterBy && this.state.searchText && this.props.data) {
@@ -34,11 +39,22 @@ class BooksFilter extends React.Component {
     }
   }
 
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof BooksFilter
+   */
   handleSelected(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof BooksFilter
+   */
   render() {
     return (
       <div id="booksearchbar" className="container-fluid">

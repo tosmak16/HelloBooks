@@ -1,18 +1,22 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
+import $ from 'jquery';
 
 
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
-import updateUser from '../../actions/updateuserDetails';
 
 
 let sortedData = '';
 let pointer = false;
 
-
+/**
+ * 
+ * 
+ * @class Userprofile
+ * @extends {React.Component}
+ */
 class Userprofile extends React.Component {
   constructor(props) {
     super(props);
@@ -46,7 +50,12 @@ class Userprofile extends React.Component {
     this.handleExit = this.handleExit.bind(this);
   }
 
-
+  /**
+   * 
+   * @function componentWillReceiveProps
+   * @param {any} nextProps 
+   * @memberof Userprofile
+   */
   componentWillReceiveProps(nextProps) {
     if (!isEmpty(nextProps.data) && this.state.show) {
       this.setState({
@@ -61,46 +70,70 @@ class Userprofile extends React.Component {
       });
     }
     sortedData = nextProps.item[0];
-    if (this.state.display) {
-      if (!isEmpty(sortedData.error) && this.state.display) {
-        document.getElementById('modalE').style.display = 'block';
-        this.setState({
-          display: false,
-          error: sortedData.error,
-        });
-      } else if (!isEmpty(sortedData.data) && this.state.display) {
-        this.setState({
-          display: false,
-          message: sortedData.data,
-          imageloaded: true
-        });
-        document.getElementById('modalS').style.display = 'block';
-      }
+
+
+    if (!isEmpty(sortedData.error) && this.state.display) {
+      $('#modalE').show();
+      this.setState({
+        display: false,
+        error: sortedData.error,
+      });
+    } else if (!isEmpty(sortedData.data) && this.state.display) {
+      this.setState({
+        display: false,
+        message: sortedData.data,
+        imageloaded: true
+      });
+      $('#modalS').show();
     }
   }
 
+  /**
+   * 
+   * @function handleExit
+   * @param {any} e 
+   * @memberof Userprofile
+   */
   handleExit(e) {
     e.preventDefault();
-    document.getElementById('modalE').style.display = 'none';
-    document.getElementById('modalS').style.display = 'none';
+
+    $('#modalE').hide();
+    $('#modalS').hide();
+
     this.setState({
       error: '',
       message: '',
       file: '',
     });
   }
-
+  /**
+   * 
+   * @function handleInputChange
+   * @param {any} e 
+   * @memberof Userprofile
+   */
   handleInputChange(e) {
-    e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
   }
-
+  /**
+   * 
+   * @function handleClose
+   * @param {any} e 
+   * @memberof Userprofile
+   */
   handleClose(e) {
     e.preventDefault();
-    document.getElementById('modalO').style.display = 'none';
+    {
+      $('#modalO').hide();
+    }
   }
 
-
+  /**
+   * 
+   * @function handleEdit
+   * @param {any} e 
+   * @memberof Userprofile
+   */
   handleEdit(e) {
     pointer = true;
     e.preventDefault();
@@ -112,6 +145,7 @@ class Userprofile extends React.Component {
       });
     }
 
+
     if (!this.state.disabled) {
       if (this.state.firstName && this.state.lastName && this.state.email && this.state.membershipType && pointer) {
         this.setState({
@@ -119,19 +153,25 @@ class Userprofile extends React.Component {
           disabled: true,
           buttonText: 'Edit',
         });
-        document.getElementById('modalO').style.display = 'block';
+        $('#modalO').show();
         pointer = false;
       }
     }
   }
 
+  /**
+   * 
+   *@function handleClick
+   * @param {any} e 
+   * @memberof Userprofile
+   */
   handleClick(e) {
     e.preventDefault();
     this.setState({
       display: true,
     });
     this.props.updateUser(this.state, localStorage.jwtToken);
-    document.getElementById('modalO').style.display = 'none';
+    $('#modalO').hide();
   }
 
 
@@ -210,17 +250,11 @@ class Userprofile extends React.Component {
 }
 
 Userprofile.propTypes = {
+  data: PropTypes.array.isRequired,
   item: PropTypes.array.isRequired,
   updateUser: PropTypes.func.isRequired,
 
-
 };
 
-function mapStateToProps(state) {
-  return {
-    item: state.updateUser,
 
-  };
-}
-
-export default connect(mapStateToProps, { updateUser })(Userprofile);
+export default Userprofile;

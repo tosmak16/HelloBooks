@@ -1,18 +1,13 @@
 import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 import filterBy from 'lodash/filter';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import $ from 'jquery';
 
 
-import getunreturnedBooks from '../../actions/getunreturnedBooks';
-import getbooks from '../../actions/getBooks';
 import BbTableRow from './BbTableRow';
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
-import returnbook from '../../actions/returnBooks';
-import refreshPage from '../../actions/refreshPage';
-import getborrowedBooks from '../../actions/getborrowedBooks';
 
 
 let tablerow = '';
@@ -35,40 +30,7 @@ class BorrowedbooksTable extends React.Component {
     this.handleNo = this.handleNo.bind(this);
     this.handleExit = this.handleExit.bind(this);
   }
-  handleClick(e) {
-    e.preventDefault();
 
-    co = e.target.name;
-    const Id = co.slice(0, co.search(','));
-    const bookId = co.slice(-1);
-    this.setState({
-      bookId,
-      Id
-    });
-    document.getElementById('modal1').style.display = 'block';
-  }
-
-  handleExit(e) {
-    e.preventDefault();
-
-    document.getElementById('modal2').style.display = 'none';
-    document.getElementById('modal3').style.display = 'none';
-
-    this.props.refreshPage(true);
-  }
-
-  handleYes(e) {
-    e.preventDefault();
-    this.props.returnbook(this.state, localStorage.jwtToken);
-    this.setState({
-      pointer: true,
-    });
-    document.getElementById('modal1').style.display = 'none';
-  }
-  handleNo(e) {
-    e.preventDefault();
-    document.getElementById('modal1').style.display = 'none';
-  }
   componentWillMount() {
     if (isEmpty(this.props.data)) {
       this.props.getunreturnedBooks(localStorage.jwtToken);
@@ -80,15 +42,16 @@ class BorrowedbooksTable extends React.Component {
   }
   componentWillReceiveProps(nextProps) {
     sortedData = nextProps.item[0];
+
     if (this.state.pointer) {
       if (!isEmpty(sortedData.error) && this.state.pointer) {
-        document.getElementById('modal2').style.display = 'block';
+        $('#modal2').show();
         this.setState({
           pointer: false,
           errors: sortedData.error,
         });
       } else if (!isEmpty(sortedData.response) && this.state.pointer) {
-        document.getElementById('modal3').style.display = 'block';
+        $('#modal3').show();
         this.setState({
           pointer: false,
           message: sortedData.response,
@@ -100,6 +63,39 @@ class BorrowedbooksTable extends React.Component {
       this.props.getunreturnedBooks(localStorage.jwtToken);
       this.props.getborrowedBooks(localStorage.jwtToken);
     }
+  }
+  handleClick(e) {
+    co = e.target.name;
+    const Id = co.slice(0, co.search(','));
+    const bookId = co.slice(-1);
+    this.setState({
+      bookId,
+      Id
+    });
+    $('#modal1').show();
+  }
+
+  handleExit(e) {
+    e.preventDefault();
+
+    $('#modal2').hide();
+    $('#modal3').hide();
+
+
+    this.props.refreshPage(true);
+  }
+
+  handleYes(e) {
+    e.preventDefault();
+    this.props.returnbook(this.state, localStorage.jwtToken);
+    this.setState({
+      pointer: true,
+    });
+    $('#modal1').hide();
+  }
+  handleNo(e) {
+    e.preventDefault();
+    $('#modal1').hide();
   }
   render() {
     if (this.props.data) {
@@ -172,17 +168,7 @@ BorrowedbooksTable.propTypes = {
   item: PropTypes.array.isRequired,
   refreshPage: PropTypes.func.isRequired,
   returnbook: PropTypes.func.isRequired,
-
-
 };
 
-function mapStateToProps(state) {
-  return {
-    data: state.getunreturnedBooks[0].data,
-    bookData: state.books[0].data,
-    isRefreshed: state.refreshPage[0].isRefreshed,
-    item: state.returnBooks,
-  };
-}
 
-export default connect(mapStateToProps, { getborrowedBooks, getunreturnedBooks, getbooks, returnbook, refreshPage })(BorrowedbooksTable);
+export default BorrowedbooksTable;

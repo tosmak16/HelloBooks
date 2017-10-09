@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1507446545333" clover="3.2.0">
-  <project timestamp="1507446545333" name="All files">
-    <metrics statements="616" coveredstatements="589" conditionals="250" coveredconditionals="187" methods="207" coveredmethods="201" elements="1073" coveredelements="977" complexity="0" loc="616" ncloc="616" packages="9" files="78" classes="78">
+<coverage generated="1507559023134" clover="3.2.0">
+  <project timestamp="1507559023134" name="All files">
+    <metrics statements="858" coveredstatements="831" conditionals="359" coveredconditionals="296" methods="262" coveredmethods="252" elements="1479" coveredelements="1379" complexity="0" loc="858" ncloc="858" packages="11" files="90" classes="90">
       <package name="HelloBooks">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <file name="sum.js" path="/Users/andeladeveloper/Desktop/HelloBooks/sum.js">
@@ -13,32 +13,32 @@
         <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <file name="book.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/__mock__/book.js">
           <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-          <line num="1" count="25" type="stmt"/>
+          <line num="1" count="26" type="stmt"/>
         </file>
         <file name="event.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/__mock__/event.js">
           <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-          <line num="1" count="4" type="stmt"/>
+          <line num="1" count="5" type="stmt"/>
         </file>
         <file name="localStorage.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/__mock__/localStorage.js">
           <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-          <line num="1" count="29" type="stmt"/>
-          <line num="5" count="131" type="stmt"/>
+          <line num="1" count="30" type="stmt"/>
+          <line num="5" count="160" type="stmt"/>
           <line num="8" count="16" type="stmt"/>
           <line num="11" count="1" type="stmt"/>
-          <line num="15" count="136" type="stmt"/>
+          <line num="15" count="199" type="stmt"/>
         </file>
         <file name="user.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/__mock__/user.js">
           <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-          <line num="1" count="11" type="stmt"/>
+          <line num="1" count="12" type="stmt"/>
         </file>
       </package>
       <package name="HelloBooks.client.actions">
-        <metrics statements="106" coveredstatements="106" conditionals="0" coveredconditionals="0" methods="51" coveredmethods="51"/>
+        <metrics statements="110" coveredstatements="108" conditionals="0" coveredconditionals="0" methods="53" coveredmethods="51"/>
         <file name="UploadImages.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/actions/UploadImages.js">
           <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-          <line num="2" count="10" type="stmt"/>
-          <line num="3" count="10" type="stmt"/>
-          <line num="4" count="10" type="stmt"/>
+          <line num="2" count="11" type="stmt"/>
+          <line num="3" count="11" type="stmt"/>
+          <line num="4" count="11" type="stmt"/>
           <line num="9" count="3" type="stmt"/>
           <line num="17" count="2" type="stmt"/>
           <line num="25" count="2" type="stmt"/>
@@ -61,9 +61,9 @@
         </file>
         <file name="changePassword.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/actions/changePassword.js">
           <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-          <line num="2" count="3" type="stmt"/>
-          <line num="3" count="3" type="stmt"/>
-          <line num="4" count="3" type="stmt"/>
+          <line num="2" count="4" type="stmt"/>
+          <line num="3" count="4" type="stmt"/>
+          <line num="4" count="4" type="stmt"/>
           <line num="9" count="3" type="stmt"/>
           <line num="17" count="2" type="stmt"/>
           <line num="25" count="2" type="stmt"/>
@@ -83,12 +83,12 @@
         </file>
         <file name="getBooks.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/actions/getBooks.js">
           <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-          <line num="1" count="6" type="stmt"/>
-          <line num="2" count="6" type="stmt"/>
-          <line num="3" count="6" type="stmt"/>
-          <line num="7" count="15" type="stmt"/>
+          <line num="1" count="7" type="stmt"/>
+          <line num="2" count="7" type="stmt"/>
+          <line num="3" count="7" type="stmt"/>
+          <line num="7" count="21" type="stmt"/>
           <line num="15" count="2" type="stmt"/>
-          <line num="24" count="14" type="stmt"/>
+          <line num="24" count="20" type="stmt"/>
         </file>
         <file name="getFilteredBooks.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/actions/getFilteredBooks.js">
           <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
@@ -99,27 +99,27 @@
         </file>
         <file name="getUserDetails.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/actions/getUserDetails.js">
           <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-          <line num="1" count="3" type="stmt"/>
-          <line num="2" count="3" type="stmt"/>
-          <line num="3" count="3" type="stmt"/>
+          <line num="1" count="4" type="stmt"/>
+          <line num="2" count="4" type="stmt"/>
+          <line num="3" count="4" type="stmt"/>
           <line num="7" count="3" type="stmt"/>
           <line num="14" count="2" type="stmt"/>
           <line num="22" count="2" type="stmt"/>
         </file>
         <file name="getborrowedBooks.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/actions/getborrowedBooks.js">
           <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-          <line num="1" count="3" type="stmt"/>
-          <line num="2" count="3" type="stmt"/>
-          <line num="3" count="3" type="stmt"/>
+          <line num="1" count="4" type="stmt"/>
+          <line num="2" count="4" type="stmt"/>
+          <line num="3" count="4" type="stmt"/>
           <line num="7" count="3" type="stmt"/>
           <line num="15" count="2" type="stmt"/>
           <line num="24" count="2" type="stmt"/>
         </file>
         <file name="getunreturnedBooks.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/actions/getunreturnedBooks.js">
           <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-          <line num="1" count="3" type="stmt"/>
-          <line num="2" count="3" type="stmt"/>
-          <line num="3" count="3" type="stmt"/>
+          <line num="1" count="4" type="stmt"/>
+          <line num="2" count="4" type="stmt"/>
+          <line num="3" count="4" type="stmt"/>
           <line num="7" count="3" type="stmt"/>
           <line num="15" count="2" type="stmt"/>
           <line num="24" count="2" type="stmt"/>
@@ -137,11 +137,18 @@
           <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
           <line num="4" count="1" type="stmt"/>
         </file>
+        <file name="refreshPage.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/actions/refreshPage.js">
+          <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+          <line num="2" count="1" type="stmt"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="9" count="0" type="stmt"/>
+          <line num="16" count="0" type="stmt"/>
+        </file>
         <file name="returnBook.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/actions/returnBook.js">
           <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-          <line num="2" count="3" type="stmt"/>
-          <line num="3" count="3" type="stmt"/>
-          <line num="4" count="3" type="stmt"/>
+          <line num="2" count="4" type="stmt"/>
+          <line num="3" count="4" type="stmt"/>
+          <line num="4" count="4" type="stmt"/>
           <line num="9" count="3" type="stmt"/>
           <line num="17" count="2" type="stmt"/>
           <line num="25" count="2" type="stmt"/>
@@ -178,18 +185,18 @@
         </file>
         <file name="updateUser.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/actions/updateUser.js">
           <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-          <line num="2" count="2" type="stmt"/>
-          <line num="3" count="2" type="stmt"/>
-          <line num="4" count="2" type="stmt"/>
+          <line num="2" count="3" type="stmt"/>
+          <line num="3" count="3" type="stmt"/>
+          <line num="4" count="3" type="stmt"/>
           <line num="9" count="2" type="stmt"/>
           <line num="17" count="2" type="stmt"/>
           <line num="25" count="1" type="stmt"/>
         </file>
         <file name="uploadAvatar.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/actions/uploadAvatar.js">
           <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-          <line num="2" count="3" type="stmt"/>
-          <line num="3" count="3" type="stmt"/>
-          <line num="4" count="3" type="stmt"/>
+          <line num="2" count="4" type="stmt"/>
+          <line num="3" count="4" type="stmt"/>
+          <line num="4" count="4" type="stmt"/>
           <line num="9" count="3" type="stmt"/>
           <line num="17" count="2" type="stmt"/>
           <line num="25" count="2" type="stmt"/>
@@ -357,7 +364,7 @@
         </file>
       </package>
       <package name="HelloBooks.client.src.actions">
-        <metrics statements="210" coveredstatements="200" conditionals="86" coveredconditionals="60" methods="85" coveredmethods="83"/>
+        <metrics statements="215" coveredstatements="200" conditionals="90" coveredconditionals="60" methods="87" coveredmethods="83"/>
         <file name="borrowBooks.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/actions/borrowBooks.js">
           <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5"/>
           <line num="13" count="3" type="stmt"/>
@@ -408,10 +415,10 @@
         </file>
         <file name="getBooks.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/actions/getBooks.js">
           <metrics statements="12" coveredstatements="12" conditionals="8" coveredconditionals="5" methods="5" coveredmethods="5"/>
-          <line num="9" count="14" type="stmt"/>
-          <line num="10" count="14" type="stmt"/>
-          <line num="11" count="14" type="stmt"/>
-          <line num="12" count="14" type="stmt"/>
+          <line num="9" count="20" type="stmt"/>
+          <line num="10" count="20" type="stmt"/>
+          <line num="11" count="20" type="stmt"/>
+          <line num="12" count="20" type="stmt"/>
           <line num="18" count="2" type="stmt"/>
           <line num="20" count="2" type="cond" truecount="2" falsecount="0"/>
           <line num="22" count="1" type="stmt"/>
@@ -419,7 +426,7 @@
           <line num="25" count="1" type="stmt"/>
           <line num="26" count="1" type="cond" truecount="1" falsecount="1"/>
           <line num="27" count="1" type="cond" truecount="1" falsecount="1"/>
-          <line num="33" count="13" type="stmt"/>
+          <line num="33" count="19" type="stmt"/>
         </file>
         <file name="getUserDetails.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/actions/getUserDetails.js">
           <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5"/>
@@ -490,6 +497,14 @@
           <line num="8" count="1" type="stmt"/>
           <line num="10" count="1" type="stmt"/>
           <line num="11" count="1" type="stmt"/>
+        </file>
+        <file name="refreshPage.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/actions/refreshPage.js">
+          <metrics statements="5" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
+          <line num="6" count="0" type="stmt"/>
+          <line num="7" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="8" count="0" type="stmt"/>
+          <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="11" count="0" type="stmt"/>
         </file>
         <file name="returnBooks.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/actions/returnBooks.js">
           <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5"/>
@@ -595,7 +610,7 @@
         </file>
         <file name="uploadImage.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/actions/uploadImage.js">
           <metrics statements="13" coveredstatements="13" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5"/>
-          <line num="5" count="9" type="stmt"/>
+          <line num="5" count="10" type="stmt"/>
           <line num="8" count="2" type="stmt"/>
           <line num="9" count="2" type="stmt"/>
           <line num="10" count="2" type="stmt"/>
@@ -611,7 +626,7 @@
         </file>
         <file name="uploadUserAvatar.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/actions/uploadUserAvatar.js">
           <metrics statements="13" coveredstatements="13" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5"/>
-          <line num="5" count="2" type="stmt"/>
+          <line num="5" count="3" type="stmt"/>
           <line num="8" count="2" type="stmt"/>
           <line num="9" count="2" type="stmt"/>
           <line num="10" count="2" type="stmt"/>
@@ -634,77 +649,77 @@
         </file>
         <file name="Login.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/Login.js">
           <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-          <line num="14" count="11" type="stmt"/>
-          <line num="25" count="1" type="stmt"/>
-          <line num="33" count="10" type="stmt"/>
+          <line num="26" count="11" type="stmt"/>
+          <line num="37" count="1" type="stmt"/>
+          <line num="46" count="10" type="stmt"/>
         </file>
         <file name="LoginForm.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/LoginForm.js">
           <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
-          <line num="9" count="15" type="stmt"/>
-          <line num="10" count="15" type="stmt"/>
+          <line num="15" count="15" type="stmt"/>
           <line num="16" count="15" type="stmt"/>
-          <line num="17" count="15" type="stmt"/>
-          <line num="21" count="1" type="stmt"/>
-          <line num="25" count="1" type="stmt"/>
-          <line num="26" count="1" type="stmt"/>
-          <line num="27" count="1" type="stmt"/>
-          <line num="28" count="1" type="stmt"/>
-          <line num="32" count="17" type="stmt"/>
-          <line num="33" count="17" type="stmt"/>
-          <line num="85" count="1" type="stmt"/>
+          <line num="22" count="15" type="stmt"/>
+          <line num="23" count="15" type="stmt"/>
+          <line num="32" count="1" type="stmt"/>
+          <line num="42" count="1" type="stmt"/>
+          <line num="43" count="1" type="stmt"/>
+          <line num="44" count="1" type="stmt"/>
+          <line num="45" count="1" type="stmt"/>
+          <line num="54" count="17" type="stmt"/>
+          <line num="55" count="17" type="stmt"/>
+          <line num="107" count="1" type="stmt"/>
         </file>
         <file name="SearchBar.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/SearchBar.js">
           <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-          <line num="6" count="2" type="stmt"/>
-          <line num="23" count="1" type="stmt"/>
+          <line num="18" count="2" type="stmt"/>
+          <line num="35" count="1" type="stmt"/>
         </file>
         <file name="SideBar.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/SideBar.js">
           <metrics statements="9" coveredstatements="8" conditionals="6" coveredconditionals="2" methods="4" coveredmethods="4"/>
-          <line num="10" count="22" type="stmt"/>
-          <line num="12" count="22" type="stmt"/>
-          <line num="13" count="22" type="stmt"/>
-          <line num="17" count="1" type="cond" truecount="1" falsecount="1"/>
-          <line num="18" count="1" type="stmt"/>
-          <line num="22" count="1" type="cond" truecount="1" falsecount="1"/>
-          <line num="23" count="0" type="stmt"/>
-          <line num="27" count="22" type="stmt"/>
-          <line num="104" count="2" type="stmt"/>
+          <line num="8" count="30" type="stmt"/>
+          <line num="10" count="30" type="stmt"/>
+          <line num="11" count="30" type="stmt"/>
+          <line num="15" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="20" count="2" type="cond" truecount="1" falsecount="1"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="25" count="30" type="stmt"/>
+          <line num="102" count="2" type="stmt"/>
         </file>
         <file name="SignUpForm.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/SignUpForm.js">
           <metrics statements="14" coveredstatements="14" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
           <line num="8" count="2" type="stmt"/>
-          <line num="16" count="8" type="stmt"/>
-          <line num="17" count="8" type="stmt"/>
-          <line num="27" count="8" type="stmt"/>
-          <line num="28" count="8" type="stmt"/>
-          <line num="31" count="1" type="stmt"/>
-          <line num="35" count="1" type="stmt"/>
-          <line num="36" count="1" type="stmt"/>
-          <line num="37" count="1" type="stmt"/>
-          <line num="41" count="10" type="stmt"/>
-          <line num="42" count="10" type="stmt"/>
-          <line num="43" count="40" type="stmt"/>
-          <line num="44" count="10" type="stmt"/>
-          <line num="135" count="2" type="stmt"/>
+          <line num="24" count="8" type="stmt"/>
+          <line num="25" count="8" type="stmt"/>
+          <line num="35" count="8" type="stmt"/>
+          <line num="36" count="8" type="stmt"/>
+          <line num="45" count="1" type="stmt"/>
+          <line num="54" count="1" type="stmt"/>
+          <line num="55" count="1" type="stmt"/>
+          <line num="56" count="1" type="stmt"/>
+          <line num="65" count="10" type="stmt"/>
+          <line num="66" count="10" type="stmt"/>
+          <line num="67" count="40" type="stmt"/>
+          <line num="68" count="10" type="stmt"/>
+          <line num="159" count="2" type="stmt"/>
         </file>
         <file name="SignUpPage.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/SignUpPage.js">
           <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-          <line num="13" count="5" type="stmt"/>
-          <line num="14" count="5" type="stmt"/>
-          <line num="31" count="1" type="stmt"/>
-          <line num="37" count="4" type="stmt"/>
+          <line num="26" count="5" type="stmt"/>
+          <line num="27" count="5" type="stmt"/>
+          <line num="44" count="1" type="stmt"/>
+          <line num="50" count="4" type="stmt"/>
         </file>
       </package>
       <package name="HelloBooks.client.src.components.BookDetail">
-        <metrics statements="86" coveredstatements="81" conditionals="35" coveredconditionals="17" methods="12" coveredmethods="12"/>
+        <metrics statements="85" coveredstatements="84" conditionals="18" coveredconditionals="14" methods="12" coveredmethods="12"/>
         <file name="BookDetailsPage.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/BookDetail/BookDetailsPage.js">
           <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-          <line num="15" count="7" type="stmt"/>
-          <line num="32" count="1" type="stmt"/>
-          <line num="42" count="5" type="stmt"/>
+          <line num="27" count="8" type="stmt"/>
+          <line num="44" count="1" type="stmt"/>
+          <line num="54" count="6" type="stmt"/>
         </file>
         <file name="DetailsForm.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/BookDetail/DetailsForm.js">
-          <metrics statements="83" coveredstatements="78" conditionals="35" coveredconditionals="17" methods="10" coveredmethods="10"/>
+          <metrics statements="82" coveredstatements="81" conditionals="18" coveredconditionals="14" methods="10" coveredmethods="10"/>
           <line num="8" count="1" type="stmt"/>
           <line num="9" count="1" type="stmt"/>
           <line num="10" count="1" type="stmt"/>
@@ -716,167 +731,436 @@
           <line num="16" count="1" type="stmt"/>
           <line num="17" count="1" type="stmt"/>
           <line num="19" count="1" type="stmt"/>
-          <line num="23" count="10" type="stmt"/>
-          <line num="24" count="10" type="stmt"/>
-          <line num="30" count="10" type="stmt"/>
-          <line num="31" count="10" type="stmt"/>
-          <line num="32" count="10" type="stmt"/>
-          <line num="33" count="10" type="stmt"/>
-          <line num="36" count="11" type="cond" truecount="1" falsecount="1"/>
-          <line num="37" count="0" type="stmt"/>
-          <line num="40" count="11" type="cond" truecount="2" falsecount="0"/>
-          <line num="41" count="9" type="cond" truecount="1" falsecount="1"/>
-          <line num="42" count="9" type="stmt"/>
-          <line num="43" count="9" type="stmt"/>
-          <line num="44" count="9" type="stmt"/>
-          <line num="47" count="72" type="stmt"/>
-          <line num="49" count="9" type="stmt"/>
-          <line num="50" count="9" type="stmt"/>
-          <line num="51" count="9" type="stmt"/>
-          <line num="52" count="9" type="stmt"/>
-          <line num="53" count="9" type="stmt"/>
-          <line num="54" count="9" type="stmt"/>
-          <line num="55" count="9" type="stmt"/>
-          <line num="56" count="9" type="stmt"/>
-          <line num="57" count="9" type="stmt"/>
-          <line num="58" count="9" type="stmt"/>
-          <line num="59" count="9" type="stmt"/>
-          <line num="60" count="9" type="stmt"/>
-          <line num="61" count="9" type="stmt"/>
-          <line num="62" count="9" type="stmt"/>
-          <line num="63" count="9" type="stmt"/>
-          <line num="64" count="9" type="stmt"/>
-          <line num="69" count="11" type="cond" truecount="2" falsecount="0"/>
-          <line num="70" count="2" type="stmt"/>
-          <line num="71" count="2" type="stmt"/>
-          <line num="72" count="2" type="stmt"/>
-          <line num="73" count="2" type="stmt"/>
-          <line num="74" count="2" type="stmt"/>
-          <line num="75" count="2" type="stmt"/>
+          <line num="29" count="12" type="stmt"/>
+          <line num="30" count="12" type="stmt"/>
+          <line num="36" count="12" type="stmt"/>
+          <line num="37" count="12" type="stmt"/>
+          <line num="38" count="12" type="stmt"/>
+          <line num="39" count="12" type="stmt"/>
+          <line num="42" count="14" type="cond" truecount="1" falsecount="1"/>
+          <line num="43" count="0" type="stmt"/>
+          <line num="46" count="14" type="cond" truecount="2" falsecount="0"/>
+          <line num="47" count="12" type="cond" truecount="1" falsecount="1"/>
+          <line num="48" count="12" type="stmt"/>
+          <line num="49" count="12" type="stmt"/>
+          <line num="50" count="12" type="stmt"/>
+          <line num="53" count="96" type="stmt"/>
+          <line num="55" count="12" type="stmt"/>
+          <line num="56" count="12" type="stmt"/>
+          <line num="57" count="12" type="stmt"/>
+          <line num="58" count="12" type="stmt"/>
+          <line num="59" count="12" type="stmt"/>
+          <line num="60" count="12" type="stmt"/>
+          <line num="61" count="12" type="stmt"/>
+          <line num="62" count="12" type="stmt"/>
+          <line num="63" count="12" type="stmt"/>
+          <line num="64" count="12" type="stmt"/>
+          <line num="65" count="12" type="stmt"/>
+          <line num="66" count="12" type="stmt"/>
+          <line num="67" count="12" type="stmt"/>
+          <line num="68" count="12" type="stmt"/>
+          <line num="69" count="12" type="stmt"/>
+          <line num="70" count="12" type="stmt"/>
+          <line num="75" count="14" type="cond" truecount="2" falsecount="0"/>
           <line num="76" count="2" type="stmt"/>
           <line num="77" count="2" type="stmt"/>
-          <line num="83" count="1" type="stmt"/>
-          <line num="86" count="1" type="cond" truecount="1" falsecount="1"/>
-          <line num="87" count="1" type="cond" truecount="2" falsecount="2"/>
-          <line num="88" count="0" type="stmt"/>
-          <line num="92" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="93" count="1" type="cond" truecount="3" falsecount="1"/>
-          <line num="94" count="1" type="stmt"/>
-          <line num="98" count="1" type="cond" truecount="1" falsecount="1"/>
-          <line num="104" count="1" type="stmt"/>
+          <line num="78" count="2" type="stmt"/>
+          <line num="79" count="2" type="stmt"/>
+          <line num="80" count="2" type="stmt"/>
+          <line num="81" count="2" type="stmt"/>
+          <line num="82" count="2" type="stmt"/>
+          <line num="83" count="2" type="stmt"/>
+          <line num="94" count="2" type="stmt"/>
+          <line num="97" count="2" type="cond" truecount="1" falsecount="1"/>
+          <line num="98" count="2" type="cond" truecount="4" falsecount="0"/>
+          <line num="99" count="1" type="stmt"/>
+          <line num="103" count="1" type="stmt"/>
+          <line num="104" count="1" type="cond" truecount="3" falsecount="1"/>
           <line num="105" count="1" type="stmt"/>
-          <line num="107" count="1" type="stmt"/>
-          <line num="108" count="1" type="stmt"/>
           <line num="109" count="1" type="stmt"/>
-          <line num="110" count="1" type="stmt"/>
-          <line num="111" count="1" type="stmt"/>
-          <line num="112" count="1" type="stmt"/>
-          <line num="113" count="1" type="stmt"/>
-          <line num="117" count="1" type="stmt"/>
-          <line num="118" count="1" type="stmt"/>
-          <line num="121" count="1" type="stmt"/>
-          <line num="122" count="1" type="cond" truecount="1" falsecount="1"/>
-          <line num="126" count="1" type="stmt"/>
-          <line num="127" count="1" type="cond" truecount="1" falsecount="1"/>
-          <line num="131" count="1" type="stmt"/>
-          <line num="132" count="1" type="cond" truecount="1" falsecount="1"/>
-          <line num="136" count="1" type="stmt"/>
-          <line num="137" count="1" type="cond" truecount="1" falsecount="1"/>
-          <line num="138" count="0" type="stmt"/>
-          <line num="139" count="0" type="stmt"/>
-          <line num="145" count="12" type="stmt"/>
-          <line num="154" count="12" type="stmt"/>
-          <line num="165" count="12" type="stmt"/>
-          <line num="215" count="1" type="stmt"/>
+          <line num="121" count="2" type="stmt"/>
+          <line num="122" count="2" type="stmt"/>
+          <line num="124" count="2" type="stmt"/>
+          <line num="125" count="2" type="stmt"/>
+          <line num="126" count="2" type="stmt"/>
+          <line num="127" count="2" type="stmt"/>
+          <line num="128" count="2" type="stmt"/>
+          <line num="129" count="2" type="stmt"/>
+          <line num="130" count="2" type="stmt"/>
+          <line num="140" count="2" type="stmt"/>
+          <line num="141" count="2" type="stmt"/>
+          <line num="144" count="2" type="stmt"/>
+          <line num="145" count="2" type="stmt"/>
+          <line num="156" count="2" type="stmt"/>
+          <line num="157" count="2" type="stmt"/>
+          <line num="167" count="2" type="stmt"/>
+          <line num="168" count="2" type="stmt"/>
+          <line num="178" count="2" type="stmt"/>
+          <line num="180" count="2" type="stmt"/>
+          <line num="181" count="2" type="stmt"/>
+          <line num="186" count="18" type="stmt"/>
+          <line num="195" count="18" type="stmt"/>
+          <line num="206" count="18" type="stmt"/>
+          <line num="256" count="1" type="stmt"/>
         </file>
       </package>
       <package name="HelloBooks.client.src.components.Books">
-        <metrics statements="60" coveredstatements="49" conditionals="38" coveredconditionals="23" methods="20" coveredmethods="16"/>
+        <metrics statements="59" coveredstatements="57" conditionals="41" coveredconditionals="32" methods="20" coveredmethods="19"/>
         <file name="BooksCategory.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/Books/BooksCategory.js">
-          <metrics statements="8" coveredstatements="6" conditionals="8" coveredconditionals="4" methods="3" coveredmethods="2"/>
+          <metrics statements="8" coveredstatements="7" conditionals="8" coveredconditionals="5" methods="3" coveredmethods="3"/>
           <line num="8" count="1" type="stmt"/>
           <line num="9" count="1" type="stmt"/>
-          <line num="12" count="2" type="cond" truecount="2" falsecount="0"/>
-          <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="19" count="2" type="cond" truecount="1" falsecount="1"/>
-          <line num="20" count="0" type="stmt"/>
-          <line num="22" count="2" type="stmt"/>
-          <line num="30" count="1" type="stmt"/>
+          <line num="24" count="5" type="cond" truecount="2" falsecount="0"/>
+          <line num="34" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="43" count="4" type="cond" truecount="1" falsecount="1"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="46" count="4" type="stmt"/>
+          <line num="54" count="1" type="stmt"/>
         </file>
         <file name="BooksCollection.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/Books/BooksCollection.js">
-          <metrics statements="9" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="3"/>
-          <line num="8" count="4" type="stmt"/>
-          <line num="10" count="4" type="stmt"/>
-          <line num="14" count="0" type="stmt"/>
-          <line num="16" count="0" type="stmt"/>
-          <line num="17" count="0" type="stmt"/>
-          <line num="20" count="4" type="stmt"/>
-          <line num="22" count="4" type="stmt"/>
-          <line num="43" count="4" type="stmt"/>
-          <line num="59" count="1" type="stmt"/>
+          <metrics statements="8" coveredstatements="8" conditionals="5" coveredconditionals="3" methods="4" coveredmethods="4"/>
+          <line num="13" count="5" type="stmt"/>
+          <line num="15" count="5" type="stmt"/>
+          <line num="26" count="1" type="stmt"/>
+          <line num="27" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="36" count="5" type="stmt"/>
+          <line num="38" count="5" type="stmt"/>
+          <line num="59" count="5" type="stmt"/>
+          <line num="75" count="1" type="stmt"/>
         </file>
         <file name="BooksFilter.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/Books/BooksFilter.js">
-          <metrics statements="13" coveredstatements="8" conditionals="14" coveredconditionals="5" methods="4" coveredmethods="3"/>
-          <line num="12" count="4" type="stmt"/>
-          <line num="13" count="4" type="stmt"/>
-          <line num="20" count="4" type="stmt"/>
-          <line num="22" count="4" type="stmt"/>
-          <line num="27" count="3" type="stmt"/>
-          <line num="28" count="3" type="cond" truecount="2" falsecount="2"/>
-          <line num="29" count="0" type="stmt"/>
-          <line num="30" count="0" type="cond" truecount="0" falsecount="5"/>
-          <line num="31" count="0" type="stmt"/>
-          <line num="32" count="0" type="stmt"/>
-          <line num="38" count="0" type="stmt"/>
-          <line num="43" count="10" type="stmt"/>
-          <line num="65" count="1" type="stmt"/>
+          <metrics statements="13" coveredstatements="12" conditionals="14" coveredconditionals="11" methods="4" coveredmethods="3"/>
+          <line num="11" count="5" type="stmt"/>
+          <line num="12" count="5" type="stmt"/>
+          <line num="19" count="5" type="stmt"/>
+          <line num="21" count="5" type="stmt"/>
+          <line num="31" count="3" type="stmt"/>
+          <line num="33" count="3" type="cond" truecount="4" falsecount="0"/>
+          <line num="34" count="1" type="stmt"/>
+          <line num="35" count="1" type="cond" truecount="4" falsecount="1"/>
+          <line num="36" count="1" type="stmt"/>
+          <line num="37" count="1" type="stmt"/>
+          <line num="49" count="0" type="stmt"/>
+          <line num="59" count="13" type="stmt"/>
+          <line num="81" count="1" type="stmt"/>
         </file>
         <file name="BooksPage.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/Books/BooksPage.js">
           <metrics statements="14" coveredstatements="14" conditionals="10" coveredconditionals="10" methods="3" coveredmethods="3"/>
-          <line num="19" count="13" type="cond" truecount="2" falsecount="0"/>
-          <line num="20" count="12" type="stmt"/>
-          <line num="24" count="13" type="stmt"/>
-          <line num="25" count="13" type="stmt"/>
-          <line num="27" count="13" type="stmt"/>
-          <line num="28" count="13" type="stmt"/>
-          <line num="29" count="13" type="stmt"/>
-          <line num="30" count="13" type="stmt"/>
-          <line num="31" count="13" type="stmt"/>
-          <line num="32" count="13" type="stmt"/>
-          <line num="33" count="13" type="stmt"/>
-          <line num="38" count="13" type="stmt"/>
-          <line num="58" count="1" type="stmt"/>
-          <line num="72" count="12" type="stmt"/>
+          <line num="30" count="19" type="cond" truecount="2" falsecount="0"/>
+          <line num="31" count="18" type="stmt"/>
+          <line num="35" count="19" type="stmt"/>
+          <line num="36" count="19" type="stmt"/>
+          <line num="38" count="19" type="stmt"/>
+          <line num="39" count="19" type="stmt"/>
+          <line num="40" count="19" type="stmt"/>
+          <line num="41" count="19" type="stmt"/>
+          <line num="42" count="19" type="stmt"/>
+          <line num="43" count="19" type="stmt"/>
+          <line num="44" count="19" type="stmt"/>
+          <line num="54" count="19" type="stmt"/>
+          <line num="74" count="1" type="stmt"/>
+          <line num="88" count="18" type="stmt"/>
         </file>
         <file name="BooksPhoto.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/Books/BooksPhoto.js">
           <metrics statements="10" coveredstatements="10" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
-          <line num="10" count="2" type="stmt"/>
-          <line num="11" count="2" type="stmt"/>
-          <line num="13" count="2" type="stmt"/>
-          <line num="14" count="2" type="stmt"/>
-          <line num="15" count="2" type="stmt"/>
-          <line num="16" count="2" type="cond" truecount="1" falsecount="1"/>
-          <line num="17" count="2" type="stmt"/>
-          <line num="19" count="2" type="stmt"/>
-          <line num="20" count="2" type="stmt"/>
-          <line num="34" count="1" type="stmt"/>
+          <line num="23" count="2" type="stmt"/>
+          <line num="24" count="2" type="stmt"/>
+          <line num="26" count="2" type="stmt"/>
+          <line num="27" count="2" type="stmt"/>
+          <line num="28" count="2" type="stmt"/>
+          <line num="29" count="2" type="cond" truecount="1" falsecount="1"/>
+          <line num="30" count="2" type="stmt"/>
+          <line num="32" count="2" type="stmt"/>
+          <line num="33" count="2" type="stmt"/>
+          <line num="47" count="1" type="stmt"/>
         </file>
         <file name="Cardbox.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/Books/Cardbox.js">
-          <metrics statements="6" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="2"/>
-          <line num="9" count="3" type="stmt"/>
-          <line num="11" count="3" type="stmt"/>
-          <line num="15" count="0" type="stmt"/>
-          <line num="18" count="3" type="stmt"/>
-          <line num="19" count="3" type="stmt"/>
+          <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+          <line num="14" count="4" type="stmt"/>
+          <line num="16" count="4" type="stmt"/>
+          <line num="25" count="1" type="stmt"/>
+          <line num="35" count="4" type="stmt"/>
+          <line num="36" count="4" type="stmt"/>
+          <line num="55" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="HelloBooks.client.src.components.Dashboard">
+        <metrics statements="231" coveredstatements="225" conditionals="119" coveredconditionals="103" methods="49" coveredmethods="46"/>
+        <file name="BbTableRow.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/Dashboard/BbTableRow.js">
+          <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="7" count="384" type="stmt"/>
+          <line num="8" count="384" type="stmt"/>
+          <line num="9" count="384" type="stmt"/>
+          <line num="22" count="1" type="stmt"/>
+        </file>
+        <file name="BhTableRow.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/Dashboard/BhTableRow.js">
+          <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+          <line num="4" count="1" type="stmt"/>
+          <line num="5" count="1" type="stmt"/>
+          <line num="9" count="384" type="stmt"/>
+          <line num="10" count="384" type="stmt"/>
+          <line num="11" count="384" type="stmt"/>
+          <line num="12" count="384" type="stmt"/>
+          <line num="13" count="384" type="stmt"/>
+          <line num="26" count="1" type="stmt"/>
+        </file>
+        <file name="BookHistoryTable.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/Dashboard/BookHistoryTable.js">
+          <metrics statements="13" coveredstatements="13" conditionals="8" coveredconditionals="6" methods="4" coveredmethods="4"/>
+          <line num="9" count="1" type="stmt"/>
+          <line num="12" count="51" type="cond" truecount="2" falsecount="0"/>
+          <line num="13" count="2" type="stmt"/>
+          <line num="16" count="51" type="cond" truecount="2" falsecount="0"/>
+          <line num="17" count="2" type="stmt"/>
+          <line num="21" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="22" count="1" type="stmt"/>
+          <line num="26" count="52" type="cond" truecount="1" falsecount="1"/>
+          <line num="27" count="52" type="stmt"/>
+          <line num="28" count="52" type="stmt"/>
+          <line num="29" count="400" type="stmt"/>
+          <line num="37" count="52" type="stmt"/>
+          <line num="63" count="1" type="stmt"/>
+        </file>
+        <file name="BorrowedbooksTable.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/Dashboard/BorrowedbooksTable.js">
+          <metrics statements="46" coveredstatements="46" conditionals="22" coveredconditionals="20" methods="9" coveredmethods="9"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="19" count="57" type="stmt"/>
+          <line num="20" count="57" type="stmt"/>
+          <line num="28" count="57" type="stmt"/>
+          <line num="29" count="57" type="stmt"/>
+          <line num="30" count="57" type="stmt"/>
+          <line num="31" count="57" type="stmt"/>
+          <line num="35" count="59" type="cond" truecount="2" falsecount="0"/>
+          <line num="36" count="2" type="stmt"/>
+          <line num="39" count="59" type="cond" truecount="2" falsecount="0"/>
+          <line num="40" count="2" type="stmt"/>
+          <line num="44" count="3" type="stmt"/>
+          <line num="46" count="3" type="cond" truecount="2" falsecount="0"/>
+          <line num="47" count="2" type="cond" truecount="4" falsecount="0"/>
+          <line num="48" count="1" type="stmt"/>
+          <line num="49" count="1" type="stmt"/>
+          <line num="53" count="1" type="cond" truecount="3" falsecount="1"/>
+          <line num="54" count="1" type="stmt"/>
+          <line num="55" count="1" type="stmt"/>
+          <line num="61" count="3" type="cond" truecount="2" falsecount="0"/>
+          <line num="62" count="1" type="stmt"/>
+          <line num="63" count="1" type="stmt"/>
+          <line num="64" count="1" type="stmt"/>
+          <line num="68" count="1" type="stmt"/>
+          <line num="69" count="1" type="stmt"/>
+          <line num="70" count="1" type="stmt"/>
+          <line num="71" count="1" type="stmt"/>
+          <line num="75" count="1" type="stmt"/>
+          <line num="79" count="1" type="stmt"/>
+          <line num="81" count="1" type="stmt"/>
+          <line num="82" count="1" type="stmt"/>
+          <line num="85" count="1" type="stmt"/>
+          <line num="89" count="1" type="stmt"/>
+          <line num="90" count="1" type="stmt"/>
+          <line num="91" count="1" type="stmt"/>
+          <line num="94" count="1" type="stmt"/>
+          <line num="97" count="1" type="stmt"/>
+          <line num="98" count="1" type="stmt"/>
+          <line num="101" count="73" type="cond" truecount="1" falsecount="1"/>
+          <line num="102" count="73" type="stmt"/>
+          <line num="103" count="73" type="stmt"/>
+          <line num="104" count="568" type="stmt"/>
+          <line num="113" count="73" type="stmt"/>
+          <line num="161" count="1" type="stmt"/>
+        </file>
+        <file name="ChangePasswordPage.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/Dashboard/ChangePasswordPage.js">
+          <metrics statements="37" coveredstatements="37" conditionals="25" coveredconditionals="24" methods="8" coveredmethods="8"/>
+          <line num="10" count="1" type="stmt"/>
+          <line num="15" count="59" type="stmt"/>
+          <line num="16" count="59" type="stmt"/>
+          <line num="25" count="59" type="stmt"/>
+          <line num="26" count="59" type="stmt"/>
+          <line num="27" count="59" type="stmt"/>
+          <line num="28" count="59" type="stmt"/>
+          <line num="29" count="59" type="stmt"/>
+          <line num="34" count="3" type="stmt"/>
+          <line num="35" count="3" type="cond" truecount="2" falsecount="0"/>
+          <line num="36" count="2" type="cond" truecount="4" falsecount="0"/>
+          <line num="37" count="1" type="stmt"/>
           <line num="38" count="1" type="stmt"/>
+          <line num="42" count="1" type="cond" truecount="3" falsecount="1"/>
+          <line num="43" count="1" type="stmt"/>
+          <line num="50" count="1" type="stmt"/>
+          <line num="56" count="1" type="stmt"/>
+          <line num="57" count="1" type="stmt"/>
+          <line num="61" count="1" type="stmt"/>
+          <line num="63" count="1" type="stmt"/>
+          <line num="64" count="1" type="stmt"/>
+          <line num="68" count="1" type="stmt"/>
+          <line num="69" count="1" type="stmt"/>
+          <line num="72" count="1" type="stmt"/>
+          <line num="74" count="1" type="stmt"/>
+          <line num="78" count="1" type="stmt"/>
+          <line num="81" count="4" type="stmt"/>
+          <line num="82" count="4" type="cond" truecount="5" falsecount="0"/>
+          <line num="83" count="1" type="stmt"/>
+          <line num="86" count="3" type="cond" truecount="2" falsecount="0"/>
+          <line num="87" count="1" type="stmt"/>
+          <line num="90" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="91" count="1" type="stmt"/>
+          <line num="95" count="1" type="stmt"/>
+          <line num="99" count="1" type="stmt"/>
+          <line num="103" count="84" type="stmt"/>
+          <line num="160" count="1" type="stmt"/>
+        </file>
+        <file name="DashboardPage.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/Dashboard/DashboardPage.js">
+          <metrics statements="5" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
+          <line num="35" count="48" type="cond" truecount="1" falsecount="1"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="46" count="48" type="stmt"/>
+          <line num="82" count="1" type="stmt"/>
+          <line num="109" count="47" type="stmt"/>
+        </file>
+        <file name="DashboardSidebar.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/Dashboard/DashboardSidebar.js">
+          <metrics statements="78" coveredstatements="73" conditionals="31" coveredconditionals="26" methods="15" coveredmethods="12"/>
+          <line num="9" count="1" type="stmt"/>
+          <line num="19" count="63" type="stmt"/>
+          <line num="21" count="63" type="stmt"/>
+          <line num="40" count="63" type="stmt"/>
+          <line num="41" count="63" type="stmt"/>
+          <line num="42" count="63" type="stmt"/>
+          <line num="43" count="63" type="stmt"/>
+          <line num="44" count="63" type="stmt"/>
+          <line num="45" count="63" type="stmt"/>
+          <line num="47" count="63" type="stmt"/>
+          <line num="48" count="63" type="stmt"/>
+          <line num="49" count="63" type="stmt"/>
+          <line num="58" count="3" type="cond" truecount="1" falsecount="1"/>
+          <line num="59" count="3" type="stmt"/>
+          <line num="60" count="3" type="stmt"/>
+          <line num="65" count="3" type="cond" truecount="2" falsecount="0"/>
+          <line num="66" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="67" count="1" type="stmt"/>
+          <line num="68" count="1" type="stmt"/>
+          <line num="73" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="74" count="1" type="stmt"/>
+          <line num="78" count="1" type="stmt"/>
+          <line num="82" count="3" type="cond" truecount="2" falsecount="0"/>
+          <line num="83" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="84" count="1" type="stmt"/>
+          <line num="90" count="1" type="stmt"/>
+          <line num="102" count="1" type="stmt"/>
+          <line num="103" count="1" type="stmt"/>
+          <line num="108" count="1" type="stmt"/>
+          <line num="109" count="1" type="stmt"/>
+          <line num="118" count="1" type="stmt"/>
+          <line num="119" count="1" type="stmt"/>
+          <line num="120" count="1" type="stmt"/>
+          <line num="131" count="1" type="stmt"/>
+          <line num="133" count="1" type="stmt"/>
+          <line num="134" count="1" type="stmt"/>
+          <line num="136" count="1" type="stmt"/>
+          <line num="150" count="4" type="stmt"/>
+          <line num="151" count="4" type="cond" truecount="2" falsecount="0"/>
+          <line num="152" count="3" type="cond" truecount="4" falsecount="0"/>
+          <line num="153" count="1" type="stmt"/>
+          <line num="154" count="1" type="stmt"/>
+          <line num="155" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="156" count="1" type="stmt"/>
+          <line num="157" count="1" type="stmt"/>
+          <line num="158" count="1" type="stmt"/>
+          <line num="170" count="1" type="stmt"/>
+          <line num="171" count="1" type="stmt"/>
+          <line num="172" count="1" type="stmt"/>
+          <line num="173" count="0" type="stmt"/>
+          <line num="175" count="0" type="stmt"/>
+          <line num="177" count="0" type="stmt"/>
+          <line num="178" count="0" type="stmt"/>
+          <line num="185" count="1" type="stmt"/>
+          <line num="186" count="0" type="stmt"/>
+          <line num="191" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="201" count="1" type="stmt"/>
+          <line num="203" count="1" type="stmt"/>
+          <line num="204" count="1" type="stmt"/>
+          <line num="205" count="1" type="stmt"/>
+          <line num="206" count="1" type="stmt"/>
+          <line num="217" count="1" type="stmt"/>
+          <line num="219" count="1" type="stmt"/>
+          <line num="220" count="1" type="stmt"/>
+          <line num="221" count="1" type="stmt"/>
+          <line num="222" count="1" type="stmt"/>
+          <line num="232" count="1" type="stmt"/>
+          <line num="234" count="1" type="stmt"/>
+          <line num="235" count="1" type="stmt"/>
+          <line num="236" count="1" type="stmt"/>
+          <line num="237" count="1" type="stmt"/>
+          <line num="248" count="1" type="stmt"/>
+          <line num="250" count="1" type="stmt"/>
+          <line num="251" count="1" type="stmt"/>
+          <line num="252" count="1" type="stmt"/>
+          <line num="253" count="1" type="stmt"/>
+          <line num="259" count="96" type="stmt"/>
+          <line num="334" count="1" type="stmt"/>
+        </file>
+        <file name="UserProfile.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/Dashboard/UserProfile.js">
+          <metrics statements="40" coveredstatements="40" conditionals="29" coveredconditionals="24" methods="8" coveredmethods="8"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="22" count="57" type="stmt"/>
+          <line num="23" count="57" type="stmt"/>
+          <line num="46" count="57" type="stmt"/>
+          <line num="47" count="57" type="stmt"/>
+          <line num="48" count="57" type="stmt"/>
+          <line num="49" count="57" type="stmt"/>
+          <line num="50" count="57" type="stmt"/>
+          <line num="60" count="2" type="cond" truecount="3" falsecount="1"/>
+          <line num="61" count="2" type="stmt"/>
+          <line num="72" count="2" type="stmt"/>
+          <line num="75" count="2" type="cond" truecount="4" falsecount="0"/>
+          <line num="76" count="1" type="stmt"/>
+          <line num="77" count="1" type="stmt"/>
+          <line num="81" count="1" type="cond" truecount="3" falsecount="1"/>
+          <line num="82" count="1" type="stmt"/>
+          <line num="87" count="1" type="stmt"/>
+          <line num="98" count="1" type="stmt"/>
+          <line num="100" count="1" type="stmt"/>
+          <line num="101" count="1" type="stmt"/>
+          <line num="103" count="1" type="stmt"/>
+          <line num="116" count="1" type="stmt"/>
+          <line num="125" count="1" type="stmt"/>
+          <line num="127" count="1" type="stmt"/>
+          <line num="138" count="2" type="stmt"/>
+          <line num="139" count="2" type="stmt"/>
+          <line num="140" count="2" type="cond" truecount="1" falsecount="1"/>
+          <line num="141" count="2" type="stmt"/>
+          <line num="149" count="2" type="cond" truecount="1" falsecount="1"/>
+          <line num="150" count="2" type="cond" truecount="6" falsecount="1"/>
+          <line num="151" count="2" type="stmt"/>
+          <line num="156" count="2" type="stmt"/>
+          <line num="157" count="2" type="stmt"/>
+          <line num="169" count="1" type="stmt"/>
+          <line num="170" count="1" type="stmt"/>
+          <line num="173" count="1" type="stmt"/>
+          <line num="174" count="1" type="stmt"/>
+          <line num="179" count="78" type="stmt"/>
+          <line num="252" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="HelloBooks.client.src.components.modal">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <file name="DoubleActionModal.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/modal/DoubleActionModal.js">
+          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="6" count="193" type="stmt"/>
+          <line num="21" count="1" type="stmt"/>
+        </file>
+        <file name="SingleActionModal.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/modal/SingleActionModal.js">
+          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="6" count="386" type="stmt"/>
+          <line num="21" count="1" type="stmt"/>
         </file>
       </package>
       <package name="HelloBooks.client.src.components.select">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <file name="MembershipSelect.js" path="/Users/andeladeveloper/Desktop/HelloBooks/client/src/components/select/MembershipSelect.js">
           <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-          <line num="6" count="2" type="stmt"/>
-          <line num="25" count="1" type="stmt"/>
+          <line num="18" count="2" type="stmt"/>
+          <line num="37" count="1" type="stmt"/>
         </file>
       </package>
     </metrics>

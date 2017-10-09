@@ -4,7 +4,19 @@ import orderBy from 'lodash/orderBy';
 
 import Table from './Table';
 
+/**
+ * 
+ * 
+ * @class BooksList
+ * @extends {React.Component}
+ */
 class BooksList extends React.Component {
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof BooksList
+   */
   render() {
     const { data } = this.props;
 

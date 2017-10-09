@@ -8,8 +8,20 @@ import Footer from './Footer';
 import userSignin from '../actions/loginAction';
 import getbooks from '../actions/getBooks';
 
-
+/**
+ * 
+ * 
+ * @export
+ * @class Login
+ * @extends {React.Component}
+ */
 export class Login extends React.Component {
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof Login
+   */
   render() {
     return (
       <div>
@@ -28,6 +40,7 @@ Login.propTypes = {
   userSignin: PropTypes.func.isRequired,
 
 };
+
 
 function mapStateToProps(state) {
   return { log: state.log[0] };

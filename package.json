@@ -57,6 +57,7 @@
     "image-size": "^0.6.1",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.2.1",
+    "jsdom": "^11.3.0",
     "jsonwebtoken": "^7.4.2",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.4",

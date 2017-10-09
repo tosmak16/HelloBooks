@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
-
-import showbooksByCategory from '../actions/showbooksByCategory';
+import $ from 'jquery';
 
 class SideBar extends React.Component {
   constructor(props) {

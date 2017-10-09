@@ -136,7 +136,39 @@
 91
 92
 93
-94</td><td class="line-coverage quiet"><span class="cline-any cline-yes">25x</span>
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110</td><td class="line-coverage quiet"><span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -231,6 +263,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const books = [
   {
+&nbsp;
     id: 1,
     bookId: 1,
     bookTitle: 'THE PEOPLE IN THE TREE',
@@ -240,6 +273,8 @@
     stocknumber: '2',
     image: 'l1.jpg',
     summary: 'Lorem Ipronic typesetting, remaininised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
+    brdate: '2017-10-04T04:55:40.623+01',
+    rdate: '2017-10-04T04:55:40.623+01',
   },
   {
     id: 2,
@@ -251,6 +286,8 @@
     stocknumber: '0',
     image: 'l2.jpg',
     summary: 'It is a long established fact thaorem Ipsu uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)',
+    brdate: '2017-10-04T04:55:40.623+01',
+    rdate: '2017-10-04T04:55:40.623+01',
   },
   {
     id: 3,
@@ -262,7 +299,8 @@
     stocknumber: '5',
     image: 'l3.jpg',
     summary: 'There are many variations of passages of Lorem Ipsum available, but the majority orem Ipsum generators on the Internet tend to repeat predefined chunks as necessary',
-&nbsp;
+    brdate: '2017-10-04T04:55:40.623+01',
+    rdate: '2017-10-04T04:55:40.623+01',
   },
   {
     id: 4,
@@ -274,6 +312,8 @@
     stocknumber: '3',
     image: 'l4.jpg',
     summary: 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from ',
+    brdate: '2017-10-04T04:55:40.623+01',
+    rdate: '2017-10-04T04:55:40.623+01',
   },
   {
     id: 5,
@@ -284,7 +324,9 @@
     isbn: '45678974567',
     stocknumber: '10',
     image: 'l5.jpg',
-    summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Urum.'
+    summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Urum.',
+    brdate: '2017-10-04T04:55:40.623+01',
+    rdate: '2017-10-04T04:55:40.623+01',
   },
   {
     id: 6,
@@ -295,7 +337,9 @@
     isbn: '567244567',
     stocknumber: '10',
     image: 'l6.jpg',
-    summary: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium?'
+    summary: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium?',
+    brdate: '2017-10-04T04:55:40.623+01',
+    rdate: '2017-10-04T04:55:40.623+01',
   },
   {
     id: 7,
@@ -306,7 +350,9 @@
     isbn: '64578974567',
     stocknumber: '10',
     image: 'l7.jpg',
-    summary: 'But I must explain to you how all this mists no resultant pleasure  ducimus qui blanditiis praesentium voluptatum culpa qui officia ?'
+    summary: 'But I must explain to you how all this mists no resultant pleasure  ducimus qui blanditiis praesentium voluptatum culpa qui officia ?',
+    brdate: '2017-10-04T04:55:40.623+01',
+    rdate: '',
   },
   {
     id: 8,
@@ -317,7 +363,9 @@
     isbn: '787890974567',
     stocknumber: '8',
     image: 'l8.jpg',
-    summary: 'At vero eos et accusamus et iuse delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
+    summary: 'At vero eos et accusamus et iuse delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.',
+    brdate: '2017-10-04T04:55:40.623+01',
+    rdate: '2017-10-04T04:55:40.623+01',
   },
 ];
 &nbsp;
@@ -328,7 +376,7 @@ export default books;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Oct 08 2017 08:09:05 GMT+0100 (WAT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Oct 09 2017 15:23:42 GMT+0100 (WAT)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

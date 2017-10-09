@@ -1,13 +1,10 @@
 import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 import filterBy from 'lodash/filter';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import BhTableRow from '../Dashboard/BhTableRow';
-import getborrowedBooks from '../../actions/getborrowedBooks';
-import getbooks from '../../actions/getBooks';
-import refreshPage from '../../actions/refreshPage';
+
 
 let tablerow = '';
 class BorrowHistoryTable extends React.Component {
@@ -22,9 +19,7 @@ class BorrowHistoryTable extends React.Component {
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.isRefreshed) {
-      setTimeout(() => { this.props.refreshPage(true); }, 1000);
       this.props.getborrowedBooks(localStorage.jwtToken);
-      setTimeout(() => { this.props.refreshPage(false); }, 1000);
     }
   }
   render() {
@@ -71,17 +66,7 @@ BorrowHistoryTable.propTypes = {
   getbooks: PropTypes.func.isRequired,
   getborrowedBooks: PropTypes.func.isRequired,
   isRefreshed: PropTypes.bool.isRequired,
-  refreshPage: PropTypes.func.isRequired,
-
-
 };
 
-function mapStateToProps(state) {
-  return {
-    data: state.getborrowedBooks[0].data,
-    bookData: state.books[0].data,
-    isRefreshed: state.refreshPage[0].isRefreshed
-  };
-}
 
-export default connect(mapStateToProps, { getborrowedBooks, getbooks, refreshPage })(BorrowHistoryTable);
+export default BorrowHistoryTable;

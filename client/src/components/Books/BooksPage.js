@@ -13,8 +13,19 @@ import searchbooks from '../../actions/searchbooks';
 import checkBookDetails from '../../actions/checkBookDetails';
 import showbooksByCategory from '../../actions/showbooksByCategory';
 
-
+/**
+ * 
+ * 
+ * @export
+ * @class BooksPage
+ * @extends {React.Component}
+ */
 export class BooksPage extends React.Component {
+  /**
+   * 
+   * 
+   * @memberof BooksPage
+   */
   componentWillMount() {
     if (!this.props.isFetched) {
       this.props.getbooks(false);
@@ -33,7 +44,12 @@ export class BooksPage extends React.Component {
     localStorage.removeItem('image');
   }
 
-
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof BooksPage
+   */
   render() {
     return (
       <div className="">

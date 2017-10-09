@@ -3,7 +3,13 @@ import PropTypes from 'prop-types';
 
 import { Input, Row } from 'react-materialize';
 
-
+/**
+ * 
+ * 
+ * @export
+ * @class LoginForm
+ * @extends {React.Component}
+ */
 export class LoginForm extends React.Component {
   constructor(props) {
     super(props);
@@ -16,18 +22,34 @@ export class LoginForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof LoginForm
+   */
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof LoginForm
+   */
   handleSubmit(e) {
     e.preventDefault();
     this.setState({ errors: '' });
     this.props.userSignin(this.state);
     this.props.getbooks(true);
   }
-
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof LoginForm
+   */
   render() {
     const { error } = this.props.log;
     return (

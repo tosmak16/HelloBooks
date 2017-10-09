@@ -11,6 +11,14 @@ const membershipType = {
   Gold: 'Gold',
   Bronze: 'Bronze'
 };
+
+/**
+ * 
+ * 
+ * @export
+ * @class SignUpForm
+ * @extends {React.Component}
+ */
 export class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
@@ -27,16 +35,32 @@ export class SignUpForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  /**
+   * 
+   * 
+   * @param {event} e 
+   * @memberof SignUpForm
+   */
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-
+  /**
+   * 
+   * 
+   * @param {event} e 
+   * @memberof SignUpForm
+   */
   handleSubmit(e) {
     e.preventDefault();
     this.setState({ errors: '' });
     this.props.userSignup(this.state);
   }
-
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof SignUpForm
+   */
   render() {
     const { error } = this.props.reg;
     const options = map(membershipType, (val, key) =>

@@ -1,17 +1,19 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
 import PropTypes from 'prop-types';
+import $ from 'jquery';
 
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
-import updateUser from '../../actions/updateuserDetails';
-import { uploadAvatar } from '../../actions/uploadUserAvatar';
 
 let imgName = '';
-const display = true;
-const show = true;
 
+/**
+ * 
+ * 
+ * @class DashboardSidebar
+ * @extends {React.Component}
+ */
 class DashboardSidebar extends React.Component {
   constructor(props) {
     super(props);
@@ -46,8 +48,56 @@ class DashboardSidebar extends React.Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleExit = this.handleExit.bind(this);
   }
+  /**
+   * 
+   * 
+   * @param {any} nextProps 
+   * @memberof DashboardSidebar
+   */
+  componentWillReceiveProps(nextProps) {
+    if (!isEmpty(nextProps.data)) {
+      imgName = nextProps.data[0];
+      this.setState({
+        display: false,
+      });
+    }
 
+    if (this.state.show) {
+      if (!isEmpty(this.props.error)) {
+        $('#modaE').show();
+        this.setState({
+          show: false,
+          error: this.props.error,
+          imagePreviewUrl: '',
+        });
+      } else if (!isEmpty(this.props.message)) {
+        this.setState({
+          show: false,
+          message: 'Image uploaded successfully',
+        });
+        $('#modaS').show();
+      }
+    }
 
+    if (this.state.imageloaded) {
+      if (!isEmpty(nextProps.imageUrl)) {
+        this.setState({
+          imageloaded: false,
+          profileImage: nextProps.imageUrl,
+          show: true,
+        });
+
+        this.props.updateUser({ profileImage: nextProps.imageUrl }, localStorage.jwtToken);
+      }
+    }
+  }
+
+  /**
+   * 
+   * @function handleClick
+   * @param {any} e 
+   * @memberof DashboardSidebar
+   */
   handleClick(e) {
     e.preventDefault();
     this.setState({
@@ -56,48 +106,67 @@ class DashboardSidebar extends React.Component {
       profileImage: '',
     });
     this.props.uploadAvatar(this.state.file);
-    document.getElementById('modaO').style.display = 'none';
+    $('#modaO').hide();
   }
-
+  /**
+   * 
+   * @function handleClose
+   * @param {any} e 
+   * @memberof DashboardSidebar
+   */
   handleClose(e) {
     e.preventDefault();
-    document.getElementById('modaO').style.display = 'none';
+    $('#modaO').hide();
     this.setState({
       imagePreviewUrl: '',
     });
   }
-
+  /**
+   * 
+   * @function handleExit
+   * @param {any} e 
+   * @memberof DashboardSidebar
+   */
   handleExit(e) {
     e.preventDefault();
-    document.getElementById('modaE').style.display = 'none';
-    document.getElementById('modaS').style.display = 'none';
+
+    $('#modaE').hide();
+    $('#modaS').hide();
+
     this.setState({
       error: '',
       message: '',
       file: '',
-      imagePreviewUrl: '',
     });
   }
 
-
+  /**
+   * 
+   * @function handleEdit
+   * @param {any} e 
+   * @memberof DashboardSidebar
+   */
   handleEdit(e) {
     e.preventDefault();
     if (this.state.file) {
       if (this.state.imageHeight > 200 || this.state.imageWidth > 150) {
         this.setState({ modalErrorMessage: 'Please image height  and width must be 200 and 150 respectively' });
-
-        document.getElementById('modaE').style.display = 'block';
+        $('#modaE').show();
       } else if (this.state.imageSize > 100000) {
         this.setState({ modalErrorMessage: 'Please image size must not be more than 100kb' });
-        document.getElementById('modaE').style.display = 'block';
-      } else {
-        document.getElementById('modaO').style.display = 'block';
-      }
+        $('#modaE').show();
+      } else $('#modaO').show();
     }
   }
 
-  handleImageChange(e) {
-    e.preventDefault();
+  /**
+   * 
+   * @function handleImageChange
+   * @param {any} e 
+   * @param {boolean} [set=true] 
+   * @memberof DashboardSidebar
+   */
+  handleImageChange(e, set = true) {
     const reader = new FileReader();
     const file = e.target.files[0];
     reader.onload = () => {
@@ -119,86 +188,70 @@ class DashboardSidebar extends React.Component {
         imagePreviewUrl: reader.result,
       });
     };
-
-    reader.readAsDataURL(file);
+    if (set) { reader.readAsDataURL(file); }
   }
 
-
-  componentWillMount() {
-
-  }
-
-  componentDidMount() {
-
-
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (!isEmpty(nextProps.data)) {
-      imgName = nextProps.data[0];
-      this.setState({
-        display: false,
-      });
-    }
-
-    if (this.state.show) {
-      if (!isEmpty(this.props.error)) {
-        document.getElementById('modaE').style.display = 'block';
-        this.setState({
-          show: false,
-          error: this.props.error,
-          imagePreviewUrl: '',
-        });
-      } else if (!isEmpty(this.props.message)) {
-        this.setState({
-          show: false,
-          message: 'Image uploaded successfully',
-        });
-        document.getElementById('modaS').style.display = 'block';
-      }
-    }
-
-    if (this.state.imageloaded) {
-      if (!isEmpty(nextProps.imageUrl)) {
-        this.setState({
-          imageloaded: false,
-          profileImage: nextProps.imageUrl,
-          show: true,
-        });
-
-        this.props.updateUser({ profileImage: nextProps.imageUrl }, localStorage.jwtToken);
-      }
-    }
-  }
-
-
+  /**
+   * 
+   * @function handleClickBookShelf
+   * @param {any} e 
+   * @memberof DashboardSidebar
+   */
   handleClickBookShelf(e) {
     e.preventDefault();
-    document.getElementById('bb_table').style.display = 'block';
-    document.getElementById('b_page').style.display = 'none';
-    document.getElementById('bh_table').style.display = 'none';
-    document.getElementById('ch_pas').style.display = 'none';
+    {
+      $('#bb_table').show();
+      $('#b_page').hide();
+      $('#bh_table').hide();
+      $('#ch_pas').hide();
+    }
   }
+
+  /**
+   * 
+   * @function handleClickAccount
+   * @param {any} e 
+   * @memberof DashboardSidebar
+   */
   handleClickAccount(e) {
     e.preventDefault();
-    document.getElementById('b_page').style.display = 'block';
-    document.getElementById('bb_table').style.display = 'none';
-    document.getElementById('bh_table').style.display = 'none';
-    document.getElementById('ch_pas').style.display = 'none';
+    {
+      $('#b_page').show();
+      $('#bb_table').hide();
+      $('#bh_table').hide();
+      $('#ch_pas').hide();
+    }
   }
+  /**
+   * 
+   * @function handleClickHistory
+   * @param {any} e 
+   * @memberof DashboardSidebar
+   */
   handleClickHistory(e) {
     e.preventDefault();
-    document.getElementById('bh_table').style.display = 'block';
-    document.getElementById('bb_table').style.display = 'none';
-    document.getElementById('b_page').style.display = 'none';
-    document.getElementById('ch_pas').style.display = 'none';
+    {
+      $('#bh_table').show();
+      $('#bb_table').hide();
+      $('#b_page').hide();
+      $('#ch_pas').hide();
+    }
   }
+
+  /**
+   * 
+   *@function handleChangePassword
+   * @param {any} e 
+   * @memberof DashboardSidebar
+   */
   handleChangePassword(e) {
     e.preventDefault();
-    document.getElementById('bh_table').style.display = 'none';
-    document.getElementById('bb_table').style.display = 'none';
-    document.getElementById('b_page').style.display = 'none';
-    document.getElementById('ch_pas').style.display = 'block';
+    {
+      $('#bh_table').hide();
+      $('#bb_table').hide();
+      $('#b_page').hide();
+      $('#ch_pas').show();
+    }
   }
 
 
@@ -288,12 +341,4 @@ DashboardSidebar.propTypes = {
 
 };
 
-function mapStateToProps(state) {
-  return {
-    imageUrl: state.userProfileImage[0].response,
-    error: state.updateUser[0].error.toString(),
-    message: state.updateUser[0].data.toString(),
-  };
-}
-
-export default connect(mapStateToProps, { updateUser, uploadAvatar })(DashboardSidebar);
+export default DashboardSidebar;

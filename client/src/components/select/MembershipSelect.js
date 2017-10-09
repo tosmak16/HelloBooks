@@ -1,7 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * 
+ * 
+ * @class MembershipSelect
+ * @extends {React.Component}
+ */
 class MembershipSelect extends React.Component {
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof MembershipSelect
+   */
   render() {
     return (
       <div>

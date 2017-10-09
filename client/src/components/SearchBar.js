@@ -1,7 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export class SearchBar extends React.Component {
+/**
+ * 
+ * 
+ * @class SearchBar
+ * @extends {React.Component}
+ */
+class SearchBar extends React.Component {
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof SearchBar
+   */
   render() {
     return (
       <div className="input-field">

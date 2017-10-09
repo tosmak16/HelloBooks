@@ -2,7 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router';
 
-
+/**
+ * 
+ * 
+ * @class BooksCollection
+ * @extends {React.Component}
+ */
 class BooksCollection extends React.Component {
   constructor(props) {
     super(props);
@@ -10,12 +15,23 @@ class BooksCollection extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(e) {
-    e.preventDefault();
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @param {boolean} [set=true] 
+   * @memberof BooksCollection
+   */
+  handleClick(e, set = true) {
     this.props.checkBookDetails(e.target.name, true);
-    browserHistory.push('/details');
+    if (set) { browserHistory.push('/details'); }
   }
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof BooksCollection
+   */
   render() {
     const { data } = this.props;
 

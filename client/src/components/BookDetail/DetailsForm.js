@@ -18,6 +18,12 @@ let summary = '';
 
 let sortedData = '';
 
+/**
+ * 
+ * 
+ * @class DetailsForm
+ * @extends {React.Component}
+ */
 class DetailsForm extends React.Component {
   constructor(props) {
     super(props);
@@ -78,8 +84,13 @@ class DetailsForm extends React.Component {
     }
   }
 
-
-  componentWillReceiveProps(nextProps, set = true) {
+  /**
+   * 
+   * 
+   * @param {any} nextProps 
+   * @memberof DetailsForm
+   */
+  componentWillReceiveProps(nextProps) {
     sortedData = nextProps.item[0];
 
 
@@ -89,17 +100,23 @@ class DetailsForm extends React.Component {
           error: sortedData.error,
           display: false,
         });
-        if (set) { document.getElementById('modal2').style.display = 'block'; }
+        $('#modal2').show();
       } else if (!lodash.isEmpty(sortedData.response) && this.state.display) {
         this.setState({
           message: sortedData.response,
           display: false,
         });
-        if (set) { document.getElementById('modal3').style.display = 'block'; }
+        $('#modal3').show();
       }
     }
   }
 
+
+  /**
+   * 
+   * 
+   * @memberof DetailsForm
+   */
   componentWillUnmount() {
     localStorage.removeItem('bookId');
     localStorage.removeItem('id');
@@ -113,31 +130,55 @@ class DetailsForm extends React.Component {
     localStorage.removeItem('image');
   }
 
-  handleClick(e, set = true) {
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof DetailsForm
+   */
+  handleClick(e) {
     e.preventDefault();
     this.setState({
       display: true,
     });
     this.props.borrowBooks(localStorage.jwtToken, localStorage.bookId);
-    if (set) { document.getElementById('modal1').style.display = 'none'; }
+    $('#modal1').hide();
   }
 
-  handleOpen(e, set = true) {
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof DetailsForm
+   */
+
+  handleOpen(e) {
     e.preventDefault();
-    if (set) { document.getElementById('modal1').style.display = 'block'; }
+    $('#modal1').show();
   }
 
-  handleClose(e, set = true) {
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof DetailsForm
+   */
+  handleClose(e) {
     e.preventDefault();
-    if (set) { document.getElementById('modal1').style.display = 'none'; }
+    $('#modal1').hide();
   }
 
-  handleExit(e, set = true) {
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof DetailsForm
+   */
+  handleExit(e) {
     e.preventDefault();
-    if (set) {
-      document.getElementById('modal2').style.display = 'none';
-      document.getElementById('modal3').style.display = 'none';
-    }
+
+    $('#modal2').hide();
+    $('#modal3').hide();
   }
 
 

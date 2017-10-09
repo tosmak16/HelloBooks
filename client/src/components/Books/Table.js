@@ -3,8 +3,19 @@ import PropTypes from 'prop-types';
 
 import TableRow from './TableRow';
 
-
+/**
+ * 
+ * 
+ * @class Table
+ * @extends {React.Component}
+ */
 class Table extends React.Component {
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof Table
+   */
   render() {
     const { data } = this.props;
 

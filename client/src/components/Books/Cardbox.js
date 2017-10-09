@@ -3,17 +3,34 @@ import { CardTitle, Card } from 'react-materialize';
 import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router';
 
-
+/**
+ * 
+ * 
+ * @class Cardbox
+ * @extends {React.Component}
+ */
 class Cardbox extends React.Component {
   constructor(props) {
     super(props);
 
     this.handleClick = this.handleClick.bind(this);
   }
-
+  /**
+   * 
+   * @function handleClick
+   * @param {any} e 
+   * @memberof Cardbox
+   */
   handleClick(e) {
     this.props.checkBookDetails(e.target.name, true);
   }
+
+  /**
+   * 
+   *@function render
+   * @returns 
+   * @memberof Cardbox
+   */
   render() {
     const { item } = this.props;
     return (
