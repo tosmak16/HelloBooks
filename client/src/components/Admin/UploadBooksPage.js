@@ -1,13 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
-import { uploadBook } from '../../actions/uploadBooks';
-import { uploadImage } from '../../actions/uploadImage';
 import lodash from 'lodash';
+
+
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
-import getbooks from '../../actions/getBooks';
 
 
 let sortedData = '';
@@ -171,8 +168,8 @@ class UploadBooksPage extends React.Component {
                 type="text" name="bookTitle"
                 className="form-control validate col l12  col m5  col s12"
                 id="ubookTitle" placeholder="Title"
-                required value={this.state.bookTitle}
-                onChange={this.handleChange}
+                required value={ this.state.bookTitle }
+                onChange={ this.handleChange }
               />
             </div>
             <div className="form-group input-field">
@@ -180,18 +177,18 @@ class UploadBooksPage extends React.Component {
                 type="text" name="author"
                 className="form-control validate col l12 col m5 offset-m1 col s12"
                 id="ubookAuthor" placeholder="Author"
-                required value={this.state.author}
-                onChange={this.handleChange}
+                required value={ this.state.author }
+                onChange={ this.handleChange }
               />
             </div>
           </div>
           <div className="row">
             <div className="form-group input-field">
               <input
-                type="text" name="category" value={this.state.category}
+                type="text" name="category" value={ this.state.category }
                 className="form-control validate col l5  col m5 col s12"
                 id="ubookCat" placeholder="Category" required
-                onChange={this.handleChange}
+                onChange={ this.handleChange }
               />
             </div>
             <div className="form-group input-field">
@@ -199,16 +196,16 @@ class UploadBooksPage extends React.Component {
                 type="text" name="isbn"
                 className="form-control validate col l5 offset-l1 col m5 offset-m1 col s12"
                 id="uISBN" placeholder="ISBN"
-                required value={this.state.isbn}
-                onChange={this.handleChange}
+                required value={ this.state.isbn }
+                onChange={ this.handleChange }
               />
             </div>
           </div>
           <div className="form-group input-field">
             <input
               type="number" name="stocknumber" className="form-control validate" id="ustock" placeholder="Number in stock"
-              required value={this.state.stocknumber}
-              onChange={this.handleChange}
+              required value={ this.state.stocknumber }
+              onChange={ this.handleChange }
             />
           </div>
 
@@ -218,15 +215,15 @@ class UploadBooksPage extends React.Component {
               type="textarea" name="summary"
               className="form-control validate"
               id="ubookSummary" placeholder="Summary"
-              required value={this.state.summary}
-              onChange={this.handleChange}
+              required value={ this.state.summary }
+              onChange={ this.handleChange }
             />
           </div>
           <div className="file-field input-field">
             <div id="filebtn" className="btn">
               <span>File</span>
 
-              <input className="fileInput" id="photoInput" onChange={this.handleImageChange} type="file" accept=".png, .jpg, .jpeg" />
+              <input className="fileInput" id="photoInput" onChange={ this.handleImageChange } type="file" accept=".png, .jpg, .jpeg" />
             </div>
             <div className="file-path-wrapper">
               <input className="file-path validate" type="text" placeholder="Upload cover" />
@@ -237,25 +234,25 @@ class UploadBooksPage extends React.Component {
           <label htmlFor="filebtn">image format *jpg, *png</label>
           <div />
           <SingleActionModal
-            id={'modalError'} heading={'Oh!'}
-            message={this.state.error ? this.state.error : this.state.modalErrorMessage}
-            onHandleExit={this.handleExit}
+            id={ 'modalError' } heading={ 'Oh!' }
+            message={ this.state.error ? this.state.error : this.state.modalErrorMessage }
+            onHandleExit={ this.handleExit }
           />
           <SingleActionModal
-            id={'modalSuccess'} heading={'Done!'}
-            message={this.state.message ? this.state.message : ''}
-            onHandleExit={this.handleExit}
+            id={ 'modalSuccess' } heading={ 'Done!' }
+            message={ this.state.message ? this.state.message : '' }
+            onHandleExit={ this.handleExit }
           />
           <DoubleActionModal
-            id={'modalOpen'}
-            onHandleClick={this.handleClick}
-            onHandleClose={this.handleClose}
-            bookTitle={this.state.bookTitle}
-            heading={'Do you want to add this book to store?'}
+            id={ 'modalOpen' }
+            onHandleClick={ this.handleClick }
+            onHandleClose={ this.handleClose }
+            bookTitle={ this.state.bookTitle }
+            heading={ 'Do you want to add this book to store?' }
           />
 
           <div className="form-inline">
-            <button onClick={this.handleOpen} style={{ marginTop: '10px', width: '300px' }} id="uploadbtn" type="button" className="btn-sm pbtn">Upload</button>
+            <button onClick={ this.handleOpen } style={{ marginTop: '10px', width: '300px' }} id="uploadbtn" type="button" className="btn-sm pbtn">Upload</button>
           </div>
 
 
@@ -274,11 +271,5 @@ UploadBooksPage.propTypes = {
   uploadImage: PropTypes.func.isRequired,
 };
 
-function mapStateToProps(state) {
-  return {
-    imageUrl: state.uploadImages[0].response,
-    item: state.uploadBooks,
-  };
-}
 
-export default connect(mapStateToProps, { uploadBook, uploadImage, getbooks })(UploadBooksPage);
+export default UploadBooksPage;

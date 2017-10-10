@@ -1,18 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import lodash from 'lodash';
-import { browserHistory } from 'react-router';
+import $ from 'jquery';
 
 import TableRow from './TableRow';
 import DoubleActionModal from '../modal/DoubleActionModal';
-import { deleteBook } from '../../actions/deleteBooks';
 import SingleActionModal from '../modal/SingleActionModal';
-import getbooks from '../../actions/getBooks';
-import refreshPage from '../../actions/refreshPage';
 import MembershipSelect from '../select/MembershipSelect';
 import SearchBar from '../SearchBar';
-import searchbooks from '../../actions/searchbooks';
 
 
 let tablerow = '';
@@ -40,8 +35,33 @@ class BookStorePage extends React.Component {
     this.handleSelected = this.handleChange.bind(this);
   }
 
+
+  componentWillReceiveProps(nextProps) {
+    sortedData = nextProps.item[0];
+    if (this.state.pointer) {
+      if (!lodash.isEmpty(sortedData.error) && this.state.pointer) {
+        $('#modal2').show();
+        this.setState({
+          pointer: false,
+          errors: sortedData.error,
+        });
+      } else if (!lodash.isEmpty(sortedData.response) && this.state.pointer) {
+        $('#modal3').show();
+        this.setState({
+          pointer: false,
+          message: sortedData.response,
+        });
+      }
+    }
+    if (nextProps.isRefreshed) {
+      console.log(this.props.data);
+      this.props.refreshPage(false);
+      this.props.searchbooks('bookTitle', '', []);
+      this.props.getbooks(true);
+    }
+  }
+
   handleChange(e) {
-    e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
     if (e.target.value.length > 3 && this.state.filterBy !== '') {
       this.setState({ error: '' });
@@ -50,24 +70,22 @@ class BookStorePage extends React.Component {
   }
 
   handleSelected(e) {
-    e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
   }
 
   handleExit(e) {
     e.preventDefault();
 
-    document.getElementById('modal2').style.display = 'none';
-    document.getElementById('modal3').style.display = 'none';
+    $('#modal2').hide();
+    $('#modal3').hide();
 
-    setTimeout(() => { this.props.refreshPage(true); }, 2000);
+    setTimeout(() => { this.props.refreshPage(true); }, 1000);
   }
   handleDelete(e) {
-    e.preventDefault();
     this.setState({
       bookId: e.target.name,
     });
-    document.getElementById('modal1').style.display = 'block';
+    $('#modal1').show();
   }
 
   handleYes(e) {
@@ -76,44 +94,22 @@ class BookStorePage extends React.Component {
     this.setState({
       pointer: true,
     });
-    document.getElementById('modal1').style.display = 'none';
+    $('#modal1').hide();
   }
   handleNo(e) {
     e.preventDefault();
-    document.getElementById('modal1').style.display = 'none';
+    $('#modal1').hide();
   }
 
-  componentWillReceiveProps(nextProps) {
-    sortedData = nextProps.item[0];
-    if (this.state.pointer) {
-      if (!lodash.isEmpty(sortedData.error) && this.state.pointer) {
-        document.getElementById('modal2').style.display = 'block';
-        this.setState({
-          pointer: false,
-          errors: sortedData.error,
-        });
-      } else if (!lodash.isEmpty(sortedData.response) && this.state.pointer) {
-        document.getElementById('modal3').style.display = 'block';
-        this.setState({
-          pointer: false,
-          message: sortedData.response,
-        });
-      }
-    }
-    if (nextProps.isRefreshed) {
-      this.props.refreshPage(false);
-      this.props.getbooks(true);
-    }
-  }
   render() {
     if (this.props.filteredData) {
       const { filteredData } = this.props;
       tablerow = filteredData.map(row =>
         (<TableRow
-          key={row.id}
-          row={row}
-          value={row.id}
-          onDelete={this.handleDelete}
+          key={ row.id }
+          row={ row }
+          value={ row.id }
+          onDelete={ this.handleDelete }
         />)
       );
 
@@ -141,12 +137,12 @@ class BookStorePage extends React.Component {
           <div className="row">
             <div className="col l3  col m3 col s12 ">
               <MembershipSelect
-                onHandleSelected={this.handleSelected}
-                value={this.state.filterBy}
+                onHandleSelected={ this.handleSelected }
+                value={ this.state.filterBy }
               />
             </div>
             <div className="col l6 col m6 col s12 ">
-              <SearchBar onChange={this.handleChange} name="searchText" value={this.state.searchText} />
+              <SearchBar onChange={ this.handleChange } name="searchText" value={ this.state.searchText } />
             </div>
           </div >
           {!this.props.filteredData ? <p>.</p> : <h4 className="sub-header">Search result</h4>}
@@ -154,23 +150,23 @@ class BookStorePage extends React.Component {
           {this.props.filteredData && tableholder}
 
           <SingleActionModal
-            id={'modal3'} heading={'Done!'}
-            message={this.state.message ? this.state.message : ''}
-            onHandleExit={this.handleExit}
+            id={ 'modal3' } heading={ 'Done!' }
+            message={ this.state.message ? this.state.message : '' }
+            onHandleExit={ this.handleExit }
           />
           <SingleActionModal
-            id={'modal2'} heading={'Oh!'}
-            message={this.state.errors ? this.state.errors : ''}
-            onHandleExit={this.handleExit}
+            id={ 'modal2' } heading={ 'Oh!' }
+            message={ this.state.errors ? this.state.errors : '' }
+            onHandleExit={ this.handleExit }
           />
 
 
           <DoubleActionModal
-            id={'modal1'}
-            onHandleClick={this.handleYes}
-            onHandleClose={this.handleNo}
-            bookTitle={''}
-            heading={'Do you want to remove this book from store?'}
+            id={ 'modal1' }
+            onHandleClick={ this.handleYes }
+            onHandleClose={ this.handleNo }
+            bookTitle={ '' }
+            heading={ 'Do you want to remove this book from store?' }
           />
         </div>
       </div>
@@ -179,7 +175,7 @@ class BookStorePage extends React.Component {
 }
 
 BookStorePage.propTypes = {
-
+  data: PropTypes.array.isRequired,
   deleteBook: PropTypes.func.isRequired,
   filteredData: PropTypes.array.isRequired,
   getbooks: PropTypes.func.isRequired,
@@ -187,15 +183,6 @@ BookStorePage.propTypes = {
   item: PropTypes.array.isRequired,
   refreshPage: PropTypes.func.isRequired,
   searchbooks: PropTypes.func.isRequired,
-
-
 };
 
-function mapStateToProps(state) {
-  return {
-    filteredData: state.getFilteredBooks[0].filteredData,
-    isRefreshed: state.refreshPage[0].isRefreshed,
-    item: state.deleteBooks,
-  };
-}
-export default connect(mapStateToProps, { deleteBook, getbooks, refreshPage, searchbooks })(BookStorePage);
+export default BookStorePage;
