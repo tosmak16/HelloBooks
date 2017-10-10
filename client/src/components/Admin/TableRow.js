@@ -9,11 +9,12 @@ class TableRow extends React.Component {
     return (
       <tr >
         <td key={ row.id }>.</td>
+        <td><img src={ row.image } style={{ width: '30px', height: '30px' }} alt="name" /></td>
         <td key={ row.bookTitle }><a href="#"> {row.bookTitle}</a></td>
         <td >{row.author}</td>
         <td>{row.category}</td>
         <td >{row.stocknumber}</td>
-        <td><button name={ row.id } onClick={ this.props.onDelete } type="button" className=" btn-danger btn-sm deletebtn">Delete</button></td>
+        <td><button name={ row.id } onClick={ this.props.onDelete } className="material-icons red-text ">delete_forever</button></td>
       </tr >
     );
   }

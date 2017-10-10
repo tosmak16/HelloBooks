@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import lodash from 'lodash';
+import $ from 'jquery';
 
 import MembershipSelect from '../select/MembershipSelect';
 import SearchBar from '../SearchBar';
@@ -87,7 +88,7 @@ class UpdateBooksPage extends React.Component {
     sortedData = nextProps.item[0];
     if (this.state.display) {
       if (!lodash.isEmpty(sortedData.error) && this.state.display) {
-        document.getElementById('modalE').style.display = 'block';
+        $('#modalE').modal('open');
         this.setState({
           filterBy: '',
           searchText: '',
@@ -130,7 +131,7 @@ class UpdateBooksPage extends React.Component {
           display: false,
           message: sortedData.response
         });
-        document.getElementById('modalS').style.display = 'block';
+        $('#modalS').modal('open');
       }
     }
 
@@ -162,7 +163,7 @@ class UpdateBooksPage extends React.Component {
         trigger: false
       });
     }
-    document.getElementById('modalO').style.display = 'none';
+    $('#modalO').modal('close');
   }
 
   handleOpen(e) {
@@ -172,17 +173,17 @@ class UpdateBooksPage extends React.Component {
       if (this.state.imageHeight > 200 || this.state.imageWidth > 150) {
         pointer = false;
         this.setState({ modalErrorMessage: 'Please image height  and width must be 200 and 150 respectively' });
-        document.getElementById('modalE').style.display = 'block';
+        $('#modalE').modal('open');
       } else if (this.state.imageSize > 500000) {
         pointer = false;
         this.setState({ modalErrorMessage: 'Please image size must not be more than 500kb' });
-        document.getElementById('modalE').style.display = 'block';
+        $('#modalE').modal('open');
       }
     }
 
     if (this.state.bookTitle && this.state.isbn && this.state.stocknumber && pointer) {
       this.setState({ modalErrorMessage: '' });
-      document.getElementById('modalO').style.display = 'block';
+      $('#modalO').modal('open');
       pointer = false;
     }
   }
@@ -193,13 +194,13 @@ class UpdateBooksPage extends React.Component {
       errors: '',
       message: '',
     });
-    document.getElementById('modalO').style.display = 'none';
+    $('#modalO').modal('close');
   }
 
   handleExit(e) {
     e.preventDefault();
-    document.getElementById('modalE').style.display = 'none';
-    document.getElementById('modalS').style.display = 'none';
+    $('#modalE').modal('close');
+    $('#modalS').modal('close');
     this.setState({
       errors: '',
       message: '',

@@ -13,7 +13,7 @@ class BhTableRow extends React.Component {
     return (
       <tr >
 
-        <td>.</td>
+        <td><img src={ bookItem[0].image } style={{ width: '30px', height: '30px' }} alt="name" /></td>
         <td> {bookItem[0].bookTitle}</td>
         <td >{bookItem[0].author}</td>
         <td>{bdate.slice(0, bdate.search('T'))}</td>

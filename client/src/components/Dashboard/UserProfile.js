@@ -49,6 +49,11 @@ class Userprofile extends React.Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleExit = this.handleExit.bind(this);
   }
+  componentWillMount() {
+    $(document).ready(() => {
+      $('.modal').modal();
+    });
+  }
 
   /**
    * 
@@ -73,7 +78,7 @@ class Userprofile extends React.Component {
 
 
     if (!isEmpty(sortedData.error) && this.state.display) {
-      $('#modalE').show();
+      $('#modalE').modal('open');
       this.setState({
         display: false,
         error: sortedData.error,
@@ -84,7 +89,7 @@ class Userprofile extends React.Component {
         message: sortedData.data,
         imageloaded: true
       });
-      $('#modalS').show();
+      $('#modalS').modal('open');
     }
   }
 
@@ -97,8 +102,8 @@ class Userprofile extends React.Component {
   handleExit(e) {
     e.preventDefault();
 
-    $('#modalE').hide();
-    $('#modalS').hide();
+    $('#modalE').modal('close');
+    $('#modalS').modal('close');
 
     this.setState({
       error: '',
@@ -124,7 +129,7 @@ class Userprofile extends React.Component {
   handleClose(e) {
     e.preventDefault();
     {
-      $('#modalO').hide();
+      $('#modalO').modal('close');
     }
   }
 
@@ -153,7 +158,7 @@ class Userprofile extends React.Component {
           disabled: true,
           buttonText: 'Edit',
         });
-        $('#modalO').show();
+        $('#modalO').modal('open');
         pointer = false;
       }
     }
@@ -171,7 +176,7 @@ class Userprofile extends React.Component {
       display: true,
     });
     this.props.updateUser(this.state, localStorage.jwtToken);
-    $('#modalO').hide();
+    $('#modalO').modal('close');
   }
 
 

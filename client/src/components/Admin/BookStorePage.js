@@ -40,13 +40,13 @@ class BookStorePage extends React.Component {
     sortedData = nextProps.item[0];
     if (this.state.pointer) {
       if (!lodash.isEmpty(sortedData.error) && this.state.pointer) {
-        $('#modal2').show();
+        $('#modal2').modal('open');
         this.setState({
           pointer: false,
           errors: sortedData.error,
         });
       } else if (!lodash.isEmpty(sortedData.response) && this.state.pointer) {
-        $('#modal3').show();
+        $('#modal3').modal('open');
         this.setState({
           pointer: false,
           message: sortedData.response,
@@ -76,8 +76,8 @@ class BookStorePage extends React.Component {
   handleExit(e) {
     e.preventDefault();
 
-    $('#modal2').hide();
-    $('#modal3').hide();
+    $('#modal2').modal('close');
+    $('#modal3').modal('close');
 
     setTimeout(() => { this.props.refreshPage(true); }, 1000);
   }
@@ -85,7 +85,7 @@ class BookStorePage extends React.Component {
     this.setState({
       bookId: e.target.name,
     });
-    $('#modal1').show();
+    $('#modal1').modal('open');
   }
 
   handleYes(e) {
@@ -94,11 +94,11 @@ class BookStorePage extends React.Component {
     this.setState({
       pointer: true,
     });
-    $('#modal1').hide();
+    $('#modal1').modal('close');
   }
   handleNo(e) {
     e.preventDefault();
-    $('#modal1').hide();
+    $('#modal1').modal('close');
   }
 
   render() {
@@ -118,6 +118,7 @@ class BookStorePage extends React.Component {
           <thead>
             <tr>
               <th><span className="glyphicon glyphicon-education" /></th>
+              <th>Image</th>
               <th>Title</th>
               <th>Author</th>
               <th>Category</th>

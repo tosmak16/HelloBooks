@@ -80,6 +80,7 @@
     "react-images-upload": "^1.1.1",
     "react-load-script": "0.0.6",
     "react-materialize": "^1.0.10",
+    "react-pdf-js": "^2.0.5",
     "react-pdf-reader": "^0.1.6",
     "react-redux": "^5.0.6",
     "react-router": "^3.0.5",

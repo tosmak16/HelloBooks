@@ -89,6 +89,7 @@ width: 1000px;
     top: 25% !important;
     left: 28%!important;
     width: 450px;    
+    transition: all .3s ease;
   }
 
   @media (max-width: 600px) {
@@ -106,7 +107,7 @@ width: 1000px;
       left: auto!important;
       bottom: auto!important;
       width: 350px;  
-      
+      transition: all .9s ease;
     }
     }
   

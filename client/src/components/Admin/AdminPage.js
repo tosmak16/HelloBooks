@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import $ from 'jquery';
 
 import BookStorePage from './BookStorePage';
 import AdminSidebar from './AdminSidebar';
@@ -20,6 +21,10 @@ class AdminPage extends React.Component {
     if (!this.props.isFetched) {
       this.props.getbooks(true);
     }
+
+    $(document).ready(() => {
+      $('.modal').modal();
+    });
   }
   render() {
     return (

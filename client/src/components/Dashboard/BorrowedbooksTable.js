@@ -8,6 +8,7 @@ import $ from 'jquery';
 import BbTableRow from './BbTableRow';
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
+import PdfReader from '../pdf/PdfReader';
 
 
 let tablerow = '';
@@ -29,6 +30,8 @@ class BorrowedbooksTable extends React.Component {
     this.handleYes = this.handleYes.bind(this);
     this.handleNo = this.handleNo.bind(this);
     this.handleExit = this.handleExit.bind(this);
+    this.handleRead = this.handleRead.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   componentWillMount() {
@@ -39,19 +42,24 @@ class BorrowedbooksTable extends React.Component {
     if (isEmpty(this.props.bookData)) {
       this.props.getbooks(true);
     }
+
+    $(document).ready(() => {
+      // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+      $('.modal').modal();
+    });
   }
   componentWillReceiveProps(nextProps) {
     sortedData = nextProps.item[0];
 
     if (this.state.pointer) {
       if (!isEmpty(sortedData.error) && this.state.pointer) {
-        $('#modal2').show();
+        $('#modal2').modal('open');
         this.setState({
           pointer: false,
           errors: sortedData.error,
         });
       } else if (!isEmpty(sortedData.response) && this.state.pointer) {
-        $('#modal3').show();
+        $('#modal3').modal('open');
         this.setState({
           pointer: false,
           message: sortedData.response,
@@ -72,14 +80,14 @@ class BorrowedbooksTable extends React.Component {
       bookId,
       Id
     });
-    $('#modal1').show();
+    $('#modal1').modal('open');
   }
 
   handleExit(e) {
     e.preventDefault();
 
-    $('#modal2').hide();
-    $('#modal3').hide();
+    $('#modal2').modal('close');
+    $('#modal3').modal('close');
 
 
     this.props.refreshPage(true);
@@ -91,11 +99,24 @@ class BorrowedbooksTable extends React.Component {
     this.setState({
       pointer: true,
     });
-    $('#modal1').hide();
+    $('#modal1').modal('close');
   }
   handleNo(e) {
     e.preventDefault();
-    $('#modal1').hide();
+    $('#modal1').modal('close');
+  }
+
+  handleRead(e) {
+    e.preventDefault();
+    $('#pdf_reader').show();
+    $('#bh_table').hide();
+    $('#b_page').hide();
+    $('#ch_pas').hide();
+  }
+
+  handleClose(e) {
+    e.preventDefault();
+    $('#pdf_reader').hide();
   }
   render() {
     if (this.props.data) {
@@ -107,13 +128,18 @@ class BorrowedbooksTable extends React.Component {
           value={ row.id }
           bookItem={ filterBy(this.props.bookData, ['id', row.bookId]) }
           onHandleClick={ this.handleClick }
+          onHandleRead={ this.handleRead }
         />)
       );
     }
     return (
       <div id="bb_table" className="row">
+        <div id="pdf_reader" >
+          <PdfReader onHandleClose={ this.handleClose } pdfUrl={ 'http://res.cloudinary.com/tosmak/image/upload/v1507609165/Hello-Books_-_Google_Docs_je9tyz.pdf' } />
+        </div>
         <div className="  col l10 offset-l2 col m10 offset-m2 col s12">
           <h4 className="sub-header"> Currently Reads</h4>
+
           <div className="responsive-table">
             <table className="table responsive-table bordered highlight striped">
               <thead>

@@ -29,12 +29,18 @@ class ChangePasswordPage extends React.Component {
     this.handleExit = this.handleExit.bind(this);
   }
 
+  componentWillMount() {
+    $(document).ready(() => {
+      $('.modal').modal();
+    });
+  }
+
 
   componentWillReceiveProps(nextProps) {
     sortedData = nextProps.item[0];
     if (this.state.display) {
       if (!isEmpty(sortedData.error) && this.state.display) {
-        $('#modalError').show();
+        $('#modalError').modal('open');
         this.setState({
           display: false,
           errors: sortedData.error,
@@ -47,21 +53,21 @@ class ChangePasswordPage extends React.Component {
           confirmPassword: '',
           message: sortedData.data,
         });
-        $('#modalSuccess').show();
+        $('#modalSuccess').modal('open');
       }
     }
   }
 
   handleClose(e) {
     e.preventDefault();
-    $('#modalOpen').hide();
+    $('#modalOpen').modal('close');
   }
 
   handleExit(e) {
     e.preventDefault();
 
-    $('#modalError').hide();
-    $('#modalSuccess').hide();
+    $('#modalError').modal('close');
+    $('#modalSuccess').modal('close');
   }
 
   handleClick(e) {
@@ -69,7 +75,7 @@ class ChangePasswordPage extends React.Component {
     this.setState({
       display: true,
     });
-    $('#modalOpen').hide();
+    $('#modalOpen').modal('close');
 
     this.props.changePassword(this.state, localStorage.jwtToken);
   }
@@ -96,7 +102,7 @@ class ChangePasswordPage extends React.Component {
         error: '',
       });
 
-      $('#modalOpen').show();
+      $('#modalOpen').modal('open');
     }
   }
   render() {

@@ -82,6 +82,11 @@ class DetailsForm extends React.Component {
       summary = localStorage.getItem('summary');
       image = localStorage.getItem('image');
     }
+
+    $(document).ready(() => {
+      // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+      $('.modal').modal();
+    });
   }
 
   /**
@@ -100,13 +105,13 @@ class DetailsForm extends React.Component {
           error: sortedData.error,
           display: false,
         });
-        $('#modal2').show();
+        $('#modal2').modal('open');
       } else if (!lodash.isEmpty(sortedData.response) && this.state.display) {
         this.setState({
           message: sortedData.response,
           display: false,
         });
-        $('#modal3').show();
+        $('#modal3').modal('open');
       }
     }
   }
@@ -142,7 +147,7 @@ class DetailsForm extends React.Component {
       display: true,
     });
     this.props.borrowBooks(localStorage.jwtToken, localStorage.bookId);
-    $('#modal1').hide();
+    $('#modal1').modal('close');
   }
 
   /**
@@ -154,7 +159,7 @@ class DetailsForm extends React.Component {
 
   handleOpen(e) {
     e.preventDefault();
-    $('#modal1').show();
+    $('#modal1').modal('open');
   }
 
   /**
@@ -165,7 +170,7 @@ class DetailsForm extends React.Component {
    */
   handleClose(e) {
     e.preventDefault();
-    $('#modal1').hide();
+    $('#modal1').modal('close');
   }
 
   /**
@@ -177,8 +182,8 @@ class DetailsForm extends React.Component {
   handleExit(e) {
     e.preventDefault();
 
-    $('#modal2').hide();
-    $('#modal3').hide();
+    $('#modal2').modal('close');
+    $('#modal3').modal('close');
   }
 
 
@@ -241,7 +246,7 @@ class DetailsForm extends React.Component {
                 <p className="bookinfo">Number in Stock: {stocknumber} </p>
               </div>
               <div className="form-inline">
-                <button id="wishbtn" type="button" className="btn-sm btn-warning shop modal-trigger" href="#modal1">Wishlist</button>
+                <button id="wishbtn" type="button" className="btn-sm btn-warning shop">Wishlist</button>
                 <button onClick={ this.handleOpen } id="borrowbtn" type="submit" className="btn-sm btn-success shop">Borrow</button>
               </div>
             </div>

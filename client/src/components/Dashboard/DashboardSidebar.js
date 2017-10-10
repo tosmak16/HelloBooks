@@ -64,7 +64,7 @@ class DashboardSidebar extends React.Component {
 
     if (this.state.show) {
       if (!isEmpty(this.props.error)) {
-        $('#modaE').show();
+        $('#modaE').modal('open');
         this.setState({
           show: false,
           error: this.props.error,
@@ -75,7 +75,7 @@ class DashboardSidebar extends React.Component {
           show: false,
           message: 'Image uploaded successfully',
         });
-        $('#modaS').show();
+        $('#modaS').modal('open');
       }
     }
 
@@ -106,7 +106,7 @@ class DashboardSidebar extends React.Component {
       profileImage: '',
     });
     this.props.uploadAvatar(this.state.file);
-    $('#modaO').hide();
+    $('#modaO').modal('close');
   }
   /**
    * 
@@ -116,7 +116,7 @@ class DashboardSidebar extends React.Component {
    */
   handleClose(e) {
     e.preventDefault();
-    $('#modaO').hide();
+    $('#modaO').modal('close');
     this.setState({
       imagePreviewUrl: '',
     });
@@ -130,8 +130,8 @@ class DashboardSidebar extends React.Component {
   handleExit(e) {
     e.preventDefault();
 
-    $('#modaE').hide();
-    $('#modaS').hide();
+    $('#modaE').modal('close');
+    $('#modaS').modal('close');
 
     this.setState({
       error: '',
@@ -151,11 +151,11 @@ class DashboardSidebar extends React.Component {
     if (this.state.file) {
       if (this.state.imageHeight > 200 || this.state.imageWidth > 150) {
         this.setState({ modalErrorMessage: 'Please image height  and width must be 200 and 150 respectively' });
-        $('#modaE').show();
+        $('#modaE').modal('open');
       } else if (this.state.imageSize > 100000) {
         this.setState({ modalErrorMessage: 'Please image size must not be more than 100kb' });
-        $('#modaE').show();
-      } else $('#modaO').show();
+        $('#modaE').modal('open');
+      } else $('#modaO').modal('open');
     }
   }
 
@@ -199,12 +199,13 @@ class DashboardSidebar extends React.Component {
    */
   handleClickBookShelf(e) {
     e.preventDefault();
-    {
-      $('#bb_table').show();
-      $('#b_page').hide();
-      $('#bh_table').hide();
-      $('#ch_pas').hide();
-    }
+    // {
+    //   $('#bb_table').show();
+    //   $('#b_page').hide();
+    //   $('#bh_table').hide();
+    //   $('#ch_pas').hide();
+    //   $('#pdf_reader').hide();
+    // }
   }
 
   /**
@@ -215,12 +216,13 @@ class DashboardSidebar extends React.Component {
    */
   handleClickAccount(e) {
     e.preventDefault();
-    {
-      $('#b_page').show();
-      $('#bb_table').hide();
-      $('#bh_table').hide();
-      $('#ch_pas').hide();
-    }
+    // {
+    //   $('#b_page').show();
+    //   $('#bb_table').hide();
+    //   $('#bh_table').hide();
+    //   $('#ch_pas').hide();
+    //   $('#pdf_reader').hide();
+    // }
   }
   /**
    * 
@@ -230,12 +232,13 @@ class DashboardSidebar extends React.Component {
    */
   handleClickHistory(e) {
     e.preventDefault();
-    {
-      $('#bh_table').show();
-      $('#bb_table').hide();
-      $('#b_page').hide();
-      $('#ch_pas').hide();
-    }
+    // {
+    //   $('#bh_table').show();
+    //   $('#bb_table').hide();
+    //   $('#b_page').hide();
+    //   $('#ch_pas').hide();
+    //   $('#pdf_reader').hide();
+    // }
   }
 
   /**
@@ -246,12 +249,13 @@ class DashboardSidebar extends React.Component {
    */
   handleChangePassword(e) {
     e.preventDefault();
-    {
-      $('#bh_table').hide();
-      $('#bb_table').hide();
-      $('#b_page').hide();
-      $('#ch_pas').show();
-    }
+    // {
+    //   $('#bh_table').hide();
+    //   $('#bb_table').hide();
+    //   $('#b_page').hide();
+    //   $('#ch_pas').show();
+    //   $('#pdf_reader').hide();
+    // }
   }
 
 

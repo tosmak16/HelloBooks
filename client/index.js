@@ -6,6 +6,8 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import jwtDecode from 'jwt-decode';
 import cloudinary from 'cloudinary-core';
+import 'react-pdf-reader/dist/sass/TextLayerBuilder.scss';
+import 'react-pdf-reader/dist/sass/PdfReader.scss';
 
 import 'materialize-css/dist/js/materialize.min';
 import routes from './src/routes/routes';
