@@ -214,12 +214,9 @@ class DetailsForm extends React.Component {
           <div className="col m10  col l10 col s12 ">
             <div className="placeholders  ">
               <div className=" col s12 col m2 col l2 placeholder" id="photo">
-                <Card
-                  className="small card_holder_details"
-                  header={ <CardTitle id="card_box_details" image={ image } /> }
-
-                > {<a style={{ fontSize: '15px', color: 'black', fontStyle: 'bold' }} href="#" />}</Card>
-
+                <div id="img_body">
+                  <img src={ image } alt="avatar" style={{ width: '150px', height: '250px' }} />
+                </div>
               </div>
             </div>
             <div className=" col s10 col m7 col l7">

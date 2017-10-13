@@ -198,8 +198,7 @@ exports[`Test book Details page components and container should test and take sn
           className="form-inline"
         >
           <button
-            className="btn-sm btn-warning shop modal-trigger"
-            href="#modal1"
+            className="btn-sm btn-warning shop"
             id="wishbtn"
             type="button"
           >
@@ -897,8 +896,7 @@ exports[`Test book Details page components and container should test and take sn
             className="form-inline"
           >
             <button
-              className="btn-sm btn-warning shop modal-trigger"
-              href="#modal1"
+              className="btn-sm btn-warning shop"
               id="wishbtn"
               type="button"
             >
@@ -1597,8 +1595,7 @@ exports[`Test book Details page components and container should test and take sn
             className="form-inline"
           >
             <button
-              className="btn-sm btn-warning shop modal-trigger"
-              href="#modal1"
+              className="btn-sm btn-warning shop"
               id="wishbtn"
               type="button"
             >
@@ -1818,8 +1815,7 @@ exports[`Test book Details page components and container should test and take sn
           className="form-inline"
         >
           <button
-            className="btn-sm btn-warning shop modal-trigger"
-            href="#modal1"
+            className="btn-sm btn-warning shop"
             id="wishbtn"
             type="button"
           >

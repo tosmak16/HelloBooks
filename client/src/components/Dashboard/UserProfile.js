@@ -49,11 +49,7 @@ class Userprofile extends React.Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleExit = this.handleExit.bind(this);
   }
-  componentWillMount() {
-    $(document).ready(() => {
-      $('.modal').modal();
-    });
-  }
+
 
   /**
    * 
@@ -61,6 +57,27 @@ class Userprofile extends React.Component {
    * @param {any} nextProps 
    * @memberof Userprofile
    */
+  componentWillMount() {
+    if (!isEmpty(this.props.data)) {
+      this.setState({
+        firstName: this.props.data[0].firstName,
+        lastName: this.props.data[0].lastName,
+        email: this.props.data[0].email,
+        mobileNumber: this.props.data[0].mobileNumber ? this.props.data[0].mobileNumber : 0,
+        membershipType: this.props.data[0].membershipType,
+        profileImage: this.props.data[0].profileImage,
+        show: false,
+
+      });
+    }
+
+    $(document).ready(() => {
+      // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+      $('.modal').modal();
+    });
+  }
+
+
   componentWillReceiveProps(nextProps) {
     if (!isEmpty(nextProps.data) && this.state.show) {
       this.setState({

@@ -31,6 +31,10 @@ module.exports = {
       type: Sequelize.STRING,
       allowNull: true,
     },
+    bookFile: {
+      type: Sequelize.STRING,
+      allowNull: true,
+    },
 
     summary: {
       type: Sequelize.STRING,

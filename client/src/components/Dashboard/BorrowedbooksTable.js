@@ -3,7 +3,7 @@ import isEmpty from 'lodash/isEmpty';
 import filterBy from 'lodash/filter';
 import PropTypes from 'prop-types';
 import $ from 'jquery';
-
+import lodash from 'lodash';
 
 import BbTableRow from './BbTableRow';
 import DoubleActionModal from '../modal/DoubleActionModal';
@@ -13,6 +13,8 @@ import PdfReader from '../pdf/PdfReader';
 
 let tablerow = '';
 let co = '';
+let pdfUrl = '';
+let pointer = false;
 
 let sortedData = '';
 class BorrowedbooksTable extends React.Component {
@@ -44,7 +46,6 @@ class BorrowedbooksTable extends React.Component {
     }
 
     $(document).ready(() => {
-      // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
       $('.modal').modal();
     });
   }
@@ -75,7 +76,7 @@ class BorrowedbooksTable extends React.Component {
   handleClick(e) {
     co = e.target.name;
     const Id = co.slice(0, co.search(','));
-    const bookId = co.slice(-1);
+    const bookId = co.slice(co.search(',') + 1);
     this.setState({
       bookId,
       Id
@@ -104,18 +105,37 @@ class BorrowedbooksTable extends React.Component {
   handleNo(e) {
     e.preventDefault();
     $('#modal1').modal('close');
+    this.setState({
+      pointer: true
+    });
   }
 
   handleRead(e) {
     e.preventDefault();
+    co = e.target.name;
+    const Id = co.slice(0, co.search(','));
+    const bookId = co.slice(co.search(',') + 1);
+    console.log(bookId);
+
+    const x = lodash.filter(this.props.bookData, o => o.id.toString() === bookId);
+    pdfUrl = x[0].bookFile;
+    console.log(x[0].bookFile);
+    pointer = true;
+
+
+    this.setState({
+      pointer: true
+    });
+
     $('#pdf_reader').show();
-    $('#bh_table').hide();
-    $('#b_page').hide();
-    $('#ch_pas').hide();
   }
 
   handleClose(e) {
     e.preventDefault();
+    pointer = false;
+    this.setState({
+      pointer: true
+    });
     $('#pdf_reader').hide();
   }
   render() {
@@ -135,13 +155,14 @@ class BorrowedbooksTable extends React.Component {
     return (
       <div id="bb_table" className="row">
         <div id="pdf_reader" >
-          <PdfReader onHandleClose={ this.handleClose } pdfUrl={ 'http://res.cloudinary.com/tosmak/image/upload/v1507609165/Hello-Books_-_Google_Docs_je9tyz.pdf' } />
+          {pointer && <PdfReader onHandleClose={ this.handleClose } pdfUrl={ pdfUrl } />}
+
         </div>
         <div className="  col l10 offset-l2 col m10 offset-m2 col s12">
           <h4 className="sub-header"> Currently Reads</h4>
 
           <div className="responsive-table">
-            <table className="table responsive-table bordered highlight striped">
+            <table id="table_bb" className="table responsive-table bordered highlight striped">
               <thead>
                 <tr>
                   <th><span className="glyphicon glyphicon-education" /></th>

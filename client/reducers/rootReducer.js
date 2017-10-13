@@ -23,6 +23,7 @@ import UserDetails from './UserDetails';
 import updateUser from './updateUser';
 import passwordChange from './passwordChange';
 import userProfileImage from './userProfileImage';
+import fileUpload from './fileUpload';
 
 export default combineReducers({
   popMessages,
@@ -48,4 +49,5 @@ export default combineReducers({
   updateUser,
   passwordChange,
   userProfileImage,
+  fileUpload
 });

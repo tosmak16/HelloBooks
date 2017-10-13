@@ -6,7 +6,7 @@ import { showBookDetails } from '../../actions/showBookDetails';
 
 
 export default function checkBookDetails(bookId, set) {
-  if (set === true) { browserHistory.push('/details'); }
+  if (set === true) { browserHistory.push('/book/details'); }
   return (dispatch) => {
     dispatch(showBookDetails(bookId));
   }

@@ -9,6 +9,8 @@ export function updateBook(bookData, token) {
   return (dispatch) => {
     dispatch(updatebookRequest(bookData));
 
+    console.log(bookData);
+
     return fetch('http://localhost:8000/api/v2/books/' + bookData.bookId, {
       method: 'PUT',
       headers: {

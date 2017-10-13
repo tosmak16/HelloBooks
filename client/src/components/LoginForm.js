@@ -10,7 +10,7 @@ import { Input, Row } from 'react-materialize';
  * @class LoginForm
  * @extends {React.Component}
  */
-export class LoginForm extends React.Component {
+class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

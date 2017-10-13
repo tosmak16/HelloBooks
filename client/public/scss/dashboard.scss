@@ -37,10 +37,6 @@ div #searchinpt{
     width: 150px;
 }
 
-#loginForm{
-  
-    margin-bottom: 250px;
-}
 
 .jumbotron p{
     color:white;
@@ -154,9 +150,7 @@ h2{
 }
 }
 
-#bh_table,#b_page,#ch_pas{
-   display: none;
-}
+
 #filebtn,#editbtn{
     background-color: #3d1112;
 }
@@ -418,3 +412,10 @@ color: #3d1112 !important;
       position: absolute;
       z-index: 1000;
   }
+#table_bh{
+box-shadow: 5px 5px 5px 5px #9e8f8f
+}
+
+#table_bb{
+    box-shadow: 5px 5px 5px 5px #9e8f8f
+    }

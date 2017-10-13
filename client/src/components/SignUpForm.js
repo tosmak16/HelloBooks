@@ -19,7 +19,7 @@ const membershipType = {
  * @class SignUpForm
  * @extends {React.Component}
  */
-export class SignUpForm extends React.Component {
+class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -77,7 +77,7 @@ export class SignUpForm extends React.Component {
             s={ 12 } label="First Name"
             value={ this.state.firstName }
             onChange={ this.handleChange }
-            className="form-control sr-only validate"
+            className="form-control validate"
             required
           />
         </Row>

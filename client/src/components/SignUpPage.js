@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 
-import SignUpFormC from './SignUpForm';
+import SignUpForm from './SignUpForm';
 import Footer from './Footer';
 import { userSignup } from '../actions/signupAction';
 
@@ -30,7 +30,7 @@ export class SignUpPage extends React.Component {
           <div className="col s12 col l12 col m12">
             <div id="signup_border" className="col s12 col m6 offset-m4 col 16 offset-l4">
               <div id="signUpForm" className="row">
-                <SignUpFormC userSignup={ userSignup } reg={ reg } />
+                <SignUpForm userSignup={ userSignup } reg={ reg } />
               </div>
             </div>
           </div>

@@ -8,6 +8,7 @@ module.exports = {
         isbn: '345798465',
         stocknumber: '2',
         image: 'http://res.cloudinary.com/tosmak/image/upload/v1507297482/l1_asntf8.jpg',
+        bookFile: 'http://res.cloudinary.com/tosmak/image/upload/v1507609165/Hello-Books_-_Google_Docs_je9tyz.pdf',
         createdAt: new Date(),
         updatedAt: new Date(),
         summary: 'Lorem Ipronic typesetting, remaininised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
@@ -19,6 +20,7 @@ module.exports = {
         isbn: '234560878',
         stocknumber: '0',
         image: 'http://res.cloudinary.com/tosmak/image/upload/v1507297482/l2_cmgnzr.jpg',
+        bookFile: 'http://res.cloudinary.com/tosmak/image/upload/v1507609165/Hello-Books_-_Google_Docs_je9tyz.pdf',
         createdAt: new Date(),
         updatedAt: new Date(),
         summary: 'It is a long established fact thaorem Ipsu uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)',
@@ -30,6 +32,7 @@ module.exports = {
         isbn: '4678980976',
         stocknumber: '5',
         image: 'http://res.cloudinary.com/tosmak/image/upload/v1507297482/l3_f8c8de.jpg',
+        bookFile: 'http://res.cloudinary.com/tosmak/image/upload/v1507609165/Hello-Books_-_Google_Docs_je9tyz.pdf',
         createdAt: new Date(),
         updatedAt: new Date(),
         summary: 'There are many variations of passages of Lorem Ipsum available, but the majority orem Ipsum generators on the Internet tend to repeat predefined chunks as necessary',
@@ -42,6 +45,7 @@ module.exports = {
         isbn: '34567887655',
         stocknumber: '3',
         image: 'http://res.cloudinary.com/tosmak/image/upload/v1507297482/l4_kyykyb.jpg',
+        bookFile: 'http://res.cloudinary.com/tosmak/image/upload/v1507609165/Hello-Books_-_Google_Docs_je9tyz.pdf',
         createdAt: new Date(),
         updatedAt: new Date(),
         summary: 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from ',
@@ -53,6 +57,7 @@ module.exports = {
         isbn: '45678974567',
         stocknumber: '10',
         image: 'http://res.cloudinary.com/tosmak/image/upload/v1507297482/l5_sgnjmf.jpg',
+        bookFile: 'http://res.cloudinary.com/tosmak/image/upload/v1507609165/Hello-Books_-_Google_Docs_je9tyz.pdf',
         createdAt: new Date(),
         updatedAt: new Date(),
         summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Urum.'
@@ -64,6 +69,7 @@ module.exports = {
         isbn: '567244567',
         stocknumber: '10',
         image: 'http://res.cloudinary.com/tosmak/image/upload/v1507297482/l6_zzicba.jpg',
+        bookFile: 'http://res.cloudinary.com/tosmak/image/upload/v1507609165/Hello-Books_-_Google_Docs_je9tyz.pdf',
         createdAt: new Date(),
         updatedAt: new Date(),
         summary: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium?'
@@ -75,6 +81,7 @@ module.exports = {
         isbn: '64578974567',
         stocknumber: '10',
         image: 'http://res.cloudinary.com/tosmak/image/upload/v1507297483/l7_mlj4gs.jpg',
+        bookFile: 'http://res.cloudinary.com/tosmak/image/upload/v1507609165/Hello-Books_-_Google_Docs_je9tyz.pdf',
         createdAt: new Date(),
         updatedAt: new Date(),
         summary: 'But I must explain to you how all this mists no resultant pleasure  ducimus qui blanditiis praesentium voluptatum culpa qui officia ?'
@@ -86,6 +93,7 @@ module.exports = {
         isbn: '787890974567',
         stocknumber: '8',
         image: 'http://res.cloudinary.com/tosmak/image/upload/v1507297483/l8_uztrg2.jpg',
+        bookFile: 'http://res.cloudinary.com/tosmak/image/upload/v1507609165/Hello-Books_-_Google_Docs_je9tyz.pdf',
         createdAt: new Date(),
         updatedAt: new Date(),
         summary: 'At vero eos et accusamus et iuse delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'

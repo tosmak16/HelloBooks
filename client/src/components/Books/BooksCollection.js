@@ -22,9 +22,8 @@ class BooksCollection extends React.Component {
    * @param {boolean} [set=true] 
    * @memberof BooksCollection
    */
-  handleClick(e, set = true) {
+  handleClick(e) {
     this.props.checkBookDetails(e.target.name, true);
-    if (set) { browserHistory.push('/details'); }
   }
   /**
    * 

@@ -35,7 +35,7 @@ export default {
     }
 
     if (!(req.body.bookTitle && req.body.author && req.body.category &&
-      req.body.stocknumber && req.body.isbn)) {
+      req.body.stocknumber && req.body.isbn && req.body.image && req.body.bookFileUrl)) {
       return res.status(400).send({ status: 400, message: 'please enter the required book details' });
     }
 
@@ -47,6 +47,7 @@ export default {
         isbn: req.body.isbn,
         stocknumber: req.body.stocknumber,
         image: req.body.image,
+        bookFile: req.body.bookFileUrl,
         summary: req.body.summary
       })
       .then(report => res.status(201).send({ status: 201, message: 'Book has been added to store', report }))
@@ -94,6 +95,7 @@ export default {
             isbn: req.body.isbn || result.isbn,
             stocknumber: req.body.stocknumber || result.stocknumber,
             image: req.body.image || result.image,
+            bookFile: req.body.bookFileUrl || result.bookFile,
             summary: req.body.summary || result.summary
           })
           .then(() => res.status(200).send({ status: 200, message: 'Book has been updated', result })) // Send back the updated book

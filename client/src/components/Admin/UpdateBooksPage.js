@@ -39,6 +39,9 @@ class UpdateBooksPage extends React.Component {
       errors: '',
       message: '',
       trigger: false,
+      bookFile: '',
+      bookFileUrl: '',
+      actuator: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -48,6 +51,8 @@ class UpdateBooksPage extends React.Component {
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleExit = this.handleExit.bind(this);
+
+    this.handleFileChange = this.handleFileChange.bind(this);
   }
 
 
@@ -87,6 +92,8 @@ class UpdateBooksPage extends React.Component {
 
     sortedData = nextProps.item[0];
     if (this.state.display) {
+      console.log('xxxxxxxxxxxx');
+      console.log(nextProps.item);
       if (!lodash.isEmpty(sortedData.error) && this.state.display) {
         $('#modalE').modal('open');
         this.setState({
@@ -135,44 +142,99 @@ class UpdateBooksPage extends React.Component {
       }
     }
 
-    if (this.state.trigger) {
+    if (this.state.trigger && !this.state.actuator) {
+      console.log('++++++++++');
       if (!lodash.isEmpty(nextProps.imageUrl)) {
         this.setState({
           trigger: false,
           image: nextProps.imageUrl,
           display: true,
         });
+        setTimeout(() => { this.props.updateBook(this.state, localStorage.jwtToken); }, 1000);
+      }
+    }
 
-        setTimeout(() => { this.props.updateBook(this.state, localStorage.jwtToken); }, 5000);
+
+    if (this.state.actuator && !this.state.trigger) {
+      if (!lodash.isEmpty(nextProps.fileUrl) && !this.state.trigger) {
+        this.setState({
+          actuator: false,
+          bookFileUrl: nextProps.fileUrl,
+          display: true,
+        });
+        console.log('&&&&&&&&&&&');
+        console.log(nextProps.fileUrl);
+        setTimeout(() => { this.props.updateBook(this.state, localStorage.jwtToken); }, 1000);
+      }
+    }
+
+    if (this.state.trigger && this.state.actuator) {
+      console.log('=============');
+      console.log(nextProps.imageUrl);
+      if (!lodash.isEmpty(nextProps.imageUrl)) {
+        this.setState({
+          trigger: false,
+          actuator: true,
+          image: nextProps.imageUrl,
+          display: false,
+        });
+        setTimeout(() => { this.props.uploadFile(this.state.bookFile); }, 1000);
       }
     }
   }
 
   handleClick(e) {
     e.preventDefault();
-    if (this.state.file.length !== 0) {
+    if (this.state.file.length !== 0 && this.state.bookFile.length === 0) {
+      console.log('******');
+      console.log(this.state.file);
+
+      this.props.uploadImage(this.state.file);
+      this.setState({
+        display: false,
+        actuator: false,
+        trigger: true,
+      });
+    } else if (this.state.bookFile.length !== 0 && this.state.file.length === 0) {
+      console.log(this.state.bookFile);
+      this.props.uploadFile(this.state.bookFile);
+      this.setState({
+        display: false,
+        trigger: false,
+        actuator: true,
+      });
+    } else if (this.state.file.length === 0 && this.state.bookFile.length === 0) {
+      this.props.updateBook(this.state, localStorage.jwtToken);
+      this.setState({
+        display: true,
+        trigger: false,
+        actuator: false,
+      });
+    } else if (this.state.file.length !== 0 && this.state.bookFile.length !== 0) {
+      console.log(this.state.file);
+
+      console.log('******');
+
+
       this.props.uploadImage(this.state.file);
       this.setState({
         display: false,
         trigger: true,
-      });
-    } else if (this.state.file.length === 0) {
-      this.props.updateBook(this.state, localStorage.jwtToken);
-      this.setState({
-        display: true,
-        trigger: false
+        actuator: true,
       });
     }
     $('#modalO').modal('close');
   }
 
+
   handleOpen(e) {
     pointer = true;
+
     e.preventDefault();
     if (this.state.file) {
       if (this.state.imageHeight > 200 || this.state.imageWidth > 150) {
         pointer = false;
-        this.setState({ modalErrorMessage: 'Please image height  and width must be 200 and 150 respectively' });
+        this.setState({ modalErrorMessage: 'Please image height and width must be 200 and 150 respectively' });
         $('#modalE').modal('open');
       } else if (this.state.imageSize > 500000) {
         pointer = false;
@@ -193,6 +255,8 @@ class UpdateBooksPage extends React.Component {
     this.setState({
       errors: '',
       message: '',
+      bookFile: '',
+      file: ''
     });
     $('#modalO').modal('close');
   }
@@ -204,6 +268,9 @@ class UpdateBooksPage extends React.Component {
     this.setState({
       errors: '',
       message: '',
+      bookFile: '',
+      file: ''
+
     });
     setTimeout(() => { this.props.getbooks(true); }, 3000);
   }
@@ -247,6 +314,25 @@ class UpdateBooksPage extends React.Component {
     };
 
     reader.readAsDataURL(file);
+  }
+
+
+  handleFileChange(e) {
+    e.preventDefault();
+    const reader = new FileReader();
+    const bookFile = e.target.files[0];
+
+
+    reader.onload = () => {
+
+    };
+    reader.onloadend = () => {
+      this.setState({
+        bookFile,
+      });
+    };
+
+    reader.readAsDataURL(bookFile);
   }
 
 
@@ -344,8 +430,26 @@ class UpdateBooksPage extends React.Component {
               />
             </div>
             <div className="file-path-wrapper">
-              <input className="file-path validate" type="text" placeholder="Upload cover" />
+              <input className="file-path validate" type="text" placeholder="Choose a cover image" />
+
             </div>
+          </div>
+
+          <div className="file-field input-field">
+            <div id="filebtn" className="btn">
+              <span>File</span>
+              <input
+                disabled={ !this.state.pointer }
+                className="fileInput" type="file"
+                id="photoInput" onChange={ this.handleFileChange }
+                accept=".pdf"
+              />
+            </div>
+            <div className="file-path-wrapper">
+              <input className="file-path validate" type="text" placeholder="Choose a file" />
+
+            </div>
+
           </div>
 
           <SingleActionModal
@@ -382,12 +486,14 @@ class UpdateBooksPage extends React.Component {
 
 UpdateBooksPage.propTypes = {
   data: PropTypes.array.isRequired,
+  fileUrl: PropTypes.string.isRequired,
   filteredData: PropTypes.array.isRequired,
   getbooks: PropTypes.func.isRequired,
   imageUrl: PropTypes.string.isRequired,
   item: PropTypes.array.isRequired,
   searchbooks: PropTypes.func.isRequired,
   updateBook: PropTypes.func.isRequired,
+  uploadFile: PropTypes.func.isRequired,
   uploadImage: PropTypes.func.isRequired,
 
 

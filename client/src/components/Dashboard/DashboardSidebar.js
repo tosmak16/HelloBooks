@@ -2,9 +2,11 @@ import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 import PropTypes from 'prop-types';
 import $ from 'jquery';
+import { Link } from 'react-router';
 
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
+
 
 let imgName = '';
 
@@ -37,16 +39,14 @@ class DashboardSidebar extends React.Component {
       imageloaded: false,
     };
 
-    this.handleClickBookShelf = this.handleClickBookShelf.bind(this);
-    this.handleClickAccount = this.handleClickAccount.bind(this);
-    this.handleClickHistory = this.handleClickHistory.bind(this);
-    this.handleChangePassword = this.handleChangePassword.bind(this);
+
     this.handleImageChange = this.handleImageChange.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
 
     this.handleClick = this.handleClick.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleExit = this.handleExit.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
   /**
    * 
@@ -193,71 +193,14 @@ class DashboardSidebar extends React.Component {
 
   /**
    * 
-   * @function handleClickBookShelf
-   * @param {any} e 
-   * @memberof DashboardSidebar
-   */
-  handleClickBookShelf(e) {
-    e.preventDefault();
-    // {
-    //   $('#bb_table').show();
-    //   $('#b_page').hide();
-    //   $('#bh_table').hide();
-    //   $('#ch_pas').hide();
-    //   $('#pdf_reader').hide();
-    // }
-  }
-
-  /**
    * 
-   * @function handleClickAccount
    * @param {any} e 
    * @memberof DashboardSidebar
    */
-  handleClickAccount(e) {
+  handleLogout(e) {
     e.preventDefault();
-    // {
-    //   $('#b_page').show();
-    //   $('#bb_table').hide();
-    //   $('#bh_table').hide();
-    //   $('#ch_pas').hide();
-    //   $('#pdf_reader').hide();
-    // }
+    this.props.logout();
   }
-  /**
-   * 
-   * @function handleClickHistory
-   * @param {any} e 
-   * @memberof DashboardSidebar
-   */
-  handleClickHistory(e) {
-    e.preventDefault();
-    // {
-    //   $('#bh_table').show();
-    //   $('#bb_table').hide();
-    //   $('#b_page').hide();
-    //   $('#ch_pas').hide();
-    //   $('#pdf_reader').hide();
-    // }
-  }
-
-  /**
-   * 
-   *@function handleChangePassword
-   * @param {any} e 
-   * @memberof DashboardSidebar
-   */
-  handleChangePassword(e) {
-    e.preventDefault();
-    // {
-    //   $('#bh_table').hide();
-    //   $('#bb_table').hide();
-    //   $('#b_page').hide();
-    //   $('#ch_pas').show();
-    //   $('#pdf_reader').hide();
-    // }
-  }
-
 
   render() {
     return (
@@ -270,11 +213,11 @@ class DashboardSidebar extends React.Component {
                   <div className="file-field input-field">
                     <div id="filebtn" style={{ marginLeft: '5px', color: 'white' }} className="">
                       <span />
-                      <img id="userimg" src={ this.state.imagePreviewUrl ? this.state.imagePreviewUrl : !isEmpty(imgName.profileImage) ? imgName.profileImage : 'http://res.cloudinary.com/tosmak/image/upload/v1507297483/userimg_cxeszl.png' } width="120" height="120" alt="images" />
+                      <img id="userimg" src={this.state.imagePreviewUrl ? this.state.imagePreviewUrl : !isEmpty(imgName.profileImage) ? imgName.profileImage : 'http://res.cloudinary.com/tosmak/image/upload/v1507297483/userimg_cxeszl.png'} width="120" height="120" alt="images" />
 
 
                       <input
-                        disabled={ this.state.disabled } className="fileInput" id="photoInput" onChange={ this.handleImageChange }
+                        disabled={this.state.disabled} className="fileInput" id="photoInput" onChange={this.handleImageChange}
                         type="file"
                         accept=".png, .jpg, .jpeg"
                         placeholder="Upload profile image"
@@ -285,7 +228,7 @@ class DashboardSidebar extends React.Component {
                     <div className="file-path-wrapper">
                       <input className="file-path validate" style={{ width: '100px' }} type="text" placeholder="Upload profile image" />
                       <div className="input-field inline">
-                        <button id="" style={{ marginTop: '0px', backgroundColor: '#3d1112', color: 'wheat' }} type="button" onClick={ this.handleEdit } className="btn-sm">Upload</button>
+                        <button id="" style={{ marginTop: '0px', backgroundColor: '#3d1112', color: 'wheat' }} type="button" onClick={this.handleEdit} className="btn-sm">Upload</button>
                       </div>
                     </div>
                   </div>
@@ -293,41 +236,41 @@ class DashboardSidebar extends React.Component {
                 </div>
               </li>
               <li>
-                <a id="dash" onClick={ this.handleClickBookShelf } href="#">
+                <Link to={'/dashboard/borrowedbooks'}>
                   <i className="material-icons left">local_library</i> Books Shelf
-                </a>
+                </Link>
               </li>
               <li>
-                <a id="myP" onClick={ this.handleClickAccount } href="#"><i className="material-icons left">dashboard</i>Account</a>
+                <Link to={'/dashboard/userprofile'} ><i className="material-icons left">dashboard</i>Account</Link>
               </li>
               <li>
-                <a id="bor" onClick={ this.handleClickHistory } href="#"><i className="material-icons left">data_usage</i>History</a>
+                <Link to={'/dashboard/history'}><i className="material-icons left">data_usage</i>History</Link>
               </li>
               <li>
-                <a href="#" onClick={ this.handleChangePassword } ><i className="material-icons left">lock</i>Change Password</a>
+                <Link to={'/dashboard/changepassword'} ><i className="material-icons left">lock</i>Change Password</Link>
               </li>
               <li>
-                <a href="index.html"><i className="material-icons left">exit_to_app</i>Logout</a>
+                <Link to={'/login'} onClick={this.handleLogout} ><i className="material-icons left">exit_to_app</i>Logout</Link>
               </li>
 
             </ul>
           </div >
           <SingleActionModal
-            id={ 'modaE' } heading={ 'Oh!' }
-            message={ this.state.error ? this.state.error : this.state.modalErrorMessage }
-            onHandleExit={ this.handleExit }
+            id={'modaE'} heading={'Oh!'}
+            message={this.state.error ? this.state.error : this.state.modalErrorMessage}
+            onHandleExit={this.handleExit}
           />
           <SingleActionModal
-            id={ 'modaS' } heading={ 'Done!' }
-            message={ this.state.message ? this.state.message : '' }
-            onHandleExit={ this.handleExit }
+            id={'modaS'} heading={'Done!'}
+            message={this.state.message ? this.state.message : ''}
+            onHandleExit={this.handleExit}
           />
           <DoubleActionModal
-            id={ 'modaO' }
-            onHandleClick={ this.handleClick }
-            onHandleClose={ this.handleClose }
-            bookTitle={ '' }
-            heading={ 'Do you want to change your profile picture?' }
+            id={'modaO'}
+            onHandleClick={this.handleClick}
+            onHandleClose={this.handleClose}
+            bookTitle={''}
+            heading={'Do you want to change your profile picture?'}
           />
         </div >
       </div >
@@ -339,6 +282,7 @@ DashboardSidebar.propTypes = {
   data: PropTypes.array.isRequired,
   error: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
+  logout: PropTypes.func.isRequired,
   message: PropTypes.string.isRequired,
   updateUser: PropTypes.func.isRequired,
   uploadAvatar: PropTypes.func.isRequired

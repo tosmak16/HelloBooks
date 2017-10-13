@@ -1,19 +1,17 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import { uploadimageError, uploadimageRequest, uploadimageResponse } from '../../actions/UploadImages';
+import { uploadFileError, uploadFileRequest, uploadFileResponse } from '../../actions/uploadfiles';
 
 const upload_preset = 'bjfllgrd';
 
-export function uploadImage(file) {
-
-  console.log(file);
+export function uploadFile(file) {
   const data = new FormData();
   data.append('file', file);
   data.append('upload_preset', upload_preset);
   return (dispatch) => {
-    dispatch(uploadimageRequest(data));
+    dispatch(uploadFileRequest(file));
 
-    return fetch('https://api.cloudinary.com/v1_1/tosmak/upload', {
+    return fetch('https://api.cloudinary.com/v1_1/tosmak/auto/upload', {
       method: 'POST',
       body: data
     })
@@ -27,10 +25,10 @@ export function uploadImage(file) {
         }
       })
       .then((response) => {
-        dispatch(uploadimageResponse(response.secure_url));
+        dispatch(uploadFileResponse(response.secure_url));
       })
       .catch(error => {
-        dispatch(uploadimageError('Bad request'));
+        dispatch(uploadFileError('Bad request'));
       });
 
   }

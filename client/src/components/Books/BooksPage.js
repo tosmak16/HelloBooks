@@ -31,18 +31,20 @@ export class BooksPage extends React.Component {
       this.props.getbooks(false);
     }
 
+    if (localStorage.id) {
+      localStorage.removeItem('bookId');
+      localStorage.removeItem('id');
 
-    localStorage.removeItem('bookId');
-    localStorage.removeItem('id');
-
-    localStorage.removeItem('category');
-    localStorage.removeItem('isbn');
-    localStorage.removeItem('stocknumber');
-    localStorage.removeItem('author');
-    localStorage.removeItem('summary');
-    localStorage.removeItem('bookTitle');
-    localStorage.removeItem('image');
+      localStorage.removeItem('category');
+      localStorage.removeItem('isbn');
+      localStorage.removeItem('stocknumber');
+      localStorage.removeItem('author');
+      localStorage.removeItem('summary');
+      localStorage.removeItem('bookTitle');
+      localStorage.removeItem('image');
+    }
   }
+
 
   /**
    * 

@@ -8,8 +8,8 @@ import path from 'path';
 
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
-import webpackConfig from './webpack.config';
 import webpackHotMiddleware from 'webpack-hot-middleware';
+import webpackConfig from './webpack.config';
 import route from './server/server/routes';
 
 
@@ -35,7 +35,7 @@ app.use(webpackHotMiddleware(compiler));
 route(app);
 
 
+app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, './client/public/index.html')));
 // Setup a default catch-all route that sends back a welcome message in JSON format.
-app.get('*', (req, res) => res.sendFile(path.join(__dirname, './client/public/index.html')));
 
 export default app;

@@ -10,10 +10,10 @@ import 'react-pdf-reader/dist/sass/TextLayerBuilder.scss';
 import 'react-pdf-reader/dist/sass/PdfReader.scss';
 
 import 'materialize-css/dist/js/materialize.min';
-import routes from './src/routes/routes';
+
 import './public/js/jquery';
 import './public/js/dashboard';
-import rootReducer from './reducers/rootReducer';
+
 import './public/scss/materialize.scss';
 import { setCurrentuser } from './actions/setCurrentuser';
 import './public/font-awesome-4.7.0/fonts/fontawesome-webfont.eot';
@@ -32,6 +32,8 @@ import './public/fonts/roboto/Roboto-Regular.woff';
 import './public/fonts/roboto/Roboto-Regular.woff2';
 import './public/fonts/roboto/Roboto-Thin.woff';
 import './public/fonts/roboto/Roboto-Thin.woff2';
+import routes from './src/routes/routes';
+import rootReducer from './reducers/rootReducer';
 
 
 const store = createStore(

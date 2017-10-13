@@ -13,6 +13,7 @@ import SearchBar from '../SearchBar';
 let tablerow = '';
 let tableholder = '';
 let sortedData = '';
+let actuator = false;
 
 class BookStorePage extends React.Component {
   constructor(props) {
@@ -29,10 +30,16 @@ class BookStorePage extends React.Component {
       pointer: false,
       errors: '',
       message: '',
+      actuator: false
     };
     this.handleChange = this.handleChange.bind(this);
 
     this.handleSelected = this.handleChange.bind(this);
+  }
+
+
+  componentWillMount() {
+    actuator = false;
   }
 
 
@@ -54,9 +61,11 @@ class BookStorePage extends React.Component {
       }
     }
     if (nextProps.isRefreshed) {
-      console.log(this.props.data);
       this.props.refreshPage(false);
+
       this.props.searchbooks('bookTitle', '', []);
+
+
       this.props.getbooks(true);
     }
   }
@@ -64,7 +73,8 @@ class BookStorePage extends React.Component {
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
     if (e.target.value.length > 3 && this.state.filterBy !== '') {
-      this.setState({ error: '' });
+      this.setState({ error: '', actuator: true });
+      actuator = true;
       this.props.searchbooks(this.state.filterBy, this.state.searchText, this.props.data);
     }
   }
@@ -82,8 +92,10 @@ class BookStorePage extends React.Component {
     setTimeout(() => { this.props.refreshPage(true); }, 1000);
   }
   handleDelete(e) {
+    actuator = false;
     this.setState({
       bookId: e.target.name,
+      actuator: false
     });
     $('#modal1').modal('open');
   }
@@ -102,7 +114,7 @@ class BookStorePage extends React.Component {
   }
 
   render() {
-    if (this.props.filteredData) {
+    if (this.props.filteredData && actuator) {
       const { filteredData } = this.props;
       tablerow = filteredData.map(row =>
         (<TableRow
@@ -146,9 +158,10 @@ class BookStorePage extends React.Component {
               <SearchBar onChange={ this.handleChange } name="searchText" value={ this.state.searchText } />
             </div>
           </div >
-          {!this.props.filteredData ? <p>.</p> : <h4 className="sub-header">Search result</h4>}
+          {console.log(this.props.filteredData.length === 0)}
+          {this.props.filteredData.length !== 0 && actuator ? <h4 className="sub-header">Search result</h4> : <p>.</p>}
 
-          {this.props.filteredData && tableholder}
+          {this.props.filteredData.length !== 0 && actuator && tableholder}
 
           <SingleActionModal
             id={ 'modal3' } heading={ 'Done!' }

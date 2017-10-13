@@ -54,10 +54,6 @@ div #searchinpt{
   width: 150px;
 }
 
-#loginForm{
-  margin-top: 100px;
-  margin-bottom: 250px;
-}
 
 #sidenava{
 width: 1000px;
@@ -394,3 +390,75 @@ display: inline-block;
 }
 
 
+.container {
+  position: relative;
+  width: 50%;
+}
+
+.image {
+opacity: 1;
+display: block;
+width: 100%;
+height: auto;
+transition: .5s ease;
+backface-visibility: hidden;
+}
+
+.middle {
+transition: .5s ease;
+opacity: 0;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+max-width: 148px;
+max-height: 198px;
+
+}
+
+
+.container:hover .image {
+opacity: 0.5;
+padding-right: 10px;
+padding-bottom: 2px;
+}
+
+.container:hover .container{
+  width: 160px;
+}
+
+.container:hover .middle {
+opacity: 1;
+
+
+}
+
+.text {
+
+color: rgb(19, 17, 17);
+font-size: 16px;
+align-content: center;
+
+}
+
+#book_img{
+
+  width: 150px;
+  height: 200px;
+  max-width: 150px;
+  max-height: 200px;
+}
+
+#img_holder{
+
+  background-color: white;
+  width: 150px;
+  max-width: 160px;
+  margin-bottom: 10px;
+}
+
+#img_body{
+  width: 150px;
+  box-shadow: 5px 5px 5px 5px #6f6f6f
+}
