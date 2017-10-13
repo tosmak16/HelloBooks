@@ -8,12 +8,14 @@ import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
 import MembershipSelect from '../select/MembershipSelect';
 import SearchBar from '../SearchBar';
+import ActivityLoader from '../preloader/ActivityLoader';
 
 
 let tablerow = '';
 let tableholder = '';
 let sortedData = '';
 let actuator = false;
+let display = 'none';
 
 class BookStorePage extends React.Component {
   constructor(props) {
@@ -63,11 +65,14 @@ class BookStorePage extends React.Component {
     if (nextProps.isRefreshed) {
       this.props.refreshPage(false);
 
+      display = 'block';
+
       this.props.searchbooks('bookTitle', '', []);
 
 
       this.props.getbooks(true);
     }
+    display = 'none';
   }
 
   handleChange(e) {
@@ -101,6 +106,7 @@ class BookStorePage extends React.Component {
   }
 
   handleYes(e) {
+    display = 'block';
     e.preventDefault();
     this.props.deleteBook(this.state.bookId, localStorage.jwtToken);
     this.setState({
@@ -182,6 +188,10 @@ class BookStorePage extends React.Component {
             bookTitle={ '' }
             heading={ 'Do you want to remove this book from store?' }
           />
+
+          <div style={{ display: display.toString() }} id="activity-loader-id" className="activity">
+            <ActivityLoader />
+          </div>
         </div>
       </div>
     );

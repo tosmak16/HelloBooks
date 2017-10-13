@@ -6,9 +6,11 @@ import { Link } from 'react-router';
 
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
+import ActivityLoader from '../preloader/ActivityLoader';
 
 
 let imgName = '';
+let display = 'none';
 
 /**
  * 
@@ -55,6 +57,7 @@ class DashboardSidebar extends React.Component {
    * @memberof DashboardSidebar
    */
   componentWillReceiveProps(nextProps) {
+    display = 'none';
     if (!isEmpty(nextProps.data)) {
       imgName = nextProps.data[0];
       this.setState({
@@ -99,6 +102,7 @@ class DashboardSidebar extends React.Component {
    * @memberof DashboardSidebar
    */
   handleClick(e) {
+    display = 'block';
     e.preventDefault();
     this.setState({
       show: false,
@@ -213,11 +217,11 @@ class DashboardSidebar extends React.Component {
                   <div className="file-field input-field">
                     <div id="filebtn" style={{ marginLeft: '5px', color: 'white' }} className="">
                       <span />
-                      <img id="userimg" src={this.state.imagePreviewUrl ? this.state.imagePreviewUrl : !isEmpty(imgName.profileImage) ? imgName.profileImage : 'http://res.cloudinary.com/tosmak/image/upload/v1507297483/userimg_cxeszl.png'} width="120" height="120" alt="images" />
+                      <img id="userimg" src={ this.state.imagePreviewUrl ? this.state.imagePreviewUrl : !isEmpty(imgName.profileImage) ? imgName.profileImage : 'http://res.cloudinary.com/tosmak/image/upload/v1507297483/userimg_cxeszl.png' } width="120" height="120" alt="images" />
 
 
                       <input
-                        disabled={this.state.disabled} className="fileInput" id="photoInput" onChange={this.handleImageChange}
+                        disabled={ this.state.disabled } className="fileInput" id="photoInput" onChange={ this.handleImageChange }
                         type="file"
                         accept=".png, .jpg, .jpeg"
                         placeholder="Upload profile image"
@@ -228,7 +232,7 @@ class DashboardSidebar extends React.Component {
                     <div className="file-path-wrapper">
                       <input className="file-path validate" style={{ width: '100px' }} type="text" placeholder="Upload profile image" />
                       <div className="input-field inline">
-                        <button id="" style={{ marginTop: '0px', backgroundColor: '#3d1112', color: 'wheat' }} type="button" onClick={this.handleEdit} className="btn-sm">Upload</button>
+                        <button id="" style={{ marginTop: '0px', backgroundColor: '#3d1112', color: 'wheat' }} type="button" onClick={ this.handleEdit } className="btn-sm">Upload</button>
                       </div>
                     </div>
                   </div>
@@ -236,43 +240,46 @@ class DashboardSidebar extends React.Component {
                 </div>
               </li>
               <li>
-                <Link to={'/dashboard/borrowedbooks'}>
+                <Link to={ '/dashboard/borrowedbooks' }>
                   <i className="material-icons left">local_library</i> Books Shelf
                 </Link>
               </li>
               <li>
-                <Link to={'/dashboard/userprofile'} ><i className="material-icons left">dashboard</i>Account</Link>
+                <Link to={ '/dashboard/userprofile' } ><i className="material-icons left">dashboard</i>Account</Link>
               </li>
               <li>
-                <Link to={'/dashboard/history'}><i className="material-icons left">data_usage</i>History</Link>
+                <Link to={ '/dashboard/history' }><i className="material-icons left">data_usage</i>History</Link>
               </li>
               <li>
-                <Link to={'/dashboard/changepassword'} ><i className="material-icons left">lock</i>Change Password</Link>
+                <Link to={ '/dashboard/changepassword' } ><i className="material-icons left">lock</i>Change Password</Link>
               </li>
               <li>
-                <Link to={'/login'} onClick={this.handleLogout} ><i className="material-icons left">exit_to_app</i>Logout</Link>
+                <Link to={ '/login' } onClick={ this.handleLogout } ><i className="material-icons left">exit_to_app</i>Logout</Link>
               </li>
 
             </ul>
           </div >
           <SingleActionModal
-            id={'modaE'} heading={'Oh!'}
-            message={this.state.error ? this.state.error : this.state.modalErrorMessage}
-            onHandleExit={this.handleExit}
+            id={ 'modaE' } heading={ 'Oh!' }
+            message={ this.state.error ? this.state.error : this.state.modalErrorMessage }
+            onHandleExit={ this.handleExit }
           />
           <SingleActionModal
-            id={'modaS'} heading={'Done!'}
-            message={this.state.message ? this.state.message : ''}
-            onHandleExit={this.handleExit}
+            id={ 'modaS' } heading={ 'Done!' }
+            message={ this.state.message ? this.state.message : '' }
+            onHandleExit={ this.handleExit }
           />
           <DoubleActionModal
-            id={'modaO'}
-            onHandleClick={this.handleClick}
-            onHandleClose={this.handleClose}
-            bookTitle={''}
-            heading={'Do you want to change your profile picture?'}
+            id={ 'modaO' }
+            onHandleClick={ this.handleClick }
+            onHandleClose={ this.handleClose }
+            bookTitle={ '' }
+            heading={ 'Do you want to change your profile picture?' }
           />
         </div >
+        <div style={{ display: display.toString() }} id="activity-loader-id" className="activity">
+          <ActivityLoader />
+        </div>
       </div >
     );
   }

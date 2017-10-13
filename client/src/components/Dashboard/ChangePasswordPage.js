@@ -5,9 +5,11 @@ import $ from 'jquery';
 
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
+import ActivityLoader from '../preloader/ActivityLoader';
 
 
 let sortedData = '';
+let displayPreloader = 'none';
 
 
 class ChangePasswordPage extends React.Component {
@@ -37,6 +39,7 @@ class ChangePasswordPage extends React.Component {
 
 
   componentWillReceiveProps(nextProps) {
+    displayPreloader = 'none';
     sortedData = nextProps.item[0];
     if (this.state.display) {
       if (!isEmpty(sortedData.error) && this.state.display) {
@@ -76,7 +79,7 @@ class ChangePasswordPage extends React.Component {
       display: true,
     });
     $('#modalOpen').modal('close');
-
+    displayPreloader = 'block';
     this.props.changePassword(this.state, localStorage.jwtToken);
   }
 
@@ -157,6 +160,9 @@ class ChangePasswordPage extends React.Component {
             <button id="editbtn" type="button" onClick={ this.handleSave } className="btn btn-primary pbtn">Submit</button>
           </div>
 
+          <div style={{ display: displayPreloader.toString() }} id="activity-loader-id" className="activity">
+            <ActivityLoader />
+          </div>
         </form>
       </div>
     );

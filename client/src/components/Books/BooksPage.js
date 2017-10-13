@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import isEmpty from 'lodash/isEmpty';
+
 
 import BooksPhoto from './BooksPhoto';
 import SideBar from '../SideBar';

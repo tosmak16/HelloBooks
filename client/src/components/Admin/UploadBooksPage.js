@@ -6,9 +6,11 @@ import $ from 'jquery';
 
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
+import ActivityLoader from '../preloader/ActivityLoader';
 
 
 let sortedData = '';
+let display = 'none';
 
 class UploadBooksPage extends React.Component {
   constructor(props) {
@@ -48,6 +50,7 @@ class UploadBooksPage extends React.Component {
   componentWillReceiveProps(nextProps) {
     sortedData = nextProps.item[0];
     if (this.state.display) {
+      display = 'none';
       if (!lodash.isEmpty(sortedData.error)) {
         this.setState({
           display: false,
@@ -77,6 +80,7 @@ class UploadBooksPage extends React.Component {
 
 
     if (this.state.show) {
+      display = 'none';
       console.log(nextProps.imageUrl);
       if (!lodash.isEmpty(nextProps.imageUrl)) {
         this.setState({
@@ -85,6 +89,7 @@ class UploadBooksPage extends React.Component {
           display: false,
           actuator: true,
         });
+        display = 'block';
         setTimeout(() => { this.props.uploadFile(this.state.bookFile); }, 1000);
       }
     }
@@ -98,13 +103,14 @@ class UploadBooksPage extends React.Component {
           display: true,
           actuator: false,
         });
-
+        display = 'block';
         setTimeout(() => { this.props.uploadBook(this.state, localStorage.jwtToken); }, 1000);
       }
     }
   }
 
   handleClick(e) {
+    display = 'block';
     e.preventDefault();
     this.props.uploadImage(this.state.file);
     this.setState({
@@ -311,6 +317,9 @@ class UploadBooksPage extends React.Component {
             <button onClick={ this.handleOpen } style={{ marginTop: '10px', width: '300px' }} id="uploadbtn" type="button" className="btn-sm pbtn">Upload</button>
           </div>
 
+          <div style={{ display: display.toString() }} id="activity-loader-id" className="activity">
+            <ActivityLoader />
+          </div>
 
         </form>
       </div>

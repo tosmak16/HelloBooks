@@ -6,11 +6,12 @@ import $ from 'jquery';
 
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
+import ActivityLoader from '../preloader/ActivityLoader';
 
 
 let sortedData = '';
 let pointer = false;
-
+let displayPreloader = 'none';
 /**
  * 
  * 
@@ -58,6 +59,7 @@ class Userprofile extends React.Component {
    * @memberof Userprofile
    */
   componentWillMount() {
+
     if (!isEmpty(this.props.data)) {
       this.setState({
         firstName: this.props.data[0].firstName,
@@ -79,6 +81,7 @@ class Userprofile extends React.Component {
 
 
   componentWillReceiveProps(nextProps) {
+    displayPreloader = 'none';
     if (!isEmpty(nextProps.data) && this.state.show) {
       this.setState({
         firstName: nextProps.data[0].firstName,
@@ -192,6 +195,7 @@ class Userprofile extends React.Component {
     this.setState({
       display: true,
     });
+    displayPreloader = 'block';
     this.props.updateUser(this.state, localStorage.jwtToken);
     $('#modalO').modal('close');
   }
@@ -207,62 +211,66 @@ class Userprofile extends React.Component {
             <label htmlFor="firstname" className="sr-only">First Name</label>
             <input
               type="text" id="firstname" className="form-control validate" placeholder="First Name" required
-              autoFocus value={ this.state.firstName } name="firstName" onChange={ this.handleInputChange }
-              disabled={ this.state.disabled }
+              autoFocus value={this.state.firstName} name="firstName" onChange={this.handleInputChange}
+              disabled={this.state.disabled}
             />
           </div>
           <div className="input-field">
             <label htmlFor="lastname" className="sr-only">Last Name</label>
             <input
               type="text" id="lastname" className="form-control validate" placeholder="Last Name" required
-              autoFocus value={ this.state.lastName } name="lastName" onChange={ this.handleInputChange }
-              disabled={ this.state.disabled }
+              autoFocus value={this.state.lastName} name="lastName" onChange={this.handleInputChange}
+              disabled={this.state.disabled}
             />
           </div>
           <div className="input-field">
             <label htmlFor="inputSignUpEmail" className="sr-only">Email address</label>
             <input
               type="email" id="inputSignUpEmail" className="form-control validate" placeholder="Email address" required
-              autoFocus value={ this.state.email } name="email" onChange={ this.handleInputChange }
-              disabled={ this.state.disabled }
+              autoFocus value={this.state.email} name="email" onChange={this.handleInputChange}
+              disabled={this.state.disabled}
             />
           </div>
           <div className="form-group">
             <label className="sr-only" htmlFor="inputPhoneNumber">Phone number</label>
             <input
               type="number" id="inputPhoneNumber" className="form-control validate" placeholder="phone number" required
-              autoFocus value={ this.state.mobileNumber } name="mobileNumber" onChange={ this.handleInputChange }
-              disabled={ this.state.disabled }
+              autoFocus value={this.state.mobileNumber} name="mobileNumber" onChange={this.handleInputChange}
+              disabled={this.state.disabled}
             />
           </div>
 
-          <select name="membershipType" className="browser-default" onChange={ this.handleInputChange } disabled={ this.state.disabled } >
-            <option defaultValue={ this.state.membershipType } >{this.state.membershipType}</option>
+          <select name="membershipType" className="browser-default" onChange={this.handleInputChange} disabled={this.state.disabled} >
+            <option defaultValue={this.state.membershipType} >{this.state.membershipType}</option>
             <option value="Basic">Basic</option>
             <option value="Silver">Silver</option>
             <option value="Gold">Gold</option>
           </select>
 
           <SingleActionModal
-            id={ 'modalE' } heading={ 'Oh!' }
-            message={ this.state.error ? this.state.error : this.state.modalErrorMessage }
-            onHandleExit={ this.handleExit }
+            id={'modalE'} heading={'Oh!'}
+            message={this.state.error ? this.state.error : this.state.modalErrorMessage}
+            onHandleExit={this.handleExit}
           />
           <SingleActionModal
-            id={ 'modalS' } heading={ 'Done!' }
-            message={ this.state.message ? this.state.message : '' }
-            onHandleExit={ this.handleExit }
+            id={'modalS'} heading={'Done!'}
+            message={this.state.message ? this.state.message : ''}
+            onHandleExit={this.handleExit}
           />
           <DoubleActionModal
-            id={ 'modalO' }
-            onHandleClick={ this.handleClick }
-            onHandleClose={ this.handleClose }
-            bookTitle={ '' }
-            heading={ 'Do you want to update your details?' }
+            id={'modalO'}
+            onHandleClick={this.handleClick}
+            onHandleClose={this.handleClose}
+            bookTitle={''}
+            heading={'Do you want to update your details?'}
           />
 
           <div className="input-field inline">
-            <button id="editbtn" type="button" onClick={ this.handleEdit } className="btn btn-primary pbtn">{this.state.buttonText}</button>
+            <button id="editbtn" type="button" onClick={this.handleEdit} className="btn btn-primary pbtn">{this.state.buttonText}</button>
+          </div>
+
+          <div style={{ display: displayPreloader.toString() }} id="activity-loader-id" className="activity">
+            <ActivityLoader />
           </div>
 
         </form>

@@ -362,3 +362,34 @@ h2,h3{
 
 
 
+.activity{
+	height: 1000px;
+	width: 1500px;
+	position: fixed;
+	z-index: 1000;
+	background-color: rgba(39, 36, 36, 0.51);
+	right: 0px;
+	bottom: 0px;
+	top: 0px;
+}
+
+.activity-loader{
+	position: relative;
+	bottom: 0px;
+	top: 300px;
+	right: 0px;
+	left: 900px;
+	background-color: brown
+}
+
+.activity-spinner{
+	background-color: darkgrey;
+}
+
+.activity-gap{
+	background-color: brown;
+}
+
+.activity-gap2{
+	background-color:darkgrey;
+}

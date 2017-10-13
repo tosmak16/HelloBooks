@@ -34,7 +34,7 @@ exports[`SignupPage should test and take snapshot of SignUpPage 1`] = `
                 className="col input-field s12"
               >
                 <input
-                  className="form-control sr-only validate"
+                  className="form-control validate"
                   defaultValue={undefined}
                   id="firstname"
                   name="firstName"

@@ -7,10 +7,13 @@ import MembershipSelect from '../select/MembershipSelect';
 import SearchBar from '../SearchBar';
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
+import ActivityLoader from '../preloader/ActivityLoader';
 
 
 let sortedData = '';
 let pointer = true;
+let display = 'none';
+
 
 class UpdateBooksPage extends React.Component {
   constructor(props) {
@@ -92,6 +95,7 @@ class UpdateBooksPage extends React.Component {
 
     sortedData = nextProps.item[0];
     if (this.state.display) {
+      display = 'none';
       console.log('xxxxxxxxxxxx');
       console.log(nextProps.item);
       if (!lodash.isEmpty(sortedData.error) && this.state.display) {
@@ -143,34 +147,34 @@ class UpdateBooksPage extends React.Component {
     }
 
     if (this.state.trigger && !this.state.actuator) {
-      console.log('++++++++++');
+      display = 'none';
       if (!lodash.isEmpty(nextProps.imageUrl)) {
         this.setState({
           trigger: false,
           image: nextProps.imageUrl,
           display: true,
         });
+        display = 'block';
         setTimeout(() => { this.props.updateBook(this.state, localStorage.jwtToken); }, 1000);
       }
     }
 
 
     if (this.state.actuator && !this.state.trigger) {
+      display = 'none';
       if (!lodash.isEmpty(nextProps.fileUrl) && !this.state.trigger) {
         this.setState({
           actuator: false,
           bookFileUrl: nextProps.fileUrl,
           display: true,
         });
-        console.log('&&&&&&&&&&&');
-        console.log(nextProps.fileUrl);
+        display = 'block';
         setTimeout(() => { this.props.updateBook(this.state, localStorage.jwtToken); }, 1000);
       }
     }
 
     if (this.state.trigger && this.state.actuator) {
-      console.log('=============');
-      console.log(nextProps.imageUrl);
+      display = 'none';
       if (!lodash.isEmpty(nextProps.imageUrl)) {
         this.setState({
           trigger: false,
@@ -178,12 +182,14 @@ class UpdateBooksPage extends React.Component {
           image: nextProps.imageUrl,
           display: false,
         });
+        display = 'block';
         setTimeout(() => { this.props.uploadFile(this.state.bookFile); }, 1000);
       }
     }
   }
 
   handleClick(e) {
+    display = 'block';
     e.preventDefault();
     if (this.state.file.length !== 0 && this.state.bookFile.length === 0) {
       console.log('******');
@@ -211,11 +217,6 @@ class UpdateBooksPage extends React.Component {
         actuator: false,
       });
     } else if (this.state.file.length !== 0 && this.state.bookFile.length !== 0) {
-      console.log(this.state.file);
-
-      console.log('******');
-
-
       this.props.uploadImage(this.state.file);
       this.setState({
         display: false,
@@ -476,6 +477,10 @@ class UpdateBooksPage extends React.Component {
               onClick={ this.handleOpen } style={{ marginTop: '10px', width: '300px' }} id="updatebtn" type="button"
               className="btn-sm pbtn"
             >Update</button>
+          </div>
+
+          <div style={{ display: display.toString() }} id="activity-loader-id" className="activity">
+            <ActivityLoader />
           </div>
         </form>
       </div>

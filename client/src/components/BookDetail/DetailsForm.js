@@ -1,8 +1,8 @@
 import React from 'react';
-import { CardTitle, Card } from 'react-materialize';
 import lodash from 'lodash';
 import $ from 'jquery';
 import PropTypes from 'prop-types';
+import ActivityLoader from '../preloader/ActivityLoader';
 
 
 let bookId = '';
@@ -15,8 +15,8 @@ let stocknumber = 0;
 let author = '';
 let image = '';
 let summary = '';
-
 let sortedData = '';
+let display = 'none';
 
 /**
  * 
@@ -24,6 +24,7 @@ let sortedData = '';
  * @class DetailsForm
  * @extends {React.Component}
  */
+
 class DetailsForm extends React.Component {
   constructor(props) {
     super(props);
@@ -98,7 +99,7 @@ class DetailsForm extends React.Component {
   componentWillReceiveProps(nextProps) {
     sortedData = nextProps.item[0];
 
-
+    display = 'none';
     if (this.state.display) {
       if (!lodash.isEmpty(sortedData.error) && this.state.display) {
         this.setState({
@@ -146,6 +147,7 @@ class DetailsForm extends React.Component {
     this.setState({
       display: true,
     });
+    display = 'block';
     this.props.borrowBooks(localStorage.jwtToken, localStorage.bookId);
     $('#modal1').modal('close');
   }
@@ -194,7 +196,7 @@ class DetailsForm extends React.Component {
         <p>{this.state.error}</p>
       </div>
       <div className="modal-footer">
-        <a href="" onClick={ this.handleExit } className="modal-action modal-close waves-effect waves-brown btn-flat">Close</a>
+        <a href="" onClick={this.handleExit} className="modal-action modal-close waves-effect waves-brown btn-flat">Close</a>
       </div>
     </div>);
     const displaySuccess = (<div id="modal3" className="modal">
@@ -203,7 +205,7 @@ class DetailsForm extends React.Component {
         <p>{this.state.message}</p>
       </div>
       <div className="modal-footer">
-        <a href="" onClick={ this.handleExit } className="modal-action modal-close waves-effect waves-brown btn-flat">Close</a>
+        <a href="" onClick={this.handleExit} className="modal-action modal-close waves-effect waves-brown btn-flat">Close</a>
       </div>
     </div>);
 
@@ -215,7 +217,7 @@ class DetailsForm extends React.Component {
             <div className="placeholders  ">
               <div className=" col s12 col m2 col l2 placeholder" id="photo">
                 <div id="img_body">
-                  <img src={ image } alt="avatar" style={{ width: '150px', height: '250px' }} />
+                  <img src={image} alt="avatar" style={{ width: '150px', height: '250px' }} />
                 </div>
               </div>
             </div>
@@ -232,8 +234,8 @@ class DetailsForm extends React.Component {
                   <p>{bookTitle}</p>
                 </div>
                 <div className="modal-footer">
-                  <a href="" onClick={ this.handleClose } className="modal-action modal-close waves-effect waves-brown btn-flat">NO</a>
-                  <a href="" onClick={ this.handleClick } className="modal-action modal-close waves-effect waves-brown btn-flat">YES</a>
+                  <a href="" onClick={this.handleClose} className="modal-action modal-close waves-effect waves-brown btn-flat">NO</a>
+                  <a href="" onClick={this.handleClick} className="modal-action modal-close waves-effect waves-brown btn-flat">YES</a>
                 </div>
               </div>
               <span id="sum" className="text-muted">{summary}</span>
@@ -244,11 +246,14 @@ class DetailsForm extends React.Component {
               </div>
               <div className="form-inline">
                 <button id="wishbtn" type="button" className="btn-sm btn-warning shop">Wishlist</button>
-                <button onClick={ this.handleOpen } id="borrowbtn" type="submit" className="btn-sm btn-success shop">Borrow</button>
+                <button onClick={this.handleOpen} id="borrowbtn" type="submit" className="btn-sm btn-success shop">Borrow</button>
               </div>
             </div>
 
           </div>
+        </div>
+        <div style={{ display: display.toString() }} id="activity-loader-id" className="activity">
+          <ActivityLoader />
         </div>
       </div>
     );

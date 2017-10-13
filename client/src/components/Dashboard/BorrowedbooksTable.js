@@ -9,12 +9,14 @@ import BbTableRow from './BbTableRow';
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
 import PdfReader from '../pdf/PdfReader';
+import ActivityLoader from '../preloader/ActivityLoader';
 
 
 let tablerow = '';
 let co = '';
 let pdfUrl = '';
 let pointer = false;
+let displayPreloader = 'none';
 
 let sortedData = '';
 class BorrowedbooksTable extends React.Component {
@@ -50,6 +52,7 @@ class BorrowedbooksTable extends React.Component {
     });
   }
   componentWillReceiveProps(nextProps) {
+    displayPreloader = 'none';
     sortedData = nextProps.item[0];
 
     if (this.state.pointer) {
@@ -96,6 +99,7 @@ class BorrowedbooksTable extends React.Component {
 
   handleYes(e) {
     e.preventDefault();
+    displayPreloader = 'block';
     this.props.returnbook(this.state, localStorage.jwtToken);
     this.setState({
       pointer: true,
@@ -199,6 +203,10 @@ class BorrowedbooksTable extends React.Component {
             bookTitle={ '' }
             heading={ 'Do you want to return this book?' }
           />
+        </div>
+
+        <div style={{ display: displayPreloader.toString() }} id="activity-loader-id" className="activity">
+          <ActivityLoader />
         </div>
       </div>
     );
