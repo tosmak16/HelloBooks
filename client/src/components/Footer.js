@@ -1,6 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router';
 
+/**
+ * 
+ * 
+ * @class Footer
+ * @extends {React.Component}
+ */
 class Footer extends React.Component {
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof Footer
+   */
   render() {
     return (
       <footer className="footer-distributed ">
@@ -13,12 +26,12 @@ class Footer extends React.Component {
               <h3>Hello<span>Books</span></h3>
 
               <p className="footer-links">
-                <a href="#">Home</a> ·
-                <a href="#">Blog</a> ·
-                <a href="#">Pricing</a> ·
-                <a href="#">About</a> ·
-                <a href="#">Faq</a> ·
-                <a href="#">Contact</a>
+                <Link to={ 'http//:' }>Home</Link>
+                <Link to={ 'http//:' }>Blog</Link>
+                <Link to={ 'http//:' }>Pricing</Link>
+                <Link to={ 'http//:' }>About</Link>
+                <Link to={ 'http//:' }>Faq</Link>
+                <Link to={ 'http//:' }>Contact</Link>
               </p>
 
               <p className="footer-company-name">Tosmak &copy; 2017</p>
@@ -38,7 +51,7 @@ class Footer extends React.Component {
 
               <div>
                 <i className="fa fa-envelope" />
-                <p><a href="tosmak16@gmail.com">tosmak16@gmail.com</a></p>
+                <p><Link href="tosmak16@gmail.com">tosmak16@gmail.com</Link></p>
               </div>
 
             </div>
@@ -46,16 +59,15 @@ class Footer extends React.Component {
             <div className="footer-right col l4 col m14 col s12">
 
               <p className="footer-company-about">
-                <span>About Hello Book</span>  it's a simple application that helps manage  a libraryand its processes like stocking,
-                tracking and renting books
+                <span>About Hello Book</span>  it is a simple application that helps manage  a libraryand its processes like stocking,  tracking and renting books
               </p>
 
               <div className="footer-icons">
 
-                <a href="#"><i className="fa fa-facebook" /></a>
-                <a href="#"><i className="fa fa-twitter" /></a>
-                <a href="#"><i className="fa fa-linkedin" /></a>
-                <a href="#"><i className="fa fa-github" /></a>
+                <Link to={ 'http//:' }><i className="fa fa-facebook" /></Link>
+                <Link to={ 'http//:' }><i className="fa fa-twitter" /></Link>
+                <Link to={ 'http//:' }><i className="fa fa-linkedin" /></Link>
+                <Link to={ 'http//:' }><i className="fa fa-github" /></Link>
 
               </div>
 

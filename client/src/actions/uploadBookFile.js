@@ -1,9 +1,15 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import { uploadFileError, uploadFileRequest, uploadFileResponse } from '../../actions/uploadfiles';
+import { uploadFileError, uploadFileRequest, uploadFileResponse } from '../../actions/uploadBookFile';
 
 const upload_preset = 'bjfllgrd';
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} file 
+ * @returns 
+ */
 export function uploadFile(file) {
   const data = new FormData();
   data.append('file', file);

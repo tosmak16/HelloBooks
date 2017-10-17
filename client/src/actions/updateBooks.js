@@ -3,13 +3,18 @@ import { browserHistory } from 'react-router';
 import { uploadImage } from './uploadImage';
 import { updatebookError, updatebookRequest, updatebookResponse } from '../../actions/updateBooks';
 
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} bookData 
+ * @param {any} token 
+ * @returns 
+ */
 
 export function updateBook(bookData, token) {
   return (dispatch) => {
     dispatch(updatebookRequest(bookData));
-
-    console.log(bookData);
 
     return fetch('http://localhost:8000/api/v2/books/' + bookData.bookId, {
       method: 'PUT',

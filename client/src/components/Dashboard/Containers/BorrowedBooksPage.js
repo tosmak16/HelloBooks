@@ -35,7 +35,6 @@ export class DashboardPage extends React.Component {
       this.props.getUserdetails(localStorage.jwtToken);
     }
     $(document).ready(() => {
-      // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
       $('.modal').modal();
     });
   }
@@ -60,7 +59,8 @@ export class DashboardPage extends React.Component {
               bookData={ this.props.bookData } data={ this.props.bbData }
               getbooks={ this.props.getbooks } getborrowedBooks={ this.props.getborrowedBooks }
               isRefreshed={ this.props.isRefreshed } refreshPage={ this.props.refreshPage }
-              returnbook={ this.props.returnbook } getunreturnedBooks={ this.props.getunreturnedBooks }
+              returnbook={ this.props.returnbook }
+              getunreturnedBooks={ this.props.getunreturnedBooks }
               item={ this.props.item }
             />
           </div>
@@ -92,6 +92,12 @@ DashboardPage.propTypes = {
 
 };
 
+/**
+ * 
+ * 
+ * @param {any} state 
+ * @returns 
+ */
 function mapStateToProps(state) {
   return {
     userData: state.UserDetails[0].data,

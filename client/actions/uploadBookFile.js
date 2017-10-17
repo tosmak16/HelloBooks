@@ -5,6 +5,13 @@ export const UPLOAD_FILE_FAILURE = 'UPLOAD_FILE_FAILURE'
 
 
 //Action creators
+/**
+ * 
+ * 
+ * @export
+ * @param {any} fileData 
+ * @returns 
+ */
 export function uploadFileRequest(fileData) {
   return {
     type: UPLOAD_FILE_REQUEST,
@@ -12,7 +19,13 @@ export function uploadFileRequest(fileData) {
     fileData
   }
 }
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} response 
+ * @returns 
+ */
 export function uploadFileResponse(response) {
   return {
     type: UPLOAD_FILE_SUCCESS,
@@ -20,7 +33,13 @@ export function uploadFileResponse(response) {
     response
   }
 }
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} error 
+ * @returns 
+ */
 export function uploadFileError(error) {
   return {
     type: UPLOAD_FILE_FAILURE,

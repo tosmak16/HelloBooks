@@ -1,16 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * 
+ * 
+ * @class SingleActionModal
+ * @extends {React.Component}
+ */
 class SingleActionModal extends React.Component {
+  /**
+   * 
+   * 
+   * @returns html documemt object
+   * @memberof SingleActionModal
+   * @method render
+   * @description it renders modal whem triggered
+   */
   render() {
     return (
-      <div id={ this.props.id } className="modal">
+      <div id={this.props.id} className="modal">
         <div className="modal-content">
           <h5>{this.props.heading}</h5>
           <p>{this.props.message}</p>
         </div>
         <div className="modal-footer">
-          <a href="" onClick={ this.props.onHandleExit } className="modal-action modal-close waves-effect waves-brown btn-flat">Close</a>
+          <a
+            href="" onClick={this.props.onHandleExit}
+            className="modal-action modal-close waves-effect waves-brown btn-flat"
+          >Close</a>
         </div>
       </div>
     );

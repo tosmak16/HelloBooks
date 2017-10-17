@@ -1,7 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+/**
+ * 
+ * 
+ * @class AdminSidebar
+ * @extends {React.Component}
+ */
 class AdminSidebar extends React.Component {
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof AdminSidebar
+   */
   render() {
     return (
       <div className="row">
@@ -23,7 +35,9 @@ class AdminSidebar extends React.Component {
                 <Link href="#"><i className="material-icons left">lock</i>Change Password</Link>
               </li>
               <li>
-                <Link href="index.html"><i className="material-icons left">exit_to_app</i>Logout</Link>
+                <Link href="index.html"><i
+                  className="material-icons left"
+                >exit_to_app</i>Logout</Link>
               </li>
             </ul>
           </div>

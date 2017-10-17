@@ -1,4 +1,4 @@
-import { UPLOAD_FILE_FAILURE, UPLOAD_FILE_SUCCESS, UPLOAD_FILE_REQUEST } from '../actions/uploadFiles';
+import { UPLOAD_FILE_FAILURE, UPLOAD_FILE_SUCCESS, UPLOAD_FILE_REQUEST } from '../actions/uploadBookFile';
 
 const initialState = [{
   data: '',

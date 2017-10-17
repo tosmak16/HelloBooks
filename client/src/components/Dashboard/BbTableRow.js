@@ -1,8 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
+/**
+ * 
+ * 
+ * @class BbTableRow
+ * @extends {React.Component}
+ */
 class BbTableRow extends React.Component {
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof BbTableRow
+   */
   render() {
     const { row } = this.props;
     const { bookItem } = this.props;

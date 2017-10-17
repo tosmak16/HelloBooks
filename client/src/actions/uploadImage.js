@@ -3,7 +3,13 @@ import { browserHistory } from 'react-router';
 import { uploadimageError, uploadimageRequest, uploadimageResponse } from '../../actions/UploadImages';
 
 const upload_preset = 'bjfllgrd';
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} file 
+ * @returns 
+ */
 export function uploadImage(file) {
 
   console.log(file);

@@ -26,7 +26,10 @@ export class Login extends React.Component {
     return (
       <div>
         <div id="loginForm" className="row">
-          <LoginForm getbooks={ this.props.getbooks } userSignin={ this.props.userSignin } log={ this.props.log } />
+          <LoginForm
+            getbooks={ this.props.getbooks }
+            userSignin={ this.props.userSignin } log={ this.props.log }
+          />
         </div>
         <Footer />
       </div>
@@ -41,7 +44,12 @@ Login.propTypes = {
 
 };
 
-
+/**
+ * 
+ * 
+ * @param {any} state 
+ * @returns {object}
+ */
 function mapStateToProps(state) {
   return { log: state.log[0] };
 }

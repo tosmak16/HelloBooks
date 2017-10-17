@@ -11,8 +11,18 @@ import ActivityLoader from '../preloader/ActivityLoader';
 let sortedData = '';
 let displayPreloader = 'none';
 
-
+/**
+ * 
+ * 
+ * @class ChangePasswordPage
+ * @extends {React.Component}
+ */
 class ChangePasswordPage extends React.Component {
+  /**
+   * Creates an instance of ChangePasswordPage.
+   * @param {any} props 
+   * @memberof ChangePasswordPage
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -30,14 +40,23 @@ class ChangePasswordPage extends React.Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleExit = this.handleExit.bind(this);
   }
-
+  /**
+   * 
+   * 
+   * @memberof ChangePasswordPage
+   */
   componentWillMount() {
     $(document).ready(() => {
       $('.modal').modal();
     });
   }
 
-
+  /**
+   * 
+   * 
+   * @param {any} nextProps 
+   * @memberof ChangePasswordPage
+   */
   componentWillReceiveProps(nextProps) {
     displayPreloader = 'none';
     sortedData = nextProps.item[0];
@@ -60,19 +79,40 @@ class ChangePasswordPage extends React.Component {
       }
     }
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof ChangePasswordPage
+   */
   handleClose(e) {
     e.preventDefault();
     $('#modalOpen').modal('close');
+    this.setState({
+      displayErrorMessage: false,
+    });
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof ChangePasswordPage
+   */
   handleExit(e) {
     e.preventDefault();
 
     $('#modalError').modal('close');
     $('#modalSuccess').modal('close');
+    this.setState({
+      displayErrorMessage: false,
+    });
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof ChangePasswordPage
+   */
   handleClick(e) {
     e.preventDefault();
     this.setState({
@@ -82,10 +122,21 @@ class ChangePasswordPage extends React.Component {
     displayPreloader = 'block';
     this.props.changePassword(this.state, localStorage.jwtToken);
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof ChangePasswordPage
+   */
   handleInputChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof ChangePasswordPage
+   */
   handleSave(e) {
     e.preventDefault();
     if (!this.state.newPassword || !this.state.oldPassword || !this.state.confirmPassword) {
@@ -108,6 +159,12 @@ class ChangePasswordPage extends React.Component {
       $('#modalOpen').modal('open');
     }
   }
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof ChangePasswordPage
+   */
   render() {
     return (
       <div id="ch_pas">
@@ -117,16 +174,20 @@ class ChangePasswordPage extends React.Component {
           <div className="input-field">
             <label htmlFor="oldPassword" className="sr-only">Current Password</label>
             <input
-              type="password" id="oldPassword" className="form-control validate" placeholder="Current password" required
-              autoFocus value={ this.state.oldPassword } name="oldPassword" onChange={ this.handleInputChange }
+              type="password" id="oldPassword"
+              className="form-control validate" placeholder="Current password" required
+              value={ this.state.oldPassword }
+              name="oldPassword" onChange={ this.handleInputChange }
               disabled={ this.state.disabled }
             />
           </div>
           <div className="input-field">
             <label htmlFor="newPassword" className="sr-only">New password</label>
             <input
-              type="password" id="newPassword" className="form-control validate" placeholder="New password" required
-              autoFocus value={ this.state.newPassword } name="newPassword" onChange={ this.handleInputChange }
+              type="password" id="newPassword"
+              className="form-control validate" placeholder="New password" required
+              value={ this.state.newPassword }
+              name="newPassword" onChange={ this.handleInputChange }
               disabled={ this.state.disabled }
             />
           </div>
@@ -134,8 +195,10 @@ class ChangePasswordPage extends React.Component {
           <div className="input-field">
             <label htmlFor="confirmPassword" className="sr-only">Confirm password</label>
             <input
-              type="password" id="confirmPassword" className="form-control validate" placeholder="Confirm password" required
-              autoFocus value={ this.state.confirmPassword } name="confirmPassword" onChange={ this.handleInputChange }
+              type="password" id="confirmPassword"
+              className="form-control validate" placeholder="Confirm password" required
+              value={ this.state.confirmPassword }
+              name="confirmPassword" onChange={ this.handleInputChange }
               disabled={ this.state.disabled }
             />
           </div>
@@ -157,10 +220,16 @@ class ChangePasswordPage extends React.Component {
             heading={ 'Do you want to change your password?' }
           />
           <div className="input-field inline">
-            <button id="editbtn" type="button" onClick={ this.handleSave } className="btn btn-primary pbtn">Submit</button>
+            <button
+              id="editbtn" type="button" onClick={ this.handleSave }
+              className="btn btn-primary pbtn"
+            >Submit</button>
           </div>
 
-          <div style={{ display: displayPreloader.toString() }} id="activity-loader-id" className="activity">
+          <div
+            style={{ display: displayPreloader.toString() }}
+            id="activity-loader-id" className="activity"
+          >
             <ActivityLoader />
           </div>
         </form>

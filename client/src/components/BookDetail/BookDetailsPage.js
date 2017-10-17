@@ -50,6 +50,12 @@ BookDetailsPage.propTypes = {
   showbooksByCategory: PropTypes.func.isRequired
 };
 
+/**
+ * 
+ * 
+ * @param {any} state 
+ * @returns 
+ */
 function mapStateToProps(state) {
   return {
     data: state.books[0].data,

@@ -17,7 +17,18 @@ let sortedData = '';
 let actuator = false;
 let display = 'none';
 
+/**
+ * 
+ * 
+ * @class BookStorePage
+ * @extends {React.Component}
+ */
 class BookStorePage extends React.Component {
+  /**
+   * Creates an instance of BookStorePage.
+   * @param {any} props 
+   * @memberof BookStorePage
+   */
   constructor(props) {
     super(props);
     this.handleDelete = this.handleDelete.bind(this);
@@ -32,19 +43,29 @@ class BookStorePage extends React.Component {
       pointer: false,
       errors: '',
       message: '',
-      actuator: false
+      actuator: false,
+      errorFix: true,
     };
     this.handleChange = this.handleChange.bind(this);
 
     this.handleSelected = this.handleChange.bind(this);
   }
 
-
+  /**
+   * 
+   * 
+   * @memberof BookStorePage
+   */
   componentWillMount() {
     actuator = false;
   }
 
-
+  /**
+   * 
+   * 
+   * @param {any} nextProps 
+   * @memberof BookStorePage
+   */
   componentWillReceiveProps(nextProps) {
     sortedData = nextProps.item[0];
     if (this.state.pointer) {
@@ -74,7 +95,12 @@ class BookStorePage extends React.Component {
     }
     display = 'none';
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof BookStorePage
+   */
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
     if (e.target.value.length > 3 && this.state.filterBy !== '') {
@@ -83,11 +109,21 @@ class BookStorePage extends React.Component {
       this.props.searchbooks(this.state.filterBy, this.state.searchText, this.props.data);
     }
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof BookStorePage
+   */
   handleSelected(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof BookStorePage
+   */
   handleExit(e) {
     e.preventDefault();
 
@@ -96,6 +132,12 @@ class BookStorePage extends React.Component {
 
     setTimeout(() => { this.props.refreshPage(true); }, 1000);
   }
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof BookStorePage
+   */
   handleDelete(e) {
     actuator = false;
     this.setState({
@@ -105,6 +147,12 @@ class BookStorePage extends React.Component {
     $('#modal1').modal('open');
   }
 
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof BookStorePage
+   */
   handleYes(e) {
     display = 'block';
     e.preventDefault();
@@ -114,11 +162,25 @@ class BookStorePage extends React.Component {
     });
     $('#modal1').modal('close');
   }
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof BookStorePage
+   */
   handleNo(e) {
     e.preventDefault();
     $('#modal1').modal('close');
+    this.setState({
+      errorFix: true,
+    });
   }
-
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof BookStorePage
+   */
   render() {
     if (this.props.filteredData && actuator) {
       const { filteredData } = this.props;
@@ -161,21 +223,27 @@ class BookStorePage extends React.Component {
               />
             </div>
             <div className="col l6 col m6 col s12 ">
-              <SearchBar onChange={ this.handleChange } name="searchText" value={ this.state.searchText } />
+              <SearchBar
+                onChange={ this.handleChange }
+                name="searchText" value={ this.state.searchText }
+              />
             </div>
           </div >
-          {console.log(this.props.filteredData.length === 0)}
-          {this.props.filteredData.length !== 0 && actuator ? <h4 className="sub-header">Search result</h4> : <p>.</p>}
+
+          {this.props.filteredData.length !== 0 && actuator ?
+            <h4 className="sub-header">Search result</h4> : <p>.</p>}
 
           {this.props.filteredData.length !== 0 && actuator && tableholder}
 
           <SingleActionModal
-            id={ 'modal3' } heading={ 'Done!' }
+            id={ 'modal3' }
+            heading={ 'Done!' }
             message={ this.state.message ? this.state.message : '' }
             onHandleExit={ this.handleExit }
           />
           <SingleActionModal
-            id={ 'modal2' } heading={ 'Oh!' }
+            id={ 'modal2' }
+            heading={ 'Oh!' }
             message={ this.state.errors ? this.state.errors : '' }
             onHandleExit={ this.handleExit }
           />

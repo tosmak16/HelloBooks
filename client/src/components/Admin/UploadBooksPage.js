@@ -12,7 +12,18 @@ import ActivityLoader from '../preloader/ActivityLoader';
 let sortedData = '';
 let display = 'none';
 
+/**
+ * 
+ * 
+ * @class UploadBooksPage
+ * @extends {React.Component}
+ */
 class UploadBooksPage extends React.Component {
+  /**
+   * Creates an instance of UploadBooksPage.
+   * @param {any} props 
+   * @memberof UploadBooksPage
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -46,7 +57,12 @@ class UploadBooksPage extends React.Component {
     this.handleFileChange = this.handleFileChange.bind(this);
   }
 
-
+  /**
+   * 
+   * 
+   * @param {any} nextProps 
+   * @memberof UploadBooksPage
+   */
   componentWillReceiveProps(nextProps) {
     sortedData = nextProps.item[0];
     if (this.state.display) {
@@ -108,7 +124,12 @@ class UploadBooksPage extends React.Component {
       }
     }
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UploadBooksPage
+   */
   handleClick(e) {
     display = 'block';
     e.preventDefault();
@@ -119,7 +140,12 @@ class UploadBooksPage extends React.Component {
     });
     $('#modalOpen').modal('close');
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UploadBooksPage
+   */
   handleOpen(e) {
     e.preventDefault();
     if (this.state.imageHeight !== 200 || this.state.imageWidth !== 150) {
@@ -134,12 +160,25 @@ class UploadBooksPage extends React.Component {
       $('#modalOpen').modal('open');
     }
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UploadBooksPage
+   */
   handleClose(e) {
     e.preventDefault();
     $('#modalOpen').modal('close');
+    this.setState({
+      errorFix: true,
+    });
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UploadBooksPage
+   */
   handleExit(e) {
     e.preventDefault();
     $('#modalError').modal('close');
@@ -150,12 +189,22 @@ class UploadBooksPage extends React.Component {
     });
     setTimeout(() => { this.props.getbooks(true); }, 3000);
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UploadBooksPage
+   */
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UploadBooksPage
+   */
   handleImageChange(e) {
     e.preventDefault();
     const reader = new FileReader();
@@ -183,7 +232,12 @@ class UploadBooksPage extends React.Component {
     reader.readAsDataURL(file);
   }
 
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UploadBooksPage
+   */
   handleFileChange(e) {
     e.preventDefault();
     const reader = new FileReader();
@@ -202,12 +256,20 @@ class UploadBooksPage extends React.Component {
     reader.readAsDataURL(bookFile);
   }
 
-
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof UploadBooksPage
+   */
   render() {
     return (
       <div id="b_page" className="row">
 
-        <form className="form-signin col l10 offset-l1 col m11 offset-m2 col s12" action="" encType="multipart/form-data">
+        <form
+          className="form-signin col l10 offset-l1 col m11 offset-m2 col s12"
+          action="" encType="multipart/form-data"
+        >
           <h4 className="sub-header"> Upload Book</h4>
           <div className="row">
             <div className="form-group input-field">
@@ -250,7 +312,8 @@ class UploadBooksPage extends React.Component {
           </div>
           <div className="form-group input-field">
             <input
-              type="number" name="stocknumber" className="form-control validate" id="ustock" placeholder="Number in stock"
+              type="number" name="stocknumber"
+              className="form-control validate" id="ustock" placeholder="Number in stock"
               required value={ this.state.stocknumber }
               onChange={ this.handleChange }
             />
@@ -270,7 +333,11 @@ class UploadBooksPage extends React.Component {
             <div id="filebtn" className="btn">
               <span>File</span>
 
-              <input className="fileInput" id="photoInput" onChange={ this.handleImageChange } type="file" accept=".png, .jpg, .jpeg" />
+              <input
+                className="fileInput"
+                id="photoInput" onChange={ this.handleImageChange }
+                type="file" accept=".png, .jpg, .jpeg"
+              />
             </div>
             <div className="file-path-wrapper">
               <input className="file-path validate" type="text" placeholder="Upload cover" />
@@ -285,7 +352,10 @@ class UploadBooksPage extends React.Component {
             <div id="filebtn" className="btn">
               <span>File</span>
 
-              <input className="fileInput" id="photoInput" onChange={ this.handleFileChange } type="file" accept=".pdf" />
+              <input
+                className="fileInput" id="photoInput"
+                onChange={ this.handleFileChange } type="file" accept=".pdf"
+              />
             </div>
             <div className="file-path-wrapper">
               <input className="file-path validate" type="text" placeholder="Upload PDF" />

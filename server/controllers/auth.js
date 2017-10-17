@@ -2,6 +2,15 @@ import jwt from 'jsonwebtoken';
 
 
 export default {
+  /**
+   * auth method serves  as middleware for authentication
+   * it verifies token.
+   * @function auth
+   * @param {any} req 
+   * @param {any} res 
+   * @param {any} next 
+   */
+
   auth(req, res, next) {
     const token = req.body.token || req.headers.token;
     if (token) {

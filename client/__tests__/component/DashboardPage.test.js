@@ -12,7 +12,7 @@ import localStorageMock from '../../__mock__/localStorage';
 import books from '../../__mock__/book';
 import user from '../../__mock__/user';
 import { e, event } from '../../__mock__/event';
-import ConnectedDashboardPage, { DashboardPage } from '../../src/components/Dashboard/DashboardPage';
+import ConnectedDashboardPage from '../../src/components/Dashboard/Containers/BorrowedBooksPage';
 import UserProfile from '../../src/components/Dashboard/UserProfile';
 import BorrowHistoryTable from '../../src/components/Dashboard/BookHistoryTable';
 import BorrowedbooksTable from '../../src/components/Dashboard/BorrowedbooksTable';

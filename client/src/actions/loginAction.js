@@ -7,7 +7,13 @@ import 'whatwg-fetch'
 import { loginError, loginRequest, loginResponse } from '../../actions/loginActions';
 import { setCurrentuser } from '../../actions/setCurrentuser';
 
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} userData 
+ * @returns 
+ */
 export default function userSignin(userData) {
   return dispatch => {
     dispatch(loginRequest(userData));

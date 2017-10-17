@@ -24,8 +24,12 @@ let display = 'none';
  * @class DetailsForm
  * @extends {React.Component}
  */
-
 class DetailsForm extends React.Component {
+  /**
+   * Creates an instance of DetailsForm.
+   * @param {any} props 
+   * @memberof DetailsForm
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -39,6 +43,11 @@ class DetailsForm extends React.Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleExit = this.handleExit.bind(this);
   }
+  /**
+   * 
+   * 
+   * @memberof DetailsForm
+   */
   componentWillMount() {
     if (!lodash.isEmpty(localStorage.bookId)) {
       this.props.checkBookDetails(localStorage.bookId);
@@ -51,7 +60,7 @@ class DetailsForm extends React.Component {
         window.localStorage.setItem('bookId', bookId);
 
 
-        filteredData = lodash.filter(data, item => item.id == bookId);
+        filteredData = lodash.filter(data, item => item.id.toString() === bookId.toString());
 
         bookTitle = filteredData[0].bookTitle;
         id = filteredData[0].id;
@@ -73,7 +82,7 @@ class DetailsForm extends React.Component {
     }
 
 
-    if (this.props.data.length == 0) {
+    if (this.props.data.length === 0) {
       bookTitle = localStorage.getItem('bookTitle');
       id = localStorage.getItem('id');
       category = localStorage.getItem('category');
@@ -85,7 +94,8 @@ class DetailsForm extends React.Component {
     }
 
     $(document).ready(() => {
-      // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+      // the "href" attribute of the modal 
+      // trigger must specify the modal ID that wants to be triggered
       $('.modal').modal();
     });
   }
@@ -158,9 +168,11 @@ class DetailsForm extends React.Component {
    * @param {any} e 
    * @memberof DetailsForm
    */
-
   handleOpen(e) {
     e.preventDefault();
+    this.setState({
+      errorFix: true,
+    });
     $('#modal1').modal('open');
   }
 
@@ -173,6 +185,9 @@ class DetailsForm extends React.Component {
   handleClose(e) {
     e.preventDefault();
     $('#modal1').modal('close');
+    this.setState({
+      errorFix: true,
+    });
   }
 
   /**
@@ -186,9 +201,17 @@ class DetailsForm extends React.Component {
 
     $('#modal2').modal('close');
     $('#modal3').modal('close');
+    this.setState({
+      errorFix: true,
+    });
   }
 
-
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof DetailsForm
+   */
   render() {
     const displayError = (<div id="modal2" className="modal">
       <div className="modal-content">
@@ -196,7 +219,10 @@ class DetailsForm extends React.Component {
         <p>{this.state.error}</p>
       </div>
       <div className="modal-footer">
-        <a href="" onClick={this.handleExit} className="modal-action modal-close waves-effect waves-brown btn-flat">Close</a>
+        <a
+          href="" onClick={ this.handleExit }
+          className="modal-action modal-close waves-effect waves-brown btn-flat"
+        >Close</a>
       </div>
     </div>);
     const displaySuccess = (<div id="modal3" className="modal">
@@ -205,7 +231,10 @@ class DetailsForm extends React.Component {
         <p>{this.state.message}</p>
       </div>
       <div className="modal-footer">
-        <a href="" onClick={this.handleExit} className="modal-action modal-close waves-effect waves-brown btn-flat">Close</a>
+        <a
+          href="" onClick={ this.handleExit }
+          className="modal-action modal-close waves-effect waves-brown btn-flat"
+        >Close</a>
       </div>
     </div>);
 
@@ -217,7 +246,7 @@ class DetailsForm extends React.Component {
             <div className="placeholders  ">
               <div className=" col s12 col m2 col l2 placeholder" id="photo">
                 <div id="img_body">
-                  <img src={image} alt="avatar" style={{ width: '150px', height: '250px' }} />
+                  <img src={ image } alt="avatar" style={{ width: '150px', height: '250px' }} />
                 </div>
               </div>
             </div>
@@ -234,8 +263,14 @@ class DetailsForm extends React.Component {
                   <p>{bookTitle}</p>
                 </div>
                 <div className="modal-footer">
-                  <a href="" onClick={this.handleClose} className="modal-action modal-close waves-effect waves-brown btn-flat">NO</a>
-                  <a href="" onClick={this.handleClick} className="modal-action modal-close waves-effect waves-brown btn-flat">YES</a>
+                  <a
+                    href="" onClick={ this.handleClose }
+                    className="modal-action modal-close waves-effect waves-brown btn-flat"
+                  >NO</a>
+                  <a
+                    href="" onClick={ this.handleClick }
+                    className="modal-action modal-close waves-effect waves-brown btn-flat"
+                  >YES</a>
                 </div>
               </div>
               <span id="sum" className="text-muted">{summary}</span>
@@ -245,8 +280,14 @@ class DetailsForm extends React.Component {
                 <p className="bookinfo">Number in Stock: {stocknumber} </p>
               </div>
               <div className="form-inline">
-                <button id="wishbtn" type="button" className="btn-sm btn-warning shop">Wishlist</button>
-                <button onClick={this.handleOpen} id="borrowbtn" type="submit" className="btn-sm btn-success shop">Borrow</button>
+                <button
+                  id="wishbtn" type="button"
+                  className="btn-sm btn-warning shop"
+                >Wishlist</button>
+                <button
+                  onClick={ this.handleOpen }
+                  id="borrowbtn" type="submit" className="btn-sm btn-success shop"
+                >Borrow</button>
               </div>
             </div>
 

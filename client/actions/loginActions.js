@@ -5,6 +5,13 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE'
 
 
 //Action creators
+/**
+ * 
+ * 
+ * @export
+ * @param {any} userData 
+ * @returns 
+ */
 export function loginRequest(userData) {
   return {
     type: LOGIN_REQUEST,
@@ -13,7 +20,13 @@ export function loginRequest(userData) {
     userData
   }
 }
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} response 
+ * @returns 
+ */
 export function loginResponse(response) {
   return {
     type: LOGIN_SUCCESS,
@@ -22,7 +35,13 @@ export function loginResponse(response) {
     response
   }
 }
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} error 
+ * @returns 
+ */
 export function loginError(error) {
   return {
     type: LOGIN_FAILURE,

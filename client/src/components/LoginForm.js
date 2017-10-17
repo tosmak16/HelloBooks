@@ -11,6 +11,12 @@ import { Input, Row } from 'react-materialize';
  * @extends {React.Component}
  */
 class LoginForm extends React.Component {
+  /**
+   * @description Creates an instance of LoginForm.
+   * Login form  class method
+   * @param {any} props 
+   * @memberof LoginForm
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -59,8 +65,9 @@ class LoginForm extends React.Component {
         <Row>
           <Input
             s={ 12 } label="Username"
-            type="text" value={ this.state.username } name="username" id="inputUsernamelog" className="form-control validate"
-            placeholder="Username"
+            type="text" value={ this.state.username }
+            name="username" id="inputUsernamelog"
+            className="form-control validate"
             onChange={ this.handleChange }
             required
             autoFocus
@@ -90,10 +97,13 @@ class LoginForm extends React.Component {
             <label htmlFor="filled-in-box">Remember me?</label>
           </div>
         </div>
-        <button id="loginbtn" className="btn btn-lg btn-primary  btn-block" type="submit">Sign in</button>
+        <button
+          id="loginbtn"
+          className="btn btn-lg btn-primary  btn-block" type="submit"
+        >Sign in</button>
         <p>
-          <label>
-            <a href=""> Forgot Password ? </a>
+          <label htmlFor="forgot_pass" >
+            <a id="forgot_pass" href=""> Forgot Password ? </a>
           </label>
         </p>
 

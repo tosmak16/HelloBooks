@@ -11,10 +11,20 @@ import refreshPage from '../../../actions/refreshPage';
 import searchbooks from '../../../actions/searchbooks';
 import { updateBook } from '../../../actions/updateBooks';
 import { uploadImage } from '../../../actions/uploadImage';
-import { uploadFile } from '../../../actions/uploadFile';
+import { uploadFile } from '../../../actions/uploadBookFile';
 
-
+/**
+ * 
+ * 
+ * @class UpdateBooksContainer
+ * @extends {React.Component}
+ */
 class UpdateBooksContainer extends React.Component {
+  /**
+   * 
+   * 
+   * @memberof UpdateBooksContainer
+   */
   componentWillMount() {
     if (!this.props.isFetched) {
       this.props.getbooks(true);
@@ -24,6 +34,12 @@ class UpdateBooksContainer extends React.Component {
       $('.modal').modal();
     });
   }
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof UpdateBooksContainer
+   */
   render() {
     return (
       <div >
@@ -60,17 +76,22 @@ UpdateBooksContainer.propTypes = {
 
 };
 
-
-function mapStateToProps(state) {
+/**
+ * 
+ * 
+ * @param {any} state 
+ * @returns 
+ */
+const mapStateToProps = function mapStateToProps(state) {
   return {
     isFetched: state.books[0].isFetched,
     data: state.books[0].data,
     filteredData: state.getFilteredBooks[0].filteredData,
     imageUrl: state.uploadImages[0].response,
     updateItem: state.updateBooks,
-    fileUrl: state.fileUpload[0].response,
+    fileUrl: state.bookFileUpload[0].response,
   };
-}
+};
 
 export default connect(mapStateToProps, {
   getbooks,

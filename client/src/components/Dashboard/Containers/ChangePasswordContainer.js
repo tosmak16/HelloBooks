@@ -30,7 +30,6 @@ export class DashboardPage extends React.Component {
       this.props.getUserdetails(localStorage.jwtToken);
     }
     $(document).ready(() => {
-      // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
       $('.modal').modal();
     });
   }
@@ -76,6 +75,12 @@ DashboardPage.propTypes = {
 
 };
 
+/**
+ * 
+ * 
+ * @param {any} state 
+ * @returns 
+ */
 function mapStateToProps(state) {
   return {
     userData: state.UserDetails[0].data,

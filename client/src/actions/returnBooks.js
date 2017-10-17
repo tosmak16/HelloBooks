@@ -7,7 +7,14 @@ import { uploadImage } from './uploadImage';
 import { returnbookError, returnbookRequest, returnbookResponse } from '../../actions/returnBook';
 
 
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} bookData 
+ * @param {any} token 
+ * @returns 
+ */
 export default function returnbook(bookData, token) {
   let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;

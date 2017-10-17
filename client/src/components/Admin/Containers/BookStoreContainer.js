@@ -10,8 +10,18 @@ import { deleteBook } from '../../../actions/deleteBooks';
 import refreshPage from '../../../actions/refreshPage';
 import searchbooks from '../../../actions/searchbooks';
 
-
+/**
+ * 
+ * 
+ * @class BookStoreContainer
+ * @extends {React.Component}
+ */
 class BookStoreContainer extends React.Component {
+  /**
+   * 
+   * 
+   * @memberof BookStoreContainer
+   */
   componentWillMount() {
     if (!this.props.isFetched) {
       this.props.getbooks(true);
@@ -22,6 +32,12 @@ class BookStoreContainer extends React.Component {
       $('.modal').modal();
     });
   }
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof BookStoreContainer
+   */
   render() {
     return (
       <div >
@@ -58,8 +74,13 @@ BookStoreContainer.propTypes = {
 
 };
 
-
-function mapStateToProps(state) {
+/**
+ * 
+ * 
+ * @param {any} state 
+ * @returns 
+ */
+const mapStateToProps = function mapStateToProps(state) {
   return {
     data: state.books[0].data,
     filteredData: state.getFilteredBooks[0].filteredData,
@@ -67,7 +88,7 @@ function mapStateToProps(state) {
     item: state.deleteBooks,
     isFetched: state.books[0].isFetched,
   };
-}
+};
 
 export default connect(mapStateToProps, {
   getbooks,

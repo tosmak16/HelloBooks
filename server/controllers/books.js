@@ -1,35 +1,17 @@
-import multer from 'multer';
-
 import isEmpty from 'lodash/isEmpty';
 import db from '../models/index';
-
-
-let filename = '';
-
-const storage = multer.diskStorage({
-  destination(req, file, cb) {
-    cb(null, './client/public/img/');
-  },
-  filename(req, file, cb) {
-    cb(null, filename);
-  }
-});
-
-export const upload = multer({
-  storage
-}).single('file');
 
 
 export default {
   /**
 * @method addbook
 * @desc This is a method that allows only admin to add books
-* @param { object } req
-* @param { object} res
+* @param { any } req
+* @param { any } res
 * @returns { object } response
 */
+
   addBook(req, res) {
-    filename = req.body.image;
     if (req.decoded.role === 'user') {
       return res.status(403).send({ status: 403, message: 'Access Denied!' });
     }
@@ -72,12 +54,12 @@ export default {
   /**
   * @method UpdateBook
   * @desc This is a method that allows only admin to edit a book
-  * @param { object } req
-  * @param { object} res
+  * @param { any } req
+  * @param { any } res
   * @returns { object } response
   */
+
   updateBook(req, res) {
-    filename = req.body.image;
     if (req.decoded.role === 'user') {
       return res.status(403).send({ status: 403, message: 'Access Denied!' });
     }
@@ -99,7 +81,8 @@ export default {
             summary: req.body.summary || result.summary
           })
           .then(() => res.status(200).send({ status: 200, message: 'Book has been updated', result })) // Send back the updated book
-          .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
+          .catch(e =>
+            res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
       })
       .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
   },
@@ -110,6 +93,7 @@ export default {
   * @param { object} res
   * @returns { object } response
   */
+
   deleteBooks(req, res) {
     if (req.decoded.role === 'user') {
       return res.status(403).send({ status: 403, message: 'Access Denied!' });
@@ -124,20 +108,9 @@ export default {
         result
           .destroy()
           .then(() => res.status(204).send({ status: 204, message: 'book has been deleted' }))
-          .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
-      }).catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
+          .catch(e =>
+            res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
+      }).catch(e =>
+        res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
   },
-  // / upload image
-  uploadImage(req, res) {
-    upload(req, res, (err) => {
-      if (err) {
-        // An error occurred when uploading
-        res.status(400).send({ status: 400, message: 'upload Failed' });
-      }
-      // Everything went fine
-
-      res.status(200).send({ status: 200, message: 'Image uploaded successfully' });
-    });
-  }
-
 };

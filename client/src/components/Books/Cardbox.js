@@ -9,6 +9,11 @@ import PropTypes from 'prop-types';
  * @extends {React.Component}
  */
 class Cardbox extends React.Component {
+  /**
+   * Creates an instance of Cardbox.
+   * @param {any} props 
+   * @memberof Cardbox
+   */
   constructor(props) {
     super(props);
 
@@ -43,7 +48,6 @@ class Cardbox extends React.Component {
             <button style={{ width: '120px', backgroundColor: 'transparent' }} type="btn-sm" name={ item.id } onClick={ this.handleClick } className="text">Read</button>
 
           </div>
-          {/* <text className="text-muted" disabled style={{ fontStyle: 'Bold', border: '10px', fontSize: '12px', }}>{item.bookTitle}</text> */}
         </div>
       </div>
     );

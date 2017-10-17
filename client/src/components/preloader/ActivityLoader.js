@@ -1,7 +1,18 @@
 import React from 'react';
 
-
+/**
+ * 
+ * 
+ * @class ActivityLoader
+ * @extends {React.Component}
+ */
 class ActivityLoader extends React.Component {
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof ActivityLoader
+   */
   render() {
     return (
       <div className="preloader-wrapper activity-loader big active">

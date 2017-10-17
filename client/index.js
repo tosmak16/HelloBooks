@@ -6,6 +6,9 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import jwtDecode from 'jwt-decode';
 import cloudinary from 'cloudinary-core';
+import pdfjsLib from 'pdfjs-dist';
+
+
 import 'react-pdf-reader/dist/sass/TextLayerBuilder.scss';
 import 'react-pdf-reader/dist/sass/PdfReader.scss';
 
@@ -34,6 +37,8 @@ import './public/fonts/roboto/Roboto-Thin.woff';
 import './public/fonts/roboto/Roboto-Thin.woff2';
 import routes from './src/routes/routes';
 import rootReducer from './reducers/rootReducer';
+
+pdfjsLib.PDFJS.workerSrc = '../../build/webpack/pdf.worker.bundle.js';
 
 
 const store = createStore(

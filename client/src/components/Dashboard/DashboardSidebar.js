@@ -19,6 +19,11 @@ let display = 'none';
  * @extends {React.Component}
  */
 class DashboardSidebar extends React.Component {
+  /**
+   * Creates an instance of DashboardSidebar.
+   * @param {any} props 
+   * @memberof DashboardSidebar
+   */
   constructor(props) {
     super(props);
 
@@ -205,7 +210,12 @@ class DashboardSidebar extends React.Component {
     e.preventDefault();
     this.props.logout();
   }
-
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof DashboardSidebar
+   */
   render() {
     return (
       <div className="row">
@@ -221,7 +231,10 @@ class DashboardSidebar extends React.Component {
 
 
                       <input
-                        disabled={ this.state.disabled } className="fileInput" id="photoInput" onChange={ this.handleImageChange }
+                        disabled={ this.state.disabled }
+                        className="fileInput"
+                        id="photoInput"
+                        onChange={ this.handleImageChange }
                         type="file"
                         accept=".png, .jpg, .jpeg"
                         placeholder="Upload profile image"
@@ -260,12 +273,14 @@ class DashboardSidebar extends React.Component {
             </ul>
           </div >
           <SingleActionModal
-            id={ 'modaE' } heading={ 'Oh!' }
+            id={ 'modaE' }
+            heading={ 'Oh!' }
             message={ this.state.error ? this.state.error : this.state.modalErrorMessage }
             onHandleExit={ this.handleExit }
           />
           <SingleActionModal
-            id={ 'modaS' } heading={ 'Done!' }
+            id={ 'modaS' }
+            heading={ 'Done!' }
             message={ this.state.message ? this.state.message : '' }
             onHandleExit={ this.handleExit }
           />

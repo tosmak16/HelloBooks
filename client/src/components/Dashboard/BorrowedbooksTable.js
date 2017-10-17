@@ -19,7 +19,18 @@ let pointer = false;
 let displayPreloader = 'none';
 
 let sortedData = '';
+/**
+ * 
+ * 
+ * @class BorrowedbooksTable
+ * @extends {React.Component}
+ */
 class BorrowedbooksTable extends React.Component {
+  /**
+       * Creates an instance of BorrowedbooksTable.
+       * @param {any} props 
+       * @memberof BorrowedbooksTable
+       */
   constructor(props) {
     super(props);
     this.state = {
@@ -37,7 +48,11 @@ class BorrowedbooksTable extends React.Component {
     this.handleRead = this.handleRead.bind(this);
     this.handleClose = this.handleClose.bind(this);
   }
-
+  /**
+       * 
+       * 
+       * @memberof BorrowedbooksTable
+       */
   componentWillMount() {
     if (isEmpty(this.props.data)) {
       this.props.getunreturnedBooks(localStorage.jwtToken);
@@ -51,6 +66,12 @@ class BorrowedbooksTable extends React.Component {
       $('.modal').modal();
     });
   }
+  /**
+       * 
+       * 
+       * @param {any} nextProps 
+       * @memberof BorrowedbooksTable
+       */
   componentWillReceiveProps(nextProps) {
     displayPreloader = 'none';
     sortedData = nextProps.item[0];
@@ -76,6 +97,12 @@ class BorrowedbooksTable extends React.Component {
       this.props.getborrowedBooks(localStorage.jwtToken);
     }
   }
+  /**
+       * 
+       * 
+       * @param {any} e 
+       * @memberof BorrowedbooksTable
+       */
   handleClick(e) {
     co = e.target.name;
     const Id = co.slice(0, co.search(','));
@@ -86,7 +113,12 @@ class BorrowedbooksTable extends React.Component {
     });
     $('#modal1').modal('open');
   }
-
+  /**
+       * 
+       * 
+       * @param {any} e 
+       * @memberof BorrowedbooksTable
+       */
   handleExit(e) {
     e.preventDefault();
 
@@ -96,7 +128,12 @@ class BorrowedbooksTable extends React.Component {
 
     this.props.refreshPage(true);
   }
-
+  /**
+       * 
+       * 
+       * @param {any} e 
+       * @memberof BorrowedbooksTable
+       */
   handleYes(e) {
     e.preventDefault();
     displayPreloader = 'block';
@@ -106,6 +143,12 @@ class BorrowedbooksTable extends React.Component {
     });
     $('#modal1').modal('close');
   }
+  /**
+       * 
+       * 
+       * @param {any} e 
+       * @memberof BorrowedbooksTable
+       */
   handleNo(e) {
     e.preventDefault();
     $('#modal1').modal('close');
@@ -113,17 +156,19 @@ class BorrowedbooksTable extends React.Component {
       pointer: true
     });
   }
-
+  /**
+       * 
+       * 
+       * @param {any} e 
+       * @memberof BorrowedbooksTable
+       */
   handleRead(e) {
     e.preventDefault();
     co = e.target.name;
-    const Id = co.slice(0, co.search(','));
     const bookId = co.slice(co.search(',') + 1);
-    console.log(bookId);
 
     const x = lodash.filter(this.props.bookData, o => o.id.toString() === bookId);
     pdfUrl = x[0].bookFile;
-    console.log(x[0].bookFile);
     pointer = true;
 
 
@@ -133,7 +178,12 @@ class BorrowedbooksTable extends React.Component {
 
     $('#pdf_reader').show();
   }
-
+  /**
+       * 
+       * 
+       * @param {any} e 
+       * @memberof BorrowedbooksTable
+       */
   handleClose(e) {
     e.preventDefault();
     pointer = false;
@@ -142,38 +192,44 @@ class BorrowedbooksTable extends React.Component {
     });
     $('#pdf_reader').hide();
   }
+  /**
+       * 
+       * 
+       * @returns 
+       * @memberof BorrowedbooksTable
+       */
   render() {
     if (this.props.data) {
       const { data } = this.props;
       tablerow = data.map(row =>
         (<BbTableRow
-          key={ row.id }
-          row={ row }
+                  key={ row.id }
+                  row={ row }
           value={ row.id }
           bookItem={ filterBy(this.props.bookData, ['id', row.bookId]) }
           onHandleClick={ this.handleClick }
-          onHandleRead={ this.handleRead }
+                  onHandleRead={ this.handleRead }
         />)
       );
     }
     return (
-      <div id="bb_table" className="row">
+          <div id="bb_table" className="row">
         <div id="pdf_reader" >
           {pointer && <PdfReader onHandleClose={ this.handleClose } pdfUrl={ pdfUrl } />}
 
         </div>
-        <div className="  col l10 offset-l2 col m10 offset-m2 col s12">
+              <div className="  col l10 offset-l2 col m10 offset-m2 col s12">
           <h4 className="sub-header"> Currently Reads</h4>
 
           <div className="responsive-table">
             <table id="table_bb" className="table responsive-table bordered highlight striped">
               <thead>
                 <tr>
-                  <th><span className="glyphicon glyphicon-education" /></th>
-                  <th>Title</th>
-                  <th>Author</th>
+                                  <th><span className="glyphicon glyphicon-education" /></th>
+                                  <th>Title</th>
+                                  <th>Author</th>
                   <th>Category</th>
-                  <th>ISBN</th>
+                                  <th>ISBN</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -184,8 +240,8 @@ class BorrowedbooksTable extends React.Component {
           </div>
 
 
-          <SingleActionModal
-            id={ 'modal3' } heading={ 'Done!' }
+                  <SingleActionModal
+                      id={ 'modal3' } heading={ 'Done!' }
             message={ this.state.message ? this.state.message : '' }
             onHandleExit={ this.handleExit }
           />
@@ -196,16 +252,19 @@ class BorrowedbooksTable extends React.Component {
           />
 
 
-          <DoubleActionModal
-            id={ 'modal1' }
+                  <DoubleActionModal
+                      id={ 'modal1' }
             onHandleClick={ this.handleYes }
             onHandleClose={ this.handleNo }
             bookTitle={ '' }
-            heading={ 'Do you want to return this book?' }
+                      heading={ 'Do you want to return this book?' }
           />
         </div>
 
-        <div style={{ display: displayPreloader.toString() }} id="activity-loader-id" className="activity">
+              <div
+          style={{ display: displayPreloader.toString() }}
+          id="activity-loader-id" className="activity"
+        >
           <ActivityLoader />
         </div>
       </div>

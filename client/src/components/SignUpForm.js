@@ -20,6 +20,11 @@ const membershipType = {
  * @extends {React.Component}
  */
 class SignUpForm extends React.Component {
+  /**
+   * *
+   * @param {any} props 
+   * @memberof SignUpForm
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -38,8 +43,9 @@ class SignUpForm extends React.Component {
   /**
    * 
    * 
-   * @param {event} e 
+   * @param {any} e 
    * @memberof SignUpForm
+   * 
    */
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -72,7 +78,6 @@ class SignUpForm extends React.Component {
 
         <Row>
           <Input
-            placeholder="Firstname"
             id="firstname" name="firstName"
             s={ 12 } label="First Name"
             value={ this.state.firstName }
@@ -83,7 +88,6 @@ class SignUpForm extends React.Component {
         </Row>
         <Row>
           <Input
-            placeholder="Last name"
             id="lastname" name="lastName"
             s={ 12 } label="Last Name"
             type="text"
@@ -102,7 +106,6 @@ class SignUpForm extends React.Component {
             onChange={ this.handleChange }
             id="inputSignUpEmail"
             className="form-control validate"
-            placeholder="Email address"
             required
             label="Email address"
           />
@@ -116,7 +119,6 @@ class SignUpForm extends React.Component {
             onChange={ this.handleChange }
             id="inputUsername"
             className="form-control validate"
-            placeholder="Username"
             required
             label="Username"
           />
@@ -130,7 +132,6 @@ class SignUpForm extends React.Component {
             value={ this.state.password }
             onChange={ this.handleChange }
             className="form-control validate"
-            placeholder="Password"
             required
             label="Password"
           />
@@ -150,7 +151,9 @@ class SignUpForm extends React.Component {
           </Input>
         </Row>
 
-        <a href=""><Button waves="light" id="signUbtn" className="btn btn-lg btn-success btn-block" type="submit">Sign up</Button></a>
+        <a href=""><Button
+          waves="light" id="signUbtn" className="btn btn-lg btn-success btn-block" type="submit"
+        >Sign up</Button></a>
       </form >
     );
   }

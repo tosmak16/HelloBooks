@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { browserHistory } from 'react-router';
+
 
 /**
  * 
@@ -9,6 +9,11 @@ import { browserHistory } from 'react-router';
  * @extends {React.Component}
  */
 class BooksCollection extends React.Component {
+  /**
+   * Creates an instance of BooksCollection.
+   * @param {any} props 
+   * @memberof BooksCollection
+   */
   constructor(props) {
     super(props);
 

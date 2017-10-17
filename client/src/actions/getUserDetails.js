@@ -4,7 +4,13 @@ import jwtDecode from 'jwt-decode';
 
 import { getuserdetailsError, getuserdetailsReponse, getuserdetailsRequest } from '../../actions/getUserDetails';
 
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} token 
+ * @returns 
+ */
 export default function getUserdetails(token) {
   let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;

@@ -18,19 +18,19 @@ import { userSignup } from '../actions/signupAction';
 export class SignUpPage extends React.Component {
   /**
    * *
+   * @method render
    * 
-   * @returns 
    * @memberof SignUpPage
+   * 
    */
   render() {
-    const { userSignup, reg } = this.props;
     return (
       <div>
         <div className="row">
           <div className="col s12 col l12 col m12">
             <div id="signup_border" className="col s12 col m6 offset-m4 col 16 offset-l4">
               <div id="signUpForm" className="row">
-                <SignUpForm userSignup={ userSignup } reg={ reg } />
+                <SignUpForm userSignup={ this.props.userSignup } reg={ this.props.reg } />
               </div>
             </div>
           </div>
@@ -46,9 +46,17 @@ SignUpPage.propTypes = {
   userSignup: PropTypes.func.isRequired,
 };
 
-function mapStateToProps(state) {
+/**
+ * 
+ * 
+ * @param {any} state 
+ * @returns 
+ *
+*/
+
+const mapStateToProps = function mapStateToProps(state) {
   return {
     reg: state.reg[0]
   };
-}
+};
 export default connect(mapStateToProps, { userSignup })(SignUpPage);

@@ -1,8 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-
+/**
+ * 
+ * 
+ * @class LandingPage
+ * @extends {React.Component}
+ */
 class LandingPage extends React.Component {
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof LandingPage
+   */
   render() {
     return (
       <div className="welcome">

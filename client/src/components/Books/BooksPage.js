@@ -57,14 +57,31 @@ export class BooksPage extends React.Component {
       <div className="">
         <div className="row">
           <div className="">
-            <SideBar data={ this.props.data } showbooksByCategory={ this.props.showbooksByCategory } />
+            <SideBar
+              data={ this.props.data }
+              showbooksByCategory={ this.props.showbooksByCategory }
+            />
           </div>
           <div id="book_body" className="">
             <div className="row">
-              {this.props.isFetched && <BooksFilter checkBookDetails={ this.props.checkBookDetails } searchbooks={ this.props.searchbooks } filteredData={ this.props.filteredData } data={ this.props.data } />}
-              {this.props.isFetched && <BooksCategory checkBookDetails={ this.props.checkBookDetails } data={ this.props.categoryData } />}
-              {this.props.isFetched && <BooksPhoto checkBookDetails={ this.props.checkBookDetails } data={ this.props.data } />}
-              {this.props.isFetched && <BooksCollection checkBookDetails={ this.props.checkBookDetails } heading={ 'Available books' } data={ this.props.data } />}
+              {this.props.isFetched &&
+                <BooksFilter
+                  checkBookDetails={ this.props.checkBookDetails }
+                  searchbooks={ this.props.searchbooks }
+                  filteredData={ this.props.filteredData } data={ this.props.data }
+                />}
+              {this.props.isFetched &&
+                <BooksCategory
+                  checkBookDetails={ this.props.checkBookDetails }
+                  data={ this.props.categoryData }
+                />}
+              {this.props.isFetched &&
+                <BooksPhoto
+                  checkBookDetails={ this.props.checkBookDetails }
+                  data={ this.props.data }
+                />}
+              {this.props.isFetched &&
+                <BooksCollection checkBookDetails={ this.props.checkBookDetails } heading={ 'Available books' } data={ this.props.data } />}
             </div>
           </div>
         </div>
@@ -85,7 +102,12 @@ BooksPage.propTypes = {
 
 };
 
-
+/**
+ * 
+ * 
+ * @param {any} state 
+ * @returns 
+ */
 function mapStateToProps(state) {
   return {
     isFetched: state.books[0].isFetched,

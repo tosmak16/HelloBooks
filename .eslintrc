@@ -50,6 +50,7 @@
         "react/no-did-update-set-state": "error",
         "react/no-direct-mutation-state": "off",
         "react/no-find-dom-node": "error",
+        "react/class-methods-use-this": "off",
         "react/no-is-mounted": "error",
         "react/no-multi-comp": [
             "error",
@@ -150,7 +151,7 @@
             }
         ],
         "valid-jsdoc": [
-            "error",
+            "off",
             {
                 "requireReturn": false,
                 "requireReturnType": false,
@@ -162,9 +163,9 @@
             "error",
             {
                 "require": {
-                    "FunctionDeclaration": false,
-                    "MethodDefinition": false,
-                    "ClassDeclaration": false
+                    "FunctionDeclaration": true,
+                    "MethodDefinition": true,
+                    "ClassDeclaration": true
                 }
             }
         ]

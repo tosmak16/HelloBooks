@@ -4,7 +4,13 @@ import 'whatwg-fetch'
 
 import { getbooksError, getbooksRequest, getbooksReponse } from '../../actions/getBooks';
 
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} set 
+ * @returns 
+ */
 export default function getbooks(set) {
   const token = window.localStorage.jwtToken;
   return (dispatch) => {

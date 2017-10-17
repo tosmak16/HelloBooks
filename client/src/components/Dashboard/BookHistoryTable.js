@@ -7,7 +7,18 @@ import BhTableRow from '../Dashboard/BhTableRow';
 
 
 let tablerow = '';
+/**
+ * 
+ * 
+ * @class BorrowHistoryTable
+ * @extends {React.Component}
+ */
 class BorrowHistoryTable extends React.Component {
+  /**
+   * 
+   * 
+   * @memberof BorrowHistoryTable
+   */
   componentWillMount() {
     if (isEmpty(this.props.data)) {
       this.props.getborrowedBooks(localStorage.jwtToken);
@@ -17,11 +28,23 @@ class BorrowHistoryTable extends React.Component {
       this.props.getbooks(true);
     }
   }
+  /**
+   * 
+   * 
+   * @param {any} nextProps 
+   * @memberof BorrowHistoryTable
+   */
   componentWillReceiveProps(nextProps) {
     if (nextProps.isRefreshed) {
       this.props.getborrowedBooks(localStorage.jwtToken);
     }
   }
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof BorrowHistoryTable
+   */
   render() {
     if (this.props.data) {
       const { data } = this.props;

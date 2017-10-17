@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import orderBy from 'lodash/orderBy';
 
 import Table from './Table';
 

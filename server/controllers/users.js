@@ -1,37 +1,13 @@
 import jwt from 'jsonwebtoken';
 import { SHA256 } from 'crypto-js';
 import isEmpty from 'lodash/isEmpty';
-import multer from 'multer';
-
 
 import db from '../models/index';
-
-
-let filename = '';
-
-const storage = multer.diskStorage({
-  destination(req, file, cb) {
-    cb(null, './client/public/img/');
-  },
-  filename(req, file, cb) {
-    cb(null, filename);
-  }
-});
-
-export const uploadAvatar = multer({
-  storage
-}).single('file');
 
 let membershipType;
 let print;
 let length;
 
-
-/**
-  * @param { object } req
-  * @param { object} res
-  * @returns { object } response
-  */
 export default {
   /**
   * @method signup
@@ -40,6 +16,8 @@ export default {
   * @param { object} res
   * @returns { object } response
   */
+
+
   signup(req, res) {
     if (!(req.body.password && req.body.username && req.body.email &&
       req.body.firstName && req.body.lastName && req.body.membershipType)) {
@@ -115,6 +93,8 @@ export default {
   * @param { object} res
   * @returns { object } response
   */
+
+
   list(req, res) {
     if (req.decoded.role === 'user') {
       return res.status(403).send({ message: 'Access Denied!' });
@@ -128,14 +108,14 @@ export default {
 
   /**
   * @method borrowbooks
-  * @desc This is a method that peroforms the action of borrowing books
+  * @desc This is a method that performs the action of borrowing books
   * @param { object } req
   * @param { object} res
   * @returns { object } response
   */
 
   borrowBooks(req, res) {
-    if (req.params.userId != req.decoded.id) {
+    if (req.params.userId.toString() !== req.decoded.id.toString()) {
       return res.status(403).send({ status: 403, message: 'Invalid Identity' });
     }
     if (!(req.params.userId && req.body.bookId)) {
@@ -224,12 +204,21 @@ export default {
 
                       })
                       .then(ouput => res.status(200).send({ status: 200, message: 'Book added to personal archive. happy reading!', ouput }))
-                      .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
+                      .catch(e =>
+                        res.status(400).send({
+                          status: 400, message: e.errors[0].message.toString(),
+                        }));
                   })
-                  .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
-              }).catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
-          }).catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
-      }).catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
+                  .catch(e =>
+                    res.status(400).send({
+                      status: 400, message: e.errors[0].message.toString(),
+                    }));
+              }).catch(e =>
+                res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
+          }).catch(e =>
+            res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
+      }).catch(e =>
+        res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
   },
 
   /**
@@ -240,8 +229,10 @@ export default {
   * @param { object} res
   * @returns { object } response
   */
+
+
   getUnreturnedBooks(req, res) {
-    if (req.params.userId != req.decoded.id) {
+    if (req.params.userId.toString() !== req.decoded.id.toString()) {
       return res.status(403).send({ status: 403, message: 'Invalid Identity' });
     }
     if (!(req.params.userId && req.query.returned)) {
@@ -265,8 +256,9 @@ export default {
   * @param { object} res
   * @returns { object } response
   */
+
   returnBooks(req, res) {
-    if (req.params.userId != req.decoded.id) {
+    if (req.params.userId.toString() !== req.decoded.id.toString()) {
       return res.status(403).send({ status: 403, message: 'Invalid Identity' });
     }
     if (!(req.params.userId && req.body.bookId)) {
@@ -296,24 +288,35 @@ export default {
                   .update({
                     stocknumber: (re.stocknumber + 1),
                   });
-              }).catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
-            res.status(200).send({ status: 200, message: 'book has been returned successfully' });
+              }).catch(e => res.status(400).send({
+                status:
+                400,
+                message: e.errors[0].message.toString(),
+              }));
+            res.status(200).send({
+              status: 200, message: 'book has been returned successfully'
+            });
           })
-          .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
+          .catch(e => res.status(400).send({
+            status: 400, message: e.errors[0].message.toString(),
+          }));
       })
-      .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
+      .catch(e => res.status(400).send({
+        status: 400, message: e.errors[0].message.toString(),
+      }));
   },
 
   /**
 * @method getBorrowedbooks
-* @desc This is a method that peroforms the action of listing 
+* @desc This is a method that performs the action of listing 
 * @desc all borrowed boks by a user
 * @param { object } req
 * @param { object} res
 * @returns { object } response
 */
+
   getBorrowedBooks(req, res) {
-    if (req.params.userId != req.decoded.id) {
+    if (req.params.userId.toString() !== req.decoded.id.toString()) {
       return res.status(403).send({ status: 403, message: 'Invalid Identity' });
     }
     if (!(req.params.userId)) {
@@ -329,8 +332,16 @@ export default {
       .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
   },
 
+  /**
+   * @method getUserDetails
+   * @description this method get some of the user details when requested
+   * @param {any} req 
+   * @param {any} res 
+   * @returns 
+   */
+
   getUserDetails(req, res) {
-    if (req.params.userId != req.decoded.id) {
+    if (req.params.userId.toString() !== req.decoded.id.toString()) {
       return res.status(403).send({ status: 403, message: 'Invalid Identity' });
     }
     return db.Users
@@ -343,9 +354,17 @@ export default {
       .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
   },
 
+  /**
+   * @method updateUser
+   * @description this method edit user details
+   * 
+   * @param {any} req 
+   * @param {any} res 
+   * @returns 
+   */
+
   updateUser(req, res) {
-    filename = req.body.profileImage;
-    if (req.params.userId != req.decoded.id) {
+    if (req.params.userId.toString() !== req.decoded.id.toString()) {
       return res.status(403).send({ status: 403, message: 'Invalid Identity' });
     }
     return db.Users
@@ -368,9 +387,18 @@ export default {
       .catch(error => res.status(400).send({ status: 400, message: error.errors[0].message }));
   },
 
+  /**
+   * @method changePassword
+   * @description this method changes user password 
+   * 
+   * @param {any} req 
+   * @param {any} res 
+   * @returns 
+   */
+
 
   changePassword(req, res) {
-    if (req.params.userId != req.decoded.id) {
+    if (req.params.userId.toString() !== req.decoded.id.toString()) {
       return res.status(403).send({ status: 403, message: 'Invalid Identity' });
     }
     return db.Users
@@ -393,17 +421,4 @@ export default {
       })
       .catch(error => res.status(400).send({ status: 400, message: error.errors[0].message }));
   },
-
-  // / upload user profile image
-  uploadImage(req, res) {
-    uploadAvatar(req, res, (err) => {
-      if (err) {
-        // An error occurred when uploading
-        res.status(400).send({ status: 400, message: 'Upload failed!' });
-      }
-      // Everything went fine
-
-      res.status(200).send({ status: 200, message: 'Image uploaded successfully' });
-    });
-  }
 };

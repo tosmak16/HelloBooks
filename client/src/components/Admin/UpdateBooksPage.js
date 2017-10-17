@@ -14,8 +14,18 @@ let sortedData = '';
 let pointer = true;
 let display = 'none';
 
-
+/**
+ * 
+ * 
+ * @class UpdateBooksPage
+ * @extends {React.Component}
+ */
 class UpdateBooksPage extends React.Component {
+  /**
+   * Creates an instance of UpdateBooksPage.
+   * @param {any} props 
+   * @memberof UpdateBooksPage
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -58,7 +68,12 @@ class UpdateBooksPage extends React.Component {
     this.handleFileChange = this.handleFileChange.bind(this);
   }
 
-
+  /**
+   * 
+   * 
+   * @param {any} nextProps 
+   * @memberof UpdateBooksPage
+   */
   componentWillReceiveProps(nextProps) {
     if (nextProps.filteredData.length !== 0 && this.state.show) {
       this.setState({
@@ -92,12 +107,9 @@ class UpdateBooksPage extends React.Component {
         show: false,
       });
     }
-
     sortedData = nextProps.item[0];
     if (this.state.display) {
       display = 'none';
-      console.log('xxxxxxxxxxxx');
-      console.log(nextProps.item);
       if (!lodash.isEmpty(sortedData.error) && this.state.display) {
         $('#modalE').modal('open');
         this.setState({
@@ -187,14 +199,16 @@ class UpdateBooksPage extends React.Component {
       }
     }
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UpdateBooksPage
+   */
   handleClick(e) {
     display = 'block';
     e.preventDefault();
     if (this.state.file.length !== 0 && this.state.bookFile.length === 0) {
-      console.log('******');
-      console.log(this.state.file);
-
       this.props.uploadImage(this.state.file);
       this.setState({
         display: false,
@@ -202,7 +216,6 @@ class UpdateBooksPage extends React.Component {
         trigger: true,
       });
     } else if (this.state.bookFile.length !== 0 && this.state.file.length === 0) {
-      console.log(this.state.bookFile);
       this.props.uploadFile(this.state.bookFile);
       this.setState({
         display: false,
@@ -227,7 +240,12 @@ class UpdateBooksPage extends React.Component {
     $('#modalO').modal('close');
   }
 
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UpdateBooksPage
+   */
   handleOpen(e) {
     pointer = true;
 
@@ -250,7 +268,12 @@ class UpdateBooksPage extends React.Component {
       pointer = false;
     }
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UpdateBooksPage
+   */
   handleClose(e) {
     e.preventDefault();
     this.setState({
@@ -261,7 +284,12 @@ class UpdateBooksPage extends React.Component {
     });
     $('#modalO').modal('close');
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UpdateBooksPage
+   */
   handleExit(e) {
     e.preventDefault();
     $('#modalE').modal('close');
@@ -275,12 +303,22 @@ class UpdateBooksPage extends React.Component {
     });
     setTimeout(() => { this.props.getbooks(true); }, 3000);
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UpdateBooksPage
+   */
   handleInputChange(e) {
     e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UpdateBooksPage
+   */
   handleChange(e) {
     e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
@@ -289,7 +327,12 @@ class UpdateBooksPage extends React.Component {
       this.props.searchbooks(this.state.filterBy, this.state.searchText, this.props.data);
     }
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UpdateBooksPage
+   */
   handleImageChange(e) {
     e.preventDefault();
     const reader = new FileReader();
@@ -317,7 +360,12 @@ class UpdateBooksPage extends React.Component {
     reader.readAsDataURL(file);
   }
 
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UpdateBooksPage
+   */
   handleFileChange(e) {
     e.preventDefault();
     const reader = new FileReader();
@@ -336,16 +384,30 @@ class UpdateBooksPage extends React.Component {
     reader.readAsDataURL(bookFile);
   }
 
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UpdateBooksPage
+   */
   handleSelected(e) {
     e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
   }
-
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof UpdateBooksPage
+   */
   render() {
     return (
       <div id="bh_table" className="row">
-        <form onSubmit={ this.handleSubmit } className="form-signin col l11 offset-l1 col m11 offset-m2 col s12" action="" encType="multipart/form-data">
+        <form
+          onSubmit={ this.handleSubmit }
+          className="form-signin col l11 offset-l1 col m11 offset-m2 col s12"
+          action="" encType="multipart/form-data"
+        >
           <div className="">
             <div className="">
               <MembershipSelect
@@ -354,7 +416,10 @@ class UpdateBooksPage extends React.Component {
               />
             </div>
             <div className="">
-              <SearchBar onChange={ this.handleChange } name="searchText" value={ this.state.searchText } />
+              <SearchBar
+                onChange={ this.handleChange }
+                name="searchText" value={ this.state.searchText }
+              />
             </div>
           </div >
           <h4 className="sub-header"> Edit book</h4>
@@ -431,7 +496,10 @@ class UpdateBooksPage extends React.Component {
               />
             </div>
             <div className="file-path-wrapper">
-              <input className="file-path validate" type="text" placeholder="Choose a cover image" />
+              <input
+                className="file-path validate"
+                type="text" placeholder="Choose a cover image"
+              />
 
             </div>
           </div>

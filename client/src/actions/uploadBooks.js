@@ -4,7 +4,14 @@ import { uploadImage } from './uploadImage';
 import { uploadbookError, uploadbookRequest, uploadbookResponse } from '../../actions/uploadBooks';
 
 
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} bookData 
+ * @param {any} token 
+ * @returns 
+ */
 export function uploadBook(bookData, token) {
   return (dispatch) => {
     dispatch(uploadbookRequest(bookData));

@@ -9,7 +9,18 @@ import FlashMessage from './FlashMessage';
 let messages = '';
 let message = '';
 let pointer = true;
+/**
+ * 
+ * 
+ * @class FlashMessagesList
+ * @extends {React.Component}
+ */
 class FlashMessagesList extends React.Component {
+  /**
+   * 
+   * 
+   * @memberof FlashMessagesList
+   */
   componentWillMount() {
     if (!isEmpty(this.props.message.text)) {
       message = <FlashMessage key={ this.props.message.id } message={ this.props.message } />;
@@ -21,7 +32,12 @@ class FlashMessagesList extends React.Component {
     }
   }
 
-
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof FlashMessagesList
+   */
   render() {
     return (
       <div>
@@ -39,6 +55,12 @@ FlashMessagesList.propTypes = {
 
 };
 
+/**
+ * 
+ * 
+ * @param {any} state 
+ * @returns 
+ */
 function mapStateToProps(state) {
   return {
     messages: state.popMessages[0],

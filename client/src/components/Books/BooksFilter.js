@@ -8,7 +8,18 @@ import MembershipSelect from '../select/MembershipSelect';
 
 let actuator = false;
 
+/**
+ * 
+ * 
+ * @class BooksFilter
+ * @extends {React.Component}
+ */
 class BooksFilter extends React.Component {
+  /**
+   * Creates an instance of BooksFilter.
+   * @param {any} props 
+   * @memberof BooksFilter
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -23,11 +34,14 @@ class BooksFilter extends React.Component {
     this.handleSelected = this.handleChange.bind(this);
   }
 
-
+  /**
+   * 
+   * 
+   * @memberof BooksFilter
+   */
   componentWillMount() {
     actuator = false;
   }
-
 
   /**
    * 
@@ -79,7 +93,10 @@ class BooksFilter extends React.Component {
             />
           </div>
           <div className="col l6 col m6 col s12 ">
-            <SearchBar onChange={ this.handleChange } name="searchText" value={ this.state.searchText } />
+            <SearchBar
+              onChange={ this.handleChange }
+              name="searchText" value={ this.state.searchText }
+            />
           </div>
         </div >
         <div className="row">

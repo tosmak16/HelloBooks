@@ -1246,7 +1246,7 @@ exports[`Test Dashboard page components and container should test and take snaps
         placeholder="First Name"
         required={true}
         type="text"
-        value=""
+        value="Tobi"
       />
     </div>
     <div
@@ -1268,7 +1268,7 @@ exports[`Test Dashboard page components and container should test and take snaps
         placeholder="Last Name"
         required={true}
         type="text"
-        value=""
+        value="Akinola"
       />
     </div>
     <div
@@ -1290,7 +1290,7 @@ exports[`Test Dashboard page components and container should test and take snaps
         placeholder="Email address"
         required={true}
         type="email"
-        value=""
+        value="tobi@gmail.com"
       />
     </div>
     <div
@@ -1312,7 +1312,7 @@ exports[`Test Dashboard page components and container should test and take snaps
         placeholder="phone number"
         required={true}
         type="number"
-        value=""
+        value="0803723455"
       />
     </div>
     <select
@@ -1439,6 +1439,48 @@ exports[`Test Dashboard page components and container should test and take snaps
       >
         Edit
       </button>
+    </div>
+    <div
+      className="activity"
+      id="activity-loader-id"
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+    >
+      <div
+        className="preloader-wrapper activity-loader big active"
+      >
+        <div
+          className="gap-patch activity-gap2"
+        >
+          <div
+            className="spinner-layer activity-spinner spinner-red-only"
+          >
+            <div
+              className="circle-clipper left"
+            >
+              <div
+                className="circle"
+              />
+            </div>
+            <div
+              className="gap-patch activity-gap"
+            />
+            <div
+              className="circle"
+            />
+          </div>
+          <div
+            className="circle-clipper right"
+          >
+            <div
+              className="circle"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   </form>
 </div>

@@ -9,10 +9,20 @@ import UploadBooksPage from '../UploadBooksPage';
 import getbooks from '../../../actions/getBooks';
 import { uploadBook } from '../../../actions/uploadBooks';
 import { uploadImage } from '../../../actions/uploadImage';
-import { uploadFile } from '../../../actions/uploadFile';
+import { uploadFile } from '../../../actions/uploadBookFile';
 
-
+/**
+ * 
+ * 
+ * @class UploadBooksContainer
+ * @extends {React.Component}
+ */
 class UploadBooksContainer extends React.Component {
+  /**
+   * 
+   * 
+   * @memberof UploadBooksContainer
+   */
   componentWillMount() {
     if (!this.props.isFetched) {
       this.props.getbooks(true);
@@ -22,6 +32,12 @@ class UploadBooksContainer extends React.Component {
       $('.modal').modal();
     });
   }
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof UploadBooksContainer
+   */
   render() {
     return (
       <div >
@@ -52,15 +68,20 @@ UploadBooksContainer.propTypes = {
   uploadItem: PropTypes.array.isRequired,
 };
 
-
-function mapStateToProps(state) {
+/**
+ * 
+ * 
+ * @param {any} state 
+ * @returns 
+ */
+const mapStateToProps = function mapStateToProps(state) {
   return {
     isFetched: state.books[0].isFetched,
     imageUrl: state.uploadImages[0].response,
     uploadItem: state.uploadBooks,
-    fileUrl: state.fileUpload[0].response,
+    fileUrl: state.bookFileUpload[0].response,
   };
-}
+};
 
 export default connect(mapStateToProps, {
   getbooks,
