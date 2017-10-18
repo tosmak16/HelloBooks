@@ -80,7 +80,7 @@ export default {
         } else {
           // create a token
           jwt.sign({ id: result.id, user: result.username, role: result.role }, 'encoded', (err, token) => {
-            res.status(200).send({ status: 200, message: 'You have successfully logged in', token });
+            res.status(200).send({ status: 200, message: 'You have successfully logged in', token, result });
           });
         }
       })
@@ -116,7 +116,7 @@ export default {
 
   borrowBooks(req, res) {
     if (req.params.userId.toString() !== req.decoded.id.toString()) {
-      return res.status(403).send({ status: 403, message: 'Invalid Identity' });
+      return res.status(401).send({ status: 401, message: 'Invalid Identity' });
     }
     if (!(req.params.userId && req.body.bookId)) {
       return res.status(403).send({ status: 403, message: 'Book process not allowed' });
@@ -233,7 +233,7 @@ export default {
 
   getUnreturnedBooks(req, res) {
     if (req.params.userId.toString() !== req.decoded.id.toString()) {
-      return res.status(403).send({ status: 403, message: 'Invalid Identity' });
+      return res.status(401).send({ status: 401, message: 'Invalid Identity' });
     }
     if (!(req.params.userId && req.query.returned)) {
       return res.status(403).send({ status: 403, message: 'Book process not allowed' });
@@ -259,7 +259,7 @@ export default {
 
   returnBooks(req, res) {
     if (req.params.userId.toString() !== req.decoded.id.toString()) {
-      return res.status(403).send({ status: 403, message: 'Invalid Identity' });
+      return res.status(401).send({ status: 401, message: 'Invalid Identity' });
     }
     if (!(req.params.userId && req.body.bookId)) {
       return res.status(403).send({ status: 403, message: 'Book process not allowed' });
@@ -294,7 +294,7 @@ export default {
                 message: e.errors[0].message.toString(),
               }));
             res.status(200).send({
-              status: 200, message: 'book has been returned successfully'
+              status: 200, message: 'book has been returned successfully', result
             });
           })
           .catch(e => res.status(400).send({
@@ -317,10 +317,7 @@ export default {
 
   getBorrowedBooks(req, res) {
     if (req.params.userId.toString() !== req.decoded.id.toString()) {
-      return res.status(403).send({ status: 403, message: 'Invalid Identity' });
-    }
-    if (!(req.params.userId)) {
-      return res.status(403).send({ status: 403, message: 'Book process not allowed' });
+      return res.status(401).send({ status: 401, message: 'Invalid Identity' });
     }
     return db.borrowbook
       .findAll({
@@ -342,7 +339,7 @@ export default {
 
   getUserDetails(req, res) {
     if (req.params.userId.toString() !== req.decoded.id.toString()) {
-      return res.status(403).send({ status: 403, message: 'Invalid Identity' });
+      return res.status(401).send({ status: 401, message: 'Invalid Identity' });
     }
     return db.Users
       .findAll({
@@ -365,13 +362,13 @@ export default {
 
   updateUser(req, res) {
     if (req.params.userId.toString() !== req.decoded.id.toString()) {
-      return res.status(403).send({ status: 403, message: 'Invalid Identity' });
+      return res.status(401).send({ status: 401, message: 'Invalid Identity' });
     }
     return db.Users
       .findById(req.params.userId)
       .then((result) => {
         if (isEmpty(result)) {
-          return res.status(404).send({ status: 404, message: 'User does not exist' });
+          return res.status(401).send({ status: 401, message: 'User does not exist' });
         }
         return result
           .update({
@@ -399,7 +396,7 @@ export default {
 
   changePassword(req, res) {
     if (req.params.userId.toString() !== req.decoded.id.toString()) {
-      return res.status(403).send({ status: 403, message: 'Invalid Identity' });
+      return res.status(401).send({ status: 401, message: 'Invalid Identity' });
     }
     return db.Users
       .findOne({
@@ -409,7 +406,7 @@ export default {
         },
       }).then((result) => {
         if (isEmpty(result)) {
-          return res.status(404).send({ status: 404, message: 'Current password is wrong' });
+          return res.status(401).send({ status: 401, message: 'Current password is wrong' });
         }
 
         return result
