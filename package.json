@@ -18,7 +18,7 @@
     "db:drop": "sequelize db:migrate:undo:all",
     "migrate:test:db": "sequelize db:migrate",
     "heroku": "babel-node ./app.js",
-    "coveralls": "nyc report --reporter=text-lcov"
+    "coveralls": "nyc report --reporter=text-lcov | node node_modules/.bin/coveralls"
   },
   "keywords": [
     "style guide",
@@ -120,6 +120,7 @@
     "babel-watch": "^2.0.7",
     "chai": "^4.1.1",
     "chai-http": "^3.0.0",
+    "coveralls": "^2.13.1",
     "eslint": "^4.3.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-config-airbnb-base": "^11.3.1",
