@@ -22,7 +22,7 @@ class LoginForm extends React.Component {
     this.state = {
       username: '',
       password: '',
-      errors: ''
+      errors: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -59,16 +59,19 @@ class LoginForm extends React.Component {
   render() {
     const { error } = this.props.log;
     return (
-      <form onSubmit={ this.handleSubmit } className="form-signin" action="books.html" >
+      <form onSubmit={this.handleSubmit} className="form-signin" action="books.html" >
         <h4 className="form-signin-heading">Please log in</h4>
         {error && <p style={{ color: 'red' }} className="help-block">*{error}*</p>}
         <Row>
           <Input
-            s={ 12 } label="Username"
-            type="text" value={ this.state.username }
-            name="username" id="inputUsernamelog"
+            s={12}
+            label="Username"
+            type="text"
+            value={this.state.username}
+            name="username"
+            id="inputUsernamelog"
             className="form-control validate"
-            onChange={ this.handleChange }
+            onChange={this.handleChange}
             required
             autoFocus
           />
@@ -76,30 +79,38 @@ class LoginForm extends React.Component {
 
         <Row>
           <Input
-            s={ 12 } label="Password"
+            s={12}
+            label="Password"
             type="password"
             id="inputPassword"
             className="form-control validate"
-            placeholder="Password" required
+            placeholder="Password"
+            required
             autoFocus
             name="password"
-            value={ this.state.password }
-            onChange={ this.handleChange }
+            value={this.state.password}
+            onChange={this.handleChange}
           />
         </Row>
 
         <div className="row">
           <div>
             <input
-              defaultChecked="checked" name="group1" type="checkbox" value="" label="Remember me?"
-              className="filled-in checkbox-orange" id="filled-in-box"
+              defaultChecked="checked"
+              name="group1"
+              type="checkbox"
+              value=""
+              label="Remember me?"
+              className="filled-in checkbox-orange"
+              id="filled-in-box"
             />
             <label htmlFor="filled-in-box">Remember me?</label>
           </div>
         </div>
         <button
           id="loginbtn"
-          className="btn btn-lg btn-primary  btn-block" type="submit"
+          className="btn btn-lg btn-primary  btn-block"
+          type="submit"
         >Sign in</button>
         <p>
           <label htmlFor="forgot_pass" >
@@ -116,7 +127,7 @@ class LoginForm extends React.Component {
 
 LoginForm.propTypes = {
   getbooks: PropTypes.func.isRequired,
-  log: PropTypes.object.isRequired,
+  log: PropTypes.objectOf(PropTypes.any).isRequired,
   userSignin: PropTypes.func.isRequired,
 
 };

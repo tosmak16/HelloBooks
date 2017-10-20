@@ -174,61 +174,78 @@ class ChangePasswordPage extends React.Component {
           <div className="input-field">
             <label htmlFor="oldPassword" className="sr-only">Current Password</label>
             <input
-              type="password" id="oldPassword"
-              className="form-control validate" placeholder="Current password" required
-              value={ this.state.oldPassword }
-              name="oldPassword" onChange={ this.handleInputChange }
-              disabled={ this.state.disabled }
+              type="password"
+              id="oldPassword"
+              className="form-control validate"
+              placeholder="Current password"
+              required
+              value={this.state.oldPassword}
+              name="oldPassword"
+              onChange={this.handleInputChange}
+              disabled={this.state.disabled}
             />
           </div>
           <div className="input-field">
             <label htmlFor="newPassword" className="sr-only">New password</label>
             <input
-              type="password" id="newPassword"
-              className="form-control validate" placeholder="New password" required
-              value={ this.state.newPassword }
-              name="newPassword" onChange={ this.handleInputChange }
-              disabled={ this.state.disabled }
+              type="password"
+              id="newPassword"
+              className="form-control validate"
+              placeholder="New password"
+              required
+              value={this.state.newPassword}
+              name="newPassword"
+              onChange={this.handleInputChange}
+              disabled={this.state.disabled}
             />
           </div>
 
           <div className="input-field">
             <label htmlFor="confirmPassword" className="sr-only">Confirm password</label>
             <input
-              type="password" id="confirmPassword"
-              className="form-control validate" placeholder="Confirm password" required
-              value={ this.state.confirmPassword }
-              name="confirmPassword" onChange={ this.handleInputChange }
-              disabled={ this.state.disabled }
+              type="password"
+              id="confirmPassword"
+              className="form-control validate"
+              placeholder="Confirm password"
+              required
+              value={this.state.confirmPassword}
+              name="confirmPassword"
+              onChange={this.handleInputChange}
+              disabled={this.state.disabled}
             />
           </div>
           <SingleActionModal
-            id={ 'modalError' } heading={ 'Oh!' }
-            message={ this.state.errors ? this.state.errors : '' }
-            onHandleExit={ this.handleExit }
+            id={'modalError'}
+            heading={'Oh!'}
+            message={this.state.errors ? this.state.errors : ''}
+            onHandleExit={this.handleExit}
           />
           <SingleActionModal
-            id={ 'modalSuccess' } heading={ 'Done!' }
-            message={ this.state.message ? this.state.message : '' }
-            onHandleExit={ this.handleExit }
+            id={'modalSuccess'}
+            heading={'Done!'}
+            message={this.state.message ? this.state.message : ''}
+            onHandleExit={this.handleExit}
           />
           <DoubleActionModal
-            id={ 'modalOpen' }
-            onHandleClick={ this.handleClick }
-            onHandleClose={ this.handleClose }
-            bookTitle={ '' }
-            heading={ 'Do you want to change your password?' }
+            id={'modalOpen'}
+            onHandleClick={this.handleClick}
+            onHandleClose={this.handleClose}
+            bookTitle={''}
+            heading={'Do you want to change your password?'}
           />
           <div className="input-field inline">
             <button
-              id="editbtn" type="button" onClick={ this.handleSave }
+              id="editbtn"
+              type="button"
+              onClick={this.handleSave}
               className="btn btn-primary pbtn"
             >Submit</button>
           </div>
 
           <div
             style={{ display: displayPreloader.toString() }}
-            id="activity-loader-id" className="activity"
+            id="activity-loader-id"
+            className="activity"
           >
             <ActivityLoader />
           </div>

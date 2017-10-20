@@ -39,7 +39,7 @@ exports[`SignupPage should test and take snapshot of SignUpPage 1`] = `
                   id="firstname"
                   name="firstName"
                   onChange={[Function]}
-                  placeholder="Firstname"
+                  placeholder={undefined}
                   required={true}
                   type="text"
                   value=""
@@ -66,7 +66,7 @@ exports[`SignupPage should test and take snapshot of SignUpPage 1`] = `
                   id="lastname"
                   name="lastName"
                   onChange={[Function]}
-                  placeholder="Last name"
+                  placeholder={undefined}
                   required={true}
                   type="text"
                   value=""
@@ -93,7 +93,7 @@ exports[`SignupPage should test and take snapshot of SignUpPage 1`] = `
                   id="inputSignUpEmail"
                   name="email"
                   onChange={[Function]}
-                  placeholder="Email address"
+                  placeholder={undefined}
                   required={true}
                   type="email"
                   value=""
@@ -120,7 +120,7 @@ exports[`SignupPage should test and take snapshot of SignUpPage 1`] = `
                   id="inputUsername"
                   name="username"
                   onChange={[Function]}
-                  placeholder="Username"
+                  placeholder={undefined}
                   required={true}
                   type="text"
                   value=""
@@ -147,7 +147,7 @@ exports[`SignupPage should test and take snapshot of SignUpPage 1`] = `
                   id="inputsSignUpPassword"
                   name="password"
                   onChange={[Function]}
-                  placeholder="Password"
+                  placeholder={undefined}
                   required={true}
                   type="password"
                   value=""
@@ -247,37 +247,38 @@ exports[`SignupPage should test and take snapshot of SignUpPage 1`] = `
             className="footer-links"
           >
             <a
-              href="#"
+              onClick={[Function]}
+              style={Object {}}
             >
               Home
             </a>
-             ·
             <a
-              href="#"
+              onClick={[Function]}
+              style={Object {}}
             >
               Blog
             </a>
-             ·
             <a
-              href="#"
+              onClick={[Function]}
+              style={Object {}}
             >
               Pricing
             </a>
-             ·
             <a
-              href="#"
+              onClick={[Function]}
+              style={Object {}}
             >
               About
             </a>
-             ·
             <a
-              href="#"
+              onClick={[Function]}
+              style={Object {}}
             >
               Faq
             </a>
-             ·
             <a
-              href="#"
+              onClick={[Function]}
+              style={Object {}}
             >
               Contact
             </a>
@@ -317,6 +318,8 @@ exports[`SignupPage should test and take snapshot of SignUpPage 1`] = `
             <p>
               <a
                 href="tosmak16@gmail.com"
+                onClick={[Function]}
+                style={Object {}}
               >
                 tosmak16@gmail.com
               </a>
@@ -326,40 +329,46 @@ exports[`SignupPage should test and take snapshot of SignUpPage 1`] = `
         <div
           className="footer-right col l4 col m14 col s12"
         >
-          <p
+          <div
             className="footer-company-about"
           >
             <span>
               About Hello Book
             </span>
-              it's a simple application that helps manage  a libraryand its processes like stocking, tracking and renting books
-          </p>
+            <p>
+              it is a simple application that helps manage a library and its processes like stocking,tracking and renting books
+            </p>
+          </div>
           <div
             className="footer-icons"
           >
             <a
-              href="#"
+              onClick={[Function]}
+              style={Object {}}
             >
               <i
                 className="fa fa-facebook"
               />
             </a>
             <a
-              href="#"
+              onClick={[Function]}
+              style={Object {}}
             >
               <i
                 className="fa fa-twitter"
               />
             </a>
             <a
-              href="#"
+              onClick={[Function]}
+              style={Object {}}
             >
               <i
                 className="fa fa-linkedin"
               />
             </a>
             <a
-              href="#"
+              onClick={[Function]}
+              style={Object {}}
             >
               <i
                 className="fa fa-github"

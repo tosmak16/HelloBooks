@@ -27,8 +27,9 @@ export class Login extends React.Component {
       <div>
         <div id="loginForm" className="row">
           <LoginForm
-            getbooks={ this.props.getbooks }
-            userSignin={ this.props.userSignin } log={ this.props.log }
+            getbooks={this.props.getbooks}
+            userSignin={this.props.userSignin}
+            log={this.props.log}
           />
         </div>
         <Footer />
@@ -39,7 +40,7 @@ export class Login extends React.Component {
 
 Login.propTypes = {
   getbooks: PropTypes.func.isRequired,
-  log: PropTypes.object.isRequired,
+  log: PropTypes.objectOf(PropTypes.any).isRequired,
   userSignin: PropTypes.func.isRequired,
 
 };

@@ -28,7 +28,7 @@ export default function (Comp) {
       if (!this.props.isAuthenticated) {
         this.props.popMessage({
           type: 'error',
-          text: 'you need to sign in'
+          text: 'you need to sign in',
         });
 
 
@@ -54,7 +54,7 @@ export default function (Comp) {
      */
     render() {
       return (
-        <Comp { ...this.props } />
+        <Comp {...this.props} />
       );
     }
   }
@@ -72,7 +72,7 @@ export default function (Comp) {
    */
   function mapStateToProps(state) {
     return {
-      isAuthenticated: state.auth[0].isAuthenticated
+      isAuthenticated: state.auth[0].isAuthenticated,
     };
   }
   return connect(mapStateToProps, { popMessage })(Authenticate);

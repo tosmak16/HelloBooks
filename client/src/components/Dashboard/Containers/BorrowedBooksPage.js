@@ -50,18 +50,24 @@ export class DashboardPage extends React.Component {
         <div className="row">
           <div className="col s12 col m12 col l12">
             <DashboardSidebar
-              logout={ this.props.logout }
-              error={ this.props.error } imageUrl={ this.props.imageUrl }
-              data={ this.props.userData } message={ this.props.message }
-              updateUser={ this.props.updateUser } uploadAvatar={ this.props.uploadAvatar }
+              logout={this.props.logout}
+              error={this.props.error}
+              imageUrl={this.props.imageUrl}
+              data={this.props.userData}
+              message={this.props.message}
+              updateUser={this.props.updateUser}
+              uploadAvatar={this.props.uploadAvatar}
             />
             <BorrowedbooksTable
-              bookData={ this.props.bookData } data={ this.props.bbData }
-              getbooks={ this.props.getbooks } getborrowedBooks={ this.props.getborrowedBooks }
-              isRefreshed={ this.props.isRefreshed } refreshPage={ this.props.refreshPage }
-              returnbook={ this.props.returnbook }
-              getunreturnedBooks={ this.props.getunreturnedBooks }
-              item={ this.props.item }
+              bookData={this.props.bookData}
+              data={this.props.bbData}
+              getbooks={this.props.getbooks}
+              getborrowedBooks={this.props.getborrowedBooks}
+              isRefreshed={this.props.isRefreshed}
+              refreshPage={this.props.refreshPage}
+              returnbook={this.props.returnbook}
+              getunreturnedBooks={this.props.getunreturnedBooks}
+              item={this.props.item}
             />
           </div>
         </div>
@@ -121,5 +127,5 @@ export default connect(mapStateToProps, {
   refreshPage,
   updateUser,
   uploadAvatar,
-  logout
+  logout,
 })(DashboardPage);

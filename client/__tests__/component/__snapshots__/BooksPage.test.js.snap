@@ -67,19 +67,18 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
       data-collapsible="accordion"
     >
       <li>
-         
         <div
           className="collapsible-header"
         >
-           
-          <label
+          <a
             className="heada"
             onClick={[Function]}
+            style={Object {}}
           >
             <b>
               SCIENCE&TECH
             </b>
-          </label>
+          </a>
            
         </div>
         <div
@@ -111,7 +110,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Computer"
@@ -124,25 +122,23 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         </div>
       </li>
       <li>
-         
         <div
           className="collapsible-header"
         >
-           
-          <label
+          <a
             className="heada"
             onClick={[Function]}
+            style={Object {}}
           >
             <b>
               LITERATURE
             </b>
-          </label>
+          </a>
            
         </div>
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Fiction"
@@ -156,7 +152,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Mystery"
@@ -170,7 +165,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Romance"
@@ -184,7 +178,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Sci-Fiction"
@@ -198,7 +191,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Adventure"
@@ -212,7 +204,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Action"
@@ -225,25 +216,23 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         </div>
       </li>
       <li>
-         
         <div
           className="collapsible-header"
         >
-           
-          <label
+          <a
             className="heada"
             onClick={[Function]}
+            style={Object {}}
           >
             <b>
               STYLE AND ART
             </b>
-          </label>
+          </a>
            
         </div>
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Arts"
@@ -257,7 +246,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Languages"
@@ -271,7 +259,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Fashion"
@@ -285,7 +272,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Food"
@@ -299,7 +285,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Games"
@@ -313,7 +298,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Music"
@@ -326,25 +310,23 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         </div>
       </li>
       <li>
-         
         <div
           className="collapsible-header"
         >
-           
-          <label
+          <a
             className="heada"
             onClick={[Function]}
+            style={Object {}}
           >
             <b>
               CAREER & MONEY
             </b>
-          </label>
+          </a>
            
         </div>
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Management"
@@ -358,7 +340,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Accounting"
@@ -372,7 +353,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Entrepreneurship"
@@ -386,7 +366,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Leadership"
@@ -399,25 +378,23 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         </div>
       </li>
       <li>
-         
         <div
           className="collapsible-header"
         >
-           
-          <label
+          <a
             className="heada"
             onClick={[Function]}
+            style={Object {}}
           >
             <b>
               PERSONAL GROWTH
             </b>
-          </label>
+          </a>
            
         </div>
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Psychology"
@@ -431,7 +408,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Relationships"
@@ -445,7 +421,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Self-Improvement"
@@ -459,7 +434,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Religion"
@@ -472,25 +446,23 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         </div>
       </li>
       <li>
-         
         <div
           className="collapsible-header"
         >
-           
-          <label
+          <a
             className="heada"
             onClick={[Function]}
+            style={Object {}}
           >
             <b>
               HEALTH & FITNESS
             </b>
-          </label>
+          </a>
            
         </div>
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Fitness"
@@ -504,7 +476,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Nutrition"
@@ -518,7 +489,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
             name="Sports"
@@ -715,19 +685,18 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
             data-collapsible="accordion"
           >
             <li>
-               
               <div
                 className="collapsible-header"
               >
-                 
-                <label
+                <a
                   className="heada"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   <b>
                     SCIENCE&TECH
                   </b>
-                </label>
+                </a>
                  
               </div>
               <div
@@ -759,7 +728,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Computer"
@@ -772,25 +740,23 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               </div>
             </li>
             <li>
-               
               <div
                 className="collapsible-header"
               >
-                 
-                <label
+                <a
                   className="heada"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   <b>
                     LITERATURE
                   </b>
-                </label>
+                </a>
                  
               </div>
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Fiction"
@@ -804,7 +770,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Mystery"
@@ -818,7 +783,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Romance"
@@ -832,7 +796,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Sci-Fiction"
@@ -846,7 +809,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Adventure"
@@ -860,7 +822,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Action"
@@ -873,25 +834,23 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               </div>
             </li>
             <li>
-               
               <div
                 className="collapsible-header"
               >
-                 
-                <label
+                <a
                   className="heada"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   <b>
                     STYLE AND ART
                   </b>
-                </label>
+                </a>
                  
               </div>
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Arts"
@@ -905,7 +864,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Languages"
@@ -919,7 +877,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Fashion"
@@ -933,7 +890,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Food"
@@ -947,7 +903,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Games"
@@ -961,7 +916,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Music"
@@ -974,25 +928,23 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               </div>
             </li>
             <li>
-               
               <div
                 className="collapsible-header"
               >
-                 
-                <label
+                <a
                   className="heada"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   <b>
                     CAREER & MONEY
                   </b>
-                </label>
+                </a>
                  
               </div>
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Management"
@@ -1006,7 +958,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Accounting"
@@ -1020,7 +971,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Entrepreneurship"
@@ -1034,7 +984,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Leadership"
@@ -1047,25 +996,23 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               </div>
             </li>
             <li>
-               
               <div
                 className="collapsible-header"
               >
-                 
-                <label
+                <a
                   className="heada"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   <b>
                     PERSONAL GROWTH
                   </b>
-                </label>
+                </a>
                  
               </div>
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Psychology"
@@ -1079,7 +1026,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Relationships"
@@ -1093,7 +1039,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Self-Improvement"
@@ -1107,7 +1052,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Religion"
@@ -1120,25 +1064,23 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               </div>
             </li>
             <li>
-               
               <div
                 className="collapsible-header"
               >
-                 
-                <label
+                <a
                   className="heada"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   <b>
                     HEALTH & FITNESS
                   </b>
-                </label>
+                </a>
                  
               </div>
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Fitness"
@@ -1152,7 +1094,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Nutrition"
@@ -1166,7 +1107,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
                   name="Sports"
@@ -1293,7 +1233,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
             <div
               className="col m5 col l3 col s6"
             >
-               
               <div
                 id="card_div"
               >
@@ -1431,7 +1370,6 @@ exports[`Test BooksPage component should test and take snapshot of booksphotoPag
     <div
       className="col m5 col l3 col s6"
     >
-       
       <div
         id="card_div"
       >

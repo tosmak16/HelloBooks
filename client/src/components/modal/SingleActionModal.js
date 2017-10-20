@@ -25,7 +25,8 @@ class SingleActionModal extends React.Component {
         </div>
         <div className="modal-footer">
           <a
-            href="" onClick={this.props.onHandleExit}
+            href=""
+            onClick={this.props.onHandleExit}
             className="modal-action modal-close waves-effect waves-brown btn-flat"
           >Close</a>
         </div>

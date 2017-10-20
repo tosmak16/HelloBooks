@@ -34,7 +34,7 @@ export default function (Comp) {
         if (!localStorage.jwtToken) {
           this.props.popMessage({
             type: 'error',
-            text: 'Access denied!'
+            text: 'Access denied!',
           });
           browserHistory.push('/login');
         }
@@ -64,7 +64,7 @@ export default function (Comp) {
      */
     render() {
       return (
-        <Comp { ...this.props } />
+        <Comp {...this.props} />
       );
     }
   }
@@ -80,7 +80,7 @@ export default function (Comp) {
    */
   function mapStateToProps(state) {
     return {
-      isAuthenticated: state.auth[0].isAuthenticated
+      isAuthenticated: state.auth[0].isAuthenticated,
     };
   }
   return connect(mapStateToProps, { popMessage })(AdminShield);

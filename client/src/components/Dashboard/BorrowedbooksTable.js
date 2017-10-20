@@ -109,7 +109,7 @@ class BorrowedbooksTable extends React.Component {
     const bookId = co.slice(co.search(',') + 1);
     this.setState({
       bookId,
-      Id
+      Id,
     });
     $('#modal1').modal('open');
   }
@@ -153,7 +153,7 @@ class BorrowedbooksTable extends React.Component {
     e.preventDefault();
     $('#modal1').modal('close');
     this.setState({
-      pointer: true
+      pointer: true,
     });
   }
   /**
@@ -173,7 +173,7 @@ class BorrowedbooksTable extends React.Component {
 
 
     this.setState({
-      pointer: true
+      pointer: true,
     });
 
     $('#pdf_reader').show();
@@ -188,7 +188,7 @@ class BorrowedbooksTable extends React.Component {
     e.preventDefault();
     pointer = false;
     this.setState({
-      pointer: true
+      pointer: true,
     });
     $('#pdf_reader').hide();
   }
@@ -203,33 +203,33 @@ class BorrowedbooksTable extends React.Component {
       const { data } = this.props;
       tablerow = data.map(row =>
         (<BbTableRow
-                  key={ row.id }
-                  row={ row }
-          value={ row.id }
-          bookItem={ filterBy(this.props.bookData, ['id', row.bookId]) }
-          onHandleClick={ this.handleClick }
-                  onHandleRead={ this.handleRead }
-        />)
+          key={row.id}
+          row={row}
+          value={row.id}
+          bookItem={filterBy(this.props.bookData, ['id', row.bookId])}
+          onHandleClick={this.handleClick}
+          onHandleRead={this.handleRead}
+        />),
       );
     }
     return (
-          <div id="bb_table" className="row">
+      <div id="bb_table" className="row">
         <div id="pdf_reader" >
-          {pointer && <PdfReader onHandleClose={ this.handleClose } pdfUrl={ pdfUrl } />}
+          {pointer && <PdfReader onHandleClose={this.handleClose} pdfUrl={pdfUrl} />}
 
         </div>
-              <div className="  col l10 offset-l2 col m10 offset-m2 col s12">
+        <div className="  col l10 offset-l2 col m10 offset-m2 col s12">
           <h4 className="sub-header"> Currently Reads</h4>
 
           <div className="responsive-table">
             <table id="table_bb" className="table responsive-table bordered highlight striped">
               <thead>
                 <tr>
-                                  <th><span className="glyphicon glyphicon-education" /></th>
-                                  <th>Title</th>
-                                  <th>Author</th>
+                  <th><span className="glyphicon glyphicon-education" /></th>
+                  <th>Title</th>
+                  <th>Author</th>
                   <th>Category</th>
-                                  <th>ISBN</th>
+                  <th>ISBN</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -240,30 +240,33 @@ class BorrowedbooksTable extends React.Component {
           </div>
 
 
-                  <SingleActionModal
-                      id={ 'modal3' } heading={ 'Done!' }
-            message={ this.state.message ? this.state.message : '' }
-            onHandleExit={ this.handleExit }
+          <SingleActionModal
+            id={'modal3'}
+            heading={'Done!'}
+            message={this.state.message ? this.state.message : ''}
+            onHandleExit={this.handleExit}
           />
           <SingleActionModal
-            id={ 'modal2' } heading={ 'Oh!' }
-            message={ this.state.errors ? this.state.errors : '' }
-            onHandleExit={ this.handleExit }
+            id={'modal2'}
+            heading={'Oh!'}
+            message={this.state.errors ? this.state.errors : ''}
+            onHandleExit={this.handleExit}
           />
 
 
-                  <DoubleActionModal
-                      id={ 'modal1' }
-            onHandleClick={ this.handleYes }
-            onHandleClose={ this.handleNo }
-            bookTitle={ '' }
-                      heading={ 'Do you want to return this book?' }
+          <DoubleActionModal
+            id={'modal1'}
+            onHandleClick={this.handleYes}
+            onHandleClose={this.handleNo}
+            bookTitle={''}
+            heading={'Do you want to return this book?'}
           />
         </div>
 
-              <div
+        <div
           style={{ display: displayPreloader.toString() }}
-          id="activity-loader-id" className="activity"
+          id="activity-loader-id"
+          className="activity"
         >
           <ActivityLoader />
         </div>

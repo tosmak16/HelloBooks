@@ -19,12 +19,12 @@ describe('Signup Form Component test', () => {
   });
 
   it('should test and take snapshot of SignUpPage', () => {
-    const tree = render.create(<SignUpForm userSignup={ mockFuction } reg={{ error: '' }} />);
+    const tree = render.create(<SignUpForm userSignup={mockFuction} reg={{ error: '' }} />);
     expect(tree).toMatchSnapshot();
   });
 
   it('should test for handle change function', () => {
-    wrapper = shallow(<SignUpForm userSignup={ mockFuction } reg={{ error: '' }} />);
+    wrapper = shallow(<SignUpForm userSignup={mockFuction} reg={{ error: '' }} />);
     wrapper.instance().handeleFuction = mockFuction;
     wrapper.update();
     wrapper.instance().handleChange(e);
@@ -32,7 +32,7 @@ describe('Signup Form Component test', () => {
   });
 
   it('should test for handle submit function and error state', () => {
-    wrapper = shallow(<SignUpForm userSignup={ mockFuction } reg={{ error: 'hello' }} />);
+    wrapper = shallow(<SignUpForm userSignup={mockFuction} reg={{ error: 'hello' }} />);
     wrapper.instance().handeleFuction = mockFuction;
     wrapper.update();
     wrapper.instance().handleSubmit(event);

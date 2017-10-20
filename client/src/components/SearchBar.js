@@ -18,12 +18,13 @@ class SearchBar extends React.Component {
     return (
       <div className="input-field">
         <input
-          id="search" type="search"
+          id="search"
+          type="search"
           style={{ backgroundColor: 'white', textAlign: 'center' }}
           required
-          name={ this.props.name }
-          onChange={ this.props.onChange }
-          value={ this.props.value }
+          name={this.props.name}
+          onChange={this.props.onChange}
+          value={this.props.value}
         />
         <label className="label-icon" htmlFor="search">
           <i className="material-icons">search</i></label>

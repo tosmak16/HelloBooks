@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import NavigationBar from './NavigationBar';
 
 
@@ -29,5 +31,10 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  children: PropTypes.objectOf(PropTypes.any).isRequired,
+
+};
 
 export default App;

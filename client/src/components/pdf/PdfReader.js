@@ -66,18 +66,18 @@ class PdfReader extends Component {
       <div className="container" style={{ width: '100px' }}>
         <div id="pdf_chip" className="button red-text">
           <button
-            onClick={ this.props.onHandleClose }
+            onClick={this.props.onHandleClose}
             className="close material-icons"
           >close</button>
         </div>
         <Document
-          file={ this.props.pdfUrl }
-          onLoadSuccess={ this.handleDocumentLoad }
+          file={this.props.pdfUrl}
+          onLoadSuccess={this.handleDocumentLoad}
         >
-          <Page pageNumber={ this.state.pageNumber } />
+          <Page pageNumber={this.state.pageNumber} />
         </Document>
         <div id="pdf_chip" className="button red-text">
-          <button onClick={ this.handleNext } className="close material-icons">close</button>
+          <button onClick={this.handleNext} className="close material-icons">close</button>
         </div>
         <p>Page {this.state.pageNumber} of {this.state.numPages}</p>
       </div>

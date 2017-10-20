@@ -19,14 +19,14 @@ class BbTableRow extends React.Component {
     const { bookItem } = this.props;
     return (
       <tr >
-        <td><img src={ bookItem[0].image } style={{ width: '30px', height: '30px' }} alt="name" /></td>
+        <td><img src={bookItem[0].image} style={{ width: '30px', height: '30px' }} alt="name" /></td>
         <td> {bookItem[0].bookTitle}</td>
         <td >{bookItem[0].author}</td>
         <td>{bookItem[0].category}</td>
         <td>{bookItem[0].isbn}</td>
         <td>
-          <button name={ `${row.id},${row.bookId}` } onClick={ this.props.onHandleRead } className="material-icons green-text">import_contacts</button>
-          <button name={ `${row.id},${row.bookId}` } onClick={ this.props.onHandleClick } className="material-icons red-text">assignment_return</button>
+          <button name={`${row.id},${row.bookId}`} onClick={this.props.onHandleRead} className="material-icons green-text">import_contacts</button>
+          <button name={`${row.id},${row.bookId}`} onClick={this.props.onHandleClick} className="material-icons red-text">assignment_return</button>
 
         </td>
       </tr >

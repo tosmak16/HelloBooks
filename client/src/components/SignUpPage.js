@@ -30,7 +30,7 @@ export class SignUpPage extends React.Component {
           <div className="col s12 col l12 col m12">
             <div id="signup_border" className="col s12 col m6 offset-m4 col 16 offset-l4">
               <div id="signUpForm" className="row">
-                <SignUpForm userSignup={ this.props.userSignup } reg={ this.props.reg } />
+                <SignUpForm userSignup={this.props.userSignup} reg={this.props.reg} />
               </div>
             </div>
           </div>
@@ -42,7 +42,7 @@ export class SignUpPage extends React.Component {
 }
 
 SignUpPage.propTypes = {
-  reg: PropTypes.object.isRequired,
+  reg: PropTypes.objectOf(PropTypes.any).isRequired,
   userSignup: PropTypes.func.isRequired,
 };
 
@@ -56,7 +56,7 @@ SignUpPage.propTypes = {
 
 const mapStateToProps = function mapStateToProps(state) {
   return {
-    reg: state.reg[0]
+    reg: state.reg[0],
   };
 };
 export default connect(mapStateToProps, { userSignup })(SignUpPage);

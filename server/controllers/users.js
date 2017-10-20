@@ -50,8 +50,8 @@ export default {
           .catch((e) => {
             res.status(400).send({ status: 400, message: e.errors[0].message.toString(), e });
           });
-      }
-      );
+      },
+    );
   },
   /**
   * @method signin
@@ -214,11 +214,11 @@ export default {
                       status: 400, message: e.errors[0].message.toString(),
                     }));
               }).catch(e =>
-                res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
+                res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
           }).catch(e =>
-            res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
+            res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
       }).catch(e =>
-        res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
+        res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
   },
 
   /**
@@ -246,7 +246,7 @@ export default {
         },
       }).then(result =>
         res.status(200).send({ status: 200, message: 'Borrowed books history retrieved', result }))
-      .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
+      .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
   },
 
   /**
@@ -294,7 +294,7 @@ export default {
                 message: e.errors[0].message.toString(),
               }));
             res.status(200).send({
-              status: 200, message: 'book has been returned successfully', result
+              status: 200, message: 'book has been returned successfully', result,
             });
           })
           .catch(e => res.status(400).send({
@@ -326,7 +326,7 @@ export default {
         },
       }).then(result =>
         res.status(200).send({ status: 200, message: 'Borrowed books history retrieved', result }))
-      .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
+      .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
   },
 
   /**
@@ -348,7 +348,7 @@ export default {
           id: req.params.userId,
         },
       }).then(result => res.status(200).send({ status: 200, message: 'Success!', result }))
-      .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString(), }));
+      .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
   },
 
   /**
@@ -402,7 +402,7 @@ export default {
       .findOne({
         where: {
           id: req.params.userId,
-          password: SHA256(req.body.oldPassword).toString()
+          password: SHA256(req.body.oldPassword).toString(),
         },
       }).then((result) => {
         if (isEmpty(result)) {

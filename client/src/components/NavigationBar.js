@@ -49,7 +49,7 @@ class NavigationBar extends React.Component {
           <li><Link href="/dashboard" ><i
             className="material-icons left"
           >account_circle</i>{user.user} profile</Link></li>
-          <li><Link to={ '/login' } onClick={ this.handleLogout } ><i className="material-icons left">exit_to_app</i> Log out</Link></li>
+          <li><Link to={'/login'} onClick={this.handleLogout} ><i className="material-icons left">exit_to_app</i> Log out</Link></li>
         </ul>
       </div >
     );
@@ -61,7 +61,7 @@ class NavigationBar extends React.Component {
             className="material-icons left"
           >account_circle</i>{
             user.user} profile</Link></li>
-          <li><Link to={ '/login' } onClick={ this.handleLogout } ><i className="material-icons left">exit_to_app</i> Log out</Link></li>
+          <li><Link to={'/login'} onClick={this.handleLogout} ><i className="material-icons left">exit_to_app</i> Log out</Link></li>
         </ul>
       </div >
     );
@@ -70,12 +70,14 @@ class NavigationBar extends React.Component {
       <ul id="nav-mobile" className="right hide-on-small-only ">
         <li>
           <Link
-            to="/signup" id="signup"
+            to="/signup"
+            id="signup"
             className="waves-effect waves-light btn-sm btn-flat"
           ><i className="material-icons left">account_box</i> Sign Up</Link>
         </li>
         <li><Link
-          to="/login" id="login"
+          to="/login"
+          id="login"
           className="waves-effect waves-light btn-sm btn-flat"
         ><i className="material-icons left">exit_to_app</i> Sign In</Link></li>
       </ul>
@@ -84,12 +86,14 @@ class NavigationBar extends React.Component {
       <ul id="nav-mobile" className="left hide-on-med-and-up ">
         <li>
           <Link
-            to="/signup" id="signup"
+            to="/signup"
+            id="signup"
             className="waves-effect waves-light btn-sm btn-flat"
           ><i className="material-icons left">account_box</i> Sign Up</Link>
         </li>
         <li><Link
-          to="/login" id="login"
+          to="/login"
+          id="login"
           className="waves-effect waves-light btn-sm btn-flat"
         ><i className="material-icons left">exit_to_app</i> Sign In</Link></li>
       </ul>
@@ -101,7 +105,8 @@ class NavigationBar extends React.Component {
             <div className="nav-wrapper">
               <div style={{ marginLeft: '50px' }}>
                 <Link
-                  id="hello" className="brand-logo left"
+                  id="hello"
+                  className="brand-logo left"
                   to="/books"
                 ><i className="material-icons left"> collections</i>HelloBooks</Link>
               </div>
@@ -128,8 +133,8 @@ class NavigationBar extends React.Component {
 }
 
 NavigationBar.propTypes = {
-  auth: PropTypes.object.isRequired,
-  logout: PropTypes.func.isRequired
+  auth: PropTypes.objectOf(PropTypes.any).isRequired,
+  logout: PropTypes.func.isRequired,
 };
 /**
  * 
@@ -139,7 +144,7 @@ NavigationBar.propTypes = {
  */
 function mapStateToProps(state) {
   return {
-    auth: state.auth[0]
+    auth: state.auth[0],
   };
 }
 

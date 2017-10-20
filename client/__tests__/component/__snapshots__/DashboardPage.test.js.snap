@@ -1237,7 +1237,6 @@ exports[`Test Dashboard page components and container should test and take snaps
         First Name
       </label>
       <input
-        autoFocus={true}
         className="form-control validate"
         disabled={true}
         id="firstname"
@@ -1259,7 +1258,6 @@ exports[`Test Dashboard page components and container should test and take snaps
         Last Name
       </label>
       <input
-        autoFocus={true}
         className="form-control validate"
         disabled={true}
         id="lastname"
@@ -1281,7 +1279,6 @@ exports[`Test Dashboard page components and container should test and take snaps
         Email address
       </label>
       <input
-        autoFocus={true}
         className="form-control validate"
         disabled={true}
         id="inputSignUpEmail"
@@ -1303,7 +1300,6 @@ exports[`Test Dashboard page components and container should test and take snaps
         Phone number
       </label>
       <input
-        autoFocus={true}
         className="form-control validate"
         disabled={true}
         id="inputPhoneNumber"

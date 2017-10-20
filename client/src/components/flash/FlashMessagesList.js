@@ -23,11 +23,11 @@ class FlashMessagesList extends React.Component {
    */
   componentWillMount() {
     if (!isEmpty(this.props.message.text)) {
-      message = <FlashMessage key={ this.props.message.id } message={ this.props.message } />;
+      message = <FlashMessage key={this.props.message.id} message={this.props.message} />;
       pointer = true;
     }
     if (!isEmpty(this.props.messages.text)) {
-      messages = <FlashMessage key={ this.props.messages.id } message={ this.props.messages } />;
+      messages = <FlashMessage key={this.props.messages.id} message={this.props.messages} />;
       pointer = false;
     }
   }
@@ -50,8 +50,8 @@ class FlashMessagesList extends React.Component {
 
 
 FlashMessagesList.propTypes = {
-  message: PropTypes.object.isRequired,
-  messages: PropTypes.object.isRequired,
+  message: PropTypes.objectOf(PropTypes.any).isRequired,
+  messages: PropTypes.objectOf(PropTypes.any).isRequired,
 
 };
 
@@ -64,7 +64,7 @@ FlashMessagesList.propTypes = {
 function mapStateToProps(state) {
   return {
     messages: state.popMessages[0],
-    message: state.displayMessages[0]
+    message: state.displayMessages[0],
   };
 }
 

@@ -243,19 +243,18 @@ exports[`Test book Details page components and container should test and take sn
         data-collapsible="accordion"
       >
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 SCIENCE&TECH
               </b>
-            </label>
+            </a>
              
           </div>
           <div
@@ -287,7 +286,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Computer"
@@ -300,25 +298,23 @@ exports[`Test book Details page components and container should test and take sn
           </div>
         </li>
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 LITERATURE
               </b>
-            </label>
+            </a>
              
           </div>
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Fiction"
@@ -332,7 +328,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Mystery"
@@ -346,7 +341,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Romance"
@@ -360,7 +354,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Sci-Fiction"
@@ -374,7 +367,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Adventure"
@@ -388,7 +380,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Action"
@@ -401,25 +392,23 @@ exports[`Test book Details page components and container should test and take sn
           </div>
         </li>
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 STYLE AND ART
               </b>
-            </label>
+            </a>
              
           </div>
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Arts"
@@ -433,7 +422,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Languages"
@@ -447,7 +435,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Fashion"
@@ -461,7 +448,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Food"
@@ -475,7 +461,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Games"
@@ -489,7 +474,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Music"
@@ -502,25 +486,23 @@ exports[`Test book Details page components and container should test and take sn
           </div>
         </li>
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 CAREER & MONEY
               </b>
-            </label>
+            </a>
              
           </div>
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Management"
@@ -534,7 +516,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Accounting"
@@ -548,7 +529,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Entrepreneurship"
@@ -562,7 +542,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Leadership"
@@ -575,25 +554,23 @@ exports[`Test book Details page components and container should test and take sn
           </div>
         </li>
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 PERSONAL GROWTH
               </b>
-            </label>
+            </a>
              
           </div>
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Psychology"
@@ -607,7 +584,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Relationships"
@@ -621,7 +597,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Self-Improvement"
@@ -635,7 +610,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Religion"
@@ -648,25 +622,23 @@ exports[`Test book Details page components and container should test and take sn
           </div>
         </li>
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 HEALTH & FITNESS
               </b>
-            </label>
+            </a>
              
           </div>
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Fitness"
@@ -680,7 +652,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Nutrition"
@@ -694,7 +665,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Sports"
@@ -952,19 +922,18 @@ exports[`Test book Details page components and container should test and take sn
         data-collapsible="accordion"
       >
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 SCIENCE&TECH
               </b>
-            </label>
+            </a>
              
           </div>
           <div
@@ -996,7 +965,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Computer"
@@ -1009,25 +977,23 @@ exports[`Test book Details page components and container should test and take sn
           </div>
         </li>
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 LITERATURE
               </b>
-            </label>
+            </a>
              
           </div>
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Fiction"
@@ -1041,7 +1007,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Mystery"
@@ -1055,7 +1020,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Romance"
@@ -1069,7 +1033,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Sci-Fiction"
@@ -1083,7 +1046,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Adventure"
@@ -1097,7 +1059,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Action"
@@ -1110,25 +1071,23 @@ exports[`Test book Details page components and container should test and take sn
           </div>
         </li>
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 STYLE AND ART
               </b>
-            </label>
+            </a>
              
           </div>
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Arts"
@@ -1142,7 +1101,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Languages"
@@ -1156,7 +1114,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Fashion"
@@ -1170,7 +1127,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Food"
@@ -1184,7 +1140,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Games"
@@ -1198,7 +1153,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Music"
@@ -1211,25 +1165,23 @@ exports[`Test book Details page components and container should test and take sn
           </div>
         </li>
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 CAREER & MONEY
               </b>
-            </label>
+            </a>
              
           </div>
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Management"
@@ -1243,7 +1195,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Accounting"
@@ -1257,7 +1208,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Entrepreneurship"
@@ -1271,7 +1221,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Leadership"
@@ -1284,25 +1233,23 @@ exports[`Test book Details page components and container should test and take sn
           </div>
         </li>
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 PERSONAL GROWTH
               </b>
-            </label>
+            </a>
              
           </div>
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Psychology"
@@ -1316,7 +1263,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Relationships"
@@ -1330,7 +1276,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Self-Improvement"
@@ -1344,7 +1289,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Religion"
@@ -1357,25 +1301,23 @@ exports[`Test book Details page components and container should test and take sn
           </div>
         </li>
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 HEALTH & FITNESS
               </b>
-            </label>
+            </a>
              
           </div>
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Fitness"
@@ -1389,7 +1331,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Nutrition"
@@ -1403,7 +1344,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
               name="Sports"

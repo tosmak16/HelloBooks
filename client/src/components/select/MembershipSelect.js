@@ -20,8 +20,8 @@ class MembershipSelect extends React.Component {
         <select
           className="browser-default input-field"
           name="filterBy"
-          onChange={ this.props.onHandleSelected }
-          value={ this.props.value }
+          onChange={this.props.onHandleSelected}
+          value={this.props.value}
         >
           <option defaultValue="bookTitle">Search by</option>
           <option value="bookTitle">Title</option>
