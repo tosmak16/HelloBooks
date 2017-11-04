@@ -7,15 +7,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      brdate: {
+      borrowDate: {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      rdate: {
+      returnDate: {
         type: Sequelize.DATE,
         allowNull: true,
       },
-      retype: {
+      returnType: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },

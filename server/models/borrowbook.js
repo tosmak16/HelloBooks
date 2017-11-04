@@ -1,14 +1,14 @@
 export default (sequelize, DataTypes) => {
   const borrowbook = sequelize.define('borrowbook', {
-    brdate: {
+    borrowDate: {
       type: DataTypes.DATE,
       allowNull: false,
     },
-    rdate: {
+    returnDate: {
       type: DataTypes.DATE,
       allowNull: true,
     },
-    retype: {
+    returnType: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },

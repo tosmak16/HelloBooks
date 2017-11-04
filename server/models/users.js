@@ -51,7 +51,7 @@ export default (sequelize, DataTypes) => {
           msg: 'firstname can only contain strings',
         },
         len: {
-          args: [3, 100],
+          args: [2, 100],
           msg: 'Firstname should be longer than two characters',
         },
       },
@@ -69,7 +69,7 @@ export default (sequelize, DataTypes) => {
           msg: 'lastname can only contain strings',
         },
         len: {
-          args: [3, 100],
+          args: [2, 100],
           msg: 'Lastname should be longer than two characters',
         },
       },

@@ -4,113 +4,180 @@ import db from '../models/index';
 
 export default {
   /**
-* @method addbook
-* @desc This is a method that allows only admin to add books
-* @param { any } req
-* @param { any } res
-* @returns { object } response
-*/
-
+   * @method addbook
+   * @desc This method handles add books request
+   * @param { object} req
+   * @param { object} res
+   * @returns { object } response
+   */
   addBook(req, res) {
+    const {
+      bookTitle,
+      author,
+      category,
+      isbn,
+      stocknumber,
+      image,
+      bookFileUrl,
+      summary
+    } = req.body;
     if (req.decoded.role === 'user') {
-      return res.status(403).send({ status: 403, message: 'Access Denied!' });
+      return res.status(403).send({
+        status: 403,
+        message: 'Access Denied!'
+      });
     }
 
-    if (!(req.body.bookTitle && req.body.author && req.body.category &&
-      req.body.stocknumber && req.body.isbn && req.body.image && req.body.bookFileUrl)) {
-      return res.status(400).send({ status: 400, message: 'please enter the required book details' });
+    if (!(bookTitle && author && category &&
+        stocknumber && isbn && image && bookFileUrl)) {
+      return res.status(400).send({
+        status: 400,
+        message: 'please enter the required book details'
+      });
     }
 
     return db.Books
       .create({
-        bookTitle: req.body.bookTitle,
-        author: req.body.author,
-        category: req.body.category,
-        isbn: req.body.isbn,
-        stocknumber: req.body.stocknumber,
-        image: req.body.image,
-        bookFile: req.body.bookFileUrl,
-        summary: req.body.summary,
+        bookTitle,
+        author,
+        category,
+        isbn,
+        stocknumber,
+        image,
+        summary,
+        bookFile: bookFileUrl,
       })
-      .then(report => res.status(201).send({ status: 201, message: 'Book has been added to store', report }))
-      .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message }));
+      .then(bookReport => res.status(201).send({
+        status: 201,
+        message: 'Book has been added to store',
+        bookReport
+      }))
+      .catch(errorMessage => res.status(400).send({
+        status: 400,
+        message: errorMessage.errors[0].message
+      }));
   },
 
   /**
-  * @method getAllBooks
-  * @desc This is a method that allows users to get all available books
-  * @param { object } req
-  * @param { object} res
-  * @returns { object } response
-  */
-
+   * @method getAllBooks
+   * @desc This method handles get all books request
+   * @param { object } req
+   * @param { object} res
+   * @returns { object } response
+   */
   getAllBooks(req, res) {
     return db.Books
       .all()
-      .then(result => res.status(200).send({ status: 200, message: 'Success!', result }))
-      .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
+      .then(books => res.status(200).send({
+        status: 200,
+        message: 'Success!',
+        books
+      }))
+      .catch(errorMessage => res.status(400).send({
+        status: 400,
+        message: errorMessage.errors[0].message.toString()
+      }));
   },
 
   /**
-  * @method UpdateBook
-  * @desc This is a method that allows only admin to edit a book
-  * @param { any } req
-  * @param { any } res
-  * @returns { object } response
-  */
-
+   * @method UpdateBook
+   * @desc This method handles edit book request
+   * @param { object} req
+   * @param { object} res
+   * @returns { object } response
+   */
   updateBook(req, res) {
+    const {
+      bookTitle,
+      author,
+      category,
+      isbn,
+      stocknumber,
+      image,
+      bookFileUrl,
+      summary
+    } = req.body;
     if (req.decoded.role === 'user') {
-      return res.status(403).send({ status: 403, message: 'Access Denied!' });
+      return res.status(403).send({
+        status: 403,
+        message: 'Access Denied!'
+      });
     }
     return db.Books
       .findById(req.params.bookId)
-      .then((result) => {
-        if (isEmpty(result)) {
-          return res.status(404).send({ status: 404, message: 'Book does not exist' });
+      .then((book) => {
+        if (isEmpty(book)) {
+          return res.status(404).send({
+            status: 404,
+            message: 'Book does not exist'
+          });
         }
-        return result
+        return book
           .update({
-            bookTitle: req.body.bookTitle || result.bookTitle,
-            author: req.body.author || result.author,
-            category: req.body.category || result.category,
-            isbn: req.body.isbn || result.isbn,
-            stocknumber: req.body.stocknumber || result.stocknumber,
-            image: req.body.image || result.image,
-            bookFile: req.body.bookFileUrl || result.bookFile,
-            summary: req.body.summary || result.summary,
+            bookTitle: bookTitle || book.bookTitle,
+            author: author || book.author,
+            category: category || book.category,
+            isbn: isbn || book.isbn,
+            stocknumber: stocknumber || book.stocknumber,
+            image: image || book.image,
+            bookFile: bookFileUrl || book.bookFile,
+            summary: summary || book.summary,
           })
-          .then(() => res.status(200).send({ status: 200, message: 'Book has been updated', result })) // Send back the updated book
-          .catch(e =>
-            res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
+          .then(() => res.status(200).send({
+            status: 200,
+            message: 'Book has been updated',
+            book
+          }))
+          .catch(errorMessage =>
+            res.status(400).send({
+              status: 400,
+              message: errorMessage.errors[0].message.toString()
+            }));
       })
-      .catch(e => res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
+      .catch(errorMessage => res.status(400).send({
+        status: 400,
+        message: errorMessage.errors[0].message.toString()
+      }));
   },
   /**
-  * @method deletebooks
-  * @desc This is a method that allows only admin to delete books
-  * @param { object } req
-  * @param { object} res
-  * @returns { object } response
-  */
-
+   * @method deletebooks
+   * @desc This method handles delete books request
+   * @param { object } req
+   * @param { object} res
+   * @returns { object } response
+   */
   deleteBooks(req, res) {
     if (req.decoded.role === 'user') {
-      return res.status(403).send({ status: 403, message: 'Access Denied!' });
+      return res.status(403).send({
+        status: 403,
+        message: 'Access Denied!'
+      });
     }
 
     return db.Books
       .findById(req.params.bookId)
-      .then((result) => {
-        if (isEmpty(result)) {
-          return res.status(404).send({ status: 404, message: 'Book does not exist' });
+      .then((book) => {
+        if (isEmpty(book)) {
+          return res.status(404).send({
+            status: 404,
+            message: 'Book does not exist'
+          });
         }
-        result
+        book
           .destroy()
-          .then(() => res.status(204).send({ status: 204, message: 'book has been deleted' }))
-          .catch(e =>
-            res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
-      }).catch(e =>
-        res.status(400).send({ status: 400, message: e.errors[0].message.toString() }));
+          .then(() => res.status(204).send({
+            status: 204,
+            message: 'book has been deleted'
+          }))
+          .catch(errorMessage =>
+            res.status(400).send({
+              status: 400,
+              message: errorMessage.errors[0].message.toString()
+            }));
+      }).catch(errorMessage =>
+        res.status(400).send({
+          status: 400,
+          message: errorMessage.errors[0].message.toString()
+        }));
   },
 };

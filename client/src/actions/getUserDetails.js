@@ -1,8 +1,14 @@
 import axios from 'axios';
-import { browserHistory } from 'react-router';
+import {
+  browserHistory
+} from 'react-router';
 import jwtDecode from 'jwt-decode';
 
-import { getuserdetailsError, getuserdetailsReponse, getuserdetailsRequest } from '../../actions/getUserDetails';
+import {
+  getuserdetailsError,
+  getuserdetailsReponse,
+  getuserdetailsRequest
+} from '../../actions/getUserDetails';
 
 /**
  * 
@@ -19,21 +25,20 @@ export default function getUserdetails(token) {
     dispatch(getuserdetailsRequest());
 
     return fetch('http://localhost:8000/api/v2/users/' + userId, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json',
-        token: token
-      },
-    })
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json',
+          token: token
+        },
+      })
       .then(
-      (res) => res.json())
+        (res) => res.json())
       .then((response) => {
         if (response.status >= 400) {
           throw response.message
-        }
-        else if (response.status === 200) {
-          dispatch(getuserdetailsReponse(response.result));
+        } else if (response.status === 200) {
+          dispatch(getuserdetailsReponse(response.userDetails));
         }
       })
       .catch(error => {
