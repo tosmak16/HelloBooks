@@ -3,7 +3,15 @@ import lodash from 'lodash'
 import books from '../../reducers/books';
 import { getFilteredBooks } from '../../actions/getFilteredBooks';
 
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} filterBy 
+ * @param {any} searchText 
+ * @param {any} data 
+ * @returns 
+ */
 export default function searchbooks(filterBy, searchText, data) {
   const newArray = [];
   data.forEach((element) => {

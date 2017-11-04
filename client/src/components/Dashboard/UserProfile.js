@@ -1,19 +1,29 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
+import $ from 'jquery';
 
 
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
-import updateUser from '../../actions/updateuserDetails';
+import ActivityLoader from '../preloader/ActivityLoader';
 
 
 let sortedData = '';
 let pointer = false;
-
-
+let displayPreloader = 'none';
+/**
+ * 
+ * 
+ * @class Userprofile
+ * @extends {React.Component}
+ */
 class Userprofile extends React.Component {
+  /**
+   * Creates an instance of Userprofile.
+   * @param {any} props 
+   * @memberof Userprofile
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -47,7 +57,39 @@ class Userprofile extends React.Component {
   }
 
 
+  /**
+   * 
+   * @function componentWillReceiveProps
+   * @param {any} nextProps 
+   * @memberof Userprofile
+   */
+  componentWillMount() {
+    if (!isEmpty(this.props.data)) {
+      this.setState({
+        firstName: this.props.data[0].firstName,
+        lastName: this.props.data[0].lastName,
+        email: this.props.data[0].email,
+        mobileNumber: this.props.data[0].mobileNumber ? this.props.data[0].mobileNumber : 0,
+        membershipType: this.props.data[0].membershipType,
+        profileImage: this.props.data[0].profileImage,
+        show: false,
+
+      });
+    }
+
+    $(document).ready(() => {
+      $('.modal').modal();
+    });
+  }
+
+  /**
+   * 
+   * 
+   * @param {any} nextProps 
+   * @memberof Userprofile
+   */
   componentWillReceiveProps(nextProps) {
+    displayPreloader = 'none';
     if (!isEmpty(nextProps.data) && this.state.show) {
       this.setState({
         firstName: nextProps.data[0].firstName,
@@ -61,46 +103,71 @@ class Userprofile extends React.Component {
       });
     }
     sortedData = nextProps.item[0];
-    if (this.state.display) {
-      if (!isEmpty(sortedData.error) && this.state.display) {
-        document.getElementById('modalE').style.display = 'block';
-        this.setState({
-          display: false,
-          error: sortedData.error,
-        });
-      } else if (!isEmpty(sortedData.data) && this.state.display) {
-        this.setState({
-          display: false,
-          message: sortedData.data,
-          imageloaded: true
-        });
-        document.getElementById('modalS').style.display = 'block';
-      }
+
+
+    if (!isEmpty(sortedData.error) && this.state.display) {
+      $('#modalE').modal('open');
+      this.setState({
+        display: false,
+        error: sortedData.error,
+      });
+    } else if (!isEmpty(sortedData.data) && this.state.display) {
+      this.setState({
+        display: false,
+        message: sortedData.data,
+        imageloaded: true
+      });
+      $('#modalS').modal('open');
     }
   }
 
+  /**
+   * 
+   * @function handleExit
+   * @param {any} e 
+   * @memberof Userprofile
+   */
   handleExit(e) {
     e.preventDefault();
-    document.getElementById('modalE').style.display = 'none';
-    document.getElementById('modalS').style.display = 'none';
+
+    $('#modalE').modal('close');
+    $('#modalS').modal('close');
+
     this.setState({
       error: '',
       message: '',
       file: '',
     });
   }
-
+  /**
+   * 
+   * @function handleInputChange
+   * @param {any} e 
+   * @memberof Userprofile
+   */
   handleInputChange(e) {
-    e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
   }
-
+  /**
+   * 
+   * @function handleClose
+   * @param {any} e 
+   * @memberof Userprofile
+   */
   handleClose(e) {
     e.preventDefault();
-    document.getElementById('modalO').style.display = 'none';
+    this.setState({
+      displayErrorMessage: false,
+    });
+    $('#modalO').modal('close');
   }
 
-
+  /**
+   * 
+   * @function handleEdit
+   * @param {any} e 
+   * @memberof Userprofile
+   */
   handleEdit(e) {
     pointer = true;
     e.preventDefault();
@@ -112,6 +179,7 @@ class Userprofile extends React.Component {
       });
     }
 
+
     if (!this.state.disabled) {
       if (this.state.firstName && this.state.lastName && this.state.email && this.state.membershipType && pointer) {
         this.setState({
@@ -119,22 +187,34 @@ class Userprofile extends React.Component {
           disabled: true,
           buttonText: 'Edit',
         });
-        document.getElementById('modalO').style.display = 'block';
+        $('#modalO').modal('open');
         pointer = false;
       }
     }
   }
 
+  /**
+   * 
+   *@function handleClick
+   * @param {any} e 
+   * @memberof Userprofile
+   */
   handleClick(e) {
     e.preventDefault();
     this.setState({
       display: true,
     });
+    displayPreloader = 'block';
     this.props.updateUser(this.state, localStorage.jwtToken);
-    document.getElementById('modalO').style.display = 'none';
+    $('#modalO').modal('close');
   }
 
-
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof Userprofile
+   */
   render() {
     return (
 
@@ -144,37 +224,68 @@ class Userprofile extends React.Component {
           <div className="input-field">
             <label htmlFor="firstname" className="sr-only">First Name</label>
             <input
-              type="text" id="firstname" className="form-control validate" placeholder="First Name" required
-              autoFocus value={ this.state.firstName } name="firstName" onChange={ this.handleInputChange }
+              type="text"
+              id="firstname"
+              className="form-control validate"
+              placeholder="First Name"
+              required
+
+              value={ this.state.firstName }
+              name="firstName"
+              onChange={ this.handleInputChange }
               disabled={ this.state.disabled }
             />
           </div>
           <div className="input-field">
             <label htmlFor="lastname" className="sr-only">Last Name</label>
             <input
-              type="text" id="lastname" className="form-control validate" placeholder="Last Name" required
-              autoFocus value={ this.state.lastName } name="lastName" onChange={ this.handleInputChange }
+              type="text"
+              id="lastname"
+              className="form-control validate"
+              placeholder="Last Name"
+              required
+
+              value={ this.state.lastName }
+              name="lastName"
+              onChange={ this.handleInputChange }
               disabled={ this.state.disabled }
             />
           </div>
           <div className="input-field">
             <label htmlFor="inputSignUpEmail" className="sr-only">Email address</label>
             <input
-              type="email" id="inputSignUpEmail" className="form-control validate" placeholder="Email address" required
-              autoFocus value={ this.state.email } name="email" onChange={ this.handleInputChange }
+              type="email"
+              id="inputSignUpEmail"
+              className="form-control validate"
+              placeholder="Email address"
+              required
+
+              value={ this.state.email }
+              name="email"
+              onChange={ this.handleInputChange }
               disabled={ this.state.disabled }
             />
           </div>
           <div className="form-group">
             <label className="sr-only" htmlFor="inputPhoneNumber">Phone number</label>
             <input
-              type="number" id="inputPhoneNumber" className="form-control validate" placeholder="phone number" required
-              autoFocus value={ this.state.mobileNumber } name="mobileNumber" onChange={ this.handleInputChange }
+              type="number"
+              id="inputPhoneNumber"
+              className="form-control validate"
+              placeholder="phone number"
+              required
+
+              value={ this.state.mobileNumber }
+              name="mobileNumber"
+              onChange={ this.handleInputChange }
               disabled={ this.state.disabled }
             />
           </div>
 
-          <select name="membershipType" className="browser-default" onChange={ this.handleInputChange } disabled={ this.state.disabled } >
+          <select
+            name="membershipType" className="browser-default"
+            onChange={ this.handleInputChange } disabled={ this.state.disabled }
+          >
             <option defaultValue={ this.state.membershipType } >{this.state.membershipType}</option>
             <option value="Basic">Basic</option>
             <option value="Silver">Silver</option>
@@ -182,12 +293,14 @@ class Userprofile extends React.Component {
           </select>
 
           <SingleActionModal
-            id={ 'modalE' } heading={ 'Oh!' }
+            id={ 'modalE' }
+            heading={ 'Oh!' }
             message={ this.state.error ? this.state.error : this.state.modalErrorMessage }
             onHandleExit={ this.handleExit }
           />
           <SingleActionModal
-            id={ 'modalS' } heading={ 'Done!' }
+            id={ 'modalS' }
+            heading={ 'Done!' }
             message={ this.state.message ? this.state.message : '' }
             onHandleExit={ this.handleExit }
           />
@@ -200,7 +313,17 @@ class Userprofile extends React.Component {
           />
 
           <div className="input-field inline">
-            <button id="editbtn" type="button" onClick={ this.handleEdit } className="btn btn-primary pbtn">{this.state.buttonText}</button>
+            <button
+              id="editbtn" type="button" onClick={ this.handleEdit }
+              className="btn btn-primary pbtn"
+            >{this.state.buttonText}</button>
+          </div>
+
+          <div
+            style={{ display: displayPreloader.toString() }}
+            id="activity-loader-id" className="activity"
+          >
+            <ActivityLoader />
           </div>
 
         </form>
@@ -210,17 +333,11 @@ class Userprofile extends React.Component {
 }
 
 Userprofile.propTypes = {
+  data: PropTypes.array.isRequired,
   item: PropTypes.array.isRequired,
   updateUser: PropTypes.func.isRequired,
 
-
 };
 
-function mapStateToProps(state) {
-  return {
-    item: state.updateUser,
 
-  };
-}
-
-export default connect(mapStateToProps, { updateUser })(Userprofile);
+export default Userprofile;

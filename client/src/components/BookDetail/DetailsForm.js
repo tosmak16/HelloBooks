@@ -1,8 +1,8 @@
 import React from 'react';
-import { CardTitle, Card } from 'react-materialize';
 import lodash from 'lodash';
 import $ from 'jquery';
 import PropTypes from 'prop-types';
+import ActivityLoader from '../preloader/ActivityLoader';
 
 
 let bookId = '';
@@ -15,10 +15,21 @@ let stocknumber = 0;
 let author = '';
 let image = '';
 let summary = '';
-
 let sortedData = '';
+let display = 'none';
 
+/**
+ * 
+ * 
+ * @class DetailsForm
+ * @extends {React.Component}
+ */
 class DetailsForm extends React.Component {
+  /**
+   * Creates an instance of DetailsForm.
+   * @param {any} props 
+   * @memberof DetailsForm
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -32,6 +43,11 @@ class DetailsForm extends React.Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleExit = this.handleExit.bind(this);
   }
+  /**
+   * 
+   * 
+   * @memberof DetailsForm
+   */
   componentWillMount() {
     if (!lodash.isEmpty(localStorage.bookId)) {
       this.props.checkBookDetails(localStorage.bookId);
@@ -44,7 +60,7 @@ class DetailsForm extends React.Component {
         window.localStorage.setItem('bookId', bookId);
 
 
-        filteredData = lodash.filter(data, item => item.id == bookId);
+        filteredData = lodash.filter(data, item => item.id.toString() === bookId.toString());
 
         bookTitle = filteredData[0].bookTitle;
         id = filteredData[0].id;
@@ -66,7 +82,7 @@ class DetailsForm extends React.Component {
     }
 
 
-    if (this.props.data.length == 0) {
+    if (this.props.data.length === 0) {
       bookTitle = localStorage.getItem('bookTitle');
       id = localStorage.getItem('id');
       category = localStorage.getItem('category');
@@ -76,30 +92,47 @@ class DetailsForm extends React.Component {
       summary = localStorage.getItem('summary');
       image = localStorage.getItem('image');
     }
+
+    $(document).ready(() => {
+      // the "href" attribute of the modal 
+      // trigger must specify the modal ID that wants to be triggered
+      $('.modal').modal();
+    });
   }
 
-
-  componentWillReceiveProps(nextProps, set = true) {
+  /**
+   * 
+   * 
+   * @param {any} nextProps 
+   * @memberof DetailsForm
+   */
+  componentWillReceiveProps(nextProps) {
     sortedData = nextProps.item[0];
 
-
+    display = 'none';
     if (this.state.display) {
       if (!lodash.isEmpty(sortedData.error) && this.state.display) {
         this.setState({
           error: sortedData.error,
           display: false,
         });
-        if (set) { document.getElementById('modal2').style.display = 'block'; }
+        $('#modal2').modal('open');
       } else if (!lodash.isEmpty(sortedData.response) && this.state.display) {
         this.setState({
           message: sortedData.response,
           display: false,
         });
-        if (set) { document.getElementById('modal3').style.display = 'block'; }
+        $('#modal3').modal('open');
       }
     }
   }
 
+
+  /**
+   * 
+   * 
+   * @memberof DetailsForm
+   */
   componentWillUnmount() {
     localStorage.removeItem('bookId');
     localStorage.removeItem('id');
@@ -113,34 +146,72 @@ class DetailsForm extends React.Component {
     localStorage.removeItem('image');
   }
 
-  handleClick(e, set = true) {
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof DetailsForm
+   */
+  handleClick(e) {
     e.preventDefault();
     this.setState({
       display: true,
     });
+    display = 'block';
     this.props.borrowBooks(localStorage.jwtToken, localStorage.bookId);
-    if (set) { document.getElementById('modal1').style.display = 'none'; }
+    $('#modal1').modal('close');
   }
 
-  handleOpen(e, set = true) {
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof DetailsForm
+   */
+  handleOpen(e) {
     e.preventDefault();
-    if (set) { document.getElementById('modal1').style.display = 'block'; }
+    this.setState({
+      errorFix: true,
+    });
+    $('#modal1').modal('open');
   }
 
-  handleClose(e, set = true) {
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof DetailsForm
+   */
+  handleClose(e) {
     e.preventDefault();
-    if (set) { document.getElementById('modal1').style.display = 'none'; }
+    $('#modal1').modal('close');
+    this.setState({
+      errorFix: true,
+    });
   }
 
-  handleExit(e, set = true) {
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof DetailsForm
+   */
+  handleExit(e) {
     e.preventDefault();
-    if (set) {
-      document.getElementById('modal2').style.display = 'none';
-      document.getElementById('modal3').style.display = 'none';
-    }
+
+    $('#modal2').modal('close');
+    $('#modal3').modal('close');
+    this.setState({
+      errorFix: true,
+    });
   }
 
-
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof DetailsForm
+   */
   render() {
     const displayError = (<div id="modal2" className="modal">
       <div className="modal-content">
@@ -148,7 +219,10 @@ class DetailsForm extends React.Component {
         <p>{this.state.error}</p>
       </div>
       <div className="modal-footer">
-        <a href="" onClick={ this.handleExit } className="modal-action modal-close waves-effect waves-brown btn-flat">Close</a>
+        <a
+          href="" onClick={ this.handleExit }
+          className="modal-action modal-close waves-effect waves-brown btn-flat"
+        >Close</a>
       </div>
     </div>);
     const displaySuccess = (<div id="modal3" className="modal">
@@ -157,7 +231,10 @@ class DetailsForm extends React.Component {
         <p>{this.state.message}</p>
       </div>
       <div className="modal-footer">
-        <a href="" onClick={ this.handleExit } className="modal-action modal-close waves-effect waves-brown btn-flat">Close</a>
+        <a
+          href="" onClick={ this.handleExit }
+          className="modal-action modal-close waves-effect waves-brown btn-flat"
+        >Close</a>
       </div>
     </div>);
 
@@ -168,12 +245,9 @@ class DetailsForm extends React.Component {
           <div className="col m10  col l10 col s12 ">
             <div className="placeholders  ">
               <div className=" col s12 col m2 col l2 placeholder" id="photo">
-                <Card
-                  className="small card_holder_details"
-                  header={ <CardTitle id="card_box_details" image={ image } /> }
-
-                > {<a style={{ fontSize: '15px', color: 'black', fontStyle: 'bold' }} href="#" />}</Card>
-
+                <div id="img_body">
+                  <img src={ image } alt="avatar" style={{ width: '150px', height: '250px' }} />
+                </div>
               </div>
             </div>
             <div className=" col s10 col m7 col l7">
@@ -189,8 +263,14 @@ class DetailsForm extends React.Component {
                   <p>{bookTitle}</p>
                 </div>
                 <div className="modal-footer">
-                  <a href="" onClick={ this.handleClose } className="modal-action modal-close waves-effect waves-brown btn-flat">NO</a>
-                  <a href="" onClick={ this.handleClick } className="modal-action modal-close waves-effect waves-brown btn-flat">YES</a>
+                  <a
+                    href="" onClick={ this.handleClose }
+                    className="modal-action modal-close waves-effect waves-brown btn-flat"
+                  >NO</a>
+                  <a
+                    href="" onClick={ this.handleClick }
+                    className="modal-action modal-close waves-effect waves-brown btn-flat"
+                  >YES</a>
                 </div>
               </div>
               <span id="sum" className="text-muted">{summary}</span>
@@ -200,12 +280,21 @@ class DetailsForm extends React.Component {
                 <p className="bookinfo">Number in Stock: {stocknumber} </p>
               </div>
               <div className="form-inline">
-                <button id="wishbtn" type="button" className="btn-sm btn-warning shop modal-trigger" href="#modal1">Wishlist</button>
-                <button onClick={ this.handleOpen } id="borrowbtn" type="submit" className="btn-sm btn-success shop">Borrow</button>
+                <button
+                  id="wishbtn" type="button"
+                  className="btn-sm btn-warning shop"
+                >Wishlist</button>
+                <button
+                  onClick={ this.handleOpen }
+                  id="borrowbtn" type="submit" className="btn-sm btn-success shop"
+                >Borrow</button>
               </div>
             </div>
 
           </div>
+        </div>
+        <div style={{ display: display.toString() }} id="activity-loader-id" className="activity">
+          <ActivityLoader />
         </div>
       </div>
     );

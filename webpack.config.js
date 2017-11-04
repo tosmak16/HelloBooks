@@ -6,7 +6,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, '/client/public'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: '/',
   },
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
@@ -16,23 +16,23 @@ module.exports = {
       $: 'jquery',
       jQuery: 'jquery',
       'window.$': 'jquery',
-      'window.jQuery': 'jquery'
-    })
+      'window.jQuery': 'jquery',
+    }),
   ],
   module: {
     loaders: [
       {
-        test: /\.js?$/,
+        test: /\.jsx?$/,
         include: path.join(__dirname, 'client'),
         exclude: path.join(__dirname, 'node_modules/asx/js/'),
         loader: 'babel-loader',
         query: {
-          presets: ['es2015', 'react']
-        }
+          presets: ['es2015', 'react'],
+        },
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader'
+        loader: 'style-loader!css-loader',
       },
       {
         test: /\.(ttf|woff|woff2|eot|otf)$/,
@@ -41,9 +41,9 @@ module.exports = {
           options: {
             name: '[name].[ext]',
             outputPath: 'fonts/',
-            publicPath: './'
-          }
-        }
+            publicPath: './',
+          },
+        },
       },
       {
         test: /\.(png|jpg|gif|svg)$/i,
@@ -52,24 +52,30 @@ module.exports = {
           options: {
             name: '[name].[ext]',
             outputPath: 'images/',
-            publicPath: './'
-          }
-        }
+            publicPath: './',
+          },
+        },
       },
       {
         test: /\.scss$/,
         use: [{
-          loader: 'style-loader' // creates style nodes from JS strings
+          loader: 'style-loader', // creates style nodes from JS strings
         }, {
-          loader: 'css-loader' // translates CSS into CommonJS
+          loader: 'css-loader', // translates CSS into CommonJS
         }, {
-          loader: 'sass-loader' // compiles Sass to CSS
-        }]
-      }
-    ]
+          loader: 'sass-loader', // compiles Sass to CSS
+        }],
+      },
+
+      {
+        test: /\.worker\.js$/,
+        use: { loader: 'worker-loader' },
+      },
+
+    ],
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json']
-  }
+    extensions: ['.js', '.jsx', '.vue', '.json'],
+  },
 };
 

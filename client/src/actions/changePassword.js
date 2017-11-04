@@ -5,7 +5,14 @@ import jwtDecode from 'jwt-decode';
 import { changepasswordError, changepasswordRequest, changepasswordResponse } from '../../actions/changePassword';
 
 
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} userData 
+ * @param {any} token 
+ * @returns 
+ */
 export default function changePassword(userData, token) {
   let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;

@@ -5,6 +5,13 @@ export const UPDATE_BOOK_FAILURE = 'UPDATE_BOOK_FAILURE'
 
 
 //Action creators
+/**
+ * 
+ * 
+ * @export
+ * @param {any} bookData 
+ * @returns 
+ */
 export function updatebookRequest(bookData) {
   return {
     type: UPDATE_BOOK_REQUEST,
@@ -12,7 +19,13 @@ export function updatebookRequest(bookData) {
     bookData
   }
 }
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} response 
+ * @returns 
+ */
 export function updatebookResponse(response) {
   return {
     type: UPDATE_BOOK_SUCCESS,
@@ -20,7 +33,13 @@ export function updatebookResponse(response) {
     response
   }
 }
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} error 
+ * @returns 
+ */
 export function updatebookError(error) {
   return {
     type: UPDATE_BOOK_FAILURE,

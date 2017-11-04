@@ -1,21 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { browserHistory } from 'react-router';
 
 
+/**
+ * 
+ * 
+ * @class BooksCollection
+ * @extends {React.Component}
+ */
 class BooksCollection extends React.Component {
+  /**
+   * Creates an instance of BooksCollection.
+   * @param {any} props 
+   * @memberof BooksCollection
+   */
   constructor(props) {
     super(props);
 
     this.handleClick = this.handleClick.bind(this);
   }
 
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @param {boolean} [set=true] 
+   * @memberof BooksCollection
+   */
   handleClick(e) {
-    e.preventDefault();
-
     this.props.checkBookDetails(e.target.name, true);
-    browserHistory.push('/details');
   }
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof BooksCollection
+   */
   render() {
     const { data } = this.props;
 

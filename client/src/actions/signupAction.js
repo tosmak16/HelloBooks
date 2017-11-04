@@ -8,7 +8,13 @@ import 'whatwg-fetch'
 
 import { signupError, signupRequest, signupResponse } from '../../actions/signupActions';
 import { displayMessage } from '../../actions/displayMessages'
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} userData 
+ * @returns 
+ */
 export function userSignup(userData) {
   let error = '';
   return (dispatch) => {
@@ -35,7 +41,7 @@ export function userSignup(userData) {
             type: 'success',
             text: 'Registration successful'
           }));
-          browserHistory.push('/');
+          browserHistory.push('/login');
         }
       })
       .catch(error => {

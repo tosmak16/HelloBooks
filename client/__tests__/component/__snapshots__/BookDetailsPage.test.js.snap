@@ -19,50 +19,18 @@ exports[`Test book Details page components and container should test and take sn
           id="photo"
         >
           <div
-            className="small card_holder_details card"
+            id="img_body"
           >
-            <div
-              className="card-image"
-              id="card_box_details"
-            >
-              <img
-                className=""
-                src="l1.jpg"
-              />
-              <span
-                className="card-title"
-              />
-            </div>
-            <div
-              className="card-content"
-            >
-              <div>
-                 
-                <a
-                  href="#"
-                  style={
-                    Object {
-                      "color": "black",
-                      "fontSize": "15px",
-                      "fontStyle": "bold",
-                    }
-                  }
-                />
-              </div>
-            </div>
-            <div
-              className="card-reveal"
-            >
-              <span
-                className="card-title grey-text text-darken-4"
-              >
-                <i
-                  className="material-icons right"
-                >
-                  close
-                </i>
-              </span>
-            </div>
+            <img
+              alt="avatar"
+              src="l1.jpg"
+              style={
+                Object {
+                  "height": "250px",
+                  "width": "150px",
+                }
+              }
+            />
           </div>
         </div>
       </div>
@@ -198,8 +166,7 @@ exports[`Test book Details page components and container should test and take sn
           className="form-inline"
         >
           <button
-            className="btn-sm btn-warning shop modal-trigger"
-            href="#modal1"
+            className="btn-sm btn-warning shop"
             id="wishbtn"
             type="button"
           >
@@ -213,6 +180,48 @@ exports[`Test book Details page components and container should test and take sn
           >
             Borrow
           </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="activity"
+    id="activity-loader-id"
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+  >
+    <div
+      className="preloader-wrapper activity-loader big active"
+    >
+      <div
+        className="gap-patch activity-gap2"
+      >
+        <div
+          className="spinner-layer activity-spinner spinner-red-only"
+        >
+          <div
+            className="circle-clipper left"
+          >
+            <div
+              className="circle"
+            />
+          </div>
+          <div
+            className="gap-patch activity-gap"
+          />
+          <div
+            className="circle"
+          />
+        </div>
+        <div
+          className="circle-clipper right"
+        >
+          <div
+            className="circle"
+          />
         </div>
       </div>
     </div>
@@ -234,19 +243,18 @@ exports[`Test book Details page components and container should test and take sn
         data-collapsible="accordion"
       >
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 SCIENCE&TECH
               </b>
-            </label>
+            </a>
              
           </div>
           <div
@@ -254,9 +262,9 @@ exports[`Test book Details page components and container should test and take sn
           >
             <a
               className="boda"
-              href="#"
               name="Science"
               onClick={[Function]}
+              style={Object {}}
             >
               Science
             </a>
@@ -267,9 +275,9 @@ exports[`Test book Details page components and container should test and take sn
           >
             <a
               className="boda"
-              href="#"
               name="Technology"
               onClick={[Function]}
+              style={Object {}}
             >
               Technology
             </a>
@@ -278,12 +286,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Computer"
               onClick={[Function]}
+              style={Object {}}
             >
               Computer
             </a>
@@ -291,30 +298,28 @@ exports[`Test book Details page components and container should test and take sn
           </div>
         </li>
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 LITERATURE
               </b>
-            </label>
+            </a>
              
           </div>
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Fiction"
               onClick={[Function]}
+              style={Object {}}
             >
               Fiction
             </a>
@@ -323,12 +328,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Mystery"
               onClick={[Function]}
+              style={Object {}}
             >
               Mystery
             </a>
@@ -337,12 +341,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Romance"
               onClick={[Function]}
+              style={Object {}}
             >
               Romance
             </a>
@@ -351,12 +354,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Sci-Fiction"
               onClick={[Function]}
+              style={Object {}}
             >
               Sci-Fiction
             </a>
@@ -365,12 +367,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Adventure"
               onClick={[Function]}
+              style={Object {}}
             >
               Adventure
             </a>
@@ -379,12 +380,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Action"
               onClick={[Function]}
+              style={Object {}}
             >
               Action
             </a>
@@ -392,30 +392,28 @@ exports[`Test book Details page components and container should test and take sn
           </div>
         </li>
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 STYLE AND ART
               </b>
-            </label>
+            </a>
              
           </div>
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Arts"
               onClick={[Function]}
+              style={Object {}}
             >
               Arts
             </a>
@@ -424,12 +422,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Languages"
               onClick={[Function]}
+              style={Object {}}
             >
               Languages
             </a>
@@ -438,12 +435,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Fashion"
               onClick={[Function]}
+              style={Object {}}
             >
               Fashion
             </a>
@@ -452,12 +448,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Food"
               onClick={[Function]}
+              style={Object {}}
             >
               Food
             </a>
@@ -466,12 +461,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Games"
               onClick={[Function]}
+              style={Object {}}
             >
               Games
             </a>
@@ -480,12 +474,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Music"
               onClick={[Function]}
+              style={Object {}}
             >
               Music
             </a>
@@ -493,30 +486,28 @@ exports[`Test book Details page components and container should test and take sn
           </div>
         </li>
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 CAREER & MONEY
               </b>
-            </label>
+            </a>
              
           </div>
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Management"
               onClick={[Function]}
+              style={Object {}}
             >
               Management
             </a>
@@ -525,12 +516,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Accounting"
               onClick={[Function]}
+              style={Object {}}
             >
               Accounting
             </a>
@@ -539,12 +529,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Entrepreneurship"
               onClick={[Function]}
+              style={Object {}}
             >
               Entrepreneurship
             </a>
@@ -553,12 +542,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Leadership"
               onClick={[Function]}
+              style={Object {}}
             >
               Leadership
             </a>
@@ -566,30 +554,28 @@ exports[`Test book Details page components and container should test and take sn
           </div>
         </li>
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 PERSONAL GROWTH
               </b>
-            </label>
+            </a>
              
           </div>
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Psychology"
               onClick={[Function]}
+              style={Object {}}
             >
               Psychology
             </a>
@@ -598,12 +584,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Relationships"
               onClick={[Function]}
+              style={Object {}}
             >
               Relationships
             </a>
@@ -612,12 +597,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Self-Improvement"
               onClick={[Function]}
+              style={Object {}}
             >
               Self-Improvement
             </a>
@@ -626,12 +610,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Religion"
               onClick={[Function]}
+              style={Object {}}
             >
               Religion
             </a>
@@ -639,30 +622,28 @@ exports[`Test book Details page components and container should test and take sn
           </div>
         </li>
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 HEALTH & FITNESS
               </b>
-            </label>
+            </a>
              
           </div>
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Fitness"
               onClick={[Function]}
+              style={Object {}}
             >
               Fitness
             </a>
@@ -671,12 +652,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Nutrition"
               onClick={[Function]}
+              style={Object {}}
             >
               Nutrition
             </a>
@@ -685,12 +665,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Sports"
               onClick={[Function]}
+              style={Object {}}
             >
               Sports
             </a>
@@ -718,50 +697,18 @@ exports[`Test book Details page components and container should test and take sn
             id="photo"
           >
             <div
-              className="small card_holder_details card"
+              id="img_body"
             >
-              <div
-                className="card-image"
-                id="card_box_details"
-              >
-                <img
-                  className=""
-                  src="l1.jpg"
-                />
-                <span
-                  className="card-title"
-                />
-              </div>
-              <div
-                className="card-content"
-              >
-                <div>
-                   
-                  <a
-                    href="#"
-                    style={
-                      Object {
-                        "color": "black",
-                        "fontSize": "15px",
-                        "fontStyle": "bold",
-                      }
-                    }
-                  />
-                </div>
-              </div>
-              <div
-                className="card-reveal"
-              >
-                <span
-                  className="card-title grey-text text-darken-4"
-                >
-                  <i
-                    className="material-icons right"
-                  >
-                    close
-                  </i>
-                </span>
-              </div>
+              <img
+                alt="avatar"
+                src="l1.jpg"
+                style={
+                  Object {
+                    "height": "250px",
+                    "width": "150px",
+                  }
+                }
+              />
             </div>
           </div>
         </div>
@@ -897,8 +844,7 @@ exports[`Test book Details page components and container should test and take sn
             className="form-inline"
           >
             <button
-              className="btn-sm btn-warning shop modal-trigger"
-              href="#modal1"
+              className="btn-sm btn-warning shop"
               id="wishbtn"
               type="button"
             >
@@ -912,6 +858,48 @@ exports[`Test book Details page components and container should test and take sn
             >
               Borrow
             </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="activity"
+      id="activity-loader-id"
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+    >
+      <div
+        className="preloader-wrapper activity-loader big active"
+      >
+        <div
+          className="gap-patch activity-gap2"
+        >
+          <div
+            className="spinner-layer activity-spinner spinner-red-only"
+          >
+            <div
+              className="circle-clipper left"
+            >
+              <div
+                className="circle"
+              />
+            </div>
+            <div
+              className="gap-patch activity-gap"
+            />
+            <div
+              className="circle"
+            />
+          </div>
+          <div
+            className="circle-clipper right"
+          >
+            <div
+              className="circle"
+            />
           </div>
         </div>
       </div>
@@ -934,19 +922,18 @@ exports[`Test book Details page components and container should test and take sn
         data-collapsible="accordion"
       >
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 SCIENCE&TECH
               </b>
-            </label>
+            </a>
              
           </div>
           <div
@@ -954,9 +941,9 @@ exports[`Test book Details page components and container should test and take sn
           >
             <a
               className="boda"
-              href="#"
               name="Science"
               onClick={[Function]}
+              style={Object {}}
             >
               Science
             </a>
@@ -967,9 +954,9 @@ exports[`Test book Details page components and container should test and take sn
           >
             <a
               className="boda"
-              href="#"
               name="Technology"
               onClick={[Function]}
+              style={Object {}}
             >
               Technology
             </a>
@@ -978,12 +965,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Computer"
               onClick={[Function]}
+              style={Object {}}
             >
               Computer
             </a>
@@ -991,30 +977,28 @@ exports[`Test book Details page components and container should test and take sn
           </div>
         </li>
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 LITERATURE
               </b>
-            </label>
+            </a>
              
           </div>
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Fiction"
               onClick={[Function]}
+              style={Object {}}
             >
               Fiction
             </a>
@@ -1023,12 +1007,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Mystery"
               onClick={[Function]}
+              style={Object {}}
             >
               Mystery
             </a>
@@ -1037,12 +1020,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Romance"
               onClick={[Function]}
+              style={Object {}}
             >
               Romance
             </a>
@@ -1051,12 +1033,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Sci-Fiction"
               onClick={[Function]}
+              style={Object {}}
             >
               Sci-Fiction
             </a>
@@ -1065,12 +1046,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Adventure"
               onClick={[Function]}
+              style={Object {}}
             >
               Adventure
             </a>
@@ -1079,12 +1059,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Action"
               onClick={[Function]}
+              style={Object {}}
             >
               Action
             </a>
@@ -1092,30 +1071,28 @@ exports[`Test book Details page components and container should test and take sn
           </div>
         </li>
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 STYLE AND ART
               </b>
-            </label>
+            </a>
              
           </div>
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Arts"
               onClick={[Function]}
+              style={Object {}}
             >
               Arts
             </a>
@@ -1124,12 +1101,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Languages"
               onClick={[Function]}
+              style={Object {}}
             >
               Languages
             </a>
@@ -1138,12 +1114,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Fashion"
               onClick={[Function]}
+              style={Object {}}
             >
               Fashion
             </a>
@@ -1152,12 +1127,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Food"
               onClick={[Function]}
+              style={Object {}}
             >
               Food
             </a>
@@ -1166,12 +1140,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Games"
               onClick={[Function]}
+              style={Object {}}
             >
               Games
             </a>
@@ -1180,12 +1153,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Music"
               onClick={[Function]}
+              style={Object {}}
             >
               Music
             </a>
@@ -1193,30 +1165,28 @@ exports[`Test book Details page components and container should test and take sn
           </div>
         </li>
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 CAREER & MONEY
               </b>
-            </label>
+            </a>
              
           </div>
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Management"
               onClick={[Function]}
+              style={Object {}}
             >
               Management
             </a>
@@ -1225,12 +1195,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Accounting"
               onClick={[Function]}
+              style={Object {}}
             >
               Accounting
             </a>
@@ -1239,12 +1208,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Entrepreneurship"
               onClick={[Function]}
+              style={Object {}}
             >
               Entrepreneurship
             </a>
@@ -1253,12 +1221,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Leadership"
               onClick={[Function]}
+              style={Object {}}
             >
               Leadership
             </a>
@@ -1266,30 +1233,28 @@ exports[`Test book Details page components and container should test and take sn
           </div>
         </li>
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 PERSONAL GROWTH
               </b>
-            </label>
+            </a>
              
           </div>
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Psychology"
               onClick={[Function]}
+              style={Object {}}
             >
               Psychology
             </a>
@@ -1298,12 +1263,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Relationships"
               onClick={[Function]}
+              style={Object {}}
             >
               Relationships
             </a>
@@ -1312,12 +1276,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Self-Improvement"
               onClick={[Function]}
+              style={Object {}}
             >
               Self-Improvement
             </a>
@@ -1326,12 +1289,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Religion"
               onClick={[Function]}
+              style={Object {}}
             >
               Religion
             </a>
@@ -1339,30 +1301,28 @@ exports[`Test book Details page components and container should test and take sn
           </div>
         </li>
         <li>
-           
           <div
             className="collapsible-header"
           >
-             
-            <label
+            <a
               className="heada"
               onClick={[Function]}
+              style={Object {}}
             >
               <b>
                 HEALTH & FITNESS
               </b>
-            </label>
+            </a>
              
           </div>
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Fitness"
               onClick={[Function]}
+              style={Object {}}
             >
               Fitness
             </a>
@@ -1371,12 +1331,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Nutrition"
               onClick={[Function]}
+              style={Object {}}
             >
               Nutrition
             </a>
@@ -1385,12 +1344,11 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="collapsible-body"
           >
-             
             <a
               className="boda"
-              href="#"
               name="Sports"
               onClick={[Function]}
+              style={Object {}}
             >
               Sports
             </a>
@@ -1418,50 +1376,18 @@ exports[`Test book Details page components and container should test and take sn
             id="photo"
           >
             <div
-              className="small card_holder_details card"
+              id="img_body"
             >
-              <div
-                className="card-image"
-                id="card_box_details"
-              >
-                <img
-                  className=""
-                  src="l1.jpg"
-                />
-                <span
-                  className="card-title"
-                />
-              </div>
-              <div
-                className="card-content"
-              >
-                <div>
-                   
-                  <a
-                    href="#"
-                    style={
-                      Object {
-                        "color": "black",
-                        "fontSize": "15px",
-                        "fontStyle": "bold",
-                      }
-                    }
-                  />
-                </div>
-              </div>
-              <div
-                className="card-reveal"
-              >
-                <span
-                  className="card-title grey-text text-darken-4"
-                >
-                  <i
-                    className="material-icons right"
-                  >
-                    close
-                  </i>
-                </span>
-              </div>
+              <img
+                alt="avatar"
+                src="l1.jpg"
+                style={
+                  Object {
+                    "height": "250px",
+                    "width": "150px",
+                  }
+                }
+              />
             </div>
           </div>
         </div>
@@ -1597,8 +1523,7 @@ exports[`Test book Details page components and container should test and take sn
             className="form-inline"
           >
             <button
-              className="btn-sm btn-warning shop modal-trigger"
-              href="#modal1"
+              className="btn-sm btn-warning shop"
               id="wishbtn"
               type="button"
             >
@@ -1612,6 +1537,48 @@ exports[`Test book Details page components and container should test and take sn
             >
               Borrow
             </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="activity"
+      id="activity-loader-id"
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+    >
+      <div
+        className="preloader-wrapper activity-loader big active"
+      >
+        <div
+          className="gap-patch activity-gap2"
+        >
+          <div
+            className="spinner-layer activity-spinner spinner-red-only"
+          >
+            <div
+              className="circle-clipper left"
+            >
+              <div
+                className="circle"
+              />
+            </div>
+            <div
+              className="gap-patch activity-gap"
+            />
+            <div
+              className="circle"
+            />
+          </div>
+          <div
+            className="circle-clipper right"
+          >
+            <div
+              className="circle"
+            />
           </div>
         </div>
       </div>
@@ -1639,50 +1606,18 @@ exports[`Test book Details page components and container should test and take sn
           id="photo"
         >
           <div
-            className="small card_holder_details card"
+            id="img_body"
           >
-            <div
-              className="card-image"
-              id="card_box_details"
-            >
-              <img
-                className=""
-                src="l1.jpg"
-              />
-              <span
-                className="card-title"
-              />
-            </div>
-            <div
-              className="card-content"
-            >
-              <div>
-                 
-                <a
-                  href="#"
-                  style={
-                    Object {
-                      "color": "black",
-                      "fontSize": "15px",
-                      "fontStyle": "bold",
-                    }
-                  }
-                />
-              </div>
-            </div>
-            <div
-              className="card-reveal"
-            >
-              <span
-                className="card-title grey-text text-darken-4"
-              >
-                <i
-                  className="material-icons right"
-                >
-                  close
-                </i>
-              </span>
-            </div>
+            <img
+              alt="avatar"
+              src="l1.jpg"
+              style={
+                Object {
+                  "height": "250px",
+                  "width": "150px",
+                }
+              }
+            />
           </div>
         </div>
       </div>
@@ -1818,8 +1753,7 @@ exports[`Test book Details page components and container should test and take sn
           className="form-inline"
         >
           <button
-            className="btn-sm btn-warning shop modal-trigger"
-            href="#modal1"
+            className="btn-sm btn-warning shop"
             id="wishbtn"
             type="button"
           >
@@ -1833,6 +1767,48 @@ exports[`Test book Details page components and container should test and take sn
           >
             Borrow
           </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="activity"
+    id="activity-loader-id"
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+  >
+    <div
+      className="preloader-wrapper activity-loader big active"
+    >
+      <div
+        className="gap-patch activity-gap2"
+      >
+        <div
+          className="spinner-layer activity-spinner spinner-red-only"
+        >
+          <div
+            className="circle-clipper left"
+          >
+            <div
+              className="circle"
+            />
+          </div>
+          <div
+            className="gap-patch activity-gap"
+          />
+          <div
+            className="circle"
+          />
+        </div>
+        <div
+          className="circle-clipper right"
+        >
+          <div
+            className="circle"
+          />
         </div>
       </div>
     </div>

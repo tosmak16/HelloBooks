@@ -1,17 +1,28 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
 import PropTypes from 'prop-types';
+import $ from 'jquery';
 
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
-import changePassword from '../../actions/changePassword';
+import ActivityLoader from '../preloader/ActivityLoader';
 
 
 let sortedData = '';
+let displayPreloader = 'none';
 
-
+/**
+ * 
+ * 
+ * @class ChangePasswordPage
+ * @extends {React.Component}
+ */
 class ChangePasswordPage extends React.Component {
+  /**
+   * Creates an instance of ChangePasswordPage.
+   * @param {any} props 
+   * @memberof ChangePasswordPage
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -29,32 +40,103 @@ class ChangePasswordPage extends React.Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleExit = this.handleExit.bind(this);
   }
+  /**
+   * 
+   * 
+   * @memberof ChangePasswordPage
+   */
+  componentWillMount() {
+    $(document).ready(() => {
+      $('.modal').modal();
+    });
+  }
 
+  /**
+   * 
+   * 
+   * @param {any} nextProps 
+   * @memberof ChangePasswordPage
+   */
+  componentWillReceiveProps(nextProps) {
+    displayPreloader = 'none';
+    sortedData = nextProps.item[0];
+    if (this.state.display) {
+      if (!isEmpty(sortedData.error) && this.state.display) {
+        $('#modalError').modal('open');
+        this.setState({
+          display: false,
+          errors: sortedData.error,
+        });
+      } else if (!isEmpty(sortedData.data) && this.state.display) {
+        this.setState({
+          display: false,
+          oldPassword: '',
+          newPassword: '',
+          confirmPassword: '',
+          message: sortedData.data,
+        });
+        $('#modalSuccess').modal('open');
+      }
+    }
+  }
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof ChangePasswordPage
+   */
   handleClose(e) {
     e.preventDefault();
-    document.getElementById('modalOpen').style.display = 'none';
+    $('#modalOpen').modal('close');
+    this.setState({
+      displayErrorMessage: false,
+    });
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof ChangePasswordPage
+   */
   handleExit(e) {
     e.preventDefault();
-    document.getElementById('modalError').style.display = 'none';
-    document.getElementById('modalSuccess').style.display = 'none';
-  }
 
+    $('#modalError').modal('close');
+    $('#modalSuccess').modal('close');
+    this.setState({
+      displayErrorMessage: false,
+    });
+  }
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof ChangePasswordPage
+   */
   handleClick(e) {
     e.preventDefault();
     this.setState({
       display: true,
     });
-    document.getElementById('modalOpen').style.display = 'none';
-
+    $('#modalOpen').modal('close');
+    displayPreloader = 'block';
     this.props.changePassword(this.state, localStorage.jwtToken);
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof ChangePasswordPage
+   */
   handleInputChange(e) {
-    e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
   }
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof ChangePasswordPage
+   */
   handleSave(e) {
     e.preventDefault();
     if (!this.state.newPassword || !this.state.oldPassword || !this.state.confirmPassword) {
@@ -74,30 +156,15 @@ class ChangePasswordPage extends React.Component {
         error: '',
       });
 
-      document.getElementById('modalOpen').style.display = 'block';
+      $('#modalOpen').modal('open');
     }
   }
-  componentWillReceiveProps(nextProps) {
-    sortedData = nextProps.item[0];
-    if (this.state.display) {
-      if (!isEmpty(sortedData.error) && this.state.display) {
-        document.getElementById('modalError').style.display = 'block';
-        this.setState({
-          display: false,
-          errors: sortedData.error,
-        });
-      } else if (!isEmpty(sortedData.data) && this.state.display) {
-        this.setState({
-          display: false,
-          oldPassword: '',
-          newPassword: '',
-          confirmPassword: '',
-          message: sortedData.data,
-        });
-        document.getElementById('modalSuccess').style.display = 'block';
-      }
-    }
-  }
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof ChangePasswordPage
+   */
   render() {
     return (
       <div id="ch_pas">
@@ -107,49 +174,81 @@ class ChangePasswordPage extends React.Component {
           <div className="input-field">
             <label htmlFor="oldPassword" className="sr-only">Current Password</label>
             <input
-              type="password" id="oldPassword" className="form-control validate" placeholder="Current password" required
-              autoFocus value={ this.state.oldPassword } name="oldPassword" onChange={ this.handleInputChange }
-              disabled={ this.state.disabled }
+              type="password"
+              id="oldPassword"
+              className="form-control validate"
+              placeholder="Current password"
+              required
+              value={this.state.oldPassword}
+              name="oldPassword"
+              onChange={this.handleInputChange}
+              disabled={this.state.disabled}
             />
           </div>
           <div className="input-field">
             <label htmlFor="newPassword" className="sr-only">New password</label>
             <input
-              type="password" id="newPassword" className="form-control validate" placeholder="New password" required
-              autoFocus value={ this.state.newPassword } name="newPassword" onChange={ this.handleInputChange }
-              disabled={ this.state.disabled }
+              type="password"
+              id="newPassword"
+              className="form-control validate"
+              placeholder="New password"
+              required
+              value={this.state.newPassword}
+              name="newPassword"
+              onChange={this.handleInputChange}
+              disabled={this.state.disabled}
             />
           </div>
 
           <div className="input-field">
             <label htmlFor="confirmPassword" className="sr-only">Confirm password</label>
             <input
-              type="password" id="confirmPassword" className="form-control validate" placeholder="Confirm password" required
-              autoFocus value={ this.state.confirmPassword } name="confirmPassword" onChange={ this.handleInputChange }
-              disabled={ this.state.disabled }
+              type="password"
+              id="confirmPassword"
+              className="form-control validate"
+              placeholder="Confirm password"
+              required
+              value={this.state.confirmPassword}
+              name="confirmPassword"
+              onChange={this.handleInputChange}
+              disabled={this.state.disabled}
             />
           </div>
           <SingleActionModal
-            id={ 'modalError' } heading={ 'Oh!' }
-            message={ this.state.errors ? this.state.errors : '' }
-            onHandleExit={ this.handleExit }
+            id={'modalError'}
+            heading={'Oh!'}
+            message={this.state.errors ? this.state.errors : ''}
+            onHandleExit={this.handleExit}
           />
           <SingleActionModal
-            id={ 'modalSuccess' } heading={ 'Done!' }
-            message={ this.state.message ? this.state.message : '' }
-            onHandleExit={ this.handleExit }
+            id={'modalSuccess'}
+            heading={'Done!'}
+            message={this.state.message ? this.state.message : ''}
+            onHandleExit={this.handleExit}
           />
           <DoubleActionModal
-            id={ 'modalOpen' }
-            onHandleClick={ this.handleClick }
-            onHandleClose={ this.handleClose }
-            bookTitle={ '' }
-            heading={ 'Do you want to change your password?' }
+            id={'modalOpen'}
+            onHandleClick={this.handleClick}
+            onHandleClose={this.handleClose}
+            bookTitle={''}
+            heading={'Do you want to change your password?'}
           />
           <div className="input-field inline">
-            <button id="editbtn" type="button" onClick={ this.handleSave } className="btn btn-primary pbtn">Submit</button>
+            <button
+              id="editbtn"
+              type="button"
+              onClick={this.handleSave}
+              className="btn btn-primary pbtn"
+            >Submit</button>
           </div>
 
+          <div
+            style={{ display: displayPreloader.toString() }}
+            id="activity-loader-id"
+            className="activity"
+          >
+            <ActivityLoader />
+          </div>
         </form>
       </div>
     );
@@ -163,11 +262,4 @@ ChangePasswordPage.propTypes = {
 };
 
 
-function mapStateToProps(state) {
-  return {
-    item: state.passwordChange,
-  };
-}
-
-
-export default connect(mapStateToProps, { changePassword })(ChangePasswordPage);
+export default ChangePasswordPage;

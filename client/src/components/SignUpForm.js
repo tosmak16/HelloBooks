@@ -9,9 +9,22 @@ const membershipType = {
   Basic: 'Basic',
   Silver: 'Silver',
   Gold: 'Gold',
-  Bronze: 'Bronze'
+  Bronze: 'Bronze',
 };
-export class SignUpForm extends React.Component {
+
+/**
+ * 
+ * 
+ * @export
+ * @class SignUpForm
+ * @extends {React.Component}
+ */
+class SignUpForm extends React.Component {
+  /**
+   * *
+   * @param {any} props 
+   * @memberof SignUpForm
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -21,50 +34,69 @@ export class SignUpForm extends React.Component {
       lastName: '',
       email: '',
       membershipType: '',
-      errors: ''
+      errors: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof SignUpForm
+   * 
+   */
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-
+  /**
+   * 
+   * 
+   * @param {event} e 
+   * @memberof SignUpForm
+   */
   handleSubmit(e) {
     e.preventDefault();
     this.setState({ errors: '' });
     this.props.userSignup(this.state);
   }
-
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof SignUpForm
+   */
   render() {
     const { error } = this.props.reg;
     const options = map(membershipType, (val, key) =>
-      <option key={ val } value={ val }>{key}</option>);
+      <option key={val} value={val}>{key}</option>);
     return (
-      <form onSubmit={ this.handleSubmit } className="form-signin" action="/login">
+      <form onSubmit={this.handleSubmit} className="form-signin" action="/login">
         <h4 className="form-signin-heading">Create an account</h4>
         {error && <p style={{ color: 'red' }} className="help-block">*{error}*</p>}
 
         <Row>
           <Input
-            placeholder="Firstname"
-            id="firstname" name="firstName"
-            s={ 12 } label="First Name"
-            value={ this.state.firstName }
-            onChange={ this.handleChange }
-            className="form-control sr-only validate"
+            id="firstname"
+            name="firstName"
+            s={12}
+            label="First Name"
+            value={this.state.firstName}
+            onChange={this.handleChange}
+            className="form-control validate"
             required
           />
         </Row>
         <Row>
           <Input
-            placeholder="Last name"
-            id="lastname" name="lastName"
-            s={ 12 } label="Last Name"
+            id="lastname"
+            name="lastName"
+            s={12}
+            label="Last Name"
             type="text"
-            value={ this.state.lastName }
-            onChange={ this.handleChange }
+            value={this.state.lastName}
+            onChange={this.handleChange}
             className="form-control validate"
             required
           />
@@ -73,12 +105,12 @@ export class SignUpForm extends React.Component {
         <Row>
           <Input
             type="email"
-            name="email" s={ 12 }
-            value={ this.state.email }
-            onChange={ this.handleChange }
+            name="email"
+            s={12}
+            value={this.state.email}
+            onChange={this.handleChange}
             id="inputSignUpEmail"
             className="form-control validate"
-            placeholder="Email address"
             required
             label="Email address"
           />
@@ -87,12 +119,12 @@ export class SignUpForm extends React.Component {
         <Row>
           <Input
             type="text"
-            name="username" s={ 12 }
-            value={ this.state.username }
-            onChange={ this.handleChange }
+            name="username"
+            s={12}
+            value={this.state.username}
+            onChange={this.handleChange}
             id="inputUsername"
             className="form-control validate"
-            placeholder="Username"
             required
             label="Username"
           />
@@ -102,11 +134,11 @@ export class SignUpForm extends React.Component {
           <Input
             type="password"
             id="inputsSignUpPassword"
-            name="password" s={ 12 }
-            value={ this.state.password }
-            onChange={ this.handleChange }
+            name="password"
+            s={12}
+            value={this.state.password}
+            onChange={this.handleChange}
             className="form-control validate"
-            placeholder="Password"
             required
             label="Password"
           />
@@ -116,24 +148,30 @@ export class SignUpForm extends React.Component {
           <Input
             name="membershipType"
             id="inputSignUpselect"
-            onChange={ this.handleChange }
-            value={ this.state.membershipType }
+            onChange={this.handleChange}
+            value={this.state.membershipType}
             required
-            s={ 12 } type="select"
+            s={12}
+            type="select"
           >
             <option defaultValue="" disabled>Membership Type</option>
             {options}
           </Input>
         </Row>
 
-        <a href=""><Button waves="light" id="signUbtn" className="btn btn-lg btn-success btn-block" type="submit">Sign up</Button></a>
+        <a href=""><Button
+          waves="light"
+          id="signUbtn"
+          className="btn btn-lg btn-success btn-block"
+          type="submit"
+        >Sign up</Button></a>
       </form >
     );
   }
 }
 
 SignUpForm.propTypes = {
-  reg: PropTypes.object.isRequired,
+  reg: PropTypes.objectOf(PropTypes.any).isRequired,
   userSignup: PropTypes.func.isRequired,
 };
 

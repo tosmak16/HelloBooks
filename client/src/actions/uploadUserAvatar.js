@@ -3,7 +3,13 @@ import { browserHistory } from 'react-router';
 import { uploadProfileImageError, uploadProfileImageRequest, uploadProfileImageResponse } from '../../actions/uploadAvatar';
 
 const upload_preset = 'bjfllgrd';
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} file 
+ * @returns 
+ */
 export function uploadAvatar(file) {
   const data = new FormData();
   data.append('file', file);

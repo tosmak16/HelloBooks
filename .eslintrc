@@ -17,155 +17,16 @@
     "env": {
         "node": true,
         "es6": true,
-        "mocha": true
+        "mocha": true,
+        "jest": true
     },
     "plugins": [
         "react"
     ],
     "rules": {
-        "one-var": 0,
-        "one-var-declaration-per-line": 0,
-        "no-underscore-dangle": 0,
-        "new-cap": 0,
-        "consistent-return": 0,
-        "no-param-reassign": 0,
-        "comma-dangle": 0,
-        "curly": [
-            "error",
-            "multi-line"
-        ],
-        // React
-        "react/display-name": "error",
-        "react/forbid-component-props": "off",
-        "react/forbid-elements": "off",
-        "react/forbid-prop-types": "off",
-        "react/forbid-foreign-prop-types": "off",
-        "react/no-array-index-key": "off",
-        "react/no-children-prop": "error",
-        "react/no-danger": "error",
-        "react/no-danger-with-children": "error",
-        "react/no-deprecated": "error",
-        "react/no-did-mount-set-state": "error",
-        "react/no-did-update-set-state": "error",
-        "react/no-direct-mutation-state": "off",
-        "react/no-find-dom-node": "error",
-        "react/no-is-mounted": "error",
-        "react/no-multi-comp": [
-            "error",
-            {
-                "ignoreStateless": true
-            }
-        ],
-        "react/no-render-return-value": "error",
-        "react/no-set-state": "off",
-        "react/no-string-refs": "error",
-        "react/no-unescaped-entities": "error",
-        "react/no-unknown-property": "error",
-        "react/no-unused-prop-types": [
-            "error",
-            {
-                "skipShapeProps": true
-            }
-        ],
-        "react/no-will-update-set-state": "error",
-        "react/prefer-es6-class": "error",
         "react/prefer-stateless-function": "off",
-        "react/prop-types": "error",
         "react/react-in-jsx-scope": "off",
-        "react/require-default-props": "off",
-        "react/require-optimization": "off",
-        "react/require-render-return": "error",
-        "react/self-closing-comp": "error",
-        "react/sort-comp": "error",
-        "react/sort-prop-types": "error",
-        "react/style-prop-object": "error",
-        "react/void-dom-elements-no-children": "error",
-        // JSX
-        "react/jsx-boolean-value": "error",
-        "react/jsx-closing-bracket-location": [
-            "error",
-            "line-aligned"
-        ],
-        "react/jsx-curly-spacing": [
-            "error",
-            "always",
-            {
-                "spacing": {
-                    "objectLiterals": "never"
-                }
-            }
-        ],
-        "react/jsx-equals-spacing": "error",
-        "react/jsx-filename-extension": [
-            "error",
-            {
-                "extensions": [
-                    ".js"
-                ]
-            }
-        ],
-        "react/jsx-first-prop-new-line": "error",
-        "react/jsx-handler-names": "error",
-        "react/jsx-indent": [
-            "error",
-            2
-        ],
-        "react/jsx-indent-props": [
-            "error",
-            2
-        ],
-        "react/jsx-key": "error",
-        "react/jsx-max-props-per-line": [
-            "error",
-            {
-                "maximum": 5
-            }
-        ],
-        "react/jsx-no-bind": [
-            "error",
-            {
-                "allowArrowFunctions": true
-            }
-        ],
-        "react/jsx-no-comment-textnodes": "error",
-        "react/jsx-no-duplicate-props": "error",
-        "react/jsx-no-literals": "off",
-        "react/jsx-no-target-blank": "error",
-        "react/jsx-no-undef": "error",
-        "react/jsx-pascal-case": "error",
-        "react/jsx-sort-props": "error",
-        "react/jsx-tag-spacing": "error",
-        "react/jsx-uses-react": "error",
-        "react/jsx-uses-vars": "error",
-        "react/jsx-wrap-multilines": "error",
-        "no-shadow": [
-            "error",
-            {
-                "allow": [
-                    "req",
-                    "res",
-                    "err"
-                ]
-            }
-        ],
-        "valid-jsdoc": [
-            "error",
-            {
-                "requireReturn": false,
-                "requireReturnType": false,
-                "requireParamDescription": false,
-                "requireReturnDescription": false
-            }
-        ],
-        "require-jsdoc": [
-            "error",
-            {
-                "require": {
-                    "FunctionDeclaration": false,
-                    "MethodDefinition": false,
-                    "ClassDeclaration": false
-                }
-            }
-        ]
+        "react/jsx-filename-extension": "off",
+        "react/no-unused-expressions": "off"
     }
 }

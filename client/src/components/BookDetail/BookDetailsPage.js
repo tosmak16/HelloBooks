@@ -9,8 +9,20 @@ import checkBookDetails from '../../actions/checkBookDetails';
 import borrowBooks from '../../actions/borrowBooks';
 import showbooksByCategory from '../../actions/showbooksByCategory';
 
-
+/**
+ * 
+ * 
+ * @export
+ * @class BookDetailsPage
+ * @extends {React.Component}
+ */
 export class BookDetailsPage extends React.Component {
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof BookDetailsPage
+   */
   render() {
     return (
       <div>
@@ -38,6 +50,12 @@ BookDetailsPage.propTypes = {
   showbooksByCategory: PropTypes.func.isRequired
 };
 
+/**
+ * 
+ * 
+ * @param {any} state 
+ * @returns 
+ */
 function mapStateToProps(state) {
   return {
     data: state.books[0].data,

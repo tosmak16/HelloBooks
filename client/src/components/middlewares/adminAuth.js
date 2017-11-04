@@ -6,8 +6,26 @@ import jwtDecode from 'jwt-decode';
 
 import { popMessage } from '../../../actions/popMessages';
 
+/**
+ * 
+ * 
+ * @export
+ * @param {any} Comp 
+ * @returns 
+ */
 export default function (Comp) {
+  /**
+   * 
+   * 
+   * @class AdminShield
+   * @extends {React.Component}
+   */
   class AdminShield extends React.Component {
+    /**
+     * 
+     * 
+     * @memberof AdminShield
+     */
     componentWillMount() {
       if (!this.props.isAuthenticated || !(jwtDecode(localStorage.jwtToken).role === 'admin')) {
         if (localStorage.jwtToken) {
@@ -16,13 +34,18 @@ export default function (Comp) {
         if (!localStorage.jwtToken) {
           this.props.popMessage({
             type: 'error',
-            text: 'Access denied!'
+            text: 'Access denied!',
           });
           browserHistory.push('/login');
         }
       }
     }
-
+    /**
+     * 
+     * 
+     * @param {any} nextProps 
+     * @memberof AdminShield
+     */
     componentWillUpdate(nextProps) {
       if (!nextProps.isAuthenticated || !(jwtDecode(localStorage.jwtToken).role === 'admin')) {
         if (localStorage.jwtToken) {
@@ -33,9 +56,15 @@ export default function (Comp) {
         }
       }
     }
+    /**
+     * 
+     * 
+     * @returns 
+     * @memberof AdminShield
+     */
     render() {
       return (
-        <Comp { ...this.props } />
+        <Comp {...this.props} />
       );
     }
   }
@@ -43,10 +72,15 @@ export default function (Comp) {
     isAuthenticated: PropTypes.bool.isRequired,
     popMessage: PropTypes.func.isRequired,
   };
-
+  /**
+   * 
+   * 
+   * @param {any} state 
+   * @returns 
+   */
   function mapStateToProps(state) {
     return {
-      isAuthenticated: state.auth[0].isAuthenticated
+      isAuthenticated: state.auth[0].isAuthenticated,
     };
   }
   return connect(mapStateToProps, { popMessage })(AdminShield);

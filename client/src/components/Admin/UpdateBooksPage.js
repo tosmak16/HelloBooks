@@ -1,21 +1,31 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import lodash from 'lodash';
+import $ from 'jquery';
 
 import MembershipSelect from '../select/MembershipSelect';
 import SearchBar from '../SearchBar';
-import searchbooks from '../../actions/searchbooks';
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
-import getbooks from '../../actions/getBooks';
-import { uploadImage } from '../../actions/uploadImage';
-import { updateBook } from '../../actions/updateBooks';
+import ActivityLoader from '../preloader/ActivityLoader';
+
 
 let sortedData = '';
 let pointer = true;
+let display = 'none';
 
+/**
+ * 
+ * 
+ * @class UpdateBooksPage
+ * @extends {React.Component}
+ */
 class UpdateBooksPage extends React.Component {
+  /**
+   * Creates an instance of UpdateBooksPage.
+   * @param {any} props 
+   * @memberof UpdateBooksPage
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -42,6 +52,9 @@ class UpdateBooksPage extends React.Component {
       errors: '',
       message: '',
       trigger: false,
+      bookFile: '',
+      bookFileUrl: '',
+      actuator: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -51,9 +64,16 @@ class UpdateBooksPage extends React.Component {
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleExit = this.handleExit.bind(this);
+
+    this.handleFileChange = this.handleFileChange.bind(this);
   }
 
-
+  /**
+   * 
+   * 
+   * @param {any} nextProps 
+   * @memberof UpdateBooksPage
+   */
   componentWillReceiveProps(nextProps) {
     if (nextProps.filteredData.length !== 0 && this.state.show) {
       this.setState({
@@ -87,11 +107,11 @@ class UpdateBooksPage extends React.Component {
         show: false,
       });
     }
-
     sortedData = nextProps.item[0];
     if (this.state.display) {
+      display = 'none';
       if (!lodash.isEmpty(sortedData.error) && this.state.display) {
-        document.getElementById('modalE').style.display = 'block';
+        $('#modalE').modal('open');
         this.setState({
           filterBy: '',
           searchText: '',
@@ -134,88 +154,171 @@ class UpdateBooksPage extends React.Component {
           display: false,
           message: sortedData.response
         });
-        document.getElementById('modalS').style.display = 'block';
+        $('#modalS').modal('open');
       }
     }
 
-    if (this.state.trigger) {
+    if (this.state.trigger && !this.state.actuator) {
+      display = 'none';
       if (!lodash.isEmpty(nextProps.imageUrl)) {
         this.setState({
           trigger: false,
           image: nextProps.imageUrl,
           display: true,
         });
+        display = 'block';
+        setTimeout(() => { this.props.updateBook(this.state, localStorage.jwtToken); }, 1000);
+      }
+    }
 
-        setTimeout(() => { this.props.updateBook(this.state, localStorage.jwtToken); }, 5000);
+
+    if (this.state.actuator && !this.state.trigger) {
+      display = 'none';
+      if (!lodash.isEmpty(nextProps.fileUrl) && !this.state.trigger) {
+        this.setState({
+          actuator: false,
+          bookFileUrl: nextProps.fileUrl,
+          display: true,
+        });
+        display = 'block';
+        setTimeout(() => { this.props.updateBook(this.state, localStorage.jwtToken); }, 1000);
+      }
+    }
+
+    if (this.state.trigger && this.state.actuator) {
+      display = 'none';
+      if (!lodash.isEmpty(nextProps.imageUrl)) {
+        this.setState({
+          trigger: false,
+          actuator: true,
+          image: nextProps.imageUrl,
+          display: false,
+        });
+        display = 'block';
+        setTimeout(() => { this.props.uploadFile(this.state.bookFile); }, 1000);
       }
     }
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UpdateBooksPage
+   */
   handleClick(e) {
+    display = 'block';
     e.preventDefault();
-    if (this.state.file.length !== 0) {
+    if (this.state.file.length !== 0 && this.state.bookFile.length === 0) {
+      this.props.uploadImage(this.state.file);
+      this.setState({
+        display: false,
+        actuator: false,
+        trigger: true,
+      });
+    } else if (this.state.bookFile.length !== 0 && this.state.file.length === 0) {
+      this.props.uploadFile(this.state.bookFile);
+      this.setState({
+        display: false,
+        trigger: false,
+        actuator: true,
+      });
+    } else if (this.state.file.length === 0 && this.state.bookFile.length === 0) {
+      this.props.updateBook(this.state, localStorage.jwtToken);
+      this.setState({
+        display: true,
+        trigger: false,
+        actuator: false,
+      });
+    } else if (this.state.file.length !== 0 && this.state.bookFile.length !== 0) {
       this.props.uploadImage(this.state.file);
       this.setState({
         display: false,
         trigger: true,
-      });
-    } else if (this.state.file.length === 0) {
-      this.props.updateBook(this.state, localStorage.jwtToken);
-      this.setState({
-        display: true,
-        trigger: false
+        actuator: true,
       });
     }
-    document.getElementById('modalO').style.display = 'none';
+    $('#modalO').modal('close');
   }
 
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UpdateBooksPage
+   */
   handleOpen(e) {
     pointer = true;
+
     e.preventDefault();
     if (this.state.file) {
       if (this.state.imageHeight > 200 || this.state.imageWidth > 150) {
         pointer = false;
-        this.setState({ modalErrorMessage: 'Please image height  and width must be 200 and 150 respectively' });
-        document.getElementById('modalE').style.display = 'block';
+        this.setState({ modalErrorMessage: 'Please image height and width must be 200 and 150 respectively' });
+        $('#modalE').modal('open');
       } else if (this.state.imageSize > 500000) {
         pointer = false;
         this.setState({ modalErrorMessage: 'Please image size must not be more than 500kb' });
-        document.getElementById('modalE').style.display = 'block';
+        $('#modalE').modal('open');
       }
     }
 
     if (this.state.bookTitle && this.state.isbn && this.state.stocknumber && pointer) {
       this.setState({ modalErrorMessage: '' });
-      document.getElementById('modalO').style.display = 'block';
+      $('#modalO').modal('open');
       pointer = false;
     }
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UpdateBooksPage
+   */
   handleClose(e) {
     e.preventDefault();
     this.setState({
       errors: '',
       message: '',
+      bookFile: '',
+      file: ''
     });
-    document.getElementById('modalO').style.display = 'none';
+    $('#modalO').modal('close');
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UpdateBooksPage
+   */
   handleExit(e) {
     e.preventDefault();
-    document.getElementById('modalE').style.display = 'none';
-    document.getElementById('modalS').style.display = 'none';
+    $('#modalE').modal('close');
+    $('#modalS').modal('close');
     this.setState({
       errors: '',
       message: '',
+      bookFile: '',
+      file: ''
+
     });
     setTimeout(() => { this.props.getbooks(true); }, 3000);
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UpdateBooksPage
+   */
   handleInputChange(e) {
     e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UpdateBooksPage
+   */
   handleChange(e) {
     e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
@@ -224,7 +327,12 @@ class UpdateBooksPage extends React.Component {
       this.props.searchbooks(this.state.filterBy, this.state.searchText, this.props.data);
     }
   }
-
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UpdateBooksPage
+   */
   handleImageChange(e) {
     e.preventDefault();
     const reader = new FileReader();
@@ -252,76 +360,117 @@ class UpdateBooksPage extends React.Component {
     reader.readAsDataURL(file);
   }
 
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UpdateBooksPage
+   */
+  handleFileChange(e) {
+    e.preventDefault();
+    const reader = new FileReader();
+    const bookFile = e.target.files[0];
 
+
+    reader.onload = () => {
+
+    };
+    reader.onloadend = () => {
+      this.setState({
+        bookFile,
+      });
+    };
+
+    reader.readAsDataURL(bookFile);
+  }
+
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof UpdateBooksPage
+   */
   handleSelected(e) {
     e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
   }
-
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof UpdateBooksPage
+   */
   render() {
     return (
       <div id="bh_table" className="row">
-        <form onSubmit={this.handleSubmit} className="form-signin col l11 offset-l1 col m11 offset-m2 col s12" action="" encType="multipart/form-data">
+        <form
+          onSubmit={ this.handleSubmit }
+          className="form-signin col l11 offset-l1 col m11 offset-m2 col s12"
+          action="" encType="multipart/form-data"
+        >
           <div className="">
             <div className="">
               <MembershipSelect
-                onHandleSelected={this.handleSelected}
-                value={this.state.filterBy}
+                onHandleSelected={ this.handleSelected }
+                value={ this.state.filterBy }
               />
             </div>
             <div className="">
-              <SearchBar onChange={this.handleChange} name="searchText" value={this.state.searchText} />
+              <SearchBar
+                onChange={ this.handleChange }
+                name="searchText" value={ this.state.searchText }
+              />
             </div>
           </div >
           <h4 className="sub-header"> Edit book</h4>
           <div className="form-group input-field">
             <label htmlFor="ebookTitle">Title</label>
             <input
-              disabled={!this.state.pointer} name="bookTitle"
-              type="text" value={this.state.bookTitle}
+              disabled={ !this.state.pointer } name="bookTitle"
+              type="text" value={ this.state.bookTitle }
               className="form-control validate" id="ebookTitle"
               placeholder="Book Title" required
-              onChange={this.handleInputChange}
+              onChange={ this.handleInputChange }
             />
           </div>
           <div className="form-group input-field">
             <label htmlFor="ebookAuthor">Author</label>
             <input
-              name="author" disabled={!this.state.pointer}
-              type="text" value={this.state.author}
+              name="author" disabled={ !this.state.pointer }
+              type="text" value={ this.state.author }
               className="form-control validate" id="ebookAuthor"
               placeholder="Author" required
-              onChange={this.handleInputChange}
+              onChange={ this.handleInputChange }
             />
           </div>
           <div className="form-group input-field">
             <label htmlFor="ebookCat">Category</label>
             <input
-              name="category" disabled={!this.state.pointer}
-              type="text" value={this.state.category}
+              name="category" disabled={ !this.state.pointer }
+              type="text" value={ this.state.category }
               className="form-control validate" id="ebookCat"
               placeholder="Category" required
-              onChange={this.handleInputChange}
+              onChange={ this.handleInputChange }
             />
           </div>
           <div className="form-group input-field">
             <label htmlFor="eISBN">ISBN</label>
             <input
-              name="isbn" disabled={!this.state.pointer}
-              type="text" value={this.state.isbn}
+              name="isbn" disabled
+              type="text" value={ this.state.isbn }
               className="form-control validate" id="eISBN"
               placeholder="ISBN" required
-              onChange={this.handleInputChange}
+              onChange={ this.handleInputChange }
             />
           </div>
           <div className="form-group input-field">
             <label htmlFor="estock">Number in stock</label>
             <input
-              name="stocknumber" disabled={!this.state.pointer}
-              type="number" value={this.state.stocknumber}
+              name="stocknumber" disabled={ !this.state.pointer }
+              type="number" value={ this.state.stocknumber }
               className="form-control validate"
               id="estock" placeholder="Number in stock" required
-              onChange={this.handleInputChange}
+              onChange={ this.handleInputChange }
             />
           </div>
 
@@ -331,50 +480,75 @@ class UpdateBooksPage extends React.Component {
               type="textarea" name="summary"
               className="form-control validate"
               id="ebookSummary" placeholder="Summary"
-              required disabled={!this.state.pointer}
-              value={this.state.summary}
-              onChange={this.handleInputChange}
+              required disabled={ !this.state.pointer }
+              value={ this.state.summary }
+              onChange={ this.handleInputChange }
             />
           </div>
           <div className="file-field input-field">
             <div id="filebtn" className="btn">
               <span>File</span>
               <input
-                disabled={!this.state.pointer}
+                disabled={ !this.state.pointer }
                 className="fileInput" type="file"
-                id="photoInput" onChange={this.handleImageChange}
+                id="photoInput" onChange={ this.handleImageChange }
                 accept=".png, .jpg, .jpeg"
               />
             </div>
             <div className="file-path-wrapper">
-              <input className="file-path validate" type="text" placeholder="Upload cover" />
+              <input
+                className="file-path validate"
+                type="text" placeholder="Choose a cover image"
+              />
+
             </div>
           </div>
 
+          <div className="file-field input-field">
+            <div id="filebtn" className="btn">
+              <span>File</span>
+              <input
+                disabled={ !this.state.pointer }
+                className="fileInput" type="file"
+                id="photoInput" onChange={ this.handleFileChange }
+                accept=".pdf"
+              />
+            </div>
+            <div className="file-path-wrapper">
+              <input className="file-path validate" type="text" placeholder="Choose a file" />
+
+            </div>
+
+          </div>
+
           <SingleActionModal
-            id={'modalE'} heading={'Oh!'}
-            message={this.state.errors ? this.state.errors : this.state.modalErrorMessage}
-            onHandleExit={this.handleExit}
+            id={ 'modalE' } heading={ 'Oh!' }
+            message={ this.state.errors ? this.state.errors : this.state.modalErrorMessage }
+            onHandleExit={ this.handleExit }
           />
           <SingleActionModal
-            id={'modalS'} heading={'Done!'}
-            message={this.state.message ? this.state.message : ''}
-            onHandleExit={this.handleExit}
+            id={ 'modalS' } heading={ 'Done!' }
+            message={ this.state.message ? this.state.message : '' }
+            onHandleExit={ this.handleExit }
           />
           <DoubleActionModal
-            id={'modalO'}
-            onHandleClick={this.handleClick}
-            onHandleClose={this.handleClose}
-            bookTitle={this.state.bookTitle}
-            heading={'Do you want to Update this book?'}
+            id={ 'modalO' }
+            onHandleClick={ this.handleClick }
+            onHandleClose={ this.handleClose }
+            bookTitle={ this.state.bookTitle }
+            heading={ 'Do you want to Update this book?' }
           />
 
           <div className="form-inline">
             <button
-              disabled={!this.state.pointer}
-              onClick={this.handleOpen} style={{ marginTop: '10px', width: '300px' }} id="updatebtn" type="button"
+              disabled={ !this.state.pointer }
+              onClick={ this.handleOpen } style={{ marginTop: '10px', width: '300px' }} id="updatebtn" type="button"
               className="btn-sm pbtn"
             >Update</button>
+          </div>
+
+          <div style={{ display: display.toString() }} id="activity-loader-id" className="activity">
+            <ActivityLoader />
           </div>
         </form>
       </div>
@@ -384,27 +558,19 @@ class UpdateBooksPage extends React.Component {
 }
 
 UpdateBooksPage.propTypes = {
+  data: PropTypes.array.isRequired,
+  fileUrl: PropTypes.string.isRequired,
   filteredData: PropTypes.array.isRequired,
   getbooks: PropTypes.func.isRequired,
   imageUrl: PropTypes.string.isRequired,
   item: PropTypes.array.isRequired,
   searchbooks: PropTypes.func.isRequired,
   updateBook: PropTypes.func.isRequired,
+  uploadFile: PropTypes.func.isRequired,
   uploadImage: PropTypes.func.isRequired,
 
 
 };
 
-function mapStateToProps(state) {
-  return {
-    filteredData: state.getFilteredBooks[0].filteredData,
-    item: state.updateBooks,
-    imageUrl: state.uploadImages[0].response,
-  };
-}
-export default connect(mapStateToProps, {
-  searchbooks,
-  uploadImage,
-  getbooks,
-  updateBook
-})(UpdateBooksPage);
+
+export default UpdateBooksPage;

@@ -1,39 +1,59 @@
 import React from 'react';
-import { CardTitle, Card } from 'react-materialize';
 import PropTypes from 'prop-types';
-import { browserHistory } from 'react-router';
 
 
+/**
+ * 
+ * 
+ * @class Cardbox
+ * @extends {React.Component}
+ */
 class Cardbox extends React.Component {
+  /**
+   * Creates an instance of Cardbox.
+   * @param {any} props 
+   * @memberof Cardbox
+   */
   constructor(props) {
     super(props);
 
     this.handleClick = this.handleClick.bind(this);
   }
-
+  /**
+   * 
+   * @function handleClick
+   * @param {any} e 
+   * @memberof Cardbox
+   */
   handleClick(e) {
     this.props.checkBookDetails(e.target.name, true);
   }
+
+  /**
+   * 
+   *@function render
+   * @returns 
+   * @memberof Cardbox
+   */
   render() {
     const { item } = this.props;
     return (
       <div id="card_div">
-        <Card
+        <div id="img_holder" className="container">
+          <img id="book_img" src={ item.image } alt="Avatar" className="image" style={{ width: '150px', height: '200px' }} />
+          <div className="middle">
+            <label htmlFor="book_img" style={{ fontSize: '12px', fontStyle: 'bold' }} className="text"> {item.bookTitle}</label>
 
 
-          key={ item.id } value={ item.id }
-          className="small card_holder"
-          header={ <CardTitle
-            key={ item.id } id="card_box"
-            image={ item.image ? item.image : '' }
-          /> }
-        > {<button id="wishbtn" name={ item.id } onClick={ this.handleClick } type="button" className="btn-sm btn-warning shop">Read</button>
-          }</Card>
-        {/* <text className="text-muted" disabled style={{ fontStyle: 'Bold', border: '10px', fontSize: '12px', }}>{item.bookTitle}</text> */}
+            <button style={{ width: '120px', backgroundColor: 'transparent' }} type="btn-sm" name={ item.id } onClick={ this.handleClick } className="text">Read</button>
+
+          </div>
+        </div>
       </div>
     );
   }
 }
+
 
 Cardbox.propTypes = {
   checkBookDetails: PropTypes.func.isRequired,

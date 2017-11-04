@@ -1,18 +1,29 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
 import PropTypes from 'prop-types';
+import $ from 'jquery';
+import { Link } from 'react-router';
 
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
-import updateUser from '../../actions/updateuserDetails';
-import { uploadAvatar } from '../../actions/uploadUserAvatar';
+import ActivityLoader from '../preloader/ActivityLoader';
+
 
 let imgName = '';
-const display = true;
-const show = true;
+let display = 'none';
 
+/**
+ * 
+ * 
+ * @class DashboardSidebar
+ * @extends {React.Component}
+ */
 class DashboardSidebar extends React.Component {
+  /**
+   * Creates an instance of DashboardSidebar.
+   * @param {any} props 
+   * @memberof DashboardSidebar
+   */
   constructor(props) {
     super(props);
 
@@ -35,20 +46,68 @@ class DashboardSidebar extends React.Component {
       imageloaded: false,
     };
 
-    this.handleClickBookShelf = this.handleClickBookShelf.bind(this);
-    this.handleClickAccount = this.handleClickAccount.bind(this);
-    this.handleClickHistory = this.handleClickHistory.bind(this);
-    this.handleChangePassword = this.handleChangePassword.bind(this);
+
     this.handleImageChange = this.handleImageChange.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
 
     this.handleClick = this.handleClick.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleExit = this.handleExit.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+  /**
+   * 
+   * 
+   * @param {any} nextProps 
+   * @memberof DashboardSidebar
+   */
+  componentWillReceiveProps(nextProps) {
+    display = 'none';
+    if (!isEmpty(nextProps.data)) {
+      imgName = nextProps.data[0];
+      this.setState({
+        display: false,
+      });
+    }
+
+    if (this.state.show) {
+      if (!isEmpty(this.props.error)) {
+        $('#modaE').modal('open');
+        this.setState({
+          show: false,
+          error: this.props.error,
+          imagePreviewUrl: '',
+        });
+      } else if (!isEmpty(this.props.message)) {
+        this.setState({
+          show: false,
+          message: 'Image uploaded successfully',
+        });
+        $('#modaS').modal('open');
+      }
+    }
+
+    if (this.state.imageloaded) {
+      if (!isEmpty(nextProps.imageUrl)) {
+        this.setState({
+          imageloaded: false,
+          profileImage: nextProps.imageUrl,
+          show: true,
+        });
+
+        this.props.updateUser({ profileImage: nextProps.imageUrl }, localStorage.jwtToken);
+      }
+    }
   }
 
-
+  /**
+   * 
+   * @function handleClick
+   * @param {any} e 
+   * @memberof DashboardSidebar
+   */
   handleClick(e) {
+    display = 'block';
     e.preventDefault();
     this.setState({
       show: false,
@@ -56,48 +115,67 @@ class DashboardSidebar extends React.Component {
       profileImage: '',
     });
     this.props.uploadAvatar(this.state.file);
-    document.getElementById('modaO').style.display = 'none';
+    $('#modaO').modal('close');
   }
-
+  /**
+   * 
+   * @function handleClose
+   * @param {any} e 
+   * @memberof DashboardSidebar
+   */
   handleClose(e) {
     e.preventDefault();
-    document.getElementById('modaO').style.display = 'none';
+    $('#modaO').modal('close');
     this.setState({
       imagePreviewUrl: '',
     });
   }
-
+  /**
+   * 
+   * @function handleExit
+   * @param {any} e 
+   * @memberof DashboardSidebar
+   */
   handleExit(e) {
     e.preventDefault();
-    document.getElementById('modaE').style.display = 'none';
-    document.getElementById('modaS').style.display = 'none';
+
+    $('#modaE').modal('close');
+    $('#modaS').modal('close');
+
     this.setState({
       error: '',
       message: '',
       file: '',
-      imagePreviewUrl: '',
     });
   }
 
-
+  /**
+   * 
+   * @function handleEdit
+   * @param {any} e 
+   * @memberof DashboardSidebar
+   */
   handleEdit(e) {
     e.preventDefault();
     if (this.state.file) {
       if (this.state.imageHeight > 200 || this.state.imageWidth > 150) {
         this.setState({ modalErrorMessage: 'Please image height  and width must be 200 and 150 respectively' });
-
-        document.getElementById('modaE').style.display = 'block';
+        $('#modaE').modal('open');
       } else if (this.state.imageSize > 100000) {
         this.setState({ modalErrorMessage: 'Please image size must not be more than 100kb' });
-        document.getElementById('modaE').style.display = 'block';
-      } else {
-        document.getElementById('modaO').style.display = 'block';
-      }
+        $('#modaE').modal('open');
+      } else $('#modaO').modal('open');
     }
   }
 
-  handleImageChange(e) {
-    e.preventDefault();
+  /**
+   * 
+   * @function handleImageChange
+   * @param {any} e 
+   * @param {boolean} [set=true] 
+   * @memberof DashboardSidebar
+   */
+  handleImageChange(e, set = true) {
     const reader = new FileReader();
     const file = e.target.files[0];
     reader.onload = () => {
@@ -119,89 +197,25 @@ class DashboardSidebar extends React.Component {
         imagePreviewUrl: reader.result,
       });
     };
-
-    reader.readAsDataURL(file);
+    if (set) { reader.readAsDataURL(file); }
   }
 
-
-  componentWillMount() {
-
-  }
-
-  componentDidMount() {
-
-
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (!isEmpty(nextProps.data)) {
-      imgName = nextProps.data[0];
-      this.setState({
-        display: false,
-      });
-    }
-
-    if (this.state.show) {
-      if (!isEmpty(this.props.error)) {
-        document.getElementById('modaE').style.display = 'block';
-        this.setState({
-          show: false,
-          error: this.props.error,
-          imagePreviewUrl: '',
-        });
-      } else if (!isEmpty(this.props.message)) {
-        this.setState({
-          show: false,
-          message: 'Image uploaded successfully',
-        });
-        document.getElementById('modaS').style.display = 'block';
-      }
-    }
-
-    if (this.state.imageloaded) {
-      if (!isEmpty(nextProps.imageUrl)) {
-        this.setState({
-          imageloaded: false,
-          profileImage: nextProps.imageUrl,
-          show: true,
-        });
-
-        this.props.updateUser({ profileImage: nextProps.imageUrl }, localStorage.jwtToken);
-      }
-    }
-  }
-
-
-  handleClickBookShelf(e) {
+  /**
+   * 
+   * 
+   * @param {any} e 
+   * @memberof DashboardSidebar
+   */
+  handleLogout(e) {
     e.preventDefault();
-    document.getElementById('bb_table').style.display = 'block';
-    document.getElementById('b_page').style.display = 'none';
-    document.getElementById('bh_table').style.display = 'none';
-    document.getElementById('ch_pas').style.display = 'none';
+    this.props.logout();
   }
-  handleClickAccount(e) {
-    e.preventDefault();
-    document.getElementById('b_page').style.display = 'block';
-    document.getElementById('bb_table').style.display = 'none';
-    document.getElementById('bh_table').style.display = 'none';
-    document.getElementById('ch_pas').style.display = 'none';
-  }
-  handleClickHistory(e) {
-    e.preventDefault();
-    document.getElementById('bh_table').style.display = 'block';
-    document.getElementById('bb_table').style.display = 'none';
-    document.getElementById('b_page').style.display = 'none';
-    document.getElementById('ch_pas').style.display = 'none';
-  }
-  handleChangePassword(e) {
-    e.preventDefault();
-    document.getElementById('bh_table').style.display = 'none';
-    document.getElementById('bb_table').style.display = 'none';
-    document.getElementById('b_page').style.display = 'none';
-    document.getElementById('ch_pas').style.display = 'block';
-  }
-
-
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof DashboardSidebar
+   */
   render() {
     return (
       <div className="row">
@@ -217,7 +231,10 @@ class DashboardSidebar extends React.Component {
 
 
                       <input
-                        disabled={ this.state.disabled } className="fileInput" id="photoInput" onChange={ this.handleImageChange }
+                        disabled={ this.state.disabled }
+                        className="fileInput"
+                        id="photoInput"
+                        onChange={ this.handleImageChange }
                         type="file"
                         accept=".png, .jpg, .jpeg"
                         placeholder="Upload profile image"
@@ -236,32 +253,34 @@ class DashboardSidebar extends React.Component {
                 </div>
               </li>
               <li>
-                <a id="dash" onClick={ this.handleClickBookShelf } href="#">
+                <Link to={ '/dashboard/borrowedbooks' }>
                   <i className="material-icons left">local_library</i> Books Shelf
-                </a>
+                </Link>
               </li>
               <li>
-                <a id="myP" onClick={ this.handleClickAccount } href="#"><i className="material-icons left">dashboard</i>Account</a>
+                <Link to={ '/dashboard/userprofile' } ><i className="material-icons left">dashboard</i>Account</Link>
               </li>
               <li>
-                <a id="bor" onClick={ this.handleClickHistory } href="#"><i className="material-icons left">data_usage</i>History</a>
+                <Link to={ '/dashboard/history' }><i className="material-icons left">data_usage</i>History</Link>
               </li>
               <li>
-                <a href="#" onClick={ this.handleChangePassword } ><i className="material-icons left">lock</i>Change Password</a>
+                <Link to={ '/dashboard/changepassword' } ><i className="material-icons left">lock</i>Change Password</Link>
               </li>
               <li>
-                <a href="index.html"><i className="material-icons left">exit_to_app</i>Logout</a>
+                <Link to={ '/login' } onClick={ this.handleLogout } ><i className="material-icons left">exit_to_app</i>Logout</Link>
               </li>
 
             </ul>
           </div >
           <SingleActionModal
-            id={ 'modaE' } heading={ 'Oh!' }
+            id={ 'modaE' }
+            heading={ 'Oh!' }
             message={ this.state.error ? this.state.error : this.state.modalErrorMessage }
             onHandleExit={ this.handleExit }
           />
           <SingleActionModal
-            id={ 'modaS' } heading={ 'Done!' }
+            id={ 'modaS' }
+            heading={ 'Done!' }
             message={ this.state.message ? this.state.message : '' }
             onHandleExit={ this.handleExit }
           />
@@ -273,6 +292,9 @@ class DashboardSidebar extends React.Component {
             heading={ 'Do you want to change your profile picture?' }
           />
         </div >
+        <div style={{ display: display.toString() }} id="activity-loader-id" className="activity">
+          <ActivityLoader />
+        </div>
       </div >
     );
   }
@@ -282,18 +304,11 @@ DashboardSidebar.propTypes = {
   data: PropTypes.array.isRequired,
   error: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
+  logout: PropTypes.func.isRequired,
   message: PropTypes.string.isRequired,
   updateUser: PropTypes.func.isRequired,
   uploadAvatar: PropTypes.func.isRequired
 
 };
 
-function mapStateToProps(state) {
-  return {
-    imageUrl: state.userProfileImage[0].response,
-    error: state.updateUser[0].error.toString(),
-    message: state.updateUser[0].data.toString(),
-  };
-}
-
-export default connect(mapStateToProps, { updateUser, uploadAvatar })(DashboardSidebar);
+export default DashboardSidebar;

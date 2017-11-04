@@ -1,5 +1,6 @@
 const books = [
   {
+
     id: 1,
     bookId: 1,
     bookTitle: 'THE PEOPLE IN THE TREE',
@@ -9,6 +10,8 @@ const books = [
     stocknumber: '2',
     image: 'l1.jpg',
     summary: 'Lorem Ipronic typesetting, remaininised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
+    brdate: '2017-10-04T04:55:40.623+01',
+    rdate: '2017-10-04T04:55:40.623+01',
   },
   {
     id: 2,
@@ -20,6 +23,8 @@ const books = [
     stocknumber: '0',
     image: 'l2.jpg',
     summary: 'It is a long established fact thaorem Ipsu uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)',
+    brdate: '2017-10-04T04:55:40.623+01',
+    rdate: '2017-10-04T04:55:40.623+01',
   },
   {
     id: 3,
@@ -31,7 +36,8 @@ const books = [
     stocknumber: '5',
     image: 'l3.jpg',
     summary: 'There are many variations of passages of Lorem Ipsum available, but the majority orem Ipsum generators on the Internet tend to repeat predefined chunks as necessary',
-
+    brdate: '2017-10-04T04:55:40.623+01',
+    rdate: '2017-10-04T04:55:40.623+01',
   },
   {
     id: 4,
@@ -43,6 +49,8 @@ const books = [
     stocknumber: '3',
     image: 'l4.jpg',
     summary: 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from ',
+    brdate: '2017-10-04T04:55:40.623+01',
+    rdate: '2017-10-04T04:55:40.623+01',
   },
   {
     id: 5,
@@ -53,7 +61,9 @@ const books = [
     isbn: '45678974567',
     stocknumber: '10',
     image: 'l5.jpg',
-    summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Urum.'
+    summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Urum.',
+    brdate: '2017-10-04T04:55:40.623+01',
+    rdate: '2017-10-04T04:55:40.623+01',
   },
   {
     id: 6,
@@ -64,7 +74,9 @@ const books = [
     isbn: '567244567',
     stocknumber: '10',
     image: 'l6.jpg',
-    summary: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium?'
+    summary: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium?',
+    brdate: '2017-10-04T04:55:40.623+01',
+    rdate: '2017-10-04T04:55:40.623+01',
   },
   {
     id: 7,
@@ -75,7 +87,9 @@ const books = [
     isbn: '64578974567',
     stocknumber: '10',
     image: 'l7.jpg',
-    summary: 'But I must explain to you how all this mists no resultant pleasure  ducimus qui blanditiis praesentium voluptatum culpa qui officia ?'
+    summary: 'But I must explain to you how all this mists no resultant pleasure  ducimus qui blanditiis praesentium voluptatum culpa qui officia ?',
+    brdate: '2017-10-04T04:55:40.623+01',
+    rdate: '',
   },
   {
     id: 8,
@@ -86,7 +100,9 @@ const books = [
     isbn: '787890974567',
     stocknumber: '8',
     image: 'l8.jpg',
-    summary: 'At vero eos et accusamus et iuse delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
+    summary: 'At vero eos et accusamus et iuse delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.',
+    brdate: '2017-10-04T04:55:40.623+01',
+    rdate: '2017-10-04T04:55:40.623+01',
   },
 ];
 

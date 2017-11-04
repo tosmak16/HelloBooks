@@ -1,11 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 
+/**
+ * 
+ * 
+ * @class FlashMessage
+ * @extends {React.Component}
+ */
 class FlashMessage extends React.Component {
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof FlashMessage
+   */
   render() {
-    const { id, type, text } = this.props.message;
+    const { text } = this.props.message;
     Materialize.toast(text, 2000, 'rounded');
     return (
       <div />
@@ -15,7 +26,7 @@ class FlashMessage extends React.Component {
 
 
 FlashMessage.propTypes = {
-  message: PropTypes.object.isRequired
+  message: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default FlashMessage;

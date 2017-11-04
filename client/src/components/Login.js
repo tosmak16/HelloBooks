@@ -3,18 +3,34 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 
-import { LoginForm } from './LoginForm';
+import LoginForm from './LoginForm';
 import Footer from './Footer';
 import userSignin from '../actions/loginAction';
 import getbooks from '../actions/getBooks';
 
-
+/**
+ * 
+ * 
+ * @export
+ * @class Login
+ * @extends {React.Component}
+ */
 export class Login extends React.Component {
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof Login
+   */
   render() {
     return (
       <div>
         <div id="loginForm" className="row">
-          <LoginForm getbooks={ this.props.getbooks } userSignin={ this.props.userSignin } log={ this.props.log } />
+          <LoginForm
+            getbooks={this.props.getbooks}
+            userSignin={this.props.userSignin}
+            log={this.props.log}
+          />
         </div>
         <Footer />
       </div>
@@ -24,11 +40,17 @@ export class Login extends React.Component {
 
 Login.propTypes = {
   getbooks: PropTypes.func.isRequired,
-  log: PropTypes.object.isRequired,
+  log: PropTypes.objectOf(PropTypes.any).isRequired,
   userSignin: PropTypes.func.isRequired,
 
 };
 
+/**
+ * 
+ * 
+ * @param {any} state 
+ * @returns {object}
+ */
 function mapStateToProps(state) {
   return { log: state.log[0] };
 }

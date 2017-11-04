@@ -5,6 +5,13 @@ export const RETURN_BOOK_FAILURE = 'RETURN_BOOK_FAILURE'
 
 
 //Action creators
+/**
+ * 
+ * 
+ * @export
+ * @param {any} bookData 
+ * @returns 
+ */
 export function returnbookRequest(bookData) {
   return {
     type: RETURN_BOOK_REQUEST,
@@ -12,7 +19,13 @@ export function returnbookRequest(bookData) {
     bookData
   }
 }
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} response 
+ * @returns 
+ */
 export function returnbookResponse(response) {
   return {
     type: RETURN_BOOK_SUCCESS,
@@ -20,7 +33,13 @@ export function returnbookResponse(response) {
     response
   }
 }
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} error 
+ * @returns 
+ */
 export function returnbookError(error) {
   return {
     type: RETURN_BOOK_FAILURE,

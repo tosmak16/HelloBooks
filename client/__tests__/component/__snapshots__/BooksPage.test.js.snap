@@ -5,49 +5,50 @@ exports[`Test BooksPage component should test and take snapshot of Card box 1`] 
   id="card_div"
 >
   <div
-    className="small card_holder card"
-    value={1}
+    className="container"
+    id="img_holder"
   >
+    <img
+      alt="Avatar"
+      className="image"
+      id="book_img"
+      src="hello"
+      style={
+        Object {
+          "height": "200px",
+          "width": "150px",
+        }
+      }
+    />
     <div
-      className="card-image"
-      id="card_box"
+      className="middle"
     >
-      <img
-        className=""
-        src="hello"
-      />
-      <span
-        className="card-title"
-      />
-    </div>
-    <div
-      className="card-content"
-    >
-      <div>
-         
-        <button
-          className="btn-sm btn-warning shop"
-          id="wishbtn"
-          name={1}
-          onClick={[Function]}
-          type="button"
-        >
-          Read
-        </button>
-      </div>
-    </div>
-    <div
-      className="card-reveal"
-    >
-      <span
-        className="card-title grey-text text-darken-4"
+      <label
+        className="text"
+        htmlFor="book_img"
+        style={
+          Object {
+            "fontSize": "12px",
+            "fontStyle": "bold",
+          }
+        }
       >
-        <i
-          className="material-icons right"
-        >
-          close
-        </i>
-      </span>
+         
+      </label>
+      <button
+        className="text"
+        name={1}
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": "transparent",
+            "width": "120px",
+          }
+        }
+        type="btn-sm"
+      >
+        Read
+      </button>
     </div>
   </div>
 </div>
@@ -66,19 +67,18 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
       data-collapsible="accordion"
     >
       <li>
-         
         <div
           className="collapsible-header"
         >
-           
-          <label
+          <a
             className="heada"
             onClick={[Function]}
+            style={Object {}}
           >
             <b>
               SCIENCE&TECH
             </b>
-          </label>
+          </a>
            
         </div>
         <div
@@ -86,9 +86,9 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         >
           <a
             className="boda"
-            href="#"
             name="Science"
             onClick={[Function]}
+            style={Object {}}
           >
             Science
           </a>
@@ -99,9 +99,9 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         >
           <a
             className="boda"
-            href="#"
             name="Technology"
             onClick={[Function]}
+            style={Object {}}
           >
             Technology
           </a>
@@ -110,12 +110,11 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Computer"
             onClick={[Function]}
+            style={Object {}}
           >
             Computer
           </a>
@@ -123,30 +122,28 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         </div>
       </li>
       <li>
-         
         <div
           className="collapsible-header"
         >
-           
-          <label
+          <a
             className="heada"
             onClick={[Function]}
+            style={Object {}}
           >
             <b>
               LITERATURE
             </b>
-          </label>
+          </a>
            
         </div>
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Fiction"
             onClick={[Function]}
+            style={Object {}}
           >
             Fiction
           </a>
@@ -155,12 +152,11 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Mystery"
             onClick={[Function]}
+            style={Object {}}
           >
             Mystery
           </a>
@@ -169,12 +165,11 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Romance"
             onClick={[Function]}
+            style={Object {}}
           >
             Romance
           </a>
@@ -183,12 +178,11 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Sci-Fiction"
             onClick={[Function]}
+            style={Object {}}
           >
             Sci-Fiction
           </a>
@@ -197,12 +191,11 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Adventure"
             onClick={[Function]}
+            style={Object {}}
           >
             Adventure
           </a>
@@ -211,12 +204,11 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Action"
             onClick={[Function]}
+            style={Object {}}
           >
             Action
           </a>
@@ -224,30 +216,28 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         </div>
       </li>
       <li>
-         
         <div
           className="collapsible-header"
         >
-           
-          <label
+          <a
             className="heada"
             onClick={[Function]}
+            style={Object {}}
           >
             <b>
               STYLE AND ART
             </b>
-          </label>
+          </a>
            
         </div>
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Arts"
             onClick={[Function]}
+            style={Object {}}
           >
             Arts
           </a>
@@ -256,12 +246,11 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Languages"
             onClick={[Function]}
+            style={Object {}}
           >
             Languages
           </a>
@@ -270,12 +259,11 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Fashion"
             onClick={[Function]}
+            style={Object {}}
           >
             Fashion
           </a>
@@ -284,12 +272,11 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Food"
             onClick={[Function]}
+            style={Object {}}
           >
             Food
           </a>
@@ -298,12 +285,11 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Games"
             onClick={[Function]}
+            style={Object {}}
           >
             Games
           </a>
@@ -312,12 +298,11 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Music"
             onClick={[Function]}
+            style={Object {}}
           >
             Music
           </a>
@@ -325,30 +310,28 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         </div>
       </li>
       <li>
-         
         <div
           className="collapsible-header"
         >
-           
-          <label
+          <a
             className="heada"
             onClick={[Function]}
+            style={Object {}}
           >
             <b>
               CAREER & MONEY
             </b>
-          </label>
+          </a>
            
         </div>
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Management"
             onClick={[Function]}
+            style={Object {}}
           >
             Management
           </a>
@@ -357,12 +340,11 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Accounting"
             onClick={[Function]}
+            style={Object {}}
           >
             Accounting
           </a>
@@ -371,12 +353,11 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Entrepreneurship"
             onClick={[Function]}
+            style={Object {}}
           >
             Entrepreneurship
           </a>
@@ -385,12 +366,11 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Leadership"
             onClick={[Function]}
+            style={Object {}}
           >
             Leadership
           </a>
@@ -398,30 +378,28 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         </div>
       </li>
       <li>
-         
         <div
           className="collapsible-header"
         >
-           
-          <label
+          <a
             className="heada"
             onClick={[Function]}
+            style={Object {}}
           >
             <b>
               PERSONAL GROWTH
             </b>
-          </label>
+          </a>
            
         </div>
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Psychology"
             onClick={[Function]}
+            style={Object {}}
           >
             Psychology
           </a>
@@ -430,12 +408,11 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Relationships"
             onClick={[Function]}
+            style={Object {}}
           >
             Relationships
           </a>
@@ -444,12 +421,11 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Self-Improvement"
             onClick={[Function]}
+            style={Object {}}
           >
             Self-Improvement
           </a>
@@ -458,12 +434,11 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Religion"
             onClick={[Function]}
+            style={Object {}}
           >
             Religion
           </a>
@@ -471,30 +446,28 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         </div>
       </li>
       <li>
-         
         <div
           className="collapsible-header"
         >
-           
-          <label
+          <a
             className="heada"
             onClick={[Function]}
+            style={Object {}}
           >
             <b>
               HEALTH & FITNESS
             </b>
-          </label>
+          </a>
            
         </div>
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Fitness"
             onClick={[Function]}
+            style={Object {}}
           >
             Fitness
           </a>
@@ -503,12 +476,11 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Nutrition"
             onClick={[Function]}
+            style={Object {}}
           >
             Nutrition
           </a>
@@ -517,12 +489,11 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
         <div
           className="collapsible-body"
         >
-           
           <a
             className="boda"
-            href="#"
             name="Sports"
             onClick={[Function]}
+            style={Object {}}
           >
             Sports
           </a>
@@ -688,70 +659,7 @@ exports[`Test BooksPage component should test and take snapshot of booksFilterPa
   </div>
   <div
     className="row"
-  >
-    <div
-      className="col m10 offset-m2 col l10 offset-l2 col s12 main"
-    >
-      <h4
-        className="page-header"
-      >
-        Search results
-      </h4>
-      <hr />
-      <div
-        className=" row "
-      >
-        <div
-          className=""
-        >
-          <ul
-            className="collection "
-          >
-            <li
-              className="collection-item avatar"
-            >
-              <img
-                alt=""
-                className="circle"
-                name={1}
-                src=""
-              />
-              <span
-                className="title"
-              >
-                love
-              </span>
-              <p />
-              <button
-                className="btn-sm btn-warning shop"
-                id="wishbtn"
-                name={1}
-                onClick={[Function]}
-                type="button"
-              >
-                Check details
-              </button>
-              <a
-                className="secondary-content"
-                href="#!"
-              >
-                <i
-                  className="material-icons "
-                  style={
-                    Object {
-                      "color": "orange",
-                    }
-                  }
-                >
-                  grade
-                </i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+  />
 </div>
 `;
 
@@ -777,19 +685,18 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
             data-collapsible="accordion"
           >
             <li>
-               
               <div
                 className="collapsible-header"
               >
-                 
-                <label
+                <a
                   className="heada"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   <b>
                     SCIENCE&TECH
                   </b>
-                </label>
+                </a>
                  
               </div>
               <div
@@ -797,9 +704,9 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               >
                 <a
                   className="boda"
-                  href="#"
                   name="Science"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Science
                 </a>
@@ -810,9 +717,9 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               >
                 <a
                   className="boda"
-                  href="#"
                   name="Technology"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Technology
                 </a>
@@ -821,12 +728,11 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Computer"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Computer
                 </a>
@@ -834,30 +740,28 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               </div>
             </li>
             <li>
-               
               <div
                 className="collapsible-header"
               >
-                 
-                <label
+                <a
                   className="heada"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   <b>
                     LITERATURE
                   </b>
-                </label>
+                </a>
                  
               </div>
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Fiction"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Fiction
                 </a>
@@ -866,12 +770,11 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Mystery"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Mystery
                 </a>
@@ -880,12 +783,11 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Romance"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Romance
                 </a>
@@ -894,12 +796,11 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Sci-Fiction"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Sci-Fiction
                 </a>
@@ -908,12 +809,11 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Adventure"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Adventure
                 </a>
@@ -922,12 +822,11 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Action"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Action
                 </a>
@@ -935,30 +834,28 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               </div>
             </li>
             <li>
-               
               <div
                 className="collapsible-header"
               >
-                 
-                <label
+                <a
                   className="heada"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   <b>
                     STYLE AND ART
                   </b>
-                </label>
+                </a>
                  
               </div>
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Arts"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Arts
                 </a>
@@ -967,12 +864,11 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Languages"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Languages
                 </a>
@@ -981,12 +877,11 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Fashion"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Fashion
                 </a>
@@ -995,12 +890,11 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Food"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Food
                 </a>
@@ -1009,12 +903,11 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Games"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Games
                 </a>
@@ -1023,12 +916,11 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Music"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Music
                 </a>
@@ -1036,30 +928,28 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               </div>
             </li>
             <li>
-               
               <div
                 className="collapsible-header"
               >
-                 
-                <label
+                <a
                   className="heada"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   <b>
                     CAREER & MONEY
                   </b>
-                </label>
+                </a>
                  
               </div>
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Management"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Management
                 </a>
@@ -1068,12 +958,11 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Accounting"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Accounting
                 </a>
@@ -1082,12 +971,11 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Entrepreneurship"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Entrepreneurship
                 </a>
@@ -1096,12 +984,11 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Leadership"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Leadership
                 </a>
@@ -1109,30 +996,28 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               </div>
             </li>
             <li>
-               
               <div
                 className="collapsible-header"
               >
-                 
-                <label
+                <a
                   className="heada"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   <b>
                     PERSONAL GROWTH
                   </b>
-                </label>
+                </a>
                  
               </div>
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Psychology"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Psychology
                 </a>
@@ -1141,12 +1026,11 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Relationships"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Relationships
                 </a>
@@ -1155,12 +1039,11 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Self-Improvement"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Self-Improvement
                 </a>
@@ -1169,12 +1052,11 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Religion"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Religion
                 </a>
@@ -1182,30 +1064,28 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               </div>
             </li>
             <li>
-               
               <div
                 className="collapsible-header"
               >
-                 
-                <label
+                <a
                   className="heada"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   <b>
                     HEALTH & FITNESS
                   </b>
-                </label>
+                </a>
                  
               </div>
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Fitness"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Fitness
                 </a>
@@ -1214,12 +1094,11 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Nutrition"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Nutrition
                 </a>
@@ -1228,12 +1107,11 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
               <div
                 className="collapsible-body"
               >
-                 
                 <a
                   className="boda"
-                  href="#"
                   name="Sports"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Sports
                 </a>
@@ -1331,70 +1209,7 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
           </div>
           <div
             className="row"
-          >
-            <div
-              className="col m10 offset-m2 col l10 offset-l2 col s12 main"
-            >
-              <h4
-                className="page-header"
-              >
-                Search results
-              </h4>
-              <hr />
-              <div
-                className=" row "
-              >
-                <div
-                  className=""
-                >
-                  <ul
-                    className="collection "
-                  >
-                    <li
-                      className="collection-item avatar"
-                    >
-                      <img
-                        alt=""
-                        className="circle"
-                        name={1}
-                        src=""
-                      />
-                      <span
-                        className="title"
-                      >
-                        love
-                      </span>
-                      <p />
-                      <button
-                        className="btn-sm btn-warning shop"
-                        id="wishbtn"
-                        name={1}
-                        onClick={[Function]}
-                        type="button"
-                      >
-                        Check details
-                      </button>
-                      <a
-                        className="secondary-content"
-                        href="#!"
-                      >
-                        <i
-                          className="material-icons "
-                          style={
-                            Object {
-                              "color": "orange",
-                            }
-                          }
-                        >
-                          grade
-                        </i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+          />
         </div>
         <div
           className="row"
@@ -1418,54 +1233,54 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
             <div
               className="col m5 col l3 col s6"
             >
-               
               <div
                 id="card_div"
               >
                 <div
-                  className="small card_holder card"
-                  value={1}
+                  className="container"
+                  id="img_holder"
                 >
+                  <img
+                    alt="Avatar"
+                    className="image"
+                    id="book_img"
+                    src={undefined}
+                    style={
+                      Object {
+                        "height": "200px",
+                        "width": "150px",
+                      }
+                    }
+                  />
                   <div
-                    className="card-image"
-                    id="card_box"
+                    className="middle"
                   >
-                    <img
-                      className=""
-                      src=""
-                    />
-                    <span
-                      className="card-title"
-                    />
-                  </div>
-                  <div
-                    className="card-content"
-                  >
-                    <div>
-                       
-                      <button
-                        className="btn-sm btn-warning shop"
-                        id="wishbtn"
-                        name={1}
-                        onClick={[Function]}
-                        type="button"
-                      >
-                        Read
-                      </button>
-                    </div>
-                  </div>
-                  <div
-                    className="card-reveal"
-                  >
-                    <span
-                      className="card-title grey-text text-darken-4"
+                    <label
+                      className="text"
+                      htmlFor="book_img"
+                      style={
+                        Object {
+                          "fontSize": "12px",
+                          "fontStyle": "bold",
+                        }
+                      }
                     >
-                      <i
-                        className="material-icons right"
-                      >
-                        close
-                      </i>
-                    </span>
+                       
+                    </label>
+                    <button
+                      className="text"
+                      name={1}
+                      onClick={[Function]}
+                      style={
+                        Object {
+                          "backgroundColor": "transparent",
+                          "width": "120px",
+                        }
+                      }
+                      type="btn-sm"
+                    >
+                      Read
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1555,54 +1370,54 @@ exports[`Test BooksPage component should test and take snapshot of booksphotoPag
     <div
       className="col m5 col l3 col s6"
     >
-       
       <div
         id="card_div"
       >
         <div
-          className="small card_holder card"
-          value={1}
+          className="container"
+          id="img_holder"
         >
+          <img
+            alt="Avatar"
+            className="image"
+            id="book_img"
+            src=""
+            style={
+              Object {
+                "height": "200px",
+                "width": "150px",
+              }
+            }
+          />
           <div
-            className="card-image"
-            id="card_box"
+            className="middle"
           >
-            <img
-              className=""
-              src=""
-            />
-            <span
-              className="card-title"
-            />
-          </div>
-          <div
-            className="card-content"
-          >
-            <div>
-               
-              <button
-                className="btn-sm btn-warning shop"
-                id="wishbtn"
-                name={1}
-                onClick={[Function]}
-                type="button"
-              >
-                Read
-              </button>
-            </div>
-          </div>
-          <div
-            className="card-reveal"
-          >
-            <span
-              className="card-title grey-text text-darken-4"
+            <label
+              className="text"
+              htmlFor="book_img"
+              style={
+                Object {
+                  "fontSize": "12px",
+                  "fontStyle": "bold",
+                }
+              }
             >
-              <i
-                className="material-icons right"
-              >
-                close
-              </i>
-            </span>
+               
+            </label>
+            <button
+              className="text"
+              name={1}
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "width": "120px",
+                }
+              }
+              type="btn-sm"
+            >
+              Read
+            </button>
           </div>
         </div>
       </div>

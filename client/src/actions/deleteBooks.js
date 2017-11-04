@@ -5,7 +5,14 @@ import { deletebookError, deletebookRequest, deletebookResponse } from '../../ac
 
 
 
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} bookData 
+ * @param {any} token 
+ * @returns 
+ */
 export function deleteBook(bookData, token) {
   return (dispatch) => {
     dispatch(deletebookRequest(bookData));

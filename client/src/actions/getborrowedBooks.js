@@ -6,7 +6,13 @@ import 'whatwg-fetch'
 
 import { getborrowedbooksError, getborrowedbooksRequest, getborrowedbooksReponse } from '../../actions/getborrowedBooks';
 
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} token 
+ * @returns 
+ */
 export default function getborrowedBooks(token) {
   let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;

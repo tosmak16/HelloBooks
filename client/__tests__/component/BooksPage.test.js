@@ -132,7 +132,23 @@ describe('Test BooksPage component', () => {
     />);
     wrapper.instance().handleFuction = mockFuction;
     wrapper.update();
+    wrapper.instance().setState({
+      filterBy: 'author',
+      searchText: 'teh latehj'
+    });
+    wrapper.update();
     wrapper.instance().handleChange(e);
+    wrapper.update();
+  });
+
+  it('should test for handle selected function', () => {
+    wrapper = shallow(<BooksFilter
+      data={ [{ name: 'hello' }] }
+      filteredData={ [{ id: 1, bookTitle: 'love' }] }
+      checkBookDetails={ mockFuction }
+      searchbooks={ mockFuction }
+    />);
+    wrapper.instance().handleFuction = mockFuction;
     wrapper.update();
     wrapper.instance().handleSelected(e);
     wrapper.update();
@@ -150,8 +166,6 @@ describe('Test BooksPage component', () => {
     wrapper.instance().handleFuction = mockFuction;
     wrapper.update();
     wrapper.instance().handleSelected(e);
-    wrapper.update();
-    wrapper.instance().setState(mockFuction);
     wrapper.update();
     wrapper.instance().setState({
       ilterBy: '',
@@ -171,7 +185,7 @@ describe('Test BooksPage component', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('should test for handle selected function', () => {
+  it('should test for handle click function in sidbar component', () => {
     wrapper = shallow(<SideBar
       data={ [{ name: 'hello', image: '', id: 1 }] }
       showbooksByCategory={ mockFuction }
@@ -181,6 +195,73 @@ describe('Test BooksPage component', () => {
     wrapper.instance().handleClick(e, false);
     wrapper.update();
     wrapper.instance().handleCollapse(e, false);
+    wrapper.update();
+  });
+
+  it('should test for handle collapse function in sidbar component', () => {
+    wrapper = shallow(<SideBar
+      data={ [{ name: 'hello', image: '', id: 1 }] }
+      showbooksByCategory={ mockFuction }
+    />);
+    wrapper.instance().handleFuction = mockFuction;
+    wrapper.update();
+    wrapper.instance().handleCollapse(e, false);
+    wrapper.update();
+  });
+
+  it('should test for handle click function in cardbox component', () => {
+    wrapper = shallow(<Cardbox
+      item={{ name: 'hello', image: 'hello', id: 1 }}
+      handleClick={ mockFuction }
+      checkBookDetails={ mockFuction }
+    />);
+    wrapper.instance().handleFuction = mockFuction;
+    wrapper.update();
+    wrapper.instance().handleClick(e, false);
+    wrapper.update();
+  });
+
+  it('should test for handle click function in BooksCollection component', () => {
+    wrapper = shallow(<BooksCollection
+      data={ [{ name: 'hello', image: 'l8.jpg', id: 1 }] }
+      checkBookDetails={ mockFuction }
+      heading={ 'hello' }
+    />);
+    wrapper.instance().handleFuction = mockFuction;
+    wrapper.update();
+    wrapper.instance().handleClick(e, false);
+    wrapper.update();
+  });
+
+  it('should test for componeneWillReceiveProps function in BooksCategory component', () => {
+    const nextProps = {
+      data: [{ category: books }]
+    };
+
+    wrapper = shallow(<BooksCategory
+      categoryData={ books[0] }
+      data={ [{ name: 'hello', image: '', id: 1 }] }
+      checkBookDetails={ mockFuction }
+    />);
+    wrapper.instance().handleFuction = mockFuction;
+    wrapper.update();
+    wrapper.instance().componentWillReceiveProps(nextProps);
+    wrapper.update();
+  });
+
+  it('should test for componeneWillmount function in BooksCategory component', () => {
+    const nextProps = {
+      data: [{ category: books }]
+    };
+
+    wrapper = shallow(<BooksCategory
+      categoryData={ books[0] }
+      data={ [{ name: 'hello', image: '', id: 1 }] }
+      checkBookDetails={ mockFuction }
+    />);
+    wrapper.instance().handleFuction = mockFuction;
+    wrapper.update();
+    wrapper.instance().componentWillMount();
     wrapper.update();
   });
 });

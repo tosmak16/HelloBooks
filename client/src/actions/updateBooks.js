@@ -3,7 +3,14 @@ import { browserHistory } from 'react-router';
 import { uploadImage } from './uploadImage';
 import { updatebookError, updatebookRequest, updatebookResponse } from '../../actions/updateBooks';
 
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} bookData 
+ * @param {any} token 
+ * @returns 
+ */
 
 export function updateBook(bookData, token) {
   return (dispatch) => {
