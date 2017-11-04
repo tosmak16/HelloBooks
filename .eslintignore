@@ -6,5 +6,6 @@ test
 template/
 client/actions/
 client/src/actions
+.env
 
 

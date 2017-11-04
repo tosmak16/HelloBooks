@@ -214,10 +214,13 @@ class BorrowedbooksTable extends React.Component {
     }
     return (
       <div id="bb_table" className="row">
-        <div id="pdf_reader" >
-          {pointer && <PdfReader onHandleClose={this.handleClose} pdfUrl={pdfUrl} />}
+        {pointer && <div id="pdf_wrapper" >
 
+          <div id="pdf_reader" >
+            {pointer && <PdfReader onHandleClose={this.handleClose} pdfUrl={pdfUrl} />}
+          </div>
         </div>
+        }
         <div className="  col l10 offset-l2 col m10 offset-m2 col s12">
           <h4 className="sub-header"> Currently Reads</h4>
 

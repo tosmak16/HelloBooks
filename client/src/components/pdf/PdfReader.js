@@ -27,6 +27,7 @@ class PdfReader extends Component {
     };
     this.handleDocumentLoad = this.handleDocumentLoad.bind(this);
     this.handleNext = this.handleNext.bind(this);
+    this.handlePrev = this.handlePrev.bind(this);
   }
   /**
    * 
@@ -54,6 +55,16 @@ class PdfReader extends Component {
       console.log('ended');
     }
   }
+
+  handlePrev() {
+    if (i > 1) {
+      this.setState({
+        pageNumber: i -= 1,
+      });
+    } else {
+      console.log('ended');
+    }
+  }
   /**
    * 
    * 
@@ -63,12 +74,18 @@ class PdfReader extends Component {
    */
   render() {
     return (
-      <div className="container" style={{ width: '100px' }}>
-        <div id="pdf_chip" className="button red-text">
+      <div className="container pdf_con" style={{ width: '100px' }}>
+        <div style={{ marginLeft: '20px' }} className="button pdf_chip red-text">
           <button
             onClick={this.props.onHandleClose}
             className="close material-icons"
           >close</button>
+        </div>
+        <div style={{ marginLeft: '20px', marginTop: '350px' }} className="button pdf_chip green-text">
+          <button onClick={this.handlePrev} className="keyboard_arrow_left material-icons">keyboard_arrow_left</button>
+        </div>
+        <div style={{ marginLeft: '550px', marginTop: '350px' }} className="button pdf_chip green-text">
+          <button onClick={this.handleNext} className="keyboard_arrow_right next material-icons">keyboard_arrow_right</button>
         </div>
         <Document
           file={this.props.pdfUrl}
@@ -76,9 +93,6 @@ class PdfReader extends Component {
         >
           <Page pageNumber={this.state.pageNumber} />
         </Document>
-        <div id="pdf_chip" className="button red-text">
-          <button onClick={this.handleNext} className="close material-icons">close</button>
-        </div>
         <p>Page {this.state.pageNumber} of {this.state.numPages}</p>
       </div>
     );
