@@ -17,19 +17,19 @@ class BhTableRow extends React.Component {
    * @memberof BhTableRow
    */
   render() {
-    const { row } = this.props;
-    const { bookItem } = this.props;
-    bdate = row.brdate;
-    fdate = row.rdate;
-    return (
-      <tr >
-
-        <td><img src={bookItem[0].image} style={{ width: '30px', height: '30px' }} alt="name" /></td>
-        <td> {bookItem[0].bookTitle}</td>
-        <td >{bookItem[0].author}</td>
-        <td>{bdate.slice(0, bdate.search('T'))}</td>
-        <td >{row.rdate ? fdate.slice(0, fdate.search('T')) : 'Not yet returned'}</td>
-      </tr >
+    const {
+      row
+    } = this.props;
+    const {
+      bookItem
+    } = this.props;
+    bdate = row.borrowDate;
+    fdate = row.returnDate;
+    return (<tr > <td > < img src={bookItem[0].image} style={{ width: '30px', height: '30px' }} alt="name" />
+    </td> <td > {bookItem[0].bookTitle} </td>
+    <td>{bookItem[0].author} </td>
+    <td> {bdate.slice(0, bdate.search('T'))} </td> <td > {
+      row.returnDate ? fdate.slice(0, fdate.search('T')) : 'Not yet returned'} </td> </tr >
     );
   }
 }

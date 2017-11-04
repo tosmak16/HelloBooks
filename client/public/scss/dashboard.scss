@@ -400,17 +400,33 @@ color: #3d1112 !important;
       transform: translateY(-50%);
     }
   }
+  #pdf_wrapper{
+    z-index: 1000;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.51);
+    width: 1000px;
+    height: 1000px;
+    position: fixed;
+    bottom: 0px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    margin-top: 65px;
+    margin-left: 250px;
+  }
 
   #pdf_reader{
-      display: none;
-      position: absolute;
-      z-index: 1000;
+      display: block;
+      position: relative;
+      margin-right: 500px;
+      z-index: 1000
   }
   
-  #pdf_chip{
+  .pdf_chip{
       margin-left: 150px;
       position: absolute;
       z-index: 1000;
+      display: none;
   }
 #table_bh{
 box-shadow: 5px 5px 5px 5px #9e8f8f
@@ -419,3 +435,11 @@ box-shadow: 5px 5px 5px 5px #9e8f8f
 #table_bb{
     box-shadow: 5px 5px 5px 5px #9e8f8f
     }
+
+    .pdf_con:hover{
+        .pdf_chip{
+            display: block;
+        }
+       
+    }
+

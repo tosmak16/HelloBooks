@@ -1,11 +1,19 @@
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
-import { browserHistory } from 'react-router';
+import {
+  browserHistory
+} from 'react-router';
 import 'whatwg-fetch'
 
 
-import { loginError, loginRequest, loginResponse } from '../../actions/loginActions';
-import { setCurrentuser } from '../../actions/setCurrentuser';
+import {
+  loginError,
+  loginRequest,
+  loginResponse
+} from '../../actions/loginActions';
+import {
+  setCurrentuser
+} from '../../actions/setCurrentuser';
 
 /**
  * 
@@ -19,21 +27,19 @@ export default function userSignin(userData) {
     dispatch(loginRequest(userData));
 
     return fetch('http://localhost:8000/api/v2/users/signin', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(userData)
-    })
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+      })
       .then(
-      (res) => res.json())
+        (res) => res.json())
       .then((response) => {
         if (response.status >= 400) {
-
           throw response.message
-        }
-        else if (response.status === 200) {
+        } else if (response.status === 200) {
           const token = response.token;
           window.localStorage.setItem('jwtToken', token);
           const x = jwtDecode(token);

@@ -720,7 +720,7 @@ describe('Check for updateuser details api route', () => {
 
 //TEST FOR CHANGE PASSWORD
 
-describe('Check for chnage password api route', () => {
+describe('Check for change password api route', () => {
   it('should return 403 invalid Identity', (done) => {
     chai.request(server)
       .put('/api/v2/users/2/password')
@@ -737,7 +737,7 @@ describe('Check for chnage password api route', () => {
       .set('token', userToken)
       .send({ oldPassword: SHA256('user1').toString() })
       .end((err, res) => {
-        res.should.have.status(401);
+        res.should.have.status(406);
         expect(res.body.message).to.equal('Current password is wrong')
         done();
       });

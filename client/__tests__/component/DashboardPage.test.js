@@ -59,7 +59,7 @@ describe('Test Dashboard page components and container', () => {
       data: '',
       error: '',
       isReturning: false,
-      response: ''
+      response: '',
     }],
     getunreturnedBooks: [{
       isFetching: false,
@@ -76,7 +76,7 @@ describe('Test Dashboard page components and container', () => {
       data: '',
       error: '',
       isUploading: false,
-      response: ''
+      response: '',
     }],
     passwordChange: [{
       isSending: false,
@@ -93,40 +93,40 @@ describe('Test Dashboard page components and container', () => {
     window.localStorage = localStorageMock;
 
 
-    wrapper = mount(<Provider store={ store }><ConnectedDashboardPage /></Provider>);
+    wrapper = mount(<Provider store={store}><ConnectedDashboardPage /></Provider>);
   });
   it('should test and take snapshot of dashboard Page', () => {
     const tree = render.create(<DashboardPage
-      userData={ initialState.UserDetails[0].data }
-      userDataError={ initialState.UserDetails[0].error }
-      isRefreshed={ initialState.refreshPage[0].isRefreshed }
-      bhData={ initialState.getborrowedBooks[0].data }
-      bookData={ initialState.books[0].data }
-      item={ initialState.returnBooks }
-      bbData={ initialState.getunreturnedBooks[0].data }
-      userItem={ initialState.updateUser }
-      imageUrl={ initialState.userProfileImage[0].response }
-      error={ initialState.updateUser[0].error.toString() }
-      message={ initialState.updateUser[0].data.toString() }
-      passwordChange={ initialState.passwordChange }
-      getunreturnedBooks={ mockFuction }
-      returnbook={ mockFuction }
-      getborrowedBooks={ mockFuction }
-      getbooks={ mockFuction }
-      getUserdetails={ mockFuction }
-      refreshPage={ mockFuction }
-      updateUser={ mockFuction }
-      uploadAvatar={ mockFuction }
-      changePassword={ mockFuction }
+      userData={initialState.UserDetails[0].data}
+      userDataError={initialState.UserDetails[0].error}
+      isRefreshed={initialState.refreshPage[0].isRefreshed}
+      bhData={initialState.getborrowedBooks[0].data}
+      bookData={initialState.books[0].data}
+      item={initialState.returnBooks}
+      bbData={initialState.getunreturnedBooks[0].data}
+      userItem={initialState.updateUser}
+      imageUrl={initialState.userProfileImage[0].response}
+      error={initialState.updateUser[0].error.toString()}
+      message={initialState.updateUser[0].data.toString()}
+      passwordChange={initialState.passwordChange}
+      getunreturnedBooks={mockFuction}
+      returnbook={mockFuction}
+      getborrowedBooks={mockFuction}
+      getbooks={mockFuction}
+      getUserdetails={mockFuction}
+      refreshPage={mockFuction}
+      updateUser={mockFuction}
+      uploadAvatar={mockFuction}
+      changePassword={mockFuction}
     />);
     expect(tree).toMatchSnapshot();
   });
 
   it('should test and take snapshot of user profile page when data and book array are empty', () => {
     const tree = render.create(<UserProfile
-      data={ initialState.UserDetails[0].data }
-      item={ initialState.returnBooks }
-      updateUser={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      item={initialState.returnBooks}
+      updateUser={mockFuction}
 
     />);
     expect(tree).toMatchSnapshot();
@@ -135,18 +135,18 @@ describe('Test Dashboard page components and container', () => {
   it('should test for component will receiveprops methods call in user profile page ', () => {
     const nextProps = {
       data: user,
-      item: [{ error: 'error', data: '' }]
+      item: [{ error: 'error', data: '' }],
 
     };
 
 
     wrapper = shallow(<UserProfile
-      data={ initialState.UserDetails[0].data }
-      item={ initialState.returnBooks }
-      updateUser={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      item={initialState.returnBooks}
+      updateUser={mockFuction}
     />);
     wrapper.instance().setState({
-      display: true
+      display: true,
     });
     wrapper.update();
     wrapper.instance().componentWillReceiveProps(nextProps);
@@ -155,9 +155,9 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleEdit function was called in user profile page', () => {
     const app = shallow(<UserProfile
-      data={ initialState.UserDetails[0].data }
-      item={ initialState.returnBooks }
-      updateUser={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      item={initialState.returnBooks}
+      updateUser={mockFuction}
     />);
     app.instance().setState({
       email: 'fcgb',
@@ -178,9 +178,9 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleEdit function was called in user profile page', () => {
     const app = shallow(<UserProfile
-      data={ initialState.UserDetails[0].data }
-      item={ initialState.returnBooks }
-      updateUser={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      item={initialState.returnBooks}
+      updateUser={mockFuction}
     />);
     app.instance().setState({
       email: 'fcgb',
@@ -206,23 +206,23 @@ describe('Test Dashboard page components and container', () => {
       email: 'tobi@gmail.com',
       mobileNumber: '',
       membershipType: 'Basic',
-      image: 'user.jpg'
+      image: 'user.jpg',
     }];
 
     const nextProps = {
       data: user2,
-      item: [{ error: '', data: 'good' }]
+      item: [{ error: '', data: 'good' }],
 
     };
 
 
     wrapper = shallow(<UserProfile
-      data={ initialState.UserDetails[0].data }
-      item={ initialState.returnBooks }
-      updateUser={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      item={initialState.returnBooks}
+      updateUser={mockFuction}
     />);
     wrapper.instance().setState({
-      display: true
+      display: true,
     });
     wrapper.update();
     wrapper.instance().componentWillReceiveProps(nextProps);
@@ -232,9 +232,9 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleExit function was called in user profile page', () => {
     const app = shallow(<UserProfile
-      data={ initialState.UserDetails[0].data }
-      item={ initialState.returnBooks }
-      updateUser={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      item={initialState.returnBooks}
+      updateUser={mockFuction}
     />);
     const instance = app.instance();
     const spy = jest.spyOn(instance, 'handleExit');
@@ -246,9 +246,9 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleInputChange function was called in user profile page', () => {
     const app = shallow(<UserProfile
-      data={ initialState.UserDetails[0].data }
-      item={ initialState.returnBooks }
-      updateUser={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      item={initialState.returnBooks}
+      updateUser={mockFuction}
     />);
     const instance = app.instance();
     const spy = jest.spyOn(instance, 'handleInputChange');
@@ -259,9 +259,9 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleClose function was called in user profile page', () => {
     const app = shallow(<UserProfile
-      data={ initialState.UserDetails[0].data }
-      item={ initialState.returnBooks }
-      updateUser={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      item={initialState.returnBooks}
+      updateUser={mockFuction}
     />);
     const instance = app.instance();
     const spy = jest.spyOn(instance, 'handleClose');
@@ -272,9 +272,9 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleClick function was called in user profile page', () => {
     const app = shallow(<UserProfile
-      data={ initialState.UserDetails[0].data }
-      item={ initialState.returnBooks }
-      updateUser={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      item={initialState.returnBooks}
+      updateUser={mockFuction}
     />);
     const instance = app.instance();
     const spy = jest.spyOn(instance, 'handleClick');
@@ -286,18 +286,18 @@ describe('Test Dashboard page components and container', () => {
   it('should test for component will receiveprops methods call in BooksHistory page ', () => {
     const nextProps = {
       data: books,
-      isRefreshed: true
+      isRefreshed: true,
 
     };
 
 
     wrapper = shallow(<BorrowHistoryTable
-      isRefreshed={ initialState.refreshPage[0].isRefreshed }
-      data={ initialState.getborrowedBooks[0].data }
-      bookData={ initialState.books[0].data }
-      getborrowedBooks={ mockFuction }
-      getbooks={ mockFuction }
-      refreshPage={ mockFuction }
+      isRefreshed={initialState.refreshPage[0].isRefreshed}
+      data={initialState.getborrowedBooks[0].data}
+      bookData={initialState.books[0].data}
+      getborrowedBooks={mockFuction}
+      getbooks={mockFuction}
+      refreshPage={mockFuction}
     />);
     const instance = wrapper.instance();
     const spy = jest.spyOn(instance, 'componentWillReceiveProps');
@@ -311,18 +311,18 @@ describe('Test Dashboard page components and container', () => {
   it('should test for componentWillMount method call in BooksHistory page ', () => {
     const nextProps = {
       data: books,
-      isRefreshed: true
+      isRefreshed: true,
 
     };
 
 
     wrapper = shallow(<BorrowHistoryTable
       isRefreshed
-      data={ [] }
-      bookData={ [] }
-      getborrowedBooks={ mockFuction }
-      getbooks={ mockFuction }
-      refreshPage={ mockFuction }
+      data={[]}
+      bookData={[]}
+      getborrowedBooks={mockFuction}
+      getbooks={mockFuction}
+      refreshPage={mockFuction}
     />);
     const instance = wrapper.instance();
     const spy = jest.spyOn(instance, 'componentWillMount');
@@ -338,25 +338,25 @@ describe('Test Dashboard page components and container', () => {
     const nextProps = {
       data: books,
       isRefreshed: true,
-      item: [{ error: 'error', data: 'good' }]
+      item: [{ error: 'error', data: 'good' }],
 
     };
 
 
     wrapper = shallow(<BorrowedbooksTable
-      isRefreshed={ initialState.refreshPage[0].isRefreshed }
-      bookData={ initialState.books[0].data }
-      item={ initialState.returnBooks }
-      data={ initialState.getunreturnedBooks[0].data }
-      getunreturnedBooks={ mockFuction }
-      returnbook={ mockFuction }
-      getborrowedBooks={ mockFuction }
-      getbooks={ mockFuction }
-      refreshPage={ mockFuction }
+      isRefreshed={initialState.refreshPage[0].isRefreshed}
+      bookData={initialState.books[0].data}
+      item={initialState.returnBooks}
+      data={initialState.getunreturnedBooks[0].data}
+      getunreturnedBooks={mockFuction}
+      returnbook={mockFuction}
+      getborrowedBooks={mockFuction}
+      getbooks={mockFuction}
+      refreshPage={mockFuction}
     />);
     const instance = wrapper.instance();
     instance.setState({
-      pointer: true
+      pointer: true,
     });
     const spy = jest.spyOn(instance, 'componentWillReceiveProps');
     instance.forceUpdate();
@@ -370,25 +370,25 @@ describe('Test Dashboard page components and container', () => {
     const nextProps = {
       data: books,
       isRefreshed: false,
-      item: [{ error: '', response: 'good' }]
+      item: [{ error: '', response: 'good' }],
 
     };
 
 
     wrapper = shallow(<BorrowedbooksTable
-      isRefreshed={ initialState.refreshPage[0].isRefreshed }
-      bookData={ initialState.books[0].data }
-      item={ initialState.returnBooks }
-      data={ initialState.getunreturnedBooks[0].data }
-      getunreturnedBooks={ mockFuction }
-      returnbook={ mockFuction }
-      getborrowedBooks={ mockFuction }
-      getbooks={ mockFuction }
-      refreshPage={ mockFuction }
+      isRefreshed={initialState.refreshPage[0].isRefreshed}
+      bookData={initialState.books[0].data}
+      item={initialState.returnBooks}
+      data={initialState.getunreturnedBooks[0].data}
+      getunreturnedBooks={mockFuction}
+      returnbook={mockFuction}
+      getborrowedBooks={mockFuction}
+      getbooks={mockFuction}
+      refreshPage={mockFuction}
     />);
     const instance = wrapper.instance();
     instance.setState({
-      pointer: true
+      pointer: true,
     });
     const spy = jest.spyOn(instance, 'componentWillReceiveProps');
     instance.forceUpdate();
@@ -402,25 +402,25 @@ describe('Test Dashboard page components and container', () => {
     const nextProps = {
       data: books,
       isRefreshed: false,
-      item: [{ error: '', response: 'good' }]
+      item: [{ error: '', response: 'good' }],
 
     };
 
 
     wrapper = shallow(<BorrowedbooksTable
-      isRefreshed={ initialState.refreshPage[0].isRefreshed }
-      bookData={ initialState.books[0].data }
-      item={ initialState.returnBooks }
-      data={ initialState.getunreturnedBooks[0].data }
-      getunreturnedBooks={ mockFuction }
-      returnbook={ mockFuction }
-      getborrowedBooks={ mockFuction }
-      getbooks={ mockFuction }
-      refreshPage={ mockFuction }
+      isRefreshed={initialState.refreshPage[0].isRefreshed}
+      bookData={initialState.books[0].data}
+      item={initialState.returnBooks}
+      data={initialState.getunreturnedBooks[0].data}
+      getunreturnedBooks={mockFuction}
+      returnbook={mockFuction}
+      getborrowedBooks={mockFuction}
+      getbooks={mockFuction}
+      refreshPage={mockFuction}
     />);
     const instance = wrapper.instance();
     instance.setState({
-      pointer: false
+      pointer: false,
     });
     const spy = jest.spyOn(instance, 'componentWillReceiveProps');
     instance.forceUpdate();
@@ -432,15 +432,15 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test for componentWillMount method call in BorrowedbooksTable page ', () => {
     wrapper = shallow(<BorrowedbooksTable
-      isRefreshed={ initialState.refreshPage[0].isRefreshed }
-      bookData={ initialState.books[0].data }
-      item={ initialState.returnBooks }
-      data={ initialState.getunreturnedBooks[0].data }
-      getunreturnedBooks={ mockFuction }
-      returnbook={ mockFuction }
-      getborrowedBooks={ mockFuction }
-      getbooks={ mockFuction }
-      refreshPage={ mockFuction }
+      isRefreshed={initialState.refreshPage[0].isRefreshed}
+      bookData={initialState.books[0].data}
+      item={initialState.returnBooks}
+      data={initialState.getunreturnedBooks[0].data}
+      getunreturnedBooks={mockFuction}
+      returnbook={mockFuction}
+      getborrowedBooks={mockFuction}
+      getbooks={mockFuction}
+      refreshPage={mockFuction}
     />);
     const instance = wrapper.instance();
     const spy = jest.spyOn(instance, 'componentWillMount');
@@ -453,15 +453,15 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test for componentWillMount method call in BorrowedbooksTable page when bookData and data are empty ', () => {
     wrapper = shallow(<BorrowedbooksTable
-      isRefreshed={ initialState.refreshPage[0].isRefreshed }
-      bookData={ [] }
-      item={ initialState.returnBooks }
-      data={ [] }
-      getunreturnedBooks={ mockFuction }
-      returnbook={ mockFuction }
-      getborrowedBooks={ mockFuction }
-      getbooks={ mockFuction }
-      refreshPage={ mockFuction }
+      isRefreshed={initialState.refreshPage[0].isRefreshed}
+      bookData={[]}
+      item={initialState.returnBooks}
+      data={[]}
+      getunreturnedBooks={mockFuction}
+      returnbook={mockFuction}
+      getborrowedBooks={mockFuction}
+      getbooks={mockFuction}
+      refreshPage={mockFuction}
     />);
     const instance = wrapper.instance();
     const spy = jest.spyOn(instance, 'componentWillMount');
@@ -474,15 +474,15 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleClick function was called in borrowedbooks page', () => {
     const app = shallow(<BorrowedbooksTable
-      isRefreshed={ initialState.refreshPage[0].isRefreshed }
-      bookData={ initialState.books[0].data }
-      item={ initialState.returnBooks }
-      data={ initialState.getunreturnedBooks[0].data }
-      getunreturnedBooks={ mockFuction }
-      returnbook={ mockFuction }
-      getborrowedBooks={ mockFuction }
-      getbooks={ mockFuction }
-      refreshPage={ mockFuction }
+      isRefreshed={initialState.refreshPage[0].isRefreshed}
+      bookData={initialState.books[0].data}
+      item={initialState.returnBooks}
+      data={initialState.getunreturnedBooks[0].data}
+      getunreturnedBooks={mockFuction}
+      returnbook={mockFuction}
+      getborrowedBooks={mockFuction}
+      getbooks={mockFuction}
+      refreshPage={mockFuction}
     />);
     const instance = app.instance();
     const spy = jest.spyOn(instance, 'handleClick');
@@ -493,15 +493,15 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleExit function was called in borrowedbooks page', () => {
     const app = shallow(<BorrowedbooksTable
-      isRefreshed={ initialState.refreshPage[0].isRefreshed }
-      bookData={ initialState.books[0].data }
-      item={ initialState.returnBooks }
-      data={ initialState.getunreturnedBooks[0].data }
-      getunreturnedBooks={ mockFuction }
-      returnbook={ mockFuction }
-      getborrowedBooks={ mockFuction }
-      getbooks={ mockFuction }
-      refreshPage={ mockFuction }
+      isRefreshed={initialState.refreshPage[0].isRefreshed}
+      bookData={initialState.books[0].data}
+      item={initialState.returnBooks}
+      data={initialState.getunreturnedBooks[0].data}
+      getunreturnedBooks={mockFuction}
+      returnbook={mockFuction}
+      getborrowedBooks={mockFuction}
+      getbooks={mockFuction}
+      refreshPage={mockFuction}
     />);
     const instance = app.instance();
     const spy = jest.spyOn(instance, 'handleExit');
@@ -512,15 +512,15 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleYes function was called in borrowedbooks page', () => {
     const app = shallow(<BorrowedbooksTable
-      isRefreshed={ initialState.refreshPage[0].isRefreshed }
-      bookData={ initialState.books[0].data }
-      item={ initialState.returnBooks }
-      data={ initialState.getunreturnedBooks[0].data }
-      getunreturnedBooks={ mockFuction }
-      returnbook={ mockFuction }
-      getborrowedBooks={ mockFuction }
-      getbooks={ mockFuction }
-      refreshPage={ mockFuction }
+      isRefreshed={initialState.refreshPage[0].isRefreshed}
+      bookData={initialState.books[0].data}
+      item={initialState.returnBooks}
+      data={initialState.getunreturnedBooks[0].data}
+      getunreturnedBooks={mockFuction}
+      returnbook={mockFuction}
+      getborrowedBooks={mockFuction}
+      getbooks={mockFuction}
+      refreshPage={mockFuction}
     />);
     const instance = app.instance();
     const spy = jest.spyOn(instance, 'handleYes');
@@ -531,15 +531,15 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleNo function was called in borrowedbooks page', () => {
     const app = shallow(<BorrowedbooksTable
-      isRefreshed={ initialState.refreshPage[0].isRefreshed }
-      bookData={ initialState.books[0].data }
-      item={ initialState.returnBooks }
-      data={ initialState.getunreturnedBooks[0].data }
-      getunreturnedBooks={ mockFuction }
-      returnbook={ mockFuction }
-      getborrowedBooks={ mockFuction }
-      getbooks={ mockFuction }
-      refreshPage={ mockFuction }
+      isRefreshed={initialState.refreshPage[0].isRefreshed}
+      bookData={initialState.books[0].data}
+      item={initialState.returnBooks}
+      data={initialState.getunreturnedBooks[0].data}
+      getunreturnedBooks={mockFuction}
+      returnbook={mockFuction}
+      getborrowedBooks={mockFuction}
+      getbooks={mockFuction}
+      refreshPage={mockFuction}
     />);
     const instance = app.instance();
     const spy = jest.spyOn(instance, 'handleNo');
@@ -552,18 +552,18 @@ describe('Test Dashboard page components and container', () => {
     const nextProps = {
       data: books,
       isRefreshed: false,
-      item: [{ error: 'error', data: 'good' }]
+      item: [{ error: 'error', data: 'good' }],
 
     };
 
 
     wrapper = shallow(<ChangePasswordPage
-      item={ initialState.returnBooks }
-      changePassword={ mockFuction }
+      item={initialState.returnBooks}
+      changePassword={mockFuction}
     />);
     const instance = wrapper.instance();
     instance.setState({
-      display: true
+      display: true,
     });
     const spy = jest.spyOn(instance, 'componentWillReceiveProps');
     instance.forceUpdate();
@@ -577,18 +577,18 @@ describe('Test Dashboard page components and container', () => {
     const nextProps = {
       data: books,
       isRefreshed: false,
-      item: [{ error: '', data: 'good' }]
+      item: [{ error: '', data: 'good' }],
 
     };
 
 
     wrapper = shallow(<ChangePasswordPage
-      item={ initialState.returnBooks }
-      changePassword={ mockFuction }
+      item={initialState.returnBooks}
+      changePassword={mockFuction}
     />);
     const instance = wrapper.instance();
     instance.setState({
-      display: true
+      display: true,
     });
     const spy = jest.spyOn(instance, 'componentWillReceiveProps');
     instance.forceUpdate();
@@ -601,18 +601,18 @@ describe('Test Dashboard page components and container', () => {
     const nextProps = {
       data: books,
       isRefreshed: false,
-      item: [{ error: '', data: 'good' }]
+      item: [{ error: '', data: 'good' }],
 
     };
 
 
     wrapper = shallow(<ChangePasswordPage
-      item={ initialState.returnBooks }
-      changePassword={ mockFuction }
+      item={initialState.returnBooks}
+      changePassword={mockFuction}
     />);
     const instance = wrapper.instance();
     instance.setState({
-      display: false
+      display: false,
     });
     const spy = jest.spyOn(instance, 'componentWillReceiveProps');
     instance.forceUpdate();
@@ -624,8 +624,8 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleClose function was called in changepassword page', () => {
     const app = shallow(<ChangePasswordPage
-      item={ initialState.returnBooks }
-      changePassword={ mockFuction }
+      item={initialState.returnBooks}
+      changePassword={mockFuction}
     />);
     const instance = app.instance();
     const spy = jest.spyOn(instance, 'handleClose');
@@ -636,8 +636,8 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleExit function was called in changepassword page', () => {
     const app = shallow(<ChangePasswordPage
-      item={ initialState.returnBooks }
-      changePassword={ mockFuction }
+      item={initialState.returnBooks}
+      changePassword={mockFuction}
     />);
     const instance = app.instance();
     const spy = jest.spyOn(instance, 'handleExit');
@@ -648,8 +648,8 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleClick function was called in changepassword page', () => {
     const app = shallow(<ChangePasswordPage
-      item={ initialState.returnBooks }
-      changePassword={ mockFuction }
+      item={initialState.returnBooks}
+      changePassword={mockFuction}
     />);
     const instance = app.instance();
     const spy = jest.spyOn(instance, 'handleClick');
@@ -660,8 +660,8 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleInputChange function was called in changepassword page', () => {
     const app = shallow(<ChangePasswordPage
-      item={ initialState.returnBooks }
-      changePassword={ mockFuction }
+      item={initialState.returnBooks}
+      changePassword={mockFuction}
     />);
     const instance = app.instance();
     const spy = jest.spyOn(instance, 'handleInputChange');
@@ -672,8 +672,8 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleSave function was called in changepassword page', () => {
     const app = shallow(<ChangePasswordPage
-      item={ initialState.returnBooks }
-      changePassword={ mockFuction }
+      item={initialState.returnBooks}
+      changePassword={mockFuction}
     />);
     const instance = app.instance();
     const spy = jest.spyOn(instance, 'handleSave');
@@ -685,8 +685,8 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleSave function was called in changepassword page', () => {
     const app = shallow(<ChangePasswordPage
-      item={ initialState.returnBooks }
-      changePassword={ mockFuction }
+      item={initialState.returnBooks}
+      changePassword={mockFuction}
     />);
 
     const instance = app.instance();
@@ -703,8 +703,8 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleSave function was called in changepassword page', () => {
     const app = shallow(<ChangePasswordPage
-      item={ initialState.returnBooks }
-      changePassword={ mockFuction }
+      item={initialState.returnBooks}
+      changePassword={mockFuction}
     />);
 
     const instance = app.instance();
@@ -721,8 +721,8 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleSave function was called in changepassword page', () => {
     const app = shallow(<ChangePasswordPage
-      item={ initialState.returnBooks }
-      changePassword={ mockFuction }
+      item={initialState.returnBooks}
+      changePassword={mockFuction}
     />);
 
     const instance = app.instance();
@@ -742,24 +742,24 @@ describe('Test Dashboard page components and container', () => {
       data: user,
       isRefreshed: false,
       item: [{ error: '', data: 'good' }],
-      imageUrl: 'l8.jpg'
+      imageUrl: 'l8.jpg',
 
 
     };
 
 
     wrapper = shallow(<DashboardSidebar
-      data={ initialState.UserDetails[0].data }
-      imageUrl={ initialState.userProfileImage[0].response }
-      error={ initialState.updateUser[0].error.toString() }
-      message={ initialState.updateUser[0].data.toString() }
-      updateUser={ mockFuction }
-      uploadAvatar={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      imageUrl={initialState.userProfileImage[0].response}
+      error={initialState.updateUser[0].error.toString()}
+      message={initialState.updateUser[0].data.toString()}
+      updateUser={mockFuction}
+      uploadAvatar={mockFuction}
 
     />);
     const instance = wrapper.instance();
     instance.setState({
-      show: false
+      show: false,
     });
     const spy = jest.spyOn(instance, 'componentWillReceiveProps');
     instance.forceUpdate();
@@ -773,23 +773,23 @@ describe('Test Dashboard page components and container', () => {
     const nextProps = {
       data: user,
       isRefreshed: false,
-      item: [{ error: '', data: 'good' }]
+      item: [{ error: '', data: 'good' }],
 
     };
 
 
     wrapper = shallow(<DashboardSidebar
-      data={ initialState.UserDetails[0].data }
-      imageUrl={ initialState.userProfileImage[0].response }
-      error={ 'error' }
-      message={ '' }
-      updateUser={ mockFuction }
-      uploadAvatar={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      imageUrl={initialState.userProfileImage[0].response}
+      error={'error'}
+      message={''}
+      updateUser={mockFuction}
+      uploadAvatar={mockFuction}
 
     />);
     const instance = wrapper.instance();
     instance.setState({
-      show: true
+      show: true,
     });
     const spy = jest.spyOn(instance, 'componentWillReceiveProps');
     instance.forceUpdate();
@@ -804,24 +804,24 @@ describe('Test Dashboard page components and container', () => {
       data: user,
       isRefreshed: false,
       item: [{ error: '', data: 'good' }],
-      imageUrl: 'l8.jpg'
+      imageUrl: 'l8.jpg',
 
     };
 
 
     wrapper = shallow(<DashboardSidebar
-      data={ initialState.UserDetails[0].data }
-      imageUrl={ initialState.userProfileImage[0].response }
-      error={ '' }
-      message={ 'ok' }
-      updateUser={ mockFuction }
-      uploadAvatar={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      imageUrl={initialState.userProfileImage[0].response}
+      error={''}
+      message={'ok'}
+      updateUser={mockFuction}
+      uploadAvatar={mockFuction}
 
     />);
     const instance = wrapper.instance();
     instance.setState({
       show: true,
-      imageloaded: true
+      imageloaded: true,
     });
     const spy = jest.spyOn(instance, 'componentWillReceiveProps');
     instance.forceUpdate();
@@ -833,12 +833,12 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleclick function was called dashboard side bar component', () => {
     const app = shallow(<DashboardSidebar
-      data={ initialState.UserDetails[0].data }
-      imageUrl={ initialState.userProfileImage[0].response }
-      error={ '' }
-      message={ 'ok' }
-      updateUser={ mockFuction }
-      uploadAvatar={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      imageUrl={initialState.userProfileImage[0].response}
+      error={''}
+      message={'ok'}
+      updateUser={mockFuction}
+      uploadAvatar={mockFuction}
     />);
 
     const instance = app.instance();
@@ -850,12 +850,12 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleclose function was called dashboard side bar component', () => {
     const app = shallow(<DashboardSidebar
-      data={ initialState.UserDetails[0].data }
-      imageUrl={ initialState.userProfileImage[0].response }
-      error={ '' }
-      message={ 'ok' }
-      updateUser={ mockFuction }
-      uploadAvatar={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      imageUrl={initialState.userProfileImage[0].response}
+      error={''}
+      message={'ok'}
+      updateUser={mockFuction}
+      uploadAvatar={mockFuction}
     />);
 
     const instance = app.instance();
@@ -867,12 +867,12 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleExit function was called dashboard side bar component', () => {
     const app = shallow(<DashboardSidebar
-      data={ initialState.UserDetails[0].data }
-      imageUrl={ initialState.userProfileImage[0].response }
-      error={ '' }
-      message={ 'ok' }
-      updateUser={ mockFuction }
-      uploadAvatar={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      imageUrl={initialState.userProfileImage[0].response}
+      error={''}
+      message={'ok'}
+      updateUser={mockFuction}
+      uploadAvatar={mockFuction}
     />);
 
     const instance = app.instance();
@@ -884,12 +884,12 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleEdit function was called dashboard side bar component when required parameters are not inputed', () => {
     const app = shallow(<DashboardSidebar
-      data={ initialState.UserDetails[0].data }
-      imageUrl={ initialState.userProfileImage[0].response }
-      error={ '' }
-      message={ 'ok' }
-      updateUser={ mockFuction }
-      uploadAvatar={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      imageUrl={initialState.userProfileImage[0].response}
+      error={''}
+      message={'ok'}
+      updateUser={mockFuction}
+      uploadAvatar={mockFuction}
     />);
 
     const instance = app.instance();
@@ -902,12 +902,12 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleEdit function was called in dashboard side bar component when required parammeters are inputed', () => {
     const app = shallow(<DashboardSidebar
-      data={ initialState.UserDetails[0].data }
-      imageUrl={ initialState.userProfileImage[0].response }
-      error={ '' }
-      message={ 'ok' }
-      updateUser={ mockFuction }
-      uploadAvatar={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      imageUrl={initialState.userProfileImage[0].response}
+      error={''}
+      message={'ok'}
+      updateUser={mockFuction}
+      uploadAvatar={mockFuction}
     />);
 
     const instance = app.instance();
@@ -926,12 +926,12 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleEdit function was called in dashboard side bar component when image height is more than 200', () => {
     const app = shallow(<DashboardSidebar
-      data={ initialState.UserDetails[0].data }
-      imageUrl={ initialState.userProfileImage[0].response }
-      error={ '' }
-      message={ 'ok' }
-      updateUser={ mockFuction }
-      uploadAvatar={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      imageUrl={initialState.userProfileImage[0].response}
+      error={''}
+      message={'ok'}
+      updateUser={mockFuction}
+      uploadAvatar={mockFuction}
     />);
 
     const instance = app.instance();
@@ -950,12 +950,12 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleEdit function was called in dashboard side bar component when required parammeters are inputed', () => {
     const app = shallow(<DashboardSidebar
-      data={ initialState.UserDetails[0].data }
-      imageUrl={ initialState.userProfileImage[0].response }
-      error={ '' }
-      message={ 'ok' }
-      updateUser={ mockFuction }
-      uploadAvatar={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      imageUrl={initialState.userProfileImage[0].response}
+      error={''}
+      message={'ok'}
+      updateUser={mockFuction}
+      uploadAvatar={mockFuction}
     />);
 
     const instance = app.instance();
@@ -974,12 +974,12 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleImage function was called in dashboard side bar component when required parammeters are inputed', () => {
     const app = shallow(<DashboardSidebar
-      data={ initialState.UserDetails[0].data }
-      imageUrl={ initialState.userProfileImage[0].response }
-      error={ '' }
-      message={ 'ok' }
-      updateUser={ mockFuction }
-      uploadAvatar={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      imageUrl={initialState.userProfileImage[0].response}
+      error={''}
+      message={'ok'}
+      updateUser={mockFuction}
+      uploadAvatar={mockFuction}
     />);
 
     const instance = app.instance();
@@ -991,12 +991,12 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleClickBookShelf function was called dashboard side bar component', () => {
     const app = shallow(<DashboardSidebar
-      data={ initialState.UserDetails[0].data }
-      imageUrl={ initialState.userProfileImage[0].response }
-      error={ '' }
-      message={ 'ok' }
-      updateUser={ mockFuction }
-      uploadAvatar={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      imageUrl={initialState.userProfileImage[0].response}
+      error={''}
+      message={'ok'}
+      updateUser={mockFuction}
+      uploadAvatar={mockFuction}
     />);
 
     const instance = app.instance();
@@ -1008,12 +1008,12 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if  handleClickAccount function was called dashboard side bar component', () => {
     const app = shallow(<DashboardSidebar
-      data={ initialState.UserDetails[0].data }
-      imageUrl={ initialState.userProfileImage[0].response }
-      error={ '' }
-      message={ 'ok' }
-      updateUser={ mockFuction }
-      uploadAvatar={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      imageUrl={initialState.userProfileImage[0].response}
+      error={''}
+      message={'ok'}
+      updateUser={mockFuction}
+      uploadAvatar={mockFuction}
     />);
 
     const instance = app.instance();
@@ -1025,12 +1025,12 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if  handleClickHistory function was called dashboard side bar component', () => {
     const app = shallow(<DashboardSidebar
-      data={ initialState.UserDetails[0].data }
-      imageUrl={ initialState.userProfileImage[0].response }
-      error={ '' }
-      message={ 'ok' }
-      updateUser={ mockFuction }
-      uploadAvatar={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      imageUrl={initialState.userProfileImage[0].response}
+      error={''}
+      message={'ok'}
+      updateUser={mockFuction}
+      uploadAvatar={mockFuction}
     />);
 
     const instance = app.instance();
@@ -1042,17 +1042,17 @@ describe('Test Dashboard page components and container', () => {
 
   it('should test if handleChangePassword function was called dashboard side bar component', () => {
     const app = shallow(<DashboardSidebar
-      data={ initialState.UserDetails[0].data }
-      imageUrl={ initialState.userProfileImage[0].response }
-      error={ '' }
-      message={ 'ok' }
-      updateUser={ mockFuction }
-      uploadAvatar={ mockFuction }
+      data={initialState.UserDetails[0].data}
+      imageUrl={initialState.userProfileImage[0].response}
+      error={''}
+      message={'ok'}
+      updateUser={mockFuction}
+      uploadAvatar={mockFuction}
     />);
 
     const instance = app.instance();
     instance.setState({
-      imagePreviewUrl: 'l8.jpg'
+      imagePreviewUrl: 'l8.jpg',
     });
     const spy = jest.spyOn(instance, 'handleChangePassword');
     instance.forceUpdate();
