@@ -16,7 +16,7 @@ export default {
   signup(req, res) {
     /* checks if required details are inputed if not sends status 400 message */
     if (!(req.body.password && req.body.username && req.body.email &&
-        req.body.firstName && req.body.lastName && req.body.membershipType)) {
+      req.body.firstName && req.body.lastName && req.body.membershipType)) {
       return res.status(400).send({
         status: 400,
         message: 'please enter the required fields'
@@ -38,14 +38,14 @@ export default {
         }
       }).catch((error) => {
         db.Users.create({
-            username: req.body.username.toLowerCase(),
-            password: SHA256(req.body.password).toString(),
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email.toLowerCase(),
-            membershipType: req.body.membershipType,
-            role: req.body.role ? 'admin' : 'user',
-          })
+          username: req.body.username.toLowerCase(),
+          password: SHA256(req.body.password).toString(),
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.email.toLowerCase(),
+          membershipType: req.body.membershipType,
+          role: req.body.role ? 'admin' : 'user',
+        })
           .then(storedDetails => res.status(201).send({
             status: 201,
             message: 'Account created',
@@ -296,7 +296,7 @@ export default {
   },
   /**
    * @method getUnreturnedbooks
-   * @desc This is a method that performs the action of listing 
+   * @desc This is a method that performs the action of listing
    * @desc all borrowed books that are yet to be returned
    * @param { object } req
    * @param { object} res
@@ -406,7 +406,7 @@ export default {
 
   /**
    * @method getBorrowedbooks
-   * @desc This method handles borrowed books history request 
+   * @desc This method handles borrowed books history request
    * @param { object } req
    * @param { object} res
    * @returns { object } response
@@ -438,8 +438,8 @@ export default {
   /**
    * @method getUserDetails
    * @description this method handles get user details request
-   * @param {object} req 
-   * @param {object} res 
+   * @param {object} req
+   * @param {object} res
    * @returns {object} response
    */
   getUserDetails(req, res) {
@@ -469,8 +469,8 @@ export default {
   /**
    * @method updateUser
    * @description this method handles edit user details request
-   * @param {object} req 
-   * @param {object} res 
+   * @param {object} req
+   * @param {object} res
    * @returns { object } response
    */
   updateUser(req, res) {
@@ -516,8 +516,8 @@ export default {
   /**
    * @method changePassword
    * @description this method handles changes password request
-   * @param {object} req 
-   * @param {object} res 
+   * @param {object} req
+   * @param {object} res
    * @returns {object} response
    */
   changePassword(req, res) {

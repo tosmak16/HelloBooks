@@ -26,22 +26,21 @@ export default function getborrowedBooks(token) {
     dispatch(getborrowedbooksRequest());
 
     return fetch('http://localhost:8000/api/v2/user/' + userId + '/books', {
-        method: 'GET',
-        body: {
-          token: token
-        },
-        headers: {
-          token: token
-        },
-      })
+      method: 'GET',
+      body: {
+        token: token
+      },
+      headers: {
+        token: token
+      },
+    })
       .then(
-        (res) => res.json())
+      (res) => res.json())
       .then((response) => {
         if (response.status >= 400) {
 
           throw response.message
         } else if (response.status === 200) {
-          console.log(response.borrowBooks);
           dispatch(getborrowedbooksReponse(response.borrowBooks));
         }
       }).catch(error => {
