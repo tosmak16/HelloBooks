@@ -55,7 +55,7 @@ describe('Test signupActions', () => {
 
 
   it('creates SIGNUP_SUCCESS when user has been registered', () => {
-    fetchMock.post('http://localhost:8000/api/v2/users/signup', JSON.stringify({ status: 201, message: 'Registration successful' }));
+    fetchMock.post('/api/v2/users/signup', JSON.stringify({ status: 201, message: 'Registration successful' }));
 
     const initialState = {};
     const store = mockStore(initialState);

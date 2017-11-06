@@ -16,7 +16,7 @@ export function uploadBook(bookData, token) {
   return (dispatch) => {
     dispatch(uploadbookRequest(bookData));
 
-    return fetch('http://localhost:8000/api/v2/books', {
+    return fetch('/api/v2/books', {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',

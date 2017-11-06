@@ -1366,63 +1366,6 @@ exports[`Test BooksPage component should test and take snapshot of booksphotoPag
   <hr />
   <div
     className="row"
-  >
-    <div
-      className="col m5 col l3 col s6"
-    >
-      <div
-        id="card_div"
-      >
-        <div
-          className="container"
-          id="img_holder"
-        >
-          <img
-            alt="Avatar"
-            className="image"
-            id="book_img"
-            src=""
-            style={
-              Object {
-                "height": "200px",
-                "width": "150px",
-              }
-            }
-          />
-          <div
-            className="middle"
-          >
-            <label
-              className="text"
-              htmlFor="book_img"
-              style={
-                Object {
-                  "fontSize": "12px",
-                  "fontStyle": "bold",
-                }
-              }
-            >
-               
-            </label>
-            <button
-              className="text"
-              name={1}
-              onClick={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "transparent",
-                  "width": "120px",
-                }
-              }
-              type="btn-sm"
-            >
-              Read
-            </button>
-          </div>
-        </div>
-      </div>
-       
-    </div>
-  </div>
+  />
 </div>
 `;

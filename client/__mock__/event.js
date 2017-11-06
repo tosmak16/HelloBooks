@@ -16,7 +16,6 @@ export const e = {
 
 export class event {
   static preventDefault() {
-
   }
 }
 

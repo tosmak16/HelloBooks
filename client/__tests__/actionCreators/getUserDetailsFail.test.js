@@ -35,7 +35,7 @@ const response = {
 
 describe('Test get user Actions', () => {
   it('should not return user details resources if the request is successful', () => {
-    fetchMock.get(`http://localhost:8000/api/v2/users/${1}`,
+    fetchMock.get(`/api/v2/users/${1}`,
       JSON.stringify(response));
 
     const initialState = {};

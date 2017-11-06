@@ -16,7 +16,7 @@ let displayPreloader = 'none';
  * @class DashboardSidebar
  * @extends {React.Component}
  */
-class DashboardSidebar extends React.Component {
+export class DashboardSidebar extends React.Component {
   /**
    * Creates an instance of DashboardSidebar.
    * @param {object} props

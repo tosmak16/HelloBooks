@@ -2,7 +2,7 @@ import expect from 'expect';
 import isEmpty from 'lodash/isEmpty';
 
 import { SIGNUP_FAILURE, SIGNUP_SUCCESS, SIGNUP_REQUEST } from '../../actions/signupActions';
-import reducer from '../../reducers/reg';
+import reducer from '../../reducers/register';
 
 describe('register reducer', () => {
   it('should return the initial state', () => {

@@ -16,7 +16,7 @@ export function updateBook(bookData, token) {
   return (dispatch) => {
     dispatch(updatebookRequest(bookData));
 
-    return fetch('http://localhost:8000/api/v2/books/' + bookData.bookId, {
+    return fetch('/api/v2/books/' + bookData.bookId, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json, text/plain, */*',

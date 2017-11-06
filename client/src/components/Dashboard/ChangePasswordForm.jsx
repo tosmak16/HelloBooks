@@ -12,14 +12,14 @@ let sortedData = '';
 let displayPreloader = 'none';
 
 /**
- * @class ChangePasswordPage
+ * @class ChangePasswordForm
  * @extends {React.Component}
  */
-class ChangePasswordPage extends React.Component {
+export class ChangePasswordForm extends React.Component {
   /**
-   * Creates an instance of ChangePasswordPage.
+   * Creates an instance of ChangePasswordForm.
    * @param {object} props
-   * @memberof ChangePasswordPage
+   * @memberof ChangePasswordForm
    */
   constructor(props) {
     super(props);
@@ -39,7 +39,7 @@ class ChangePasswordPage extends React.Component {
     this.handleExit = this.handleExit.bind(this);
   }
   /**
-   * @memberof ChangePasswordPage
+   * @memberof ChangePasswordForm
    * @returns {void}
    */
   componentWillMount() {
@@ -50,7 +50,7 @@ class ChangePasswordPage extends React.Component {
 
   /** *
    * @param {object} nextProps
-   * @memberof ChangePasswordPage
+   * @memberof ChangePasswordForm
    * @returns {void}
    */
   componentWillReceiveProps(nextProps) {
@@ -77,7 +77,7 @@ class ChangePasswordPage extends React.Component {
   }
   /**
    * @param {object} event
-   * @memberof ChangePasswordPage
+   * @memberof ChangePasswordForm
    * @returns {void}
    */
   handleClose(event) {
@@ -90,7 +90,7 @@ class ChangePasswordPage extends React.Component {
   /**
    *@returns {void}
    * @param {object} event
-   * @memberof ChangePasswordPage
+   * @memberof ChangePasswordForm
    */
   handleExit(event) {
     event.preventDefault();
@@ -104,7 +104,7 @@ class ChangePasswordPage extends React.Component {
   /**
    *@returns {void}
    * @param {object} event
-   * @memberof ChangePasswordPage
+   * @memberof ChangePasswordForm
    */
   handleClick(event) {
     event.preventDefault();
@@ -117,7 +117,7 @@ class ChangePasswordPage extends React.Component {
   }
   /**
    * @param {object} event
-   * @memberof ChangePasswordPage
+   * @memberof ChangePasswordForm
    *  @returns {void}
    */
   handleInputChange(event) {
@@ -125,7 +125,7 @@ class ChangePasswordPage extends React.Component {
   }
   /**
    * @param {object} event
-   * @memberof ChangePasswordPage
+   * @memberof ChangePasswordForm
    * @returns {void}
    */
   handleSave(event) {
@@ -152,7 +152,7 @@ class ChangePasswordPage extends React.Component {
   }
   /**
    * @returns {views} containing form input fields
-   * @memberof ChangePasswordPage
+   * @memberof ChangePasswordForm
    */
   render() {
     return (
@@ -244,11 +244,11 @@ class ChangePasswordPage extends React.Component {
   }
 }
 
-ChangePasswordPage.propTypes = {
+ChangePasswordForm.propTypes = {
   changePassword: PropTypes.func.isRequired,
   passwordChange: PropTypes.arrayOf(PropTypes.any).isRequired,
 
 };
 
 
-export default ChangePasswordPage;
+export default ChangePasswordForm;

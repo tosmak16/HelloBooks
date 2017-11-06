@@ -22,7 +22,7 @@ export default function returnbook(bookData, token) {
   return (dispatch) => {
     dispatch(returnbookRequest(bookData));
 
-    return fetch('http://localhost:8000/api/v2/users/' + userId + '/books', {
+    return fetch('/api/v2/users/' + userId + '/books', {
       method: 'PUT',
       headers: {
         'Accept': 'application/json, text/plain, */*',

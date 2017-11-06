@@ -17,7 +17,7 @@ const wrongPayload = {
 
 describe('Test signupActions fail', () => {
   it('returns SIGNUP_FALURE when user provide incomplete details', () => {
-    fetchMock.post('http://localhost:8000/api/v2/users/signup', JSON.stringify({ status: 400, message: 'Please enter the required fields' }));
+    fetchMock.post('/api/v2/users/signup', JSON.stringify({ status: 400, message: 'Please enter the required fields' }));
 
     const initialState = {};
     const store = mockStore(initialState);

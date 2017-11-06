@@ -37,7 +37,7 @@ const action = {
 
 describe('Test upload book Actions', () => {
   it('should not upload book if the request is not successful', () => {
-    fetchMock.post('http://localhost:8000/api/v2/books',
+    fetchMock.post('/api/v2/books',
       JSON.stringify(response));
 
     const initialState = {};

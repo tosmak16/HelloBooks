@@ -1,10 +1,261 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Login Page Component test should test and take snapshot of LoginPage 1`] = `
+<form
+  action="books.html"
+  className="form-signin"
+  onSubmit={[Function]}
+>
+  <h4
+    className="form-signin-heading"
+  >
+    Please log in
+  </h4>
+  
+  <div
+    className="row"
+  >
+    <div
+      className="col input-field s12"
+    >
+      <input
+        autoFocus={true}
+        className="form-control validate"
+        defaultValue={undefined}
+        id="inputUsernamelog"
+        name="username"
+        onChange={[Function]}
+        placeholder={undefined}
+        required={true}
+        type="text"
+        value=""
+      />
+      <label
+        className=""
+        data-error={undefined}
+        data-success={undefined}
+        htmlFor="inputUsernamelog"
+      >
+        Username
+      </label>
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col input-field s12"
+    >
+      <input
+        autoFocus={true}
+        className="form-control validate"
+        defaultValue={undefined}
+        id="inputPassword"
+        name="password"
+        onChange={[Function]}
+        placeholder="Password"
+        required={true}
+        type="password"
+        value=""
+      />
+      <label
+        className=""
+        data-error={undefined}
+        data-success={undefined}
+        htmlFor="inputPassword"
+      >
+        Password
+      </label>
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div>
+      <input
+        className="filled-in checkbox-orange"
+        defaultChecked="checked"
+        id="filled-in-box"
+        label="Remember me?"
+        name="group1"
+        type="checkbox"
+        value=""
+      />
+      <label
+        htmlFor="filled-in-box"
+      >
+        Remember me?
+      </label>
+    </div>
+  </div>
+  <button
+    className="btn btn-lg btn-primary  btn-block"
+    id="loginbtn"
+    type="submit"
+  >
+    Sign in
+  </button>
+  <p>
+    <label
+      htmlFor="forgot_pass"
+    >
+      <a
+        href=""
+        id="forgot_pass"
+      >
+         Forgot Password ? 
+      </a>
+    </label>
+  </p>
+  <a
+    className=""
+    href="/signup"
+    id="createbtn"
+  >
+     
+    <b>
+      Create account
+    </b>
+  </a>
+</form>
+`;
+
+exports[`Login Page Component test should test and take snapshot of LoginPage 2`] = `
+<form
+  action="books.html"
+  className="form-signin"
+  onSubmit={[Function]}
+>
+  <h4
+    className="form-signin-heading"
+  >
+    Please log in
+  </h4>
+  <p
+    className="help-block"
+    style={
+      Object {
+        "color": "red",
+      }
+    }
+  >
+    *
+    error
+    *
+  </p>
+  <div
+    className="row"
+  >
+    <div
+      className="col input-field s12"
+    >
+      <input
+        autoFocus={true}
+        className="form-control validate"
+        defaultValue={undefined}
+        id="inputUsernamelog"
+        name="username"
+        onChange={[Function]}
+        placeholder={undefined}
+        required={true}
+        type="text"
+        value=""
+      />
+      <label
+        className=""
+        data-error={undefined}
+        data-success={undefined}
+        htmlFor="inputUsernamelog"
+      >
+        Username
+      </label>
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col input-field s12"
+    >
+      <input
+        autoFocus={true}
+        className="form-control validate"
+        defaultValue={undefined}
+        id="inputPassword"
+        name="password"
+        onChange={[Function]}
+        placeholder="Password"
+        required={true}
+        type="password"
+        value=""
+      />
+      <label
+        className=""
+        data-error={undefined}
+        data-success={undefined}
+        htmlFor="inputPassword"
+      >
+        Password
+      </label>
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div>
+      <input
+        className="filled-in checkbox-orange"
+        defaultChecked="checked"
+        id="filled-in-box"
+        label="Remember me?"
+        name="group1"
+        type="checkbox"
+        value=""
+      />
+      <label
+        htmlFor="filled-in-box"
+      >
+        Remember me?
+      </label>
+    </div>
+  </div>
+  <button
+    className="btn btn-lg btn-primary  btn-block"
+    id="loginbtn"
+    type="submit"
+  >
+    Sign in
+  </button>
+  <p>
+    <label
+      htmlFor="forgot_pass"
+    >
+      <a
+        href=""
+        id="forgot_pass"
+      >
+         Forgot Password ? 
+      </a>
+    </label>
+  </p>
+  <a
+    className=""
+    href="/signup"
+    id="createbtn"
+  >
+     
+    <b>
+      Create account
+    </b>
+  </a>
+</form>
+`;
+
+exports[`Login Page Component test should test and take snapshot of LoginPage 3`] = `
 <div>
   <div
     className="row"
-    id="loginForm"
+    id="logininForm"
   >
     <form
       action="books.html"
@@ -279,414 +530,6 @@ exports[`Login Page Component test should test and take snapshot of LoginPage 1`
             <a
               onClick={[Function]}
               style={Object {}}
-            >
-              <i
-                className="fa fa-github"
-              />
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-</div>
-`;
-
-exports[`Login Page Component test should test and take snapshot of LoginPage 2`] = `
-<form
-  action="books.html"
-  className="form-signin"
-  onSubmit={[Function]}
->
-  <h4
-    className="form-signin-heading"
-  >
-    Please log in
-  </h4>
-  <p
-    className="help-block"
-    style={
-      Object {
-        "color": "red",
-      }
-    }
-  >
-    *
-    error
-    *
-  </p>
-  <div
-    className="row"
-  >
-    <div
-      className="col input-field s12"
-    >
-      <input
-        autoFocus={true}
-        className="form-control validate"
-        defaultValue={undefined}
-        id="inputUsernamelog"
-        name="username"
-        onChange={[Function]}
-        placeholder="Username"
-        required={true}
-        type="text"
-        value=""
-      />
-      <label
-        className=""
-        data-error={undefined}
-        data-success={undefined}
-        htmlFor="inputUsernamelog"
-      >
-        Username
-      </label>
-    </div>
-  </div>
-  <div
-    className="row"
-  >
-    <div
-      className="col input-field s12"
-    >
-      <input
-        autoFocus={true}
-        className="form-control validate"
-        defaultValue={undefined}
-        id="inputPassword"
-        name="password"
-        onChange={[Function]}
-        placeholder="Password"
-        required={true}
-        type="password"
-        value=""
-      />
-      <label
-        className=""
-        data-error={undefined}
-        data-success={undefined}
-        htmlFor="inputPassword"
-      >
-        Password
-      </label>
-    </div>
-  </div>
-  <div
-    className="row"
-  >
-    <div>
-      <input
-        className="filled-in checkbox-orange"
-        defaultChecked="checked"
-        id="filled-in-box"
-        label="Remember me?"
-        name="group1"
-        type="checkbox"
-        value=""
-      />
-      <label
-        htmlFor="filled-in-box"
-      >
-        Remember me?
-      </label>
-    </div>
-  </div>
-  <button
-    className="btn btn-lg btn-primary  btn-block"
-    id="loginbtn"
-    type="submit"
-  >
-    Sign in
-  </button>
-  <p>
-    <label>
-      <a
-        href=""
-      >
-         Forgot Password ? 
-      </a>
-    </label>
-  </p>
-  <a
-    className=""
-    href="/signup"
-    id="createbtn"
-  >
-     
-    <b>
-      Create account
-    </b>
-  </a>
-</form>
-`;
-
-exports[`Login Page Component test should test and take snapshot of LoginPage 3`] = `
-<div>
-  <div
-    className="row"
-    id="loginForm"
-  >
-    <form
-      action="books.html"
-      className="form-signin"
-      onSubmit={[Function]}
-    >
-      <h4
-        className="form-signin-heading"
-      >
-        Please log in
-      </h4>
-      <p
-        className="help-block"
-        style={
-          Object {
-            "color": "red",
-          }
-        }
-      >
-        *
-        error
-        *
-      </p>
-      <div
-        className="row"
-      >
-        <div
-          className="col input-field s12"
-        >
-          <input
-            autoFocus={true}
-            className="form-control validate"
-            defaultValue={undefined}
-            id="inputUsernamelog"
-            name="username"
-            onChange={[Function]}
-            placeholder="Username"
-            required={true}
-            type="text"
-            value=""
-          />
-          <label
-            className=""
-            data-error={undefined}
-            data-success={undefined}
-            htmlFor="inputUsernamelog"
-          >
-            Username
-          </label>
-        </div>
-      </div>
-      <div
-        className="row"
-      >
-        <div
-          className="col input-field s12"
-        >
-          <input
-            autoFocus={true}
-            className="form-control validate"
-            defaultValue={undefined}
-            id="inputPassword"
-            name="password"
-            onChange={[Function]}
-            placeholder="Password"
-            required={true}
-            type="password"
-            value=""
-          />
-          <label
-            className=""
-            data-error={undefined}
-            data-success={undefined}
-            htmlFor="inputPassword"
-          >
-            Password
-          </label>
-        </div>
-      </div>
-      <div
-        className="row"
-      >
-        <div>
-          <input
-            className="filled-in checkbox-orange"
-            defaultChecked="checked"
-            id="filled-in-box"
-            label="Remember me?"
-            name="group1"
-            type="checkbox"
-            value=""
-          />
-          <label
-            htmlFor="filled-in-box"
-          >
-            Remember me?
-          </label>
-        </div>
-      </div>
-      <button
-        className="btn btn-lg btn-primary  btn-block"
-        id="loginbtn"
-        type="submit"
-      >
-        Sign in
-      </button>
-      <p>
-        <label>
-          <a
-            href=""
-          >
-             Forgot Password ? 
-          </a>
-        </label>
-      </p>
-      <a
-        className=""
-        href="/signup"
-        id="createbtn"
-      >
-         
-        <b>
-          Create account
-        </b>
-      </a>
-    </form>
-  </div>
-  <footer
-    className="footer-distributed "
-  >
-    <div
-      className="row"
-    >
-      <div
-        className=" col l12 col m12 col s12"
-      >
-        <div
-          className="footer-left col l4 col m4 col s12"
-        >
-          <h3>
-            Hello
-            <span>
-              Books
-            </span>
-          </h3>
-          <p
-            className="footer-links"
-          >
-            <a
-              href="#"
-            >
-              Home
-            </a>
-             ·
-            <a
-              href="#"
-            >
-              Blog
-            </a>
-             ·
-            <a
-              href="#"
-            >
-              Pricing
-            </a>
-             ·
-            <a
-              href="#"
-            >
-              About
-            </a>
-             ·
-            <a
-              href="#"
-            >
-              Faq
-            </a>
-             ·
-            <a
-              href="#"
-            >
-              Contact
-            </a>
-          </p>
-          <p
-            className="footer-company-name"
-          >
-            Tosmak © 2017
-          </p>
-        </div>
-        <div
-          className="footer-center col l4 col m4 col s12"
-        >
-          <div>
-            <i
-              className="fa fa-map-marker"
-            />
-            <p>
-              <span>
-                21 Ori-oke Street
-              </span>
-               Lagos, Nigeria
-            </p>
-          </div>
-          <div>
-            <i
-              className="fa fa-phone"
-            />
-            <p>
-              08127112053
-            </p>
-          </div>
-          <div>
-            <i
-              className="fa fa-envelope"
-            />
-            <p>
-              <a
-                href="tosmak16@gmail.com"
-              >
-                tosmak16@gmail.com
-              </a>
-            </p>
-          </div>
-        </div>
-        <div
-          className="footer-right col l4 col m14 col s12"
-        >
-          <p
-            className="footer-company-about"
-          >
-            <span>
-              About Hello Book
-            </span>
-              it's a simple application that helps manage  a libraryand its processes like stocking, tracking and renting books
-          </p>
-          <div
-            className="footer-icons"
-          >
-            <a
-              href="#"
-            >
-              <i
-                className="fa fa-facebook"
-              />
-            </a>
-            <a
-              href="#"
-            >
-              <i
-                className="fa fa-twitter"
-              />
-            </a>
-            <a
-              href="#"
-            >
-              <i
-                className="fa fa-linkedin"
-              />
-            </a>
-            <a
-              href="#"
             >
               <i
                 className="fa fa-github"

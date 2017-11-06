@@ -21,17 +21,17 @@ export default function getbooks(set) {
   const token = window.localStorage.jwtToken;
   return (dispatch) => {
     dispatch(getbooksRequest());
-    return fetch('http://localhost:8000/api/v2/books', {
-        method: 'GET',
-        body: {
-          token: token
-        },
-        headers: {
-          token: token
-        },
-      })
+    return fetch('/api/v2/books', {
+      method: 'GET',
+      body: {
+        token: token
+      },
+      headers: {
+        token: token
+      },
+    })
       .then(
-        (res) => res.json())
+      (res) => res.json())
       .then((response) => {
         if (response.status >= 400) {
 
@@ -40,13 +40,13 @@ export default function getbooks(set) {
           dispatch(getbooksReponse(response.books));
           if (!set) {
             browserHistory.push('/books');
-          } else if (set) {}
+          } else if (set) { }
         }
       })
       .catch(
-        error => {
-          dispatch(getbooksError(error))
-        }
+      error => {
+        dispatch(getbooksError(error))
+      }
       )
   };
 }

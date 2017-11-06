@@ -25,7 +25,7 @@ export default function getborrowedBooks(token) {
   return (dispatch) => {
     dispatch(getborrowedbooksRequest());
 
-    return fetch('http://localhost:8000/api/v2/user/' + userId + '/books', {
+    return fetch('/api/v2/user/' + userId + '/books', {
       method: 'GET',
       body: {
         token: token

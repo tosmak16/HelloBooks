@@ -19,8 +19,6 @@ const action = {
   bookData: book[0],
   error: 'delete failed'
 };
-
-
 describe('delete book reducer', () => {
   it('should return the initial state', () => {
     expect(reducer(undefined, {})).toEqual([

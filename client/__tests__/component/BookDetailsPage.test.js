@@ -90,18 +90,18 @@ describe('Test book Details page components and container', () => {
 
   beforeEach(() => {
     window.localStorage.setItem('bookId', '1');
-    wrapper = mount(<Provider store={ store }><ConnectedBookDetailsPage /></Provider>);
+    wrapper = mount(<Provider store={store}><ConnectedBookDetailsPage /></Provider>);
   });
 
 
   it('should test and take snapshot of booksDetailsPage', () => {
     const tree = render.create(<BookDetailsPage
-      data={ initialState.books[0].data }
-      book={ initialState.selectedbook }
-      item={ initialState.borrowBooks }
-      borrowBooks={ mockFuction }
-      checkBookDetails={ mockFuction }
-      showbooksByCategory={ mockFuction }
+      bookData={initialState.books[0].data}
+      book={initialState.selectedbook}
+      borrowBookItem={initialState.borrowBooks}
+      borrowBooks={mockFuction}
+      checkBookDetails={mockFuction}
+      showbooksByCategory={mockFuction}
 
     />);
     expect(tree).toMatchSnapshot();
@@ -109,12 +109,12 @@ describe('Test book Details page components and container', () => {
 
   it('should test and take snapshot of books detailsPage when data and book array are empty', () => {
     const tree = render.create(<BookDetailsPage
-      data={ [] }
-      book={ [] }
-      item={ initialState.borrowBooks }
-      borrowBooks={ mockFuction }
-      checkBookDetails={ mockFuction }
-      showbooksByCategory={ mockFuction }
+      bookData={[]}
+      book={[]}
+      borrowBookItem={initialState.borrowBooks}
+      borrowBooks={mockFuction}
+      checkBookDetails={mockFuction}
+      showbooksByCategory={mockFuction}
 
     />);
     expect(tree).toMatchSnapshot();
@@ -122,92 +122,14 @@ describe('Test book Details page components and container', () => {
 
   it('should test and take snapshot of details form when data and book array are empty', () => {
     const tree = render.create(<DetailsForm
-      data={ [] }
-      book={ [] }
-      item={ initialState.borrowBooks }
-      borrowBooks={ mockFuction }
-      checkBookDetails={ mockFuction }
-      showbooksByCategory={ mockFuction }
+      bookData={[]}
+      book={[]}
+      borrowBookItem={initialState.borrowBooks}
+      borrowBooks={mockFuction}
+      checkBookDetails={mockFuction}
+      showbooksByCategory={mockFuction}
 
     />);
     expect(tree).toMatchSnapshot();
   });
-
-  it('should test and take snapshot of Details form', () => {
-    const tree = render.create(<DetailsForm
-      data={ initialState.books[0].data }
-      book={ initialState.selectedbook }
-      item={ initialState.borrowBooks }
-      borrowBooks={ mockFuction }
-      checkBookDetails={ mockFuction }
-      showbooksByCategory={ mockFuction }
-
-    />);
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('should test for handle change function', () => {
-    wrapper = shallow(<DetailsForm
-      data={ initialState.books[0].data }
-      book={ initialState.selectedbook }
-      item={ initialState.borrowBooks }
-      borrowBooks={ mockFuction }
-      checkBookDetails={ mockFuction }
-      showbooksByCategory={ mockFuction }
-    />);
-    wrapper.instance().handleFuction = mockFuction;
-    wrapper.update();
-    wrapper.instance().handleClick(event);
-    wrapper.update();
-    wrapper.instance().handleOpen(event);
-    wrapper.update();
-    wrapper.instance().handleClose(event);
-    wrapper.update();
-    wrapper.instance().handleExit(event);
-    wrapper.update();
-    wrapper.instance().setState({
-      display: true
-    });
-    wrapper.update();
-    localStorage.setItem('bookId', '1');
-    wrapper.instance().componentWillMount();
-    wrapper.update();
-    wrapper.instance().componentWillReceiveProps(nextProps);
-    wrapper.update();
-    wrapper.instance().componentWillUnmount();
-    wrapper.update();
-  });
-
-
-  it('should test for handle change function', () => {
-    wrapper = shallow(<DetailsForm
-      data={ initialState.books[0].data }
-      book={ initialState.selectedbook }
-      item={ initialState.borrowBooks }
-      borrowBooks={ mockFuction }
-      checkBookDetails={ mockFuction }
-      showbooksByCategory={ mockFuction }
-    />);
-    wrapper.instance().handleFuction = mockFuction;
-    wrapper.update();
-    wrapper.instance().handleClick(event);
-    wrapper.update();
-    wrapper.instance().handleOpen(event);
-    wrapper.update();
-    wrapper.instance().handleClose(event);
-    wrapper.update();
-    wrapper.instance().handleExit(event);
-    wrapper.update();
-    wrapper.instance().setState({
-      display: true
-    });
-    wrapper.update();
-    localStorage.setItem('bookId', '1');
-    wrapper.instance().componentWillMount();
-    wrapper.update();
-    wrapper.instance().componentWillReceiveProps(nextProp);
-    wrapper.update();
-    wrapper.instance().componentWillUnmount();
-    wrapper.update();
-  });
-});
+})

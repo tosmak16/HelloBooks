@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-let borrowDate = '';
-let returnDate = '';
+let borrowDate = [];
+let returnDate = [];
 /**
  * @param {object} props
  * @returns {views} containing user's borrowing history
  */
-function BookHistoryTableRow(props) {
+export function BookHistoryTableRow(props) {
   const {
     book
   } = props;

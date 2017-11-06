@@ -16,7 +16,7 @@ import { deletebookError, deletebookRequest, deletebookResponse } from '../../ac
 export function deleteBook(bookData, token) {
   return (dispatch) => {
     dispatch(deletebookRequest(bookData));
-    return fetch('http://localhost:8000/api/v2/books/' + bookData, {
+    return fetch('/api/v2/books/' + bookData, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json, text/plain, */*',

@@ -11,8 +11,6 @@ const upload_preset = 'bjfllgrd';
  * @returns 
  */
 export function uploadImage(file) {
-
-  console.log(file);
   const data = new FormData();
   data.append('file', file);
   data.append('upload_preset', upload_preset);

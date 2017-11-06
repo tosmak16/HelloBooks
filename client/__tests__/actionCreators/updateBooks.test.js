@@ -68,7 +68,7 @@ describe('Test update book Actions', () => {
   });
 
   it('should update books if the request is successful', () => {
-    fetchMock.put(`http://localhost:8000/api/v2/books/${action.bookData.bookId}`,
+    fetchMock.put(`/api/v2/books/${action.bookData.bookId}`,
       JSON.stringify(response));
 
     const initialState = {};

@@ -20,7 +20,7 @@ export function userSignup(userData) {
   return (dispatch) => {
     dispatch(signupRequest(userData));
 
-    return fetch('http://localhost:8000/api/v2/users/signup', {
+    return fetch('/api/v2/users/signup', {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',

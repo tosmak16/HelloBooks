@@ -27,7 +27,7 @@ const response = {
 
 describe('Test getBooks Actions failed', () => {
   it('should not return books resources if the request is not successful', () => {
-    fetchMock.get('http://localhost:8000/api/v2/books',
+    fetchMock.get('/api/v2/books',
       JSON.stringify(response));
 
     const initialState = {};
