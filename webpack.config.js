@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  entry: ['webpack-hot-middleware/client', path.join(__dirname, '/client/index.js')],
+  entry: ['webpack-hot-middleware/client', path.join(__dirname, '/client/index.jsx')],
   output: {
     path: path.join(__dirname, '/client/public'),
     filename: 'bundle.js',

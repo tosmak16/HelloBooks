@@ -2,8 +2,8 @@ import { combineReducers } from 'redux';
 
 import popMessages from './popMessages';
 import auth from './auth';
-import reg from './reg';
-import log from './log';
+import register from './register';
+import login from './login';
 import books from './books';
 import getFilteredBooks from '../reducers/getFilteredBooks';
 import category from './category';
@@ -28,8 +28,8 @@ import bookFileUpload from './bookFileUpload';
 export default combineReducers({
   popMessages,
   auth,
-  reg,
-  log,
+  register,
+  login,
   books,
   getFilteredBooks,
   category,
