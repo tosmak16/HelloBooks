@@ -65,7 +65,7 @@ describe('Test borrowBooks Actions', () => {
   });
 
   it('should borrow book if the request is successful', () => {
-    fetchMock.postOnce(`http://localhost:8000/api/v2/users/${1}/books`,
+    fetchMock.postOnce(`/api/v2/users/${1}/books`,
       { body: response });
 
     const initialState = {};
@@ -107,7 +107,7 @@ const fakeResponse = {
 
 describe('Test borrowBooks fail Actions', () => {
   it('should not borrow books if required parameters are not assigned', () => {
-    fetchMock.postOnce(`http://localhost:8000/api/v2/users/${1}/books`,
+    fetchMock.postOnce(`/api/v2/users/${1}/books`,
       { body: fakeResponse });
 
     const initialState = {};

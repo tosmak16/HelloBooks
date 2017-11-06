@@ -12,7 +12,7 @@ import getbooks from '../actions/getBooks';
  * @class Loginin
  * @extends {React.PureComponent}
  */
-export class Loginin extends React.PureComponent {
+export class Login extends React.PureComponent {
   /**
    * @method render
    * @returns {views} with logininform and footer
@@ -34,7 +34,7 @@ export class Loginin extends React.PureComponent {
   }
 }
 
-Loginin.propTypes = {
+Login.propTypes = {
   getbooks: PropTypes.func.isRequired,
   login: PropTypes.objectOf(PropTypes.any).isRequired,
   userSignin: PropTypes.func.isRequired,
@@ -50,4 +50,4 @@ function mapStateToProps(state) {
   return { login: state.login[0] };
 }
 
-export default connect((mapStateToProps), { userSignin, getbooks })(Loginin);
+export default connect((mapStateToProps), { userSignin, getbooks })(Login);

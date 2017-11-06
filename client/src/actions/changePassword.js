@@ -19,7 +19,7 @@ export default function changePassword(userData, token) {
   return (dispatch) => {
     dispatch(changepasswordRequest(userData));
 
-    return fetch('http://localhost:8000/api/v2/users/' + userId + '/password', {
+    return fetch('/api/v2/users/' + userId + '/password', {
       method: 'PUT',
       headers: {
         'Accept': 'application/json, text/plain, */*',

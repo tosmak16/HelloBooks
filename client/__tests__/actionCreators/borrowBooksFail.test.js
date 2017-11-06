@@ -32,7 +32,7 @@ const response = {
 
 describe('Test borrowBooks fail Actions', () => {
   it('should not borrow books if required parameters are not assigned', () => {
-    fetchMock.post(`http://localhost:8000/api/v2/users/${1}/books`,
+    fetchMock.post(`/api/v2/users/${1}/books`,
       JSON.stringify(response));
 
     const initialState = {};

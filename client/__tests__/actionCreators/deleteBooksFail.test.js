@@ -41,7 +41,7 @@ const action = {
 
 describe('Test delete book Actions', () => {
   it('should not delete books if the request is not successful', () => {
-    fetchMock.delete(`http://localhost:8000/api/v2/books/${action.bookData}`,
+    fetchMock.delete(`/api/v2/books/${action.bookData}`,
       { body: response, status: 400 });
 
     const initialState = {};

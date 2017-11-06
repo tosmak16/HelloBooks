@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test Dashboard page components and container should test and take snapshot of dashboard Page 1`] = `
+exports[`Test Dashboard page components and container should test and take snapshot of BorrowHistoryBooksPage 1`] = `
 <div>
   <div
     className="row"
@@ -98,9 +98,8 @@ exports[`Test Dashboard page components and container should test and take snaps
               </li>
               <li>
                 <a
-                  href="#"
-                  id="dash"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   <i
                     className="material-icons left"
@@ -112,9 +111,8 @@ exports[`Test Dashboard page components and container should test and take snaps
               </li>
               <li>
                 <a
-                  href="#"
-                  id="myP"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   <i
                     className="material-icons left"
@@ -126,9 +124,8 @@ exports[`Test Dashboard page components and container should test and take snaps
               </li>
               <li>
                 <a
-                  href="#"
-                  id="bor"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   <i
                     className="material-icons left"
@@ -140,8 +137,8 @@ exports[`Test Dashboard page components and container should test and take snaps
               </li>
               <li>
                 <a
-                  href="#"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   <i
                     className="material-icons left"
@@ -153,7 +150,8 @@ exports[`Test Dashboard page components and container should test and take snaps
               </li>
               <li>
                 <a
-                  href="index.html"
+                  onClick={[Function]}
+                  style={Object {}}
                 >
                   <i
                     className="material-icons left"
@@ -252,6 +250,443 @@ exports[`Test Dashboard page components and container should test and take snaps
             </div>
           </div>
         </div>
+        <div
+          className="activity"
+          id="activity-loader-id"
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+        >
+          <div
+            className="preloader-wrapper activity-loader big active"
+          >
+            <div
+              className="gap-patch activity-gap2"
+            >
+              <div
+                className="spinner-layer activity-spinner spinner-red-only"
+              >
+                <div
+                  className="circle-clipper left"
+                >
+                  <div
+                    className="circle"
+                  />
+                </div>
+                <div
+                  className="gap-patch activity-gap"
+                />
+                <div
+                  className="circle"
+                />
+              </div>
+              <div
+                className="circle-clipper right"
+              >
+                <div
+                  className="circle"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="row"
+        id="bh_table"
+      >
+        <div
+          className=" col l10 offset-l2 col m10 offset-m2 col s12"
+        >
+          <h4
+            className="sub-header"
+          >
+            Read List
+          </h4>
+          <div
+            className="table-responsive"
+          >
+            <table
+              className="table responsive-table bordered highlight striped"
+              id="table_bh"
+            >
+              <thead>
+                <tr>
+                  <th>
+                    <span
+                      className="glyphicon glyphicon-education"
+                    />
+                  </th>
+                  <th>
+                    Title
+                  </th>
+                  <th>
+                    Author
+                  </th>
+                  <th>
+                    Borrowed Date
+                  </th>
+                  <th>
+                    Returned Date
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test Dashboard page components and container should test and take snapshot of BorrowHistoryTable 1`] = `
+<div
+  className="row"
+  id="bh_table"
+>
+  <div
+    className=" col l10 offset-l2 col m10 offset-m2 col s12"
+  >
+    <h4
+      className="sub-header"
+    >
+      Read List
+    </h4>
+    <div
+      className="table-responsive"
+    >
+      <table
+        className="table responsive-table bordered highlight striped"
+        id="table_bh"
+      >
+        <thead>
+          <tr>
+            <th>
+              <span
+                className="glyphicon glyphicon-education"
+              />
+            </th>
+            <th>
+              Title
+            </th>
+            <th>
+              Author
+            </th>
+            <th>
+              Borrowed Date
+            </th>
+            <th>
+              Returned Date
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test Dashboard page components and container should test and take snapshot of BorrowedBooksPage 1`] = `
+<div>
+  <div
+    className="row"
+  >
+    <div
+      className="col s12 col m12 col l12"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col s12 col m2 col l2"
+        >
+          <div
+            id="sidebar-wrapper"
+          >
+            <ul
+              className="sidebar-nav"
+              style={
+                Object {
+                  "marginTop": "10px",
+                }
+              }
+            >
+              <li>
+                <div
+                  id="imageborder"
+                >
+                  <div
+                    className="file-field input-field"
+                  >
+                    <div
+                      className=""
+                      id="filebtn"
+                      style={
+                        Object {
+                          "color": "white",
+                          "marginLeft": "5px",
+                        }
+                      }
+                    >
+                      <span />
+                      <img
+                        alt="images"
+                        height="120"
+                        id="userimg"
+                        src="http://res.cloudinary.com/tosmak/image/upload/v1507297483/userimg_cxeszl.png"
+                        width="120"
+                      />
+                      <input
+                        accept=".png, .jpg, .jpeg"
+                        className="fileInput"
+                        disabled={undefined}
+                        id="photoInput"
+                        onChange={[Function]}
+                        placeholder="Upload profile image"
+                        type="file"
+                      />
+                    </div>
+                    <div
+                      className="file-path-wrapper"
+                    >
+                      <input
+                        className="file-path validate"
+                        placeholder="Upload profile image"
+                        style={
+                          Object {
+                            "width": "100px",
+                          }
+                        }
+                        type="text"
+                      />
+                      <div
+                        className="input-field inline"
+                      >
+                        <button
+                          className="btn-sm"
+                          id=""
+                          onClick={[Function]}
+                          style={
+                            Object {
+                              "backgroundColor": "#3d1112",
+                              "color": "wheat",
+                              "marginTop": "0px",
+                            }
+                          }
+                          type="button"
+                        >
+                          Upload
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+                  <i
+                    className="material-icons left"
+                  >
+                    local_library
+                  </i>
+                   Books Shelf
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+                  <i
+                    className="material-icons left"
+                  >
+                    dashboard
+                  </i>
+                  Account
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+                  <i
+                    className="material-icons left"
+                  >
+                    data_usage
+                  </i>
+                  History
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+                  <i
+                    className="material-icons left"
+                  >
+                    lock
+                  </i>
+                  Change Password
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+                  <i
+                    className="material-icons left"
+                  >
+                    exit_to_app
+                  </i>
+                  Logout
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div
+            className="modal"
+            id="modaE"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Oh!
+              </h5>
+              <p>
+                
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                Close
+              </a>
+            </div>
+          </div>
+          <div
+            className="modal"
+            id="modaS"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Done!
+              </h5>
+              <p>
+                
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                Close
+              </a>
+            </div>
+          </div>
+          <div
+            className="modal"
+            id="modaO"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Do you want to change your profile picture?
+              </h5>
+              <p>
+                
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                NO
+              </a>
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+                type="submit"
+              >
+                YES
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          className="activity"
+          id="activity-loader-id"
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+        >
+          <div
+            className="preloader-wrapper activity-loader big active"
+          >
+            <div
+              className="gap-patch activity-gap2"
+            >
+              <div
+                className="spinner-layer activity-spinner spinner-red-only"
+              >
+                <div
+                  className="circle-clipper left"
+                >
+                  <div
+                    className="circle"
+                  />
+                </div>
+                <div
+                  className="gap-patch activity-gap"
+                />
+                <div
+                  className="circle"
+                />
+              </div>
+              <div
+                className="circle-clipper right"
+              >
+                <div
+                  className="circle"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         className="row"
@@ -270,6 +705,7 @@ exports[`Test Dashboard page components and container should test and take snaps
           >
             <table
               className="table responsive-table bordered highlight striped"
+              id="table_bb"
             >
               <thead>
                 <tr>
@@ -295,232 +731,7 @@ exports[`Test Dashboard page components and container should test and take snaps
                   </th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    .
-                  </td>
-                  <td>
-                     
-                    THE PEOPLE IN THE TREE
-                  </td>
-                  <td>
-                    Y. Hayan
-                  </td>
-                  <td>
-                    Adventure
-                  </td>
-                  <td>
-                    345798465
-                  </td>
-                  <td>
-                    <button
-                      className="btn-sm btn-success btn-sm returnbtn"
-                      name="1,1"
-                      onClick={[Function]}
-                      type="button"
-                    >
-                      Return
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    .
-                  </td>
-                  <td>
-                     
-                    THE LATE PARADE
-                  </td>
-                  <td>
-                    F. Adam
-                  </td>
-                  <td>
-                    Adventure
-                  </td>
-                  <td>
-                    234560878
-                  </td>
-                  <td>
-                    <button
-                      className="btn-sm btn-success btn-sm returnbtn"
-                      name="2,2"
-                      onClick={[Function]}
-                      type="button"
-                    >
-                      Return
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    .
-                  </td>
-                  <td>
-                     
-                    I AM THE WOLF
-                  </td>
-                  <td>
-                    L. Mark
-                  </td>
-                  <td>
-                    Music
-                  </td>
-                  <td>
-                    4678980976
-                  </td>
-                  <td>
-                    <button
-                      className="btn-sm btn-success btn-sm returnbtn"
-                      name="3,3"
-                      onClick={[Function]}
-                      type="button"
-                    >
-                      Return
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    .
-                  </td>
-                  <td>
-                     
-                    THE PALE NORTH
-                  </td>
-                  <td>
-                    H. Clayton
-                  </td>
-                  <td>
-                    Adventure
-                  </td>
-                  <td>
-                    34567887655
-                  </td>
-                  <td>
-                    <button
-                      className="btn-sm btn-success btn-sm returnbtn"
-                      name="4,4"
-                      onClick={[Function]}
-                      type="button"
-                    >
-                      Return
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    .
-                  </td>
-                  <td>
-                     
-                    ADULTOLESENCE
-                  </td>
-                  <td>
-                    G. Hannah
-                  </td>
-                  <td>
-                    Romance
-                  </td>
-                  <td>
-                    45678974567
-                  </td>
-                  <td>
-                    <button
-                      className="btn-sm btn-success btn-sm returnbtn"
-                      name="5,5"
-                      onClick={[Function]}
-                      type="button"
-                    >
-                      Return
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    .
-                  </td>
-                  <td>
-                     
-                    WHAT IT MEANS WHEN A MAN FALL FROM SKY
-                  </td>
-                  <td>
-                    L. Nneka
-                  </td>
-                  <td>
-                    Adventure
-                  </td>
-                  <td>
-                    567244567
-                  </td>
-                  <td>
-                    <button
-                      className="btn-sm btn-success btn-sm returnbtn"
-                      name="6,6"
-                      onClick={[Function]}
-                      type="button"
-                    >
-                      Return
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    .
-                  </td>
-                  <td>
-                     
-                    THE SONG AND THE SILENCE
-                  </td>
-                  <td>
-                    Y. Johnson
-                  </td>
-                  <td>
-                    Music
-                  </td>
-                  <td>
-                    64578974567
-                  </td>
-                  <td>
-                    <button
-                      className="btn-sm btn-success btn-sm returnbtn"
-                      name="7,7"
-                      onClick={[Function]}
-                      type="button"
-                    >
-                      Return
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    .
-                  </td>
-                  <td>
-                     
-                    THE ILIAD HOMMER
-                  </td>
-                  <td>
-                    P. Green
-                  </td>
-                  <td>
-                    Action
-                  </td>
-                  <td>
-                    787890974567
-                  </td>
-                  <td>
-                    <button
-                      className="btn-sm btn-success btn-sm returnbtn"
-                      name="8,8"
-                      onClick={[Function]}
-                      type="button"
-                    >
-                      Return
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
+              <tbody />
             </table>
           </div>
           <div
@@ -610,6 +821,1550 @@ exports[`Test Dashboard page components and container should test and take snaps
             </div>
           </div>
         </div>
+        <div
+          className="activity"
+          id="activity-loader-id"
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+        >
+          <div
+            className="preloader-wrapper activity-loader big active"
+          >
+            <div
+              className="gap-patch activity-gap2"
+            >
+              <div
+                className="spinner-layer activity-spinner spinner-red-only"
+              >
+                <div
+                  className="circle-clipper left"
+                >
+                  <div
+                    className="circle"
+                  />
+                </div>
+                <div
+                  className="gap-patch activity-gap"
+                />
+                <div
+                  className="circle"
+                />
+              </div>
+              <div
+                className="circle-clipper right"
+              >
+                <div
+                  className="circle"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test Dashboard page components and container should test and take snapshot of BorrowedbooksTable 1`] = `
+<div
+  className="row"
+  id="bb_table"
+>
+  <div
+    className="  col l10 offset-l2 col m10 offset-m2 col s12"
+  >
+    <h4
+      className="sub-header"
+    >
+       Currently Reads
+    </h4>
+    <div
+      className="responsive-table"
+    >
+      <table
+        className="table responsive-table bordered highlight striped"
+        id="table_bb"
+      >
+        <thead>
+          <tr>
+            <th>
+              <span
+                className="glyphicon glyphicon-education"
+              />
+            </th>
+            <th>
+              Title
+            </th>
+            <th>
+              Author
+            </th>
+            <th>
+              Category
+            </th>
+            <th>
+              ISBN
+            </th>
+            <th>
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody />
+      </table>
+    </div>
+    <div
+      className="modal"
+      id="modal3"
+    >
+      <div
+        className="modal-content"
+      >
+        <h5>
+          Done!
+        </h5>
+        <p>
+          
+        </p>
+      </div>
+      <div
+        className="modal-footer"
+      >
+        <a
+          className="modal-action modal-close waves-effect waves-brown btn-flat"
+          href=""
+          onClick={[Function]}
+        >
+          Close
+        </a>
+      </div>
+    </div>
+    <div
+      className="modal"
+      id="modal2"
+    >
+      <div
+        className="modal-content"
+      >
+        <h5>
+          Oh!
+        </h5>
+        <p>
+          
+        </p>
+      </div>
+      <div
+        className="modal-footer"
+      >
+        <a
+          className="modal-action modal-close waves-effect waves-brown btn-flat"
+          href=""
+          onClick={[Function]}
+        >
+          Close
+        </a>
+      </div>
+    </div>
+    <div
+      className="modal"
+      id="modal1"
+    >
+      <div
+        className="modal-content"
+      >
+        <h5>
+          Do you want to return this book?
+        </h5>
+        <p>
+          
+        </p>
+      </div>
+      <div
+        className="modal-footer"
+      >
+        <a
+          className="modal-action modal-close waves-effect waves-brown btn-flat"
+          href=""
+          onClick={[Function]}
+        >
+          NO
+        </a>
+        <a
+          className="modal-action modal-close waves-effect waves-brown btn-flat"
+          href=""
+          onClick={[Function]}
+          type="submit"
+        >
+          YES
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="activity"
+    id="activity-loader-id"
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+  >
+    <div
+      className="preloader-wrapper activity-loader big active"
+    >
+      <div
+        className="gap-patch activity-gap2"
+      >
+        <div
+          className="spinner-layer activity-spinner spinner-red-only"
+        >
+          <div
+            className="circle-clipper left"
+          >
+            <div
+              className="circle"
+            />
+          </div>
+          <div
+            className="gap-patch activity-gap"
+          />
+          <div
+            className="circle"
+          />
+        </div>
+        <div
+          className="circle-clipper right"
+        >
+          <div
+            className="circle"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test Dashboard page components and container should test and take snapshot of ChangePasswordForm 1`] = `
+<div
+  id="ch_pas"
+>
+  <form
+    action=""
+    className="form-signin col col l10 offset-l1 col m11 offset-m2 col s12"
+  >
+    <h4
+      className="sub-header form-signin-heading"
+    >
+      Change password
+    </h4>
+    
+    <div
+      className="input-field"
+    >
+      <label
+        className="sr-only"
+        htmlFor="oldPassword"
+      >
+        Current Password
+      </label>
+      <input
+        className="form-control validate"
+        disabled={undefined}
+        id="oldPassword"
+        name="oldPassword"
+        onChange={[Function]}
+        placeholder="Current password"
+        required={true}
+        type="password"
+        value=""
+      />
+    </div>
+    <div
+      className="input-field"
+    >
+      <label
+        className="sr-only"
+        htmlFor="newPassword"
+      >
+        New password
+      </label>
+      <input
+        className="form-control validate"
+        disabled={undefined}
+        id="newPassword"
+        name="newPassword"
+        onChange={[Function]}
+        placeholder="New password"
+        required={true}
+        type="password"
+        value=""
+      />
+    </div>
+    <div
+      className="input-field"
+    >
+      <label
+        className="sr-only"
+        htmlFor="confirmPassword"
+      >
+        Confirm password
+      </label>
+      <input
+        className="form-control validate"
+        disabled={undefined}
+        id="confirmPassword"
+        name="confirmPassword"
+        onChange={[Function]}
+        placeholder="Confirm password"
+        required={true}
+        type="password"
+        value=""
+      />
+    </div>
+    <div
+      className="modal"
+      id="modalError"
+    >
+      <div
+        className="modal-content"
+      >
+        <h5>
+          Oh!
+        </h5>
+        <p>
+          
+        </p>
+      </div>
+      <div
+        className="modal-footer"
+      >
+        <a
+          className="modal-action modal-close waves-effect waves-brown btn-flat"
+          href=""
+          onClick={[Function]}
+        >
+          Close
+        </a>
+      </div>
+    </div>
+    <div
+      className="modal"
+      id="modalSuccess"
+    >
+      <div
+        className="modal-content"
+      >
+        <h5>
+          Done!
+        </h5>
+        <p>
+          
+        </p>
+      </div>
+      <div
+        className="modal-footer"
+      >
+        <a
+          className="modal-action modal-close waves-effect waves-brown btn-flat"
+          href=""
+          onClick={[Function]}
+        >
+          Close
+        </a>
+      </div>
+    </div>
+    <div
+      className="modal"
+      id="modalOpen"
+    >
+      <div
+        className="modal-content"
+      >
+        <h5>
+          Do you want to change your password?
+        </h5>
+        <p>
+          
+        </p>
+      </div>
+      <div
+        className="modal-footer"
+      >
+        <a
+          className="modal-action modal-close waves-effect waves-brown btn-flat"
+          href=""
+          onClick={[Function]}
+        >
+          NO
+        </a>
+        <a
+          className="modal-action modal-close waves-effect waves-brown btn-flat"
+          href=""
+          onClick={[Function]}
+          type="submit"
+        >
+          YES
+        </a>
+      </div>
+    </div>
+    <div
+      className="input-field inline"
+    >
+      <button
+        className="btn btn-primary pbtn"
+        id="editbtn"
+        onClick={[Function]}
+        type="button"
+      >
+        Submit
+      </button>
+    </div>
+    <div
+      className="activity"
+      id="activity-loader-id"
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+    >
+      <div
+        className="preloader-wrapper activity-loader big active"
+      >
+        <div
+          className="gap-patch activity-gap2"
+        >
+          <div
+            className="spinner-layer activity-spinner spinner-red-only"
+          >
+            <div
+              className="circle-clipper left"
+            >
+              <div
+                className="circle"
+              />
+            </div>
+            <div
+              className="gap-patch activity-gap"
+            />
+            <div
+              className="circle"
+            />
+          </div>
+          <div
+            className="circle-clipper right"
+          >
+            <div
+              className="circle"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`Test Dashboard page components and container should test and take snapshot of ChangePasswordPage 1`] = `
+<div>
+  <div
+    className="row"
+  >
+    <div
+      className="col s12 col m12 col l12"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col s12 col m2 col l2"
+        >
+          <div
+            id="sidebar-wrapper"
+          >
+            <ul
+              className="sidebar-nav"
+              style={
+                Object {
+                  "marginTop": "10px",
+                }
+              }
+            >
+              <li>
+                <div
+                  id="imageborder"
+                >
+                  <div
+                    className="file-field input-field"
+                  >
+                    <div
+                      className=""
+                      id="filebtn"
+                      style={
+                        Object {
+                          "color": "white",
+                          "marginLeft": "5px",
+                        }
+                      }
+                    >
+                      <span />
+                      <img
+                        alt="images"
+                        height="120"
+                        id="userimg"
+                        src="http://res.cloudinary.com/tosmak/image/upload/v1507297483/userimg_cxeszl.png"
+                        width="120"
+                      />
+                      <input
+                        accept=".png, .jpg, .jpeg"
+                        className="fileInput"
+                        disabled={undefined}
+                        id="photoInput"
+                        onChange={[Function]}
+                        placeholder="Upload profile image"
+                        type="file"
+                      />
+                    </div>
+                    <div
+                      className="file-path-wrapper"
+                    >
+                      <input
+                        className="file-path validate"
+                        placeholder="Upload profile image"
+                        style={
+                          Object {
+                            "width": "100px",
+                          }
+                        }
+                        type="text"
+                      />
+                      <div
+                        className="input-field inline"
+                      >
+                        <button
+                          className="btn-sm"
+                          id=""
+                          onClick={[Function]}
+                          style={
+                            Object {
+                              "backgroundColor": "#3d1112",
+                              "color": "wheat",
+                              "marginTop": "0px",
+                            }
+                          }
+                          type="button"
+                        >
+                          Upload
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+                  <i
+                    className="material-icons left"
+                  >
+                    local_library
+                  </i>
+                   Books Shelf
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+                  <i
+                    className="material-icons left"
+                  >
+                    dashboard
+                  </i>
+                  Account
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+                  <i
+                    className="material-icons left"
+                  >
+                    data_usage
+                  </i>
+                  History
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+                  <i
+                    className="material-icons left"
+                  >
+                    lock
+                  </i>
+                  Change Password
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+                  <i
+                    className="material-icons left"
+                  >
+                    exit_to_app
+                  </i>
+                  Logout
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div
+            className="modal"
+            id="modaE"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Oh!
+              </h5>
+              <p>
+                
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                Close
+              </a>
+            </div>
+          </div>
+          <div
+            className="modal"
+            id="modaS"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Done!
+              </h5>
+              <p>
+                
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                Close
+              </a>
+            </div>
+          </div>
+          <div
+            className="modal"
+            id="modaO"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Do you want to change your profile picture?
+              </h5>
+              <p>
+                
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                NO
+              </a>
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+                type="submit"
+              >
+                YES
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          className="activity"
+          id="activity-loader-id"
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+        >
+          <div
+            className="preloader-wrapper activity-loader big active"
+          >
+            <div
+              className="gap-patch activity-gap2"
+            >
+              <div
+                className="spinner-layer activity-spinner spinner-red-only"
+              >
+                <div
+                  className="circle-clipper left"
+                >
+                  <div
+                    className="circle"
+                  />
+                </div>
+                <div
+                  className="gap-patch activity-gap"
+                />
+                <div
+                  className="circle"
+                />
+              </div>
+              <div
+                className="circle-clipper right"
+              >
+                <div
+                  className="circle"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        id="ch_pas"
+      >
+        <form
+          action=""
+          className="form-signin col col l10 offset-l1 col m11 offset-m2 col s12"
+        >
+          <h4
+            className="sub-header form-signin-heading"
+          >
+            Change password
+          </h4>
+          
+          <div
+            className="input-field"
+          >
+            <label
+              className="sr-only"
+              htmlFor="oldPassword"
+            >
+              Current Password
+            </label>
+            <input
+              className="form-control validate"
+              disabled={undefined}
+              id="oldPassword"
+              name="oldPassword"
+              onChange={[Function]}
+              placeholder="Current password"
+              required={true}
+              type="password"
+              value=""
+            />
+          </div>
+          <div
+            className="input-field"
+          >
+            <label
+              className="sr-only"
+              htmlFor="newPassword"
+            >
+              New password
+            </label>
+            <input
+              className="form-control validate"
+              disabled={undefined}
+              id="newPassword"
+              name="newPassword"
+              onChange={[Function]}
+              placeholder="New password"
+              required={true}
+              type="password"
+              value=""
+            />
+          </div>
+          <div
+            className="input-field"
+          >
+            <label
+              className="sr-only"
+              htmlFor="confirmPassword"
+            >
+              Confirm password
+            </label>
+            <input
+              className="form-control validate"
+              disabled={undefined}
+              id="confirmPassword"
+              name="confirmPassword"
+              onChange={[Function]}
+              placeholder="Confirm password"
+              required={true}
+              type="password"
+              value=""
+            />
+          </div>
+          <div
+            className="modal"
+            id="modalError"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Oh!
+              </h5>
+              <p>
+                
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                Close
+              </a>
+            </div>
+          </div>
+          <div
+            className="modal"
+            id="modalSuccess"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Done!
+              </h5>
+              <p>
+                
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                Close
+              </a>
+            </div>
+          </div>
+          <div
+            className="modal"
+            id="modalOpen"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Do you want to change your password?
+              </h5>
+              <p>
+                
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                NO
+              </a>
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+                type="submit"
+              >
+                YES
+              </a>
+            </div>
+          </div>
+          <div
+            className="input-field inline"
+          >
+            <button
+              className="btn btn-primary pbtn"
+              id="editbtn"
+              onClick={[Function]}
+              type="button"
+            >
+              Submit
+            </button>
+          </div>
+          <div
+            className="activity"
+            id="activity-loader-id"
+            style={
+              Object {
+                "display": "none",
+              }
+            }
+          >
+            <div
+              className="preloader-wrapper activity-loader big active"
+            >
+              <div
+                className="gap-patch activity-gap2"
+              >
+                <div
+                  className="spinner-layer activity-spinner spinner-red-only"
+                >
+                  <div
+                    className="circle-clipper left"
+                  >
+                    <div
+                      className="circle"
+                    />
+                  </div>
+                  <div
+                    className="gap-patch activity-gap"
+                  />
+                  <div
+                    className="circle"
+                  />
+                </div>
+                <div
+                  className="circle-clipper right"
+                >
+                  <div
+                    className="circle"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test Dashboard page components and container should test and take snapshot of DashboardSidebar 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col s12 col m2 col l2"
+  >
+    <div
+      id="sidebar-wrapper"
+    >
+      <ul
+        className="sidebar-nav"
+        style={
+          Object {
+            "marginTop": "10px",
+          }
+        }
+      >
+        <li>
+          <div
+            id="imageborder"
+          >
+            <div
+              className="file-field input-field"
+            >
+              <div
+                className=""
+                id="filebtn"
+                style={
+                  Object {
+                    "color": "white",
+                    "marginLeft": "5px",
+                  }
+                }
+              >
+                <span />
+                <img
+                  alt="images"
+                  height="120"
+                  id="userimg"
+                  src="http://res.cloudinary.com/tosmak/image/upload/v1507297483/userimg_cxeszl.png"
+                  width="120"
+                />
+                <input
+                  accept=".png, .jpg, .jpeg"
+                  className="fileInput"
+                  disabled={undefined}
+                  id="photoInput"
+                  onChange={[Function]}
+                  placeholder="Upload profile image"
+                  type="file"
+                />
+              </div>
+              <div
+                className="file-path-wrapper"
+              >
+                <input
+                  className="file-path validate"
+                  placeholder="Upload profile image"
+                  style={
+                    Object {
+                      "width": "100px",
+                    }
+                  }
+                  type="text"
+                />
+                <div
+                  className="input-field inline"
+                >
+                  <button
+                    className="btn-sm"
+                    id=""
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "backgroundColor": "#3d1112",
+                        "color": "wheat",
+                        "marginTop": "0px",
+                      }
+                    }
+                    type="button"
+                  >
+                    Upload
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a
+            onClick={[Function]}
+            style={Object {}}
+          >
+            <i
+              className="material-icons left"
+            >
+              local_library
+            </i>
+             Books Shelf
+          </a>
+        </li>
+        <li>
+          <a
+            onClick={[Function]}
+            style={Object {}}
+          >
+            <i
+              className="material-icons left"
+            >
+              dashboard
+            </i>
+            Account
+          </a>
+        </li>
+        <li>
+          <a
+            onClick={[Function]}
+            style={Object {}}
+          >
+            <i
+              className="material-icons left"
+            >
+              data_usage
+            </i>
+            History
+          </a>
+        </li>
+        <li>
+          <a
+            onClick={[Function]}
+            style={Object {}}
+          >
+            <i
+              className="material-icons left"
+            >
+              lock
+            </i>
+            Change Password
+          </a>
+        </li>
+        <li>
+          <a
+            onClick={[Function]}
+            style={Object {}}
+          >
+            <i
+              className="material-icons left"
+            >
+              exit_to_app
+            </i>
+            Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="modal"
+      id="modaE"
+    >
+      <div
+        className="modal-content"
+      >
+        <h5>
+          Oh!
+        </h5>
+        <p>
+          
+        </p>
+      </div>
+      <div
+        className="modal-footer"
+      >
+        <a
+          className="modal-action modal-close waves-effect waves-brown btn-flat"
+          href=""
+          onClick={[Function]}
+        >
+          Close
+        </a>
+      </div>
+    </div>
+    <div
+      className="modal"
+      id="modaS"
+    >
+      <div
+        className="modal-content"
+      >
+        <h5>
+          Done!
+        </h5>
+        <p>
+          
+        </p>
+      </div>
+      <div
+        className="modal-footer"
+      >
+        <a
+          className="modal-action modal-close waves-effect waves-brown btn-flat"
+          href=""
+          onClick={[Function]}
+        >
+          Close
+        </a>
+      </div>
+    </div>
+    <div
+      className="modal"
+      id="modaO"
+    >
+      <div
+        className="modal-content"
+      >
+        <h5>
+          Do you want to change your profile picture?
+        </h5>
+        <p>
+          
+        </p>
+      </div>
+      <div
+        className="modal-footer"
+      >
+        <a
+          className="modal-action modal-close waves-effect waves-brown btn-flat"
+          href=""
+          onClick={[Function]}
+        >
+          NO
+        </a>
+        <a
+          className="modal-action modal-close waves-effect waves-brown btn-flat"
+          href=""
+          onClick={[Function]}
+          type="submit"
+        >
+          YES
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="activity"
+    id="activity-loader-id"
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+  >
+    <div
+      className="preloader-wrapper activity-loader big active"
+    >
+      <div
+        className="gap-patch activity-gap2"
+      >
+        <div
+          className="spinner-layer activity-spinner spinner-red-only"
+        >
+          <div
+            className="circle-clipper left"
+          >
+            <div
+              className="circle"
+            />
+          </div>
+          <div
+            className="gap-patch activity-gap"
+          />
+          <div
+            className="circle"
+          />
+        </div>
+        <div
+          className="circle-clipper right"
+        >
+          <div
+            className="circle"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test Dashboard page components and container should test and take snapshot of UserProfile 1`] = `
+<div>
+  <div
+    className="row"
+  >
+    <div
+      className="col s12 col m12 col l12"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col s12 col m2 col l2"
+        >
+          <div
+            id="sidebar-wrapper"
+          >
+            <ul
+              className="sidebar-nav"
+              style={
+                Object {
+                  "marginTop": "10px",
+                }
+              }
+            >
+              <li>
+                <div
+                  id="imageborder"
+                >
+                  <div
+                    className="file-field input-field"
+                  >
+                    <div
+                      className=""
+                      id="filebtn"
+                      style={
+                        Object {
+                          "color": "white",
+                          "marginLeft": "5px",
+                        }
+                      }
+                    >
+                      <span />
+                      <img
+                        alt="images"
+                        height="120"
+                        id="userimg"
+                        src="http://res.cloudinary.com/tosmak/image/upload/v1507297483/userimg_cxeszl.png"
+                        width="120"
+                      />
+                      <input
+                        accept=".png, .jpg, .jpeg"
+                        className="fileInput"
+                        disabled={undefined}
+                        id="photoInput"
+                        onChange={[Function]}
+                        placeholder="Upload profile image"
+                        type="file"
+                      />
+                    </div>
+                    <div
+                      className="file-path-wrapper"
+                    >
+                      <input
+                        className="file-path validate"
+                        placeholder="Upload profile image"
+                        style={
+                          Object {
+                            "width": "100px",
+                          }
+                        }
+                        type="text"
+                      />
+                      <div
+                        className="input-field inline"
+                      >
+                        <button
+                          className="btn-sm"
+                          id=""
+                          onClick={[Function]}
+                          style={
+                            Object {
+                              "backgroundColor": "#3d1112",
+                              "color": "wheat",
+                              "marginTop": "0px",
+                            }
+                          }
+                          type="button"
+                        >
+                          Upload
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+                  <i
+                    className="material-icons left"
+                  >
+                    local_library
+                  </i>
+                   Books Shelf
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+                  <i
+                    className="material-icons left"
+                  >
+                    dashboard
+                  </i>
+                  Account
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+                  <i
+                    className="material-icons left"
+                  >
+                    data_usage
+                  </i>
+                  History
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+                  <i
+                    className="material-icons left"
+                  >
+                    lock
+                  </i>
+                  Change Password
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+                  <i
+                    className="material-icons left"
+                  >
+                    exit_to_app
+                  </i>
+                  Logout
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div
+            className="modal"
+            id="modaE"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Oh!
+              </h5>
+              <p>
+                
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                Close
+              </a>
+            </div>
+          </div>
+          <div
+            className="modal"
+            id="modaS"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Done!
+              </h5>
+              <p>
+                
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                Close
+              </a>
+            </div>
+          </div>
+          <div
+            className="modal"
+            id="modaO"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Do you want to change your profile picture?
+              </h5>
+              <p>
+                
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                NO
+              </a>
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+                type="submit"
+              >
+                YES
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          className="activity"
+          id="activity-loader-id"
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+        >
+          <div
+            className="preloader-wrapper activity-loader big active"
+          >
+            <div
+              className="gap-patch activity-gap2"
+            >
+              <div
+                className="spinner-layer activity-spinner spinner-red-only"
+              >
+                <div
+                  className="circle-clipper left"
+                >
+                  <div
+                    className="circle"
+                  />
+                </div>
+                <div
+                  className="gap-patch activity-gap"
+                />
+                <div
+                  className="circle"
+                />
+              </div>
+              <div
+                className="circle-clipper right"
+              >
+                <div
+                  className="circle"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         className="row"
@@ -634,7 +2389,6 @@ exports[`Test Dashboard page components and container should test and take snaps
               First Name
             </label>
             <input
-              autoFocus={true}
               className="form-control validate"
               disabled={true}
               id="firstname"
@@ -656,7 +2410,6 @@ exports[`Test Dashboard page components and container should test and take snaps
               Last Name
             </label>
             <input
-              autoFocus={true}
               className="form-control validate"
               disabled={true}
               id="lastname"
@@ -678,7 +2431,6 @@ exports[`Test Dashboard page components and container should test and take snaps
               Email address
             </label>
             <input
-              autoFocus={true}
               className="form-control validate"
               disabled={true}
               id="inputSignUpEmail"
@@ -700,7 +2452,6 @@ exports[`Test Dashboard page components and container should test and take snaps
               Phone number
             </label>
             <input
-              autoFocus={true}
               className="form-control validate"
               disabled={true}
               id="inputPhoneNumber"
@@ -837,374 +2588,47 @@ exports[`Test Dashboard page components and container should test and take snaps
               Edit
             </button>
           </div>
-        </form>
-      </div>
-      <div
-        className="row"
-        id="bh_table"
-      >
-        <div
-          className=" col l10 offset-l2 col m10 offset-m2 col s12"
-        >
-          <h4
-            className="sub-header"
-          >
-            Read List
-          </h4>
           <div
-            className="table-responsive"
+            className="activity"
+            id="activity-loader-id"
+            style={
+              Object {
+                "display": "none",
+              }
+            }
           >
-            <table
-              className="table responsive-table bordered highlight striped"
-              id="table_bh"
+            <div
+              className="preloader-wrapper activity-loader big active"
             >
-              <thead>
-                <tr>
-                  <th>
-                    <span
-                      className="glyphicon glyphicon-education"
+              <div
+                className="gap-patch activity-gap2"
+              >
+                <div
+                  className="spinner-layer activity-spinner spinner-red-only"
+                >
+                  <div
+                    className="circle-clipper left"
+                  >
+                    <div
+                      className="circle"
                     />
-                  </th>
-                  <th>
-                    Title
-                  </th>
-                  <th>
-                    Author
-                  </th>
-                  <th>
-                    Borrowed Date
-                  </th>
-                  <th>
-                    Returned Date
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    .
-                  </td>
-                  <td>
-                     
-                    THE PEOPLE IN THE TREE
-                  </td>
-                  <td>
-                    Y. Hayan
-                  </td>
-                  <td>
-                    2017-10-04
-                  </td>
-                  <td>
-                    2017-10-04
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    .
-                  </td>
-                  <td>
-                     
-                    THE LATE PARADE
-                  </td>
-                  <td>
-                    F. Adam
-                  </td>
-                  <td>
-                    2017-10-04
-                  </td>
-                  <td>
-                    2017-10-04
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    .
-                  </td>
-                  <td>
-                     
-                    I AM THE WOLF
-                  </td>
-                  <td>
-                    L. Mark
-                  </td>
-                  <td>
-                    2017-10-04
-                  </td>
-                  <td>
-                    2017-10-04
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    .
-                  </td>
-                  <td>
-                     
-                    THE PALE NORTH
-                  </td>
-                  <td>
-                    H. Clayton
-                  </td>
-                  <td>
-                    2017-10-04
-                  </td>
-                  <td>
-                    2017-10-04
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    .
-                  </td>
-                  <td>
-                     
-                    ADULTOLESENCE
-                  </td>
-                  <td>
-                    G. Hannah
-                  </td>
-                  <td>
-                    2017-10-04
-                  </td>
-                  <td>
-                    2017-10-04
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    .
-                  </td>
-                  <td>
-                     
-                    WHAT IT MEANS WHEN A MAN FALL FROM SKY
-                  </td>
-                  <td>
-                    L. Nneka
-                  </td>
-                  <td>
-                    2017-10-04
-                  </td>
-                  <td>
-                    2017-10-04
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    .
-                  </td>
-                  <td>
-                     
-                    THE SONG AND THE SILENCE
-                  </td>
-                  <td>
-                    Y. Johnson
-                  </td>
-                  <td>
-                    2017-10-04
-                  </td>
-                  <td>
-                    Not yet returned
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    .
-                  </td>
-                  <td>
-                     
-                    THE ILIAD HOMMER
-                  </td>
-                  <td>
-                    P. Green
-                  </td>
-                  <td>
-                    2017-10-04
-                  </td>
-                  <td>
-                    2017-10-04
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-      <div
-        id="ch_pas"
-      >
-        <form
-          action=""
-          className="form-signin col col l10 offset-l1 col m11 offset-m2 col s12"
-        >
-          <h4
-            className="sub-header form-signin-heading"
-          >
-            Change password
-          </h4>
-          
-          <div
-            className="input-field"
-          >
-            <label
-              className="sr-only"
-              htmlFor="oldPassword"
-            >
-              Current Password
-            </label>
-            <input
-              autoFocus={true}
-              className="form-control validate"
-              disabled={undefined}
-              id="oldPassword"
-              name="oldPassword"
-              onChange={[Function]}
-              placeholder="Current password"
-              required={true}
-              type="password"
-              value=""
-            />
-          </div>
-          <div
-            className="input-field"
-          >
-            <label
-              className="sr-only"
-              htmlFor="newPassword"
-            >
-              New password
-            </label>
-            <input
-              autoFocus={true}
-              className="form-control validate"
-              disabled={undefined}
-              id="newPassword"
-              name="newPassword"
-              onChange={[Function]}
-              placeholder="New password"
-              required={true}
-              type="password"
-              value=""
-            />
-          </div>
-          <div
-            className="input-field"
-          >
-            <label
-              className="sr-only"
-              htmlFor="confirmPassword"
-            >
-              Confirm password
-            </label>
-            <input
-              autoFocus={true}
-              className="form-control validate"
-              disabled={undefined}
-              id="confirmPassword"
-              name="confirmPassword"
-              onChange={[Function]}
-              placeholder="Confirm password"
-              required={true}
-              type="password"
-              value=""
-            />
-          </div>
-          <div
-            className="modal"
-            id="modalError"
-          >
-            <div
-              className="modal-content"
-            >
-              <h5>
-                Oh!
-              </h5>
-              <p>
-                
-              </p>
+                  </div>
+                  <div
+                    className="gap-patch activity-gap"
+                  />
+                  <div
+                    className="circle"
+                  />
+                </div>
+                <div
+                  className="circle-clipper right"
+                >
+                  <div
+                    className="circle"
+                  />
+                </div>
+              </div>
             </div>
-            <div
-              className="modal-footer"
-            >
-              <a
-                className="modal-action modal-close waves-effect waves-brown btn-flat"
-                href=""
-                onClick={[Function]}
-              >
-                Close
-              </a>
-            </div>
-          </div>
-          <div
-            className="modal"
-            id="modalSuccess"
-          >
-            <div
-              className="modal-content"
-            >
-              <h5>
-                Done!
-              </h5>
-              <p>
-                
-              </p>
-            </div>
-            <div
-              className="modal-footer"
-            >
-              <a
-                className="modal-action modal-close waves-effect waves-brown btn-flat"
-                href=""
-                onClick={[Function]}
-              >
-                Close
-              </a>
-            </div>
-          </div>
-          <div
-            className="modal"
-            id="modalOpen"
-          >
-            <div
-              className="modal-content"
-            >
-              <h5>
-                Do you want to change your password?
-              </h5>
-              <p>
-                
-              </p>
-            </div>
-            <div
-              className="modal-footer"
-            >
-              <a
-                className="modal-action modal-close waves-effect waves-brown btn-flat"
-                href=""
-                onClick={[Function]}
-              >
-                NO
-              </a>
-              <a
-                className="modal-action modal-close waves-effect waves-brown btn-flat"
-                href=""
-                onClick={[Function]}
-                type="submit"
-              >
-                YES
-              </a>
-            </div>
-          </div>
-          <div
-            className="input-field inline"
-          >
-            <button
-              className="btn btn-primary pbtn"
-              id="editbtn"
-              onClick={[Function]}
-              type="button"
-            >
-              Submit
-            </button>
           </div>
         </form>
       </div>
@@ -1213,7 +2637,7 @@ exports[`Test Dashboard page components and container should test and take snaps
 </div>
 `;
 
-exports[`Test Dashboard page components and container should test and take snapshot of user profile page when data and book array are empty 1`] = `
+exports[`Test Dashboard page components and container should test and take snapshot of UserProfileForm 1`] = `
 <div
   className="row"
   id="b_page"
@@ -1245,7 +2669,7 @@ exports[`Test Dashboard page components and container should test and take snaps
         placeholder="First Name"
         required={true}
         type="text"
-        value="Tobi"
+        value=""
       />
     </div>
     <div
@@ -1266,7 +2690,7 @@ exports[`Test Dashboard page components and container should test and take snaps
         placeholder="Last Name"
         required={true}
         type="text"
-        value="Akinola"
+        value=""
       />
     </div>
     <div
@@ -1287,7 +2711,7 @@ exports[`Test Dashboard page components and container should test and take snaps
         placeholder="Email address"
         required={true}
         type="email"
-        value="tobi@gmail.com"
+        value=""
       />
     </div>
     <div
@@ -1308,7 +2732,7 @@ exports[`Test Dashboard page components and container should test and take snaps
         placeholder="phone number"
         required={true}
         type="number"
-        value="0803723455"
+        value=""
       />
     </div>
     <select

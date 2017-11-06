@@ -31,8 +31,9 @@ const action = {
 const response = {
   status: 200,
   message: 'user details fetched successfully',
-  result: user[0]
+  userDetails: user[0]
 };
+
 
 describe('Test get user Actions', () => {
   it('should create an action to send getUserDetails request', () => {
@@ -62,7 +63,7 @@ describe('Test get user Actions', () => {
   });
 
   it('should return books resources if the request is successful', () => {
-    fetchMock.get(`http://localhost:8000/api/v2/users/${1}`,
+    fetchMock.get(`/api/v2/users/${1}`,
       JSON.stringify(response));
 
     const initialState = {};

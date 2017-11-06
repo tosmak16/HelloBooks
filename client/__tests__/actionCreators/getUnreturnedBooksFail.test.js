@@ -27,7 +27,7 @@ const response = {
 
 describe('Test getUnreturnedBooks Actions failed', () => {
   it('should not return unreturn books resources if the request is not successful', () => {
-    fetchMock.get(`http://localhost:8000/api/v2/users/${1}/books?returned=false`,
+    fetchMock.get(`/api/v2/users/${1}/books?returned=false`,
       JSON.stringify(response));
 
     const initialState = {};

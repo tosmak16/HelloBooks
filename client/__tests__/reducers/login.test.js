@@ -7,7 +7,7 @@ import {
   LOGIN_SUCCESS
 } from '../../actions/loginActions';
 
-import reducer from '../../reducers/log';
+import reducer from '../../reducers/login';
 
 const action = {
   userData: { username: 'tosmak', password: '12345' },

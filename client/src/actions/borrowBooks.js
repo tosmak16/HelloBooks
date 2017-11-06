@@ -23,7 +23,7 @@ export default function borrowBooks(token, bookId) {
 
   return (dispatch) => {
     dispatch(borrowBookRequest(bookId));
-    return fetch('http://localhost:8000/api/v2/users/' + userId + '/books', {
+    return fetch('/api/v2/users/' + userId + '/books', {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',

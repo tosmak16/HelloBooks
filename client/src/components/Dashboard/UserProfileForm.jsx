@@ -15,7 +15,7 @@ let displayPreloader = 'none';
  * @class UserProfileForm
  * @extends {React.Component}
  */
-class UserProfileForm extends React.Component {
+export class UserProfileForm extends React.Component {
   /**
    * Creates an instance of UserProfileForm.
    * @param {object} props

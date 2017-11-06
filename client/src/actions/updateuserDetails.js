@@ -21,7 +21,7 @@ export default function updateUser(userData, token) {
   return (dispatch) => {
     dispatch(updateuserRequest(userData));
 
-    return fetch('http://localhost:8000/api/v2/users/' + userId, {
+    return fetch('/api/v2/users/' + userId, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json, text/plain, */*',

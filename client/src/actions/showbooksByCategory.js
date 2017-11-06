@@ -3,8 +3,6 @@ import lodash from 'lodash'
 import { showBooksByCategory } from '../../actions/getFilteredBooks'
 
 /**
- * 
- * 
  * @export
  * @param {any} selectedCategory 
  * @param {any} data 

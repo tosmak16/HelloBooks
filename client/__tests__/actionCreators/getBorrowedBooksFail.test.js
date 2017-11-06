@@ -27,7 +27,7 @@ const response = {
 
 describe('Test getBorrowedBooks failed Actions', () => {
   it('should not return borrowed books resources if the request is not successful', () => {
-    fetchMock.get(`http://localhost:8000/api/v2/user/${1}/books`,
+    fetchMock.get(`/api/v2/user/${1}/books`,
       JSON.stringify(response));
 
     const initialState = {};

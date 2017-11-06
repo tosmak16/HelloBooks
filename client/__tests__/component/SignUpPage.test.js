@@ -12,7 +12,7 @@ const mockFuction = jest.fn();
 
 describe('SignupPage', () => {
   const initialState = {
-    reg: [{
+    register: [{
       isRegistered: false,
       data: {},
       error: '',
@@ -26,7 +26,7 @@ describe('SignupPage', () => {
 
   beforeEach(() => {
     store = mockStore(initialState);
-    wrapper = mount(<Provider store={ store }><ConnectedSignUpPage /></Provider>);
+    wrapper = mount(<Provider store={store}><ConnectedSignUpPage /></Provider>);
   });
 
 
@@ -35,15 +35,15 @@ describe('SignupPage', () => {
   });
 
   it('should test and take snapshot of SignUpPage', () => {
-    const tree = render.create(<SignUpPage userSignup={ mockFuction } reg={{ error: '' }} />);
+    const tree = render.create(<SignUpPage userSignup={mockFuction} register={{ error: '' }} />);
 
     expect(tree).toMatchSnapshot();
   });
-  it('+++ render the connected(SMART) component', () => {
+  it('it should render the ConnectedSignUpPage component', () => {
     expect(wrapper.find(ConnectedSignUpPage).length).toEqual(1);
   });
 
-  it('+++ check Prop matches with initialState', () => {
-    expect(wrapper.find(SignUpPage).prop('reg')).toEqual(initialState.reg[0]);
+  it('it should check Prop matches with initialState', () => {
+    expect(wrapper.find(SignUpPage).prop('register')).toEqual(initialState.register[0]);
   });
 });

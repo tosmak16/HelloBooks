@@ -68,7 +68,7 @@ describe('Test update user Actions', () => {
   });
 
   it('should update user if the request is successful', () => {
-    fetchMock.put(`http://localhost:8000/api/v2/users/${1}`,
+    fetchMock.put(`/api/v2/users/${1}`,
       { body: response, status: 200 });
 
     const initialState = {};

@@ -11,7 +11,7 @@ let tablerow = '';
  * @class BorrowHistoryTable
  * @extends {React.Component}
  */
-class BorrowHistoryTable extends React.Component {
+export class BorrowHistoryTable extends React.Component {
   /**
    * @memberof BorrowHistoryTable
    * @returns {void}

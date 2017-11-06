@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
  * @param {object} props
  * @returns {views} containing table list of user's unreturned book
  */
-function BorrowedbooksTableRow(props) {
+export function BorrowedbooksTableRow(props) {
   const { book } = props;
   const { bookItem } = props;
   return (

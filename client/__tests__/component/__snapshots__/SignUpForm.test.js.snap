@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Signup Form Component test should test and take snapshot of SignUpPage 1`] = `
+exports[`Signup Form Component test should test and take snapshot of SignForm 1`] = `
 <form
   action="/login"
   className="form-signin"
@@ -19,12 +19,12 @@ exports[`Signup Form Component test should test and take snapshot of SignUpPage 
       className="col input-field s12"
     >
       <input
-        className="form-control sr-only validate"
+        className="form-control validate"
         defaultValue={undefined}
         id="firstname"
         name="firstName"
         onChange={[Function]}
-        placeholder="Firstname"
+        placeholder={undefined}
         required={true}
         type="text"
         value=""
@@ -51,7 +51,7 @@ exports[`Signup Form Component test should test and take snapshot of SignUpPage 
         id="lastname"
         name="lastName"
         onChange={[Function]}
-        placeholder="Last name"
+        placeholder={undefined}
         required={true}
         type="text"
         value=""
@@ -78,7 +78,7 @@ exports[`Signup Form Component test should test and take snapshot of SignUpPage 
         id="inputSignUpEmail"
         name="email"
         onChange={[Function]}
-        placeholder="Email address"
+        placeholder={undefined}
         required={true}
         type="email"
         value=""
@@ -105,7 +105,7 @@ exports[`Signup Form Component test should test and take snapshot of SignUpPage 
         id="inputUsername"
         name="username"
         onChange={[Function]}
-        placeholder="Username"
+        placeholder={undefined}
         required={true}
         type="text"
         value=""
@@ -132,7 +132,7 @@ exports[`Signup Form Component test should test and take snapshot of SignUpPage 
         id="inputsSignUpPassword"
         name="password"
         onChange={[Function]}
-        placeholder="Password"
+        placeholder={undefined}
         required={true}
         type="password"
         value=""

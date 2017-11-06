@@ -50,38 +50,38 @@ describe('Test BooksPage component', () => {
     window.localStorage = localStorageMock;
 
 
-    wrapper = mount(<Provider store={ store }><ConnectedBooksPage /></Provider>);
+    wrapper = mount(<Provider store={store}><ConnectedBooksPage /></Provider>);
   });
 
   it('should test and take snapshot of booksPage', () => {
     const tree = render.create(<BooksPage
-      categoryData={ [] }
-      isFetched={ !initialState.books[0].isFetched }
-      getbooks={ mockFuction }
-      data={ [{ id: 1, name: 'hello' }] }
-      showbooksByCategory={ mockFuction }
-      filteredData={ [{ id: 1, bookTitle: 'love' }] }
-      checkBookDetails={ mockFuction }
-      searchbooks={ mockFuction }
+      categoryData={[]}
+      isFetched={!initialState.books[0].isFetched}
+      getbooks={mockFuction}
+      bookData={[{ id: 1, name: 'hello' }]}
+      showbooksByCategory={mockFuction}
+      filteredData={[{ id: 1, bookTitle: 'love' }]}
+      checkBookDetails={mockFuction}
+      searchbooks={mockFuction}
     />);
     expect(tree).toMatchSnapshot();
   });
 
   it('should test and take snapshot of booksFilterPage', () => {
     const tree = render.create(<BooksFilter
-      data={ [{ name: 'hello' }] }
-      filteredData={ [{ id: 1, bookTitle: 'love' }] }
-      checkBookDetails={ mockFuction }
-      searchbooks={ mockFuction }
+      data={[{ name: 'hello' }]}
+      filteredData={[{ id: 1, bookTitle: 'love' }]}
+      checkBookDetails={mockFuction}
+      searchbooks={mockFuction}
     />);
     expect(tree).toMatchSnapshot();
   });
 
   it('should test and take snapshot of booksCollectionPage', () => {
     const tree = render.create(<BooksCollection
-      data={ [{ name: 'hello', image: '', id: 1 }] }
-      checkBookDetails={ mockFuction }
-      heading={ 'hello' }
+      bookData={[{ name: 'hello', image: '', id: 1 }]}
+      checkBookDetails={mockFuction}
+      heading={'hello'}
     />);
     expect(tree).toMatchSnapshot();
   });
@@ -89,25 +89,25 @@ describe('Test BooksPage component', () => {
 
   it('should test and take snapshot of booksCategoryPage', () => {
     const tree = render.create(<BooksCategory
-      categoryData={ [] }
-      data={ [{ name: 'hello', image: '', id: 1 }] }
-      checkBookDetails={ mockFuction }
+      categoryData={[]}
+      data={[{ name: 'hello', image: '', id: 1 }]}
+      checkBookDetails={mockFuction}
     />);
     expect(tree).toMatchSnapshot();
   });
 
   it('should test and take snapshot of booksphotoPage', () => {
     const tree = render.create(<BooksPhoto
-      data={ [{ name: 'hello', image: '', id: 1 }] }
-      checkBookDetails={ mockFuction }
+      data={[{ name: 'hello', image: '', id: 1 }]}
+      checkBookDetails={mockFuction}
     />);
     expect(tree).toMatchSnapshot();
   });
 
   it('should test and take snapshot of Side Bar', () => {
     const tree = render.create(<SideBar
-      data={ [{ name: 'hello', image: '', id: 1 }] }
-      showbooksByCategory={ mockFuction }
+      data={[{ name: 'hello', image: '', id: 1 }]}
+      showbooksByCategory={mockFuction}
     />);
     expect(tree).toMatchSnapshot();
   });
@@ -116,8 +116,8 @@ describe('Test BooksPage component', () => {
     expect(wrapper.find(ConnectedBooksPage).length).toEqual(1);
   });
 
-  it(' checks Prop matches with initialState', () => {
-    expect(wrapper.find(BooksPage).prop('data')).toEqual(initialState.books[0].data);
+  it('it should checks Prop matches with initialState', () => {
+    expect(wrapper.find(BooksPage).prop('bookData')).toEqual(initialState.books[0].data);
     expect(wrapper.find(BooksPage).prop('isFetched')).toEqual(initialState.books[0].isFetched);
     expect(wrapper.find(BooksPage).prop('categoryData')).toEqual(initialState.category);
     expect(wrapper.find(BooksPage).prop('filteredData')).toEqual(initialState.getFilteredBooks[0].filteredData);
@@ -125,10 +125,10 @@ describe('Test BooksPage component', () => {
 
   it('should test for handle change function', () => {
     wrapper = shallow(<BooksFilter
-      data={ [{ name: 'hello' }] }
-      filteredData={ [{ id: 1, bookTitle: 'love' }] }
-      checkBookDetails={ mockFuction }
-      searchbooks={ mockFuction }
+      bookData={[{ name: 'hello' }]}
+      filteredData={[{ id: 1, bookTitle: 'love' }]}
+      checkBookDetails={mockFuction}
+      searchbooks={mockFuction}
     />);
     wrapper.instance().handleFuction = mockFuction;
     wrapper.update();
@@ -143,10 +143,10 @@ describe('Test BooksPage component', () => {
 
   it('should test for handle selected function', () => {
     wrapper = shallow(<BooksFilter
-      data={ [{ name: 'hello' }] }
-      filteredData={ [{ id: 1, bookTitle: 'love' }] }
-      checkBookDetails={ mockFuction }
-      searchbooks={ mockFuction }
+      data={[{ name: 'hello' }]}
+      filteredData={[{ id: 1, bookTitle: 'love' }]}
+      checkBookDetails={mockFuction}
+      searchbooks={mockFuction}
     />);
     wrapper.instance().handleFuction = mockFuction;
     wrapper.update();
@@ -158,10 +158,10 @@ describe('Test BooksPage component', () => {
 
   it('should test for functios in book filter', () => {
     wrapper = shallow(<BooksFilter
-      data={ [{ name: 'hello' }] }
-      filteredData={ [{ id: 1, bookTitle: 'love' }] }
-      checkBookDetails={ mockFuction }
-      searchbooks={ mockFuction }
+      data={[{ name: 'hello' }]}
+      filteredData={[{ id: 1, bookTitle: 'love' }]}
+      checkBookDetails={mockFuction}
+      searchbooks={mockFuction}
     />);
     wrapper.instance().handleFuction = mockFuction;
     wrapper.update();
@@ -178,8 +178,8 @@ describe('Test BooksPage component', () => {
   it('should test and take snapshot of Card box', () => {
     const component = render.create(<Cardbox
       item={{ name: 'hello', image: 'hello', id: 1 }}
-      handleClick={ mockFuction }
-      checkBookDetails={ mockFuction }
+      handleClick={mockFuction}
+      checkBookDetails={mockFuction}
     />);
 
     expect(component).toMatchSnapshot();
@@ -187,8 +187,8 @@ describe('Test BooksPage component', () => {
 
   it('should test for handle click function in sidbar component', () => {
     wrapper = shallow(<SideBar
-      data={ [{ name: 'hello', image: '', id: 1 }] }
-      showbooksByCategory={ mockFuction }
+      data={[{ name: 'hello', image: '', id: 1 }]}
+      showbooksByCategory={mockFuction}
     />);
     wrapper.instance().handleFuction = mockFuction;
     wrapper.update();
@@ -200,8 +200,8 @@ describe('Test BooksPage component', () => {
 
   it('should test for handle collapse function in sidbar component', () => {
     wrapper = shallow(<SideBar
-      data={ [{ name: 'hello', image: '', id: 1 }] }
-      showbooksByCategory={ mockFuction }
+      data={[{ name: 'hello', image: '', id: 1 }]}
+      showbooksByCategory={mockFuction}
     />);
     wrapper.instance().handleFuction = mockFuction;
     wrapper.update();
@@ -212,8 +212,8 @@ describe('Test BooksPage component', () => {
   it('should test for handle click function in cardbox component', () => {
     wrapper = shallow(<Cardbox
       item={{ name: 'hello', image: 'hello', id: 1 }}
-      handleClick={ mockFuction }
-      checkBookDetails={ mockFuction }
+      handleClick={mockFuction}
+      checkBookDetails={mockFuction}
     />);
     wrapper.instance().handleFuction = mockFuction;
     wrapper.update();
@@ -223,9 +223,9 @@ describe('Test BooksPage component', () => {
 
   it('should test for handle click function in BooksCollection component', () => {
     wrapper = shallow(<BooksCollection
-      data={ [{ name: 'hello', image: 'l8.jpg', id: 1 }] }
-      checkBookDetails={ mockFuction }
-      heading={ 'hello' }
+      bookData={[{ name: 'hello', image: 'l8.jpg', id: 1 }]}
+      checkBookDetails={mockFuction}
+      heading={'hello'}
     />);
     wrapper.instance().handleFuction = mockFuction;
     wrapper.update();
@@ -235,13 +235,12 @@ describe('Test BooksPage component', () => {
 
   it('should test for componeneWillReceiveProps function in BooksCategory component', () => {
     const nextProps = {
-      data: [{ category: books }]
+      categoryData: [{ category: books }]
     };
 
     wrapper = shallow(<BooksCategory
-      categoryData={ books[0] }
-      data={ [{ name: 'hello', image: '', id: 1 }] }
-      checkBookDetails={ mockFuction }
+      categoryData={books[0]}
+      checkBookDetails={mockFuction}
     />);
     wrapper.instance().handleFuction = mockFuction;
     wrapper.update();
@@ -255,9 +254,9 @@ describe('Test BooksPage component', () => {
     };
 
     wrapper = shallow(<BooksCategory
-      categoryData={ books[0] }
-      data={ [{ name: 'hello', image: '', id: 1 }] }
-      checkBookDetails={ mockFuction }
+      categoryData={books[0]}
+      data={[{ name: 'hello', image: '', id: 1 }]}
+      checkBookDetails={mockFuction}
     />);
     wrapper.instance().handleFuction = mockFuction;
     wrapper.update();

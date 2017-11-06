@@ -21,7 +21,7 @@ let sortedData = '';
  * @class BorrowedbooksTable
  * @extends {React.Component}
  */
-class BorrowedbooksTable extends React.Component {
+export class BorrowedbooksTable extends React.Component {
   /**
    * Creates an instance of BorrowedbooksTable.
    * @param {object} props

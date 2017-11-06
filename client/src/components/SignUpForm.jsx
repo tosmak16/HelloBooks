@@ -17,7 +17,7 @@ const membershipType = {
  * @class SignUpForm
  * @extends {React.Component}
  */
-class SignUpForm extends React.Component {
+export class SignUpForm extends React.Component {
   /**
    * *
    * @param {object} props

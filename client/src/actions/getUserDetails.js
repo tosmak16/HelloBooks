@@ -24,16 +24,16 @@ export default function getUserdetails(token) {
   return (dispatch) => {
     dispatch(getuserdetailsRequest());
 
-    return fetch('http://localhost:8000/api/v2/users/' + userId, {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json, text/plain, */*',
-          'Content-Type': 'application/json',
-          token: token
-        },
-      })
+    return fetch('/api/v2/users/' + userId, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+        token: token
+      },
+    })
       .then(
-        (res) => res.json())
+      (res) => res.json())
       .then((response) => {
         if (response.status >= 400) {
           throw response.message

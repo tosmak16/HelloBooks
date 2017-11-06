@@ -24,17 +24,17 @@ export default function getunreturnedBooks(token) {
   let userId = decodedToken.id;
   return (dispatch) => {
     dispatch(getunreturnedbooksRequest());
-    return fetch('http://localhost:8000/api/v2/users/' + userId + '/books?returned=false', {
-        method: 'GET',
-        body: {
-          token: token
-        },
-        headers: {
-          token: token
-        },
-      })
+    return fetch('/api/v2/users/' + userId + '/books?returned=false', {
+      method: 'GET',
+      body: {
+        token: token
+      },
+      headers: {
+        token: token
+      },
+    })
       .then(
-        (res) => res.json())
+      (res) => res.json())
       .then((response) => {
         if (response.status >= 400) {
           if (!isEmpty(response.message)) {

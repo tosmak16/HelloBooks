@@ -1,10 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
 import SideBar from '../SideBar';
 import DetailsForm from './DetailsForm';
-
 import checkBookDetails from '../../actions/checkBookDetails';
 import borrowBooks from '../../actions/borrowBooks';
 import showbooksByCategory from '../../actions/showbooksByCategory';
@@ -56,7 +54,6 @@ function mapStateToProps(state) {
     bookData: state.books[0].data,
     book: state.selectedbook,
     borrowBookItem: state.borrowBooks,
-
   };
 }
 

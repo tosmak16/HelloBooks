@@ -69,7 +69,7 @@ describe('Test delete book Actions', () => {
 
 
   it('should delete books if the request is successful', () => {
-    fetchMock.delete(`http://localhost:8000/api/v2/books/${action.bookData}`,
+    fetchMock.delete(`/api/v2/books/${action.bookData}`,
       { body: response, status: 204 });
 
     const initialState = {};

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 
-import SignUpForm from './SignUpForm';
+import { SignUpForm } from './SignUpForm';
 import Footer from './Footer';
 import { userSignup } from '../actions/signupAction';
 
