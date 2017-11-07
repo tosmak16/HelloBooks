@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/tosmak16/HelloBooks.svg?branch=seeddatabase)](https://travis-ci.org/tosmak16/HelloBooks)
+[![Build Status](https://travis-ci.org/tosmak16/HelloBooks.svg?branch=develop)](https://travis-ci.org/tosmak16/HelloBooks)
 [![Coverage Status](https://coveralls.io/repos/github/tosmak16/HelloBooks/badge.svg?branch=routetest)](https://coveralls.io/github/tosmak16/HelloBooks?branch=routetest)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a5a56f4d48add9c1ab06/maintainability)](https://codeclimate.com/github/tosmak16/HelloBooks/maintainability)
 # HelloBooks
