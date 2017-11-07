@@ -201,7 +201,7 @@ export class BorrowedbooksTable extends React.Component {
         </div>
         }
         <div className="  col l10 offset-l2 col m10 offset-m2 col s12">
-          <h4 className="sub-header"> Currently Reads</h4>
+          <h4 className="sub-header"> Current Reads</h4>
 
           <div className="responsive-table">
             <table id="table_bb" className="table responsive-table bordered highlight striped">

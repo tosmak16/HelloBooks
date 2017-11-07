@@ -214,7 +214,7 @@ export class DashboardSidebar extends React.Component {
                   <div className="file-field input-field">
                     <div id="filebtn" style={{ marginLeft: '5px', color: 'white' }} className="">
                       <span />
-                      <img id="userimg" src={this.state.imagePreviewUrl ? this.state.imagePreviewUrl : !isEmpty(imgName.profileImage) || 'http://res.cloudinary.com/tosmak/image/upload/v1507297483/userimg_cxeszl.png'} width="120" height="120" alt="images" />
+                      <img id="userimg" src={this.state.imagePreviewUrl ? this.state.imagePreviewUrl : !isEmpty(imgName.profileImage) ? imgName.profileImage : 'http://res.cloudinary.com/tosmak/image/upload/v1507297483/userimg_cxeszl.png'} width="120" height="120" alt="images" />
                       <input
                         disabled={this.state.disabled}
                         className="fileInput"
@@ -275,7 +275,13 @@ export class DashboardSidebar extends React.Component {
             heading={'Do you want to change your profile picture?'}
           />
         </div >
-        <div style={{ display: displayPreloader.toString() }} id="activity-loader-id" className="activity">
+        <div
+          style={{
+            display: displayPreloader.toString()
+          }}
+          id="activity-loader-id"
+          className="activity"
+        >
           <ActivityLoader />
         </div>
       </div >
@@ -295,3 +301,4 @@ DashboardSidebar.propTypes = {
 };
 
 export default DashboardSidebar;
+
