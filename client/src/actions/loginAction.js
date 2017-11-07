@@ -42,11 +42,14 @@ export default function userSignin(userData) {
         } else if (response.status === 200) {
           const token = response.token;
           window.localStorage.setItem('jwtToken', token);
-          const x = jwtDecode(token);
-          dispatch(setCurrentuser(x));
+          const decodedToken = jwtDecode(token);
+          dispatch(setCurrentuser(decodedToken));
           dispatch(loginResponse(response.message));
-          if (localStorage.jwtToken) {
+          if (localStorage.jwtToken && decodedToken.role.toString() === 'user') {
             browserHistory.push('/books')
+          }
+          else if (localStorage.jwtToken && decodedToken.role.toString() === 'admin') {
+            browserHistory.push('/admin')
           }
         }
       })
