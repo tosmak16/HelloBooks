@@ -70,7 +70,7 @@ export default (sequelize, DataTypes) => {
         },
         len: {
           args: [2, 100],
-          msg: 'Lastname should be longer than two characters',
+          msg: 'Lastname should be longer than one characters',
         },
       },
     },
@@ -106,15 +106,15 @@ export default (sequelize, DataTypes) => {
       },
     },
   }, {
-    classMethods: {
-      associate: (models) => {
-        Users.hasMany(models.borrowbook, {
-          foreignKey: 'userId',
-          as: 'borrowbooks',
+      classMethods: {
+        associate: (models) => {
+          Users.hasMany(models.borrowbook, {
+            foreignKey: 'userId',
+            as: 'borrowbooks',
 
-        });
+          });
+        },
       },
-    },
-  });
+    });
   return Users;
 };

@@ -6,15 +6,15 @@ export default (sequelize, DataTypes) => {
       validate: {
         notEmpty: {
           args: true,
-          msg: 'author cannot be empty',
+          msg: 'book title cannot be empty',
         },
         is: {
           args: /(\w)+/i,
-          msg: 'author can only contain strings',
+          msg: 'book title can only contain strings',
         },
         len: {
           args: [3, 50],
-          msg: 'Author name should be more than 3 characters long',
+          msg: 'book title should be more than 3 characters long',
         },
       },
     },
@@ -98,14 +98,14 @@ export default (sequelize, DataTypes) => {
 
     },
   }, {
-    classMethods: {
-      associate: (models) => {
-        Books.hasMany(models.borrowbook, {
-          foreignKey: 'bookId',
-          as: 'borrowbooks',
-        });
+      classMethods: {
+        associate: (models) => {
+          Books.hasMany(models.borrowbook, {
+            foreignKey: 'bookId',
+            as: 'borrowbooks',
+          });
+        },
       },
-    },
-  });
+    });
   return Books;
 };
