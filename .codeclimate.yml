@@ -1,7 +1,6 @@
 engines:
   eslint:
     enabled: true
-    channel: "eslint-3"
     checks:
       import/no-unresolved:
         enabled: false
@@ -17,3 +16,4 @@ exclude_paths:
 - server/test/
 - template/
 - node_modules/
+- client/
