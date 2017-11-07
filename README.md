@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/tosmak16/HelloBooks.svg?branch=seeddatabase)](https://travis-ci.org/tosmak16/HelloBooks)
 [![Coverage Status](https://coveralls.io/repos/github/tosmak16/HelloBooks/badge.svg?branch=routetest)](https://coveralls.io/github/tosmak16/HelloBooks?branch=routetest)
-[![Code Climate](https://codeclimate.com/github/tosmak16/HelloBooks/badges/gpa.svg)](https://codeclimate.com/github/tosmak16/HelloBooks)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a5a56f4d48add9c1ab06/maintainability)](https://codeclimate.com/github/tosmak16/HelloBooks/maintainability)
 # HelloBooks
 Hello-Books​ is a simple application that helps manage a library and its processes like stocking,  tracking and renting books. With this application users are able to find and rent books. 
 
