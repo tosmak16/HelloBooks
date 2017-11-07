@@ -33,24 +33,24 @@ export default function searchbooks(filterBy, searchText, data) {
 
 
   const parseArray = newArray;
-  const x = parseArray.toString().toUpperCase().search(searchText.toUpperCase());
-  let j = parseArray.toString().slice(x, -1)
-  let k = j.toString().indexOf(',');
-  let l = parseArray.toString().slice(x, x + k);
-  let p = parseArray.toString().slice(0, x).lastIndexOf(',');
-  let u = parseArray.toString().slice(p + 1, x + k)
+  const searchTextIndex = parseArray.toString().toUpperCase().search(searchText.toUpperCase());
+  let slicedSearchTextIndex = parseArray.toString().slice(searchTextIndex, -1)
+  let commaIndexArray = slicedSearchTextIndex.toString().indexOf(',');
+  let sortedArray = parseArray.toString().slice(searchTextIndex, searchTextIndex + commaIndexArray);
+  let commaLastIndex = parseArray.toString().slice(0, searchTextIndex).lastIndexOf(',');
+  let lastSortedArray = parseArray.toString().slice(commaLastIndex + 1, searchTextIndex + commaIndexArray)
 
   const sortedData = lodash.orderBy(data, 'createdAt', 'desc');
-  if (l.length === 0) {
-    l = parseArray.toString().slice(x, -1).toString();
-    let l2 = parseArray.toString().slice(-1).toString();
-    const filteredData = lodash.filter(sortedData, [filterBy, l + l2]);
+  if (sortedArray.length === 0) {
+    sortedArray = parseArray.toString().slice(searchTextIndex, -1).toString();
+    let sortedArray2 = parseArray.toString().slice(-1).toString();
+    const filteredData = lodash.filter(sortedData, [filterBy, sortedArray + sortedArray2]);
     return (dispatch) => {
       dispatch(getFilteredBooks(filteredData));
     }
   }
   else {
-    const filteredData = lodash.filter(sortedData, [filterBy, u]);
+    const filteredData = lodash.filter(sortedData, [filterBy, lastSortedArray]);
     return (dispatch) => {
       dispatch(getFilteredBooks(filteredData));
     }
