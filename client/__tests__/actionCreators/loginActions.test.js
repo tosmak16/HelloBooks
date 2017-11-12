@@ -64,7 +64,7 @@ describe('Test LoginActions', () => {
   });
 
   it('returns signin success when user has logged in successfully', () => {
-    fetchMock.post('http://localhost:8000/api/v2/users/signin', JSON.stringify({ token, status: 200, message: 'logged in successfully' }));
+    fetchMock.post('/api/v2/users/signin', JSON.stringify({ token, status: 200, message: 'logged in successfully' }));
 
     const initialState = {};
     const store = mockStore(initialState);

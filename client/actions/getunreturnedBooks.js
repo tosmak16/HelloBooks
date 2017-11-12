@@ -2,7 +2,12 @@ export const GET_UNRETURNED_BOOKS_REQUEST = 'GET_UNRETURNED_BOOKS_REQUEST';
 export const GET_UNRETURNED_BOOKS_SUCCESS = 'GET_UNRETURNED_BOOKS_SUCCESS';
 export const GET_UNRETURNED_BOOKS_FAILURE = 'GET_UNRETURNED_BOOKS_FAILURE';
 
-
+/**
+ * 
+ * 
+ * @export
+ * @returns 
+ */
 export function getunreturnedbooksRequest() {
   return {
     type: GET_UNRETURNED_BOOKS_REQUEST,
@@ -10,7 +15,13 @@ export function getunreturnedbooksRequest() {
     isFetched: false,
   }
 }
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} data 
+ * @returns 
+ */
 export function getunreturnedbooksReponse(data) {
   return {
     type: GET_UNRETURNED_BOOKS_SUCCESS,
@@ -19,7 +30,13 @@ export function getunreturnedbooksReponse(data) {
     data,
   }
 }
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} error 
+ * @returns 
+ */
 export function getunreturnedbooksError(error) {
   return {
     type: GET_UNRETURNED_BOOKS_FAILURE,

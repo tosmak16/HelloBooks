@@ -3,3 +3,8 @@ build
 .vscode
 vscode
 template
+.nyc_output
+.env
+.env_sample
+package-lock.json
+coverage

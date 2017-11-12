@@ -37,10 +37,6 @@ div #searchinpt{
     width: 150px;
 }
 
-#loginForm{
-  
-    margin-bottom: 250px;
-}
 
 .jumbotron p{
     color:white;
@@ -138,7 +134,7 @@ h2{
     display: block;
    
 
-    margin-left: -22px;
+    margin-left: -25px;
  
 
     
@@ -154,9 +150,7 @@ h2{
 }
 }
 
-#bh_table,#b_page,#ch_pas{
-   display: none;
-}
+
 #filebtn,#editbtn{
     background-color: #3d1112;
 }
@@ -276,4 +270,176 @@ h2{
 input::-webkit-input-placeholder {
 color: #3d1112 !important;
 }
+
+/**************************** PDF SCSCC  **************/
+
+  
+  .pdf-reader {
+    transition: all .3s ease;
+    padding-top: 50px;
+    padding-left: 0;
+  
+    &.tumbnails-open {
+      padding-left: 200px;
+  
+      .pdf-reader-header {
+        left: 200px;
+      }
+      
+      .pdf-thumbnail-viewer {
+        margin-left: 0;
+      }
+  
+      .pdf-viewer {
+        left: 200px;
+      }
+    }
+    .pdf-reader-header {
+      transition: all .3s ease;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50px;
+      display: none;
+      background-color: #fff;
+      box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      text-align: center;
+  
+      > * {
+        line-height: 50px;
+      }
+  
+      .count-page {
+        font-size: 12px;
+        font-weight: 300;
+      }
+  
+      .toggle-sidebar {
+        float: left;
+      }
+  
+      .zoom-actions {
+        float: right;
+      }
+    }
+  
+    .pdf-thumbnail-viewer {
+      transition: all .3s ease;
+      margin-left: -200px;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      display: none;
+      left: 1000px;
+     overflow: auto;
+      width: 100px;
+      overflow: auto;
+      padding-top: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      .pdf-thumbnail {
+        display: none;
+        margin-bottom: 50px;
+        text-align: center;
+        color: #fff;
+        h5 {
+          margin-top: 10px;
+        }
+        img {
+          width: 100px;
+          opacity: 0.5;
+          background-color: #fff;
+          box-shadow: 0 0 1px 2px transparentize(#000, .9);
+          cursor: pointer;
+          transition: opacity .3s ease;
+        }
+        &.active img {
+          opacity: 1;
+        }
+      }
+    }
+  
+    .pdf-viewer {
+      margin-left: 100px;
+      position: fixed;
+      display: block;
+      top: 50px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      overflow: auto;
+      padding-top: 30px;
+      background-color:rgba(0, 0, 0, 0.5);
+      transition: all .3s ease;
+      width: 700px;
+  
+      .pdf-page {
+        position: relative;
+        display: block;
+        margin: auto;
+        margin-bottom: 40px;
+        background-color: #fff;
+        box-shadow: 0 0 1px 2px transparentize(#000, .98);
+      }
+    }
+  }
+  
+  .pdf-loading {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    background-color: #222222;
+    text-align: center;
+    h3 {
+      color: #ffffff;
+      margin-top: 50vh;
+      transform: translateY(-50%);
+    }
+  }
+  #pdf_wrapper{
+    z-index: 1000;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.51);
+    width: 1000px;
+    height: 1000px;
+    position: fixed;
+    bottom: 0px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    margin-top: 65px;
+    margin-left: 250px;
+  }
+
+  #pdf_reader{
+      display: block;
+      position: relative;
+      margin-right: 500px;
+      z-index: 1000
+  }
+  
+  .pdf_chip{
+      margin-left: 150px;
+      position: absolute;
+      z-index: 1000;
+      display: none;
+  }
+#table_bh{
+box-shadow: 5px 5px 5px 5px #9e8f8f
+}
+
+#table_bb{
+    box-shadow: 5px 5px 5px 5px #9e8f8f
+    }
+
+    .pdf_con:hover{
+        .pdf_chip{
+            display: block;
+        }
+       
+    }
 

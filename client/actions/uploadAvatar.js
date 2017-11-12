@@ -5,6 +5,13 @@ export const UPLOAD_AVATAR_FAILURE = 'UPLOAD_AVATAR_FAILURE'
 
 
 //Action creators
+/**
+ * 
+ * 
+ * @export
+ * @param {any} data 
+ * @returns 
+ */
 export function uploadProfileImageRequest(data) {
   return {
     type: UPLOAD_AVATAR_REQUEST,
@@ -12,7 +19,13 @@ export function uploadProfileImageRequest(data) {
     data
   }
 }
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} response 
+ * @returns 
+ */
 export function uploadProfileImageResponse(response) {
   return {
     type: UPLOAD_AVATAR_SUCCESS,
@@ -20,7 +33,13 @@ export function uploadProfileImageResponse(response) {
     response
   }
 }
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} error 
+ * @returns 
+ */
 export function uploadProfileImageError(error) {
   return {
     type: UPLOAD_AVATAR_FAILURE,

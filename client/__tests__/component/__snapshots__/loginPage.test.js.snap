@@ -25,7 +25,7 @@ exports[`Login Page Component test should test and take snapshot of LoginPage 1`
         id="inputUsernamelog"
         name="username"
         onChange={[Function]}
-        placeholder="Username"
+        placeholder={undefined}
         required={true}
         type="text"
         value=""
@@ -96,9 +96,12 @@ exports[`Login Page Component test should test and take snapshot of LoginPage 1`
     Sign in
   </button>
   <p>
-    <label>
+    <label
+      htmlFor="forgot_pass"
+    >
       <a
         href=""
+        id="forgot_pass"
       >
          Forgot Password ? 
       </a>
@@ -153,7 +156,7 @@ exports[`Login Page Component test should test and take snapshot of LoginPage 2`
         id="inputUsernamelog"
         name="username"
         onChange={[Function]}
-        placeholder="Username"
+        placeholder={undefined}
         required={true}
         type="text"
         value=""
@@ -224,9 +227,12 @@ exports[`Login Page Component test should test and take snapshot of LoginPage 2`
     Sign in
   </button>
   <p>
-    <label>
+    <label
+      htmlFor="forgot_pass"
+    >
       <a
         href=""
+        id="forgot_pass"
       >
          Forgot Password ? 
       </a>
@@ -249,7 +255,7 @@ exports[`Login Page Component test should test and take snapshot of LoginPage 3`
 <div>
   <div
     className="row"
-    id="loginForm"
+    id="logininForm"
   >
     <form
       action="books.html"
@@ -286,7 +292,7 @@ exports[`Login Page Component test should test and take snapshot of LoginPage 3`
             id="inputUsernamelog"
             name="username"
             onChange={[Function]}
-            placeholder="Username"
+            placeholder={undefined}
             required={true}
             type="text"
             value=""
@@ -357,9 +363,12 @@ exports[`Login Page Component test should test and take snapshot of LoginPage 3`
         Sign in
       </button>
       <p>
-        <label>
+        <label
+          htmlFor="forgot_pass"
+        >
           <a
             href=""
+            id="forgot_pass"
           >
              Forgot Password ? 
           </a>
@@ -399,37 +408,38 @@ exports[`Login Page Component test should test and take snapshot of LoginPage 3`
             className="footer-links"
           >
             <a
-              href="#"
+              onClick={[Function]}
+              style={Object {}}
             >
               Home
             </a>
-             ·
             <a
-              href="#"
+              onClick={[Function]}
+              style={Object {}}
             >
               Blog
             </a>
-             ·
             <a
-              href="#"
+              onClick={[Function]}
+              style={Object {}}
             >
               Pricing
             </a>
-             ·
             <a
-              href="#"
+              onClick={[Function]}
+              style={Object {}}
             >
               About
             </a>
-             ·
             <a
-              href="#"
+              onClick={[Function]}
+              style={Object {}}
             >
               Faq
             </a>
-             ·
             <a
-              href="#"
+              onClick={[Function]}
+              style={Object {}}
             >
               Contact
             </a>
@@ -469,6 +479,8 @@ exports[`Login Page Component test should test and take snapshot of LoginPage 3`
             <p>
               <a
                 href="tosmak16@gmail.com"
+                onClick={[Function]}
+                style={Object {}}
               >
                 tosmak16@gmail.com
               </a>
@@ -478,40 +490,46 @@ exports[`Login Page Component test should test and take snapshot of LoginPage 3`
         <div
           className="footer-right col l4 col m14 col s12"
         >
-          <p
+          <div
             className="footer-company-about"
           >
             <span>
               About Hello Book
             </span>
-              it's a simple application that helps manage  a libraryand its processes like stocking, tracking and renting books
-          </p>
+            <p>
+              it is a simple application that helps manage a library and its processes like stocking,tracking and renting books
+            </p>
+          </div>
           <div
             className="footer-icons"
           >
             <a
-              href="#"
+              onClick={[Function]}
+              style={Object {}}
             >
               <i
                 className="fa fa-facebook"
               />
             </a>
             <a
-              href="#"
+              onClick={[Function]}
+              style={Object {}}
             >
               <i
                 className="fa fa-twitter"
               />
             </a>
             <a
-              href="#"
+              onClick={[Function]}
+              style={Object {}}
             >
               <i
                 className="fa fa-linkedin"
               />
             </a>
             <a
-              href="#"
+              onClick={[Function]}
+              style={Object {}}
             >
               <i
                 className="fa fa-github"

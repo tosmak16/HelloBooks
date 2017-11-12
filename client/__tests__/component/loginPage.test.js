@@ -16,7 +16,7 @@ const mockFuction = jest.fn();
 
 describe('Login Page Component test', () => {
   const initialState = {
-    log: [{
+    login: [{
       isAuthenticated: false,
       data: {},
       error: '',
@@ -31,7 +31,7 @@ describe('Login Page Component test', () => {
   beforeEach(() => {
     store = mockStore(initialState);
 
-    wrapper = mount(<Provider store={ store }><ConnectedLoginPage /></Provider>);
+    wrapper = mount(<Provider store={store}><ConnectedLoginPage /></Provider>);
   });
 
   it('should be defined', () => {
@@ -43,22 +43,22 @@ describe('Login Page Component test', () => {
   });
 
   it('should test and take snapshot of LoginPage', () => {
-    const tree = render.create(<LoginForm userSignin={ mockFuction } getbooks={ mockFuction } log={{ error: '' }} />);
+    const tree = render.create(<LoginForm userSignin={mockFuction} getbooks={mockFuction} login={{ error: '' }} />);
     expect(tree).toMatchSnapshot();
   });
 
   it('should test and take snapshot of LoginPage', () => {
-    const tree = render.create(<LoginForm userSignin={ mockFuction } getbooks={ mockFuction } log={{ error: 'error' }} />);
+    const tree = render.create(<LoginForm userSignin={mockFuction} getbooks={mockFuction} login={{ error: 'error' }} />);
     expect(tree).toMatchSnapshot();
   });
 
   it('should test and take snapshot of LoginPage', () => {
-    const tree = render.create(<Login userSignin={ mockFuction } getbooks={ mockFuction } log={{ error: 'error' }} />);
+    const tree = render.create(<Login userSignin={mockFuction} getbooks={mockFuction} login={{ error: 'error' }} />);
     expect(tree).toMatchSnapshot();
   });
 
   it('should test and take snapshot of loginpPage', () => {
-    const tree = render.create(<connectLoginPage userSignin={ mockFuction } getbooks={ mockFuction } log={{ error: 'error' }} />);
+    const tree = render.create(<connectLoginPage userSignin={mockFuction} getbooks={mockFuction} log={{ error: 'error' }} />);
     expect(tree).toMatchSnapshot();
   });
 
@@ -66,12 +66,12 @@ describe('Login Page Component test', () => {
     expect(wrapper.find(ConnectedLoginPage).length).toEqual(1);
   });
 
-  it('+++ check Prop matches with initialState', () => {
-    expect(wrapper.find(Login).prop('log')).toEqual(initialState.log[0]);
+  it('it should check Prop matches with initialState', () => {
+    expect(wrapper.find(Login).prop('login')).toEqual(initialState.login[0]);
   });
 
   it('should test for handle change function', () => {
-    wrapper = shallow(<LoginForm userSignin={ mockFuction } getbooks={ mockFuction } log={{ error: 'error' }} />);
+    wrapper = shallow(<LoginForm userSignin={mockFuction} getbooks={mockFuction} login={{ error: 'error' }} />);
     wrapper.instance().handeleFuction = mockFuction;
     wrapper.update();
     wrapper.instance().handleChange(e);
@@ -79,7 +79,7 @@ describe('Login Page Component test', () => {
   });
 
   it('should test for handle submit function and error state', () => {
-    wrapper = shallow(<LoginForm userSignin={ mockFuction } getbooks={ mockFuction } log={{ error: 'error' }} />);
+    wrapper = shallow(<LoginForm userSignin={mockFuction} getbooks={mockFuction} login={{ error: 'error' }} />);
     wrapper.instance().handeleFuction = mockFuction;
     wrapper.update();
     wrapper.instance().handleSubmit(event);

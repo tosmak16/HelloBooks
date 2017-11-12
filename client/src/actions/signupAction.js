@@ -8,13 +8,19 @@ import 'whatwg-fetch'
 
 import { signupError, signupRequest, signupResponse } from '../../actions/signupActions';
 import { displayMessage } from '../../actions/displayMessages'
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} userData 
+ * @returns 
+ */
 export function userSignup(userData) {
   let error = '';
   return (dispatch) => {
     dispatch(signupRequest(userData));
 
-    return fetch('http://localhost:8000/api/v2/users/signup', {
+    return fetch('/api/v2/users/signup', {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -35,7 +41,7 @@ export function userSignup(userData) {
             type: 'success',
             text: 'Registration successful'
           }));
-          browserHistory.push('/');
+          browserHistory.push('/login');
         }
       })
       .catch(error => {

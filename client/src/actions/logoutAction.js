@@ -2,7 +2,12 @@ import { browserHistory } from 'react-router';
 
 import { setCurrentuser } from '../../actions/setCurrentuser';
 
-
+/**
+ * 
+ * 
+ * @export
+ * @returns 
+ */
 export default function logout() {
 
   localStorage.clear()

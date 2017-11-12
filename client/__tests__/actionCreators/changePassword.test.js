@@ -63,7 +63,7 @@ describe('Test change paswword Actions', () => {
   });
 
   it('should change password if the request is successful', () => {
-    fetchMock.put(`http://localhost:8000/api/v2/users/${1}/password`,
+    fetchMock.put(`/api/v2/users/${1}/password`,
       JSON.stringify(response));
 
     const initialState = {};

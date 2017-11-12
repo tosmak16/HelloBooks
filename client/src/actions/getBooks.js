@@ -1,18 +1,34 @@
 import axios from 'axios';
-import { browserHistory } from 'react-router';
+import {
+  browserHistory
+} from 'react-router';
 import 'whatwg-fetch'
 
-import { getbooksError, getbooksRequest, getbooksReponse } from '../../actions/getBooks';
+import {
+  getbooksError,
+  getbooksRequest,
+  getbooksReponse
+} from '../../actions/getBooks';
 
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} set 
+ * @returns 
+ */
 export default function getbooks(set) {
   const token = window.localStorage.jwtToken;
   return (dispatch) => {
     dispatch(getbooksRequest());
-    return fetch('http://localhost:8000/api/v2/books', {
+    return fetch('/api/v2/books', {
       method: 'GET',
-      body: { token: token },
-      headers: { token: token },
+      body: {
+        token: token
+      },
+      headers: {
+        token: token
+      },
     })
       .then(
       (res) => res.json())
@@ -20,12 +36,11 @@ export default function getbooks(set) {
         if (response.status >= 400) {
 
           throw response.message
-        }
-        else if (response.status === 200) {
-          dispatch(getbooksReponse(response.result));
-          if (!set) { browserHistory.push('/books'); }
-          else if (set) {
-          }
+        } else if (response.status === 200) {
+          dispatch(getbooksReponse(response.books));
+          if (!set) {
+            browserHistory.push('/books');
+          } else if (set) { }
         }
       })
       .catch(

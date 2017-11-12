@@ -2,7 +2,12 @@ export const GET_BORROWED_BOOKS_REQUEST = 'GET_BORROWED_BOOKS_REQUEST';
 export const GET_BORROWED_BOOKS_SUCCESS = 'GET_BORROWED_BOOKS_SUCCESS';
 export const GET_BORROWED_BOOKS_FAILURE = 'GET_BORROWED_BOOKS_FAILURE';
 
-
+/**
+ * 
+ * 
+ * @export
+ * @returns 
+ */
 export function getborrowedbooksRequest() {
   return {
     type: GET_BORROWED_BOOKS_REQUEST,
@@ -10,7 +15,13 @@ export function getborrowedbooksRequest() {
     isFetched: false,
   }
 }
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} data 
+ * @returns 
+ */
 export function getborrowedbooksReponse(data) {
   return {
     type: GET_BORROWED_BOOKS_SUCCESS,
@@ -19,7 +30,13 @@ export function getborrowedbooksReponse(data) {
     data,
   }
 }
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} error 
+ * @returns 
+ */
 export function getborrowedbooksError(error) {
   return {
     type: GET_BORROWED_BOOKS_FAILURE,

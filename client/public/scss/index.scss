@@ -18,14 +18,19 @@ background-color: #3d1112;
 #signup_border{
 	border: 20px;
 	border-color: burlywood;
-	opacity: 50%;
+	opacity: 1;
 	color: #3d1112;
 	border-style: double;
-	background-color: wheat;
+	background-color: lightgoldenrodyellow;
 	border-width: 10px;
-	border-radius: 50px;
 	width: 400px;
 	margin-top: 20px;
+
+	border-radius: 41px;
+	max-width: 437px;
+	/* border: blue; */
+	box-shadow: 1px 1px 10px 10px rgba(86, 9, 9, 0.25);
+	border: solid #fbfbd2 2px;
 
 }
 
@@ -80,12 +85,17 @@ div #searchinpt{
 
 #loginForm{
     margin-top: 100px;
-    margin-bottom: 250px;
+	margin-bottom: 250px;
+	border-radius: 41px;
+	max-width: 437px;
+	/* border: blue; */
+	box-shadow: 1px 1px 10px 10px rgba(86, 9, 9, 0.25);
+	border: solid #fbfbd2 2px;
 }
 #signUpForm{
     margin-top: 100px;
     margin-bottom: 200px;
-  
+	
 }
 .jumbotron p{
     color:white;
@@ -350,3 +360,36 @@ h2,h3{
 	margin-bottom: 5px;
 }
 
+
+
+.activity{
+	height: 1000px;
+	width: 1500px;
+	position: fixed;
+	z-index: 1000;
+	background-color: rgba(39, 36, 36, 0.51);
+	right: 0px;
+	bottom: 0px;
+	top: 0px;
+}
+
+.activity-loader{
+	position: relative;
+	bottom: 0px;
+	top: 300px;
+	right: 0px;
+	left: 900px;
+	background-color: brown
+}
+
+.activity-spinner{
+	background-color: darkgrey;
+}
+
+.activity-gap{
+	background-color: brown;
+}
+
+.activity-gap2{
+	background-color:darkgrey;
+}

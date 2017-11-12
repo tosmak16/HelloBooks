@@ -2,29 +2,41 @@ import axios from 'axios';
 import { browserHistory } from 'react-router';
 import { uploadProfileImageError, uploadProfileImageRequest, uploadProfileImageResponse } from '../../actions/uploadAvatar';
 
-
+const upload_preset = 'bjfllgrd';
+/**
+ * 
+ * 
+ * @export
+ * @param {any} file 
+ * @returns 
+ */
 export function uploadAvatar(file) {
   const data = new FormData();
   data.append('file', file);
+  data.append('upload_preset', upload_preset);
   return (dispatch) => {
     dispatch(uploadProfileImageRequest(data));
 
-    return fetch('http://localhost:8000/api/v2/users/image', {
+    return fetch('https://api.cloudinary.com/v1_1/tosmak/upload', {
       method: 'POST',
       body: data
     })
       .then(
-      (res) => res.json())
-      .then((response) => {
-        if (response.status >= 400) {
-          throw response.message
+      (res) => {
+        if (res.status === 200) {
+          return res.json()
         }
-        else if (response.status === 200) {
-          dispatch(uploadProfileImageResponse(response));
+
+        else if (res.status >= 400) {
+          throw res.statusText
         }
       })
+      .then((response) => {
+        dispatch(uploadProfileImageResponse(response.secure_url));
+
+      })
       .catch(error => {
-        dispatch(uploadProfileImageError(error));
+        dispatch(uploadProfileImageError('Bad request'));
       });
   }
 }

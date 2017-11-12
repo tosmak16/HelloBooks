@@ -1,0 +1,1588 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test book Details page components and container should test and take snapshot of books detailsPage when data and book array are empty 1`] = `
+<div>
+  <div
+    className="row"
+  >
+    <div
+      className="col s12 col m2 col l2 sidebar "
+      id="sidenava"
+    >
+      <ul
+        className="collapsible"
+        data-collapsible="accordion"
+      >
+        <li>
+          <div
+            className="collapsible-header"
+          >
+            <a
+              className="heada"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              <b>
+                SCIENCE&TECH
+              </b>
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Science"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Science
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Technology"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Technology
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Computer"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Computer
+            </a>
+             
+          </div>
+        </li>
+        <li>
+          <div
+            className="collapsible-header"
+          >
+            <a
+              className="heada"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              <b>
+                LITERATURE
+              </b>
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Fiction"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Fiction
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Mystery"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Mystery
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Romance"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Romance
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Sci-Fiction"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Sci-Fiction
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Adventure"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Adventure
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Action"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Action
+            </a>
+             
+          </div>
+        </li>
+        <li>
+          <div
+            className="collapsible-header"
+          >
+            <a
+              className="heada"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              <b>
+                STYLE AND ART
+              </b>
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Arts"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Arts
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Languages"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Languages
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Fashion"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Fashion
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Food"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Food
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Games"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Games
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Music"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Music
+            </a>
+             
+          </div>
+        </li>
+        <li>
+          <div
+            className="collapsible-header"
+          >
+            <a
+              className="heada"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              <b>
+                CAREER & MONEY
+              </b>
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Management"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Management
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Accounting"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Accounting
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Entrepreneurship"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Entrepreneurship
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Leadership"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Leadership
+            </a>
+             
+          </div>
+        </li>
+        <li>
+          <div
+            className="collapsible-header"
+          >
+            <a
+              className="heada"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              <b>
+                PERSONAL GROWTH
+              </b>
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Psychology"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Psychology
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Relationships"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Relationships
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Self-Improvement"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Self-Improvement
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Religion"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Religion
+            </a>
+             
+          </div>
+        </li>
+        <li>
+          <div
+            className="collapsible-header"
+          >
+            <a
+              className="heada"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              <b>
+                HEALTH & FITNESS
+              </b>
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Fitness"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Fitness
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Nutrition"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Nutrition
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Sports"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Sports
+            </a>
+             
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    className="container"
+    id="book_details_wrapper"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col m10  col l10 col s12 "
+      >
+        <div
+          className="placeholders  "
+        >
+          <div
+            className=" col s12 col m2 col l2 placeholder"
+            id="photo"
+          >
+            <div
+              id="img_body"
+            >
+              <img
+                alt="avatar"
+                src="l1.jpg"
+                style={
+                  Object {
+                    "height": "250px",
+                    "width": "150px",
+                  }
+                }
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className=" col s10 col m7 col l7"
+        >
+          <h5
+            className="page-header"
+          >
+            THE PEOPLE IN THE TREE
+          </h5>
+          <hr />
+          <h5>
+            Summary
+          </h5>
+          <div
+            className="modal"
+            id="modal2"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Oh!
+              </h5>
+              <p>
+                
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                Close
+              </a>
+            </div>
+          </div>
+          <div
+            className="modal"
+            id="modal3"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Wow!
+              </h5>
+              <p>
+                
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                Close
+              </a>
+            </div>
+          </div>
+          <div
+            className="modal"
+            id="modal1"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Do you want to add this book to your archives?
+              </h5>
+              <p>
+                THE PEOPLE IN THE TREE
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                NO
+              </a>
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                YES
+              </a>
+            </div>
+          </div>
+          <span
+            className="text-muted"
+            id="sum"
+          >
+            Lorem Ipronic typesetting, remaininised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+          </span>
+          <div
+            className=""
+          >
+            <p
+              className="bookinfo"
+            >
+              Category: 
+              Adventure
+               
+            </p>
+            <p
+              className="bookinfo"
+            >
+              ISBN: 
+              345798465
+               
+            </p>
+            <p
+              className="bookinfo"
+            >
+              Number in Stock: 
+              2
+               
+            </p>
+          </div>
+          <div
+            className="form-inline"
+          >
+            <button
+              className="btn-sm btn-warning shop"
+              id="wishbtn"
+              type="button"
+            >
+              Wishlist
+            </button>
+            <button
+              className="btn-sm btn-success shop"
+              id="borrowbtn"
+              onClick={[Function]}
+              type="submit"
+            >
+              Borrow
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="activity"
+      id="activity-loader-id"
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+    >
+      <div
+        className="preloader-wrapper activity-loader big active"
+      >
+        <div
+          className="gap-patch activity-gap2"
+        >
+          <div
+            className="spinner-layer activity-spinner spinner-red-only"
+          >
+            <div
+              className="circle-clipper left"
+            >
+              <div
+                className="circle"
+              />
+            </div>
+            <div
+              className="gap-patch activity-gap"
+            />
+            <div
+              className="circle"
+            />
+          </div>
+          <div
+            className="circle-clipper right"
+          >
+            <div
+              className="circle"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test book Details page components and container should test and take snapshot of booksDetailsPage 1`] = `
+<div>
+  <div
+    className="row"
+  >
+    <div
+      className="col s12 col m2 col l2 sidebar "
+      id="sidenava"
+    >
+      <ul
+        className="collapsible"
+        data-collapsible="accordion"
+      >
+        <li>
+          <div
+            className="collapsible-header"
+          >
+            <a
+              className="heada"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              <b>
+                SCIENCE&TECH
+              </b>
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Science"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Science
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Technology"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Technology
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Computer"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Computer
+            </a>
+             
+          </div>
+        </li>
+        <li>
+          <div
+            className="collapsible-header"
+          >
+            <a
+              className="heada"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              <b>
+                LITERATURE
+              </b>
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Fiction"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Fiction
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Mystery"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Mystery
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Romance"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Romance
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Sci-Fiction"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Sci-Fiction
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Adventure"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Adventure
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Action"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Action
+            </a>
+             
+          </div>
+        </li>
+        <li>
+          <div
+            className="collapsible-header"
+          >
+            <a
+              className="heada"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              <b>
+                STYLE AND ART
+              </b>
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Arts"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Arts
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Languages"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Languages
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Fashion"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Fashion
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Food"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Food
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Games"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Games
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Music"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Music
+            </a>
+             
+          </div>
+        </li>
+        <li>
+          <div
+            className="collapsible-header"
+          >
+            <a
+              className="heada"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              <b>
+                CAREER & MONEY
+              </b>
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Management"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Management
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Accounting"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Accounting
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Entrepreneurship"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Entrepreneurship
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Leadership"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Leadership
+            </a>
+             
+          </div>
+        </li>
+        <li>
+          <div
+            className="collapsible-header"
+          >
+            <a
+              className="heada"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              <b>
+                PERSONAL GROWTH
+              </b>
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Psychology"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Psychology
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Relationships"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Relationships
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Self-Improvement"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Self-Improvement
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Religion"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Religion
+            </a>
+             
+          </div>
+        </li>
+        <li>
+          <div
+            className="collapsible-header"
+          >
+            <a
+              className="heada"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              <b>
+                HEALTH & FITNESS
+              </b>
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Fitness"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Fitness
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Nutrition"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Nutrition
+            </a>
+             
+          </div>
+          <div
+            className="collapsible-body"
+          >
+            <a
+              className="boda"
+              name="Sports"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Sports
+            </a>
+             
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    className="container"
+    id="book_details_wrapper"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col m10  col l10 col s12 "
+      >
+        <div
+          className="placeholders  "
+        >
+          <div
+            className=" col s12 col m2 col l2 placeholder"
+            id="photo"
+          >
+            <div
+              id="img_body"
+            >
+              <img
+                alt="avatar"
+                src="l1.jpg"
+                style={
+                  Object {
+                    "height": "250px",
+                    "width": "150px",
+                  }
+                }
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className=" col s10 col m7 col l7"
+        >
+          <h5
+            className="page-header"
+          >
+            THE PEOPLE IN THE TREE
+          </h5>
+          <hr />
+          <h5>
+            Summary
+          </h5>
+          <div
+            className="modal"
+            id="modal2"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Oh!
+              </h5>
+              <p>
+                
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                Close
+              </a>
+            </div>
+          </div>
+          <div
+            className="modal"
+            id="modal3"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Wow!
+              </h5>
+              <p>
+                
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                Close
+              </a>
+            </div>
+          </div>
+          <div
+            className="modal"
+            id="modal1"
+          >
+            <div
+              className="modal-content"
+            >
+              <h5>
+                Do you want to add this book to your archives?
+              </h5>
+              <p>
+                THE PEOPLE IN THE TREE
+              </p>
+            </div>
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                NO
+              </a>
+              <a
+                className="modal-action modal-close waves-effect waves-brown btn-flat"
+                href=""
+                onClick={[Function]}
+              >
+                YES
+              </a>
+            </div>
+          </div>
+          <span
+            className="text-muted"
+            id="sum"
+          >
+            Lorem Ipronic typesetting, remaininised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+          </span>
+          <div
+            className=""
+          >
+            <p
+              className="bookinfo"
+            >
+              Category: 
+              Adventure
+               
+            </p>
+            <p
+              className="bookinfo"
+            >
+              ISBN: 
+              345798465
+               
+            </p>
+            <p
+              className="bookinfo"
+            >
+              Number in Stock: 
+              2
+               
+            </p>
+          </div>
+          <div
+            className="form-inline"
+          >
+            <button
+              className="btn-sm btn-warning shop"
+              id="wishbtn"
+              type="button"
+            >
+              Wishlist
+            </button>
+            <button
+              className="btn-sm btn-success shop"
+              id="borrowbtn"
+              onClick={[Function]}
+              type="submit"
+            >
+              Borrow
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="activity"
+      id="activity-loader-id"
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+    >
+      <div
+        className="preloader-wrapper activity-loader big active"
+      >
+        <div
+          className="gap-patch activity-gap2"
+        >
+          <div
+            className="spinner-layer activity-spinner spinner-red-only"
+          >
+            <div
+              className="circle-clipper left"
+            >
+              <div
+                className="circle"
+              />
+            </div>
+            <div
+              className="gap-patch activity-gap"
+            />
+            <div
+              className="circle"
+            />
+          </div>
+          <div
+            className="circle-clipper right"
+          >
+            <div
+              className="circle"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test book Details page components and container should test and take snapshot of details form when data and book array are empty 1`] = `
+<div
+  className="container"
+  id="book_details_wrapper"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col m10  col l10 col s12 "
+    >
+      <div
+        className="placeholders  "
+      >
+        <div
+          className=" col s12 col m2 col l2 placeholder"
+          id="photo"
+        >
+          <div
+            id="img_body"
+          >
+            <img
+              alt="avatar"
+              src="l1.jpg"
+              style={
+                Object {
+                  "height": "250px",
+                  "width": "150px",
+                }
+              }
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className=" col s10 col m7 col l7"
+      >
+        <h5
+          className="page-header"
+        >
+          THE PEOPLE IN THE TREE
+        </h5>
+        <hr />
+        <h5>
+          Summary
+        </h5>
+        <div
+          className="modal"
+          id="modal2"
+        >
+          <div
+            className="modal-content"
+          >
+            <h5>
+              Oh!
+            </h5>
+            <p>
+              
+            </p>
+          </div>
+          <div
+            className="modal-footer"
+          >
+            <a
+              className="modal-action modal-close waves-effect waves-brown btn-flat"
+              href=""
+              onClick={[Function]}
+            >
+              Close
+            </a>
+          </div>
+        </div>
+        <div
+          className="modal"
+          id="modal3"
+        >
+          <div
+            className="modal-content"
+          >
+            <h5>
+              Wow!
+            </h5>
+            <p>
+              
+            </p>
+          </div>
+          <div
+            className="modal-footer"
+          >
+            <a
+              className="modal-action modal-close waves-effect waves-brown btn-flat"
+              href=""
+              onClick={[Function]}
+            >
+              Close
+            </a>
+          </div>
+        </div>
+        <div
+          className="modal"
+          id="modal1"
+        >
+          <div
+            className="modal-content"
+          >
+            <h5>
+              Do you want to add this book to your archives?
+            </h5>
+            <p>
+              THE PEOPLE IN THE TREE
+            </p>
+          </div>
+          <div
+            className="modal-footer"
+          >
+            <a
+              className="modal-action modal-close waves-effect waves-brown btn-flat"
+              href=""
+              onClick={[Function]}
+            >
+              NO
+            </a>
+            <a
+              className="modal-action modal-close waves-effect waves-brown btn-flat"
+              href=""
+              onClick={[Function]}
+            >
+              YES
+            </a>
+          </div>
+        </div>
+        <span
+          className="text-muted"
+          id="sum"
+        >
+          Lorem Ipronic typesetting, remaininised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+        </span>
+        <div
+          className=""
+        >
+          <p
+            className="bookinfo"
+          >
+            Category: 
+            Adventure
+             
+          </p>
+          <p
+            className="bookinfo"
+          >
+            ISBN: 
+            345798465
+             
+          </p>
+          <p
+            className="bookinfo"
+          >
+            Number in Stock: 
+            2
+             
+          </p>
+        </div>
+        <div
+          className="form-inline"
+        >
+          <button
+            className="btn-sm btn-warning shop"
+            id="wishbtn"
+            type="button"
+          >
+            Wishlist
+          </button>
+          <button
+            className="btn-sm btn-success shop"
+            id="borrowbtn"
+            onClick={[Function]}
+            type="submit"
+          >
+            Borrow
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="activity"
+    id="activity-loader-id"
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+  >
+    <div
+      className="preloader-wrapper activity-loader big active"
+    >
+      <div
+        className="gap-patch activity-gap2"
+      >
+        <div
+          className="spinner-layer activity-spinner spinner-red-only"
+        >
+          <div
+            className="circle-clipper left"
+          >
+            <div
+              className="circle"
+            />
+          </div>
+          <div
+            className="gap-patch activity-gap"
+          />
+          <div
+            className="circle"
+          />
+        </div>
+        <div
+          className="circle-clipper right"
+        >
+          <div
+            className="circle"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

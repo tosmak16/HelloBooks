@@ -28,7 +28,7 @@ const mockStore = configureMockStore(middlewares);
 const response = {
   status: 200,
   message: 'Book fetch successfully',
-  result: books
+  books
 };
 
 describe('Test getBooks Actions', () => {
@@ -62,7 +62,7 @@ describe('Test getBooks Actions', () => {
   });
 
   it('should return books resources if the request is successful', () => {
-    fetchMock.get('http://localhost:8000/api/v2/books',
+    fetchMock.get('/api/v2/books',
       JSON.stringify(response));
 
     const initialState = {};
@@ -78,7 +78,7 @@ describe('Test getBooks Actions', () => {
         type: GET_ALL_BOOKS_SUCCESS,
         isFetching: false,
         isFetched: true,
-        data: response.result
+        data: response.books
       },
     ];
     return store.dispatch(getbooks(true))

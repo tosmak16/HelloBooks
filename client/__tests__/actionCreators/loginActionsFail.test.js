@@ -25,7 +25,7 @@ const response = {
 
 describe('Test LoginActions failed', () => {
   it('returns username and pawword is invalid when user is invalid', () => {
-    fetchMock.post('http://localhost:8000/api/v2/users/signin',
+    fetchMock.post('/api/v2/users/signin',
       JSON.stringify(response));
 
     const initialState = {};

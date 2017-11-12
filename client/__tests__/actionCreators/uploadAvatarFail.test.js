@@ -24,22 +24,24 @@ const mockStore = configureMockStore(middlewares);
 const action = {
   response: 'image uploaded successfully',
   userData: user[0].image,
-  error: 'image not uploaded successfully'
+  error: 'Bad request'
 };
 
 const data = new FormData();
 data.append('file', action.userData);
+data.append('upload_preset', 'bjfllgrd');
 
 const response = {
   status: 400,
   message: 'image not uploaded successfully',
-  result: user[0].image
+  result: user[0].image,
+  error: 'Bad request'
 };
 
 describe('Test upload profile picture Actions', () => {
   it('should not upload picture if the request is not successful', () => {
-    fetchMock.post('http://localhost:8000/api/v2/users/image',
-      JSON.stringify(response));
+    fetchMock.post('https://api.cloudinary.com/v1_1/tosmak/upload',
+      { body: response, status: 400 });
 
     const initialState = {};
     const store = mockStore(initialState);

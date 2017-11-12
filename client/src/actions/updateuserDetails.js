@@ -6,7 +6,14 @@ import { uploadImage } from './uploadImage';
 import { updateuserError, updateuserRequest, updateuserResponse } from '../../actions/updateUser';
 
 
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} userData 
+ * @param {any} token 
+ * @returns 
+ */
 export default function updateUser(userData, token) {
   let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;
@@ -14,7 +21,7 @@ export default function updateUser(userData, token) {
   return (dispatch) => {
     dispatch(updateuserRequest(userData));
 
-    return fetch('http://localhost:8000/api/v2/users/' + userId, {
+    return fetch('/api/v2/users/' + userId, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json, text/plain, */*',

@@ -10,7 +10,7 @@ import {
   borrowBookResponse,
   BORROW_BOOK_FAILURE,
   BORROW_BOOK_REQUEST,
-  BORROW_BOOK_SUCCESS
+  BORROW_BOOK_SUCCESS,
 } from '../../actions/borrowBook';
 
 import borrowBooks from '../../src/actions/borrowBooks';
@@ -26,7 +26,7 @@ const mockStore = configureMockStore(middlewares);
 
 const payload = {
   bookId: 1,
-  token
+  token,
 };
 
 const response = {
@@ -40,7 +40,7 @@ describe('Test borrowBooks Actions', () => {
       type: BORROW_BOOK_REQUEST,
       isSending: true,
       isStored: false,
-      userData: []
+      userData: [],
     };
     expect(borrowBookRequest([])).toEqual(expectedAction);
   });
@@ -49,7 +49,7 @@ describe('Test borrowBooks Actions', () => {
       type: BORROW_BOOK_SUCCESS,
       isSending: false,
       isStored: true,
-      response: []
+      response: [],
     };
     expect(borrowBookResponse([])).toEqual(expectedAction);
   });
@@ -59,13 +59,13 @@ describe('Test borrowBooks Actions', () => {
       type: BORROW_BOOK_FAILURE,
       isSending: false,
       isStored: false,
-      error: []
+      error: [],
     };
     expect(borrowBookError([])).toEqual(expectedAction);
   });
 
   it('should borrow book if the request is successful', () => {
-    fetchMock.postOnce(`http://localhost:8000/api/v2/users/${1}/books`,
+    fetchMock.postOnce(`/api/v2/users/${1}/books`,
       { body: response });
 
     const initialState = {};
@@ -76,13 +76,13 @@ describe('Test borrowBooks Actions', () => {
         type: BORROW_BOOK_REQUEST,
         isSending: true,
         isStored: false,
-        userData: payload.bookId
+        userData: payload.bookId,
       },
       {
         type: BORROW_BOOK_SUCCESS,
         isSending: false,
         isStored: true,
-        response: response.message
+        response: response.message,
       },
     ];
 
@@ -97,7 +97,7 @@ describe('Test borrowBooks Actions', () => {
 
 const fakePayload = {
   bookId: 1,
-  token
+  token,
 };
 
 const fakeResponse = {
@@ -107,7 +107,7 @@ const fakeResponse = {
 
 describe('Test borrowBooks fail Actions', () => {
   it('should not borrow books if required parameters are not assigned', () => {
-    fetchMock.postOnce(`http://localhost:8000/api/v2/users/${1}/books`,
+    fetchMock.postOnce(`/api/v2/users/${1}/books`,
       { body: fakeResponse });
 
     const initialState = {};
@@ -118,13 +118,13 @@ describe('Test borrowBooks fail Actions', () => {
         type: BORROW_BOOK_REQUEST,
         isSending: true,
         isStored: false,
-        userData: fakePayload.bookId
+        userData: fakePayload.bookId,
       },
       {
         type: BORROW_BOOK_FAILURE,
         isSending: false,
         isStored: false,
-        error: fakeResponse.message
+        error: fakeResponse.message,
       },
     ];
     return store.dispatch(borrowBooks(fakePayload.token, fakePayload.bookId))

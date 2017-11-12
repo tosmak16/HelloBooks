@@ -7,7 +7,14 @@ import { uploadImage } from './uploadImage';
 import { returnbookError, returnbookRequest, returnbookResponse } from '../../actions/returnBook';
 
 
-
+/**
+ * 
+ * 
+ * @export
+ * @param {any} bookData 
+ * @param {any} token 
+ * @returns 
+ */
 export default function returnbook(bookData, token) {
   let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;
@@ -15,7 +22,7 @@ export default function returnbook(bookData, token) {
   return (dispatch) => {
     dispatch(returnbookRequest(bookData));
 
-    return fetch('http://localhost:8000/api/v2/users/' + userId + '/books', {
+    return fetch('/api/v2/users/' + userId + '/books', {
       method: 'PUT',
       headers: {
         'Accept': 'application/json, text/plain, */*',

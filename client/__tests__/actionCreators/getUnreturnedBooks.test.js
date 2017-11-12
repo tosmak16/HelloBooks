@@ -25,7 +25,7 @@ const mockStore = configureMockStore(middlewares);
 const response = {
   status: 200,
   message: 'Borrowed books fetch successfully',
-  result: books.slice(0, 3),
+  unreturnedBook: books.slice(0, 3),
   error: 'Books can not be fetched'
 };
 
@@ -61,7 +61,7 @@ describe('Test getUnreturnedBooks Actions', () => {
   });
 
   it('should return borrowed books resources if the request is successful', () => {
-    fetchMock.get(`http://localhost:8000/api/v2/users/${1}/books?returned=false`,
+    fetchMock.get(`/api/v2/users/${1}/books?returned=false`,
       JSON.stringify(response));
 
     const initialState = {};
@@ -77,7 +77,7 @@ describe('Test getUnreturnedBooks Actions', () => {
         type: GET_UNRETURNED_BOOKS_SUCCESS,
         isFetching: false,
         isFetched: true,
-        data: response.result
+        data: response.unreturnedBook
       },
     ];
     return store.dispatch(getunreturnedBooks(token))

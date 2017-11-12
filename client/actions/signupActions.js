@@ -13,7 +13,6 @@ export const signupRequest = (userData) => {
     userData
   }
 }
-
 export const signupResponse = (response) => {
   return {
     type: SIGNUP_SUCCESS,

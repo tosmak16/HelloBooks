@@ -38,7 +38,7 @@ const response = {
 
 describe('Test return books Actions', () => {
   it('should not return book if the request is not successful', () => {
-    fetchMock.put(`http://localhost:8000/api/v2/users/${1}/books`,
+    fetchMock.put(`/api/v2/users/${1}/books`,
       JSON.stringify(response));
 
     const initialState = {};

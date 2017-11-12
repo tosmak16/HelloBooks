@@ -7,7 +7,15 @@ import { borrowBookError, borrowBookRequest, borrowBookResponse } from '../../ac
 import { popMessage } from '../../actions/popMessages';
 
 
-
+/**
+ * 
+ * @description this is borrow books action controller
+ * @export
+ * @param {any} token 
+ * @param {any} bookId 
+ * @returns response with no error if request is successful
+ * @returns error if request is not succcesful
+ */
 export default function borrowBooks(token, bookId) {
 
   let decodedToken = jwtDecode(token);
@@ -15,7 +23,7 @@ export default function borrowBooks(token, bookId) {
 
   return (dispatch) => {
     dispatch(borrowBookRequest(bookId));
-    return fetch('http://localhost:8000/api/v2/users/' + userId + '/books', {
+    return fetch('/api/v2/users/' + userId + '/books', {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',
