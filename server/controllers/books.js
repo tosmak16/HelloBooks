@@ -1,13 +1,22 @@
 import isEmpty from 'lodash/isEmpty';
 import db from '../models/index';
+import {
+  validateIds
+} from '../helperFunctions/validator';
+import {
+  bookDetailsValidator
+} from '../helperFunctions/bookDetailsValidator';
+import {
+  queryBooks
+} from '../helperFunctions/queryReducer';
 
 
 export default {
   /**
    * @method addbook
    * @desc This method handles add books request
-   * @param { object} req
-   * @param { object} res
+   * @param { object} req request
+   * @param { object} res response
    * @returns { object } response
    */
   addBook(req, res) {
@@ -21,69 +30,88 @@ export default {
       bookFileUrl,
       summary
     } = req.body;
-    if (req.decoded.role === 'user') {
-      return res.status(403).send({
-        status: 403,
-        message: 'Access Denied!'
-      });
-    }
-
-    if (!(bookTitle && author && category &&
-        stocknumber && isbn && image && bookFileUrl)) {
+    const validationErrorMessage = bookDetailsValidator(req.body);
+    if (validationErrorMessage) {
       return res.status(400).send({
         status: 400,
-        message: 'please enter the required book details'
+        message: validationErrorMessage
       });
     }
+    /* query database by isbn to check if a book already exist */
+    queryBooks({
+      isbn: isbn.toString()
+    }).then((bookResult) => {
+      if (bookResult) {
+        return res.status(400).send({
+          status: 400,
+          message: 'isbn must be unique'
+        });
+      }
 
-    return db.Books
-      .create({
-        bookTitle,
-        author,
-        category,
-        isbn,
-        stocknumber,
-        image,
-        summary,
-        bookFile: bookFileUrl,
-      })
-      .then(bookReport => res.status(201).send({
-        status: 201,
-        message: 'Book has been added to store',
-        bookReport
-      }))
-      .catch(errorMessage => res.status(400).send({
-        status: 400,
-        message: errorMessage.errors[0].message
-      }));
+      if (req.decoded.role === 'user') {
+        return res.status(403).send({
+          status: 403,
+          message: 'Access Denied!'
+        });
+      }
+      return db.Books
+        .create({
+          bookTitle,
+          author,
+          category,
+          isbn,
+          stocknumber,
+          image,
+          summary,
+          bookFile: bookFileUrl,
+        })
+        .then(bookReport => res.status(201).send({
+          status: 201,
+          message: 'Book has been added to store',
+          bookReport
+        }))
+        .catch(errorMessage => res.status(500).send({
+          status: 500,
+          message: errorMessage
+        }));
+    });
   },
 
   /**
    * @method getAllBooks
    * @desc This method handles get all books request
-   * @param { object } req
-   * @param { object} res
+   * @param { object } req request
+   * @param { object} res response
    * @returns { object } response
    */
   getAllBooks(req, res) {
     return db.Books
       .all()
-      .then(books => res.status(200).send({
-        status: 200,
-        message: 'Success!',
-        books
-      }))
-      .catch(errorMessage => res.status(400).send({
-        status: 400,
-        message: errorMessage.errors[0].message.toString()
+      .then((books) => {
+        if (books) {
+          return res.status(200).send({
+            status: 200,
+            message: 'Success!',
+            books
+          });
+        }
+        return res.status(400).send({
+          status: 400,
+          message: 'No books in store',
+          books
+        });
+      })
+      .catch(errorMessage => res.status(500).send({
+        status: 500,
+        message: errorMessage
       }));
   },
 
   /**
    * @method UpdateBook
    * @desc This method handles edit book request
-   * @param { object} req
-   * @param { object} res
+   * @param { object} req request
+   * @param { object} res response
    * @returns { object } response
    */
   updateBook(req, res) {
@@ -97,6 +125,21 @@ export default {
       bookFileUrl,
       summary
     } = req.body;
+    const validationErrorMessage = bookDetailsValidator(req.body);
+    if (validationErrorMessage) {
+      return res.status(400).send({
+        status: 400,
+        message: validationErrorMessage
+      });
+    }
+    const validateBookId = validateIds(req.params.bookId);
+    if (validateBookId) {
+      return res.status(400).send({
+        status: 400,
+        message: validateBookId
+      });
+    }
+
     if (req.decoded.role === 'user') {
       return res.status(403).send({
         status: 403,
@@ -129,21 +172,17 @@ export default {
             book
           }))
           .catch(errorMessage =>
-            res.status(400).send({
-              status: 400,
-              message: errorMessage.errors[0].message.toString()
+            res.status(500).send({
+              status: 500,
+              message: errorMessage
             }));
-      })
-      .catch(errorMessage => res.status(400).send({
-        status: 400,
-        message: errorMessage.errors[0].message.toString()
-      }));
+      });
   },
   /**
    * @method deletebooks
    * @desc This method handles delete books request
-   * @param { object } req
-   * @param { object} res
+   * @param { object } req request
+   * @param { object} res response
    * @returns { object } response
    */
   deleteBooks(req, res) {
@@ -153,7 +192,13 @@ export default {
         message: 'Access Denied!'
       });
     }
-
+    const validateBookId = validateIds(req.params.bookId);
+    if (validateBookId) {
+      return res.status(400).send({
+        status: 400,
+        message: validateBookId
+      });
+    }
     return db.Books
       .findById(req.params.bookId)
       .then((book) => {
@@ -170,14 +215,10 @@ export default {
             message: 'book has been deleted'
           }))
           .catch(errorMessage =>
-            res.status(400).send({
-              status: 400,
-              message: errorMessage.errors[0].message.toString()
+            res.status(500).send({
+              status: 500,
+              message: errorMessage
             }));
-      }).catch(errorMessage =>
-        res.status(400).send({
-          status: 400,
-          message: errorMessage.errors[0].message.toString()
-        }));
+      });
   },
 };

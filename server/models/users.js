@@ -106,15 +106,15 @@ export default (sequelize, DataTypes) => {
       },
     },
   }, {
-      classMethods: {
-        associate: (models) => {
-          Users.hasMany(models.borrowbook, {
-            foreignKey: 'userId',
-            as: 'borrowbooks',
+    classMethods: {
+      associate: (models) => {
+        Users.hasMany(models.borrowbook, {
+          foreignKey: 'userId',
+          as: 'borrowbooks',
 
-          });
-        },
+        });
       },
-    });
+    },
+  });
   return Users;
 };
