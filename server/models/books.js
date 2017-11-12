@@ -98,14 +98,14 @@ export default (sequelize, DataTypes) => {
 
     },
   }, {
-      classMethods: {
-        associate: (models) => {
-          Books.hasMany(models.borrowbook, {
-            foreignKey: 'bookId',
-            as: 'borrowbooks',
-          });
-        },
+    classMethods: {
+      associate: (models) => {
+        Books.hasMany(models.borrowbook, {
+          foreignKey: 'bookId',
+          as: 'borrowbooks',
+        });
       },
-    });
+    },
+  });
   return Books;
 };
