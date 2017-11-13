@@ -11,7 +11,7 @@ export const bookDetailsValidator = (body) => {
     bookTitle,
     author,
     category,
-    stocknumber,
+    stockNumber,
     summary,
     isbn
   } = body;
@@ -27,10 +27,10 @@ export const bookDetailsValidator = (body) => {
   if (author.length < 2) {
     return 'author length should be more than 2';
   }
-  if (lodash.isEmpty(stocknumber)) {
+  if (lodash.isEmpty(stockNumber)) {
     return 'book number in stock is required';
   }
-  if (!stocknumber.match(validNumber)) {
+  if (!stockNumber.match(validNumber)) {
     return 'stock number should be a number';
   }
   if (lodash.isEmpty(isbn)) {

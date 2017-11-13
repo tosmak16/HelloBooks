@@ -32,7 +32,7 @@ export const handleReturnBooks = async (queryObject) => {
     };
     return response;
   }
-  await db.borrowbook
+  await db.BorrowedBooks
     .findById(queryObject)
     .then((borrowbook) => {
       if (!borrowbook) {
@@ -63,7 +63,7 @@ export const handleReturnBooks = async (queryObject) => {
             .then((book) => {
               book
                 .update({
-                  stocknumber: (book.stocknumber + 1),
+                  stockNumber: (book.stockNumber + 1),
                 });
             });
           responseMessage = 'book has been returned successfully';

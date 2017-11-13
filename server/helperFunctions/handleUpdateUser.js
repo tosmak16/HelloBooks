@@ -22,25 +22,7 @@ export const handleUpdateUser = async (body, userId) => {
     membershipType,
     profileImage
   } = body;
-  if (lodash.isEmpty(firstName)) {
-    responseMessage = 'first name is required';
-    responseType = 400;
-    response = {
-      responseMessage,
-      responseType
-    };
-    return response;
-  }
-  if (lodash.isEmpty(lastName)) {
-    responseMessage = 'last name is required';
-    responseType = 400;
-    response = {
-      responseMessage,
-      responseType
-    };
-    return response;
-  }
-  if (firstName.length < 2) {
+  if (!lodash.isEmpty(firstName) && firstName.length < 2) {
     responseMessage = 'firstName length should be more than 2';
     responseType = 400;
     response = {
@@ -49,7 +31,7 @@ export const handleUpdateUser = async (body, userId) => {
     };
     return response;
   }
-  if (lastName.length < 2) {
+  if (!lodash.isEmpty(lastName) && lastName.length < 2) {
     responseMessage = 'lastName length should be more than 2';
     responseType = 400;
     response = {
@@ -58,50 +40,25 @@ export const handleUpdateUser = async (body, userId) => {
     };
     return response;
   }
-  if (lodash.isEmpty(membershipType)) {
-    responseMessage = 'memebership type is required';
-    responseType = 400;
-    response = {
-      responseMessage,
-      responseType
-    };
-    return response;
-  }
-  if (lodash.isEmpty(mobileNumber)) {
-    responseMessage = 'mobile number is required';
-    responseType = 400;
-    response = {
-      responseMessage,
-      responseType
-    };
-    return response;
-  }
-  if (!mobileNumber.match(validNumber)) {
-    responseMessage = 'mobile number should be number';
-    responseType = 400;
-    response = {
-      responseMessage,
-      responseType
-    };
-    return response;
-  }
-  if (mobileNumber.length < 2) {
-    responseMessage = 'mobile number length should be more than 2';
-    responseType = 400;
-    response = {
-      responseMessage,
-      responseType
-    };
-    return response;
-  }
-  if (lodash.isEmpty(profileImage)) {
-    responseMessage = 'profile image is required';
-    responseType = 400;
-    response = {
-      responseMessage,
-      responseType
-    };
-    return response;
+  if (!lodash.isEmpty(mobileNumber)) {
+    if (!mobileNumber.match(validNumber)) {
+      responseMessage = 'mobile number should be number';
+      responseType = 400;
+      response = {
+        responseMessage,
+        responseType
+      };
+      return response;
+    }
+    if (mobileNumber.length < 2) {
+      responseMessage = 'mobile number length should be more than 2';
+      responseType = 400;
+      response = {
+        responseMessage,
+        responseType
+      };
+      return response;
+    }
   }
   await db.Users
     .findById(userId)

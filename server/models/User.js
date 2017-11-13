@@ -108,9 +108,9 @@ export default (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: (models) => {
-        Users.hasMany(models.borrowbook, {
+        Users.hasMany(models.BorrowedBooks, {
           foreignKey: 'userId',
-          as: 'borrowbooks',
+          as: 'BorrowedBooks',
 
         });
       },
