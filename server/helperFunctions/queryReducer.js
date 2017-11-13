@@ -24,7 +24,7 @@ export const queryUsers = queryObject => db.Users
 export const queryBorrowedBook = (queryObject, queryType) => {
   switch (queryType) {
     case 'findAll':
-      return db.borrowbook.findAll({
+      return db.BorrowedBooks.findAll({
         where: queryObject
       });
 

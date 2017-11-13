@@ -25,7 +25,7 @@ export const checkBookStockNumber = async (queryObject) => {
         return response;
       }
 
-      if (book.stocknumber === 0) {
+      if (book.stockNumber === 0) {
         responseMessage = 'Book Not available in stock';
         responseType = 'done';
         response = {
@@ -36,7 +36,7 @@ export const checkBookStockNumber = async (queryObject) => {
       }
 
       book.update({
-        stocknumber: book.stocknumber - 1
+        stockNumber: book.stockNumber - 1
       });
     }).catch((errorMessage) => {
       responseMessage = errorMessage.errors[0].message.toString();

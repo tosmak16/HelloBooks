@@ -58,7 +58,7 @@ export default {
     } = req.body;
     /* query database by username to check if a user already exist */
     queryUsers({
-      username: username.toString()
+      username: username.toLowerCase().toString()
     }).then((userResult) => {
       if (userResult) {
         return res.status(400).send({
@@ -68,7 +68,7 @@ export default {
       }
       /* query database by email to check if a email already exist */
       queryUsers({
-        email: email.toString()
+        email: email.toLowerCase().toString()
       }).then((userEmailResult) => {
         /* if email  already exist */
         if (userEmailResult) {
@@ -257,7 +257,7 @@ export default {
                       });
                     }
                     /* create a new borred book resource */
-                    return db.borrowbook
+                    return db.BorrowedBooks
                       .create({
                         borrowDate: Date.now(),
                         returnType: false,
@@ -302,7 +302,7 @@ export default {
         message: returnedQueryIsBoolean
       });
     }
-    return db.borrowbook
+    return db.BorrowedBooks
       .findAll({
         where: {
           returnType: req.query.returned,
@@ -351,17 +351,24 @@ export default {
    * @returns { object } response
    */
   getBorrowedBooks(req, res) {
-    return db.borrowbook
+    return db.BorrowedBooks
       .findAll({
         where: {
           userId: req.params.userId,
         },
-      }).then(borrowBooks =>
-        res.status(200).send({
-          status: 200,
-          message: 'Borrowed books history retrieved',
-          borrowBooks
-        }))
+      }).then((borrowBooks) => {
+        if (borrowBooks) {
+          return res.status(200).send({
+            status: 200,
+            message: 'Borrowed books history retrieved',
+            borrowBooks
+          });
+        }
+        return res.status(400).send({
+          status: 400,
+          message: 'you have not borrowed any book',
+        });
+      })
       .catch(errorMessage => res.status(400).send({
         status: 400,
         message: errorMessage.errors[0].message.toString()

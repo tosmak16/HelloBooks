@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const borrowbook = sequelize.define('borrowbook', {
+  const BorrowedBooks = sequelize.define('BorrowedBooks', {
     borrowDate: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -22,18 +22,18 @@ export default (sequelize, DataTypes) => {
     },
 
   }, {
-      classMethods: {
-        associate: (models) => {
-          borrowbook.belongsTo(models.Users, {
-            foreignKey: 'userId',
-            onDelete: 'CASCADE',
-          });
-          borrowbook.belongsTo(models.Books, {
-            foreignKey: 'bookId',
-            onDelete: 'CASCADE',
-          });
-        },
+    classMethods: {
+      associate: (models) => {
+        BorrowedBooks.belongsTo(models.Users, {
+          foreignKey: 'userId',
+          onDelete: 'CASCADE',
+        });
+        BorrowedBooks.belongsTo(models.Books, {
+          foreignKey: 'bookId',
+          onDelete: 'CASCADE',
+        });
       },
-    });
-  return borrowbook;
+    },
+  });
+  return BorrowedBooks;
 };

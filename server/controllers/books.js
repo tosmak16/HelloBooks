@@ -20,12 +20,18 @@ export default {
    * @returns { object } response
    */
   addBook(req, res) {
+    if (req.decoded.role.toString() === 'user') {
+      return res.status(403).send({
+        status: 403,
+        message: 'Access Denied!'
+      });
+    }
     const {
       bookTitle,
       author,
       category,
       isbn,
-      stocknumber,
+      stockNumber,
       image,
       bookFileUrl,
       summary
@@ -47,20 +53,13 @@ export default {
           message: 'isbn must be unique'
         });
       }
-
-      if (req.decoded.role === 'user') {
-        return res.status(403).send({
-          status: 403,
-          message: 'Access Denied!'
-        });
-      }
       return db.Books
         .create({
           bookTitle,
           author,
           category,
           isbn,
-          stocknumber,
+          stockNumber,
           image,
           summary,
           bookFile: bookFileUrl,
@@ -120,7 +119,7 @@ export default {
       author,
       category,
       isbn,
-      stocknumber,
+      stockNumber,
       image,
       bookFileUrl,
       summary
@@ -160,8 +159,7 @@ export default {
             bookTitle: bookTitle || book.bookTitle,
             author: author || book.author,
             category: category || book.category,
-            isbn: isbn || book.isbn,
-            stocknumber: stocknumber || book.stocknumber,
+            stockNumber: stockNumber || book.stockNumber,
             image: image || book.image,
             bookFile: bookFileUrl || book.bookFile,
             summary: summary || book.summary,

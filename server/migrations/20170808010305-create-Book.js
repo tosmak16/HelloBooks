@@ -23,7 +23,7 @@ module.exports = {
       allowNull: false,
       unique: true,
     },
-    stocknumber: {
+    stockNumber: {
       type: Sequelize.INTEGER,
       allowNull: false,
     },

@@ -64,7 +64,7 @@ export default (sequelize, DataTypes) => {
         },
       },
     },
-    stocknumber: {
+    stockNumber: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
@@ -100,9 +100,9 @@ export default (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: (models) => {
-        Books.hasMany(models.borrowbook, {
+        Books.hasMany(models.BorrowedBooks, {
           foreignKey: 'bookId',
-          as: 'borrowbooks',
+          as: 'BorrowedBooks',
         });
       },
     },
