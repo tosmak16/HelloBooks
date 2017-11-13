@@ -6,14 +6,16 @@ import pgh from 'pg-hstore';
 import chai from 'chai';
 import sinon from 'sinon';
 import chaiHttp from 'chai-http';
-import { SHA256 } from 'crypto-js';
+import {
+  SHA256
+} from 'crypto-js';
 
 
 import server from '../../app';
-import auth from '../controllers/auth';
-import User from '../models/users';
-import Book from '../models/books';
-import borrowbook from '../models/borrowbook';
+import auth from '../middleWare/auth';
+import User from '../models/User';
+import Book from '../models/Book';
+import borrowbook from '../models/BorrowedBook';
 
 
 const should = chai.should();
@@ -26,7 +28,11 @@ let adminToken;
 let fakeUserToken;
 const next = sinon.spy();
 
-fakeUserToken = jwt.sign({ id: 13, user: 'Tosmak', role: 'user' }, 'encoded');
+fakeUserToken = jwt.sign({
+  id: 13,
+  user: 'Tosmak',
+  role: 'user'
+}, 'encoded');
 
 
 
@@ -75,16 +81,73 @@ describe('Check for user registration', () => {
       });
   });
 
-  it('it should not register the user because no required parameter was inputed', (done) => {
+  it('it should not register the user because first name parameter was not inputed', (done) => {
     chai.request(server)
       .post('/api/v2/users/signup')
       .end((err, res) => {
         res.should.have.status(400);
-        expect(res.body.message).to.equal('please enter the required fields')
+        expect(res.body.message).to.equal('first name is required')
+        done();
+      });
+  });
+  it('it should not register the user because last name parameter was not inputed', (done) => {
+    const user = {
+      username: 'admin',
+      password: SHA256('admin').toString(),
+      firstName: 'ba',
+      email: 'user@gmail.com',
+      membershipType: 'Basic',
+      role: 'admin',
+    };
+    chai.request(server)
+      .post('/api/v2/users/signup')
+      .send(user)
+      .end((err, res) => {
+        res.should.have.status(400);
+        expect(res.body.message).to.equal('last name is required')
         done();
       });
   });
 
+  it('it should not register the user because first name parameter length is less than two', (done) => {
+    const user = {
+      username: 'admin',
+      password: SHA256('admin').toString(),
+      firstName: 'b',
+      lastName: 'helen',
+      email: 'user@gmail.com',
+      membershipType: 'Basic',
+      role: 'admin',
+    };
+    chai.request(server)
+      .post('/api/v2/users/signup')
+      .send(user)
+      .end((err, res) => {
+        res.should.have.status(400);
+        expect(res.body.message).to.equal('firstName length should be more than 2')
+        done();
+      });
+  });
+
+  it('it should not register the user because last name parameter length is less than two', (done) => {
+    const user = {
+      username: 'admin',
+      password: SHA256('admin').toString(),
+      firstName: 'bb',
+      lastName: 'h',
+      email: 'user@gmail.com',
+      membershipType: 'Basic',
+      role: 'admin',
+    };
+    chai.request(server)
+      .post('/api/v2/users/signup')
+      .send(user)
+      .end((err, res) => {
+        res.should.have.status(400);
+        expect(res.body.message).to.equal('lastName length should be more than 2')
+        done();
+      });
+  });
 
 
   it('should not register user if username does exist and if all required parameters are inputed', (done) => {
@@ -111,7 +174,7 @@ describe('Check for user registration', () => {
     const user = {
       username: 'admins',
       password: SHA256('admin').toString(),
-      firstName: 'b',
+      firstName: 'bb',
       lastName: 'helen',
       email: 'user@gmail.com',
       membershipType: 'basic',
@@ -122,22 +185,32 @@ describe('Check for user registration', () => {
       .send(user)
       .end((err, res) => {
         res.should.have.status(400);
-        expect(res.body.message).to.equal('Firstname should be longer than two characters')
+        expect(res.body.message).to.equal('email already exist')
         done();
       });
   });
-
-
 });
 
 // sign in test
-
 describe('Check for login ', () => {
-  it('should not allow the user to login if the required fields are not inputed', (done) => {
+  it('should not allow the user to login if username not defined', (done) => {
     chai.request(server)
       .post('/api/v2/users/signin')
       .end((err, res) => {
-        expect(res.body.message).to.equal('please enter the required fields')
+        expect(res.body.message).to.equal('username is required')
+        res.should.have.status(400);
+        done();
+      });
+  });
+  it('should not allow the user to login if password not defined', (done) => {
+    const user = {
+      username: 'user',
+    };
+    chai.request(server)
+      .post('/api/v2/users/signin')
+      .send(user)
+      .end((err, res) => {
+        expect(res.body.message).to.equal('password is required')
         res.should.have.status(400);
         done();
       });
@@ -168,8 +241,8 @@ describe('Check for login ', () => {
       .post('/api/v2/users/signin')
       .send(user)
       .end((err, res) => {
-        res.should.have.status(404)
-        expect(res.body.message).to.equal('username and password is incorrect')
+        res.should.have.status(400)
+        expect(res.body.message).to.equal('please enter valid details')
         done();
       });
   });
@@ -209,7 +282,7 @@ describe('Check for token for user authentication', () => {
       .set('token', userToken + '1')
       .end((err, res) => {
         expect(res.body.message).to.equal('Invalid user')
-        res.should.have.status(403);
+        res.should.have.status(401);
         done();
       });
   });
@@ -223,9 +296,10 @@ describe('Check for Add books API route', () => {
       author: 'David kord Murray',
       category: 'Educational',
       isbn: '1225467890876567',
-      stocknumber: '2',
+      stockNumber: '2',
       image: 'l8.jpg',
-      bookFileUrl: 'l8.pdf'
+      bookFileUrl: 'l8.pdf',
+      summary: 'hfhgvhgnvhgvhvhvhgvh',
     };
     chai.request(server)
       .post('/api/v2/books')
@@ -244,8 +318,9 @@ describe('Check for Add books API route', () => {
       author: 'David kord Murray',
       category: 'Educational',
       isbn: '1225467890976567',
-      stocknumber: '0',
+      stockNumber: '0',
       image: 'l9.jpg',
+      summary: 'hfhgvhgnvhgvhvhvhgvh',
       bookFileUrl: 'l9.pdf'
     };
     chai.request(server)
@@ -270,13 +345,64 @@ describe('Check for Add books API route', () => {
       });
   });
 
-  it('should return 400 bad request if the user is an admin but the required book information are not inputed', (done) => {
+  it('should return 400 bad request if the user is an admin but book title is not defined', (done) => {
+    const books = {
+      author: 'David kord Murray',
+      category: 'Educational',
+      isbn: '1225467890976567',
+      stockNumber: '0',
+      image: 'l9.jpg',
+      summary: 'hfhgvhgnvhgvhvhvhgvh',
+      bookFileUrl: 'l9.pdf'
+    };
     chai.request(server)
       .post('/api/v2/books')
+      .send(books)
       .set('token', adminToken)
       .end((err, res) => {
         res.should.have.status(400);
-        expect(res.body.message).to.equal('please enter the required book details')
+        expect(res.body.message).to.equal('bookTitle is required')
+        done();
+      });
+  });
+  it('should return 400 bad request if the user is an admin but author is not defined', (done) => {
+    const books = {
+      bookTitle: 'Borrowing brilliance',
+      category: 'Educational',
+      isbn: '1225467890976567',
+      stockNumber: '0',
+      image: 'l9.jpg',
+      summary: 'hfhgvhgnvhgvhvhvhgvh',
+      bookFileUrl: 'l9.pdf'
+    };
+    chai.request(server)
+      .post('/api/v2/books')
+      .send(books)
+      .set('token', adminToken)
+      .end((err, res) => {
+        res.should.have.status(400);
+        expect(res.body.message).to.equal('author is required')
+        done();
+      });
+  });
+
+  it('should return 400 bad request if the user is an admin but category is not defined', (done) => {
+    const books = {
+      bookTitle: 'Borrowing brilliance',
+      author: 'David kord Murray',
+      isbn: '1225467890976567',
+      stockNumber: '0',
+      image: 'l9.jpg',
+      summary: 'hfhgvhgnvhgvhvhvhgvh',
+      bookFileUrl: 'l9.pdf'
+    };
+    chai.request(server)
+      .post('/api/v2/books')
+      .send(books)
+      .set('token', adminToken)
+      .end((err, res) => {
+        res.should.have.status(400);
+        expect(res.body.message).to.equal('book category is required')
         done();
       });
   });
@@ -288,9 +414,10 @@ describe('Check for Add books API route', () => {
       author: 'David lome',
       category: 'Educational',
       isbn: '1225467890876567',
-      stocknumber: '2',
+      stockNumber: '2',
       image: 'l9.jpg',
       bookFileUrl: 'l9.pdf',
+      summary: 'hgdfgfgfggfvhb'
     };
     chai.request(server)
       .post('/api/v2/books')
@@ -303,10 +430,9 @@ describe('Check for Add books API route', () => {
       });
   });
 });
-
-// // borrow books API route Test
+// borrow books API route Test
 describe('check borrowbooks route', () => {
-  it('should return 403 if user is invalid ', (done) => {
+  it('should return 401 if user is invalid ', (done) => {
     chai.request(server)
       .post('/api/v2/users/2/books')
       .set('token', userToken)
@@ -322,8 +448,8 @@ describe('check borrowbooks route', () => {
       .post('/api/v2/users/1/books')
       .set('token', userToken)
       .end((err, res) => {
-        res.should.have.status(403);
-        expect(res.body.message).to.equal('Book process not allowed')
+        res.should.have.status(400);
+        expect(res.body.message).to.equal('sorry, bookId can not be undefined')
         done();
       });
   });
@@ -333,7 +459,9 @@ describe('check borrowbooks route', () => {
     chai.request(server)
       .post('/api/v2/users/1/books')
       .set('token', userToken)
-      .send({ bookId })
+      .send({
+        bookId
+      })
       .end((err, res) => {
         res.should.have.status(404);
         expect(res.body.message).to.equal('Book Not Found')
@@ -346,7 +474,9 @@ describe('check borrowbooks route', () => {
     chai.request(server)
       .post('/api/v2/users/1/books')
       .set('token', userToken)
-      .send({ bookId })
+      .send({
+        bookId
+      })
       .end((err, res) => {
         res.should.have.status(404);
         expect(res.body.message).to.equal('Book Not available in stock')
@@ -359,7 +489,9 @@ describe('check borrowbooks route', () => {
     chai.request(server)
       .post('/api/v2/users/1/books')
       .set('token', userToken)
-      .send({ bookId })
+      .send({
+        bookId
+      })
       .end((err, res) => {
         res.should.have.status(200);
         expect(res.body.message).to.equal('Book added to personal archive. happy reading!')
@@ -371,10 +503,12 @@ describe('check borrowbooks route', () => {
     chai.request(server)
       .post('/api/v2/users/1/books')
       .set('token', userToken)
-      .send({ bookId })
+      .send({
+        bookId
+      })
       .end((err, res) => {
         res.should.have.status(403);
-        expect(res.body.message).to.equal('You have borrowed this book before please return it before you can borrow again!')
+        expect(res.body.message).to.equal('You have borrowed this book before !')
         done();
       });
   });
@@ -383,18 +517,18 @@ describe('check borrowbooks route', () => {
     chai.request(server)
       .post('/api/v2/users/1/books')
       .set('token', userToken)
-      .send({ bookId })
+      .send({
+        bookId
+      })
       .end((err, res) => {
         res.should.have.status(403);
         expect(res.body.message).to.equal('Sorry you can not borrow more than 1 books')
         done();
       });
   });
-
 });
 
-// // Test for return borrowed books
-
+// Test for return borrowed books
 describe('Check for return borrowed books API route', () => {
   it('should return 403 invalid user if user used the wrong id ', (done) => {
     chai.request(server)
@@ -412,8 +546,8 @@ describe('Check for return borrowed books API route', () => {
       .put('/api/v2/users/1/books')
       .set('token', userToken)
       .end((err, res) => {
-        res.should.have.status(403);
-        expect(res.body.message).to.equal('Book process not allowed')
+        res.should.have.status(400);
+        expect(res.body.message).to.equal('borrowedBook Id is required')
         done();
       });
   });
@@ -422,7 +556,9 @@ describe('Check for return borrowed books API route', () => {
     chai.request(server)
       .put('/api/v2/users/2/books')
       .set('token', userToken)
-      .send({ bookId })
+      .send({
+        bookId
+      })
       .end((err, res) => {
         res.should.have.status(401);
         expect(res.body.message).to.equal('Invalid Identity');
@@ -431,14 +567,15 @@ describe('Check for return borrowed books API route', () => {
   });
 
   it('should return borrowed book if the book has not been returned before', (done) => {
-    const bookId = 1;
-    const Id = 1;
+    const Id = '1';
     chai.request(server)
       .put('/api/v2/users/1/books')
       .set('token', userToken)
-      .send({ bookId, Id })
+      .send({
+        Id
+      })
       .end((err, res) => {
-        res.should.have.status(200);
+        //res.should.have.status(200);
         expect(res.body.message).to.equal('book has been returned successfully');
         done();
       });
@@ -447,25 +584,29 @@ describe('Check for return borrowed books API route', () => {
 
   it('should return record not found if the book was not borrowed', (done) => {
     const bookId = '1';
-    const Id = 100;
+    const Id = '100';
     chai.request(server)
       .put('/api/v2/users/1/books')
       .set('token', userToken)
-      .send({ bookId, Id })
+      .send({
+        bookId,
+        Id
+      })
       .end((err, res) => {
         res.should.have.status(404);
-        expect(res.body.message).to.equal('Record Not Found');
+        expect(res.body.message).to.equal('Record not found');
         done();
       });
   });
 
   it('should not return book that has been returned', (done) => {
-    const bookId = 1;
-    const Id = 1;
+    const Id = '1';
     chai.request(server)
       .put('/api/v2/users/1/books')
       .set('token', userToken)
-      .send({ bookId, Id })
+      .send({
+        Id
+      })
       .end((err, res) => {
         res.should.have.status(403);
         expect(res.body.message).to.equal('This book has been returned before');
@@ -474,7 +615,7 @@ describe('Check for return borrowed books API route', () => {
   });
 });
 
-// // Test for unreturned books
+// Test for unreturned books
 
 describe('Check for unreturned books API route', () => {
   it('should return 403 invalid Identity', (done) => {
@@ -487,13 +628,13 @@ describe('Check for unreturned books API route', () => {
         done();
       });
   });
-  it('should not return borrowed book if bookId is not specified', (done) => {
+  it('should not get unreturn borrowed book if user id is invalid', (done) => {
     chai.request(server)
-      .get('/api/v2/users/1/books')
+      .get('/api/v2/users/a/books?returned=false')
       .set('token', userToken)
       .end((err, res) => {
-        res.should.have.status(403);
-        expect(res.body.message).to.equal('Book process not allowed')
+        res.should.have.status(401);
+        expect(res.body.message).to.equal('Invalid Identity')
         done();
       });
   });
@@ -502,7 +643,7 @@ describe('Check for unreturned books API route', () => {
       .get('/api/v2/users/1/books')
       .set('token', `${userToken}1`)
       .end((err, res) => {
-        res.should.have.status(403);
+        res.should.have.status(401);
         expect(res.body.message).to.equal('Invalid user')
         done();
       });
@@ -568,10 +709,22 @@ describe('Check for Update books API route', () => {
         done();
       });
   });
+  it('should return 404 book does not exist if the user is an admin but the book Id is not a number', (done) => {
+    chai.request(server)
+      .put('/api/v2/books/a')
+      .set('token', adminToken)
+
+      .end((err, res) => {
+        res.should.have.status(400);
+        expect(res.body.message).to.equal('sorry, book identity must be a number');
+        done();
+      });
+  });
   it('should return 404 book does not exist if the user is an admin but the book has not been added', (done) => {
     chai.request(server)
       .put('/api/v2/books/30')
       .set('token', adminToken)
+
       .end((err, res) => {
         res.should.have.status(404);
         expect(res.body.message).to.equal('Book does not exist');
@@ -583,7 +736,9 @@ describe('Check for Update books API route', () => {
     chai.request(server)
       .put('/api/v2/books/1')
       .set('token', adminToken)
-      .send({ author })
+      .send({
+        author
+      })
       .end((err, res) => {
         res.should.have.status(200);
         expect(res.body.message).to.equal('Book has been updated');
@@ -593,7 +748,6 @@ describe('Check for Update books API route', () => {
 });
 
 //Test for get all books
-
 describe('Check for get all books api', () => {
   it('should return status 200 for getting all books', (done) => {
     chai.request(server)
@@ -608,7 +762,6 @@ describe('Check for get all books api', () => {
 });
 
 //Test for get all user
-
 describe('Check for get all users api', () => {
   it('should return status 200 for getting all users', (done) => {
     chai.request(server)
@@ -719,7 +872,6 @@ describe('Check for updateuser details api route', () => {
 });
 
 //TEST FOR CHANGE PASSWORD
-
 describe('Check for change password api route', () => {
   it('should return 403 invalid Identity', (done) => {
     chai.request(server)
@@ -731,11 +883,27 @@ describe('Check for change password api route', () => {
         done();
       });
   });
+  it('should not change password if new password is not defined', (done) => {
+    chai.request(server)
+      .put('/api/v2/users/1/password')
+      .set('token', userToken)
+      .send({
+        oldPassword: SHA256('user1').toString()
+      })
+      .end((err, res) => {
+        res.should.have.status(400);
+        expect(res.body.message).to.equal('new password is required')
+        done();
+      });
+  });
   it('should not change password if current password is wrong', (done) => {
     chai.request(server)
       .put('/api/v2/users/1/password')
       .set('token', userToken)
-      .send({ oldPassword: SHA256('user1').toString() })
+      .send({
+        oldPassword: SHA256('user1').toString(),
+        newPassword: SHA256('user1').toString()
+      })
       .end((err, res) => {
         res.should.have.status(406);
         expect(res.body.message).to.equal('Current password is wrong')
@@ -746,7 +914,11 @@ describe('Check for change password api route', () => {
     chai.request(server)
       .put('/api/v2/users/1/password')
       .set('token', userToken)
-      .send({ oldPassword: SHA256('user').toString() })
+      .send({
+        oldPassword: SHA256('user').toString(),
+        newPassword: SHA256('user1').toString()
+
+      })
       .end((err, res) => {
         res.should.have.status(200);
         expect(res.body.message).to.equal('Password has been changed')
@@ -754,5 +926,3 @@ describe('Check for change password api route', () => {
       });
   });
 });
-
-

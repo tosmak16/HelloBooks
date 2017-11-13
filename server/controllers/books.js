@@ -9,6 +9,9 @@ import {
 import {
   queryBooks
 } from '../helperFunctions/queryReducer';
+import {
+  updateBooksValidator
+} from '../helperFunctions/updateBooksValidator';
 
 
 export default {
@@ -114,23 +117,21 @@ export default {
    * @returns { object } response
    */
   updateBook(req, res) {
+    if (req.decoded.role === 'user') {
+      return res.status(403).send({
+        status: 403,
+        message: 'Access Denied!'
+      });
+    }
     const {
       bookTitle,
       author,
       category,
-      isbn,
       stockNumber,
       image,
       bookFileUrl,
       summary
     } = req.body;
-    const validationErrorMessage = bookDetailsValidator(req.body);
-    if (validationErrorMessage) {
-      return res.status(400).send({
-        status: 400,
-        message: validationErrorMessage
-      });
-    }
     const validateBookId = validateIds(req.params.bookId);
     if (validateBookId) {
       return res.status(400).send({
@@ -138,11 +139,11 @@ export default {
         message: validateBookId
       });
     }
-
-    if (req.decoded.role === 'user') {
-      return res.status(403).send({
-        status: 403,
-        message: 'Access Denied!'
+    const validationErrorMessage = updateBooksValidator(req.body);
+    if (validationErrorMessage) {
+      return res.status(400).send({
+        status: 400,
+        message: validationErrorMessage
       });
     }
     return db.Books
