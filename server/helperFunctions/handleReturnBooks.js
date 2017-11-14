@@ -7,14 +7,14 @@ const validNumber = /^[0-9]+$/;
 /* it's an async function which returns a promise */
 /** *************************************** */
 
-export const handleReturnBooks = async (queryObject) => {
+export const handleReturnBooks = async (borrowedBookId) => {
   let responseMessage = '';
   let responseType = '';
   let response = {
     responseMessage,
     responseType
   };
-  if (lodash.isUndefined(queryObject)) {
+  if (lodash.isUndefined(borrowedBookId)) {
     responseMessage = 'borrowedBook Id is required';
     responseType = 400;
     response = {
@@ -23,7 +23,7 @@ export const handleReturnBooks = async (queryObject) => {
     };
     return response;
   }
-  if (!queryObject.match(validNumber)) {
+  if (!borrowedBookId.match(validNumber)) {
     responseMessage = 'borrowedBook Id must be a number';
     responseType = 400;
     response = {
@@ -33,7 +33,7 @@ export const handleReturnBooks = async (queryObject) => {
     return response;
   }
   await db.BorrowedBooks
-    .findById(queryObject)
+    .findById(borrowedBookId)
     .then((borrowbook) => {
       if (!borrowbook) {
         responseMessage = 'Record not found';

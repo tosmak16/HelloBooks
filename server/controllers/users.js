@@ -85,6 +85,7 @@ export default {
           lastName,
           email: email.toLowerCase(),
           membershipType,
+          role: req.body.role ? 'admin' : 'user'
         })
           .then(storedDetails => res.status(201).send({
             status: 201,

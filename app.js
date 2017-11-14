@@ -21,6 +21,7 @@ app.set('port', port);
 const server = http.createServer(app);
 // Set up the express app
 server.listen(port);
+
 // Log requests to the console.
 app.use(logger('dev'));
 // Parse incoming requests data

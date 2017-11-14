@@ -59,7 +59,7 @@ export const handlePasswordChange = async (body, params) => {
           password: SHA256(newPassword).toString()
         })
         .then(() => {
-          responseMessage = 'password has been changed';
+          responseMessage = 'Password has been changed';
           responseType = 200;
           response = {
             responseMessage,
