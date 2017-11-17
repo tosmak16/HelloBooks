@@ -22,16 +22,20 @@ export default function getbooks(set) {
   return (dispatch) => {
     dispatch(getbooksRequest());
     return fetch('/api/v2/books', {
-      method: 'GET',
-      body: {
-        token: token
-      },
-      headers: {
-        token: token
-      },
-    })
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+        body: {
+          token: token
+        },
+        headers: {
+          token: token
+        },
+      })
       .then(
-      (res) => res.json())
+        (res) => res.json())
       .then((response) => {
         if (response.status >= 400) {
 
@@ -40,13 +44,13 @@ export default function getbooks(set) {
           dispatch(getbooksReponse(response.books));
           if (!set) {
             browserHistory.push('/books');
-          } else if (set) { }
+          } else if (set) {}
         }
       })
       .catch(
-      error => {
-        dispatch(getbooksError(error))
-      }
+        error => {
+          dispatch(getbooksError(error))
+        }
       )
   };
 }

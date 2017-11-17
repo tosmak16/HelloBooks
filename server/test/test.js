@@ -45,7 +45,7 @@ describe('Check for user registration', () => {
       password: SHA256('user').toString(),
       firstName: 'bayren',
       lastName: 'helen',
-      email: 'usera@gmail.com',
+      email: 'usera1@gmail.com',
       membershipType: 'Basic',
     };
     chai.request(server)
