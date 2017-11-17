@@ -1,6 +1,6 @@
 import lodash from 'lodash';
 
-const validEmail = /[a-z]+[0-9]+@[a-z]+.[a-z]+$/;
+const validEmail = /[a-zA-Z]+[a-zA-Z0-9]*@[a-z]+.[a-z]+$/;
 
 /** *************************************** */
 /* valdiates user registration parameters */
