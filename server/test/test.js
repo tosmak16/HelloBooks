@@ -164,7 +164,7 @@ describe('Check for user registration', () => {
       .post('/api/v2/users/signup')
       .send(user)
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(409);
         expect(res.body.message).to.equal('username already exist')
         done();
       });
@@ -184,7 +184,7 @@ describe('Check for user registration', () => {
       .post('/api/v2/users/signup')
       .send(user)
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(409);
         expect(res.body.message).to.equal('email already exist')
         done();
       });
