@@ -97,8 +97,8 @@ export default {
             books
           });
         }
-        return res.status(400).send({
-          status: 400,
+        return res.status(404).send({
+          status: 404,
           message: 'No books in store',
           books
         });

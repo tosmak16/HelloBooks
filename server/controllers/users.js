@@ -61,8 +61,8 @@ export default {
       username: username.toLowerCase().toString()
     }).then((userResult) => {
       if (userResult) {
-        return res.status(400).send({
-          status: 400,
+        return res.status(409).send({
+          status: 409,
           message: 'username already exist'
         });
       }
@@ -72,8 +72,8 @@ export default {
       }).then((userEmailResult) => {
         /* if email  already exist */
         if (userEmailResult) {
-          return res.status(400).send({
-            status: 400,
+          return res.status(409).send({
+            status: 409,
             message: 'email already exist'
           });
         }
@@ -175,7 +175,7 @@ export default {
             users
           });
         }
-        return res.status(400).send({
+        return res.status(404).send({
           message: 'No users registerd yet',
         });
       })

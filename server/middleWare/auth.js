@@ -27,7 +27,7 @@ export default {
       });
     } else {
       res.status(404).send({
-        status: 400,
+        status: 404,
         message: 'Token not provided'
       });
     }
