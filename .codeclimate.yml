@@ -17,3 +17,15 @@ exclude_paths:
 - template/
 - node_modules/
 - client/
+checks:
+  file-lines:
+    enabled: false
+  complex-logic:
+    enabled: false
+  method-complexity:
+      enabled: false
+  method-lines:
+      enabled: false
+  nested-control-flow:
+      enabled: false
+

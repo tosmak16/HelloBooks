@@ -1,7 +1,5 @@
 import lodash from 'lodash';
-import {
-  SHA256
-} from 'crypto-js';
+import bcrypt from 'bcrypt';
 import db from '../models/index';
 
 /** *************************************** */
@@ -41,11 +39,12 @@ export const handlePasswordChange = async (body, params) => {
   await db.Users
     .findOne({
       where: {
-        id: params.userId,
-        password: SHA256(oldPassword).toString(),
+        id: params.userId
       },
     }).then((user) => {
-      if (lodash.isEmpty(user)) {
+      const { password } = user;
+      if (lodash.isEmpty(user) || !bcrypt.compareSync(oldPassword,
+        password)) {
         responseMessage = 'Current password is wrong';
         responseType = 406;
         response = {
@@ -56,7 +55,7 @@ export const handlePasswordChange = async (body, params) => {
       }
       return user
         .update({
-          password: SHA256(newPassword).toString()
+          password: bcrypt.hashSync(newPassword, bcrypt.genSaltSync(10))
         })
         .then(() => {
           responseMessage = 'Password has been changed';

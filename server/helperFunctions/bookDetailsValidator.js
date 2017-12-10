@@ -1,56 +1,29 @@
-import lodash from 'lodash';
+import _ from 'lodash';
 
 const validNumber = /^[0-9]+$/;
-
 /** *************************************** */
 /* valdiates book details parameters */
 /** *************************************** */
 
-export const bookDetailsValidator = (body) => {
-  const {
-    bookTitle,
-    author,
-    category,
-    stockNumber,
-    summary,
-    isbn
-  } = body;
-  if (lodash.isEmpty(bookTitle)) {
-    return 'bookTitle is required';
-  }
-  if (lodash.isEmpty(author)) {
-    return 'author is required';
-  }
-  if (bookTitle.length < 3) {
-    return 'book title length should be more than 2';
-  }
-  if (author.length < 2) {
-    return 'author length should be more than 2';
-  }
-  if (lodash.isEmpty(stockNumber)) {
-    return 'book number in stock is required';
-  }
-  if (!stockNumber.match(validNumber)) {
-    return 'stock number should be a number';
-  }
-  if (lodash.isEmpty(isbn)) {
-    return 'isbn is required';
-  }
-  if (!isbn.match(validNumber)) {
-    return 'isbn should be a number';
-  }
-  if (isbn.length < 10) {
-    return 'isbn length should be more than 10';
-  }
-  if (lodash.isEmpty(category)) {
-    return 'book category is required';
-  }
-  if (category.match(validNumber)) {
-    return 'book category should not  be a number';
-  }
-  if (lodash.isEmpty(summary)) {
-    return 'book summary is required';
-  }
+export const bookDetailsValidator = async (body) => {
+  const { bookTitle, author, category, stockNumber, summary, isbn } = body;
+  const responseMessage = await Promise
+    .resolve(
+      _.isEmpty(bookTitle) ? 'bookTitle is required' :
+        _.isEmpty(author) ? 'author is required' :
+          bookTitle.length < 3 ? 'book title length should be more than 2' :
+            author.length < 2 ? 'author length should be more than 2' :
+              _.isEmpty(stockNumber) ? 'book number in stock is required' :
+                !stockNumber.match(validNumber) ?
+                  'stock number should be a number' :
+                  _.isEmpty(isbn) ? 'isbn is required' :
+                    !isbn.match(validNumber) ? 'isbn should be a number' :
+                      isbn.length < 10 ? 'isbn length should be more than 10' :
+                        _.isEmpty(category) ? 'book category is required' :
+                          category.match(validNumber) ?
+                            ' book category should not  be a number' :
+                            _.isEmpty(summary) ? 'book summary is required' :
+                              '');
+  return responseMessage;
 };
-
 export default bookDetailsValidator;

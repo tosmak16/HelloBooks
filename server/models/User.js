@@ -1,3 +1,5 @@
+import bcrypt from 'bcrypt';
+
 export default (sequelize, DataTypes) => {
   const Users = sequelize.define('Users', {
     username: {
@@ -115,6 +117,26 @@ export default (sequelize, DataTypes) => {
         });
       },
     },
+    hooks: {
+      beforeCreate: (user) => {
+        const hashedPassword = user.dataValues.password;
+        const saltRounds = 10;
+        const salt = bcrypt.genSaltSync(saltRounds);
+        const encryptedPassword = bcrypt.hashSync(hashedPassword, salt);
+        user.password = encryptedPassword;
+        return user;
+      },
+      // beforeUpdate: (user) => {
+
+      //   const hashedPassword = user.dataValues.password;
+
+      //   const saltRounds = 10;
+      //   const salt = bcrypt.genSaltSync(saltRounds);
+      //   const encryptedPassword = bcrypt.hashSync(hashedPassword, salt);
+      //   user.password = encryptedPassword;
+      //   return user;
+      // },
+    }
   });
   return Users;
 };
