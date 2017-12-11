@@ -142,42 +142,44 @@ export default {
             message: validateBookId
           });
         }
-        const validationErrorMessage = updateBooksValidator(req.body);
-        if (validationErrorMessage) {
-          return res.status(400).send({
-            status: 400,
-            message: validationErrorMessage
-          });
-        }
-        return db.Books
-          .findById(req.params.bookId)
-          .then((book) => {
-            if (isEmpty(book)) {
-              return res.status(404).send({
-                status: 404,
-                message: 'Book does not exist'
+        updateBooksValidator(req.body)
+          .then((validationResponse) => {
+            if (validationResponse) {
+              return res.status(validationResponse.status).send({
+                status: validationResponse.status,
+                message: validationResponse.message
               });
             }
-            return book
-              .update({
-                bookTitle: bookTitle || book.bookTitle,
-                author: author || book.author,
-                category: category || book.category,
-                stockNumber: stockNumber || book.stockNumber,
-                image: image || book.image,
-                bookFile: bookFileUrl || book.bookFile,
-                summary: summary || book.summary,
-              })
-              .then(() => res.status(200).send({
-                status: 200,
-                message: 'Book has been updated',
-                book
-              }))
-              .catch(errorMessage =>
-                res.status(500).send({
-                  status: 500,
-                  message: errorMessage
-                }));
+            return db.Books
+              .findById(req.params.bookId)
+              .then((book) => {
+                if (isEmpty(book)) {
+                  return res.status(404).send({
+                    status: 404,
+                    message: 'Book does not exist'
+                  });
+                }
+                return book
+                  .update({
+                    bookTitle: bookTitle || book.bookTitle,
+                    author: author || book.author,
+                    category: category || book.category,
+                    stockNumber: stockNumber || book.stockNumber,
+                    image: image || book.image,
+                    bookFile: bookFileUrl || book.bookFile,
+                    summary: summary || book.summary,
+                  })
+                  .then(() => res.status(200).send({
+                    status: 200,
+                    message: 'Book has been updated',
+                    book
+                  }))
+                  .catch(errorMessage =>
+                    res.status(500).send({
+                      status: 500,
+                      message: errorMessage
+                    }));
+              });
           });
       });
   },

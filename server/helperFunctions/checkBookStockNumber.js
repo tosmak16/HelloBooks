@@ -6,44 +6,31 @@ import db from '../models/index';
 /** *************************************** */
 
 export const checkBookStockNumber = async (queryObject) => {
-  let responseMessage = '';
-  let responseType = '';
-  let response = {
-    responseMessage,
-    responseType
-  };
+  let response = { status: 200, message: 'okay' };
   await db.Books
     .findById(queryObject)
     .then((book) => {
       if (book === null) {
-        responseMessage = 'Book Not Found';
-        responseType = 'done';
         response = {
-          responseMessage,
-          responseType
+          status: 404,
+          message: 'Book Not Found'
         };
         return response;
       }
-
       if (book.stockNumber === 0) {
-        responseMessage = 'Book Not available in stock';
-        responseType = 'done';
         response = {
-          responseMessage,
-          responseType
+          status: 404,
+          message: 'Book Not available in stock'
         };
         return response;
       }
-
       book.update({
         stockNumber: book.stockNumber - 1
       });
     }).catch((errorMessage) => {
-      responseMessage = errorMessage.errors[0].message.toString();
-      responseType = 'error';
       response = {
-        responseMessage,
-        responseType
+        status: 400,
+        message: errorMessage.errors[0].message.toString()
       };
       return response;
     });

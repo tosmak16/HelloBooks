@@ -229,32 +229,20 @@ export default {
                 checkBorrowLimit({
                   id: req.params.userId,
                 }, ['membershipType'], length)
-                  .then((hasExceededBorrowingLimit) => {
-                    if (hasExceededBorrowingLimit === true) {
-                      return res.status(403).send({
-                        status: 403,
-                        message: `Sorry you can not borrow more than ${length} books`
-                      });
-                    }
-                    if (hasExceededBorrowingLimit !== (true && false)) {
-                      return res.status(400).send({
-                        status: 400,
-                        message: hasExceededBorrowingLimit
+                  .then((responseMessage) => {
+                    if (responseMessage.status >= 400) {
+                      return res.status(responseMessage.status).send({
+                        status: responseMessage.status,
+                        message: responseMessage.message
                       });
                     }
                     /* checks if a book is still available in stock */
                     checkBookStockNumber(bookId)
                       .then((bookStatus) => {
-                        if (bookStatus.responseType === 'done') {
-                          return res.status(404).send({
-                            status: 404,
-                            message: bookStatus.responseMessage
-                          });
-                        }
-                        if (bookStatus.responseType === 'error') {
-                          return res.status(400).send({
-                            status: 400,
-                            message: bookStatus.responseMessage
+                        if (bookStatus.status >= 400) {
+                          return res.status(bookStatus.status).send({
+                            status: bookStatus.status,
+                            message: bookStatus.message
                           });
                         }
                         /* create a new borred book resource */
@@ -283,11 +271,7 @@ export default {
               status: 400,
               message: errorMessage.errors[0].message.toString()
             }));
-      }).catch(errorMessage =>
-        res.status(400).send({
-          status: 400,
-          message: errorMessage.errors[0].message.toString()
-        }));
+      });
   },
   /**
    * @method getUnreturnedbooks
@@ -331,16 +315,14 @@ export default {
    */
   returnBooks(req, res) {
     handleReturnBooks(req.body.Id)
-      .then((handleReturnBooksResponse) => {
-        if (handleReturnBooksResponse) {
-          return res.status(handleReturnBooksResponse.responseType).send({
-            status: handleReturnBooksResponse.responseType,
-            message: handleReturnBooksResponse.responseMessage
-          });
-        }
-      })
-      .catch(errorMessage => res.status(400).send({
-        status: 400,
+      .then(handleReturnBooksResponse =>
+        res.status(handleReturnBooksResponse.status).send({
+          status: handleReturnBooksResponse.status,
+          message: handleReturnBooksResponse.message
+        })
+      )
+      .catch(errorMessage => res.status(500).send({
+        status: 500,
         message: errorMessage.errors[0].message.toString(),
       }));
   },
@@ -426,9 +408,9 @@ export default {
    */
   updateUser(req, res) {
     handleUpdateUser(req.body, req.params.userId)
-      .then(updateUserResponse => res.status(updateUserResponse.responseType).send({
-        status: updateUserResponse.responseType,
-        message: updateUserResponse.responseMessage
+      .then(updateUserResponse => res.status(updateUserResponse.status).send({
+        status: updateUserResponse.status,
+        message: updateUserResponse.message
       }));
   },
 
@@ -441,9 +423,9 @@ export default {
    */
   changePassword(req, res) {
     handlePasswordChange(req.body, req.params)
-      .then(changePasswordResponse => res.status(changePasswordResponse.responseType).send({
-        status: changePasswordResponse.responseType,
-        message: changePasswordResponse.responseMessage
+      .then(changePasswordResponse => res.status(changePasswordResponse.status).send({
+        status: changePasswordResponse.status,
+        message: changePasswordResponse.message
       }));
   },
 };

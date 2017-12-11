@@ -8,44 +8,35 @@ export const checkBorrowLimit = async (queryObject,
   queryFilterArray,
   numberOfBorrowedBooks
 ) => {
-  let hasExceededBorrowingLimit = false;
+  let response = {};
   await db.Users
     .findOne({
       attributes: queryFilterArray,
       where: queryObject
     }).then((userMembershipType) => {
-      const {
-        membershipType
-      } = userMembershipType;
-      if (membershipType === 'Basic') {
-        if (numberOfBorrowedBooks >= 1) {
-          hasExceededBorrowingLimit = true;
-          return hasExceededBorrowingLimit;
-        }
-        hasExceededBorrowingLimit = false;
-        return hasExceededBorrowingLimit;
-      } else if (membershipType === 'Silver') {
-        if (numberOfBorrowedBooks >= 4) {
-          hasExceededBorrowingLimit = true;
-          return hasExceededBorrowingLimit;
-        }
-        hasExceededBorrowingLimit = false;
-        return hasExceededBorrowingLimit;
-      } else if (membershipType === 'Gold') {
-        if (numberOfBorrowedBooks >= 7) {
-          hasExceededBorrowingLimit = true;
-          return hasExceededBorrowingLimit;
-        }
-        hasExceededBorrowingLimit = false;
-        return hasExceededBorrowingLimit;
+      const { membershipType } = userMembershipType;
+      if (membershipType === 'Basic' && numberOfBorrowedBooks >= 1) {
+        response = {
+          status: 403,
+          message: `Sorry you can not borrow more than ${numberOfBorrowedBooks} books`
+        };
+      } else if (membershipType === 'Silver' && numberOfBorrowedBooks >= 4) {
+        response = {
+          status: 403,
+          message: `Sorry you can not borrow more than ${numberOfBorrowedBooks} books`
+        };
+      } else if (membershipType === 'Gold' && numberOfBorrowedBooks >= 7) {
+        response = {
+          status: 403,
+          message: `Sorry you can not borrow more than ${numberOfBorrowedBooks} books`
+        };
       }
     }).catch((errorMessage) => {
-      hasExceededBorrowingLimit = errorMessage.errors[0].message.toString();
-      return hasExceededBorrowingLimit;
+      response = {
+        status: 400,
+        message: errorMessage.errors[0].message.toString()
+      };
     });
-
-  return hasExceededBorrowingLimit;
+  return response;
 };
-
-
 export default checkBorrowLimit;
