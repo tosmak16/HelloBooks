@@ -1,4 +1,4 @@
-import lodash from 'lodash';
+import _ from 'lodash';
 import db from '../models/index';
 
 const validNumber = /^[0-9]+$/;
@@ -9,11 +9,9 @@ const validNumber = /^[0-9]+$/;
 /** *************************************** */
 
 export const handleUpdateUser = async (body, userId) => {
-  let responseMessage = '';
-  let responseType = '';
   let response = {
-    responseMessage,
-    responseType
+    status: 200,
+    message: 'okay'
   };
   const {
     firstName,
@@ -22,84 +20,52 @@ export const handleUpdateUser = async (body, userId) => {
     membershipType,
     profileImage
   } = body;
-  if (!lodash.isEmpty(firstName) && firstName.length < 2) {
-    responseMessage = 'firstName length should be more than 2';
-    responseType = 400;
-    response = {
-      responseMessage,
-      responseType
-    };
-    return response;
-  }
-  if (!lodash.isEmpty(lastName) && lastName.length < 2) {
-    responseMessage = 'lastName length should be more than 2';
-    responseType = 400;
-    response = {
-      responseMessage,
-      responseType
-    };
-    return response;
-  }
-  if (!lodash.isEmpty(mobileNumber)) {
-    if (!mobileNumber.match(validNumber)) {
-      responseMessage = 'mobile number should be number';
-      responseType = 400;
-      response = {
-        responseMessage,
-        responseType
-      };
-      return response;
-    }
-    if (mobileNumber.length < 2) {
-      responseMessage = 'mobile number length should be more than 2';
-      responseType = 400;
-      response = {
-        responseMessage,
-        responseType
-      };
-      return response;
-    }
-  }
-  await db.Users
-    .findById(userId)
-    .then((user) => {
-      if (lodash.isEmpty(user)) {
-        responseMessage = 'User does not exist';
-        responseType = 401;
-        response = {
-          responseMessage,
-          responseType
-        };
-        return response;
-      }
-      return user
-        .update({
-          firstName: firstName || user.firstName,
-          lastName: lastName || user.lastName,
-          mobileNumber: mobileNumber || user.mobileNumber,
-          membershipType: membershipType || user.membershipType,
-          profileImage: profileImage || user.profileImage,
-        })
-        .then(() => {
-          responseMessage = 'Details has been updated';
-          responseType = 200;
-          response = {
-            responseMessage,
-            responseType,
-            user
-          };
-          return response;
-        })
-        .catch((errorMessage) => {
-          responseMessage = errorMessage;
-          responseType = 500;
-          response = {
-            responseMessage,
-            responseType
-          };
-          return response;
-        });
-    });
+
+  response = await Promise.resolve(
+    !_.isEmpty(firstName) && firstName.length < 2 ?
+      {
+        status: 400,
+        message: 'firstName length should be more than 2'
+      } : !_.isEmpty(lastName) && lastName.length < 2 ?
+        {
+          status: 400,
+          message: 'lastName length should be more than 2'
+        } : !_.isEmpty(mobileNumber) && !mobileNumber.match(validNumber) ?
+          {
+            status: 400,
+            message: 'mobile number should be number'
+          } : !_.isEmpty(mobileNumber) && mobileNumber.length < 2 ?
+            {
+              status: 400,
+              message: 'mobile number length should be more than 2'
+            } : await db.Users
+              .findById(userId)
+              .then((user) => {
+                if (_.isEmpty(user)) {
+                  return {
+                    status: 401,
+                    message: 'User does not exist'
+                  };
+                }
+                return user
+                  .update({
+                    firstName: firstName || user.firstName,
+                    lastName: lastName || user.lastName,
+                    mobileNumber: mobileNumber || user.mobileNumber,
+                    membershipType: membershipType || user.membershipType,
+                    profileImage: profileImage || user.profileImage,
+                  })
+                  .then(() => ({
+                    status: 200,
+                    message: 'Details has been updated',
+                    user
+                  }))
+                  .catch(errorMessage => ({
+                    status: 500,
+                    message: errorMessage
+                  }));
+              })
+  );
   return response;
 };
 

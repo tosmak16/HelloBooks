@@ -1,4 +1,4 @@
-import lodash from 'lodash';
+import _ from 'lodash';
 import db from '../models/index';
 
 const validNumber = /^[0-9]+$/;
@@ -8,27 +8,21 @@ const validNumber = /^[0-9]+$/;
 /** *************************************** */
 
 export const handleReturnBooks = async (borrowedBookId) => {
-  let responseMessage = '';
-  let responseType = '';
   let response = {
-    responseMessage,
-    responseType
+    status: 200,
+    message: 'okay'
   };
-  if (lodash.isUndefined(borrowedBookId)) {
-    responseMessage = 'borrowedBook Id is required';
-    responseType = 400;
+  if (_.isUndefined(borrowedBookId)) {
     response = {
-      responseMessage,
-      responseType
+      status: 400,
+      message: 'borrowedBook Id is required'
     };
     return response;
   }
   if (!borrowedBookId.match(validNumber)) {
-    responseMessage = 'borrowedBook Id must be a number';
-    responseType = 400;
     response = {
-      responseMessage,
-      responseType
+      status: 400,
+      message: 'borrowedBook Id must be a number'
     };
     return response;
   }
@@ -36,20 +30,17 @@ export const handleReturnBooks = async (borrowedBookId) => {
     .findById(borrowedBookId)
     .then((borrowbook) => {
       if (!borrowbook) {
-        responseMessage = 'Record not found';
-        responseType = 404;
         response = {
-          responseMessage,
-          responseType
+          status: 404,
+          message: 'Record not found'
         };
         return response;
       }
       if (borrowbook.returnType === true) {
-        responseMessage = 'This book has been returned before';
-        responseType = 403;
         response = {
-          responseMessage,
-          responseType
+          status: 403,
+          message: 'This book has been returned before'
+
         };
         return response;
       }
@@ -66,11 +57,9 @@ export const handleReturnBooks = async (borrowedBookId) => {
                   stockNumber: (book.stockNumber + 1),
                 });
             });
-          responseMessage = 'book has been returned successfully';
-          responseType = 200;
           response = {
-            responseMessage,
-            responseType
+            status: 200,
+            message: 'book has been returned successfully'
           };
           return response;
         });
