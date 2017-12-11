@@ -7,7 +7,11 @@ const validNumber = /^[0-9]+$/;
 /* it's an async function that return a promise */
 /* it checks input parameter validity also */
 /** *************************************** */
-
+/**
+ * @param {object} body 
+ * @param {number} userId 
+ * @returns {object} response
+ */
 export const handleUpdateUser = async (body, userId) => {
   let response = {
     status: 200,

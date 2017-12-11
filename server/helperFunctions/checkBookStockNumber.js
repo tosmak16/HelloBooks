@@ -4,7 +4,11 @@ import db from '../models/index';
 /* it checks if a book exist and if it's available in stocks */
 /* it's an async function which returns a promise */
 /** *************************************** */
-
+/**
+ * @description an async function that checks if a book is still avaliable
+ * @param {object} queryObject 
+ * @returns {object} response
+ */
 export const checkBookStockNumber = async (queryObject) => {
   let response = { status: 200, message: 'okay' };
   await db.Books

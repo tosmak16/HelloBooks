@@ -125,17 +125,7 @@ export default (sequelize, DataTypes) => {
         const encryptedPassword = bcrypt.hashSync(hashedPassword, salt);
         user.password = encryptedPassword;
         return user;
-      },
-      // beforeUpdate: (user) => {
-
-      //   const hashedPassword = user.dataValues.password;
-
-      //   const saltRounds = 10;
-      //   const salt = bcrypt.genSaltSync(saltRounds);
-      //   const encryptedPassword = bcrypt.hashSync(hashedPassword, salt);
-      //   user.password = encryptedPassword;
-      //   return user;
-      // },
+      }
     }
   });
   return Users;

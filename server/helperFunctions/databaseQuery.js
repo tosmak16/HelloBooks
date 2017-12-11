@@ -3,7 +3,10 @@ import db from '../models/index';
 /** *************************************** */
 /* handles find one query for book table */
 /** *************************************** */
-
+/** 
+ * @param {object} queryObject 
+ * @returns {object } books in json
+ */
 export const queryBooks = queryObject => db.Books
   .findOne({
     where: queryObject
@@ -11,7 +14,10 @@ export const queryBooks = queryObject => db.Books
 /** *************************************** */
 /* handles find one query for user table */
 /** *************************************** */
-
+/**
+ * @param {object} queryObject 
+ * @returns {object} users in json
+ */
 export const queryUsers = queryObject => db.Users
   .findOne({
     where: queryObject
@@ -20,7 +26,11 @@ export const queryUsers = queryObject => db.Users
 /** *************************************** */
 /* handles different query for book table */
 /** *************************************** */
-
+/**
+ * @param {object} queryObject 
+ * @param {string} queryType 
+ * @returns {object} borrowedBooks in json
+ */
 export const queryBorrowedBook = (queryObject, queryType) => {
   switch (queryType) {
     case 'findAll':
@@ -35,7 +45,10 @@ export const queryBorrowedBook = (queryObject, queryType) => {
 /** *************************************** */
 /* checks if returned value is a boolean */
 /** *************************************** */
-
+/**
+ * @param {string} returned 
+ * @returns {string} message
+ */
 export const checkQueryValidity = (returned) => {
   if (returned !== 'false') {
     return 'returned query must be a boolean value';

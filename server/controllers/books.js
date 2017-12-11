@@ -1,18 +1,9 @@
 import isEmpty from 'lodash/isEmpty';
 import db from '../models/index';
-import {
-  validateIds
-} from '../helperFunctions/validator';
-import {
-  bookDetailsValidator
-} from '../helperFunctions/bookDetailsValidator';
-import {
-  queryBooks
-} from '../helperFunctions/databaseQuery';
-import {
-  updateBooksValidator
-} from '../helperFunctions/updateBooksValidator';
-
+import { validateIds } from '../helperFunctions/validator';
+import { bookDetailsValidator } from '../helperFunctions/bookDetailsValidator';
+import { queryBooks } from '../helperFunctions/databaseQuery';
+import { updateBooksValidator } from '../helperFunctions/updateBooksValidator';
 
 export default {
   /**
@@ -29,16 +20,8 @@ export default {
         message: 'Access Denied!'
       });
     }
-    const {
-      bookTitle,
-      author,
-      category,
-      isbn,
-      stockNumber,
-      image,
-      bookFileUrl,
-      summary
-    } = req.body;
+    const { bookTitle, author, category, isbn, stockNumber,
+      image, bookFileUrl, summary } = req.body;
     bookDetailsValidator(req.body)
       .then((validationErrorMessage) => {
         if (validationErrorMessage) {

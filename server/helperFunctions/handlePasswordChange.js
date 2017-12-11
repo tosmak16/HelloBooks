@@ -6,7 +6,11 @@ import db from '../models/index';
 /* it handles change password request */
 /* it's an async function which returns a promise */
 /** *************************************** */
-
+/**
+ * @param {object} body 
+ * @param {object} params 
+ * @returns {object} response 
+ */
 export const handlePasswordChange = async (body, params) => {
   let response = {
     status: 200,

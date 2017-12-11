@@ -3,26 +3,12 @@ import bcrypt from 'bcrypt';
 import db from '../models/index';
 import { validateIds, checkUserInput } from '../helperFunctions/validator';
 import { userDetailsValidator } from '../helperFunctions/userDetailsValidator';
-import {
-  queryUsers,
-  checkQueryValidity,
-  queryBorrowedBook
-} from '../helperFunctions/databaseQuery';
-import {
-  checkBorrowLimit
-} from '../helperFunctions/checkBorrowLimit';
-import {
-  checkBookStockNumber
-} from '../helperFunctions/checkBookStockNumber';
-import {
-  handleReturnBooks
-} from '../helperFunctions/handleReturnBooks';
-import {
-  handleUpdateUser
-} from '../helperFunctions/handleUpdateUser';
-import {
-  handlePasswordChange
-} from '../helperFunctions/handlePasswordChange';
+import { queryUsers, checkQueryValidity, queryBorrowedBook } from '../helperFunctions/databaseQuery';
+import { checkBorrowLimit } from '../helperFunctions/checkBorrowLimit';
+import { checkBookStockNumber } from '../helperFunctions/checkBookStockNumber';
+import { handleReturnBooks } from '../helperFunctions/handleReturnBooks';
+import { handleUpdateUser } from '../helperFunctions/handleUpdateUser';
+import { handlePasswordChange } from '../helperFunctions/handlePasswordChange';
 
 export default {
   /**
@@ -42,18 +28,9 @@ export default {
             message: validationError
           });
         }
-        const {
-          username,
-          password,
-          firstName,
-          lastName,
-          email,
-          membershipType
-        } = req.body;
+        const { username, password, firstName, lastName, email, membershipType } = req.body;
         /* query database by username to check if a user already exist */
-        queryUsers({
-          username: username.toLowerCase().toString()
-        }).then((userResult) => {
+        queryUsers({ username: username.toLowerCase().toString() }).then((userResult) => {
           if (userResult) {
             return res.status(409).send({
               status: 409,
@@ -114,29 +91,17 @@ export default {
             message: checkUserDetailsResponse
           });
         }
-        queryUsers({
-          username: req.body.username.toLowerCase(),
-        }).then((user) => {
-          if (!user
-            ||
-            !bcrypt.compareSync(req.body.password,
-              user.dataValues.password)) {
+        /* checks if the username and password exist */
+        queryUsers({ username: req.body.username.toLowerCase() }).then((user) => {
+          if (!user || !bcrypt.compareSync(req.body.password, user.dataValues.password)) {
             return res.status(400).send({
               status: 400,
               message: 'please enter valid details'
             });
           }
-          const {
-            id,
-            username,
-            role
-          } = user;
+          const { id, username, role } = user;
           /* creates a token */
-          jwt.sign({
-            id,
-            user: username,
-            role
-          }, process.env.SECRET, (err, token) => {
+          jwt.sign({ id, user: username, role }, process.env.SECRET, (err, token) => {
             res.status(200).send({
               status: 200,
               message: 'You have successfully logged in',
@@ -182,18 +147,14 @@ export default {
   },
   /**
    * @method borrowbooks
-   * @desc This is a method that handles the action of borrowing books
+   * @desc This method  handles borrowing books action
    * @param { object } req request
    * @param { object} res response
    * @returns { object } response
    */
   borrowBooks(req, res) {
-    const {
-      bookId
-    } = req.body;
-    const {
-      userId
-    } = req.params;
+    const { bookId } = req.body;
+    const { userId } = req.params;
     /* validates book Id */
     validateIds(bookId)
       .then((bookIdValidator) => {
@@ -204,31 +165,19 @@ export default {
           });
         }
         /* checks if user has borrowed a book before */
-        queryBorrowedBook({
-          bookId,
-          userId,
-          returnType: false,
-        }, 'findAll')
+        queryBorrowedBook({ bookId, userId, returnType: false }, 'findAll')
           .then((user) => {
             if ((user.length !== 0)) {
               return res.status(403).send({
-                status: 403,
-                message: 'You have borrowed this book before !'
+                status: 403, message: 'You have borrowed this book before !'
               });
             }
             /* checks the number of books a user has borrowed and have not returned */
-            queryBorrowedBook({
-              userId,
-              returnType: false,
-            }, 'findAll')
+            queryBorrowedBook({ userId, returnType: false }, 'findAll')
               .then((response) => {
-                const {
-                  length
-                } = response;
+                const { length } = response;
                 /* checks user borrow limit by membership level */
-                checkBorrowLimit({
-                  id: req.params.userId,
-                }, ['membershipType'], length)
+                checkBorrowLimit({ id: req.params.userId }, ['membershipType'], length)
                   .then((responseMessage) => {
                     if (responseMessage.status >= 400) {
                       return res.status(responseMessage.status).send({
@@ -245,7 +194,7 @@ export default {
                             message: bookStatus.message
                           });
                         }
-                        /* create a new borred book resource */
+                        /* create a new borrowed book resource */
                         return db.BorrowedBooks
                           .create({
                             borrowDate: Date.now(),
@@ -369,14 +318,8 @@ export default {
   getUserDetails(req, res) {
     return db.Users
       .findAll({
-        attributes: [
-          'firstName',
-          'lastName',
-          'email',
-          'mobileNumber',
-          'membershipType',
-          'profileImage'
-        ],
+        attributes: ['firstName', 'lastName', 'email',
+          'mobileNumber', 'membershipType', 'profileImage'],
         where: {
           id: req.params.userId,
         },

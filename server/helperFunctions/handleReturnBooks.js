@@ -6,7 +6,10 @@ const validNumber = /^[0-9]+$/;
 /* handles return books request */
 /* it's an async function which returns a promise */
 /** *************************************** */
-
+/**
+ * @param {object} borrowedBookId 
+ * @returns {object} response
+ */
 export const handleReturnBooks = async (borrowedBookId) => {
   let response = {
     status: 200,
