@@ -6,7 +6,6 @@ import userAuth from '../middleWare/userAuth';
 
 export default (app) => {
   /** ** this route is used to get all books in the database *** */
-
   /**
    * @swagger
    * definitions:
@@ -107,9 +106,7 @@ export default (app) => {
    *         description: server error
    */
   app.get('/api/v2/books', booksController.getAllBooks);
-
   /* This is sign up route */
-
   /**
    * @swagger
    * /users/signup:
@@ -140,9 +137,7 @@ export default (app) => {
    *         description: Server Error
    */
   app.post('/api/v2/users/signup', usersController.signup);
-
   /* This is sign in route */
-
   /**
    * @swagger
    * /users/signin:
@@ -166,11 +161,8 @@ export default (app) => {
    *         description: server error
    */
   app.post('/api/v2/users/signin', usersController.signin);
-
   /* This is authentication middleware route */
   app.use('/api/v2/', authController.auth);
-
-
   /* This route to add books */
   /**
    * @swagger
@@ -201,7 +193,6 @@ export default (app) => {
    */
   app.post('/api/v2/books', booksController.addBook);
   /* This route to delete books */
-
   /**
    * @swagger
    * /books/{bookId}:
@@ -240,7 +231,6 @@ export default (app) => {
    */
   app.delete('/api/v2/books/:bookId', booksController.deleteBooks);
   /* This route to modify books details */
-
   /**
    * @swagger
    * /books/{bookId}:
@@ -277,7 +267,6 @@ export default (app) => {
    */
   app.put('/api/v2/books/:bookId', booksController.updateBook);
   /* This route get list of all users */
-
   /**
    * @swagger
    * /users:
@@ -300,10 +289,7 @@ export default (app) => {
    *         description: server error
    */
   app.get('/api/v2/users', usersController.getUserList);
-
-
   /* This route to get unretured books */
-
   /**
    * @swagger
    * /users/{userId}/books?returned=false:
@@ -335,9 +321,7 @@ export default (app) => {
     userAuth.userAuth,
     usersController.getUnreturnedBooks
   );
-
   /* This route to get all user's borrowed books history */
-
   /**
    * @swagger
    * /user/{userId}/books:
@@ -371,7 +355,6 @@ export default (app) => {
   );
 
   /* This route to borrow books request and response  */
-
   /**
    * @swagger
    * /users/{userId}/books:
@@ -421,7 +404,6 @@ export default (app) => {
   );
 
   /* This route to return borrowed books */
-
   /**
    * @swagger
    * /users/{userId}/books:
@@ -467,9 +449,7 @@ export default (app) => {
     userAuth.userAuth,
     usersController.returnBooks
   );
-
   /* This route to update user details */
-
   /**
    * @swagger
    * /users/{userId}:
@@ -506,9 +486,7 @@ export default (app) => {
     userAuth.userAuth,
     usersController.updateUser
   );
-
   /* This route to get user details */
-
   /**
    * @swagger
    * /users/{userId}:
@@ -540,9 +518,7 @@ export default (app) => {
     userAuth.userAuth,
     usersController.getUserDetails
   );
-
   /* This route to change password */
-
   /**
    * @swagger
    * /users/{userId}/password:

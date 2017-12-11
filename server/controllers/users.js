@@ -1,20 +1,13 @@
 import jwt from 'jsonwebtoken';
-import {
-  SHA256
-} from 'crypto-js';
+import bcrypt from 'bcrypt';
 import db from '../models/index';
-import {
-  validateIds,
-  checkUserInput
-} from '../helperFunctions/validator';
-import {
-  userDetailsValidator,
-} from '../helperFunctions/userDetailsValidator';
+import { validateIds, checkUserInput } from '../helperFunctions/validator';
+import { userDetailsValidator } from '../helperFunctions/userDetailsValidator';
 import {
   queryUsers,
   checkQueryValidity,
   queryBorrowedBook
-} from '../helperFunctions/queryReducer';
+} from '../helperFunctions/databaseQuery';
 import {
   checkBorrowLimit
 } from '../helperFunctions/checkBorrowLimit';
@@ -41,66 +34,68 @@ export default {
    */
   signup(req, res) {
     /* checks if required details are inputed if not sends status 400 message */
-    const validationError = userDetailsValidator(req.body);
-    if (validationError) {
-      return res.status(400).send({
-        status: 400,
-        message: validationError
-      });
-    }
-    const {
-      username,
-      password,
-      firstName,
-      lastName,
-      email,
-      membershipType
-    } = req.body;
-    /* query database by username to check if a user already exist */
-    queryUsers({
-      username: username.toLowerCase().toString()
-    }).then((userResult) => {
-      if (userResult) {
-        return res.status(409).send({
-          status: 409,
-          message: 'username already exist'
-        });
-      }
-      /* query database by email to check if a email already exist */
-      queryUsers({
-        email: email.toLowerCase().toString()
-      }).then((userEmailResult) => {
-        /* if email  already exist */
-        if (userEmailResult) {
-          return res.status(409).send({
-            status: 409,
-            message: 'email already exist'
+    userDetailsValidator(req.body)
+      .then((validationError) => {
+        if (validationError) {
+          return res.status(400).send({
+            status: 400,
+            message: validationError
           });
         }
-        /* if email does not exist create user account */
-        db.Users.create({
-          username: username.toLowerCase(),
-          password: SHA256(password).toString(),
+        const {
+          username,
+          password,
           firstName,
           lastName,
-          email: email.toLowerCase(),
-          membershipType,
-          role: req.body.role ? 'admin' : 'user'
-        })
-          .then(storedDetails => res.status(201).send({
-            status: 201,
-            message: 'Account created',
-            storedDetails,
-          }))
-          .catch((errorMessage) => {
-            res.status(500).send({
-              status: 500,
-              message: 'server error',
-              errorMessage
+          email,
+          membershipType
+        } = req.body;
+        /* query database by username to check if a user already exist */
+        queryUsers({
+          username: username.toLowerCase().toString()
+        }).then((userResult) => {
+          if (userResult) {
+            return res.status(409).send({
+              status: 409,
+              message: 'username already exist'
             });
+          }
+          /* query database by email to check if a email already exist */
+          queryUsers({
+            email: email.toLowerCase().toString()
+          }).then((userEmailResult) => {
+            /* if email  already exist */
+            if (userEmailResult) {
+              return res.status(409).send({
+                status: 409,
+                message: 'email already exist'
+              });
+            }
+            /* if email does not exist create user account */
+            db.Users.create({
+              username: username.toLowerCase(),
+              password,
+              firstName,
+              lastName,
+              email: email.toLowerCase(),
+              membershipType,
+              role: process.env.NODE_ENV === 'test' && req.body.role ? 'admin' : 'user'
+            })
+              .then(storedDetails => res.status(201).send({
+                status: 201,
+                message: 'Account created',
+                storedDetails,
+              }))
+              .catch((errorMessage) => {
+                res.status(500).send({
+                  status: 500,
+                  message: 'server error',
+                  errorMessage
+                });
+              });
           });
+        });
       });
-    });
   },
   /**
    * @method signin
@@ -111,47 +106,51 @@ export default {
    */
   signin(req, res) {
     /* check user's username and password if it is defined */
-    const checkUserDetailsResponse = checkUserInput(req.body);
-    if ((checkUserDetailsResponse)) {
-      return res.status(400).send({
-        status: 400,
-        message: checkUserDetailsResponse
+    checkUserInput(req.body)
+      .then((checkUserDetailsResponse) => {
+        if ((checkUserDetailsResponse)) {
+          return res.status(400).send({
+            status: 400,
+            message: checkUserDetailsResponse
+          });
+        }
+        queryUsers({
+          username: req.body.username.toLowerCase(),
+        }).then((user) => {
+          if (!user
+            ||
+            !bcrypt.compareSync(req.body.password,
+              user.dataValues.password)) {
+            return res.status(400).send({
+              status: 400,
+              message: 'please enter valid details'
+            });
+          }
+          const {
+            id,
+            username,
+            role
+          } = user;
+          /* creates a token */
+          jwt.sign({
+            id,
+            user: username,
+            role
+          }, process.env.SECRET, (err, token) => {
+            res.status(200).send({
+              status: 200,
+              message: 'You have successfully logged in',
+              token,
+              user
+            });
+          });
+        })
+          .catch(error => res.status(500).send({
+            status: 500,
+            message: 'server error',
+            error
+          }));
       });
-    }
-    queryUsers({
-      username: req.body.username.toLowerCase(),
-      password: SHA256(req.body.password).toString(),
-    }).then((user) => {
-      if (!user) {
-        return res.status(400).send({
-          status: 400,
-          message: 'please enter valid details'
-        });
-      }
-      const {
-        id,
-        username,
-        role
-      } = user;
-        /* creates a token */
-      jwt.sign({
-        id,
-        user: username,
-        role
-      }, process.env.SECRET, (err, token) => {
-        res.status(200).send({
-          status: 200,
-          message: 'You have successfully logged in',
-          token,
-          user
-        });
-      });
-    })
-      .catch(error => res.status(500).send({
-        status: 500,
-        message: 'server error',
-        error
-      }));
   },
   /**
    * @method list
@@ -196,85 +195,87 @@ export default {
       userId
     } = req.params;
     /* validates book Id */
-    const bookIdValidator = validateIds(bookId);
-    if (bookIdValidator) {
-      return res.status(400).send({
-        status: 400,
-        message: bookIdValidator
-      });
-    }
-    /* checks if user has borrowed a book before */
-    queryBorrowedBook({
-      bookId,
-      userId,
-      returnType: false,
-    }, 'findAll')
-      .then((user) => {
-        if ((user.length !== 0)) {
-          return res.status(403).send({
-            status: 403,
-            message: 'You have borrowed this book before !'
+    validateIds(bookId)
+      .then((bookIdValidator) => {
+        if (bookIdValidator) {
+          return res.status(400).send({
+            status: 400,
+            message: bookIdValidator
           });
         }
-        /* checks the number of books a user has borrowed and have not returned */
+        /* checks if user has borrowed a book before */
         queryBorrowedBook({
+          bookId,
           userId,
           returnType: false,
         }, 'findAll')
-          .then((response) => {
-            const {
-              length
-            } = response;
-            /* checks user borrow limit by membership level */
-            checkBorrowLimit({
-              id: req.params.userId,
-            }, ['membershipType'], length)
-              .then((hasExceededBorrowingLimit) => {
-                if (hasExceededBorrowingLimit === true) {
-                  return res.status(403).send({
-                    status: 403,
-                    message: `Sorry you can not borrow more than ${length} books`
-                  });
-                }
-                if (hasExceededBorrowingLimit !== (true && false)) {
-                  return res.status(400).send({
-                    status: 400,
-                    message: hasExceededBorrowingLimit
-                  });
-                }
-                /* checks if a book is still available in stock */
-                checkBookStockNumber(bookId)
-                  .then((bookStatus) => {
-                    if (bookStatus.responseType === 'done') {
-                      return res.status(404).send({
-                        status: 404,
-                        message: bookStatus.responseMessage
+          .then((user) => {
+            if ((user.length !== 0)) {
+              return res.status(403).send({
+                status: 403,
+                message: 'You have borrowed this book before !'
+              });
+            }
+            /* checks the number of books a user has borrowed and have not returned */
+            queryBorrowedBook({
+              userId,
+              returnType: false,
+            }, 'findAll')
+              .then((response) => {
+                const {
+                  length
+                } = response;
+                /* checks user borrow limit by membership level */
+                checkBorrowLimit({
+                  id: req.params.userId,
+                }, ['membershipType'], length)
+                  .then((hasExceededBorrowingLimit) => {
+                    if (hasExceededBorrowingLimit === true) {
+                      return res.status(403).send({
+                        status: 403,
+                        message: `Sorry you can not borrow more than ${length} books`
                       });
                     }
-                    if (bookStatus.responseType === 'error') {
+                    if (hasExceededBorrowingLimit !== (true && false)) {
                       return res.status(400).send({
                         status: 400,
-                        message: bookStatus.responseMessage
+                        message: hasExceededBorrowingLimit
                       });
                     }
-                    /* create a new borred book resource */
-                    return db.BorrowedBooks
-                      .create({
-                        borrowDate: Date.now(),
-                        returnType: false,
-                        userId,
-                        bookId,
-                      })
-                      .then(borrowBookResponse => res.status(200).send({
-                        status: 200,
-                        message: 'Book added to personal archive. happy reading!',
-                        borrowBookResponse
-                      }))
-                      .catch(errorMessage =>
-                        res.status(500).send({
-                          status: 500,
-                          message: errorMessage
-                        }));
+                    /* checks if a book is still available in stock */
+                    checkBookStockNumber(bookId)
+                      .then((bookStatus) => {
+                        if (bookStatus.responseType === 'done') {
+                          return res.status(404).send({
+                            status: 404,
+                            message: bookStatus.responseMessage
+                          });
+                        }
+                        if (bookStatus.responseType === 'error') {
+                          return res.status(400).send({
+                            status: 400,
+                            message: bookStatus.responseMessage
+                          });
+                        }
+                        /* create a new borred book resource */
+                        return db.BorrowedBooks
+                          .create({
+                            borrowDate: Date.now(),
+                            returnType: false,
+                            userId,
+                            bookId,
+                          })
+                          .then(borrowBookResponse => res.status(200).send({
+                            status: 200,
+                            message: 'Book added to personal archive. happy reading!',
+                            borrowBookResponse
+                          }))
+                          .catch(errorMessage =>
+                            res.status(500).send({
+                              status: 500,
+                              message: errorMessage
+                            }));
+                      });
                   });
               });
           }).catch(errorMessage =>
