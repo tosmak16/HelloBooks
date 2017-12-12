@@ -26,18 +26,16 @@ export function updateBook(bookData, token) {
       body: JSON.stringify(bookData)
     })
       .then(
-      (res) => res.json())
-      .then((response) => {
-        if (response.status >= 400) {
-          throw response.message
-        }
-        else if (response.status === 200) {
-          dispatch(updatebookResponse(response.message));
+      (res) => {
+        if (res.status >= 400) {
+          res.json().then((response) => {
+            dispatch(updatebookError(response.message));
+          })
+        } else {
+          res.json().then((response) => {
+            dispatch(updatebookResponse(response.message));
+          })
         }
       })
-      .catch(error => {
-        dispatch(updatebookError(error));
-      });
   }
-
 }

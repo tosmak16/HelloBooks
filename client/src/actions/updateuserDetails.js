@@ -7,8 +7,6 @@ import { updateuserError, updateuserRequest, updateuserResponse } from '../../ac
 
 
 /**
- * 
- * 
  * @export
  * @param {any} userData 
  * @param {any} token 
@@ -31,18 +29,17 @@ export default function updateUser(userData, token) {
       body: JSON.stringify(userData)
     })
       .then(
-      (res) => res.json())
-      .then((response) => {
-        if (response.status >= 400) {
-          throw response.message
+      (res) => {
+        if (res.status >= 400) {
+          res.json().then((response) => {
+            dispatch(updateuserError(response.message));
+          })
+        } else {
+          res.json().then((response) => {
+            dispatch(updateuserResponse(response.message));
+          })
         }
-        else if (response.status === 200) {
-          dispatch(updateuserResponse(response.message));
-        }
-      })
-      .catch(error => {
-        dispatch(uupdateuserError(error));
-      });
+      }
+      )
   }
-
 }

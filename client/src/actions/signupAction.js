@@ -1,19 +1,12 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-
 import 'whatwg-fetch'
-
-
-
-
 import { signupError, signupRequest, signupResponse } from '../../actions/signupActions';
-import { displayMessage } from '../../actions/displayMessages'
+
 /**
- * 
- * 
  * @export
- * @param {any} userData 
- * @returns 
+ * @param {object} userData 
+ * @returns {string} response message
  */
 export function userSignup(userData) {
   let error = '';
@@ -29,24 +22,20 @@ export function userSignup(userData) {
       body: JSON.stringify(userData)
     })
       .then(
-      (res) => res.json())
-      .then((response) => {
-        if (response.status === 400) {
-
-          throw response.message
+      (res) => {
+        if (res.status >= 400) {
+          res.json().then((response) => {
+            console.log(response.message);
+            dispatch(signupError(response.message));
+          });
         }
-        else if (response.status === 201) {
-          dispatch(signupResponse(response.message));
-          dispatch(displayMessage({
-            type: 'success',
-            text: 'Registration successful'
-          }));
-          browserHistory.push('/login');
+        else {
+          res.json().then((response) => {
+            console.log(response.message);
+            dispatch(signupResponse(response.message));
+            browserHistory.push('/login');
+          })
         }
       })
-      .catch(error => {
-
-        dispatch(signupError(error))
-      });
   };
 }

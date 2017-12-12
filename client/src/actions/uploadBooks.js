@@ -4,18 +4,15 @@ import { uploadImage } from './uploadImage';
 import { uploadbookError, uploadbookRequest, uploadbookResponse } from '../../actions/uploadBooks';
 
 
-/**
- * 
- * 
+/** 
  * @export
- * @param {any} bookData 
- * @param {any} token 
+ * @param {object} bookData 
+ * @param {string} token 
  * @returns 
  */
 export function uploadBook(bookData, token) {
   return (dispatch) => {
     dispatch(uploadbookRequest(bookData));
-
     return fetch('/api/v2/books', {
       method: 'POST',
       headers: {
@@ -26,19 +23,16 @@ export function uploadBook(bookData, token) {
       body: JSON.stringify(bookData)
     })
       .then(
-      (res) => res.json())
-      .then((response) => {
-        if (response.status >= 400) {
-          throw response.message
-        }
-        else if (response.status === 201) {
-          dispatch(uploadbookResponse(response.message));
+      (res) => {
+        if (res.status >= 400) {
+          res.json().then((response) => {
+            dispatch(uploadbookError(response.message));
+          })
+        } else {
+          res.json().then(() => {
+            dispatch(uploadbookResponse(response.message));
+          })
         }
       })
-      .catch(error => {
-        dispatch(uploadbookError(error));
-      });
-
   }
-
 }

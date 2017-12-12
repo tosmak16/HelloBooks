@@ -51,7 +51,6 @@ describe('Check for user registration', () => {
       .send(user)
       .end((err, res) => {
         res.should.have.status(201);
-        expect(res.body.status).to.equal(201);
         expect(res.body.message).to.equal('Account created')
         done();
       });
@@ -73,7 +72,6 @@ describe('Check for user registration', () => {
       .send(user)
       .end((err, res) => {
         res.should.have.status(201);
-        expect(res.body.status).to.equal(201);
         expect(res.body.message).to.equal('Account created')
         done();
       });

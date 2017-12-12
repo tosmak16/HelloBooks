@@ -23,19 +23,13 @@ export default {
     userDetailsValidator(req.body)
       .then((validationError) => {
         if (validationError) {
-          return res.status(400).send({
-            status: 400,
-            message: validationError
-          });
+          return res.status(400).send({ message: validationError });
         }
         const { username, password, firstName, lastName, email, membershipType } = req.body;
         /* query database by username to check if a user already exist */
         queryUsers({ username: username.toLowerCase().toString() }).then((userResult) => {
           if (userResult) {
-            return res.status(409).send({
-              status: 409,
-              message: 'username already exist'
-            });
+            return res.status(409).send({ message: 'username already exist' });
           }
           /* query database by email to check if a email already exist */
           queryUsers({
@@ -43,10 +37,7 @@ export default {
           }).then((userEmailResult) => {
             /* if email  already exist */
             if (userEmailResult) {
-              return res.status(409).send({
-                status: 409,
-                message: 'email already exist'
-              });
+              return res.status(409).send({ message: 'email already exist' });
             }
             /* if email does not exist create user account */
             db.Users.create({
@@ -59,13 +50,10 @@ export default {
               role: process.env.NODE_ENV === 'test' && req.body.role ? 'admin' : 'user'
             })
               .then(storedDetails => res.status(201).send({
-                status: 201,
-                message: 'Account created',
-                storedDetails,
+                message: 'Account created', storedDetails,
               }))
               .catch((errorMessage) => {
                 res.status(500).send({
-                  status: 500,
                   message: 'server error',
                   errorMessage
                 });
@@ -87,7 +75,6 @@ export default {
       .then((checkUserDetailsResponse) => {
         if ((checkUserDetailsResponse)) {
           return res.status(400).send({
-            status: 400,
             message: checkUserDetailsResponse
           });
         }
@@ -95,7 +82,6 @@ export default {
         queryUsers({ username: req.body.username.toLowerCase() }).then((user) => {
           if (!user || !bcrypt.compareSync(req.body.password, user.dataValues.password)) {
             return res.status(400).send({
-              status: 400,
               message: 'please enter valid details'
             });
           }
@@ -103,7 +89,6 @@ export default {
           /* creates a token */
           jwt.sign({ id, user: username, role }, process.env.SECRET, (err, token) => {
             res.status(200).send({
-              status: 200,
               message: 'You have successfully logged in',
               token,
               user
@@ -111,7 +96,6 @@ export default {
           });
         })
           .catch(error => res.status(500).send({
-            status: 500,
             message: 'server error',
             error
           }));
@@ -159,17 +143,14 @@ export default {
     validateIds(bookId)
       .then((bookIdValidator) => {
         if (bookIdValidator) {
-          return res.status(400).send({
-            status: 400,
-            message: bookIdValidator
-          });
+          return res.status(400).send({ message: bookIdValidator });
         }
         /* checks if user has borrowed a book before */
         queryBorrowedBook({ bookId, userId, returnType: false }, 'findAll')
           .then((user) => {
             if ((user.length !== 0)) {
               return res.status(403).send({
-                status: 403, message: 'You have borrowed this book before !'
+                message: 'You have borrowed this book before !'
               });
             }
             /* checks the number of books a user has borrowed and have not returned */
@@ -181,7 +162,6 @@ export default {
                   .then((responseMessage) => {
                     if (responseMessage.status >= 400) {
                       return res.status(responseMessage.status).send({
-                        status: responseMessage.status,
                         message: responseMessage.message
                       });
                     }
@@ -190,7 +170,6 @@ export default {
                       .then((bookStatus) => {
                         if (bookStatus.status >= 400) {
                           return res.status(bookStatus.status).send({
-                            status: bookStatus.status,
                             message: bookStatus.message
                           });
                         }
@@ -203,13 +182,11 @@ export default {
                             bookId,
                           })
                           .then(borrowBookResponse => res.status(200).send({
-                            status: 200,
                             message: 'Book added to personal archive. happy reading!',
                             borrowBookResponse
                           }))
                           .catch(errorMessage =>
                             res.status(500).send({
-                              status: 500,
                               message: errorMessage
                             }));
                       });
@@ -245,12 +222,10 @@ export default {
         },
       }).then(unreturnedBook =>
         res.status(200).send({
-          status: 200,
           message: 'Borrowed books history retrieved',
           unreturnedBook
         }))
-      .catch(errorMessage => res.status(400).send({
-        status: 400,
+      .catch(errorMessage => res.status(500).send({
         message: errorMessage.errors[0].message.toString()
       }));
   },
@@ -266,12 +241,10 @@ export default {
     handleReturnBooks(req.body.Id)
       .then(handleReturnBooksResponse =>
         res.status(handleReturnBooksResponse.status).send({
-          status: handleReturnBooksResponse.status,
           message: handleReturnBooksResponse.message
         })
       )
       .catch(errorMessage => res.status(500).send({
-        status: 500,
         message: errorMessage.errors[0].message.toString(),
       }));
   },
@@ -292,18 +265,15 @@ export default {
       }).then((borrowBooks) => {
         if (borrowBooks) {
           return res.status(200).send({
-            status: 200,
             message: 'Borrowed books history retrieved',
             borrowBooks
           });
         }
         return res.status(400).send({
-          status: 400,
           message: 'you have not borrowed any book',
         });
       })
-      .catch(errorMessage => res.status(400).send({
-        status: 400,
+      .catch(errorMessage => res.status(500).send({
         message: errorMessage.errors[0].message.toString()
       }));
   },
@@ -326,18 +296,15 @@ export default {
       }).then((userDetails) => {
         if (userDetails) {
           return res.status(200).send({
-            status: 200,
             message: 'Success!',
             userDetails
           });
         }
         return res.status(400).send({
-          status: 400,
           message: errorMessage.errors[0].message.toString()
         });
       })
       .catch(errorMessage => res.status(500).send({
-        status: 500,
         message: errorMessage,
       }));
   },
@@ -352,7 +319,6 @@ export default {
   updateUser(req, res) {
     handleUpdateUser(req.body, req.params.userId)
       .then(updateUserResponse => res.status(updateUserResponse.status).send({
-        status: updateUserResponse.status,
         message: updateUserResponse.message
       }));
   },
@@ -367,7 +333,6 @@ export default {
   changePassword(req, res) {
     handlePasswordChange(req.body, req.params)
       .then(changePasswordResponse => res.status(changePasswordResponse.status).send({
-        status: changePasswordResponse.status,
         message: changePasswordResponse.message
       }));
   },

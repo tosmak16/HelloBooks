@@ -34,24 +34,17 @@ export default function getunreturnedBooks(token) {
       },
     })
       .then(
-      (res) => res.json())
-      .then((response) => {
-        if (response.status >= 400) {
-          if (!isEmpty(response.message)) {
-            throw response.message
-          }
-        } else if (response.status === 200) {
-          dispatch(getunreturnedbooksReponse(response.unreturnedBook));
-        } else {
-          if (!isEmpty(response)) {
-            throw response
-          }
+      (res) => {
+        if (res.status >= 400) {
+          res.json().then((response) => {
+            dispatch(getunreturnedbooksError(response.message))
+          })
         }
-      }).catch(error => {
-        if (!isEmpty(error)) {
-          dispatch(getunreturnedbooksError(error))
+        else {
+          res.json().then((response) => {
+            dispatch(getunreturnedbooksReponse(response.unreturnedBook));
+          }).catch((error) => error);
         }
-      });
-
+      })
   };
 }
