@@ -4,7 +4,6 @@ import jwtDecode from 'jwt-decode';
 
 import { changepasswordError, changepasswordRequest, changepasswordResponse } from '../../actions/changePassword';
 
-
 /**
  * 
  * 
@@ -29,19 +28,16 @@ export default function changePassword(userData, token) {
       body: JSON.stringify(userData)
     })
       .then(
-      (res) => res.json())
-      .then((response) => {
-        if (response.status >= 400) {
-          throw response.message
-        }
-        else if (response.status === 200) {
-          dispatch(changepasswordResponse(response.message));
+      (res) => {
+        if (res.status >= 400) {
+          res.json().then((response) => {
+            dispatch(changepasswordError(response.message))
+          })
+        } else {
+          res.json().then((response) => {
+            dispatch(changepasswordResponse(response.message));
+          })
         }
       })
-      .catch(error => {
-        dispatch(changepasswordError(error))
-      });
-
   }
-
 }

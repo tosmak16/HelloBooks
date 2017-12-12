@@ -33,18 +33,16 @@ export default function borrowBooks(token, bookId) {
       body: JSON.stringify({ bookId: bookId, token: token })
     })
       .then(
-      (res) => res.json())
-      .then((response) => {
-        if (response.status === 200) {
-          dispatch(borrowBookResponse(response.message));
+      (res) => {
+        if (res.status >= 400) {
+          res.json().then((response) => {
+            dispatch(borrowBookError(response.message));
+          })
+        } else {
+          res.json().then((response) => {
+            dispatch(borrowBookResponse(response.message));
+          })
         }
-        else if (response.status >= 400) {
-          throw response.message
-        }
-      })
-      .catch(error => {
-        dispatch(borrowBookError(error));
       })
   }
-
 }

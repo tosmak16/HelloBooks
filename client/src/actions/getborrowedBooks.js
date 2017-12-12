@@ -35,18 +35,16 @@ export default function getborrowedBooks(token) {
       },
     })
       .then(
-      (res) => res.json())
-      .then((response) => {
-        if (response.status >= 400) {
-
-          throw response.message
-        } else if (response.status === 200) {
-          dispatch(getborrowedbooksReponse(response.borrowBooks));
+      (res) => {
+        if (res.status >= 400) {
+          res.json().then((response) => {
+            dispatch(getborrowedbooksError(response.message))
+          })
+        } else {
+          res.json().then((response) => {
+            dispatch(getborrowedbooksReponse(response.borrowBooks));
+          })
         }
-      }).catch(error => {
-
-        dispatch(getborrowedbooksError(error))
-      });
-
+      })
   };
 }

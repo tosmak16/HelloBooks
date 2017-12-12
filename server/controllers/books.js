@@ -16,7 +16,6 @@ export default {
   addBook(req, res) {
     if (req.decoded.role.toString() === 'user') {
       return res.status(403).send({
-        status: 403,
         message: 'Access Denied!'
       });
     }
@@ -26,7 +25,6 @@ export default {
       .then((validationErrorMessage) => {
         if (validationErrorMessage) {
           return res.status(400).send({
-            status: 400,
             message: validationErrorMessage
           });
         }
@@ -36,7 +34,6 @@ export default {
         }).then((bookResult) => {
           if (bookResult) {
             return res.status(400).send({
-              status: 400,
               message: 'isbn must be unique'
             });
           }
@@ -52,12 +49,10 @@ export default {
               bookFile: bookFileUrl,
             })
             .then(bookReport => res.status(201).send({
-              status: 201,
               message: 'Book has been added to store',
               bookReport
             }))
             .catch(errorMessage => res.status(500).send({
-              status: 500,
               message: errorMessage
             }));
         });
@@ -77,19 +72,16 @@ export default {
       .then((books) => {
         if (books) {
           return res.status(200).send({
-            status: 200,
             message: 'Success!',
             books
           });
         }
         return res.status(404).send({
-          status: 404,
           message: 'No books in store',
           books
         });
       })
       .catch(errorMessage => res.status(500).send({
-        status: 500,
         message: errorMessage
       }));
   },
@@ -104,7 +96,6 @@ export default {
   updateBook(req, res) {
     if (req.decoded.role === 'user') {
       return res.status(403).send({
-        status: 403,
         message: 'Access Denied!'
       });
     }
@@ -121,7 +112,6 @@ export default {
       .then((validateBookId) => {
         if (validateBookId) {
           return res.status(400).send({
-            status: 400,
             message: validateBookId
           });
         }
@@ -138,7 +128,6 @@ export default {
               .then((book) => {
                 if (isEmpty(book)) {
                   return res.status(404).send({
-                    status: 404,
                     message: 'Book does not exist'
                   });
                 }
@@ -153,13 +142,11 @@ export default {
                     summary: summary || book.summary,
                   })
                   .then(() => res.status(200).send({
-                    status: 200,
                     message: 'Book has been updated',
                     book
                   }))
                   .catch(errorMessage =>
                     res.status(500).send({
-                      status: 500,
                       message: errorMessage
                     }));
               });
@@ -176,7 +163,6 @@ export default {
   deleteBooks(req, res) {
     if (req.decoded.role === 'user') {
       return res.status(403).send({
-        status: 403,
         message: 'Access Denied!'
       });
     }
@@ -184,7 +170,6 @@ export default {
       .then((validateBookId) => {
         if (validateBookId) {
           return res.status(400).send({
-            status: 400,
             message: validateBookId
           });
         }
@@ -200,12 +185,10 @@ export default {
             book
               .destroy()
               .then(() => res.status(204).send({
-                status: 204,
                 message: 'book has been deleted'
               }))
               .catch(errorMessage =>
                 res.status(500).send({
-                  status: 500,
                   message: errorMessage
                 }));
           });

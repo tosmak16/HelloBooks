@@ -33,17 +33,16 @@ export default function getUserdetails(token) {
       },
     })
       .then(
-      (res) => res.json())
-      .then((response) => {
-        if (response.status >= 400) {
-          throw response.message
-        } else if (response.status === 200) {
-          dispatch(getuserdetailsReponse(response.userDetails));
+      (res) => {
+        if (res.status >= 400) {
+          res.json().then((response) => {
+            dispatch(getuserdetailsError(response.message))
+          })
+        } else {
+          res.json().then((response) => {
+            dispatch(getuserdetailsReponse(response.userDetails));
+          })
         }
       })
-      .catch(error => {
-        dispatch(getuserdetailsError(error))
-      });
-
   };
 }
