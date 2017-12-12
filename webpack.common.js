@@ -1,3 +1,5 @@
+// This config is used by dev and production configuration
+
 const webpack = require('webpack');
 const path = require('path');
 
@@ -9,7 +11,9 @@ module.exports = {
     publicPath: '/',
   },
   plugins: [
+    // it exchanges, adds, or removes modules while an application is running without a page reload.
     new webpack.HotModuleReplacementPlugin(),
+    // it Automatically load modules instead of having to import or require them everywhere
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
@@ -18,7 +22,9 @@ module.exports = {
     }),
   ],
   module: {
+    // Loaders help in transformations that are applied on the source code of a module which allow to pre-process files when imported or loaded
     loaders: [{
+      // jsx file loader
       test: /\.jsx?$/,
       include: path.join(__dirname, 'client'),
       exclude: path.join(__dirname, 'node_modules/asx/js/'),
@@ -27,6 +33,7 @@ module.exports = {
         presets: ['es2015', 'react'],
       },
     },
+    // Style loader
     {
       test: /\.css$/,
       loader: 'style-loader!css-loader',
@@ -42,6 +49,7 @@ module.exports = {
         },
       },
     },
+    // file-loader
     {
       test: /\.(png|jpg|gif|svg)$/i,
       use: {
@@ -63,7 +71,6 @@ module.exports = {
         loader: 'sass-loader', // compiles Sass to CSS
       }],
     },
-
     {
       test: /\.worker\.js$/,
       use: {
