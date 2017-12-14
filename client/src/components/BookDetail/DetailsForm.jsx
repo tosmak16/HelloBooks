@@ -11,7 +11,7 @@ let bookTitle = '';
 let id = '';
 let category = '';
 let isbn = '';
-let stocknumber = 0;
+let stockNumber = 0;
 let author = '';
 let image = '';
 let summary = '';
@@ -61,7 +61,7 @@ class DetailsForm extends React.Component {
         id = filteredData[0].id;
         category = filteredData[0].category;
         isbn = filteredData[0].isbn;
-        stocknumber = filteredData[0].stocknumber;
+        stockNumber = filteredData[0].stockNumber;
         author = filteredData[0].author;
         image = filteredData[0].image;
         summary = filteredData[0].summary;
@@ -70,7 +70,7 @@ class DetailsForm extends React.Component {
         localStorage.setItem('id', id);
         localStorage.setItem('category', category);
         localStorage.setItem('isbn', isbn);
-        localStorage.setItem('stocknumber', stocknumber);
+        localStorage.setItem('stockNumber', stockNumber);
         localStorage.setItem('author', author);
         localStorage.setItem('summary', summary);
       }
@@ -82,7 +82,7 @@ class DetailsForm extends React.Component {
       id = localStorage.getItem('id');
       category = localStorage.getItem('category');
       isbn = localStorage.getItem('isbn');
-      stocknumber = localStorage.getItem('stocknumber');
+      stockNumber = localStorage.getItem('stockNumber');
       author = localStorage.getItem('author');
       summary = localStorage.getItem('summary');
       image = localStorage.getItem('image');
@@ -128,7 +128,7 @@ class DetailsForm extends React.Component {
     localStorage.removeItem('id');
     localStorage.removeItem('category');
     localStorage.removeItem('isbn');
-    localStorage.removeItem('stocknumber');
+    localStorage.removeItem('stockNumber');
     localStorage.removeItem('author');
     localStorage.removeItem('summary');
     localStorage.removeItem('bookTitle');
@@ -264,7 +264,7 @@ class DetailsForm extends React.Component {
               <div className="">
                 <p className="bookinfo">Category: {category} </p>
                 <p className="bookinfo">ISBN: {isbn} </p>
-                <p className="bookinfo">Number in Stock: {stocknumber} </p>
+                <p className="bookinfo">Number in Stock: {stockNumber} </p>
               </div>
               <div className="form-inline">
                 <button

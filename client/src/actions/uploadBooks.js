@@ -29,7 +29,7 @@ export function uploadBook(bookData, token) {
             dispatch(uploadbookError(response.message));
           })
         } else {
-          res.json().then(() => {
+          res.json().then((response) => {
             dispatch(uploadbookResponse(response.message));
           })
         }

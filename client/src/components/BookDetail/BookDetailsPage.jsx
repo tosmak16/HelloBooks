@@ -11,18 +11,17 @@ import showbooksByCategory from '../../actions/showbooksByCategory';
  * @param {object} props
  * @returns {views} containing sidebar and details form
  */
-export function BookDetailsPage(props) {
+export const BookDetailsPage = props =>
   /**
    * @returns {views} with sidebar and bookDetails form
    * @memberof BookDetailsPage
    */
-  return (
+  (
     <div>
       <SideBar
         bookData={props.bookData}
         showbooksByCategory={props.showbooksByCategory}
       />
-
       <DetailsForm
         book={props.book}
         borrowBooks={props.borrowBooks}
@@ -33,9 +32,6 @@ export function BookDetailsPage(props) {
       />
     </div>
   );
-}
-
-
 BookDetailsPage.propTypes = {
   book: PropTypes.arrayOf(PropTypes.any).isRequired,
   borrowBooks: PropTypes.func.isRequired,
@@ -44,18 +40,15 @@ BookDetailsPage.propTypes = {
   borrowBookItem: PropTypes.arrayOf(PropTypes.any).isRequired,
   showbooksByCategory: PropTypes.func.isRequired
 };
-
 /**
  * @param {object} state
  * @returns {object} of some reducer state
  */
-function mapStateToProps(state) {
-  return {
-    bookData: state.books[0].data,
-    book: state.selectedbook,
-    borrowBookItem: state.borrowBooks,
-  };
-}
+const mapStateToProps = state => ({
+  bookData: state.books[0].data,
+  book: state.selectedbook,
+  borrowBookItem: state.borrowBooks,
+});
 
 export default connect(mapStateToProps, {
   checkBookDetails,

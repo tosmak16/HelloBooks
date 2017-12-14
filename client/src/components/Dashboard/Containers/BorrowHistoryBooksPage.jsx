@@ -22,17 +22,32 @@ import logout from '../../../actions/logoutAction';
  */
 export class BorrowHistoryBooksPage extends React.Component {
   /**
-   * @function compenentWillReceiveProps
    * @memberof BorrowHistoryBooksPage
    * @returns {void}
    */
-  componentWillMount() {
+  componentDidMount() {
     if (isEmpty(this.props.userData)) {
       this.props.getUserdetails(localStorage.jwtToken);
     }
     $(document).ready(() => {
       $('.modal').modal();
     });
+    if (isEmpty(this.props.borrowBooksHistoryDate)) {
+      this.props.getborrowedBooks(localStorage.jwtToken);
+    }
+    if (isEmpty(this.props.bookData)) {
+      this.props.getbooks(true);
+    }
+  }
+  /**
+  * @returns {void}
+  * @param {object} nextProps
+  * @memberof BorrowHistoryBooksPage
+  */
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isRefreshed) {
+      this.props.getborrowedBooks(localStorage.jwtToken);
+    }
   }
   /**
    * @function render
