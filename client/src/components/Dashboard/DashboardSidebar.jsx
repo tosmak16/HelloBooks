@@ -3,7 +3,6 @@ import isEmpty from 'lodash/isEmpty';
 import PropTypes from 'prop-types';
 import $ from 'jquery';
 import { Link } from 'react-router';
-
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
 import ActivityLoader from '../preloader/ActivityLoader';
@@ -16,7 +15,7 @@ let displayPreloader = 'none';
  * @class DashboardSidebar
  * @extends {React.Component}
  */
-export class DashboardSidebar extends React.Component {
+class DashboardSidebar extends React.Component {
   /**
    * Creates an instance of DashboardSidebar.
    * @param {object} props
@@ -199,9 +198,8 @@ export class DashboardSidebar extends React.Component {
     this.props.logout();
   }
   /**
-   * @returns
    * @memberof DashboardSidebar
-   *  @returns {views} containing side navigation link
+   * @returns {views} containing side navigation link
    */
   render() {
     return (
@@ -241,7 +239,7 @@ export class DashboardSidebar extends React.Component {
                 </Link>
               </li>
               <li>
-                <Link to={'/dashboard/userprofile'} ><i className="material-icons left">dashboard</i>Account</Link>
+                <Link href={'/dashboard/userprofile'} ><i className="material-icons left">dashboard</i>Account</Link>
               </li>
               <li>
                 <Link to={'/dashboard/history'}><i className="material-icons left">data_usage</i>History</Link>

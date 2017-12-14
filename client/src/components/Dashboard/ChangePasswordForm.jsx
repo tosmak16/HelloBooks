@@ -1,254 +1,109 @@
 import React from 'react';
-import isEmpty from 'lodash/isEmpty';
 import PropTypes from 'prop-types';
-import $ from 'jquery';
-
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
 import ActivityLoader from '../preloader/ActivityLoader';
 
-
-let sortedData = '';
-let displayPreloader = 'none';
-
 /**
- * @class ChangePasswordForm
- * @extends {React.Component}
+ * @function ChangePasswordForm
+ * @param {object} props
+ * @returns {views} changepassword form
  */
-export class ChangePasswordForm extends React.Component {
-  /**
-   * Creates an instance of ChangePasswordForm.
-   * @param {object} props
-   * @memberof ChangePasswordForm
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      oldPassword: '',
-      newPassword: '',
-      confirmPassword: '',
-      error: '',
-      display: false,
-      errors: '',
-      message: '',
-    };
-    this.handleClick = this.handleClick.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSave = this.handleSave.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.handleExit = this.handleExit.bind(this);
-  }
-  /**
-   * @memberof ChangePasswordForm
-   * @returns {void}
-   */
-  componentWillMount() {
-    $(document).ready(() => {
-      $('.modal').modal();
-    });
-  }
-
-  /** *
-   * @param {object} nextProps
-   * @memberof ChangePasswordForm
-   * @returns {void}
-   */
-  componentWillReceiveProps(nextProps) {
-    displayPreloader = 'none';
-    sortedData = nextProps.passwordChange[0];
-    if (this.state.display) {
-      if (!isEmpty(sortedData.error) && this.state.display) {
-        $('#modalError').modal('open');
-        this.setState({
-          display: false,
-          errors: sortedData.error,
-        });
-      } else if (!isEmpty(sortedData.data) && this.state.display) {
-        this.setState({
-          display: false,
-          oldPassword: '',
-          newPassword: '',
-          confirmPassword: '',
-          message: sortedData.data,
-        });
-        $('#modalSuccess').modal('open');
-      }
-    }
-  }
-  /**
-   * @param {object} event
-   * @memberof ChangePasswordForm
-   * @returns {void}
-   */
-  handleClose(event) {
-    event.preventDefault();
-    $('#modalOpen').modal('close');
-    this.setState({
-      displayErrorMessage: false,
-    });
-  }
-  /**
-   *@returns {void}
-   * @param {object} event
-   * @memberof ChangePasswordForm
-   */
-  handleExit(event) {
-    event.preventDefault();
-
-    $('#modalError').modal('close');
-    $('#modalSuccess').modal('close');
-    this.setState({
-      displayErrorMessage: false,
-    });
-  }
-  /**
-   *@returns {void}
-   * @param {object} event
-   * @memberof ChangePasswordForm
-   */
-  handleClick(event) {
-    event.preventDefault();
-    this.setState({
-      display: true,
-    });
-    $('#modalOpen').modal('close');
-    displayPreloader = 'block';
-    this.props.changePassword(this.state, localStorage.jwtToken);
-  }
-  /**
-   * @param {object} event
-   * @memberof ChangePasswordForm
-   *  @returns {void}
-   */
-  handleInputChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
-  }
-  /**
-   * @param {object} event
-   * @memberof ChangePasswordForm
-   * @returns {void}
-   */
-  handleSave(event) {
-    event.preventDefault();
-    if (!this.state.newPassword || !this.state.oldPassword || !this.state.confirmPassword) {
-      this.setState({
-        error: 'Please enter the required fields',
-      });
-    } else if (this.state.newPassword !== this.state.confirmPassword) {
-      this.setState({
-        error: 'new password and confirm password does not match',
-      });
-    } else if (this.state.newPassword.length < 6) {
-      this.setState({
-        error: 'password length must be more than 5',
-      });
-    } else {
-      this.setState({
-        error: '',
-      });
-
-      $('#modalOpen').modal('open');
-    }
-  }
-  /**
-   * @returns {views} containing form input fields
-   * @memberof ChangePasswordForm
-   */
-  render() {
-    return (
-      <div id="ch_pas">
-        <form className="form-signin col col l10 offset-l1 col m11 offset-m2 col s12" action="">
-          <h4 className="sub-header form-signin-heading">Change password</h4>
-          {this.state.error && <p style={{ color: 'red' }} className="help-block">*{this.state.error}*</p>}
-          <div className="input-field">
-            <label htmlFor="oldPassword" className="sr-only">Current Password</label>
-            <input
-              type="password"
-              id="oldPassword"
-              className="form-control validate"
-              placeholder="Current password"
-              required
-              value={this.state.oldPassword}
-              name="oldPassword"
-              onChange={this.handleInputChange}
-              disabled={this.state.disabled}
-            />
-          </div>
-          <div className="input-field">
-            <label htmlFor="newPassword" className="sr-only">New password</label>
-            <input
-              type="password"
-              id="newPassword"
-              className="form-control validate"
-              placeholder="New password"
-              required
-              value={this.state.newPassword}
-              name="newPassword"
-              onChange={this.handleInputChange}
-              disabled={this.state.disabled}
-            />
-          </div>
-
-          <div className="input-field">
-            <label htmlFor="confirmPassword" className="sr-only">Confirm password</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              className="form-control validate"
-              placeholder="Confirm password"
-              required
-              value={this.state.confirmPassword}
-              name="confirmPassword"
-              onChange={this.handleInputChange}
-              disabled={this.state.disabled}
-            />
-          </div>
-          <SingleActionModal
-            id={'modalError'}
-            heading={'Oh!'}
-            message={this.state.errors ? this.state.errors : ''}
-            onHandleExit={this.handleExit}
+export const ChangePasswordForm = (props) => {
+  const { state, handleInputChange, handleExit, handleClick, handleClose, handleSave } = props;
+  const { error, oldPassword, newPassword, confirmPassword,
+    displayPreloader, errors, message, disabled } = state;
+  return (
+    <div id="ch_pas">
+      <form className="form-signin col col l10 offset-l1 col m11 offset-m2 col s12" action="">
+        <h4 className="sub-header form-signin-heading">Change password</h4>
+        {error && <p style={{ color: 'red' }} className="help-block">*{error}*</p>}
+        <div className="input-field">
+          <label htmlFor="oldPassword" className="sr-only">Current Password</label>
+          <input
+            type="password"
+            id="oldPassword"
+            className="form-control validate"
+            placeholder="Current password"
+            required
+            value={oldPassword}
+            name="oldPassword"
+            onChange={handleInputChange}
+            disabled={disabled}
           />
-          <SingleActionModal
-            id={'modalSuccess'}
-            heading={'Done!'}
-            message={this.state.message ? this.state.message : ''}
-            onHandleExit={this.handleExit}
+        </div>
+        <div className="input-field">
+          <label htmlFor="newPassword" className="sr-only">New password</label>
+          <input
+            type="password"
+            id="newPassword"
+            className="form-control validate"
+            placeholder="New password"
+            required
+            value={newPassword}
+            name="newPassword"
+            onChange={handleInputChange}
+            disabled={disabled}
           />
-          <DoubleActionModal
-            id={'modalOpen'}
-            onHandleClick={this.handleClick}
-            onHandleClose={this.handleClose}
-            bookTitle={''}
-            heading={'Do you want to change your password?'}
+        </div>
+        <div className="input-field">
+          <label htmlFor="confirmPassword" className="sr-only">Confirm password</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            className="form-control validate"
+            placeholder="Confirm password"
+            required
+            value={confirmPassword}
+            name="confirmPassword"
+            onChange={handleInputChange}
+            disabled={disabled}
           />
-          <div className="input-field inline">
-            <button
-              id="editbtn"
-              type="button"
-              onClick={this.handleSave}
-              className="btn btn-primary pbtn"
-            >Submit</button>
-          </div>
-
-          <div
-            style={{ display: displayPreloader.toString() }}
-            id="activity-loader-id"
-            className="activity"
-          >
-            <ActivityLoader />
-          </div>
-        </form>
-      </div>
-    );
-  }
-}
-
-ChangePasswordForm.propTypes = {
-  changePassword: PropTypes.func.isRequired,
-  passwordChange: PropTypes.arrayOf(PropTypes.any).isRequired,
-
+        </div>
+        <SingleActionModal
+          id={'modalError'}
+          heading={'Oh!'}
+          message={errors || ''}
+          onHandleExit={handleExit}
+        />
+        <SingleActionModal
+          id={'modalSuccess'}
+          heading={'Done!'}
+          message={message || ''}
+          onHandleExit={handleExit}
+        />
+        <DoubleActionModal
+          id={'modalOpen'}
+          onHandleClick={handleClick}
+          onHandleClose={handleClose}
+          bookTitle={''}
+          heading={'Do you want to change your password?'}
+        />
+        <div className="input-field inline">
+          <button
+            id="editbtn"
+            type="button"
+            onClick={handleSave}
+            className="btn btn-primary pbtn"
+          >Submit</button>
+        </div>
+        <div
+          style={{ display: displayPreloader.toString() }}
+          id="activity-loader-id"
+          className="activity"
+        >
+          <ActivityLoader />
+        </div>
+      </form>
+    </div>
+  );
 };
-
-
+ChangePasswordForm.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  handleExit: PropTypes.func.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
+  handleSave: PropTypes.func.isRequired,
+  state: PropTypes.objectOf(PropTypes.any).isRequired
+};
 export default ChangePasswordForm;
