@@ -9,6 +9,10 @@ import getbooks from '../../../actions/getBooks';
 import { deleteBook } from '../../../actions/deleteBooks';
 import refreshPage from '../../../actions/refreshPage';
 import searchbooks from '../../../actions/searchbooks';
+import { getbooksReponse } from '../../../../actions/getBooks';
+import store from '../../../../index';
+import logout from '../../../actions/logoutAction';
+
 
 /**
  * @class BookStoreContainer
@@ -36,7 +40,8 @@ class BookStoreContainer extends React.Component {
       message: '',
       errorFix: true,
       displayPreloader: 'none',
-      filterBookLoaded: false
+      filterBookLoaded: false,
+      bookData: []
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSelected = this.handleChange.bind(this);
@@ -59,6 +64,11 @@ class BookStoreContainer extends React.Component {
    * @returns {void}
    */
   componentWillReceiveProps(nextProps) {
+    if (this.props.isFetched) {
+      this.setState({
+        bookData: nextProps.bookData
+      });
+    }
     const sortedData = nextProps.deleteBookResponse[0];
     if (this.state.serverResponded) {
       if (!_.isEmpty(sortedData.error) && this.state.serverResponded) {
@@ -68,6 +78,11 @@ class BookStoreContainer extends React.Component {
           errors: sortedData.error,
         });
       } else if (!_.isEmpty(sortedData.response) && this.state.serverResponded) {
+        const bookIndex = _.findIndex(this.state.bookData, ['id', Number(this.state.bookId)]);
+        const newBookData = this.state.bookData;
+        this.state.bookData = [...newBookData.slice(0, bookIndex),
+          ...newBookData.slice(bookIndex + 1)];
+        store.dispatch(getbooksReponse(this.state.bookData));
         $('#modal3').modal('open');
         this.setState({
           serverResponded: false,
@@ -81,7 +96,6 @@ class BookStoreContainer extends React.Component {
         displayPreloader: 'block'
       });
       this.props.searchbooks('bookTitle', '', []);
-      this.props.getbooks(true);
     } this.setState({
       displayPreloader: 'none'
     });
@@ -168,7 +182,9 @@ class BookStoreContainer extends React.Component {
       <div >
         <div className="row">
           <div className="col s12 col m12 col l12">
-            <AdminSidebar />
+            <AdminSidebar
+              logout={this.props.logout}
+            />
             <BookStorePage
               filteredData={this.props.filteredData}
               handleChange={this.handleChange}
@@ -193,10 +209,10 @@ BookStoreContainer.propTypes = {
   getbooks: PropTypes.func.isRequired,
   isFetched: PropTypes.bool.isRequired,
   isRefreshed: PropTypes.bool.isRequired,
+  logout: PropTypes.func.isRequired,
   deleteBookResponse: PropTypes.arrayOf(PropTypes.any).isRequired,
   refreshPage: PropTypes.func.isRequired,
   searchbooks: PropTypes.func.isRequired,
-
 };
 
 /**
@@ -218,4 +234,5 @@ export default connect(mapStateToProps, {
   deleteBook,
   refreshPage,
   searchbooks,
+  logout,
 })(BookStoreContainer);

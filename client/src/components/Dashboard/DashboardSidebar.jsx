@@ -7,10 +7,7 @@ import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
 import ActivityLoader from '../preloader/ActivityLoader';
 
-
-let imgName = '';
 let displayPreloader = 'none';
-
 /**
  * @class DashboardSidebar
  * @extends {React.Component}
@@ -58,10 +55,6 @@ class DashboardSidebar extends React.Component {
    */
   componentWillReceiveProps(nextProps) {
     displayPreloader = 'none';
-    if (!isEmpty(nextProps.userData)) {
-      imgName = nextProps.userData[0];
-    }
-
     if (this.state.show) {
       if (!isEmpty(this.props.error)) {
         $('#modaE').modal('open');
@@ -81,6 +74,7 @@ class DashboardSidebar extends React.Component {
 
     if (this.state.imageloaded) {
       if (!isEmpty(nextProps.imageUrl)) {
+        this.props.userData[0].profileImage = nextProps.imageUrl;
         this.setState({
           imageloaded: false,
           profileImage: nextProps.imageUrl,
@@ -212,7 +206,16 @@ class DashboardSidebar extends React.Component {
                   <div className="file-field input-field">
                     <div id="filebtn" style={{ marginLeft: '5px', color: 'white' }} className="">
                       <span />
-                      <img id="userimg" src={this.state.imagePreviewUrl ? this.state.imagePreviewUrl : !isEmpty(imgName.profileImage) ? imgName.profileImage : 'http://res.cloudinary.com/tosmak/image/upload/v1507297483/userimg_cxeszl.png'} width="120" height="120" alt="images" />
+                      {!_.isEmpty(this.props.userData[0])
+                        && <img
+                          id="userimg"
+                          src={this.state.imagePreviewUrl ?
+                            this.state.imagePreviewUrl :
+                            !isEmpty(this.props.userData[0].profileImage) ? this.props.userData[0].profileImage : 'http://res.cloudinary.com/tosmak/image/upload/v1507297483/userimg_cxeszl.png'}
+                          width="120"
+                          height="120"
+                          alt="images"
+                        />}
                       <input
                         disabled={this.state.disabled}
                         className="fileInput"
@@ -239,7 +242,7 @@ class DashboardSidebar extends React.Component {
                 </Link>
               </li>
               <li>
-                <Link href={'/dashboard/userprofile'} ><i className="material-icons left">dashboard</i>Account</Link>
+                <Link to={'/dashboard/userprofile'} ><i className="material-icons left">dashboard</i>Account</Link>
               </li>
               <li>
                 <Link to={'/dashboard/history'}><i className="material-icons left">data_usage</i>History</Link>

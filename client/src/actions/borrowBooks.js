@@ -17,7 +17,6 @@ import { popMessage } from '../../actions/popMessages';
  * @returns error if request is not succcesful
  */
 export default function borrowBooks(token, bookId) {
-
   let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;
 

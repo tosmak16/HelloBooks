@@ -9,6 +9,7 @@ import getbooks from '../../../actions/getBooks';
 import { uploadBook } from '../../../actions/uploadBooks';
 import { uploadImage } from '../../../actions/uploadImage';
 import { uploadFile } from '../../../actions/uploadBookFile';
+import logout from '../../../actions/logoutAction';
 
 /**
  * @class UploadBooksContainer
@@ -100,6 +101,9 @@ class UploadBooksContainer extends React.Component {
           imageSize: 0,
         });
         $('#modalSuccess').modal('open');
+        const fld = document.getElementById('photoInput');
+        fld.form.reset();
+        fld.focus();
       }
     }
     if (this.state.uploadingBook) {
@@ -260,7 +264,9 @@ class UploadBooksContainer extends React.Component {
       <div >
         <div className="row">
           <div className="col s12 col m12 col l12">
-            <AdminSidebar />
+            <AdminSidebar
+              logout={this.props.logout}
+            />
             <UploadBooksPage
               handleChange={this.handleChange}
               handleClick={this.handleClick}
@@ -270,13 +276,6 @@ class UploadBooksContainer extends React.Component {
               handleImageChange={this.handleImageChange}
               handleOpen={this.handleOpen}
               state={this.state}
-            // getbooks={this.props.getbooks}
-            // imageUrl={this.props.imageUrl}
-            // uploadBookItem={this.props.uploadBookItem}
-            // uploadBook={this.props.uploadBook}
-            // uploadImage={this.props.uploadImage}
-            // fileUrl={this.props.fileUrl}
-            // uploadFile={this.props.uploadFile}
             />
           </div>
         </div>
@@ -290,6 +289,7 @@ UploadBooksContainer.propTypes = {
   getbooks: PropTypes.func.isRequired,
   imageUrl: PropTypes.string.isRequired,
   isFetched: PropTypes.bool.isRequired,
+  logout: PropTypes.func.isRequired,
   uploadBook: PropTypes.func.isRequired,
   uploadFile: PropTypes.func.isRequired,
   uploadImage: PropTypes.func.isRequired,
@@ -313,5 +313,6 @@ export default connect(mapStateToProps, {
   getbooks,
   uploadBook,
   uploadImage,
-  uploadFile
+  uploadFile,
+  logout
 })(UploadBooksContainer);
