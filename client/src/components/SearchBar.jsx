@@ -6,12 +6,8 @@ import PropTypes from 'prop-types';
  * @param {object} props
  * @returns {views} Searchbar element and properties
  */
-function SearchBar(props) {
-  /**
-   * @returns
-   * @memberof SearchBar
-   */
-  return (
+const SearchBar = props =>
+  (
     <div className="input-field">
       <input
         id="search"
@@ -25,8 +21,8 @@ function SearchBar(props) {
       <label className="label-icon" htmlFor="search">
         <i className="material-icons">search</i></label>
     </div>
-  );
-}
+  )
+  ;
 
 SearchBar.propTypes = {
   name: PropTypes.string.isRequired,

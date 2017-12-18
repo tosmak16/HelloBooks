@@ -1,6 +1,4 @@
 import PropTypes from 'prop-types';
-
-
 import React, { Component } from 'react';
 import { Document, Page } from 'react-pdf/build/entry.noworker';
 
@@ -105,11 +103,9 @@ class PdfReader extends Component {
     );
   }
 }
-
 PdfReader.propTypes = {
   onHandleClose: PropTypes.func.isRequired,
   pdfUrl: PropTypes.string.isRequired,
 };
-
 export default PdfReader;
 

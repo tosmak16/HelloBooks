@@ -8,22 +8,25 @@ let returnDate = [];
  * @returns {views} containing user's borrowing history
  */
 export function BookHistoryTableRow(props) {
-  const {
-    book
-  } = props;
-  const {
-    bookItem
-  } = props;
+  const { book } = props;
+  const { bookItem } = props;
+  const { image, bookTitle, author } = bookItem[0];
   borrowDate = book.borrowDate;
   returnDate = book.returnDate;
-  return (<tr >
-    <td >
-      <img src={bookItem[0].image} style={{ width: '30px', height: '30px' }} alt="name" />
-    </td>
-    <td>{bookItem[0].bookTitle}</td>
-    <td>{bookItem[0].author}</td>
-    <td>{borrowDate.slice(0, borrowDate.search('T'))}</td>
-    <td > {book.returnDate ? returnDate.slice(0, returnDate.search('T')) : 'Not yet returned'} </td> </tr >
+  return (
+    <tr >
+      {image && <td >
+        <img
+          src={image || ''}
+          style={{ width: '30px', height: '30px' }}
+          alt="name"
+        />
+      </td>}
+      <td>{bookTitle}</td>
+      <td>{author}</td>
+      <td>{borrowDate.slice(0, borrowDate.search('T'))}</td>
+      <td > {book.returnDate ? returnDate.slice(0, returnDate.search('T')) : 'Not yet returned'} </td>
+    </tr >
   );
 }
 BookHistoryTableRow.propTypes = {

@@ -1,52 +1,44 @@
-import axios from 'axios';
 import { browserHistory } from 'react-router';
-
 import 'whatwg-fetch'
-
-
-
-
 import { signupError, signupRequest, signupResponse } from '../../actions/signupActions';
-import { displayMessage } from '../../actions/displayMessages'
+import { validateUserDetails } from '../components/validationHelperFunctions/validateUserDetails';
 /**
- * 
- * 
  * @export
- * @param {any} userData 
- * @returns 
+ * @param {object} userData 
+ * @returns {string} response message
  */
 export function userSignup(userData) {
   let error = '';
   return (dispatch) => {
     dispatch(signupRequest(userData));
-
-    return fetch('/api/v2/users/signup', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(userData)
+    validateUserDetails(userData).then((responseMessage) => {
+      if (responseMessage !== '') {
+        dispatch(signupError(responseMessage));
+      }
+      else {
+        return fetch('/api/v2/users/signup', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(userData)
+        })
+          .then(
+          (res) => {
+            if (res.status >= 400) {
+              res.json().then((response) => {
+                dispatch(signupError(response.message));
+              });
+            }
+            else {
+              res.json().then((response) => {
+                dispatch(signupResponse(response.message));
+                browserHistory.push('/login');
+              })
+            }
+          })
+      }
     })
-      .then(
-      (res) => res.json())
-      .then((response) => {
-        if (response.status === 400) {
-
-          throw response.message
-        }
-        else if (response.status === 201) {
-          dispatch(signupResponse(response.message));
-          dispatch(displayMessage({
-            type: 'success',
-            text: 'Registration successful'
-          }));
-          browserHistory.push('/login');
-        }
-      })
-      .catch(error => {
-
-        dispatch(signupError(error))
-      });
   };
 }

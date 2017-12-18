@@ -30,20 +30,11 @@ export function deleteBook(bookData, token) {
           dispatch(deletebookResponse('book has been deleted'));
         }
         else if (res.status >= 400) {
-          return res.json()
+          res.json().then((response) => {
+            dispatch(deletebookError(response.message));
+          })
         }
       })
-      .then((response) => {
-        if (!isEmpty(response)) {
-          if (response.status >= 400) {
-            throw response.message
-          }
-        }
-      })
-      .catch(error => {
-        dispatch(deletebookError(error));
-      });
-
   }
 
 }

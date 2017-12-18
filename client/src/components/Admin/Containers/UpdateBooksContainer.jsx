@@ -2,8 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import $ from 'jquery';
-
-
+import _ from 'lodash';
 import AdminSidebar from '../AdminSidebar';
 import UpdateBooksPage from '../UpdateBooksPage';
 import getbooks from '../../../actions/getBooks';
@@ -12,6 +11,9 @@ import searchbooks from '../../../actions/searchbooks';
 import { updateBook } from '../../../actions/updateBooks';
 import { uploadImage } from '../../../actions/uploadImage';
 import { uploadFile } from '../../../actions/uploadBookFile';
+import { updateBookDetailsTemp } from '../HelperFunctions/updateBookDetailsTemp';
+import logout from '../../../actions/logoutAction';
+import { validateBookDetails } from '../../validationHelperFunctions/validateBookDetails';
 
 /**
  * @class UpdateBooksContainer
@@ -19,16 +21,413 @@ import { uploadFile } from '../../../actions/uploadBookFile';
  */
 class UpdateBooksContainer extends React.Component {
   /**
+ * Creates an instance of UpdateBooksPage.
+ * @param {object} props
+ * @memberof UpdateBooksPage
+ */
+  constructor(props) {
+    super(props);
+    this.state = {
+      file: '',
+      bookId: '',
+      filterBy: '',
+      searchText: '',
+      error: '',
+      imagePreviewUrl: '',
+      bookTitle: '',
+      author: '',
+      category: '',
+      isbn: '',
+      stockNumber: '',
+      image: '',
+      summary: '',
+      imageHeight: 0,
+      imageWidth: 0,
+      imageSize: 0,
+      isDisabled: false,
+      modalErrorMessage: '',
+      updatingBookDetails: false,
+      show: false,
+      errors: '',
+      message: '',
+      updatingBookCoverImage: false,
+      bookFile: '',
+      bookFileUrl: '',
+      updatingBookFile: false,
+      displayPreloader: 'none',
+      imageLoaded: false,
+      bookData: []
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSelected = this.handleChange.bind(this);
+    this.handleImageChange = this.handleImageChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleExit = this.handleExit.bind(this);
+    this.handleFileChange = this.handleFileChange.bind(this);
+  }
+  /**
    * @memberof UpdateBooksContainer
    * @returns {void}
    */
-  componentWillMount() {
+  componentDidMount() {
     if (!this.props.isFetched) {
       this.props.getbooks(true);
     }
     $(document).ready(() => {
       $('.modal').modal();
     });
+  }
+  /**
+  * @param {object} nextProps
+  * @memberof UpdateBooksPage
+  * @returns {void}
+  */
+  componentWillReceiveProps(nextProps) {
+    if (this.props.isFetched) {
+      this.setState({
+        bookData: nextProps.bookData
+      });
+    }
+    if (nextProps.filteredData.length !== 0 && this.state.show) {
+      this.setState({
+        bookId: nextProps.filteredData[0].id,
+        bookTitle: nextProps.filteredData[0].bookTitle,
+        author: nextProps.filteredData[0].author,
+        category: nextProps.filteredData[0].category,
+        isbn: nextProps.filteredData[0].isbn,
+        stockNumber: nextProps.filteredData[0].stockNumber,
+        image: nextProps.filteredData[0].image,
+        summary: nextProps.filteredData[0].summary,
+        isDisabled: true,
+        show: false,
+      });
+    }
+    if (nextProps.filteredData.length === 0 && this.state.show) {
+      this.setState({
+        bookId: '',
+        imagePreviewUrl: '',
+        bookTitle: '',
+        author: '',
+        category: '',
+        isbn: '',
+        stockNumber: '',
+        image: '',
+        summary: '',
+        imageHeight: 0,
+        imageWidth: 0,
+        imageSize: 0,
+        isDisabled: false,
+        show: false,
+      });
+    }
+    const sortedData = nextProps.updateItem[0];
+    if (this.state.updatingBookDetails) {
+      this.setState({
+        displayPreloader: 'none'
+      });
+      if (!_.isEmpty(sortedData.error) && this.state.updatingBookDetails) {
+        const fld = document.getElementById('photoInput');
+        fld.form.reset();
+        fld.focus();
+        $('#modalE').modal('open');
+        this.setState({
+          filterBy: '',
+          searchText: '',
+          error: '',
+          imagePreviewUrl: '',
+          bookTitle: '',
+          author: '',
+          category: '',
+          isbn: '',
+          stockNumber: '',
+          image: '',
+          summary: '',
+          imageHeight: 0,
+          imageWidth: 0,
+          imageSize: 0,
+          isDisabled: false,
+          modalErrorMessage: '',
+          updatingBookDetails: false,
+          errors: sortedData.error,
+        });
+      } else if (!_.isEmpty(sortedData.response) && this.state.updatingBookDetails) {
+        updateBookDetailsTemp(this.state);
+        this.setState({
+          filterBy: '',
+          searchText: '',
+          error: '',
+          imagePreviewUrl: '',
+          bookTitle: '',
+          author: '',
+          category: '',
+          isbn: '',
+          stockNumber: '',
+          image: '',
+          summary: '',
+          imageHeight: 0,
+          imageWidth: 0,
+          imageSize: 0,
+          isDisabled: false,
+          modalErrorMessage: '',
+          file: '',
+          updatingBookDetails: false,
+          message: sortedData.response
+        });
+        const fld = document.getElementById('photoInput');
+        fld.form.reset();
+        fld.focus();
+        $('#modalS').modal('open');
+      }
+    }
+    if (this.state.updatingBookCoverImage && !this.state.updatingBookFile) {
+      this.setState({
+        displayPreloader: 'none'
+      });
+      if (!_.isEmpty(nextProps.imageUrl)) {
+        this.setState({
+          updatingBookCoverImage: false,
+          image: nextProps.imageUrl,
+          updatingBookDetails: true,
+          displayPreloader: 'block'
+        });
+        setTimeout(() => { this.props.updateBook(this.state, localStorage.jwtToken); }, 1000);
+      }
+    }
+
+
+    if (this.state.updatingBookFile && !this.state.updatingBookCoverImage) {
+      this.setState({
+        displayPreloader: 'none'
+      });
+      if (!_.isEmpty(nextProps.fileUrl) && !this.state.updatingBookCoverImage) {
+        this.setState({
+          updatingBookFile: false,
+          bookFileUrl: nextProps.fileUrl,
+          updatingBookDetails: true,
+          displayPreloader: 'block'
+        });
+        setTimeout(() => { this.props.updateBook(this.state, localStorage.jwtToken); }, 1000);
+      }
+    }
+
+    if (this.state.updatingBookCoverImage && this.state.updatingBookFile) {
+      this.setState({
+        displayPreloader: 'none'
+      });
+      if (!_.isEmpty(nextProps.imageUrl)) {
+        this.setState({
+          updatingBookCoverImage: false,
+          updatingBookFile: true,
+          image: nextProps.imageUrl,
+          updatingBookDetails: false,
+          displayPreloader: 'block'
+        });
+        setTimeout(() => { this.props.uploadFile(this.state.bookFile); }, 1000);
+      }
+    }
+  }
+  /**
+   *
+   *
+   * @param {object} event
+   * @memberof UpdateBooksPage
+   * @returns {void}
+   */
+  handleClick(event) {
+    this.setState({
+      displayPreloader: 'block'
+    });
+    event.preventDefault();
+    if (this.state.file.length !== 0 && this.state.bookFile.length === 0) {
+      this.props.uploadImage(this.state.file);
+      this.setState({
+        updatingBookDetails: false,
+        updatingBookFile: false,
+        updatingBookCoverImage: true,
+      });
+    } else if (this.state.bookFile.length !== 0 && this.state.file.length === 0) {
+      this.props.uploadFile(this.state.bookFile);
+      this.setState({
+        updatingBookDetails: false,
+        updatingBookCoverImage: false,
+        updatingBookFile: true,
+      });
+    } else if (this.state.file.length === 0 && this.state.bookFile.length === 0) {
+      this.props.updateBook(this.state, localStorage.jwtToken);
+      this.setState({
+        updatingBookDetails: true,
+        updatingBookCoverImage: false,
+        updatingBookFile: false,
+      });
+    } else if (this.state.file.length !== 0 && this.state.bookFile.length !== 0) {
+      this.props.uploadImage(this.state.file);
+      this.setState({
+        updatingBookDetails: false,
+        updatingBookCoverImage: true,
+        updatingBookFile: true,
+      });
+    }
+    $('#modalO').modal('close');
+  }
+
+  /**
+   * @param {object} event
+   * @memberof UpdateBooksPage
+   * @returns {void}
+   */
+  handleOpen(event) {
+    this.setState({
+      imageLoaded: true
+    });
+    event.preventDefault();
+    validateBookDetails(this.state)
+      .then((responseMessage) => {
+        if (responseMessage !== '') {
+          this.setState({
+            imageLoaded: false,
+            modalErrorMessage: responseMessage
+          });
+          $('#modalE').modal('open');
+        } else if (this.state.file) {
+          if (this.state.imageHeight > 200 || this.state.imageWidth > 150) {
+            this.setState({
+              imageLoaded: false,
+              modalErrorMessage: 'Please image height and width must be 200 and 150 respectively'
+            });
+            $('#modalE').modal('open');
+          } else if (this.state.imageSize > 500000) {
+            this.setState({
+              imageLoaded: false,
+              modalErrorMessage: 'Please image size must not be more than 500kb'
+            });
+            $('#modalE').modal('open');
+          }
+        }
+
+        if (this.state.bookTitle && this.state.isbn &&
+          this.state.stockNumber && this.state.imageLoaded) {
+          this.setState({
+            modalErrorMessage: '',
+            imageLoaded: false
+          });
+          $('#modalO').modal('open');
+        }
+      });
+  }
+  /**
+   * @param {object} event
+   * @memberof UpdateBooksPage
+   * @returns {void}
+   */
+  handleClose(event) {
+    event.preventDefault();
+    this.setState({
+      errors: '',
+      message: '',
+      bookFile: '',
+      file: ''
+    });
+    $('#modalO').modal('close');
+  }
+  /**
+   * @param {object} event
+   * @memberof UpdateBooksPage
+   * @returns {void}
+   */
+  handleExit(event) {
+    event.preventDefault();
+    $('#modalE').modal('close');
+    $('#modalS').modal('close');
+    this.setState({
+      errors: '',
+      message: '',
+      bookFile: '',
+      file: ''
+
+    });
+    // setTimeout(() => { this.props.getbooks(true); }, 3000);
+  }
+  /**
+   * @param {object} event
+   * @memberof UpdateBooksPage
+   * @returns {void}
+   */
+  handleInputChange(event) {
+    event.preventDefault();
+    this.setState({ [event.target.name]: event.target.value });
+  }
+  /**
+   * @param {object} event
+   * @memberof UpdateBooksPage
+   * @returns {void}
+   */
+  handleChange(event) {
+    event.preventDefault();
+    this.setState({ [event.target.name]: event.target.value });
+    if (event.target.value.length > 3 && this.state.filterBy !== '') {
+      this.setState({ error: '', show: true, });
+      this.props.searchbooks(this.state.filterBy, this.state.searchText, this.props.bookData);
+    }
+  }
+  /**
+   * @param {object} event
+   * @memberof UpdateBooksPage
+   * @returns {void}
+   */
+  handleImageChange(event) {
+    event.preventDefault();
+    const reader = new FileReader();
+    const file = event.target.files[0];
+    reader.onload = () => {
+      const image = new Image();
+      image.src = reader.result;
+      image.onload = () => {
+        this.setState({
+          imageHeight: image.height,
+          imageWidth: image.width,
+          imageSize: file.size,
+        });
+      };
+    };
+    reader.onloadend = () => {
+      this.setState({
+        file,
+        imagePreviewUrl: reader.result,
+      });
+    };
+
+    reader.readAsDataURL(file);
+  }
+
+  /**
+   * @param {object} event
+   * @memberof UpdateBooksPage
+   * @returns {void}
+   */
+  handleFileChange(event) {
+    event.preventDefault();
+    const reader = new FileReader();
+    const bookFile = event.target.files[0];
+    reader.onload = () => {
+    };
+    reader.onloadend = () => {
+      this.setState({
+        bookFile,
+      });
+    };
+    reader.readAsDataURL(bookFile);
+  }
+  /**
+   * @param {object} event
+   * @memberof UpdateBooksPage
+   * @returns {void}
+   */
+  handleSelected(event) {
+    event.preventDefault();
+    this.setState({ [event.target.name]: event.target.value });
   }
   /**
    * @returns {void}
@@ -39,18 +438,20 @@ class UpdateBooksContainer extends React.Component {
       <div >
         <div className="row">
           <div className="col s12 col m12 col l12">
-            <AdminSidebar />
+            <AdminSidebar
+              logout={this.props.logout}
+            />
             <UpdateBooksPage
-              bookData={this.props.bookData}
-              getbooks={this.props.getbooks}
-              filteredData={this.props.filteredData}
-              updateItem={this.props.updateItem}
-              searchbooks={this.props.searchbooks}
-              updateBook={this.props.updateBook}
-              uploadImage={this.props.uploadImage}
-              imageUrl={this.props.imageUrl}
-              fileUrl={this.props.fileUrl}
-              uploadFile={this.props.uploadFile}
+              handleChange={this.handleChange}
+              handleClick={this.handleClick}
+              handleClose={this.handleClose}
+              handleExit={this.handleExit}
+              handleSelected={this.handleSelected}
+              handleFileChange={this.handleFileChange}
+              handleImageChange={this.handleImageChange}
+              handleOpen={this.handleOpen}
+              handleInputChange={this.handleInputChange}
+              state={this.state}
             />
           </div>
         </div>
@@ -66,6 +467,7 @@ UpdateBooksContainer.propTypes = {
   getbooks: PropTypes.func.isRequired,
   imageUrl: PropTypes.string.isRequired,
   isFetched: PropTypes.bool.isRequired,
+  logout: PropTypes.func.isRequired,
   searchbooks: PropTypes.func.isRequired,
   updateBook: PropTypes.func.isRequired,
   updateItem: PropTypes.arrayOf(PropTypes.any).isRequired,
@@ -95,5 +497,6 @@ export default connect(mapStateToProps, {
   searchbooks,
   updateBook,
   uploadImage,
-  uploadFile
+  uploadFile,
+  logout
 })(UpdateBooksContainer);
