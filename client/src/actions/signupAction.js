@@ -25,13 +25,11 @@ export function userSignup(userData) {
       (res) => {
         if (res.status >= 400) {
           res.json().then((response) => {
-            console.log(response.message);
             dispatch(signupError(response.message));
           });
         }
         else {
           res.json().then((response) => {
-            console.log(response.message);
             dispatch(signupResponse(response.message));
             browserHistory.push('/login');
           })

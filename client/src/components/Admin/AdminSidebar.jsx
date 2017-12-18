@@ -1,10 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router';
+import PropTypes from 'prop-types';
 
 /**
  * @returns {views} containing admin side nav bar
+ * @param {object} props
  */
-function AdminSidebar() {
+function AdminSidebar(props) {
+  const handleLogout = (event) => {
+    event.preventDefault();
+    props.logout();
+  };
   return (
     <div className="row">
       <div className="col s12 col m2 col l2">
@@ -25,7 +31,7 @@ function AdminSidebar() {
               <Link href="#"><i className="material-icons left">lock</i>Change Password</Link>
             </li>
             <li>
-              <Link href="index.html"><i
+              <Link to="/login" onClick={handleLogout}><i
                 className="material-icons left"
               >exit_to_app</i>Logout</Link>
             </li>
@@ -35,4 +41,7 @@ function AdminSidebar() {
     </div>
   );
 }
+AdminSidebar.propTypes = {
+  logout: PropTypes.func.isRequired
+};
 export default AdminSidebar;

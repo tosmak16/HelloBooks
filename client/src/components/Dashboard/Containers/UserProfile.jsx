@@ -10,6 +10,8 @@ import { UserProfileForm } from '../UserProfileForm';
 import updateUser from '../../../actions/updateuserDetails';
 import { uploadAvatar } from '../../../actions/uploadUserAvatar';
 import logout from '../../../actions/logoutAction';
+import { updateUserDetailsTemp } from '../HelperFunctions/updateUserDetailsTemp';
+import { setUserDetailsState } from '../HelperFunctions/setUserDetailsState';
 
 /**
  * @export
@@ -47,7 +49,8 @@ export class UserProfile extends React.Component {
       modalErrorMessage: '',
       imageloaded: false,
       displayPreloader: 'none',
-      userDetailChecked: true
+      userDetailChecked: true,
+      userData: [],
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -60,13 +63,16 @@ export class UserProfile extends React.Component {
     * @memberof UserProfile
     * @returns {void}
     */
-  componentDidMount() {
-    if (isEmpty(this.props.userData)) {
-      this.props.getUserdetails(localStorage.jwtToken);
-    }
+  componentWillMount() {
     $(document).ready(() => {
       $('.modal').modal();
     });
+    if (isEmpty(this.props.userData)) {
+      this.props.getUserdetails(localStorage.jwtToken);
+    }
+    if (!isEmpty(this.props.userData) && this.state.userDetailChecked) {
+      setUserDetailsState(self = this);
+    }
   }
   /**
   * @param {object} nextProps
@@ -77,7 +83,7 @@ export class UserProfile extends React.Component {
     this.setState({
       displayPreloader: 'none'
     });
-    if (!isEmpty(nextProps.userData) && this.state.userDataLoaded && this.state.userDetailChecked) {
+    if (!isEmpty(nextProps.userData) && this.state.userDetailChecked) {
       this.setState({
         firstName: nextProps.userData[0].firstName,
         lastName: nextProps.userData[0].lastName,
@@ -85,6 +91,7 @@ export class UserProfile extends React.Component {
         mobileNumber: nextProps.userData[0].mobileNumber ? nextProps.userData[0].mobileNumber : 0,
         membershipType: nextProps.userData[0].membershipType,
         profileImage: nextProps.userData[0].profileImage,
+        userData: nextProps.userData,
         show: false,
       });
     }
@@ -97,6 +104,7 @@ export class UserProfile extends React.Component {
         contentShow: false
       });
     } else if (!isEmpty(sortedData.data) && this.state.contentShow) {
+      updateUserDetailsTemp(this.state);
       this.setState({
         display: false,
         message: sortedData.data,

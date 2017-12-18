@@ -73,7 +73,7 @@ export const BorrowedbooksTable = (props) => {
           onHandleClick={handleYes}
           onHandleClose={handleNo}
           bookTitle={''}
-          heading={'Do you want to return props book?'}
+          heading={'Do you want to return this book?'}
         />
       </div>
       <div

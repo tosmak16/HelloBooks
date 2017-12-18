@@ -11,6 +11,8 @@ import searchbooks from '../../../actions/searchbooks';
 import { updateBook } from '../../../actions/updateBooks';
 import { uploadImage } from '../../../actions/uploadImage';
 import { uploadFile } from '../../../actions/uploadBookFile';
+import { updateBookDetailsTemp } from '../HelperFunctions/updateBookDetailsTemp';
+import logout from '../../../actions/logoutAction';
 
 /**
  * @class UpdateBooksContainer
@@ -52,7 +54,8 @@ class UpdateBooksContainer extends React.Component {
       bookFileUrl: '',
       updatingBookFile: false,
       displayPreloader: 'none',
-      imageLoaded: false
+      imageLoaded: false,
+      bookData: []
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -68,7 +71,7 @@ class UpdateBooksContainer extends React.Component {
    * @memberof UpdateBooksContainer
    * @returns {void}
    */
-  componentWillMount() {
+  componentDidMount() {
     if (!this.props.isFetched) {
       this.props.getbooks(true);
     }
@@ -82,6 +85,11 @@ class UpdateBooksContainer extends React.Component {
   * @returns {void}
   */
   componentWillReceiveProps(nextProps) {
+    if (this.props.isFetched) {
+      this.setState({
+        bookData: nextProps.bookData
+      });
+    }
     if (nextProps.filteredData.length !== 0 && this.state.show) {
       this.setState({
         bookId: nextProps.filteredData[0].id,
@@ -120,6 +128,9 @@ class UpdateBooksContainer extends React.Component {
         displayPreloader: 'none'
       });
       if (!_.isEmpty(sortedData.error) && this.state.updatingBookDetails) {
+        const fld = document.getElementById('photoInput');
+        fld.form.reset();
+        fld.focus();
         $('#modalE').modal('open');
         this.setState({
           filterBy: '',
@@ -142,6 +153,7 @@ class UpdateBooksContainer extends React.Component {
           errors: sortedData.error,
         });
       } else if (!_.isEmpty(sortedData.response) && this.state.updatingBookDetails) {
+        updateBookDetailsTemp(this.state);
         this.setState({
           filterBy: '',
           searchText: '',
@@ -163,6 +175,9 @@ class UpdateBooksContainer extends React.Component {
           updatingBookDetails: false,
           message: sortedData.response
         });
+        const fld = document.getElementById('photoInput');
+        fld.form.reset();
+        fld.focus();
         $('#modalS').modal('open');
       }
     }
@@ -323,7 +338,7 @@ class UpdateBooksContainer extends React.Component {
       file: ''
 
     });
-    setTimeout(() => { this.props.getbooks(true); }, 3000);
+    // setTimeout(() => { this.props.getbooks(true); }, 3000);
   }
   /**
    * @param {object} event
@@ -413,7 +428,9 @@ class UpdateBooksContainer extends React.Component {
       <div >
         <div className="row">
           <div className="col s12 col m12 col l12">
-            <AdminSidebar />
+            <AdminSidebar
+              logout={this.props.logout}
+            />
             <UpdateBooksPage
               handleChange={this.handleChange}
               handleClick={this.handleClick}
@@ -440,6 +457,7 @@ UpdateBooksContainer.propTypes = {
   getbooks: PropTypes.func.isRequired,
   imageUrl: PropTypes.string.isRequired,
   isFetched: PropTypes.bool.isRequired,
+  logout: PropTypes.func.isRequired,
   searchbooks: PropTypes.func.isRequired,
   updateBook: PropTypes.func.isRequired,
   updateItem: PropTypes.arrayOf(PropTypes.any).isRequired,
@@ -469,5 +487,6 @@ export default connect(mapStateToProps, {
   searchbooks,
   updateBook,
   uploadImage,
-  uploadFile
+  uploadFile,
+  logout
 })(UpdateBooksContainer);
