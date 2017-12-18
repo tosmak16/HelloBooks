@@ -2,7 +2,7 @@ import axios from 'axios';
 import { browserHistory } from 'react-router';
 import { uploadimageError, uploadimageRequest, uploadimageResponse } from '../../actions/UploadImages';
 
-const upload_preset = 'bjfllgrd';
+const upload_preset = process.env.UPLOAD_PRESET;
 /**
  * 
  * 
