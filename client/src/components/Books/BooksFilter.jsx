@@ -31,7 +31,7 @@ const BooksFilter = (props) => {
       </div >
       <div className="row">
         {filteredData.length !== 0 && bookIsFound && <BooksCollection checkBookDetails={checkBookDetails} heading={'Search results'} bookData={filteredData} />}
-        {filteredData.length === 0 && bookIsFound === false && booksCollectionDisplay && <BooksCollection heading={'No search results'} checkBookDetails={checkBookDetails} bookData={filteredData} />}
+        {filteredData.length === 0 && booksCollectionDisplay && <BooksCollection heading={'No search results'} checkBookDetails={checkBookDetails} bookData={filteredData} />}
       </div>
     </div >
   );

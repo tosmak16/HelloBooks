@@ -60,8 +60,10 @@ const BookStorePage = (props) => {
             />
           </div>
         </div >
-        {filteredData.length !== 0 && filterBookLoaded ?
-          <h4 className="sub-header">Search result</h4> : <p>.</p>}
+        {filteredData.length !== 0 && filterBookLoaded &&
+          <h4 className="sub-header"> Search result</h4>}
+        {filteredData.length === 0 && filterBookLoaded &&
+          <h4 className="sub-header">No Search result</h4>}
         {filteredData.length !== 0 && filterBookLoaded && tableholder}
         <SingleActionModal
           id={'modal3'}

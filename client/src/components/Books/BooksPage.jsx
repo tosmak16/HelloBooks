@@ -84,7 +84,7 @@ export class BooksPage extends React.Component {
   */
   bookFilterHandleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
-    if (event.target.value.length > 3 && this.state.filterBy !== '') {
+    if (this.state.filterBy !== '') {
       this.setState({ error: '', bookIsFound: true });
       if (this.state.filterBy && this.state.searchText && this.props.bookData) {
         this.props.searchbooks(this.state.filterBy, this.state.searchText, this.props.bookData);
