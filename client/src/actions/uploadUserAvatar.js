@@ -2,7 +2,7 @@ import axios from 'axios';
 import { browserHistory } from 'react-router';
 import { uploadProfileImageError, uploadProfileImageRequest, uploadProfileImageResponse } from '../../actions/uploadAvatar';
 
-const upload_preset = 'bjfllgrd';
+const upload_preset = process.env.UPLOAD_PRESET;
 /**
  * @export
  * @param {object} file 

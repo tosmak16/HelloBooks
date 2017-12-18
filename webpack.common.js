@@ -2,7 +2,9 @@
 
 const webpack = require('webpack');
 const path = require('path');
+const dotenv = require('dotenv');
 
+dotenv.config();
 module.exports = {
   entry: [path.join(__dirname, '/client/index.jsx')],
   output: {
@@ -20,9 +22,18 @@ module.exports = {
       'window.$': 'jquery',
       'window.jQuery': 'jquery',
     }),
+    // DefinePlugin allows to create global constants which can be configured at compile time
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        UPLOAD_PRESET: JSON.stringify(process.env.UPLOAD_PRESET),
+      }
+    })
   ],
   module: {
-    // Loaders help in transformations that are applied on the source code of a module which allow to pre-process files when imported or loaded
+    // Loaders help in transformations
+    // that are applied on the source code of a module which allow 
+    // to pre-process files when imported or loaded
     loaders: [{
       // jsx file loader
       test: /\.jsx?$/,
