@@ -1,9 +1,9 @@
 import { browserHistory } from 'react-router';
 import { uploadFileError, uploadFileRequest, uploadFileResponse } from '../../actions/uploadBookFile';
-const upload_preset = 'bjfllgrd';
+
+const upload_preset = process.env.UPLOAD_PRESET;
 /**
- * 
- * 
+
  * @export
  * @param {object} file 
  * @returns 
