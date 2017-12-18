@@ -12,6 +12,7 @@ import { uploadAvatar } from '../../../actions/uploadUserAvatar';
 import logout from '../../../actions/logoutAction';
 import { updateUserDetailsTemp } from '../HelperFunctions/updateUserDetailsTemp';
 import { setUserDetailsState } from '../HelperFunctions/setUserDetailsState';
+import { validateUserDetailsUpdate } from '../../validationHelperFunctions/validateUserDetailsUpdate';
 
 /**
  * @export
@@ -169,15 +170,24 @@ export class UserProfile extends React.Component {
       });
     }
     if (!this.state.disabled) {
-      if (this.state.firstName && this.state.lastName &&
-        this.state.email && this.state.membershipType) {
-        this.setState({
-          modalErrorMessage: '',
-          disabled: true,
-          buttonText: 'Edit',
+      validateUserDetailsUpdate(this.state)
+        .then((responseMessage) => {
+          if (responseMessage !== '') {
+            this.setState({
+              modalErrorMessage: responseMessage,
+              disabled: false,
+            });
+            $('#modalE').modal('open');
+          } else if (this.state.firstName && this.state.lastName &&
+            this.state.email && this.state.membershipType) {
+            this.setState({
+              modalErrorMessage: '',
+              disabled: true,
+              buttonText: 'Edit',
+            });
+            $('#modalO').modal('open');
+          }
         });
-        $('#modalO').modal('open');
-      }
     }
   }
   /**
@@ -254,7 +264,6 @@ function mapStateToProps(state) {
     imageUrl: state.userProfileImage[0].response,
     error: state.updateUser[0].error.toString(),
     message: state.updateUser[0].data.toString(),
-
   };
 }
 

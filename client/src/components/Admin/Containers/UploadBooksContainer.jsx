@@ -10,6 +10,7 @@ import { uploadBook } from '../../../actions/uploadBooks';
 import { uploadImage } from '../../../actions/uploadImage';
 import { uploadFile } from '../../../actions/uploadBookFile';
 import logout from '../../../actions/logoutAction';
+import { validateBookDetails } from '../../validationHelperFunctions/validateBookDetails';
 
 /**
  * @class UploadBooksContainer
@@ -159,17 +160,22 @@ class UploadBooksContainer extends React.Component {
    */
   handleOpen(event) {
     event.preventDefault();
-    if (this.state.imageHeight !== 200 || this.state.imageWidth !== 150) {
-      this.setState({ modalErrorMessage: 'Please image height  and width must be 200 and 150 respectively' });
-      $('#modalError').modal('open');
-    } else if (this.state.imageSize > 500000) {
-      this.setState({ modalErrorMessage: 'Please image size must not be more than 500kb' });
-      $('#modalError').modal('open');
-    } else if (this.state.bookTitle && this.state.isbn && this.state.stockNumber &&
-      this.state.file && this.state.bookFile) {
-      this.setState({ modalErrorMessage: '' });
-      $('#modalOpen').modal('open');
-    }
+    validateBookDetails(this.state)
+      .then((responseMessage) => {
+        if (responseMessage !== '') {
+          this.setState({ modalErrorMessage: responseMessage });
+          $('#modalError').modal('open');
+        } else if (this.state.imageHeight !== 200 || this.state.imageWidth !== 150) {
+          this.setState({ modalErrorMessage: 'Please image height  and width must be 200 and 150 respectively' });
+          $('#modalError').modal('open');
+        } else if (this.state.imageSize > 500000) {
+          this.setState({ modalErrorMessage: 'Please image size must not be more than 500kb' });
+          $('#modalError').modal('open');
+        } else if (this.state.file && this.state.bookFile) {
+          this.setState({ modalErrorMessage: '' });
+          $('#modalOpen').modal('open');
+        }
+      });
   }
   /**
    * @param {object} event

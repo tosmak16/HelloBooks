@@ -1,8 +1,6 @@
-import axios from 'axios';
 import { browserHistory } from 'react-router';
 import { uploadImage } from './uploadImage';
 import { uploadbookError, uploadbookRequest, uploadbookResponse } from '../../actions/uploadBooks';
-
 
 /** 
  * @export

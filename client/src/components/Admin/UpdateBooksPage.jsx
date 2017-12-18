@@ -39,7 +39,6 @@ const UpdateBooksPage = (props) => {
         </div >
         <h4 className="sub-header"> Edit book</h4>
         <div className="form-group input-field">
-          <label htmlFor="ebookTitle">Title</label>
           <input
             disabled={!state.isDisabled}
             name="bookTitle"
@@ -53,7 +52,6 @@ const UpdateBooksPage = (props) => {
           />
         </div>
         <div className="form-group input-field">
-          <label htmlFor="ebookAuthor">Author</label>
           <input
             name="author"
             disabled={!state.isDisabled}
@@ -67,7 +65,6 @@ const UpdateBooksPage = (props) => {
           />
         </div>
         <div className="form-group input-field">
-          <label htmlFor="ebookCat">Category</label>
           <input
             name="category"
             disabled={!state.isDisabled}
@@ -81,7 +78,6 @@ const UpdateBooksPage = (props) => {
           />
         </div>
         <div className="form-group input-field">
-          <label htmlFor="eISBN">ISBN</label>
           <input
             name="isbn"
             disabled
@@ -95,7 +91,6 @@ const UpdateBooksPage = (props) => {
           />
         </div>
         <div className="form-group input-field">
-          <label htmlFor="estock">Number in stock</label>
           <input
             name="stockNumber"
             disabled={!state.isDisabled}
@@ -109,7 +104,6 @@ const UpdateBooksPage = (props) => {
           />
         </div>
         <div className="form-group input-field">
-          <label htmlFor="ebookSummary" />
           <textarea
             type="textarea"
             name="summary"
