@@ -13,7 +13,7 @@ const BooksCollection = (props) => {
    * @returns {views} with collection of searched books
    */
   const { bookData, heading, checkBookDetails } = props;
-
+  // console.log(bookData);
   const litt = bookData.map(item => (<li key={item.id} className="collection-item avatar">
     <img
       key={item.id}
