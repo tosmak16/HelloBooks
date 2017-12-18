@@ -3,7 +3,7 @@ import db from '../models/index';
 
 const validNumber = /^[0-9]+$/;
 /** *************************************** */
-/* handles update userndetails */
+/* handles update userdetails */
 /* it's an async function that return a promise */
 /* it checks input parameter validity also */
 /** *************************************** */
@@ -24,7 +24,6 @@ export const handleUpdateUser = async (body, userId) => {
     membershipType,
     profileImage
   } = body;
-
   response = await Promise.resolve(
     !_.isEmpty(firstName) && firstName.length < 2 ?
       {

@@ -4,10 +4,8 @@ import { uploadProfileImageError, uploadProfileImageRequest, uploadProfileImageR
 
 const upload_preset = 'bjfllgrd';
 /**
- * 
- * 
  * @export
- * @param {any} file 
+ * @param {object} file 
  * @returns 
  */
 export function uploadAvatar(file) {
@@ -16,7 +14,6 @@ export function uploadAvatar(file) {
   data.append('upload_preset', upload_preset);
   return (dispatch) => {
     dispatch(uploadProfileImageRequest(data));
-
     return fetch('https://api.cloudinary.com/v1_1/tosmak/upload', {
       method: 'POST',
       body: data
@@ -33,7 +30,6 @@ export function uploadAvatar(file) {
       })
       .then((response) => {
         dispatch(uploadProfileImageResponse(response.secure_url));
-
       })
       .catch(error => {
         dispatch(uploadProfileImageError('Bad request'));

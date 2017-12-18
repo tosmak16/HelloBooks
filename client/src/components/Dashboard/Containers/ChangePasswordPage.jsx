@@ -218,7 +218,6 @@ function mapStateToProps(state) {
     error: state.updateUser[0].error.toString(),
     message: state.updateUser[0].data.toString(),
     passwordChange: state.passwordChange,
-
   };
 }
 

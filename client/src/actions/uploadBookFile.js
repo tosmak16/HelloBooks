@@ -1,13 +1,11 @@
-import axios from 'axios';
 import { browserHistory } from 'react-router';
 import { uploadFileError, uploadFileRequest, uploadFileResponse } from '../../actions/uploadBookFile';
-
 const upload_preset = 'bjfllgrd';
 /**
  * 
  * 
  * @export
- * @param {any} file 
+ * @param {object} file 
  * @returns 
  */
 export function uploadFile(file) {
@@ -16,7 +14,6 @@ export function uploadFile(file) {
   data.append('upload_preset', upload_preset);
   return (dispatch) => {
     dispatch(uploadFileRequest(file));
-
     return fetch('https://api.cloudinary.com/v1_1/tosmak/auto/upload', {
       method: 'POST',
       body: data

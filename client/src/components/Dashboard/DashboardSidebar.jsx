@@ -80,7 +80,6 @@ class DashboardSidebar extends React.Component {
           profileImage: nextProps.imageUrl,
           show: true,
         });
-
         this.props.updateUser({ profileImage: nextProps.imageUrl }, localStorage.jwtToken);
       }
     }
@@ -298,7 +297,6 @@ DashboardSidebar.propTypes = {
   message: PropTypes.string.isRequired,
   updateUser: PropTypes.func.isRequired,
   uploadAvatar: PropTypes.func.isRequired
-
 };
 
 export default DashboardSidebar;

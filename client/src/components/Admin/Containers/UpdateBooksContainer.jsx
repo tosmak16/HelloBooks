@@ -13,6 +13,7 @@ import { uploadImage } from '../../../actions/uploadImage';
 import { uploadFile } from '../../../actions/uploadBookFile';
 import { updateBookDetailsTemp } from '../HelperFunctions/updateBookDetailsTemp';
 import logout from '../../../actions/logoutAction';
+import { validateBookDetails } from '../../validationHelperFunctions/validateBookDetails';
 
 /**
  * @class UpdateBooksContainer
@@ -282,30 +283,39 @@ class UpdateBooksContainer extends React.Component {
       imageLoaded: true
     });
     event.preventDefault();
-    if (this.state.file) {
-      if (this.state.imageHeight > 200 || this.state.imageWidth > 150) {
-        this.setState({
-          imageLoaded: false,
-          modalErrorMessage: 'Please image height and width must be 200 and 150 respectively'
-        });
-        $('#modalE').modal('open');
-      } else if (this.state.imageSize > 500000) {
-        this.setState({
-          imageLoaded: false,
-          modalErrorMessage: 'Please image size must not be more than 500kb'
-        });
-        $('#modalE').modal('open');
-      }
-    }
+    validateBookDetails(this.state)
+      .then((responseMessage) => {
+        if (responseMessage !== '') {
+          this.setState({
+            imageLoaded: false,
+            modalErrorMessage: responseMessage
+          });
+          $('#modalE').modal('open');
+        } else if (this.state.file) {
+          if (this.state.imageHeight > 200 || this.state.imageWidth > 150) {
+            this.setState({
+              imageLoaded: false,
+              modalErrorMessage: 'Please image height and width must be 200 and 150 respectively'
+            });
+            $('#modalE').modal('open');
+          } else if (this.state.imageSize > 500000) {
+            this.setState({
+              imageLoaded: false,
+              modalErrorMessage: 'Please image size must not be more than 500kb'
+            });
+            $('#modalE').modal('open');
+          }
+        }
 
-    if (this.state.bookTitle && this.state.isbn &&
-      this.state.stockNumber && this.state.imageLoaded) {
-      this.setState({
-        modalErrorMessage: '',
-        imageLoaded: false
+        if (this.state.bookTitle && this.state.isbn &&
+          this.state.stockNumber && this.state.imageLoaded) {
+          this.setState({
+            modalErrorMessage: '',
+            imageLoaded: false
+          });
+          $('#modalO').modal('open');
+        }
       });
-      $('#modalO').modal('open');
-    }
   }
   /**
    * @param {object} event
