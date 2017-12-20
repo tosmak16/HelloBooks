@@ -1,17 +1,7 @@
 import React from 'react';
 import { Button, Input, Row } from 'react-materialize';
 
-
-import map from 'lodash/map';
 import PropTypes from 'prop-types';
-
-const membershipType = {
-  Basic: 'Basic',
-  Silver: 'Silver',
-  Gold: 'Gold',
-  Bronze: 'Bronze',
-};
-
 /**
  * @export
  * @class SignUpForm
@@ -31,7 +21,6 @@ export class SignUpForm extends React.Component {
       firstName: '',
       lastName: '',
       email: '',
-      membershipType: '',
       errors: '',
     };
 
@@ -64,8 +53,6 @@ export class SignUpForm extends React.Component {
    */
   render() {
     const { error } = this.props.register;
-    const options = map(membershipType, (val, key) =>
-      <option key={val} value={val}>{key}</option>);
     return (
       <form onSubmit={this.handleSubmit} className="form-signin" action="/login">
         <h4 className="form-signin-heading">Create an account</h4>
@@ -138,22 +125,6 @@ export class SignUpForm extends React.Component {
             label="Password"
           />
         </Row>
-
-        <Row>
-          <Input
-            name="membershipType"
-            id="inputSignUpselect"
-            onChange={this.handleChange}
-            value={this.state.membershipType}
-            required
-            s={12}
-            type="select"
-          >
-            <option defaultValue="" disabled>Membership Type</option>
-            {options}
-          </Input>
-        </Row>
-
         <a href=""><Button
           waves="light"
           id="signUbtn"

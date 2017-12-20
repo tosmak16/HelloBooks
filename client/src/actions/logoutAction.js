@@ -7,6 +7,8 @@ import { setCurrentuser } from '../../actions/setCurrentuser';
  */
 export const logout = () => {
   localStorage.clear()
+  Materialize.toast('You are signed out', 5000, 'red');
+
   return (dispatch) => {
     dispatch(setCurrentuser({}));
     $.getScript('https://apis.google.com/js/platform.js')

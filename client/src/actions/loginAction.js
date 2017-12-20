@@ -29,6 +29,7 @@ export default function userSignin(userData) {
           (res) => {
             if (res.status >= 400) {
               res.json().then((response) => {
+                Materialize.toast(response.message, 1000, 'red');
                 dispatch(loginError(response.message));
               })
             }
@@ -38,6 +39,7 @@ export default function userSignin(userData) {
                 window.localStorage.setItem('jwtToken', token);
                 const decodedToken = jwtDecode(token);
                 dispatch(setCurrentuser(decodedToken));
+                Materialize.toast(response.message, 1000, 'green');
                 dispatch(loginResponse(response.message));
                 if (localStorage.jwtToken && decodedToken.role.toString() === 'user') {
                   browserHistory.push('/books')

@@ -13,6 +13,7 @@ export function userSignup(userData) {
     dispatch(signupRequest(userData));
     validateUserDetails(userData).then((responseMessage) => {
       if (responseMessage !== '') {
+        Materialize.toast(responseMessage, 1000, 'red');
         dispatch(signupError(responseMessage));
       }
       else {
@@ -28,11 +29,13 @@ export function userSignup(userData) {
           (res) => {
             if (res.status >= 400) {
               res.json().then((response) => {
+                Materialize.toast(response.message, 1000, 'red');
                 dispatch(signupError(response.message));
               });
             }
             else {
               res.json().then((response) => {
+                Materialize.toast(response.message, 1000, 'green');
                 dispatch(signupResponse(response.message));
                 browserHistory.push('/login');
               })

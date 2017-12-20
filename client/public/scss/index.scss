@@ -93,8 +93,8 @@ div #searchinpt{
 	border: solid #fbfbd2 2px;
 }
 #signUpForm{
-    margin-top: 100px;
-    margin-bottom: 200px;
+	margin-top: -40px;
+    margin-bottom: 20px;
 	
 }
 .jumbotron p{
@@ -183,6 +183,7 @@ h2,h3{
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
+  margin-top: 50px;
 }
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
@@ -392,4 +393,16 @@ h2,h3{
 
 .activity-gap2{
 	background-color:darkgrey;
+}
+
+
+div.toast{
+	bottom: 0px !important;
+    opacity: 0.6 !important;
+    position: absolute !important;
+    left: 5px !important;
+}
+
+.resize-input{
+	height: 10px;
 }

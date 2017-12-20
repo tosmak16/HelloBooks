@@ -31,11 +31,13 @@ export const googleAuthSignIn = (googleUserData) => {
       (res) => {
         if (res.status >= 400) {
           res.json().then((response) => {
+            Materialize.toast(response.message, 1000, 'red');
             dispatch(signupError(response.message));
           });
         }
         else {
           res.json().then((response) => {
+            Materialize.toast(response.message, 1000, 'green');
             const token = response.token;
             window.localStorage.setItem('jwtToken', token);
             const decodedToken = jwtDecode(token);

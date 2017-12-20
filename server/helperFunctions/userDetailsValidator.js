@@ -10,7 +10,7 @@ const validEmail = /[a-zA-Z]+[a-zA-Z0-9]*@[a-z]+.[a-z]+$/;
  * @returns {object} responseMessage
  */
 export const userDetailsValidator = async (body) => {
-  const { password, username, email, firstName, lastName, membershipType } = body;
+  const { password, username, email, firstName, lastName } = body;
   const responseMessage = await Promise
     .resolve(
     // Checks if first name is empty
@@ -35,10 +35,7 @@ export const userDetailsValidator = async (body) => {
                       // Checks if email matches valid email 
                         !email.match(validEmail) ?
                           'Field must contain a valid email address' :
-                          // Checks if membership type is empty
-                          _.isEmpty(membershipType) ?
-                            'membership type is required' :
-                            '');
+                          '');
   return responseMessage;
 };
 export default userDetailsValidator;
