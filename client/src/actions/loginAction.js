@@ -1,4 +1,3 @@
-import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import { browserHistory } from 'react-router';
 import 'whatwg-fetch'

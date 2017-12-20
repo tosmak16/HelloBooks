@@ -161,6 +161,7 @@ export default (app) => {
    *         description: server error
    */
   app.post('/api/v2/users/signin', usersController.signin);
+  app.post('/api/v2/users/googleAuth', usersController.googleSignupAuth);
   /* This is authentication middleware route */
   app.use('/api/v2/', authController.auth);
   /* This route to add books */
