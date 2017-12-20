@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { SignUpForm } from './SignUpForm';
-import Footer from './Footer';
+import { Footer } from './Footer';
 import { userSignup } from '../actions/signupAction';
 
 /**

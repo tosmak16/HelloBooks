@@ -26,7 +26,7 @@ export default {
         if (validationError) {
           return res.status(400).send({ message: validationError });
         }
-        const { username, password, firstName, lastName, email, membershipType } = req.body;
+        const { username, password, firstName, lastName, email } = req.body;
         /* query database by username to check if a user already exist */
         queryUsers({ username: username.toLowerCase().toString() }).then((userResult) => {
           if (userResult) {
@@ -47,7 +47,6 @@ export default {
               firstName,
               lastName,
               email: email.toLowerCase(),
-              membershipType,
               role: process.env.NODE_ENV === 'test' && req.body.role ? 'admin' : 'user'
             })
               .then(storedDetails => res.status(201).send({
