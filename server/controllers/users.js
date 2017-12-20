@@ -9,6 +9,7 @@ import { checkBookStockNumber } from '../helperFunctions/checkBookStockNumber';
 import { handleReturnBooks } from '../helperFunctions/handleReturnBooks';
 import { handleUpdateUser } from '../helperFunctions/handleUpdateUser';
 import { handlePasswordChange } from '../helperFunctions/handlePasswordChange';
+import { validateGoogleAuthRequest } from '../helperFunctions/validateGoogleAuthRequest';
 
 export default {
   /**
@@ -62,6 +63,56 @@ export default {
         });
       });
   },
+  googleSignupAuth(req, res) {
+    const { username, email, password, firstName, lastName } = req.body;
+    const validationResponse = validateGoogleAuthRequest(req.body);
+    if (validationResponse.status === 400) {
+      return res.status(validationResponse.status).send(validationResponse.message);
+    }
+    return db.Users
+      .findOne({
+        where: {
+          $or: {
+            username,
+            email
+          }
+        }
+      }).then((user) => {
+        if (user) {
+          /* creates a token */
+          return jwt.sign({ id: user.id, user: user.username, role: user.role },
+            process.env.SECRET,
+            (err, token) => res.status(200).send({
+              message: 'You have successfully logged in',
+              token,
+              user
+            }));
+        }
+        return db.Users
+          .create({
+            username: username.toLowerCase(),
+            email: email.toLowerCase(),
+            password,
+            firstName,
+            lastName
+          })
+          .then((newUser) => {
+            if (newUser) {
+              /* creates a token */
+              jwt.sign({ id: newUser.id, user: newUser.username, role: newUser.role },
+                process.env.SECRET,
+                (err, token) => res.status(201).send({
+                  message: 'You have successfully sign up',
+                  token,
+                  newUser
+                })
+              );
+            }
+          }).catch(() => res.status(409).send({ message: 'User already exist' }));
+      }).catch(() =>
+        res.status(500).send({ message: 'Internal server error' }));
+  },
+
   /**
    * @method signin
    * @desc this method ensures registered users can login
