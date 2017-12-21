@@ -490,7 +490,7 @@ describe('check borrowbooks route', () => {
       })
       .end((err, res) => {
         res.should.have.status(200);
-        expect(res.body.message).to.equal('Book added to personal archive. happy reading!')
+        expect(res.body.message).to.equal('Book added to personal shelf. happy reading!')
         done();
       });
   });

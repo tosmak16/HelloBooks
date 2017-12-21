@@ -51,21 +51,20 @@ export const handleReturnBooks = async (borrowedBookId) => {
         .update({
           returnType: true,
           returnDate: Date.now(),
-        }).then((returnedBook) => {
-          db.Books
-            .findById(returnedBook.bookId)
-            .then((book) => {
-              book
-                .update({
-                  stockNumber: (book.stockNumber + 1),
-                });
-            });
-          response = {
-            status: 200,
-            message: 'book has been returned successfully'
-          };
-          return response;
-        });
+        }).then(returnedBook => db.Books
+          .findById(returnedBook.bookId)
+          .then((book) => {
+            book
+              .update({
+                stockNumber: (book.stockNumber + 1),
+              });
+            response = {
+              status: 200,
+              message: 'book has been returned successfully',
+              bookTitle: book.bookTitle
+            };
+            return response;
+          }));
     });
   return response;
 };

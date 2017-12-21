@@ -10,7 +10,7 @@ import db from '../models/index';
  * @returns {object} response
  */
 export const checkBookStockNumber = async (queryObject) => {
-  let response = { status: 200, message: 'okay' };
+  let response = { status: 200, message: 'okay', bookTitle: '' };
   await db.Books
     .findById(queryObject)
     .then((book) => {
@@ -28,6 +28,7 @@ export const checkBookStockNumber = async (queryObject) => {
         };
         return response;
       }
+      response.bookTitle = book.bookTitle;
       book.update({
         stockNumber: book.stockNumber - 1
       });

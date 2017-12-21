@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router';
 import 'whatwg-fetch'
 import { loginError, loginRequest, loginResponse } from '../../actions/loginActions';
 import { setCurrentuser } from '../../actions/setCurrentuser';
-import { validateLoginDetails } from '../components/validationHelperFunctions/validateLoginDetails';
+import { validateLoginDetails } from '../helperFunctions/validateLoginDetails';
 /** 
  * @export
  * @param {object} userData 

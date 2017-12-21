@@ -1,7 +1,7 @@
 import { browserHistory } from 'react-router';
 import jwtDecode from 'jwt-decode';
 import { changepasswordError, changepasswordRequest, changepasswordResponse } from '../../actions/changePassword';
-import { validatePasswordChange } from '../components/validationHelperFunctions/validatePasswordChange';
+import { validatePasswordChange } from '../helperFunctions/validatePasswordChange';
 /**
  * @export
  * @param {object} userData 

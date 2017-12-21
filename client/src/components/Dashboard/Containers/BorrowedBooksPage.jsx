@@ -14,7 +14,7 @@ import returnbook from '../../../actions/returnBooks';
 import getunreturnedBooks from '../../../actions/getunreturnedBooks';
 import updateUser from '../../../actions/updateuserDetails';
 import { uploadAvatar } from '../../../actions/uploadUserAvatar';
-import logout from '../../../actions/logoutAction';
+import { logout } from '../../../actions/logoutAction';
 
 /**
  * @export
