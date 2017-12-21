@@ -12,8 +12,8 @@ import { updateBook } from '../../../actions/updateBooks';
 import { uploadImage } from '../../../actions/uploadImage';
 import { uploadFile } from '../../../actions/uploadBookFile';
 import { updateBookDetailsTemp } from '../HelperFunctions/updateBookDetailsTemp';
-import logout from '../../../actions/logoutAction';
-import { validateBookDetails } from '../../validationHelperFunctions/validateBookDetails';
+import { logout } from '../../../actions/logoutAction';
+import { validateBookDetails } from '../../../helperFunctions/validateBookDetails';
 
 /**
  * @class UpdateBooksContainer

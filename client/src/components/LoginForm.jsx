@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Input, Row } from 'react-materialize';
 import $ from 'jquery';
 
-
 /**
  * @export
  * @class LoginForm

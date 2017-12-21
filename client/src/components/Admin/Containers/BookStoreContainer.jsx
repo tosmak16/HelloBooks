@@ -11,7 +11,7 @@ import refreshPage from '../../../actions/refreshPage';
 import searchbooks from '../../../actions/searchbooks';
 import { getbooksReponse } from '../../../../actions/getBooks';
 import store from '../../../../index';
-import logout from '../../../actions/logoutAction';
+import { logout } from '../../../actions/logoutAction';
 
 
 /**

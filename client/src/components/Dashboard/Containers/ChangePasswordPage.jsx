@@ -9,7 +9,7 @@ import { ChangePasswordForm } from '../ChangePasswordForm';
 import updateUser from '../../../actions/updateuserDetails';
 import { uploadAvatar } from '../../../actions/uploadUserAvatar';
 import changePassword from '../../../actions/changePassword';
-import logout from '../../../actions/logoutAction';
+import { logout } from '../../../actions/logoutAction';
 
 /**
  * @export

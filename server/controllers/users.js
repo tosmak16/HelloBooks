@@ -10,6 +10,7 @@ import { handleReturnBooks } from '../helperFunctions/handleReturnBooks';
 import { handleUpdateUser } from '../helperFunctions/handleUpdateUser';
 import { handlePasswordChange } from '../helperFunctions/handlePasswordChange';
 import { validateGoogleAuthRequest } from '../helperFunctions/validateGoogleAuthRequest';
+import { sendMail } from '../helperFunctions/sendMail';
 
 export default {
   /**
@@ -79,7 +80,7 @@ export default {
       }).then((user) => {
         if (user) {
           /* creates a token */
-          return jwt.sign({ id: user.id, user: user.username, role: user.role },
+          return jwt.sign({ id: user.id, email: user.email, user: user.username, role: user.role },
             process.env.SECRET,
             (err, token) => res.status(200).send({
               message: 'You have successfully logged in',
@@ -98,7 +99,7 @@ export default {
           .then((newUser) => {
             if (newUser) {
               /* creates a token */
-              jwt.sign({ id: newUser.id, user: newUser.username, role: newUser.role },
+              jwt.sign({ id: newUser.id, email: user.email, user: newUser.username, role: newUser.role },
                 process.env.SECRET,
                 (err, token) => res.status(201).send({
                   message: 'You have successfully sign up',
@@ -135,9 +136,9 @@ export default {
               message: 'please enter valid details'
             });
           }
-          const { id, username, role } = user;
+          const { id, username, role, email } = user;
           /* creates a token */
-          jwt.sign({ id, user: username, role }, process.env.SECRET, (err, token) => {
+          jwt.sign({ id, user: username, email, role }, process.env.SECRET, (err, token) => {
             res.status(200).send({
               message: 'You have successfully logged in',
               token,
@@ -231,10 +232,14 @@ export default {
                             userId,
                             bookId,
                           })
-                          .then(borrowBookResponse => res.status(200).send({
-                            message: 'Book added to personal archive. happy reading!',
-                            borrowBookResponse
-                          }))
+                          .then((borrowBookResponse) => {
+                            res.status(200).send({
+                              message: 'Book added to personal shelf. happy reading!',
+                              borrowBookResponse
+                            });
+                            const emailMessage = `borrowed ${bookStatus.bookTitle}`;
+                            sendMail(req.body.token, emailMessage);
+                          })
                           .catch(errorMessage =>
                             res.status(500).send({
                               message: errorMessage
@@ -289,10 +294,13 @@ export default {
    */
   returnBooks(req, res) {
     handleReturnBooks(req.body.Id)
-      .then(handleReturnBooksResponse =>
+      .then((handleReturnBooksResponse) => {
         res.status(handleReturnBooksResponse.status).send({
           message: handleReturnBooksResponse.message
-        })
+        });
+        const emailMessage = `returned ${handleReturnBooksResponse.bookTitle}`;
+        sendMail(req.headers.token, emailMessage);
+      }
       )
       .catch(errorMessage => res.status(500).send({
         message: errorMessage.errors[0].message.toString(),

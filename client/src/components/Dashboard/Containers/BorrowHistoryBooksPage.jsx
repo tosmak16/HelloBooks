@@ -12,7 +12,7 @@ import getborrowedBooks from '../../../actions/getborrowedBooks';
 import getbooks from '../../../actions/getBooks';
 import updateUser from '../../../actions/updateuserDetails';
 import { uploadAvatar } from '../../../actions/uploadUserAvatar';
-import logout from '../../../actions/logoutAction';
+import { logout } from '../../../actions/logoutAction';
 
 
 /**

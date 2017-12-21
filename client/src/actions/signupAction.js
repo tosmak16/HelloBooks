@@ -1,7 +1,7 @@
 import { browserHistory } from 'react-router';
 import 'whatwg-fetch'
 import { signupError, signupRequest, signupResponse } from '../../actions/signupActions';
-import { validateUserDetails } from '../components/validationHelperFunctions/validateUserDetails';
+import { validateUserDetails } from '../helperFunctions/validateUserDetails';
 /**
  * @export
  * @param {object} userData 

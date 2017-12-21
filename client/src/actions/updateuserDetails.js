@@ -3,7 +3,6 @@ import jwtDecode from 'jwt-decode';
 
 import { uploadImage } from './uploadImage';
 import { updateuserError, updateuserRequest, updateuserResponse } from '../../actions/updateUser';
-import { validateUserDetailsUpdate } from '../components/validationHelperFunctions/validateUserDetailsUpdate';
 
 /**
  * @export

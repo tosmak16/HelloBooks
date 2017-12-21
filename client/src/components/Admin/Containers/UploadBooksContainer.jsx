@@ -9,8 +9,10 @@ import getbooks from '../../../actions/getBooks';
 import { uploadBook } from '../../../actions/uploadBooks';
 import { uploadImage } from '../../../actions/uploadImage';
 import { uploadFile } from '../../../actions/uploadBookFile';
-import logout from '../../../actions/logoutAction';
-import { validateBookDetails } from '../../validationHelperFunctions/validateBookDetails';
+import { logout } from '../../../actions/logoutAction';
+import {
+  validateBookDetails
+} from '../../../helperFunctions/validateBookDetails';
 
 /**
  * @class UploadBooksContainer

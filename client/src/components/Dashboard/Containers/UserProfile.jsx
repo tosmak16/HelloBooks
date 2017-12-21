@@ -9,10 +9,10 @@ import DashboardSidebar from '../DashboardSidebar';
 import { UserProfileForm } from '../UserProfileForm';
 import updateUser from '../../../actions/updateuserDetails';
 import { uploadAvatar } from '../../../actions/uploadUserAvatar';
-import logout from '../../../actions/logoutAction';
+import { logout } from '../../../actions/logoutAction';
 import { updateUserDetailsTemp } from '../HelperFunctions/updateUserDetailsTemp';
 import { setUserDetailsState } from '../HelperFunctions/setUserDetailsState';
-import { validateUserDetailsUpdate } from '../../validationHelperFunctions/validateUserDetailsUpdate';
+import { validateUserDetailsUpdate } from '../../../helperFunctions/validateUserDetailsUpdate';
 
 /**
  * @export
