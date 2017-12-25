@@ -1,7 +1,9 @@
 import _ from 'lodash';
 import db from '../models/index';
+import bcrypt from 'bcrypt';
 
 const validNumber = /^[0-9]+$/;
+
 /** *************************************** */
 /* handles update userdetails */
 /* it's an async function that return a promise */
@@ -22,7 +24,8 @@ export const handleUpdateUser = async (body, userId) => {
     lastName,
     mobileNumber,
     membershipType,
-    profileImage
+    profileImage,
+    password,
   } = body;
   response = await Promise.resolve(
     !_.isEmpty(firstName) && firstName.length < 2 ?
@@ -41,33 +44,36 @@ export const handleUpdateUser = async (body, userId) => {
             {
               status: 400,
               message: 'mobile number length should be more than 2'
-            } : await db.Users
-              .findById(userId)
-              .then((user) => {
-                if (_.isEmpty(user)) {
-                  return {
-                    status: 401,
-                    message: 'User does not exist'
-                  };
-                }
-                return user
-                  .update({
-                    firstName: firstName || user.firstName,
-                    lastName: lastName || user.lastName,
-                    mobileNumber: mobileNumber || user.mobileNumber,
-                    membershipType: membershipType || user.membershipType,
-                    profileImage: profileImage || user.profileImage,
-                  })
-                  .then(() => ({
-                    status: 200,
-                    message: 'Details has been updated',
-                    user
-                  }))
-                  .catch(errorMessage => ({
-                    status: 500,
-                    message: errorMessage
-                  }));
-              })
+            } : !_.isEmpty(password) && password.length < 6 ?
+              { status: 400, message: 'password length should be more than 5' } :
+              await db.Users
+                .findById(userId)
+                .then((user) => {
+                  if (_.isEmpty(user)) {
+                    return {
+                      status: 401,
+                      message: 'User does not exist'
+                    };
+                  }
+                  return user
+                    .update({
+                      firstName: firstName || user.firstName,
+                      lastName: lastName || user.lastName,
+                      mobileNumber: mobileNumber || user.mobileNumber,
+                      membershipType: membershipType || user.membershipType,
+                      profileImage: profileImage || user.profileImage,
+                      password: password ? bcrypt.hashSync(password, bcrypt.genSaltSync(10)) : user.password
+                    })
+                    .then(() => ({
+                      status: 200,
+                      message: 'Details has been updated',
+                      user
+                    }))
+                    .catch(errorMessage => ({
+                      status: 500,
+                      message: errorMessage
+                    }));
+                })
   );
   return response;
 };

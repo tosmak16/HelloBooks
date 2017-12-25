@@ -68,12 +68,11 @@ width: 1000px;
 
 @media (max-width: 600px) {
   #sidenava {
-    width: 600px;
-   
+    width: 600px; 
   }
   }
 
-#modal2,#modal1,#modal3, #modalOpen,#modalSuccess,#modalError, #modalO,#modalS,#modalE, #modaO,#modaS,#modaE {
+#modal2, #modal1,#modal3, #modalOpen,#modalSuccess,#modalError, #modalO,#modalS,#modalE, #modaO,#modaS,#modaE {
     border: 20px;
     border-color: burlywood;
     opacity: 50%;
@@ -86,6 +85,68 @@ width: 1000px;
     left: 28%!important;
     width: 450px;    
     transition: all .3s ease;
+  }
+  #modalPassword{
+    display: block;
+    z-index: 1000;
+    background-color: #fafbd2;
+    height: 600px;
+    width: 600px;
+    border: 20px;
+    border-color: burlywood;
+    opacity: 50%;
+    color: #3d1112;
+    border-style: double;
+    border-width: 10px;
+    border-radius: 50px;
+    top: 10% !important;
+    left: 10%!important;
+    transition: all .3s ease;
+  }
+  #modalButton{
+    background-color: burlywood;
+    color: white;
+    left: 92%;
+  }
+  #modalPasswordHeader{
+    position: relative;
+    top: 2%;
+    left: 4%;
+  }
+  .modal-content{
+    position: relative;
+    top: 0px;
+  }
+  #modal-cancel{
+    position: relative;
+    top: 5px;
+    left: 90%;
+    border-radius: 50%;
+    background-color: transparent;
+  }
+
+  @media (max-width: 600px) {
+    #modalPassword{
+    border: 20px;
+    border-color: burlywood;
+    opacity: 50%;
+    color: #3d1112;
+    border-style: double;
+    background-color: #fafbd2;
+    border-width: 10px;
+    border-radius: 50px;
+    top: 15% !important;
+    right: 13%!important;
+    left: auto!important;
+    bottom: auto!important;
+    width: 350px;  
+    transition: all .9s ease;
+    }
+    #modalButton{
+      background-color: burlywood;
+      color: white;
+      left: 66%;
+    }
   }
 
   @media (max-width: 600px) {
@@ -107,40 +168,10 @@ width: 1000px;
     }
     }
   
-
-
-
-  // #modal2{
-  //   border: 20px;
-  //   border-color: burlywood;
-  //   opacity: 50%;
-  //   color: #3d1112;
-  //   border-style: double;
-  //   background-color: wheat;
-  //   border-width: 10px;
-  //   border-radius: 50px;
-  // }
-
-  // #modal3{
-  //   border: 20px;
-  //   border-color: burlywood;
-  //   opacity: 50%;
-  //   color: #3d1112;
-  //   border-style: double;
-  //   background-color: wheat;
-  //   border-width: 10px;
-  //   border-radius: 50px;
-  // }
-
-
 @media (min-width: 600px) {
 #book_body{
   padding-left: 50px;
   margin-left: 50px;
-
-  
- 
-
 }
 }
 
@@ -150,7 +181,6 @@ width: 1000px;
 
 #card_div{
 padding-right: 10px;
-
 }
 
 #card_box{
@@ -222,8 +252,6 @@ h2{
 */
 
 /* Move down content because we have a fixed navbar that is 50px tall */
-
-
 
 a.heada{
 color: burlywood;

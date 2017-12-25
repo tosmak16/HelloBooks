@@ -11,6 +11,8 @@ import { handleUpdateUser } from '../helperFunctions/handleUpdateUser';
 import { handlePasswordChange } from '../helperFunctions/handlePasswordChange';
 import { validateGoogleAuthRequest } from '../helperFunctions/validateGoogleAuthRequest';
 import { sendMail } from '../helperFunctions/sendMail';
+import { handleResetPassword } from '../helperFunctions/handleResetPassword';
+import { sendPasswordReset } from '../helperFunctions/sendPasswordReset';
 
 export default {
   /**
@@ -390,8 +392,27 @@ export default {
    */
   changePassword(req, res) {
     handlePasswordChange(req.body, req.params)
-      .then(changePasswordResponse => res.status(changePasswordResponse.status).send({
-        message: changePasswordResponse.message
-      }));
+      .then((changePasswordResponse) => {
+        const { status, message } = changePasswordResponse;
+        res.status(status).send({
+          message
+        });
+      });
   },
+  /**
+ * @method resetPassword
+ * @description this method handles reset password request
+ * @param {object} req
+ * @param {object} res
+ * @returns {object} response
+ */
+  resetPassword(req, res) {
+    const { email } = req.body;
+    handleResetPassword(req.body.email)
+      .then((passwordResetResponse) => {
+        const { status, message, password } = passwordResetResponse;
+        res.status(status).send({ message });
+        if (status === 200) { sendPasswordReset(email, password); }
+      });
+  }
 };

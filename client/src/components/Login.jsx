@@ -6,6 +6,8 @@ import { Footer } from './Footer';
 import userSignin from '../actions/loginAction';
 import getbooks from '../actions/getBooks';
 import { googleAuthSignIn } from '../actions/googleAuthSignIn';
+import { resetUserPassword } from '../actions/resetUserPassword';
+
 /**
  * @param {object} props
  * @export Login
@@ -20,6 +22,8 @@ export const Login = props => (
         userSignin={props.userSignin}
         googleAuthSignIn={props.googleAuthSignIn}
         login={props.login}
+        resetUserPassword={props.resetUserPassword}
+        resetPasswordStatus={props.resetPasswordStatus}
       />
     </div>
     <Footer />
@@ -30,7 +34,8 @@ Login.propTypes = {
   login: PropTypes.objectOf(PropTypes.any).isRequired,
   userSignin: PropTypes.func.isRequired,
   googleAuthSignIn: PropTypes.func.isRequired,
-
+  resetUserPassword: PropTypes.func.isRequired,
+  resetPasswordStatus: PropTypes.string.isRequired
 };
 /**
  *@function mapStateToProps
@@ -38,6 +43,15 @@ Login.propTypes = {
  * @returns {object} login
  */
 function mapStateToProps(state) {
-  return { login: state.login[0] };
+  return {
+    login: state.login[0],
+    resetPasswordStatus: state.resetPassword[0].data
+  };
 }
-export default connect((mapStateToProps), { userSignin, getbooks, googleAuthSignIn })(Login);
+export default connect((mapStateToProps),
+  {
+    userSignin,
+    getbooks,
+    googleAuthSignIn,
+    resetUserPassword
+  })(Login);
