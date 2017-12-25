@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input, Row } from 'react-materialize';
 import $ from 'jquery';
+import { ResetPasswordModal } from './modal/ResetPasswordModal';
 
 /**
  * @export
@@ -21,12 +22,18 @@ export class LoginForm extends React.Component {
       username: '',
       password: '',
       errors: '',
+      displayModal: false,
+      userEmailText: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onSignIn = this.onSignIn.bind(this);
     this.handleGoogleSignin = this.handleGoogleSignin.bind(this);
+    this.renderResetPasswordModal = this.renderResetPasswordModal.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleInputEmailChange = this.handleInputEmailChange.bind(this);
+    this.handleSendMail = this.handleSendMail.bind(this);
   }
   /**
    * @memberof LoginForm
@@ -43,6 +50,18 @@ export class LoginForm extends React.Component {
           longtitle: false,
         });
       });
+  }
+  /**
+   * @memberof LoginForm
+   * @returns {void}
+   */
+  componentWillReceiveProps(nextProps) {
+    const { resetPasswordStatus } = nextProps;
+    if (resetPasswordStatus !== this.props.resetPasswordStatus) {
+      this.setState({
+        userEmailText: ''
+      });
+    }
   }
   /**
   * @param {object} response
@@ -89,6 +108,48 @@ export class LoginForm extends React.Component {
     this.props.userSignin(this.state);
     this.props.getbooks(true);
   }
+  /**
+ * @param {object} event
+ * @memberof LoginForm
+ * @returns {void}
+ */
+  handleClose() {
+    this.setState({
+      displayModal: false
+    });
+  }
+
+  /**
+ * @param {object} event
+ * @memberof LoginForm
+ * @returns {void}
+ */
+  handleSendMail() {
+    this.props.resetUserPassword(this.state.userEmailText);
+  }
+
+  /**
+ * @param {object} event
+ * @memberof LoginForm
+ * @returns {void}
+ */
+  handleInputEmailChange(event) {
+    this.setState({
+      userEmailText: event.target.value
+    });
+  }
+  /**
+  * @param {object} event
+  * @memberof LoginForm
+  * @returns {void}
+  */
+  renderResetPasswordModal() {
+    this.setState({
+      displayModal: true
+    });
+  }
+
+
   /**
    * @returns {views} with input fields
    * @memberof LoginForm
@@ -161,14 +222,25 @@ export class LoginForm extends React.Component {
           />
           <p>
             <label htmlFor="forgot_pass" >
-              <a id="forgot_pass" href=""> Forgot Password ? </a>
+              <button
+                id="forgot_pass"
+                type="button"
+                onClick={this.renderResetPasswordModal}
+              > Forgot Password ? </button>
             </label>
           </p>
-
           <a href="/signup" id="createbtn" className="" > <b>Create account</b></a>
-
         </form >
-
+        {
+          this.state.displayModal
+          &&
+          <ResetPasswordModal
+            handleClose={this.handleClose}
+            handleSendMail={this.handleSendMail}
+            handleInputEmailChange={this.handleInputEmailChange}
+            userEmailText={this.state.userEmailText}
+          />
+        }
       </div>
     );
   }
@@ -178,7 +250,9 @@ LoginForm.propTypes = {
   getbooks: PropTypes.func.isRequired,
   login: PropTypes.objectOf(PropTypes.any).isRequired,
   userSignin: PropTypes.func.isRequired,
-  googleAuthSignIn: PropTypes.func.isRequired
+  googleAuthSignIn: PropTypes.func.isRequired,
+  resetUserPassword: PropTypes.func.isRequired,
+  resetPasswordStatus: PropTypes.string.isRequired
 };
 
 

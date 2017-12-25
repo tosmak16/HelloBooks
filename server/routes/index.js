@@ -162,6 +162,8 @@ export default (app) => {
    */
   app.post('/api/v2/users/signin', usersController.signin);
   app.post('/api/v2/users/googleAuth', usersController.googleSignupAuth);
+  app.put('/api/v2/users/resetPassword',
+    usersController.resetPassword);
   /* This is authentication middleware route */
   app.use('/api/v2/', authController.auth);
   /* This route to add books */
@@ -559,3 +561,4 @@ export default (app) => {
     usersController.changePassword
   );
 };
+
