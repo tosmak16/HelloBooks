@@ -69,7 +69,8 @@ export default {
     const { username, email, password, firstName, lastName } = req.body;
     const validationResponse = validateGoogleAuthRequest(req.body);
     if (validationResponse.status === 400) {
-      return res.status(validationResponse.status).send(validationResponse.message);
+      return res.status(validationResponse.status)
+        .send({ message: validationResponse.message });
     }
     return db.Users
       .findOne({
@@ -100,17 +101,20 @@ export default {
           })
           .then((newUser) => {
             if (newUser) {
+              const { id, email, username, role } = newUser;
               /* creates a token */
-              jwt.sign({ id: newUser.id, email: user.email, user: newUser.username, role: newUser.role },
+              jwt.sign({ id, email, user: username, role },
                 process.env.SECRET,
-                (err, token) => res.status(201).send({
-                  message: 'You have successfully sign up',
-                  token,
-                  newUser
-                })
+                (err, token) => {
+                  res.status(201).send({
+                    message: 'You have successfully sign up',
+                    token,
+                    newUser
+                  });
+                }
               );
             }
-          }).catch(() => res.status(409).send({ message: 'User already exist' }));
+          });
       }).catch(() =>
         res.status(500).send({ message: 'Internal server error' }));
   },
