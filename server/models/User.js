@@ -72,7 +72,7 @@ export default (sequelize, DataTypes) => {
         },
         len: {
           args: [2, 100],
-          msg: 'Lastname should be longer than one characters',
+          msg: 'Lastname should be longer than two characters',
         },
       },
     },

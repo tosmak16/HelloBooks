@@ -6,9 +6,6 @@ import pgh from 'pg-hstore';
 import chai from 'chai';
 import sinon from 'sinon';
 import chaiHttp from 'chai-http';
-
-
-
 import server from '../../app';
 import auth from '../middleWare/auth';
 import User from '../models/User';
@@ -925,3 +922,103 @@ describe('Check for change password api route', () => {
       });
   });
 });
+//PASSWORD RESET TEST
+describe('Check for reset password api route', () => {
+  it('should return Email is required with 400 status if email is not inputed', (done) => {
+    chai.request(server)
+      .put('/api/v2/users/resetPassword')
+      .send({ email: '' })
+      .end((err, res) => {
+        res.should.have.status(400);
+        expect(res.body.message).to.equal('Email is required');
+        done();
+      });
+  });
+
+  it('should return valid email is required with 400 status if email is invalid', (done) => {
+    chai.request(server)
+      .put('/api/v2/users/resetPassword')
+      .send({ email: 't' })
+      .end((err, res) => {
+        res.should.have.status(400);
+        expect(res.body.message).to.equal('It must be a valid email address');
+        done();
+      });
+  });
+  it('should return Sorry email does not exist with 400 status if email does not exist', (done) => {
+    chai.request(server)
+      .put('/api/v2/users/resetPassword')
+      .send({ email: 'usera1@gmail.commmmm' })
+      .end((err, res) => {
+        res.should.have.status(400);
+        expect(res.body.message).to.equal('Sorry email does not exist');
+        done();
+      });
+  });
+
+  it('should return Successful! Check your email for password reset details with 400 status if email does not exist', (done) => {
+    chai.request(server)
+      .put('/api/v2/users/resetPassword')
+      .send({ email: 'usera1@gmail.com' })
+      .end((err, res) => {
+        res.should.have.status(200);
+        expect(res.body.message).to.equal('Successful! Check your email for password reset details');
+        done();
+      });
+  });
+
+  describe('Check for google sign in api route', () => {
+    it('should login successfully with 200 status if valid details is inputed', (done) => {
+      const user = {
+        username: 'user',
+        password: '123456',
+        firstName: 'bayren',
+        lastName: 'helen',
+        email: 'usera1@gmail.com',
+        membershipType: 'Basic',
+      };
+      chai.request(server)
+        .post('/api/v2/users/googleAuth')
+        .send(user)
+        .end((err, res) => {
+          res.should.have.status(200);
+          expect(res.body.message).to.equal('You have successfully logged in');
+          done();
+        });
+    });
+    it('should login succesgsfully with 201 status if valid details is inputed', (done) => {
+      const user2 = {
+        username: 'user90',
+        password: '123456',
+        firstName: 'bayren',
+        lastName: 'helen',
+        email: 'usera90@gmail.com',
+      };
+      chai.request(server)
+        .post('/api/v2/users/googleAuth')
+        .send(user2)
+        .end((err, res) => {
+          res.should.have.status(201);
+          expect(res.body.message).to.equal('You have successfully sign up');
+          done();
+        });
+    });
+    it('should not login succesgsfully with 400 status if valid details is inputed', (done) => {
+      const user3 = {
+        username: '',
+        password: '123456',
+        firstName: 'bayren',
+        lastName: 'helen',
+        email: 'usera90@gmail.com',
+      };
+      chai.request(server)
+        .post('/api/v2/users/googleAuth')
+        .send(user3)
+        .end((err, res) => {
+          res.should.have.status(400);
+          expect(res.body.message).to.equal('invalid account details');
+          done();
+        });
+    });
+  })
+})
