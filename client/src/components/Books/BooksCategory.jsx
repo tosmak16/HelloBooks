@@ -14,7 +14,9 @@ const BooksCategory = (props) => {
     <div className="row">
       {!lodash.isEmpty(sortedData.categoryData) ?
         <BooksCollection checkBookDetails={checkBookDetails} heading={`${sortedData.category} Books`} bookData={sortedData.categoryData} /> :
-        <h4>{''}</h4>}
+        sortedData.selectedCategory &&
+        <BooksCollection checkBookDetails={checkBookDetails} heading={`No available ${sortedData.category} Books`} bookData={[]} />
+      }
     </div>
   );
 };
