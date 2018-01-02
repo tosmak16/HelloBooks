@@ -4,35 +4,24 @@ import { uploadProfileImageError, uploadProfileImageRequest, uploadProfileImageR
 
 const upload_preset = process.env.UPLOAD_PRESET;
 /**
- * @export
+ * @export uploadAvatar
+ * @description it dispatches action for upload user's avatar request and response
  * @param {object} file 
- * @returns 
+ * @returns {action} dispacted actions
  */
-export function uploadAvatar(file) {
+export const uploadAvatar = (file) => {
   const data = new FormData();
   data.append('file', file);
   data.append('upload_preset', upload_preset);
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(uploadProfileImageRequest(data));
-    return fetch('https://api.cloudinary.com/v1_1/tosmak/upload', {
+    const response = await fetch('https://api.cloudinary.com/v1_1/tosmak/upload', {
       method: 'POST',
       body: data
     })
-      .then(
-      (res) => {
-        if (res.status === 200) {
-          return res.json()
-        }
-
-        else if (res.status >= 400) {
-          throw res.statusText
-        }
-      })
-      .then((response) => {
-        dispatch(uploadProfileImageResponse(response.secure_url));
-      })
-      .catch(error => {
-        dispatch(uploadProfileImageError('Bad request'));
-      });
+    const jsonResponse = await response.json().then(jsonRes => jsonRes)
+    response.status >= 400 ? dispatch(uploadProfileImageError('Bad request')) :
+      dispatch(uploadProfileImageResponse(jsonResponse.secure_url));
   }
 }
+export default uploadAvatar;

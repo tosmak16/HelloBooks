@@ -17,8 +17,6 @@ dotenv.config();
 const app = express();
 const DIST_DIR = path.join(__dirname, '/client/public');
 const HTML_FILE = path.join(DIST_DIR, 'index.html');
-
-
 // swagger definition
 const swaggerDefinition = {
   info: {
@@ -30,7 +28,6 @@ const swaggerDefinition = {
   host: process.env.NODE_ENV === 'development' ? 'localhost:7070' : 'hellobookstosmak.herokuapp.com',
   basePath: '/api/v2',
 };
-
 // options for the swagger docs
 const options = {
   // import swaggerDefinitions
@@ -38,16 +35,11 @@ const options = {
   // path to the API docs
   apis: ['./server/routes/*.js'],
 };
-
 // initialize swagger-jsdoc
 const swaggerSpec = swaggerJSDoc(options);
-
-
 const port = parseInt(process.env.PORT, 10) || 8000;
 app.set('port', port);
-
 const server = http.createServer(app);
-
 // Log requests to the console.
 app.use(logger('dev'));
 // Parse incoming requests data
@@ -64,7 +56,7 @@ app.get('/swagger.json', (req, res) => {
 });
 // Serves directory with url as static files
 app.use('/api/docs/', express.static(path.join(__dirname, 'api-docs/')));
-
+// Serves view for development after files has been bundled in development environment
 if (process.env.NODE_ENV === 'development') {
   const compiler = webpack(webpackConfig);
   app.use(webpackMiddleware(compiler, {
@@ -76,12 +68,10 @@ if (process.env.NODE_ENV === 'development') {
   //  A default catch-all route for serving index.html.
   app.get('*', (req, res) => res.sendFile(path.join(__dirname, './client/public/index.html')));
 }
-
+// Serves view for production after files has been bundled in production environment
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(DIST_DIR));
   app.get('*', (req, res) => res.sendFile(HTML_FILE));
 }
-
-
 server.listen(port);
 export default app;

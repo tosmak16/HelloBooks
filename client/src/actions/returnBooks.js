@@ -1,22 +1,18 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 import jwtDecode from 'jwt-decode';
-
-
 import { uploadImage } from './uploadImage';
 import { returnbookError, returnbookRequest, returnbookResponse } from '../../actions/returnBook';
-
-
 /**
- * @export
- * @param {any} bookData 
- * @param {any} token 
- * @returns 
+ * @export returnbook
+ * @description it dispatches actions for return book request and response 
+ * @param {object} bookData 
+ * @param {string} token 
+ * @returns {action} dispacted actions
  */
 export default function returnbook(bookData, token) {
   let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;
-
   return async (dispatch) => {
     dispatch(returnbookRequest(bookData));
     const response = await fetch('/api/v2/users/' + userId + '/books', {
@@ -24,7 +20,7 @@ export default function returnbook(bookData, token) {
       headers: {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json',
-        token: token
+        token
       },
       body: JSON.stringify(bookData)
     })

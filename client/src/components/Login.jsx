@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import LogininForm from './LoginForm';
 import { Footer } from './Footer';
 import userSignin from '../actions/loginAction';
-import getbooks from '../actions/getBooks';
+import { getbooks } from '../actions/getBooks';
 import { googleAuthSignIn } from '../actions/googleAuthSignIn';
 import { resetUserPassword } from '../actions/resetUserPassword';
 
 /**
+ * @description connnected login page
  * @param {object} props
  * @export Login
  * @function Loginin

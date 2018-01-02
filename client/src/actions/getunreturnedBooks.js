@@ -9,9 +9,10 @@ import {
 } from '../../actions/getunreturnedBooks';
 
 /**
- * @export
- * @param {any} token 
- * @returns 
+ * @export getunreturnedBooks
+ * @description it sends request to get unreturned books 
+ * @param {string} token 
+ * @returns {action} dispacted actions
  */
 export default function getunreturnedBooks(token) {
   let decodedToken = jwtDecode(token);
@@ -20,12 +21,8 @@ export default function getunreturnedBooks(token) {
     dispatch(getunreturnedbooksRequest());
     const response = await fetch('/api/v2/users/' + userId + '/books?returned=false', {
       method: 'GET',
-      body: {
-        token: token
-      },
-      headers: {
-        token: token
-      },
+      body: { token },
+      headers: { token },
     })
     const jsonResponse = await response.json().then(jsonRes => jsonRes)
     response.status === 200 ?

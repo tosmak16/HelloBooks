@@ -11,7 +11,8 @@ before_script:
   - npm install jest
 script:
   - npm run nyc
-after_success: 'npm run coveralls'
+after_success: 
+  - 'npm run coveralls'
 
 addons:
   postgresql: "9.3"

@@ -6,18 +6,18 @@
   "scripts": {
     "heroku-postbuild": "NODE_ENV=production  npm run db:drop && npm run migrate:db && npm run db:seed && npm run build",
     "build": "NODE_ENV=production webpack --config webpack.prod.js --progress",
-    "test": "NODE_ENV=test npm run db:drop && NODE_ENV=test npm run migrate:db && NODE_ENV=test babel-node ./node_modules/mocha/bin/_mocha server/test/**.js --presets es2015,stage-2 && npm run client:test",
+    "test": "NODE_ENV=test npm run db:drop && NODE_ENV=test npm run migrate:db && NODE_ENV=test nyc --reporter=html --reporter=text babel-node ./node_modules/mocha/bin/_mocha server/test/**.js --presets es2015,stage-2 && npm run client:test",
     "tests": "jest --watch --coverage",
-    "client:test": "NODE_ENV=test jest ./client/__tests__/ -i --coverage",
+    "client:test": "NODE_ENV=test jest ./client/__tests__/ -i",
     "start": "NODE_ENV=production babel-node ./app.js ",
     "start:dev": "NODE_ENV=development babel-node ./app.js ",
     "migrate:db": "sequelize db:migrate",
     "db:seed": "sequelize db:seed:all",
-    "nyc": "nyc npm test",
+    "nyc": "nyc --reporter=html --reporter=text npm test",
     "db:drop": "sequelize db:migrate:undo:all",
     "migrate:test:db": "sequelize db:migrate",
     "heroku": "babel-node ./app.js",
-    "coveralls": "nyc report --reporter=text-lcov | node node_modules/.bin/coveralls"
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "keywords": [
     "style guide",
@@ -120,7 +120,8 @@
   },
   "devDependencies": {
     "babel-jest": "^21.2.0",
-    "coveralls": "^2.13.1",
+    "codecov": "^3.0.0",
+    "coveralls": "^2.13.3",
     "eslint": "^4.3.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-config-airbnb-base": "^11.3.1",

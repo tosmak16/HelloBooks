@@ -8,6 +8,7 @@ import { getStoredBookDetails } from '../BookDetail/helperFunctions/getStoredBoo
 import { removeStoredBookDetails } from '../BookDetail/helperFunctions/removeStoredBookDetails';
 
 /**
+ * @description Book detail unconnected component
  * @class DetailsForm
  * @extends {React.Component}
  */

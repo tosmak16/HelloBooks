@@ -11,9 +11,10 @@ import {
 } from '../../actions/getUserDetails';
 
 /**
- * @export
+ * @export getUserdetails
+ * @description it sends request to get user's details
  * @param {string} token 
- * @returns 
+ * @returns {action} dispacted actions
  */
 export default function getUserdetails(token) {
   let decodedToken = jwtDecode(token);
@@ -27,7 +28,7 @@ export default function getUserdetails(token) {
       headers: {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json',
-        token: token
+        token,
       },
     })
     const jsonResponse = await response.json().then(jsonRes => jsonRes)

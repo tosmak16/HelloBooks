@@ -3,6 +3,7 @@ import _ from 'lodash';
 /* valdiates user login parameters */
 /** *************************************** */
 /**
+ * @description valdiates user login parameters
  * @param {object} userData 
  * @returns {object} responseMessage in json 
  */

@@ -3,11 +3,11 @@ import 'whatwg-fetch'
 import { signupError, signupRequest, signupResponse } from '../../actions/signupActions';
 import { validateUserDetails } from '../helperFunctions/validateUserDetails';
 /**
- * @export
+ * @description it dispatch action for signup request and response
  * @param {object} userData 
- * @returns {string} response message
+ * @returns {action} dispacted actions
  */
-export function userSignup(userData) {
+export const userSignup = (userData) => {
   let error = '';
   return async (dispatch) => {
     dispatch(signupRequest(userData));
@@ -38,3 +38,5 @@ export function userSignup(userData) {
     }
   };
 }
+const signupAction = userSignup;
+export default signupAction;

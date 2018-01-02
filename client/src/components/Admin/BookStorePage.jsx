@@ -8,6 +8,7 @@ import SearchBar from '../SearchBar';
 import ActivityLoader from '../preloader/ActivityLoader';
 
 /**
+ * @description BookStore unconnected component
  * @function BookStorePage
  * @param {object} props
  * @returns {views} BooksStorePage

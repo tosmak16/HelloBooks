@@ -4,19 +4,22 @@ import jwtDecode from 'jwt-decode';
 
 
 dotenv.config();
-
+/**
+ * @description it handles sending email notification to admin when a user borrows
+ * or returns a book
+ * @param {string} token 
+ * @param {string} emailMessage 
+ * @returns {object} message
+ */
 export const sendMail = (token, emailMessage) => {
   const decodedToken = jwtDecode(token);
   const { email, user } = decodedToken;
-  // Generate test SMTP service account from ethereal.email
-  // Only needed if you don't have a real mail account for testing
   nodemailer.createTestAccount(() => {
-    // create reusable transporter object using the default SMTP transport
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.USER_NAME, // generated ethereal user
-        pass: process.env.PASSWORD // generated ethereal password
+        user: process.env.USER_NAME, // app bot email
+        pass: process.env.PASSWORD // app bot password
       }
     });
     // setup email data with unicode symbols
@@ -46,6 +49,4 @@ export const sendMail = (token, emailMessage) => {
     });
   });
 };
-
-
 export default sendMail;

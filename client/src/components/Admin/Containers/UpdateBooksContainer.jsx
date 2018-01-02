@@ -5,7 +5,7 @@ import $ from 'jquery';
 import _ from 'lodash';
 import AdminSidebar from '../AdminSidebar';
 import UpdateBooksPage from '../UpdateBooksPage';
-import getbooks from '../../../actions/getBooks';
+import { getbooks } from '../../../actions/getBooks';
 import refreshPage from '../../../actions/refreshPage';
 import searchbooks from '../../../actions/searchbooks';
 import { updateBook } from '../../../actions/updateBooks';
@@ -16,12 +16,13 @@ import { logout } from '../../../actions/logoutAction';
 import { validateBookDetails } from '../../../helperFunctions/validateBookDetails';
 
 /**
+ * @description UpdateBooks Connected component
  * @class UpdateBooksContainer
  * @extends {React.Component}
  */
 class UpdateBooksContainer extends React.Component {
   /**
- * Creates an instance of UpdateBooksPage.
+ * @description Creates an instance of UpdateBooksPage.
  * @param {object} props
  * @memberof UpdateBooksPage
  */
@@ -196,8 +197,6 @@ class UpdateBooksContainer extends React.Component {
         setTimeout(() => { this.props.updateBook(this.state, localStorage.jwtToken); }, 1000);
       }
     }
-
-
     if (this.state.updatingBookFile && !this.state.updatingBookCoverImage) {
       this.setState({
         displayPreloader: 'none'
@@ -212,7 +211,6 @@ class UpdateBooksContainer extends React.Component {
         setTimeout(() => { this.props.updateBook(this.state, localStorage.jwtToken); }, 1000);
       }
     }
-
     if (this.state.updatingBookCoverImage && this.state.updatingBookFile) {
       this.setState({
         displayPreloader: 'none'
@@ -230,8 +228,6 @@ class UpdateBooksContainer extends React.Component {
     }
   }
   /**
-   *
-   *
    * @param {object} event
    * @memberof UpdateBooksPage
    * @returns {void}
@@ -346,9 +342,7 @@ class UpdateBooksContainer extends React.Component {
       message: '',
       bookFile: '',
       file: ''
-
     });
-    // setTimeout(() => { this.props.getbooks(true); }, 3000);
   }
   /**
    * @param {object} event
@@ -459,7 +453,6 @@ class UpdateBooksContainer extends React.Component {
     );
   }
 }
-
 UpdateBooksContainer.propTypes = {
   bookData: PropTypes.arrayOf(PropTypes.any).isRequired,
   fileUrl: PropTypes.string.isRequired,
@@ -475,7 +468,6 @@ UpdateBooksContainer.propTypes = {
   uploadImage: PropTypes.func.isRequired,
 
 };
-
 /**
  * @param {arrayOfObject} state
  * @returns {object} of someredux state
@@ -490,7 +482,6 @@ const mapStateToProps = function mapStateToProps(state) {
     fileUrl: state.bookFileUpload[0].response,
   };
 };
-
 export default connect(mapStateToProps, {
   getbooks,
   refreshPage,

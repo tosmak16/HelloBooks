@@ -4,9 +4,10 @@ import jwtDecode from 'jwt-decode';
 import { setCurrentuser } from '../../actions/setCurrentuser';
 import { signupError, signupRequest, signupResponse } from '../../actions/signupActions';
 /**
- * @export
- * @param {object} userData 
- * @returns {string} response message
+ * @export googleAuthSignIn
+ * @description it sends user's google signin details
+ * @param {object} googleUserData 
+ * @returns {action} dispacted actions
  */
 export const googleAuthSignIn = (googleUserData) => {
   const userData = {
@@ -48,3 +49,4 @@ export const googleAuthSignIn = (googleUserData) => {
     }
   };
 }
+export default googleAuthSignIn;

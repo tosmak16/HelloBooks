@@ -6,11 +6,11 @@ const validEmail = /[a-zA-Z]+[a-zA-Z0-9]*@[a-z]+.[a-z]+$/;
 /** *************************************** */
 /**
  * @description this method valdiates user registration parameters
- * @param {object} body 
+ * @param {object} requestBody 
  * @returns {object} responseMessage
  */
-export const userDetailsValidator = async (body) => {
-  const { password, username, email, firstName, lastName } = body;
+export const userDetailsValidator = async (requestBody) => {
+  const { password, username, email, firstName, lastName } = requestBody;
   const responseMessage = await Promise
     .resolve(
     // Checks if first name is empty

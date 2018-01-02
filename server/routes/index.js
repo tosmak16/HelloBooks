@@ -36,7 +36,6 @@ export default (app) => {
    *       mobileNumber:
    *          type: string
    */
-
   /**
    * @swagger
    * definitions:
@@ -53,7 +52,6 @@ export default (app) => {
    *         type: string
    *         format: password
    */
-
   /**
    * @swagger
    * definitions:
@@ -86,7 +84,6 @@ export default (app) => {
    *       category:
    *         type: string
    */
-
   /**
    * @swagger
    * /books:
@@ -161,9 +158,10 @@ export default (app) => {
    *         description: server error
    */
   app.post('/api/v2/users/signin', usersController.signin);
+  /* google sign up route */
   app.post('/api/v2/users/googleAuth', usersController.googleSignupAuth);
-  app.put('/api/v2/users/resetPassword',
-    usersController.resetPassword);
+  /* password reset route */
+  app.put('/api/v2/users/resetPassword', usersController.resetPassword);
   /* This is authentication middleware route */
   app.use('/api/v2/', authController.auth);
   /* This route to add books */
@@ -319,11 +317,7 @@ export default (app) => {
    *       500:
    *         description: server error
    */
-  app.get(
-    '/api/v2/users/:userId/books',
-    userAuth.userAuth,
-    usersController.getUnreturnedBooks
-  );
+  app.get('/api/v2/users/:userId/books', userAuth.userAuth, usersController.getUnreturnedBooks);
   /* This route to get all user's borrowed books history */
   /**
    * @swagger
@@ -351,12 +345,7 @@ export default (app) => {
    *       500:
    *         description: server error
    */
-  app.get(
-    '/api/v2/user/:userId/books',
-    userAuth.userAuth,
-    usersController.getBorrowedBooks
-  );
-
+  app.get('/api/v2/user/:userId/books', userAuth.userAuth, usersController.getBorrowedBooks);
   /* This route to borrow books request and response  */
   /**
    * @swagger
@@ -400,12 +389,7 @@ export default (app) => {
    *       500:
    *         description: server error
    */
-  app.post(
-    '/api/v2/users/:userId/books',
-    userAuth.userAuth,
-    usersController.borrowBooks
-  );
-
+  app.post('/api/v2/users/:userId/books', userAuth.userAuth, usersController.borrowBooks);
   /* This route to return borrowed books */
   /**
    * @swagger
@@ -447,11 +431,7 @@ export default (app) => {
    *       500:
    *         description: server error
    */
-  app.put(
-    '/api/v2/users/:userId/books',
-    userAuth.userAuth,
-    usersController.returnBooks
-  );
+  app.put('/api/v2/users/:userId/books', userAuth.userAuth, usersController.returnBooks);
   /* This route to update user details */
   /**
    * @swagger
@@ -484,11 +464,7 @@ export default (app) => {
    *       500:
    *         description: server error
    */
-  app.put(
-    '/api/v2/users/:userId',
-    userAuth.userAuth,
-    usersController.updateUser
-  );
+  app.put('/api/v2/users/:userId', userAuth.userAuth, usersController.updateUser);
   /* This route to get user details */
   /**
    * @swagger
@@ -516,11 +492,7 @@ export default (app) => {
    *       500:
    *         description: server error
    */
-  app.get(
-    '/api/v2/users/:userId',
-    userAuth.userAuth,
-    usersController.getUserDetails
-  );
+  app.get('/api/v2/users/:userId', userAuth.userAuth, usersController.getUserDetails);
   /* This route to change password */
   /**
    * @swagger
@@ -555,10 +527,6 @@ export default (app) => {
    *       500:
    *         description: server error
    */
-  app.put(
-    '/api/v2/users/:userId/password',
-    userAuth.userAuth,
-    usersController.changePassword
-  );
+  app.put('/api/v2/users/:userId/password', userAuth.userAuth, usersController.changePassword);
 };
 

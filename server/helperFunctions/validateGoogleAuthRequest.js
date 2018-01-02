@@ -1,5 +1,12 @@
 import _ from 'lodash';
-
+/** *************************************** */
+/* valdiates user google sign up and login parameters */
+/** *************************************** */
+/**
+ * @description this method valdiates user registration parameters
+ * @param {object} requestBody 
+ * @returns {object} responseMessage
+ */
 export const validateGoogleAuthRequest = (requestBody) => {
   const { password, username, email, firstName, lastName } = requestBody;
   if (_.isEmpty(password) || _.isEmpty(username) || _.isEmpty(email)

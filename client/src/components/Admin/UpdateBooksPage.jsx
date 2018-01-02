@@ -7,7 +7,8 @@ import SingleActionModal from '../modal/SingleActionModal';
 import ActivityLoader from '../preloader/ActivityLoader';
 
 /**
- * @class UpdateBooksPage
+ * @description updateBooksPage unconnected component
+ * @function UpdateBooksPage
  * @returns {views} Upload books form
  * @param {object} props
  */
@@ -205,7 +206,5 @@ UpdateBooksPage.propTypes = {
   handleSelected: PropTypes.func.isRequired,
   state: PropTypes.objectOf(PropTypes.any).isRequired
 };
-
-
 export default UpdateBooksPage;
 

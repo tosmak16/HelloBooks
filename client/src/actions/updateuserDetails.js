@@ -1,16 +1,15 @@
 import { browserHistory } from 'react-router';
 import jwtDecode from 'jwt-decode';
-
 import { uploadImage } from './uploadImage';
 import { updateuserError, updateuserRequest, updateuserResponse } from '../../actions/updateUser';
-
 /**
- * @export
+ * @export updateuserDetails
+ * @description it dispatches action for update user details reuest and response
  * @param {object} userData 
  * @param {string} token 
- * @returns 
+ * @returns {action} dispacted actions
  */
-export default function updateUser(userData, token) {
+export default function updateuserDetails(userData, token) {
   let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;
   return async (dispatch) => {

@@ -4,12 +4,14 @@ import isEmpty from 'lodash/isEmpty';
 import { deletebookError, deletebookRequest, deletebookResponse } from '../../actions/deleteBooks';
 
 /**
- * @export
- * @param {any} bookData 
- * @param {any} token 
- * @returns 
+ * @export deleteBook
+ * @description sends delete books request and dispatch appropiate based on 
+ * the recieved response
+ * @param {object} bookData 
+ * @param {string} token 
+ * @returns {action} dispacted actions
  */
-export function deleteBook(bookData, token) {
+export const deleteBook = (bookData, token) => {
   return async (dispatch) => {
     dispatch(deletebookRequest(bookData));
     const response = await fetch('/api/v2/books/' + bookData, {
@@ -17,12 +19,16 @@ export function deleteBook(bookData, token) {
       headers: {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json',
-        token: token
+        token
       }
     })
-    const jsonResponse = await response.json().then(jsonRes => jsonRes)
-    response.status === 204 ?
-      dispatch(deletebookResponse('book has been deleted')) :
-      dispatch(deletebookError(jsonResponse.message))
+    if (response.status >= 400) {
+      const jsonResponse = await response.json().then(jsonRes => jsonRes)
+      dispatch(deletebookError(jsonResponse.message));
+    }
+    else {
+      dispatch(deletebookResponse('book has been deleted'));
+    }
   }
 }
+export default deleteBook;

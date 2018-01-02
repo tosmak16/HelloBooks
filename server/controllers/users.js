@@ -65,12 +65,18 @@ export default {
         });
       });
   },
+  /**
+   * @description it handles google signup and login request
+   * @param {object} req request
+   * @param {oject} res  response
+   * @returns {object} response
+   */
   googleSignupAuth(req, res) {
     const { username, email, password, firstName, lastName } = req.body;
+    /* validate body of the request */
     const validationResponse = validateGoogleAuthRequest(req.body);
     if (validationResponse.status === 400) {
-      return res.status(validationResponse.status)
-        .send({ message: validationResponse.message });
+      return res.status(validationResponse.status).send({ message: validationResponse.message });
     }
     return db.Users
       .findOne({
@@ -118,7 +124,6 @@ export default {
       }).catch(() =>
         res.status(500).send({ message: 'Internal server error' }));
   },
-
   /**
    * @method signin
    * @desc this method ensures registered users can login
@@ -345,8 +350,8 @@ export default {
   /**
    * @method getUserDetails
    * @description this method handles get user details request
-   * @param {object} req
-   * @param {object} res
+   * @param {object} req request
+   * @param {object} res response
    * @returns {object} response
    */
   getUserDetails(req, res) {
@@ -372,12 +377,11 @@ export default {
         message: errorMessage,
       }));
   },
-
   /**
    * @method updateUser
    * @description this method handles edit user details request
-   * @param {object} req
-   * @param {object} res
+   * @param {object} req request
+   * @param {object} res response
    * @returns { object } response
    */
   updateUser(req, res) {
@@ -386,12 +390,11 @@ export default {
         message: updateUserResponse.message
       }));
   },
-
   /**
    * @method changePassword
    * @description this method handles changes password request
-   * @param {object} req
-   * @param {object} res
+   * @param {object} req request
+   * @param {object} res response
    * @returns {object} response
    */
   changePassword(req, res) {
@@ -406,8 +409,8 @@ export default {
   /**
  * @method resetPassword
  * @description this method handles reset password request
- * @param {object} req
- * @param {object} res
+ * @param {object} req request
+ * @param {object} res response
  * @returns {object} response
  */
   resetPassword(req, res) {

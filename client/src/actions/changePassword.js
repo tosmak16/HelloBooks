@@ -3,12 +3,12 @@ import jwtDecode from 'jwt-decode';
 import { changepasswordError, changepasswordRequest, changepasswordResponse } from '../../actions/changePassword';
 import { validatePasswordChange } from '../helperFunctions/validatePasswordChange';
 /**
- * @export
+ * @export changePassword
  * @param {object} userData 
  * @param {string} token 
- * @returns 
+ * @returns {action} dispacted actions
  */
-export default function changePassword(userData, token) {
+export const changePassword = (userData, token) => {
   let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;
   return async (dispatch) => {
@@ -23,7 +23,7 @@ export default function changePassword(userData, token) {
         headers: {
           'Accept': 'application/json, text/plain, */*',
           'Content-Type': 'application/json',
-          token: token
+          token
         },
         body: JSON.stringify(userData)
       })
@@ -34,3 +34,4 @@ export default function changePassword(userData, token) {
     }
   }
 }
+export default changePassword;

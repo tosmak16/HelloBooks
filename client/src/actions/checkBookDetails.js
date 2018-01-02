@@ -1,21 +1,18 @@
 import lodash from 'lodash'
 import { browserHistory } from 'react-router';
-
 import { showBookDetails } from '../../actions/showBookDetails';
-
-
 /**
- * 
- * 
- * @export
- * @param {any} bookId 
- * @param {any} set 
- * @returns
+ * @export checkBookDetails
+ * @description this action controller helps to get selected book
+ * and show its details
+ * @param {string} bookId 
+ * @param {boolean} set 
+ * @returns {void}
  */
-export default function checkBookDetails(bookId, set) {
+export const checkBookDetails = (bookId, set) => {
   return async (dispatch) => {
     dispatch(showBookDetails(bookId));
     set && browserHistory.push('/book/details');
   }
-
 }
+export default checkBookDetails;

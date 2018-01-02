@@ -5,7 +5,8 @@ const validNumber = /^[0-9]+$/;
 /* valdiates bookId in the body of a request */
 /** *************************************** */
 /**
- * @param {number} bookId 
+ * @description valdiates bookId in the body of a request
+ * @param {string} bookId 
  * @returns {object} responseMesaage
  */
 export const validateIds = async (bookId) => {
@@ -25,11 +26,12 @@ export const validateIds = async (bookId) => {
 /* valdiates user login parameters */
 /** *************************************** */
 /**
- * @param {object} body 
+ * @description valdiates user login parameters 
+ * @param {object} requestBody 
  * @returns {object} responseMessage in json 
  */
-export const checkUserInput = async (body) => {
-  const { username, password } = body;
+export const checkUserInput = async (requestBody) => {
+  const { username, password } = requestBody;
   const responseMessage = await Promise.resolve(
     _.isEmpty(username) ? 'username is required' :
       _.isEmpty(password) ? 'password is required' : ''

@@ -5,13 +5,12 @@ import { borrowBookError, borrowBookRequest, borrowBookResponse } from '../../ac
 
 /**
  * @description this is borrow books action controller
- * @export
- * @param {any} token 
- * @param {any} bookId 
- * @returns response with no error if request is successful
- * @returns error if request is not succcesful
+ * @export borrowBooks
+ * @param {string} token 
+ * @param {string} bookId 
+ * @returns {action} dispacted actions
  */
-export default function borrowBooks(token, bookId) {
+export const borrowBooks = (token, bookId) => {
   let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;
   return async (dispatch) => {
@@ -21,9 +20,9 @@ export default function borrowBooks(token, bookId) {
       headers: {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json',
-        token: token,
+        token
       },
-      body: JSON.stringify({ bookId: bookId, token: token })
+      body: JSON.stringify({ bookId: bookId, token })
     })
     const jsonResponse = await response.json().then(jsonRes => jsonRes)
     response.status === 200 ?
@@ -31,3 +30,4 @@ export default function borrowBooks(token, bookId) {
       dispatch(borrowBookError(jsonResponse.message))
   }
 }
+export default borrowBooks;

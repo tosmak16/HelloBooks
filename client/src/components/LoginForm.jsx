@@ -5,7 +5,8 @@ import $ from 'jquery';
 import { ResetPasswordModal } from './modal/ResetPasswordModal';
 
 /**
- * @export
+ * @export LoginForm
+ * @description Login form un connected component
  * @class LoginForm
  * @extends {React.Component}
  */

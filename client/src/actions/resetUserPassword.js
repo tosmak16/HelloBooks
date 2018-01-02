@@ -5,9 +5,10 @@ import { resetPasswordRequest, resetPasswordResponse, resetPasswordError } from 
 import resetPassword from '../../reducers/resetPassword';
 
 /**
- * @export
- * @param {boolean} set 
- * @returns {object} response
+ * @export resetUserPassword
+ * @description it dispatches actions for password reset request and response
+ * @param {string} userData 
+ * @returns {action} dispacted actions
  */
 export const resetUserPassword = (userData) => {
   const validEmail = /[a-zA-Z]+[a-zA-Z0-9]*@[a-z]+.[a-z]+$/;
@@ -28,7 +29,6 @@ export const resetUserPassword = (userData) => {
     })
     const jsonResponse = await response.json().then(jsonRes => jsonRes)
     if (response.status >= 400) {
-
       dispatch(resetPasswordError(jsonResponse.message))
       Materialize.toast(jsonResponse.message, 1000, 'red');
     } else {
@@ -37,5 +37,4 @@ export const resetUserPassword = (userData) => {
     }
   };
 }
-
 export default resetUserPassword;

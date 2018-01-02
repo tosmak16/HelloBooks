@@ -5,9 +5,10 @@ import { loginError, loginRequest, loginResponse } from '../../actions/loginActi
 import { setCurrentuser } from '../../actions/setCurrentuser';
 import { validateLoginDetails } from '../helperFunctions/validateLoginDetails';
 /** 
- * @export
+ * @export userSignin
+ * @description it sends request and  dispatches user login request, error and response
  * @param {object} userData 
- * @returns {string} response message
+ * @returns {action} dispacted actions
  */
 export default function userSignin(userData) {
   return async dispatch => {

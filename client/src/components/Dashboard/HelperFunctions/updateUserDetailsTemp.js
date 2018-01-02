@@ -1,3 +1,8 @@
+/**
+ * @description helper function for updating user details temporarily
+ * @param {object} userDetailsState 
+ * @returns {void}
+ */
 export const updateUserDetailsTemp = (userDetailsState) => {
   const {
     userData,
