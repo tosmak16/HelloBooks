@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
+import _ from 'lodash';
 import BooksPhoto from './BooksPhoto';
 import SideBar from '../SideBar';
 import BooksFilter from './BooksFilter';
@@ -42,17 +42,15 @@ export class BooksPage extends React.Component {
    * @returns {void}
    */
   componentWillMount() {
-    if (localStorage.id) {
-      localStorage.removeItem('bookId');
-      localStorage.removeItem('id');
-      localStorage.removeItem('category');
-      localStorage.removeItem('isbn');
-      localStorage.removeItem('stocknumber');
-      localStorage.removeItem('author');
-      localStorage.removeItem('summary');
-      localStorage.removeItem('bookTitle');
-      localStorage.removeItem('image');
-    }
+    localStorage.removeItem('bookId');
+    localStorage.removeItem('id');
+    localStorage.removeItem('category');
+    localStorage.removeItem('isbn');
+    localStorage.removeItem('stocknumber');
+    localStorage.removeItem('author');
+    localStorage.removeItem('summary');
+    localStorage.removeItem('bookTitle');
+    localStorage.removeItem('image');
   }
   /**
  * @memberof BooksPage
@@ -86,7 +84,7 @@ export class BooksPage extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
     if (this.state.filterBy !== '') {
       this.setState({ error: '', bookIsFound: true });
-      if (this.state.filterBy && this.state.searchText && this.props.bookData) {
+      if (this.state.filterBy && this.state.searchText && !_.isEmpty(this.props.bookData)) {
         this.props.searchbooks(this.state.filterBy, this.state.searchText, this.props.bookData);
         this.setState({ booksCollectionDisplay: true });
       }

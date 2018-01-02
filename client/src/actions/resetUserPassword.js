@@ -1,4 +1,5 @@
 import { browserHistory } from 'react-router';
+import _ from 'lodash';
 import 'whatwg-fetch'
 import { resetPasswordRequest, resetPasswordResponse, resetPasswordError } from '../../actions/resetPassword';
 import resetPassword from '../../reducers/resetPassword';
@@ -10,15 +11,14 @@ import resetPassword from '../../reducers/resetPassword';
  */
 export const resetUserPassword = (userData) => {
   const validEmail = /[a-zA-Z]+[a-zA-Z0-9]*@[a-z]+.[a-z]+$/;
-  return (dispatch) => {
+  return async (dispatch) => {
     if (_.isEmpty(userData) || !userData.match(validEmail)) {
-      const errorMessage = 'valid email address is required'
-      Materialize.toast(errorMessage, 1000, 'red');
-      dispatch(resetPasswordError(errorMessage));
-      return errorMessage;
+      const errorMessage = await 'valid email address is required'
+      process.env.NODE_ENV === 'test' || Materialize.toast(errorMessage, 1000, 'red');
+      return dispatch(resetPasswordError(errorMessage));
     }
     dispatch(resetPasswordRequest(userData));
-    return fetch('/api/v2/users/resetPassword', {
+    const response = await fetch('/api/v2/users/resetPassword', {
       method: 'PUT',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -26,20 +26,15 @@ export const resetUserPassword = (userData) => {
       },
       body: JSON.stringify({ email: userData })
     })
-      .then(
-      (res) => {
-        if (res.status >= 400) {
-          res.json().then((response) => {
-            Materialize.toast(response.message, 1000, 'red');
-            dispatch(resetPasswordError(response.message))
-          })
-        } else {
-          res.json().then((response) => {
-            Materialize.toast(response.message, 5000, 'green');
-            dispatch(resetPasswordResponse(response.message));
-          })
-        }
-      })
+    const jsonResponse = await response.json().then(jsonRes => jsonRes)
+    if (response.status >= 400) {
+
+      dispatch(resetPasswordError(jsonResponse.message))
+      Materialize.toast(jsonResponse.message, 1000, 'red');
+    } else {
+      dispatch(resetPasswordResponse(jsonResponse.message));
+      Materialize.toast(jsonResponse.message, 5000, 'green');
+    }
   };
 }
 

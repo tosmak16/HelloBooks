@@ -11,36 +11,26 @@ import { validatePasswordChange } from '../helperFunctions/validatePasswordChang
 export default function changePassword(userData, token) {
   let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(changepasswordRequest(userData));
-    validatePasswordChange(userData)
-      .then((responseMessage) => {
-        if (responseMessage !== '') {
-          dispatch(changepasswordError(responseMessage));
-        }
-        else {
-          return fetch('/api/v2/users/' + userId + '/password', {
-            method: 'PUT',
-            headers: {
-              'Accept': 'application/json, text/plain, */*',
-              'Content-Type': 'application/json',
-              token: token
-            },
-            body: JSON.stringify(userData)
-          })
-            .then(
-            (res) => {
-              if (res.status >= 400) {
-                res.json().then((response) => {
-                  dispatch(changepasswordError(response.message))
-                })
-              } else {
-                res.json().then((response) => {
-                  dispatch(changepasswordResponse(response.message));
-                })
-              }
-            })
-        }
+    const validationResponse = await validatePasswordChange(userData);
+    if (validationResponse !== '') {
+      dispatch(changepasswordError(validationResponse));
+    }
+    else {
+      const response = await fetch('/api/v2/users/' + userId + '/password', {
+        method: 'PUT',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json',
+          token: token
+        },
+        body: JSON.stringify(userData)
       })
+      const jsonResponse = await response.json().then(jsonRes => jsonRes)
+      response.status === 200 ?
+        dispatch(changepasswordResponse(jsonResponse.message)) :
+        dispatch(changepasswordError(jsonResponse.message))
+    }
   }
 }

@@ -1,18 +1,16 @@
-sudo: required
+sudo: false
 dist: trusty
 language: node_js
 node_js:
-  - "6"
+  - "8"
 services:
   - postgresql
 before_script:
   - psql -c 'drop database if exists libdb;' -U postgres
   - psql -c 'create database libdb;' -U postgres
+  - npm install jest
 script:
-  - npm test
-after_script:
-  - 'npm run coveralls'
-
+  - npm run nyc
 after_success: 'npm run coveralls'
 
 addons:

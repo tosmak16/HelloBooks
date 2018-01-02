@@ -13,9 +13,9 @@ import { updateuserError, updateuserRequest, updateuserResponse } from '../../ac
 export default function updateUser(userData, token) {
   let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(updateuserRequest(userData));
-    return fetch('/api/v2/users/' + userId, {
+    const response = await fetch('/api/v2/users/' + userId, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -24,18 +24,9 @@ export default function updateUser(userData, token) {
       },
       body: JSON.stringify(userData)
     })
-      .then(
-      (res) => {
-        if (res.status >= 400) {
-          res.json().then((response) => {
-            dispatch(updateuserError(response.message));
-          })
-        } else {
-          res.json().then((response) => {
-            dispatch(updateuserResponse(response.message));
-          })
-        }
-      }
-      )
+    const jsonResponse = await response.json().then(jsonRes => jsonRes)
+    response.status === 200 ?
+      dispatch(updateuserResponse(jsonResponse.message)) :
+      dispatch(updateuserError(jsonResponse.message))
   }
 }

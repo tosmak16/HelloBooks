@@ -24,12 +24,11 @@ const mockStore = configureMockStore(middlewares);
 
 const action = {
   response: 'password changed successfully',
-  userData: user[0],
+  userData: { oldPassword: '123456', newPassword: '123456a' },
   error: 'Bad request'
 };
 
 const response = {
-  status: 200,
   message: 'password changed successfully',
   result: user[0]
 };
@@ -64,7 +63,7 @@ describe('Test change paswword Actions', () => {
 
   it('should change password if the request is successful', () => {
     fetchMock.put(`/api/v2/users/${1}/password`,
-      JSON.stringify(response));
+      { status: 200, body: response });
 
     const initialState = {};
     const store = mockStore(initialState);
@@ -81,12 +80,11 @@ describe('Test change paswword Actions', () => {
         response: action.response
       },
     ];
-    return store.dispatch(changePassword(action.userData, token))
+    store.dispatch(changePassword(action.userData, token))
       .then(() => {
         expect(actions).toEqual(expectedActions);
         store.clearActions();
         fetchMock.reset();
-      })
-      .catch();
+      }).catch()
   });
 });

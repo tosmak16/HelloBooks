@@ -21,15 +21,13 @@ const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 const response = {
-  status: 403,
   message: 'Books can not be fetched',
 };
 
 describe('Test getUnreturnedBooks Actions failed', () => {
   it('should not return unreturn books resources if the request is not successful', () => {
     fetchMock.get(`/api/v2/users/${1}/books?returned=false`,
-      JSON.stringify(response));
-
+      { status: 403, body: response });
     const initialState = {};
     const store = mockStore(initialState);
     const actions = store.getActions();

@@ -87,14 +87,14 @@ class DetailsForm extends React.Component {
           error: sortedData.error,
           display: false,
         });
-        $('#modal2').modal('open');
+        process.env.NODE_ENV === 'test' || $('#modal2').modal('open');
       } else if (!_.isEmpty(sortedData.response) && this.state.display) {
         this.state.bookData[this.state.bookIndex].stockNumber -= 1;
         this.setState({
           message: sortedData.response,
           display: false,
         });
-        $('#modal3').modal('open');
+        process.env.NODE_ENV === 'test' || $('#modal3').modal('open');
       }
     }
   }
@@ -119,7 +119,7 @@ class DetailsForm extends React.Component {
       displayPreloader: 'block'
     });
     this.props.borrowBooks(localStorage.jwtToken, localStorage.bookId);
-    $('#modal1').modal('close');
+    process.env.NODE_ENV === 'test' || $('#modal1').modal('close');
   }
 
   /**
@@ -132,7 +132,7 @@ class DetailsForm extends React.Component {
     this.setState({
       errorFix: true,
     });
-    $('#modal1').modal('open');
+    process.env.NODE_ENV === 'test' || $('#modal1').modal('open');
   }
 
   /**
@@ -142,7 +142,7 @@ class DetailsForm extends React.Component {
    */
   handleClose(event) {
     event.preventDefault();
-    $('#modal1').modal('close');
+    process.env.NODE_ENV === 'test' || $('#modal1').modal('close');
     this.setState({
       errorFix: true,
     });
@@ -156,8 +156,8 @@ class DetailsForm extends React.Component {
   handleExit(event) {
     event.preventDefault();
 
-    $('#modal2').modal('close');
-    $('#modal3').modal('close');
+    process.env.NODE_ENV === 'test' || $('#modal2').modal('close');
+    process.env.NODE_ENV === 'test' || $('#modal3').modal('close');
     this.setState({
       errorFix: true,
     });
@@ -239,11 +239,6 @@ class DetailsForm extends React.Component {
                 <p className="bookinfo">Number in Stock: {this.state.filteredData.stockNumber} </p>
               </div>
               <div className="form-inline">
-                <button
-                  id="wishbtn"
-                  type="button"
-                  className="btn-sm btn-warning shop"
-                >Wishlist</button>
                 <button
                   onClick={this.handleOpen}
                   id="borrowbtn"

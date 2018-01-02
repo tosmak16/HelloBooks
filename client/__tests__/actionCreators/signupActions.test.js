@@ -18,7 +18,6 @@ const payload = {
   firstName: 'tobi',
   lastName: 'lastName',
   membershipType: 'Basic'
-
 };
 
 
@@ -55,7 +54,7 @@ describe('Test signupActions', () => {
 
 
   it('creates SIGNUP_SUCCESS when user has been registered', () => {
-    fetchMock.post('/api/v2/users/signup', JSON.stringify({ status: 201, message: 'Registration successful' }));
+    fetchMock.postOnce('/api/v2/users/signup', JSON.stringify({ status: 201, message: 'Registration successful' }));
 
     const initialState = {};
     const store = mockStore(initialState);
@@ -72,20 +71,7 @@ describe('Test signupActions', () => {
         isFetching: false,
         isRegistered: true,
         response: 'Registration successful'
-      },
-      {
-        type: DISPLAY_MESSAGE,
-        message: {
-          type: 'success',
-          text: 'Registration successful'
-        }
-      },
-      {
-        type: SIGNUP_FAILURE,
-        isFetching: false,
-        isRegistered: false,
-        error: {}
-      },
+      }
     ];
     return store.dispatch(userSignup(payload))
       .then(() => {

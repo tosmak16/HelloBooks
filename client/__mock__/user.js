@@ -5,7 +5,8 @@ const user = [{
   mobileNumber: '0803723455',
   membershipType: 'Basic',
   image: 'user.jpg',
-  profileImage: 'user.jpg'
+  profileImage: 'user.jpg',
+  password: '123456'
 }];
 
 export default user;

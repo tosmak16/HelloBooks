@@ -66,7 +66,7 @@ describe('Test borrowBooks Actions', () => {
 
   it('should borrow book if the request is successful', () => {
     fetchMock.postOnce(`/api/v2/users/${1}/books`,
-      { body: response });
+      { status: 200, body: response });
 
     const initialState = {};
     const store = mockStore(initialState);
@@ -88,9 +88,11 @@ describe('Test borrowBooks Actions', () => {
 
     store.dispatch(borrowBooks(payload.token, payload.bookId))
       .then(() => {
+
+      }).then(() => {
         expect(actions).toEqual(expectedActions);
       })
-      .catch();
+
   });
 });
 
@@ -108,7 +110,7 @@ const fakeResponse = {
 describe('Test borrowBooks fail Actions', () => {
   it('should not borrow books if required parameters are not assigned', () => {
     fetchMock.postOnce(`/api/v2/users/${1}/books`,
-      { body: fakeResponse });
+      { status: 400, body: fakeResponse });
 
     const initialState = {};
     const store = mockStore(initialState);
@@ -127,7 +129,7 @@ describe('Test borrowBooks fail Actions', () => {
         error: fakeResponse.message,
       },
     ];
-    return store.dispatch(borrowBooks(fakePayload.token, fakePayload.bookId))
+    store.dispatch(borrowBooks(fakePayload.token, fakePayload.bookId))
       .then(() => {
         expect(actions).toEqual(expectedActions);
         store.clearActions();

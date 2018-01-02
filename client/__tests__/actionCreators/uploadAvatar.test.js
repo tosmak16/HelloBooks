@@ -34,7 +34,7 @@ const action = {
 
 const data = new FormData();
 data.append('file', action.userData);
-data.append('upload_preset', 'bjfllgrd');
+data.append('upload_preset', process.env.UPLOAD_PRESET);
 
 const response = {
   status: 200,

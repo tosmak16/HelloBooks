@@ -18,7 +18,6 @@ const payload = {
 };
 
 const response = {
-  status: 400,
   message: 'username and paswword is not valid'
 };
 
@@ -26,7 +25,7 @@ const response = {
 describe('Test LoginActions failed', () => {
   it('returns username and pawword is invalid when user is invalid', () => {
     fetchMock.post('/api/v2/users/signin',
-      JSON.stringify(response));
+      { status: 400, body: response });
 
     const initialState = {};
     const store = mockStore(initialState);

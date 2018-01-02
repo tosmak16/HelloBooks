@@ -10,9 +10,9 @@ import { getbooksError, getbooksRequest, getbooksReponse } from '../../actions/g
  */
 export default function getbooks(set) {
   const token = window.localStorage.jwtToken;
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(getbooksRequest());
-    return fetch('/api/v2/books', {
+    const response = await fetch('/api/v2/books', {
       method: 'GET',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -25,21 +25,9 @@ export default function getbooks(set) {
         token: token
       },
     })
-      .then(
-      (res) => {
-        if (res.status >= 400) {
-          res.json().then((response) => {
-            dispatch(getbooksError(response.message))
-          })
-        } else {
-          res.json().then((response) => {
-            dispatch(getbooksReponse(response.books));
-            if (!set) {
-              browserHistory.push('/books');
-            } else if (set) { }
-          })
-        }
-      }
-      )
+    const jsonResponse = await response.json().then(jsonRes => jsonRes)
+    response.status === 200 ?
+      dispatch(getbooksReponse(jsonResponse.books)) :
+      dispatch(getbooksError(jsonResponse.message))
   };
 }

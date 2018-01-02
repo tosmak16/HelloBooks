@@ -1,390 +1,287 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login Page Component test should test and take snapshot of LoginPage 1`] = `
-<form
-  action="books.html"
-  className="form-signin"
-  onSubmit={[Function]}
->
-  <h4
-    className="form-signin-heading"
+exports[`Login Page Component test should test and take snapshot of LoginForm 1`] = `
+<div>
+  <form
+    action="books.html"
+    className="form-signin"
+    onSubmit={[Function]}
   >
-    Please log in
-  </h4>
-  
-  <div
-    className="row"
-  >
+    <h5
+      className="form-signin-heading text-center pull-center"
+    >
+      Please Login In
+    </h5>
+    
     <div
-      className="col input-field s12"
+      className="row"
     >
-      <input
-        autoFocus={true}
-        className="form-control validate"
-        defaultValue={undefined}
-        id="inputUsernamelog"
-        name="username"
-        onChange={[Function]}
-        placeholder={undefined}
-        required={true}
-        type="text"
-        value=""
-      />
-      <label
-        className=""
-        data-error={undefined}
-        data-success={undefined}
-        htmlFor="inputUsernamelog"
+      <div
+        className="col input-field s12"
       >
-        Username
-      </label>
+        <input
+          autoFocus={true}
+          className="form-control validate"
+          defaultValue={undefined}
+          id="inputUsernamelog"
+          name="username"
+          onChange={[Function]}
+          placeholder={undefined}
+          required={true}
+          type="text"
+          value=""
+        />
+        <label
+          className=""
+          data-error={undefined}
+          data-success={undefined}
+          htmlFor="inputUsernamelog"
+        >
+          Username
+        </label>
+      </div>
     </div>
-  </div>
-  <div
-    className="row"
-  >
     <div
-      className="col input-field s12"
+      className="row"
     >
-      <input
-        autoFocus={true}
-        className="form-control validate"
-        defaultValue={undefined}
-        id="inputPassword"
-        name="password"
-        onChange={[Function]}
-        placeholder="Password"
-        required={true}
-        type="password"
-        value=""
-      />
-      <label
-        className=""
-        data-error={undefined}
-        data-success={undefined}
-        htmlFor="inputPassword"
+      <div
+        className="col input-field s12"
       >
-        Password
-      </label>
+        <input
+          autoFocus={true}
+          className="form-control validate"
+          defaultValue={undefined}
+          id="inputPassword"
+          name="password"
+          onChange={[Function]}
+          placeholder="Password"
+          required={true}
+          type="password"
+          value=""
+        />
+        <label
+          className=""
+          data-error={undefined}
+          data-success={undefined}
+          htmlFor="inputPassword"
+        >
+          Password
+        </label>
+      </div>
     </div>
-  </div>
-  <div
-    className="row"
-  >
-    <div>
-      <input
-        className="filled-in checkbox-orange"
-        defaultChecked="checked"
-        id="filled-in-box"
-        label="Remember me?"
-        name="group1"
-        type="checkbox"
-        value=""
-      />
-      <label
-        htmlFor="filled-in-box"
-      >
-        Remember me?
-      </label>
-    </div>
-  </div>
-  <button
-    className="btn btn-lg btn-primary  btn-block"
-    id="loginbtn"
-    type="submit"
-  >
-    Sign in
-  </button>
-  <p>
-    <label
-      htmlFor="forgot_pass"
+    <div
+      className="row"
     >
-      <a
-        href=""
-        id="forgot_pass"
-      >
-         Forgot Password ? 
-      </a>
-    </label>
-  </p>
-  <a
-    className=""
-    href="/signup"
-    id="createbtn"
-  >
-     
-    <b>
-      Create account
-    </b>
-  </a>
-</form>
-`;
-
-exports[`Login Page Component test should test and take snapshot of LoginPage 2`] = `
-<form
-  action="books.html"
-  className="form-signin"
-  onSubmit={[Function]}
->
-  <h4
-    className="form-signin-heading"
-  >
-    Please log in
-  </h4>
-  <p
-    className="help-block"
-    style={
-      Object {
-        "color": "red",
+      <div>
+        <input
+          className="filled-in checkbox-orange"
+          defaultChecked="checked"
+          id="filled-in-box"
+          label="Remember me?"
+          name="group1"
+          type="checkbox"
+          value=""
+        />
+        <label
+          htmlFor="filled-in-box"
+        >
+          Remember me?
+        </label>
+      </div>
+    </div>
+    <button
+      className="btn btn-lg btn-primary  btn-block"
+      id="loginbtn"
+      type="submit"
+    >
+      Sign in
+    </button>
+    <div
+      data-onsuccess={[Function]}
+      id="g-signin2"
+      onClick={[Function]}
+      style={
+        Object {
+          "marginLeft": "1px",
+          "marginTop": "10px",
+        }
       }
-    }
-  >
-    *
-    error
-    *
-  </p>
-  <div
-    className="row"
-  >
-    <div
-      className="col input-field s12"
-    >
-      <input
-        autoFocus={true}
-        className="form-control validate"
-        defaultValue={undefined}
-        id="inputUsernamelog"
-        name="username"
-        onChange={[Function]}
-        placeholder={undefined}
-        required={true}
-        type="text"
-        value=""
-      />
+    />
+    <p>
       <label
-        className=""
-        data-error={undefined}
-        data-success={undefined}
-        htmlFor="inputUsernamelog"
+        htmlFor="forgot_pass"
       >
-        Username
+        <button
+          id="forgot_pass"
+          onClick={[Function]}
+          type="button"
+        >
+           Forgot Password ? 
+        </button>
       </label>
-    </div>
-  </div>
-  <div
-    className="row"
-  >
-    <div
-      className="col input-field s12"
+    </p>
+    <a
+      className=""
+      href="/signup"
+      id="createbtn"
     >
-      <input
-        autoFocus={true}
-        className="form-control validate"
-        defaultValue={undefined}
-        id="inputPassword"
-        name="password"
-        onChange={[Function]}
-        placeholder="Password"
-        required={true}
-        type="password"
-        value=""
-      />
-      <label
-        className=""
-        data-error={undefined}
-        data-success={undefined}
-        htmlFor="inputPassword"
-      >
-        Password
-      </label>
-    </div>
-  </div>
-  <div
-    className="row"
-  >
-    <div>
-      <input
-        className="filled-in checkbox-orange"
-        defaultChecked="checked"
-        id="filled-in-box"
-        label="Remember me?"
-        name="group1"
-        type="checkbox"
-        value=""
-      />
-      <label
-        htmlFor="filled-in-box"
-      >
-        Remember me?
-      </label>
-    </div>
-  </div>
-  <button
-    className="btn btn-lg btn-primary  btn-block"
-    id="loginbtn"
-    type="submit"
-  >
-    Sign in
-  </button>
-  <p>
-    <label
-      htmlFor="forgot_pass"
-    >
-      <a
-        href=""
-        id="forgot_pass"
-      >
-         Forgot Password ? 
-      </a>
-    </label>
-  </p>
-  <a
-    className=""
-    href="/signup"
-    id="createbtn"
-  >
-     
-    <b>
-      Create account
-    </b>
-  </a>
-</form>
+       
+      <b>
+        Create account
+      </b>
+    </a>
+  </form>
+</div>
 `;
 
-exports[`Login Page Component test should test and take snapshot of LoginPage 3`] = `
+exports[`Login Page Component test should test and take snapshot of LoginPage 1`] = `
 <div>
   <div
     className="row"
     id="logininForm"
   >
-    <form
-      action="books.html"
-      className="form-signin"
-      onSubmit={[Function]}
-    >
-      <h4
-        className="form-signin-heading"
+    <div>
+      <form
+        action="books.html"
+        className="form-signin"
+        onSubmit={[Function]}
       >
-        Please log in
-      </h4>
-      <p
-        className="help-block"
-        style={
-          Object {
-            "color": "red",
+        <h5
+          className="form-signin-heading text-center pull-center"
+        >
+          Please Login In
+        </h5>
+        <p
+          className="help-block"
+          style={
+            Object {
+              "color": "red",
+            }
           }
-        }
-      >
-        *
-        error
-        *
-      </p>
-      <div
-        className="row"
-      >
+        >
+          *
+          error
+          *
+        </p>
         <div
-          className="col input-field s12"
+          className="row"
         >
-          <input
-            autoFocus={true}
-            className="form-control validate"
-            defaultValue={undefined}
-            id="inputUsernamelog"
-            name="username"
-            onChange={[Function]}
-            placeholder={undefined}
-            required={true}
-            type="text"
-            value=""
-          />
-          <label
-            className=""
-            data-error={undefined}
-            data-success={undefined}
-            htmlFor="inputUsernamelog"
+          <div
+            className="col input-field s12"
           >
-            Username
-          </label>
+            <input
+              autoFocus={true}
+              className="form-control validate"
+              defaultValue={undefined}
+              id="inputUsernamelog"
+              name="username"
+              onChange={[Function]}
+              placeholder={undefined}
+              required={true}
+              type="text"
+              value=""
+            />
+            <label
+              className=""
+              data-error={undefined}
+              data-success={undefined}
+              htmlFor="inputUsernamelog"
+            >
+              Username
+            </label>
+          </div>
         </div>
-      </div>
-      <div
-        className="row"
-      >
         <div
-          className="col input-field s12"
+          className="row"
         >
-          <input
-            autoFocus={true}
-            className="form-control validate"
-            defaultValue={undefined}
-            id="inputPassword"
-            name="password"
-            onChange={[Function]}
-            placeholder="Password"
-            required={true}
-            type="password"
-            value=""
-          />
-          <label
-            className=""
-            data-error={undefined}
-            data-success={undefined}
-            htmlFor="inputPassword"
+          <div
+            className="col input-field s12"
           >
-            Password
-          </label>
+            <input
+              autoFocus={true}
+              className="form-control validate"
+              defaultValue={undefined}
+              id="inputPassword"
+              name="password"
+              onChange={[Function]}
+              placeholder="Password"
+              required={true}
+              type="password"
+              value=""
+            />
+            <label
+              className=""
+              data-error={undefined}
+              data-success={undefined}
+              htmlFor="inputPassword"
+            >
+              Password
+            </label>
+          </div>
         </div>
-      </div>
-      <div
-        className="row"
-      >
-        <div>
-          <input
-            className="filled-in checkbox-orange"
-            defaultChecked="checked"
-            id="filled-in-box"
-            label="Remember me?"
-            name="group1"
-            type="checkbox"
-            value=""
-          />
-          <label
-            htmlFor="filled-in-box"
-          >
-            Remember me?
-          </label>
-        </div>
-      </div>
-      <button
-        className="btn btn-lg btn-primary  btn-block"
-        id="loginbtn"
-        type="submit"
-      >
-        Sign in
-      </button>
-      <p>
-        <label
-          htmlFor="forgot_pass"
+        <div
+          className="row"
         >
-          <a
-            href=""
-            id="forgot_pass"
+          <div>
+            <input
+              className="filled-in checkbox-orange"
+              defaultChecked="checked"
+              id="filled-in-box"
+              label="Remember me?"
+              name="group1"
+              type="checkbox"
+              value=""
+            />
+            <label
+              htmlFor="filled-in-box"
+            >
+              Remember me?
+            </label>
+          </div>
+        </div>
+        <button
+          className="btn btn-lg btn-primary  btn-block"
+          id="loginbtn"
+          type="submit"
+        >
+          Sign in
+        </button>
+        <div
+          data-onsuccess={[Function]}
+          id="g-signin2"
+          onClick={[Function]}
+          style={
+            Object {
+              "marginLeft": "1px",
+              "marginTop": "10px",
+            }
+          }
+        />
+        <p>
+          <label
+            htmlFor="forgot_pass"
           >
-             Forgot Password ? 
-          </a>
-        </label>
-      </p>
-      <a
-        className=""
-        href="/signup"
-        id="createbtn"
-      >
-         
-        <b>
-          Create account
-        </b>
-      </a>
-    </form>
+            <button
+              id="forgot_pass"
+              onClick={[Function]}
+              type="button"
+            >
+               Forgot Password ? 
+            </button>
+          </label>
+        </p>
+        <a
+          className=""
+          href="/signup"
+          id="createbtn"
+        >
+           
+          <b>
+            Create account
+          </b>
+        </a>
+      </form>
+    </div>
   </div>
   <footer
     className="footer-distributed "
@@ -543,14 +440,17 @@ exports[`Login Page Component test should test and take snapshot of LoginPage 3`
 </div>
 `;
 
-exports[`Login Page Component test should test and take snapshot of loginpPage 1`] = `
+exports[`Login Page Component test should test and take snapshot of connected loginpPage 1`] = `
 <connectLoginPage
   getbooks={[Function]}
+  googleAuthSignIn={[Function]}
   log={
     Object {
       "error": "error",
     }
   }
+  resetPasswordStatus=""
+  resetUserPassword={[Function]}
   userSignin={[Function]}
 />
 `;

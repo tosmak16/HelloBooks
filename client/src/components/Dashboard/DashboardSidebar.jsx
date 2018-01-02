@@ -210,7 +210,7 @@ class DashboardSidebar extends React.Component {
                           id="userimg"
                           src={this.state.imagePreviewUrl ?
                             this.state.imagePreviewUrl :
-                            !isEmpty(this.props.userData[0].profileImage) ? this.props.userData[0].profileImage : 'http://res.cloudinary.com/tosmak/image/upload/v1507297483/userimg_cxeszl.png'}
+                            !isEmpty(this.props.userData[0].profileImage) ? this.props.userData[0].profileImage : 'https://res.cloudinary.com/tosmak/image/upload/v1507297483/userimg_cxeszl.png'}
                           width="120"
                           height="120"
                           alt="images"

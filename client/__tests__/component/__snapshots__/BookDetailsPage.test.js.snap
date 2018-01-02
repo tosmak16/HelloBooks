@@ -26,7 +26,6 @@ exports[`Test book Details page components and container should test and take sn
                 SCIENCE&TECH
               </b>
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -39,7 +38,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Science
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -52,7 +50,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Technology
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -65,7 +62,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Computer
             </a>
-             
           </div>
         </li>
         <li>
@@ -81,7 +77,6 @@ exports[`Test book Details page components and container should test and take sn
                 LITERATURE
               </b>
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -94,7 +89,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Fiction
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -107,7 +101,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Mystery
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -120,7 +113,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Romance
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -133,7 +125,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Sci-Fiction
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -146,7 +137,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Adventure
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -159,7 +149,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Action
             </a>
-             
           </div>
         </li>
         <li>
@@ -175,7 +164,6 @@ exports[`Test book Details page components and container should test and take sn
                 STYLE AND ART
               </b>
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -188,7 +176,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Arts
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -201,7 +188,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Languages
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -214,7 +200,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Fashion
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -227,7 +212,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Food
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -240,7 +224,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Games
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -253,7 +236,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Music
             </a>
-             
           </div>
         </li>
         <li>
@@ -269,7 +251,6 @@ exports[`Test book Details page components and container should test and take sn
                 CAREER & MONEY
               </b>
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -282,7 +263,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Management
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -295,7 +275,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Accounting
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -308,7 +287,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Entrepreneurship
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -321,7 +299,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Leadership
             </a>
-             
           </div>
         </li>
         <li>
@@ -337,7 +314,6 @@ exports[`Test book Details page components and container should test and take sn
                 PERSONAL GROWTH
               </b>
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -350,7 +326,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Psychology
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -363,7 +338,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Relationships
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -376,7 +350,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Self-Improvement
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -389,7 +362,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Religion
             </a>
-             
           </div>
         </li>
         <li>
@@ -405,7 +377,6 @@ exports[`Test book Details page components and container should test and take sn
                 HEALTH & FITNESS
               </b>
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -418,7 +389,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Fitness
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -431,7 +401,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Nutrition
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -444,7 +413,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Sports
             </a>
-             
           </div>
         </li>
       </ul>
@@ -614,13 +582,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="form-inline"
           >
-            <button
-              className="btn-sm btn-warning shop"
-              id="wishbtn"
-              type="button"
-            >
-              Wishlist
-            </button>
             <button
               className="btn-sm btn-success shop"
               id="borrowbtn"
@@ -705,7 +666,6 @@ exports[`Test book Details page components and container should test and take sn
                 SCIENCE&TECH
               </b>
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -718,7 +678,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Science
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -731,7 +690,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Technology
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -744,7 +702,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Computer
             </a>
-             
           </div>
         </li>
         <li>
@@ -760,7 +717,6 @@ exports[`Test book Details page components and container should test and take sn
                 LITERATURE
               </b>
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -773,7 +729,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Fiction
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -786,7 +741,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Mystery
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -799,7 +753,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Romance
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -812,7 +765,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Sci-Fiction
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -825,7 +777,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Adventure
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -838,7 +789,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Action
             </a>
-             
           </div>
         </li>
         <li>
@@ -854,7 +804,6 @@ exports[`Test book Details page components and container should test and take sn
                 STYLE AND ART
               </b>
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -867,7 +816,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Arts
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -880,7 +828,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Languages
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -893,7 +840,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Fashion
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -906,7 +852,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Food
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -919,7 +864,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Games
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -932,7 +876,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Music
             </a>
-             
           </div>
         </li>
         <li>
@@ -948,7 +891,6 @@ exports[`Test book Details page components and container should test and take sn
                 CAREER & MONEY
               </b>
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -961,7 +903,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Management
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -974,7 +915,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Accounting
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -987,7 +927,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Entrepreneurship
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -1000,7 +939,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Leadership
             </a>
-             
           </div>
         </li>
         <li>
@@ -1016,7 +954,6 @@ exports[`Test book Details page components and container should test and take sn
                 PERSONAL GROWTH
               </b>
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -1029,7 +966,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Psychology
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -1042,7 +978,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Relationships
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -1055,7 +990,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Self-Improvement
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -1068,7 +1002,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Religion
             </a>
-             
           </div>
         </li>
         <li>
@@ -1084,7 +1017,6 @@ exports[`Test book Details page components and container should test and take sn
                 HEALTH & FITNESS
               </b>
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -1097,7 +1029,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Fitness
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -1110,7 +1041,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Nutrition
             </a>
-             
           </div>
           <div
             className="collapsible-body"
@@ -1123,7 +1053,6 @@ exports[`Test book Details page components and container should test and take sn
             >
               Sports
             </a>
-             
           </div>
         </li>
       </ul>
@@ -1293,13 +1222,6 @@ exports[`Test book Details page components and container should test and take sn
           <div
             className="form-inline"
           >
-            <button
-              className="btn-sm btn-warning shop"
-              id="wishbtn"
-              type="button"
-            >
-              Wishlist
-            </button>
             <button
               className="btn-sm btn-success shop"
               id="borrowbtn"
@@ -1523,13 +1445,6 @@ exports[`Test book Details page components and container should test and take sn
         <div
           className="form-inline"
         >
-          <button
-            className="btn-sm btn-warning shop"
-            id="wishbtn"
-            type="button"
-          >
-            Wishlist
-          </button>
           <button
             className="btn-sm btn-success shop"
             id="borrowbtn"

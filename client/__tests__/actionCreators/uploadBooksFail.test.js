@@ -24,7 +24,6 @@ const mockStore = configureMockStore(middlewares);
 
 
 const response = {
-  status: 400,
   message: 'Upload failed',
 };
 
@@ -38,7 +37,7 @@ const action = {
 describe('Test upload book Actions', () => {
   it('should not upload book if the request is not successful', () => {
     fetchMock.post('/api/v2/books',
-      JSON.stringify(response));
+      { status: 400, body: response });
 
     const initialState = {};
     const store = mockStore(initialState);

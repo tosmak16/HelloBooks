@@ -24,7 +24,7 @@ const SideBar = (props) => {
    */
   const handleCollapse = (event, set = true) => {
     if (set) {
-      $('.collapsible').collapsible();
+      process.env.NODE_ENV === 'test' || $('.collapsible').collapsible();
     }
   };
   return (

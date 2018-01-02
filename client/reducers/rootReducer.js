@@ -7,7 +7,7 @@ import login from './login';
 import books from './books';
 import getFilteredBooks from '../reducers/getFilteredBooks';
 import category from './category';
-import selectedbook from './selectedbook';
+import selectedBookDetails from './selectedBookDetails';
 import counter from './counter';
 import borrowBooks from './borrowBooks';
 import displayMessages from './displayMessages';
@@ -34,7 +34,7 @@ export default combineReducers({
   books,
   getFilteredBooks,
   category,
-  selectedbook,
+  selectedBookDetails,
   counter,
   borrowBooks,
   displayMessages,

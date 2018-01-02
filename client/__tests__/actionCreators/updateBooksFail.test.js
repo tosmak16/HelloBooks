@@ -38,7 +38,7 @@ const action = {
 describe('Test update book Actions', () => {
   it('should not update books if the request is not successful', () => {
     fetchMock.put(`/api/v2/books/${action.bookData.bookId}`,
-      JSON.stringify(response));
+      { status: 400, body: response });
 
     const initialState = {};
     const store = mockStore(initialState);

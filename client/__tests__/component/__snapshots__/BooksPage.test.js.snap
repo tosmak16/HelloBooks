@@ -12,7 +12,7 @@ exports[`Test BooksPage component should test and take snapshot of Card box 1`] 
       alt="Avatar"
       className="image"
       id="book_img"
-      src="hello"
+      src="l1.jpg"
       style={
         Object {
           "height": "200px",
@@ -34,6 +34,7 @@ exports[`Test BooksPage component should test and take snapshot of Card box 1`] 
         }
       >
          
+        THE PEOPLE IN THE TREE
       </label>
       <button
         className="text"
@@ -79,7 +80,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
               SCIENCE&TECH
             </b>
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -92,7 +92,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Science
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -105,7 +104,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Technology
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -118,7 +116,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Computer
           </a>
-           
         </div>
       </li>
       <li>
@@ -134,7 +131,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
               LITERATURE
             </b>
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -147,7 +143,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Fiction
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -160,7 +155,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Mystery
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -173,7 +167,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Romance
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -186,7 +179,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Sci-Fiction
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -199,7 +191,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Adventure
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -212,7 +203,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Action
           </a>
-           
         </div>
       </li>
       <li>
@@ -228,7 +218,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
               STYLE AND ART
             </b>
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -241,7 +230,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Arts
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -254,7 +242,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Languages
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -267,7 +254,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Fashion
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -280,7 +266,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Food
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -293,7 +278,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Games
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -306,7 +290,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Music
           </a>
-           
         </div>
       </li>
       <li>
@@ -322,7 +305,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
               CAREER & MONEY
             </b>
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -335,7 +317,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Management
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -348,7 +329,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Accounting
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -361,7 +341,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Entrepreneurship
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -374,7 +353,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Leadership
           </a>
-           
         </div>
       </li>
       <li>
@@ -390,7 +368,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
               PERSONAL GROWTH
             </b>
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -403,7 +380,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Psychology
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -416,7 +392,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Relationships
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -429,7 +404,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Self-Improvement
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -442,7 +416,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Religion
           </a>
-           
         </div>
       </li>
       <li>
@@ -458,7 +431,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
               HEALTH & FITNESS
             </b>
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -471,7 +443,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Fitness
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -484,7 +455,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Nutrition
           </a>
-           
         </div>
         <div
           className="collapsible-body"
@@ -497,7 +467,6 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
           >
             Sports
           </a>
-           
         </div>
       </li>
     </ul>
@@ -508,11 +477,7 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
 exports[`Test BooksPage component should test and take snapshot of booksCategoryPage 1`] = `
 <div
   className="row"
->
-  <h4>
-    
-  </h4>
-</div>
+/>
 `;
 
 exports[`Test BooksPage component should test and take snapshot of booksCollectionPage 1`] = `
@@ -578,7 +543,7 @@ exports[`Test BooksPage component should test and take snapshot of booksCollecti
 </div>
 `;
 
-exports[`Test BooksPage component should test and take snapshot of booksFilterPage 1`] = `
+exports[`Test BooksPage component should test and take snapshot of booksFilterPage when bookIsFound is false 1`] = `
 <div
   className="container-fluid"
   id="booksearchbar"
@@ -659,7 +624,177 @@ exports[`Test BooksPage component should test and take snapshot of booksFilterPa
   </div>
   <div
     className="row"
-  />
+  >
+    <div
+      className="col m10 offset-m2 col l10 offset-l2 col s12 main"
+    >
+      <h4
+        className="page-header"
+      >
+        No search results
+      </h4>
+      <hr />
+      <div
+        className=" row "
+      >
+        <div
+          className=""
+        >
+          <ul
+            className="collection "
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test BooksPage component should test and take snapshot of booksFilterPage when bookIsFound is true 1`] = `
+<div
+  className="container-fluid"
+  id="booksearchbar"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col l3  offset-l2  col m3  offset-m2  col s12 "
+    >
+      <div>
+        <select
+          className="browser-default input-field"
+          name="filterBy"
+          onChange={[Function]}
+          value=""
+        >
+          <option
+            defaultValue="bookTitle"
+          >
+            Search by
+          </option>
+          <option
+            value="bookTitle"
+          >
+            Title
+          </option>
+          <option
+            value="author"
+          >
+            Author
+          </option>
+          <option
+            value="category"
+          >
+            Category
+          </option>
+          <option
+            value="isbn"
+          >
+            ISBN
+          </option>
+        </select>
+      </div>
+    </div>
+    <div
+      className="col l6 col m6 col s12 "
+    >
+      <div
+        className="input-field"
+      >
+        <input
+          id="search"
+          name="searchText"
+          onChange={[Function]}
+          required={true}
+          style={
+            Object {
+              "backgroundColor": "white",
+              "textAlign": "center",
+            }
+          }
+          type="search"
+          value=""
+        />
+        <label
+          className="label-icon"
+          htmlFor="search"
+        >
+          <i
+            className="material-icons"
+          >
+            search
+          </i>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col m10 offset-m2 col l10 offset-l2 col s12 main"
+    >
+      <h4
+        className="page-header"
+      >
+        Search results
+      </h4>
+      <hr />
+      <div
+        className=" row "
+      >
+        <div
+          className=""
+        >
+          <ul
+            className="collection "
+          >
+            <li
+              className="collection-item avatar"
+            >
+              <img
+                alt=""
+                className="circle"
+                name={1}
+                src=""
+              />
+              <span
+                className="title"
+              >
+                love
+              </span>
+              <p />
+              <button
+                className="btn-sm btn-warning shop"
+                id="wishbtn"
+                name={1}
+                onClick={[Function]}
+                type="button"
+              >
+                Check details
+              </button>
+              <a
+                className="secondary-content"
+                href="#!"
+              >
+                <i
+                  className="material-icons "
+                  style={
+                    Object {
+                      "color": "orange",
+                    }
+                  }
+                >
+                  grade
+                </i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
@@ -697,7 +832,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                     SCIENCE&TECH
                   </b>
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -710,7 +844,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Science
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -723,7 +856,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Technology
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -736,7 +868,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Computer
                 </a>
-                 
               </div>
             </li>
             <li>
@@ -752,7 +883,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                     LITERATURE
                   </b>
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -765,7 +895,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Fiction
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -778,7 +907,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Mystery
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -791,7 +919,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Romance
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -804,7 +931,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Sci-Fiction
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -817,7 +943,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Adventure
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -830,7 +955,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Action
                 </a>
-                 
               </div>
             </li>
             <li>
@@ -846,7 +970,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                     STYLE AND ART
                   </b>
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -859,7 +982,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Arts
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -872,7 +994,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Languages
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -885,7 +1006,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Fashion
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -898,7 +1018,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Food
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -911,7 +1030,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Games
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -924,7 +1042,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Music
                 </a>
-                 
               </div>
             </li>
             <li>
@@ -940,7 +1057,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                     CAREER & MONEY
                   </b>
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -953,7 +1069,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Management
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -966,7 +1081,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Accounting
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -979,7 +1093,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Entrepreneurship
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -992,7 +1105,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Leadership
                 </a>
-                 
               </div>
             </li>
             <li>
@@ -1008,7 +1120,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                     PERSONAL GROWTH
                   </b>
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -1021,7 +1132,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Psychology
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -1034,7 +1144,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Relationships
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -1047,7 +1156,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Self-Improvement
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -1060,7 +1168,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Religion
                 </a>
-                 
               </div>
             </li>
             <li>
@@ -1076,7 +1183,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                     HEALTH & FITNESS
                   </b>
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -1089,7 +1195,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Fitness
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -1102,7 +1207,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Nutrition
                 </a>
-                 
               </div>
               <div
                 className="collapsible-body"
@@ -1115,7 +1219,6 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
                 >
                   Sports
                 </a>
-                 
               </div>
             </li>
           </ul>
@@ -1213,11 +1316,7 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
         </div>
         <div
           className="row"
-        >
-          <h4>
-            
-          </h4>
-        </div>
+        />
         <div
           className="col m10 offset-m2 col l10 offset-l2 col s12 main"
         >
@@ -1366,6 +1465,463 @@ exports[`Test BooksPage component should test and take snapshot of booksphotoPag
   <hr />
   <div
     className="row"
-  />
+  >
+    <div
+      className="col m5 col l3 col s6"
+    >
+      <div
+        id="card_div"
+      >
+        <div
+          className="container"
+          id="img_holder"
+        >
+          <img
+            alt="Avatar"
+            className="image"
+            id="book_img"
+            src="l1.jpg"
+            style={
+              Object {
+                "height": "200px",
+                "width": "150px",
+              }
+            }
+          />
+          <div
+            className="middle"
+          >
+            <label
+              className="text"
+              htmlFor="book_img"
+              style={
+                Object {
+                  "fontSize": "12px",
+                  "fontStyle": "bold",
+                }
+              }
+            >
+               
+              THE PEOPLE IN THE TREE
+            </label>
+            <button
+              className="text"
+              name={1}
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "width": "120px",
+                }
+              }
+              type="btn-sm"
+            >
+              Read
+            </button>
+          </div>
+        </div>
+      </div>
+       
+    </div>
+    <div
+      className="col m5 col l3 col s6"
+    >
+      <div
+        id="card_div"
+      >
+        <div
+          className="container"
+          id="img_holder"
+        >
+          <img
+            alt="Avatar"
+            className="image"
+            id="book_img"
+            src="l2.jpg"
+            style={
+              Object {
+                "height": "200px",
+                "width": "150px",
+              }
+            }
+          />
+          <div
+            className="middle"
+          >
+            <label
+              className="text"
+              htmlFor="book_img"
+              style={
+                Object {
+                  "fontSize": "12px",
+                  "fontStyle": "bold",
+                }
+              }
+            >
+               
+              THE LATE PARADE
+            </label>
+            <button
+              className="text"
+              name={2}
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "width": "120px",
+                }
+              }
+              type="btn-sm"
+            >
+              Read
+            </button>
+          </div>
+        </div>
+      </div>
+       
+    </div>
+    <div
+      className="col m5 col l3 col s6"
+    >
+      <div
+        id="card_div"
+      >
+        <div
+          className="container"
+          id="img_holder"
+        >
+          <img
+            alt="Avatar"
+            className="image"
+            id="book_img"
+            src="l3.jpg"
+            style={
+              Object {
+                "height": "200px",
+                "width": "150px",
+              }
+            }
+          />
+          <div
+            className="middle"
+          >
+            <label
+              className="text"
+              htmlFor="book_img"
+              style={
+                Object {
+                  "fontSize": "12px",
+                  "fontStyle": "bold",
+                }
+              }
+            >
+               
+              I AM THE WOLF
+            </label>
+            <button
+              className="text"
+              name={3}
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "width": "120px",
+                }
+              }
+              type="btn-sm"
+            >
+              Read
+            </button>
+          </div>
+        </div>
+      </div>
+       
+    </div>
+    <div
+      className="col m5 col l3 col s6"
+    >
+      <div
+        id="card_div"
+      >
+        <div
+          className="container"
+          id="img_holder"
+        >
+          <img
+            alt="Avatar"
+            className="image"
+            id="book_img"
+            src="l4.jpg"
+            style={
+              Object {
+                "height": "200px",
+                "width": "150px",
+              }
+            }
+          />
+          <div
+            className="middle"
+          >
+            <label
+              className="text"
+              htmlFor="book_img"
+              style={
+                Object {
+                  "fontSize": "12px",
+                  "fontStyle": "bold",
+                }
+              }
+            >
+               
+              THE PALE NORTH
+            </label>
+            <button
+              className="text"
+              name={4}
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "width": "120px",
+                }
+              }
+              type="btn-sm"
+            >
+              Read
+            </button>
+          </div>
+        </div>
+      </div>
+       
+    </div>
+    <div
+      className="col m5 col l3 col s6"
+    >
+      <div
+        id="card_div"
+      >
+        <div
+          className="container"
+          id="img_holder"
+        >
+          <img
+            alt="Avatar"
+            className="image"
+            id="book_img"
+            src="l5.jpg"
+            style={
+              Object {
+                "height": "200px",
+                "width": "150px",
+              }
+            }
+          />
+          <div
+            className="middle"
+          >
+            <label
+              className="text"
+              htmlFor="book_img"
+              style={
+                Object {
+                  "fontSize": "12px",
+                  "fontStyle": "bold",
+                }
+              }
+            >
+               
+              ADULTOLESENCE
+            </label>
+            <button
+              className="text"
+              name={5}
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "width": "120px",
+                }
+              }
+              type="btn-sm"
+            >
+              Read
+            </button>
+          </div>
+        </div>
+      </div>
+       
+    </div>
+    <div
+      className="col m5 col l3 col s6"
+    >
+      <div
+        id="card_div"
+      >
+        <div
+          className="container"
+          id="img_holder"
+        >
+          <img
+            alt="Avatar"
+            className="image"
+            id="book_img"
+            src="l6.jpg"
+            style={
+              Object {
+                "height": "200px",
+                "width": "150px",
+              }
+            }
+          />
+          <div
+            className="middle"
+          >
+            <label
+              className="text"
+              htmlFor="book_img"
+              style={
+                Object {
+                  "fontSize": "12px",
+                  "fontStyle": "bold",
+                }
+              }
+            >
+               
+              WHAT IT MEANS WHEN A MAN FALL FROM SKY
+            </label>
+            <button
+              className="text"
+              name={6}
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "width": "120px",
+                }
+              }
+              type="btn-sm"
+            >
+              Read
+            </button>
+          </div>
+        </div>
+      </div>
+       
+    </div>
+    <div
+      className="col m5 col l3 col s6"
+    >
+      <div
+        id="card_div"
+      >
+        <div
+          className="container"
+          id="img_holder"
+        >
+          <img
+            alt="Avatar"
+            className="image"
+            id="book_img"
+            src="l7.jpg"
+            style={
+              Object {
+                "height": "200px",
+                "width": "150px",
+              }
+            }
+          />
+          <div
+            className="middle"
+          >
+            <label
+              className="text"
+              htmlFor="book_img"
+              style={
+                Object {
+                  "fontSize": "12px",
+                  "fontStyle": "bold",
+                }
+              }
+            >
+               
+              THE SONG AND THE SILENCE
+            </label>
+            <button
+              className="text"
+              name={7}
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "width": "120px",
+                }
+              }
+              type="btn-sm"
+            >
+              Read
+            </button>
+          </div>
+        </div>
+      </div>
+       
+    </div>
+    <div
+      className="col m5 col l3 col s6"
+    >
+      <div
+        id="card_div"
+      >
+        <div
+          className="container"
+          id="img_holder"
+        >
+          <img
+            alt="Avatar"
+            className="image"
+            id="book_img"
+            src="l8.jpg"
+            style={
+              Object {
+                "height": "200px",
+                "width": "150px",
+              }
+            }
+          />
+          <div
+            className="middle"
+          >
+            <label
+              className="text"
+              htmlFor="book_img"
+              style={
+                Object {
+                  "fontSize": "12px",
+                  "fontStyle": "bold",
+                }
+              }
+            >
+               
+              THE ILIAD HOMMER
+            </label>
+            <button
+              className="text"
+              name={8}
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "width": "120px",
+                }
+              }
+              type="btn-sm"
+            >
+              Read
+            </button>
+          </div>
+        </div>
+      </div>
+       
+    </div>
+  </div>
 </div>
 `;

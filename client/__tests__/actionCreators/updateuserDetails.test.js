@@ -40,6 +40,7 @@ const action = {
 
 
 describe('Test update user Actions', () => {
+
   it('should create an action to send update user request', () => {
     const expectedAction = {
       type: UPDATE_USER_REQUEST,
@@ -70,6 +71,33 @@ describe('Test update user Actions', () => {
   it('should update user if the request is successful', () => {
     fetchMock.put(`/api/v2/users/${1}`,
       { body: response, status: 200 });
+
+    const initialState = {};
+    const store = mockStore(initialState);
+    const actions = store.getActions();
+    const expectedActions = [
+      {
+        type: UPDATE_USER_REQUEST,
+        isUpdating: true,
+        data: action.userData
+      },
+      {
+        type: UPDATE_USER_SUCCESS,
+        isUpdating: false,
+        response: action.response
+      },
+    ];
+    return store.dispatch(updateUser(action.userData, token))
+      .then(() => {
+        expect(actions).toEqual(expectedActions);
+        store.clearActions();
+        fetchMock.reset();
+      })
+      .catch();
+  });
+  it('should not update user if no valid user details', () => {
+    fetchMock.put(`/api/v2/users/${1}`,
+      { body: response, status: 400 });
 
     const initialState = {};
     const store = mockStore(initialState);

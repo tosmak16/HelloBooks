@@ -1,11 +1,7 @@
 import axios from 'axios';
-import {
-  browserHistory
-} from 'react-router';
+import { browserHistory } from 'react-router';
 import jwtDecode from 'jwt-decode';
 import isEmpty from 'lodash/isEmpty';
-
-
 import {
   getunreturnedbooksError,
   getunreturnedbooksRequest,
@@ -13,8 +9,6 @@ import {
 } from '../../actions/getunreturnedBooks';
 
 /**
- * 
- * 
  * @export
  * @param {any} token 
  * @returns 
@@ -22,9 +16,9 @@ import {
 export default function getunreturnedBooks(token) {
   let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(getunreturnedbooksRequest());
-    return fetch('/api/v2/users/' + userId + '/books?returned=false', {
+    const response = await fetch('/api/v2/users/' + userId + '/books?returned=false', {
       method: 'GET',
       body: {
         token: token
@@ -33,18 +27,9 @@ export default function getunreturnedBooks(token) {
         token: token
       },
     })
-      .then(
-      (res) => {
-        if (res.status >= 400) {
-          res.json().then((response) => {
-            dispatch(getunreturnedbooksError(response.message))
-          })
-        }
-        else {
-          res.json().then((response) => {
-            dispatch(getunreturnedbooksReponse(response.unreturnedBook));
-          }).catch((error) => error);
-        }
-      })
+    const jsonResponse = await response.json().then(jsonRes => jsonRes)
+    response.status === 200 ?
+      dispatch(getunreturnedbooksReponse(jsonResponse.unreturnedBook)) :
+      dispatch(getunreturnedbooksError(jsonResponse.message))
   };
 }
