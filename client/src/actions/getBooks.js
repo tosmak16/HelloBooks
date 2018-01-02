@@ -4,11 +4,12 @@ import 'whatwg-fetch'
 import { getbooksError, getbooksRequest, getbooksReponse } from '../../actions/getBooks';
 
 /**
- * @export
+ * @export getbooks
+ * @description it sends get books request
  * @param {boolean} set 
- * @returns {object} response
+ * @returns {action} dispacted actions
  */
-export default function getbooks(set) {
+export const getbooks = (set) => {
   const token = window.localStorage.jwtToken;
   return async (dispatch) => {
     dispatch(getbooksRequest());
@@ -18,12 +19,8 @@ export default function getbooks(set) {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
-      body: {
-        token: token
-      },
-      headers: {
-        token: token
-      },
+      body: { token },
+      headers: { token },
     })
     const jsonResponse = await response.json().then(jsonRes => jsonRes)
     response.status === 200 ?
@@ -31,3 +28,4 @@ export default function getbooks(set) {
       dispatch(getbooksError(jsonResponse.message))
   };
 }
+export default getbooks

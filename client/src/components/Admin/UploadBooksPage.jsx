@@ -5,6 +5,7 @@ import SingleActionModal from '../modal/SingleActionModal';
 import ActivityLoader from '../preloader/ActivityLoader';
 
 /**
+ * @description uploadBooks unconnected component
  * @function UploadBooksPage
  * @param {object} props
  * @returns {views} UploadBook form

@@ -1,16 +1,14 @@
 import lodash from 'lodash'
-
 import books from '../../reducers/books';
 import { getFilteredBooks } from '../../actions/getFilteredBooks';
 
 /**
- * 
- * 
- * @export
- * @param {any} filterBy 
- * @param {any} searchText 
- * @param {any} data 
- * @returns 
+ * @export searchbooks
+ * @description it dispatch actions to search for books
+ * @param {string} filterBy 
+ * @param {string} searchText 
+ * @param {array} data 
+ * @returns {action} dispacted actions
  */
 export default function searchbooks(filterBy, searchText, data) {
   const newArray = [];
@@ -26,12 +24,8 @@ export default function searchbooks(filterBy, searchText, data) {
     }
     else {
       newArray.push(element.bookTitle);
-
     }
-  }, this);
-
-
-
+  });
   const parseArray = newArray;
   const searchTextIndex = parseArray.toString().toUpperCase().search(searchText.toUpperCase());
   let slicedSearchTextIndex = parseArray.toString().slice(searchTextIndex, -1)

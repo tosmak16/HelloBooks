@@ -1,9 +1,7 @@
 import React from 'react';
 import filterBy from 'lodash/filter';
 import PropTypes from 'prop-types';
-
 import { BookHistoryTableRow } from '../Dashboard/BookHistoryTableRow';
-
 /**
  * @function BorrowHistoryTable
  * @param {object} props

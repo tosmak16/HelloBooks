@@ -4,6 +4,7 @@ import _ from 'lodash';
 /* it's an async function which returns a promise */
 /** *************************************** */
 /**
+ * @description it handles change password request
  * @param {object} userData 
  * @param {object} params 
  * @returns {object} response 

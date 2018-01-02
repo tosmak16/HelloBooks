@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 import jwtDecode from 'jwt-decode';
 
 /**
- * @export
+ * @description HOC which serves has admim authentication middle ware
  * @param {class} Component
  * @returns {views} component
  */

@@ -4,16 +4,15 @@ import { uploadImage } from './uploadImage';
 import { updatebookError, updatebookRequest, updatebookResponse } from '../../actions/updateBooks';
 
 /**
- * @export
- * @param {any} bookData 
- * @param {any} token 
- * @returns 
+ * @export updateBook
+ * @description it dispatch actions for updatebooks request and response
+ * @param {object} bookData 
+ * @param {string} token 
+ * @returns {action} dispacted actions
  */
-
-export function updateBook(bookData, token) {
+export const updateBook = (bookData, token) => {
   return async (dispatch) => {
     dispatch(updatebookRequest(bookData));
-
     const response = await fetch('/api/v2/books/' + bookData.bookId, {
       method: 'PUT',
       headers: {
@@ -29,3 +28,5 @@ export function updateBook(bookData, token) {
       dispatch(updatebookError(jsonResponse.message))
   }
 }
+const updateBooks = updateBook;
+export default updateBooks;

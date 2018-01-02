@@ -3,11 +3,11 @@ export default {
    * auth method serves  as middleware for user authentication only
    * it verifies token.
    * @function auth
-   * @param {any} req
-   * @param {any} res
-   * @param {any} next
+   * @param {object} req
+   * @param {object} res
+   * @param {function} next
+   * @returns { object } res
    */
-
   userAuth(req, res, next) {
     if (req.params.userId.toString() !== req.decoded.id.toString()) {
       return res.status(401).send({

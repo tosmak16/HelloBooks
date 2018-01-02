@@ -3,17 +3,19 @@ import dotenv from 'dotenv';
 
 
 dotenv.config();
-
+/**
+ * @description it sends email to user for password reset details
+ * @param {string} email 
+ * @param {string} password 
+ * @returns {object} message
+ */
 export const sendPasswordReset = (email, password) => {
-  // Generate test SMTP service account from ethereal.email
-  // Only needed if you don't have a real mail account for testing
   nodemailer.createTestAccount(() => {
-    // create reusable transporter object using the default SMTP transport
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.USER_NAME, // generated ethereal user
-        pass: process.env.PASSWORD // generated ethereal password
+        user: process.env.USER_NAME, // app bot email
+        pass: process.env.PASSWORD // app bot password
       }
     });
     // setup email data with unicode symbols
@@ -44,6 +46,4 @@ export const sendPasswordReset = (email, password) => {
     });
   });
 };
-
-
 export default sendPasswordReset;

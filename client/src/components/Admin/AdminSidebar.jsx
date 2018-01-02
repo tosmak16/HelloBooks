@@ -3,10 +3,11 @@ import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 
 /**
+ * @description it compose of admin side bar
  * @returns {views} containing admin side nav bar
  * @param {object} props
  */
-function AdminSidebar(props) {
+const AdminSidebar = (props) => {
   const handleLogout = (event) => {
     event.preventDefault();
     props.logout();
@@ -40,7 +41,7 @@ function AdminSidebar(props) {
       </div>
     </div>
   );
-}
+};
 AdminSidebar.propTypes = {
   logout: PropTypes.func.isRequired
 };

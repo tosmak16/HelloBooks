@@ -5,7 +5,7 @@ const validNumber = /^[0-9]+$/;
 /* valdiates book details parameters */
 /** *************************************** */
 /**
- * @description This is asyc function for validating book details
+ * @description This is an asyc function for validating book details
  * @param {object} body 
  * @returns {object} responseMessage
  */

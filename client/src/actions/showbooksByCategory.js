@@ -3,10 +3,11 @@ import lodash from 'lodash'
 import { showBooksByCategory } from '../../actions/getFilteredBooks'
 
 /**
- * @export
- * @param {any} selectedCategory 
- * @param {any} data 
- * @returns 
+ * @export showbooksByCategory
+ * @description it dispatch actions to show books by category
+ * @param {string} selectedCategory 
+ * @param {object} data 
+ * @returns {action} dispacted actions
  */
 export default function showbooksByCategory(selectedCategory, data) {
   const filteredData = lodash.filter(data, ['category', selectedCategory]);
@@ -14,5 +15,4 @@ export default function showbooksByCategory(selectedCategory, data) {
   return (dispatch) => {
     dispatch(showBooksByCategory(filteredData, selectedCategory));
   }
-
 }

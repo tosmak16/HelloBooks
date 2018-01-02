@@ -1,3 +1,8 @@
+/**
+ * @description it gets bookdetails stored in local storage
+ * @param {object} filteredData 
+ * @returns {void}
+ */
 export const getStoredBookDetails = (filteredData) => {
   filteredData.bookTitle = localStorage.getItem('bookTitle');
   filteredData.id = localStorage.getItem('id');
@@ -8,5 +13,4 @@ export const getStoredBookDetails = (filteredData) => {
   filteredData.summary = localStorage.getItem('summary');
   filteredData.image = localStorage.getItem('image');
 };
-
 export default getStoredBookDetails;

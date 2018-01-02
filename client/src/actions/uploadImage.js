@@ -4,38 +4,24 @@ import { uploadimageError, uploadimageRequest, uploadimageResponse } from '../..
 
 const upload_preset = process.env.UPLOAD_PRESET;
 /**
- * 
- * 
- * @export
- * @param {any} file 
- * @returns 
+ * @export uploadImage
+ * @description it dispatches action for upload image request and response
+ * @param {object} file 
+ * @returns {action} dispacted actions
  */
-export function uploadImage(file) {
+export const uploadImage = (file) => {
   const data = new FormData();
   data.append('file', file);
   data.append('upload_preset', upload_preset);
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(uploadimageRequest(data));
-
-    return fetch('https://api.cloudinary.com/v1_1/tosmak/upload', {
+    const response = await fetch('https://api.cloudinary.com/v1_1/tosmak/upload', {
       method: 'POST',
       body: data
     })
-      .then(
-      (res) => {
-        if (res.status >= 400) {
-          throw res.status;
-        }
-        else if (res.status === 200) {
-          return res.json()
-        }
-      })
-      .then((response) => {
-        dispatch(uploadimageResponse(response.secure_url));
-      })
-      .catch(error => {
-        dispatch(uploadimageError('Bad request'));
-      });
-
+    const jsonResponse = await response.json().then(jsonRes => jsonRes)
+    response.status >= 400 ? dispatch(uploadimageError('Bad request')) :
+      dispatch(uploadimageResponse(jsonResponse.secure_url));
   }
 }
+export default uploadImage;

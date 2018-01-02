@@ -235,8 +235,6 @@ BorrowedBooksPage.propTypes = {
   updateUser: PropTypes.func.isRequired,
   uploadAvatar: PropTypes.func.isRequired,
   userData: PropTypes.arrayOf(PropTypes.any).isRequired,
-
-
 };
 
 /**

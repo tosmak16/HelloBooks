@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
 /**
+ * @description table row component
  * @param {object} props
  * @returns {view} containing table list of book details
  */
-function Tablerow(props) {
+const Tablerow = (props) => {
   const { book, onDelete } = props;
   return (
     <tr >
@@ -23,7 +24,7 @@ function Tablerow(props) {
       >delete_forever</button></td>
     </tr >
   );
-}
+};
 
 Tablerow.propTypes = {
   onDelete: PropTypes.func.isRequired,

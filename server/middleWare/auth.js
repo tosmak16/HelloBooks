@@ -6,11 +6,11 @@ export default {
    * auth method serves  as middleware for authentication
    * it verifies token.
    * @function auth
-   * @param {any} req
-   * @param {any} res
-   * @param {any} next
+   * @param {object} req
+   * @param {object} res
+   * @param {function} next
+   * @returns { object } res
    */
-
   auth(req, res, next) {
     const token = req.body.token || req.headers.token;
     if (token) {

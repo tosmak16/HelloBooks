@@ -7,11 +7,11 @@ const validNumber = /^[0-9]+$/;
 /** *************************************** */
 /**
  * @description valdiates book details parameters
- * @param {object} body 
+ * @param {object} requestBody 
  * @returns {object} response
  */
-export const updateBooksValidator = async (body) => {
-  const { bookTitle, author, category, stockNumber, isbn } = body;
+export const updateBooksValidator = async (requestBody) => {
+  const { bookTitle, author, category, stockNumber, isbn } = requestBody;
   const response = await Promise.resolve(
     // Checks validity of booktitle and it's length
     !_.isEmpty(bookTitle) && bookTitle.length < 3 ?

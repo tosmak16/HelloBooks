@@ -5,7 +5,7 @@ import $ from 'jquery';
 import _ from 'lodash';
 import AdminSidebar from '../AdminSidebar';
 import UploadBooksPage from '../UploadBooksPage';
-import getbooks from '../../../actions/getBooks';
+import { getbooks } from '../../../actions/getBooks';
 import { uploadBook } from '../../../actions/uploadBooks';
 import { uploadImage } from '../../../actions/uploadImage';
 import { uploadFile } from '../../../actions/uploadBookFile';
@@ -15,6 +15,7 @@ import {
 } from '../../../helperFunctions/validateBookDetails';
 
 /**
+ * @description UpdateBooks Connected component
  * @class UploadBooksContainer
  * @extends {React.Component}
  */

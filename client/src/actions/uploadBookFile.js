@@ -3,36 +3,25 @@ import { uploadFileError, uploadFileRequest, uploadFileResponse } from '../../ac
 
 const upload_preset = process.env.UPLOAD_PRESET;
 /**
-
- * @export
+ * @export uploadFile
+ * @description it dispact action for upload book file request and response
  * @param {object} file 
- * @returns 
+ * @returns {action} dispacted actions
  */
-export function uploadFile(file) {
+export const uploadFile = (file) => {
   const data = new FormData();
   data.append('file', file);
   data.append('upload_preset', upload_preset);
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(uploadFileRequest(file));
-    return fetch('https://api.cloudinary.com/v1_1/tosmak/auto/upload', {
+    const response = await fetch('https://api.cloudinary.com/v1_1/tosmak/auto/upload', {
       method: 'POST',
       body: data
     })
-      .then(
-      (res) => {
-        if (res.status >= 400) {
-          throw res.status;
-        }
-        else if (res.status === 200) {
-          return res.json()
-        }
-      })
-      .then((response) => {
-        dispatch(uploadFileResponse(response.secure_url));
-      })
-      .catch(error => {
-        dispatch(uploadFileError('Bad request'));
-      });
-
+    const jsonResponse = await response.json().then(jsonRes => jsonRes)
+    response.status >= 400 ? dispatch(uploadFileError('Bad request')) :
+      dispatch(uploadFileResponse(jsonResponse.secure_url));
   }
 }
+const uploadBookFile = uploadFile;
+export default uploadBookFile;

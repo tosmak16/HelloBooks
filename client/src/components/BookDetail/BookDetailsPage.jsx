@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import SideBar from '../SideBar';
 import DetailsForm from './DetailsForm';
-import checkBookDetails from '../../actions/checkBookDetails';
-import borrowBooks from '../../actions/borrowBooks';
+import { checkBookDetails } from '../../actions/checkBookDetails';
+import { borrowBooks } from '../../actions/borrowBooks';
 import showbooksByCategory from '../../actions/showbooksByCategory';
 
 /**
+ * @description it's a connected component
  * @param {object} props
  * @returns {views} containing sidebar and details form
  */
@@ -28,7 +29,6 @@ export const BookDetailsPage = props =>
         checkBookDetails={props.checkBookDetails}
         bookData={props.bookData}
         borrowBookItem={props.borrowBookItem}
-
       />
     </div>
   );

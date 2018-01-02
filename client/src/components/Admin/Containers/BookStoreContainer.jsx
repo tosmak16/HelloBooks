@@ -5,7 +5,7 @@ import $ from 'jquery';
 import _ from 'lodash';
 import BookStorePage from '../BookStorePage';
 import AdminSidebar from '../AdminSidebar';
-import getbooks from '../../../actions/getBooks';
+import { getbooks } from '../../../actions/getBooks';
 import { deleteBook } from '../../../actions/deleteBooks';
 import refreshPage from '../../../actions/refreshPage';
 import searchbooks from '../../../actions/searchbooks';
@@ -15,12 +15,13 @@ import { logout } from '../../../actions/logoutAction';
 
 
 /**
+ * @description BookStore Connected component
  * @class BookStoreContainer
  * @extends {React.Component}
  */
 class BookStoreContainer extends React.Component {
   /**
- * Creates an instance of BookStorePage.
+ * @description Creates an instance of BookStorePage.
  * @param {object} props
  * @memberof BookStorePage
  */

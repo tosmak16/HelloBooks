@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router';
 /**
- * @export
+ * @description HOC which serves has registered user authentication middle ware
  * @param {class} Component
  * @returns {views} componenr
  */

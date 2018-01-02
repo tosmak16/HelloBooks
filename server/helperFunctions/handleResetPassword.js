@@ -1,7 +1,15 @@
 import _ from 'lodash';
 import { queryUsers } from './databaseQuery';
 import { handleUpdateUser } from './handleUpdateUser';
-
+/** *************************************** */
+/* it handles reset password request */
+/* it's an async function which returns a promise */
+/** *************************************** */
+/**
+ * @description it handles reset password request
+ * @param {string} email 
+ * @returns {object} response message
+ */
 export const handleResetPassword = async (email) => {
   const validEmail = /[a-zA-Z]+[a-zA-Z0-9]*@[a-z]+.[a-z]+$/;
   if (_.isEmpty(email)) {

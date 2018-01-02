@@ -5,6 +5,7 @@ import _ from 'lodash';
 /* it checks input parameter validity also */
 /** *************************************** */
 /**
+ * @description handles update userdetails 
  * @param {object} userData 
  * @param {number} userId 
  * @returns {object} response

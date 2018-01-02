@@ -3,12 +3,13 @@ import { uploadImage } from './uploadImage';
 import { uploadbookError, uploadbookRequest, uploadbookResponse } from '../../actions/uploadBooks';
 
 /** 
- * @export
+ * @export uploadBook
+ * @description it dispatches actions for upload books request and response
  * @param {object} bookData 
  * @param {string} token 
- * @returns 
+ * @returns {action} dispacted actions
  */
-export function uploadBook(bookData, token) {
+export const uploadBook = (bookData, token) => {
   return async (dispatch) => {
     dispatch(uploadbookRequest(bookData));
     const response = await fetch('/api/v2/books', {
@@ -26,3 +27,4 @@ export function uploadBook(bookData, token) {
       dispatch(uploadbookError(jsonResponse.message))
   }
 }
+export default uploadBook;
