@@ -22,21 +22,17 @@ const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 const action = {
-  response: 'password changed successfully',
-  userData: user[0],
-  error: 'Bad request'
+  userData: { oldPassword: '123456', newPassword: '1234565' },
 };
 
 const response = {
-  status: 400,
   message: 'Bad request',
-  result: user[0]
 };
 
 describe('Test change paswword Actions', () => {
   it('should not change password if the request is not successful', () => {
     fetchMock.put(`/api/v2/users/${1}/password`,
-      JSON.stringify(response));
+      { status: 400, body: response });
 
     const initialState = {};
     const store = mockStore(initialState);
@@ -50,7 +46,99 @@ describe('Test change paswword Actions', () => {
       {
         type: CHANGE_PASSWORD_FAILURE,
         isSending: false,
-        error: action.error
+        error: response.message
+      },
+    ];
+    return store.dispatch(changePassword(action.userData, token))
+      .then(() => {
+        expect(actions).toEqual(expectedActions);
+        store.clearActions();
+        fetchMock.reset();
+      })
+      .catch();
+  });
+
+  it('should not change password if oldpassword is not inputed', () => {
+    action.userData.oldPassword = '';
+    response.message = 'current password is required'
+    fetchMock.put(`/api/v2/users/${1}/password`,
+      { status: 400, body: response });
+
+    const initialState = {};
+    const store = mockStore(initialState);
+    const actions = store.getActions();
+    const expectedActions = [
+      {
+        type: CHANGE_PASSWORD_REQUEST,
+        isSending: true,
+        userData: action.userData,
+      },
+      {
+        type: CHANGE_PASSWORD_FAILURE,
+        isSending: false,
+        error: response.message
+      },
+    ];
+    return store.dispatch(changePassword(action.userData, token))
+      .then(() => {
+        expect(actions).toEqual(expectedActions);
+        store.clearActions();
+        fetchMock.reset();
+      })
+      .catch();
+  });
+
+  it('should not change password if new password is not inputed', () => {
+    action.userData.oldPassword = '123456';
+    action.userData.newPassword = '';
+    response.message = 'new password is required'
+    fetchMock.put(`/api/v2/users/${1}/password`,
+      { status: 400, body: response });
+
+    const initialState = {};
+    const store = mockStore(initialState);
+    const actions = store.getActions();
+    const expectedActions = [
+      {
+        type: CHANGE_PASSWORD_REQUEST,
+        isSending: true,
+        userData: action.userData,
+      },
+      {
+        type: CHANGE_PASSWORD_FAILURE,
+        isSending: false,
+        error: response.message
+      },
+    ];
+    return store.dispatch(changePassword(action.userData, token))
+      .then(() => {
+        expect(actions).toEqual(expectedActions);
+        store.clearActions();
+        fetchMock.reset();
+      })
+      .catch();
+  });
+
+  it('should not change password if new and old password are the same', () => {
+    action.userData.oldPassword = '123456';
+    action.userData.newPassword = '123456';
+    response.message = 'Oh! sorry you can not use the same password'
+    fetchMock.put(`/api/v2/users/${1}/password`,
+      { status: 400, body: response });
+
+    const initialState = {};
+    const store = mockStore(initialState);
+    const actions = store.getActions();
+    const expectedActions = [
+      {
+        type: CHANGE_PASSWORD_REQUEST,
+        isSending: true,
+        userData: action.userData,
+      },
+      {
+        type: CHANGE_PASSWORD_FAILURE,
+        isSending: false,
+        error: response.message
       },
     ];
     return store.dispatch(changePassword(action.userData, token))

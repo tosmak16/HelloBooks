@@ -21,14 +21,13 @@ const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 const response = {
-  status: 400,
   message: 'borrowed books can not be fetch',
 };
 
 describe('Test getBorrowedBooks failed Actions', () => {
   it('should not return borrowed books resources if the request is not successful', () => {
     fetchMock.get(`/api/v2/user/${1}/books`,
-      JSON.stringify(response));
+      { status: 400, body: response });
 
     const initialState = {};
     const store = mockStore(initialState);

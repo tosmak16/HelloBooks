@@ -21,14 +21,13 @@ const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 const response = {
-  status: 400,
   message: 'bad request',
 };
 
 describe('Test getBooks Actions failed', () => {
   it('should not return books resources if the request is not successful', () => {
     fetchMock.get('/api/v2/books',
-      JSON.stringify(response));
+      { status: 400, body: response });
 
     const initialState = {};
     const store = mockStore(initialState);

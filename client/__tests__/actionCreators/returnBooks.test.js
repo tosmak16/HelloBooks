@@ -33,7 +33,6 @@ const payload = {
 };
 
 const response = {
-  status: 200,
   message: 'books returned successfully',
 };
 
@@ -66,7 +65,7 @@ describe('Test return books Actions', () => {
 
   it('should return book if the request is successful', () => {
     fetchMock.put(`/api/v2/users/${1}/books`,
-      JSON.stringify(response));
+      { status: 200, body: response });
 
     const initialState = {};
     const store = mockStore(initialState);

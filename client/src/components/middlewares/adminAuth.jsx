@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router';
 import jwtDecode from 'jwt-decode';
 
-import { popMessage } from '../../../actions/popMessages';
-
 /**
  * @export
  * @param {class} Component
@@ -27,11 +25,8 @@ export default function (Component) {
           browserHistory.push('/books');
         }
         if (!localStorage.jwtToken) {
-          this.props.popMessage({
-            type: 'error',
-            text: 'Access denied!',
-          });
           browserHistory.push('/login');
+          Materialize.toast('Access denied!', 1000, 'red');
         }
       }
     }
@@ -47,6 +42,7 @@ export default function (Component) {
         }
         if (!localStorage.jwtToken) {
           browserHistory.push('/login');
+          Materialize.toast('Access denied!', 1000, 'red');
         }
       }
     }
@@ -62,7 +58,6 @@ export default function (Component) {
   }
   AdminShield.propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
-    popMessage: PropTypes.func.isRequired,
   };
   /**
    * @param {arrayOfObject} state
@@ -73,5 +68,5 @@ export default function (Component) {
       isAuthenticated: state.auth[0].isAuthenticated,
     };
   }
-  return connect(mapStateToProps, { popMessage })(AdminShield);
+  return connect(mapStateToProps)(AdminShield);
 }

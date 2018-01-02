@@ -22,10 +22,10 @@ import {
 export default function getborrowedBooks(token) {
   let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(getborrowedbooksRequest());
 
-    return fetch('/api/v2/user/' + userId + '/books', {
+    const response = await fetch('/api/v2/user/' + userId + '/books', {
       method: 'GET',
       body: {
         token: token
@@ -34,17 +34,9 @@ export default function getborrowedBooks(token) {
         token: token
       },
     })
-      .then(
-      (res) => {
-        if (res.status >= 400) {
-          res.json().then((response) => {
-            dispatch(getborrowedbooksError(response.message))
-          })
-        } else {
-          res.json().then((response) => {
-            dispatch(getborrowedbooksReponse(response.borrowBooks));
-          })
-        }
-      })
+    const jsonResponse = await response.json().then(jsonRes => jsonRes)
+    response.status === 200 ?
+      dispatch(getborrowedbooksReponse(jsonResponse.borrowBooks)) :
+      dispatch(getborrowedbooksError(jsonResponse.message))
   };
 }

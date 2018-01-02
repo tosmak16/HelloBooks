@@ -13,9 +13,9 @@ import { showBookDetails } from '../../actions/showBookDetails';
  * @returns
  */
 export default function checkBookDetails(bookId, set) {
-  if (set === true) { browserHistory.push('/book/details'); }
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(showBookDetails(bookId));
+    set && browserHistory.push('/book/details');
   }
 
 }

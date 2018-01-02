@@ -17,9 +17,9 @@ export const googleAuthSignIn = (googleUserData) => {
     firstName: googleUserData.w3.ofa,
     lastName: googleUserData.w3.wea
   }
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(signupRequest(userData));
-    return fetch('/api/v2/users/googleAuth', {
+    const response = await fetch('/api/v2/users/googleAuth', {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -27,30 +27,24 @@ export const googleAuthSignIn = (googleUserData) => {
       },
       body: JSON.stringify(userData)
     })
-      .then(
-      (res) => {
-        if (res.status >= 400) {
-          res.json().then((response) => {
-            Materialize.toast(response.message, 1000, 'red');
-            dispatch(signupError(response.message));
-          });
-        }
-        else {
-          res.json().then((response) => {
-            Materialize.toast(response.message, 1000, 'green');
-            const token = response.token;
-            window.localStorage.setItem('jwtToken', token);
-            const decodedToken = jwtDecode(token);
-            dispatch(setCurrentuser(decodedToken));
-            dispatch(signupResponse(response.message));
-            if (localStorage.jwtToken && decodedToken.role.toString() === 'user') {
-              browserHistory.push('/books')
-            }
-            else if (localStorage.jwtToken && decodedToken.role.toString() === 'admin') {
-              browserHistory.push('/admin')
-            }
-          })
-        }
-      })
+    const jsonResponse = await response.json().then(jsonRes => jsonRes)
+    if (response.status >= 400) {
+      process.env.NODE_ENV === 'test' || Materialize.toast(jsonResponse.message, 1000, 'red');
+      dispatch(signupError(jsonResponse.message));
+    }
+    else {
+      const token = jsonResponse.token;
+      window.localStorage.setItem('jwtToken', token);
+      const decodedToken = jwtDecode(token);
+      dispatch(setCurrentuser(decodedToken));
+      dispatch(signupResponse(jsonResponse.message));
+      process.env.NODE_ENV === 'test' || Materialize.toast(jsonResponse.message, 1000, 'green');
+      if (localStorage.jwtToken && decodedToken.role.toString() === 'user') {
+        browserHistory.push('/books')
+      }
+      else if (localStorage.jwtToken && decodedToken.role.toString() === 'admin') {
+        browserHistory.push('/admin')
+      }
+    }
   };
 }

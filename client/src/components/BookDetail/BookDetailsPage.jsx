@@ -46,7 +46,7 @@ BookDetailsPage.propTypes = {
  */
 const mapStateToProps = state => ({
   bookData: state.books[0].data,
-  book: state.selectedbook,
+  book: state.selectedBookDetails,
   borrowBookItem: state.borrowBooks,
 });
 

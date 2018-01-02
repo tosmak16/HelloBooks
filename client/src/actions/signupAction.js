@@ -9,39 +9,32 @@ import { validateUserDetails } from '../helperFunctions/validateUserDetails';
  */
 export function userSignup(userData) {
   let error = '';
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(signupRequest(userData));
-    validateUserDetails(userData).then((responseMessage) => {
-      if (responseMessage !== '') {
-        Materialize.toast(responseMessage, 1000, 'red');
-        dispatch(signupError(responseMessage));
+    const validationResponse = await validateUserDetails(userData)
+    if (validationResponse !== '') {
+      process.env.NODE_ENV === 'test' || Materialize.toast(validationResponse, 1000, 'red');
+      dispatch(signupError(validationResponse));
+    }
+    else {
+      const response = await fetch('/api/v2/users/signup', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+      })
+      const jsonResponse = await response.json().then(jsonRes => jsonRes)
+      if (response.status >= 400) {
+        process.env.NODE_ENV === 'test' || Materialize.toast(jsonResponse.message, 1000, 'red');
+        dispatch(signupError(jsonResponse.message));
       }
       else {
-        return fetch('/api/v2/users/signup', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(userData)
-        })
-          .then(
-          (res) => {
-            if (res.status >= 400) {
-              res.json().then((response) => {
-                Materialize.toast(response.message, 1000, 'red');
-                dispatch(signupError(response.message));
-              });
-            }
-            else {
-              res.json().then((response) => {
-                Materialize.toast(response.message, 1000, 'green');
-                dispatch(signupResponse(response.message));
-                browserHistory.push('/login');
-              })
-            }
-          })
+        process.env.NODE_ENV === 'test' || Materialize.toast(jsonResponse.message, 1000, 'green');
+        dispatch(signupResponse(jsonResponse.message));
+        process.env.NODE_ENV === 'test' || browserHistory.push('/login');
       }
-    })
+    }
   };
 }

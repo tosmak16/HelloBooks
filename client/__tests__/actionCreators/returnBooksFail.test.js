@@ -32,14 +32,13 @@ const payload = {
 };
 
 const response = {
-  status: 400,
   message: 'you have returned this book already',
 };
 
 describe('Test return books Actions', () => {
   it('should not return book if the request is not successful', () => {
     fetchMock.put(`/api/v2/users/${1}/books`,
-      JSON.stringify(response));
+      { status: 400, body: response });
 
     const initialState = {};
     const store = mockStore(initialState);

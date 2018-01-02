@@ -11,20 +11,18 @@ import {
 } from '../../actions/getUserDetails';
 
 /**
- * 
- * 
  * @export
- * @param {any} token 
+ * @param {string} token 
  * @returns 
  */
 export default function getUserdetails(token) {
   let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;
 
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(getuserdetailsRequest());
 
-    return fetch('/api/v2/users/' + userId, {
+    const response = await fetch('/api/v2/users/' + userId, {
       method: 'GET',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -32,17 +30,9 @@ export default function getUserdetails(token) {
         token: token
       },
     })
-      .then(
-      (res) => {
-        if (res.status >= 400) {
-          res.json().then((response) => {
-            dispatch(getuserdetailsError(response.message))
-          })
-        } else {
-          res.json().then((response) => {
-            dispatch(getuserdetailsReponse(response.userDetails));
-          })
-        }
-      })
+    const jsonResponse = await response.json().then(jsonRes => jsonRes)
+    response.status === 200 ?
+      dispatch(getuserdetailsReponse(jsonResponse.userDetails)) :
+      dispatch(getuserdetailsError(jsonResponse.message))
   };
 }

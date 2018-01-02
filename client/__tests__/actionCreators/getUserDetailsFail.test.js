@@ -23,20 +23,17 @@ const mockStore = configureMockStore(middlewares);
 
 const action = {
   response: 'user details fetched successfully',
-  userData: user[0],
   error: 'Bad request'
 };
 
 const response = {
-  status: 400,
-  message: 'Bad request',
-
+  message: 'Bad request'
 };
 
 describe('Test get user Actions', () => {
   it('should not return user details resources if the request is successful', () => {
     fetchMock.get(`/api/v2/users/${1}`,
-      JSON.stringify(response));
+      { status: 400, body: response });
 
     const initialState = {};
     const store = mockStore(initialState);

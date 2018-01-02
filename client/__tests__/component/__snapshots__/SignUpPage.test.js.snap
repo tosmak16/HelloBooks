@@ -162,51 +162,6 @@ exports[`SignupPage should test and take snapshot of SignUpPage 1`] = `
                 </label>
               </div>
             </div>
-            <div
-              className="row"
-            >
-              <div
-                className="col input-field s12"
-              >
-                <select
-                  className=""
-                  defaultValue={undefined}
-                  id="inputSignUpselect"
-                  multiple={undefined}
-                  name="membershipType"
-                  onChange={[Function]}
-                  required={true}
-                  value=""
-                >
-                  <option
-                    defaultValue=""
-                    disabled={true}
-                  >
-                    Membership Type
-                  </option>
-                  <option
-                    value="Basic"
-                  >
-                    Basic
-                  </option>
-                  <option
-                    value="Silver"
-                  >
-                    Silver
-                  </option>
-                  <option
-                    value="Gold"
-                  >
-                    Gold
-                  </option>
-                  <option
-                    value="Bronze"
-                  >
-                    Bronze
-                  </option>
-                </select>
-              </div>
-            </div>
             <a
               href=""
             >

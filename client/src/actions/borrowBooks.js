@@ -1,14 +1,9 @@
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 import 'whatwg-fetch'
-
-
 import { borrowBookError, borrowBookRequest, borrowBookResponse } from '../../actions/borrowBook';
-import { popMessage } from '../../actions/popMessages';
-
 
 /**
- * 
  * @description this is borrow books action controller
  * @export
  * @param {any} token 
@@ -19,10 +14,9 @@ import { popMessage } from '../../actions/popMessages';
 export default function borrowBooks(token, bookId) {
   let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;
-
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(borrowBookRequest(bookId));
-    return fetch('/api/v2/users/' + userId + '/books', {
+    const response = await fetch('/api/v2/users/' + userId + '/books', {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -31,17 +25,9 @@ export default function borrowBooks(token, bookId) {
       },
       body: JSON.stringify({ bookId: bookId, token: token })
     })
-      .then(
-      (res) => {
-        if (res.status >= 400) {
-          res.json().then((response) => {
-            dispatch(borrowBookError(response.message));
-          })
-        } else {
-          res.json().then((response) => {
-            dispatch(borrowBookResponse(response.message));
-          })
-        }
-      })
+    const jsonResponse = await response.json().then(jsonRes => jsonRes)
+    response.status === 200 ?
+      dispatch(borrowBookResponse(jsonResponse.message)) :
+      dispatch(borrowBookError(jsonResponse.message))
   }
 }

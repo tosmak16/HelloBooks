@@ -9,9 +9,9 @@ import { uploadbookError, uploadbookRequest, uploadbookResponse } from '../../ac
  * @returns 
  */
 export function uploadBook(bookData, token) {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(uploadbookRequest(bookData));
-    return fetch('/api/v2/books', {
+    const response = await fetch('/api/v2/books', {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -20,17 +20,9 @@ export function uploadBook(bookData, token) {
       },
       body: JSON.stringify(bookData)
     })
-      .then(
-      (res) => {
-        if (res.status >= 400) {
-          res.json().then((response) => {
-            dispatch(uploadbookError(response.message));
-          })
-        } else {
-          res.json().then((response) => {
-            dispatch(uploadbookResponse(response.message));
-          })
-        }
-      })
+    const jsonResponse = await response.json().then(jsonRes => jsonRes)
+    response.status === 200 ?
+      dispatch(uploadbookResponse(jsonResponse.message)) :
+      dispatch(uploadbookError(jsonResponse.message))
   }
 }

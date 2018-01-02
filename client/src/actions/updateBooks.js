@@ -4,8 +4,6 @@ import { uploadImage } from './uploadImage';
 import { updatebookError, updatebookRequest, updatebookResponse } from '../../actions/updateBooks';
 
 /**
- * 
- * 
  * @export
  * @param {any} bookData 
  * @param {any} token 
@@ -13,10 +11,10 @@ import { updatebookError, updatebookRequest, updatebookResponse } from '../../ac
  */
 
 export function updateBook(bookData, token) {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(updatebookRequest(bookData));
 
-    return fetch('/api/v2/books/' + bookData.bookId, {
+    const response = await fetch('/api/v2/books/' + bookData.bookId, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -25,17 +23,9 @@ export function updateBook(bookData, token) {
       },
       body: JSON.stringify(bookData)
     })
-      .then(
-      (res) => {
-        if (res.status >= 400) {
-          res.json().then((response) => {
-            dispatch(updatebookError(response.message));
-          })
-        } else {
-          res.json().then((response) => {
-            dispatch(updatebookResponse(response.message));
-          })
-        }
-      })
+    const jsonResponse = await response.json().then(jsonRes => jsonRes)
+    response.status === 200 ?
+      dispatch(updatebookResponse(jsonResponse.message)) :
+      dispatch(updatebookError(jsonResponse.message))
   }
 }

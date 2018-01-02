@@ -22,6 +22,11 @@ describe('Login Page Component test', () => {
       error: '',
       isFetching: false,
       response: {}
+    }],
+    resetPassword: [{
+      isSending: false,
+      data: '',
+      error: '',
     }]
   };
   const mockStore = configureMockStore();
@@ -34,31 +39,26 @@ describe('Login Page Component test', () => {
     wrapper = mount(<Provider store={store}><ConnectedLoginPage /></Provider>);
   });
 
-  it('should be defined', () => {
+  it('should check if LoginPage is defined', () => {
     expect(Login).toBeDefined();
   });
 
-  it('should be defined', () => {
+  it('should check if LoginForm is defined', () => {
     expect(LoginForm).toBeDefined();
   });
 
-  it('should test and take snapshot of LoginPage', () => {
-    const tree = render.create(<LoginForm userSignin={mockFuction} getbooks={mockFuction} login={{ error: '' }} />);
+  it('should test and take snapshot of LoginForm', () => {
+    const tree = render.create(<LoginForm resetPasswordStatus='' resetUserPassword={mockFuction} googleAuthSignIn={mockFuction} userSignin={mockFuction} getbooks={mockFuction} login={{ error: '' }} />);
     expect(tree).toMatchSnapshot();
   });
 
   it('should test and take snapshot of LoginPage', () => {
-    const tree = render.create(<LoginForm userSignin={mockFuction} getbooks={mockFuction} login={{ error: 'error' }} />);
+    const tree = render.create(<Login resetPasswordStatus='' resetUserPassword={mockFuction} googleAuthSignIn={mockFuction} userSignin={mockFuction} getbooks={mockFuction} login={{ error: 'error' }} />);
     expect(tree).toMatchSnapshot();
   });
 
-  it('should test and take snapshot of LoginPage', () => {
-    const tree = render.create(<Login userSignin={mockFuction} getbooks={mockFuction} login={{ error: 'error' }} />);
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('should test and take snapshot of loginpPage', () => {
-    const tree = render.create(<connectLoginPage userSignin={mockFuction} getbooks={mockFuction} log={{ error: 'error' }} />);
+  it('should test and take snapshot of connected loginpPage', () => {
+    const tree = render.create(<connectLoginPage resetPasswordStatus='' resetUserPassword={mockFuction} googleAuthSignIn={mockFuction} userSignin={mockFuction} getbooks={mockFuction} log={{ error: 'error' }} />);
     expect(tree).toMatchSnapshot();
   });
 
@@ -71,18 +71,34 @@ describe('Login Page Component test', () => {
   });
 
   it('should test for handle change function', () => {
-    wrapper = shallow(<LoginForm userSignin={mockFuction} getbooks={mockFuction} login={{ error: 'error' }} />);
+    const nextProps = {
+      resetPasswordStatus: ''
+    }
+    wrapper = shallow(<LoginForm resetPasswordStatus='' resetUserPassword={mockFuction} googleAuthSignIn={mockFuction} userSignin={mockFuction} getbooks={mockFuction} login={{ error: 'error' }} />);
     wrapper.instance().handeleFuction = mockFuction;
     wrapper.update();
     wrapper.instance().handleChange(e);
     wrapper.update();
+    wrapper.instance().componentWillReceiveProps(nextProps)
   });
 
   it('should test for handle submit function and error state', () => {
-    wrapper = shallow(<LoginForm userSignin={mockFuction} getbooks={mockFuction} login={{ error: 'error' }} />);
+    const nextProps = {
+      resetPasswordStatus: 'true'
+    }
+    wrapper = shallow(<LoginForm resetPasswordStatus='' resetUserPassword={mockFuction} googleAuthSignIn={mockFuction} userSignin={mockFuction} getbooks={mockFuction} login={{ error: 'error' }} />);
     wrapper.instance().handeleFuction = mockFuction;
     wrapper.update();
     wrapper.instance().handleSubmit(event);
     wrapper.update();
+    wrapper.instance().componentWillReceiveProps(nextProps)
+    wrapper.instance().onSignIn()
+    wrapper.instance().handleGoogleSignin()
+    wrapper.instance().handleClose()
+    wrapper.instance().handleSendMail()
+    wrapper.instance().handleInputEmailChange(e)
+    wrapper.instance().renderResetPasswordModal()
+
+
   });
 });

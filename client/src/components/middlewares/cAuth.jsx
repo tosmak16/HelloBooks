@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router';
-
-import { popMessage } from '../../../actions/popMessages';
 /**
  * @export
  * @param {class} Component
@@ -21,11 +19,8 @@ export default function (Component) {
      */
     componentWillMount() {
       if (!this.props.isAuthenticated) {
-        this.props.popMessage({
-          type: 'error',
-          text: 'you need to sign in',
-        });
         browserHistory.push('/login');
+        Materialize.toast('you need to sign in', 1000, 'red');
       }
     }
     /**
@@ -36,6 +31,7 @@ export default function (Component) {
     componentWillUpdate(nextProps) {
       if (!nextProps.isAuthenticated) {
         browserHistory.push('/login');
+        Materialize.toast('you need to sign in', 1000, 'red');
       }
     }
     /**
@@ -50,7 +46,6 @@ export default function (Component) {
   }
   Authenticate.propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
-    popMessage: PropTypes.func.isRequired,
   };
   /**
    * @param {arrayOfObject} state
@@ -61,5 +56,5 @@ export default function (Component) {
       isAuthenticated: state.auth[0].isAuthenticated,
     };
   }
-  return connect(mapStateToProps, { popMessage })(Authenticate);
+  return connect(mapStateToProps)(Authenticate);
 }
