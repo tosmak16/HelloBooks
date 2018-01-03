@@ -9,7 +9,7 @@ import DashboardSidebar from '../DashboardSidebar';
 import { BorrowedbooksTable } from '../BorrowedbooksTable';
 import refreshPage from '../../../actions/refreshPage';
 import getborrowedBooks from '../../../actions/getborrowedBooks';
-import getbooks from '../../../actions/getBooks';
+import { getbooks } from '../../../actions/getBooks';
 import returnbook from '../../../actions/returnBooks';
 import getunreturnedBooks from '../../../actions/getunreturnedBooks';
 import updateUser from '../../../actions/updateuserDetails';

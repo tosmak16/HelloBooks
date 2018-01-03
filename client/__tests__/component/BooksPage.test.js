@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import expect from 'expect';
 import thunk from 'redux-thunk';
 import $ from 'jquery';
-
 import ConnectedBooksPage, { BooksPage } from '../../src/components/Books/BooksPage';
 import localStorageMock from '../../__mock__/localStorage';
 import books from '../../__mock__/book';

@@ -34,6 +34,7 @@ import './public/fonts/roboto/Roboto-Regular.woff';
 import './public/fonts/roboto/Roboto-Regular.woff2';
 import './public/fonts/roboto/Roboto-Thin.woff';
 import './public/fonts/roboto/Roboto-Thin.woff2';
+import './public/js/googlePlatformScript/googlePlatform';
 import routes from './src/routes/routes';
 import rootReducer from './reducers/rootReducer';
 
