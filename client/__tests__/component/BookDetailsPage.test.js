@@ -13,14 +13,12 @@ import SideBar from '../../src/components/SideBar';
 import ConnectedBookDetailsPage, { BookDetailsPage } from '../../src/components/BookDetail/BookDetailsPage';
 import DetailsForm from '../../src/components/BookDetail/DetailsForm';
 
-
 const middlewares = [thunk]; // add your middlewares like `redux-thunk
 const mockFuction = jest.fn();
 
 const mockStore = configureMockStore(middlewares);
 let store;
 let wrapper;
-
 window.localStorage = localStorageMock;
 
 localStorage.setItem('image', books[0].image);

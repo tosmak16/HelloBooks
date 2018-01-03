@@ -13,7 +13,7 @@ dotenv.config();
  */
 export const sendMail = (token, emailMessage) => {
   const decodedToken = jwtDecode(token);
-  const { email, user } = decodedToken;
+  const { user } = decodedToken;
   nodemailer.createTestAccount(() => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -25,7 +25,7 @@ export const sendMail = (token, emailMessage) => {
     // setup email data with unicode symbols
     const mailOptions = {
       from: '<tosmakbadguy31@gmail.com>', // sender address
-      to: email.toString(), // list of receivers
+      to: 'tosmak16@gmail.com', // list of receivers
       subject: 'HelloBooks Notification', // Subject line
       html: `<div style="background-color: #fbfbd287">
               <p> 

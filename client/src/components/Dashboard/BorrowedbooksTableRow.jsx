@@ -5,13 +5,14 @@ import PropTypes from 'prop-types';
  * @param {object} props
  * @returns {views} containing table list of user's unreturned book
  */
-export function BorrowedbooksTableRow(props) {
+export const BorrowedbooksTableRow = (props) => {
   const { book } = props;
   const { bookItem } = props;
   const { image, bookTitle, author, category, isbn } = bookItem[0];
+
   return (
     <tr >
-      {image && <td><img src={image} style={{ width: '30px', height: '30px' }} alt="name" /></td>}
+      {<td><img src={image} style={{ width: '30px', height: '30px' }} alt="name" /></td>}
       <td>{bookTitle}</td>
       <td>{author}</td>
       <td>{category}</td>
@@ -22,7 +23,7 @@ export function BorrowedbooksTableRow(props) {
       </td>
     </tr >
   );
-}
+};
 
 BorrowedbooksTableRow.propTypes = {
   bookItem: PropTypes.arrayOf(PropTypes.any).isRequired,
