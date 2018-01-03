@@ -15,15 +15,15 @@ import ActivityLoader from '../preloader/ActivityLoader';
  */
 export const BorrowedbooksTable = (props) => {
   const { state, handleRead, unreturnedBooksData, handleClick,
-    handleClose, handleExit, handleNo, handleYes } = props;
+    handleClose, handleExit, handleNo, handleYes, bookData } = props;
   const { bookLoaded, message, displayPreloader, errors, pdfUrl } = state;
 
-  const tablerow = unreturnedBooksData.map(book =>
-    (<BorrowedbooksTableRow
+  const tablerow = unreturnedBooksData.map(book => (
+    <BorrowedbooksTableRow
       key={book.id}
       book={book}
       value={book.id}
-      bookItem={filterBy(props.bookData, ['id', book.bookId])}
+      bookItem={filterBy(bookData, ['id', book.bookId])}
       onHandleClick={handleClick}
       onHandleRead={handleRead}
     />));

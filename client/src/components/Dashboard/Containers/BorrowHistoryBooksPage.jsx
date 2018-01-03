@@ -9,7 +9,7 @@ import DashboardSidebar from '../DashboardSidebar';
 import BookHistoryTable from '../BookHistoryTable';
 import refreshPage from '../../../actions/refreshPage';
 import getborrowedBooks from '../../../actions/getborrowedBooks';
-import getbooks from '../../../actions/getBooks';
+import { getbooks } from '../../../actions/getBooks';
 import updateUser from '../../../actions/updateuserDetails';
 import { uploadAvatar } from '../../../actions/uploadUserAvatar';
 import { logout } from '../../../actions/logoutAction';
@@ -68,14 +68,15 @@ export class BorrowHistoryBooksPage extends React.Component {
               updateUser={this.props.updateUser}
               uploadAvatar={this.props.uploadAvatar}
             />
-            <BookHistoryTable
-              bookData={this.props.bookData}
-              borrowBooksHistoryDate={this.props.borrowBooksHistoryDate}
-              getbooks={this.props.getbooks}
-              getborrowedBooks={this.props.getborrowedBooks}
-              isRefreshed={this.props.isRefreshed}
-              refreshPage={this.props.refreshPage}
-            />
+            {!isEmpty(this.props.bookData) &&
+              !isEmpty(this.props.borrowBooksHistoryDate) && <BookHistoryTable
+                bookData={this.props.bookData}
+                borrowBooksHistoryDate={this.props.borrowBooksHistoryDate}
+                getbooks={this.props.getbooks}
+                getborrowedBooks={this.props.getborrowedBooks}
+                isRefreshed={this.props.isRefreshed}
+                refreshPage={this.props.refreshPage}
+              />}
           </div>
         </div>
       </div>
