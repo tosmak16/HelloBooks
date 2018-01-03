@@ -12,7 +12,7 @@ import UserProfilePage from '../components/Dashboard/Containers/UserProfile';
 import ChangedPasswordPage from '../components/Dashboard/Containers/ChangePasswordPage';
 import BookStoreContainer from '../components/Admin/Containers/BookStoreContainer';
 import UserAuth from '../components/middlewares/UserAuth';
-import AdminAuth from '../components/middlewares/AdminAuth';
+import AdminShield from '../components/middlewares/AdminShield';
 import UploadBooksContainer from '../components/Admin/Containers/UploadBooksContainer';
 import UpdateBooksContainer from '../components/Admin/Containers/UpdateBooksContainer';
 import LoginAuth from '../components/middlewares/LoginAuth';
@@ -32,9 +32,9 @@ export default
     <Route path="/dashboard/history" component={UserAuth(BorrowedHistoryPage)} />
     <Route path="/dashboard/userprofile" component={UserAuth(UserProfilePage)} />
     <Route path="/dashboard/changepassword" component={UserAuth(ChangedPasswordPage)} />
-    <Route path="/admin" component={AdminAuth(BookStoreContainer)} />
-    <Route path="/admin/bookstore" component={AdminAuth(BookStoreContainer)} />
-    <Route path="/admin/uploadbook" component={AdminAuth(UploadBooksContainer)} />
-    <Route path="/admin/updatebook" component={AdminAuth(UpdateBooksContainer)} />
+    <Route path="/admin" component={AdminShield(BookStoreContainer)} />
+    <Route path="/admin/bookstore" component={AdminShield(BookStoreContainer)} />
+    <Route path="/admin/uploadbook" component={AdminShield(UploadBooksContainer)} />
+    <Route path="/admin/updatebook" component={AdminShield(UpdateBooksContainer)} />
   </Route>
 );
