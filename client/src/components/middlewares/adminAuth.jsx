@@ -11,12 +11,12 @@ import jwtDecode from 'jwt-decode';
  */
 export default function (Component) {
   /**
-   * @class AdminShield
+   * @class AdminAuth
    * @extends {React.Component}
    */
-  class AdminShield extends React.Component {
+  class AdminAuth extends React.Component {
     /**
-     * @memberof AdminShield
+     * @memberof AdminAuth
      * @returns {void}
      */
     componentWillMount() {
@@ -32,7 +32,7 @@ export default function (Component) {
     }
     /**
      * @param {object} nextProps
-     * @memberof AdminShield
+     * @memberof AdminAuth
      * @returns {void}
      */
     componentWillUpdate(nextProps) {
@@ -48,7 +48,7 @@ export default function (Component) {
     }
     /**
      * @returns {views} component and it's props
-     * @memberof AdminShield
+     * @memberof AdminAuth
      */
     render() {
       return (
@@ -56,7 +56,7 @@ export default function (Component) {
       );
     }
   }
-  AdminShield.propTypes = {
+  AdminAuth.propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
   };
   /**
@@ -68,5 +68,5 @@ export default function (Component) {
       isAuthenticated: state.auth[0].isAuthenticated,
     };
   }
-  return connect(mapStateToProps)(AdminShield);
+  return connect(mapStateToProps)(AdminAuth);
 }

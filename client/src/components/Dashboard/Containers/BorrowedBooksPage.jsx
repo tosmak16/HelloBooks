@@ -38,7 +38,7 @@ export class BorrowedBooksPage extends React.Component {
       message: '',
       bookLoaded: false,
       pdfUrl: '',
-      displayPreloader: 'none'
+      displayPreloader: 'none',
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleYes = this.handleYes.bind(this);
@@ -66,6 +66,7 @@ export class BorrowedBooksPage extends React.Component {
       this.props.getbooks(true);
     }
   }
+
   /**
    * @param {object} nextProps
    * @memberof BorrowedbooksTable
@@ -199,17 +200,20 @@ export class BorrowedBooksPage extends React.Component {
               updateUser={this.props.updateUser}
               uploadAvatar={this.props.uploadAvatar}
             />
-            <BorrowedbooksTable
-              bookData={this.props.bookData}
-              unreturnedBooksData={this.props.unreturnedBooksData}
-              handleClick={this.handleClick}
-              handleRead={this.handleRead}
-              handleClose={this.handleClose}
-              handleExit={this.handleExit}
-              handleNo={this.handleNo}
-              handleYes={this.handleYes}
-              state={this.state}
-            />
+            {
+              !_.isEmpty(this.props.bookData) &&
+              !_.isEmpty(this.props.unreturnedBooksData) &&
+              <BorrowedbooksTable
+                bookData={this.props.bookData}
+                unreturnedBooksData={this.props.unreturnedBooksData}
+                handleClick={this.handleClick}
+                handleRead={this.handleRead}
+                handleClose={this.handleClose}
+                handleExit={this.handleExit}
+                handleNo={this.handleNo}
+                handleYes={this.handleYes}
+                state={this.state}
+              />}
           </div>
         </div>
       </div>

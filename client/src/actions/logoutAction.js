@@ -1,4 +1,3 @@
-import { browserHistory } from 'react-router';
 import $ from 'jquery';
 import { setCurrentuser } from '../../actions/setCurrentuser';
 /** 
@@ -9,14 +8,16 @@ import { setCurrentuser } from '../../actions/setCurrentuser';
 export const logout = () => {
   localStorage.clear()
   process.env.NODE_ENV === 'test' || Materialize.toast('You are signed out', 5000, 'red');
-  return async (dispatch) => {
+  return (dispatch) => {
     dispatch(setCurrentuser({}));
-
-    const auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(() => {
-      return 'User signed out.';
-
-    });
+    try {
+      const auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(() =>
+        'User signed out.'
+      );
+    } catch (error) {
+      return 'User Signed Out'
+    }
   };
 }
 export default logout;

@@ -27,6 +27,7 @@ module.exports = {
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
         UPLOAD_PRESET: JSON.stringify(process.env.UPLOAD_PRESET),
+        SECRET: JSON.stringify(process.env.SECRET),
       }
     })
   ],
@@ -90,6 +91,10 @@ module.exports = {
     },
 
     ],
+  },
+  node: {
+    dns: 'mock',
+    net: 'mock'
   },
   resolve: {
     extensions: ['.js', '.jsx', '.vue', '.json'],

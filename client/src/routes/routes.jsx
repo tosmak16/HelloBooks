@@ -11,29 +11,30 @@ import BorrowedHistoryPage from '../components/Dashboard/Containers/BorrowHistor
 import UserProfilePage from '../components/Dashboard/Containers/UserProfile';
 import ChangedPasswordPage from '../components/Dashboard/Containers/ChangePasswordPage';
 import BookStoreContainer from '../components/Admin/Containers/BookStoreContainer';
-import cAuth from '../components/middlewares/cAuth';
-import adminAuth from '../components/middlewares/adminAuth';
+import UserAuth from '../components/middlewares/UserAuth';
+import AdminAuth from '../components/middlewares/AdminAuth';
 import UploadBooksContainer from '../components/Admin/Containers/UploadBooksContainer';
 import UpdateBooksContainer from '../components/Admin/Containers/UpdateBooksContainer';
+import LoginAuth from '../components/middlewares/LoginAuth';
 
 
 export default
 (
   <Route path="/" component={App}>
     <IndexRoute component={LoginPage} />
-    <Route path="/login" component={LoginPage} />
-    <Route path="/signup" component={SignupPage} />
+    <Route path="/login" component={LoginAuth(LoginPage)} />
+    <Route path="/signup" component={LoginAuth(SignupPage)} />
     <Route path="/books" component={BookPage} />
     <Route path="/books/:category" component={BookPage} />
-    <Route path="/book/details" component={cAuth(BooksDetailsPage)} />
-    <Route path="/dashboard" component={cAuth(BorrowBooksPage)} />
-    <Route path="/dashboard/borrowedbooks" component={cAuth(BorrowBooksPage)} />
-    <Route path="/dashboard/history" component={cAuth(BorrowedHistoryPage)} />
-    <Route path="/dashboard/userprofile" component={cAuth(UserProfilePage)} />
-    <Route path="/dashboard/changepassword" component={cAuth(ChangedPasswordPage)} />
-    <Route path="/admin" component={adminAuth(BookStoreContainer)} />
-    <Route path="/admin/bookstore" component={adminAuth(BookStoreContainer)} />
-    <Route path="/admin/uploadbook" component={adminAuth(UploadBooksContainer)} />
-    <Route path="/admin/updatebook" component={adminAuth(UpdateBooksContainer)} />
+    <Route path="/book/details" component={UserAuth(BooksDetailsPage)} />
+    <Route path="/dashboard" component={UserAuth(BorrowBooksPage)} />
+    <Route path="/dashboard/borrowedbooks" component={UserAuth(BorrowBooksPage)} />
+    <Route path="/dashboard/history" component={UserAuth(BorrowedHistoryPage)} />
+    <Route path="/dashboard/userprofile" component={UserAuth(UserProfilePage)} />
+    <Route path="/dashboard/changepassword" component={UserAuth(ChangedPasswordPage)} />
+    <Route path="/admin" component={AdminAuth(BookStoreContainer)} />
+    <Route path="/admin/bookstore" component={AdminAuth(BookStoreContainer)} />
+    <Route path="/admin/uploadbook" component={AdminAuth(UploadBooksContainer)} />
+    <Route path="/admin/updatebook" component={AdminAuth(UpdateBooksContainer)} />
   </Route>
 );
