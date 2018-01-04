@@ -442,4 +442,51 @@ box-shadow: 5px 5px 5px 5px #9e8f8f
         }
        
     }
+    @media (max-width: 600px) {
+        #emptyShelf{
+            opacity: 0.4;
+            position: absolute;
+            left: 0px;
+            top: 560px;
+            height: 1000px;
+            }
+    }
+    @media (min-width: 600px) {
+        #emptyShelf{
+            opacity: 0.4;
+            position: fixed;
+            left: 245px;
+            top: -20px;
+            }
+    }
+    @media (max-width: 600px) {
+        #emptyShelfMessage{
+            opacity: 0.4;
+            font-size: 40px;
+            position: relative;
+            left: 50px;
+        }
+        #emptyShelfIcon{
+            opacity: 0.4;
+            position: relative;
+            top: 10px;
+            left: 10px;
+        }
+    }
+    @media (min-width: 600px) {
+        #emptyShelfMessage{
+            opacity: 0.4;
+            font-size: 40px;
+            position: fixed;
+            left: 45%;
+        }
+        #emptyShelfIcon{
+            opacity: 0.4;
+            position: fixed;
+            top: 150px;
+            left: 40%;
+        }
+    }
+
+
 

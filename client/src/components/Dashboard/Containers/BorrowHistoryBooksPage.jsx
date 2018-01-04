@@ -13,6 +13,7 @@ import { getBooks } from '../../../actions/getBooks';
 import updateUser from '../../../actions/updateUser';
 import { uploadUserAvatar } from '../../../actions/uploadUserAvatar';
 import { logout } from '../../../actions/logout';
+import NoResourceComponent from '../../NoResourceComponent';
 
 
 /**
@@ -21,6 +22,17 @@ import { logout } from '../../../actions/logout';
  * @extends {React.Component}
  */
 export class BorrowHistoryBooksPage extends React.Component {
+  /**
+ * Creates an instance of BorrowHistoryBooksPage.
+ * @param {object} props
+ * @memberof BorrowHistoryBooksPage
+ */
+  constructor(props) {
+    super(props);
+    this.state = {
+      noBorrowedBookHistory: false
+    };
+  }
   /**
    * @memberof BorrowHistoryBooksPage
    * @returns {void}
@@ -47,6 +59,16 @@ export class BorrowHistoryBooksPage extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.isRefreshed) {
       this.props.getBorrowedBook(localStorage.jwtToken);
+    }
+
+    if (_.isEmpty(nextProps.borrowBooksHistoryDate)) {
+      this.setState({
+        noBorrowedBookHistory: true
+      });
+    } else if (!_.isEmpty(nextProps.borrowBooksHistoryDate)) {
+      this.setState({
+        noBorrowedBookHistory: false
+      });
     }
   }
   /**
@@ -77,6 +99,12 @@ export class BorrowHistoryBooksPage extends React.Component {
                 isRefreshed={this.props.isRefreshed}
                 refreshPage={this.props.refreshPage}
               />}
+
+            {
+              this.state.noBorrowedBookHistory
+              &&
+              <NoResourceComponent />
+            }
           </div>
         </div>
       </div>

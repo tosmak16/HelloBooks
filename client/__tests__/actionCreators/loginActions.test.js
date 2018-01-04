@@ -4,7 +4,6 @@ import thunk from 'redux-thunk';
 import fetchMock from 'fetch-mock';
 import jwt from 'jsonwebtoken';
 import jwtDecode from 'jwt-decode';
-import '../../public/js/googlePlatformScript/googlePlatform';
 
 
 import { SET_USER } from '../../actions/actionTypes';
