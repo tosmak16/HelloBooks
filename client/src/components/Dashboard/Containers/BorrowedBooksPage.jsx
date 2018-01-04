@@ -15,6 +15,7 @@ import getUnreturnedBook from '../../../actions//getUnreturnedBook';
 import updateUser from '../../../actions/updateUser';
 import { uploadUserAvatar } from '../../../actions/uploadUserAvatar';
 import { logout } from '../../../actions/logout';
+import NoResourceComponent from '../../NoResourceComponent';
 
 /**
  * @export
@@ -39,6 +40,7 @@ export class BorrowedBooksPage extends React.Component {
       bookLoaded: false,
       pdfUrl: '',
       displayPreloader: 'none',
+      noUnreturnedBooks: false
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleYes = this.handleYes.bind(this);
@@ -73,6 +75,15 @@ export class BorrowedBooksPage extends React.Component {
    * @returns {void}
    */
   componentWillReceiveProps(nextProps) {
+    if (_.isEmpty(nextProps.unreturnedBooksData)) {
+      this.setState({
+        noUnreturnedBooks: true
+      });
+    } else if (!_.isEmpty(nextProps.unreturnedBooksData)) {
+      this.setState({
+        noUnreturnedBooks: false
+      });
+    }
     this.setState({
       displayPreloader: 'none'
     });
@@ -214,6 +225,11 @@ export class BorrowedBooksPage extends React.Component {
                 handleYes={this.handleYes}
                 state={this.state}
               />}
+            {
+              this.state.noUnreturnedBooks
+              &&
+              <NoResourceComponent />
+            }
           </div>
         </div>
       </div>

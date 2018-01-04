@@ -4,7 +4,6 @@ import expect from 'expect';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { mount, shallow } from 'enzyme';
-import '../../public/js/googlePlatformScript/googlePlatform';
 import ConnectedLoginPage, { Login } from '../../src/components/Login';
 import { LoginForm } from '../../src/components/LoginForm';
 import { e, event } from '../../__mock__/event';

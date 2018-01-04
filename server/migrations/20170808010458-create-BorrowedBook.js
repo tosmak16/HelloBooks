@@ -39,7 +39,6 @@ module.exports = {
       },
       bookId: {
         type: Sequelize.INTEGER,
-
         onDelete: 'CASCADE',
         references: {
           model: 'Books',

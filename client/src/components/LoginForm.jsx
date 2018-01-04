@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Input, Row } from 'react-materialize';
+import $ from 'jquery';
 import { ResetPasswordModal } from './modal/ResetPasswordModal';
+
 
 /**
  * @export LoginForm
@@ -40,12 +42,16 @@ export class LoginForm extends React.Component {
    * @returns {void}
    */
   componentDidMount() {
-    gapi.signin2.render('g-signin2', {
-      scope: 'profile email',
-      height: 40,
-      width: 298,
-      longtitle: false,
-    });
+    $.getScript('https://apis.google.com/js/platform.js')
+      .done(() => {
+        // execute any gapi calls here...
+        gapi.signin2.render('g-signin2', {
+          scope: 'profile email',
+          height: 40,
+          width: 298,
+          longtitle: false,
+        });
+      });
   }
   /**
    * @param {object} nextProps
@@ -73,13 +79,17 @@ export class LoginForm extends React.Component {
    * @returns {void}
    */
   handleGoogleSignin() {
-    gapi.signin2.render('g-signin2', {
-      scope: 'profile email',
-      height: 40,
-      width: 298,
-      longtitle: false,
-      onsuccess: this.onSignIn
-    });
+    $.getScript('https://apis.google.com/js/platform.js')
+      .done(() => {
+        // execute any gapi calls here...
+        gapi.signin2.render('g-signin2', {
+          scope: 'profile email',
+          height: 40,
+          width: 298,
+          longtitle: false,
+          onsuccess: this.onSignIn
+        });
+      });
   }
 
   /**
