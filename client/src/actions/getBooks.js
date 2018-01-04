@@ -1,18 +1,17 @@
-import axios from 'axios';
 import { browserHistory } from 'react-router';
 import 'whatwg-fetch'
-import { getbooksError, getbooksRequest, getbooksReponse } from '../../actions/getBooks';
+import { getBooksError, getBooksRequest, getBooksReponse } from '../../actions/getBooks';
 
 /**
- * @export getbooks
+ * @export getBooks
  * @description it sends get books request
  * @param {boolean} set 
  * @returns {action} dispacted actions
  */
-export const getbooks = (set) => {
+export const getBooks = (set) => {
   const token = window.localStorage.jwtToken;
   return async (dispatch) => {
-    dispatch(getbooksRequest());
+    dispatch(getBooksRequest());
     const response = await fetch('/api/v2/books', {
       method: 'GET',
       headers: {
@@ -24,8 +23,8 @@ export const getbooks = (set) => {
     })
     const jsonResponse = await response.json().then(jsonRes => jsonRes)
     response.status === 200 ?
-      dispatch(getbooksReponse(jsonResponse.books)) :
-      dispatch(getbooksError(jsonResponse.message))
+      dispatch(getBooksReponse(jsonResponse.books)) :
+      dispatch(getBooksError(jsonResponse.message))
   };
 }
-export default getbooks
+export default getBooks

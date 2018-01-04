@@ -4,9 +4,9 @@ import {
   GET_USER_DETAILS_FAILURE,
   GET_USER_DETAILS_REQUEST,
   GET_USER_DETAILS_SUCCESS
-} from '../../actions/getUserDetails';
+} from '../../actions/getUser';
 
-import reducer from '../../reducers/UserDetails';
+import reducer from '../../reducers/userDetail';
 import user from '../../__mock__/user';
 
 

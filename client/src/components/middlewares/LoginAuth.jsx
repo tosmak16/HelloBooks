@@ -2,7 +2,7 @@ import React from 'react';
 import { browserHistory } from 'react-router';
 import jwt from 'jsonwebtoken';
 import store from '../../../index';
-import { setCurrentuser } from '../../../actions/setCurrentuser';
+import { setCurrentUserAuth } from '../../../actions/setCurrentUserAuth';
 
 
 /**
@@ -26,7 +26,7 @@ export default function (Component) {
           browserHistory.push('/books');
           Materialize.toast('Redirected........', 1000, 'red');
         } else {
-          store.dispatch(setCurrentuser({}));
+          store.dispatch(setCurrentUserAuth({}));
         }
       });
     }
@@ -41,7 +41,7 @@ export default function (Component) {
           browserHistory.push('/books');
           Materialize.toast('Redirected........', 1000, 'red');
         } else {
-          store.dispatch(setCurrentuser({}));
+          store.dispatch(setCurrentUserAuth({}));
         }
       });
     }

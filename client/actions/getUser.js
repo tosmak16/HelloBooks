@@ -3,25 +3,19 @@ export const GET_USER_DETAILS_SUCCESS = 'GET_USER_DETAILS_SUCCESS';
 export const GET_USER_DETAILS_FAILURE = 'GET_USER_DETAILS_FAILURE';
 
 /**
- * 
- * 
- * @export
- * @returns 
+ * @returns {object} of user state
  */
-export function getuserdetailsRequest() {
+export const getUserRequest = () => {
   return {
     type: GET_USER_DETAILS_REQUEST,
     isFetching: true,
   }
 }
 /**
- * 
- * 
- * @export
- * @param {any} data 
- * @returns 
+ * @param {object} data 
+ * @returns {object} of user state
  */
-export function getuserdetailsReponse(data) {
+export const getUserReponse = (data) => {
   return {
     type: GET_USER_DETAILS_SUCCESS,
     isFetching: false,
@@ -29,13 +23,10 @@ export function getuserdetailsReponse(data) {
   }
 }
 /**
- * 
- * 
- * @export
- * @param {any} error 
- * @returns 
+ * @param {string} error 
+ * @returns {object} of user state
  */
-export function getuserdetailsError(error) {
+export const getUserError = (error) => {
   return {
     type: GET_USER_DETAILS_FAILURE,
     isFetching: false,

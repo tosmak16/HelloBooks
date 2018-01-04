@@ -3,16 +3,12 @@ export const RETURN_BOOK_REQUEST = 'RETURN_BOOK_REQUEST'
 export const RETURN_BOOK_SUCCESS = 'RETURN_BOOK_SUCCESS'
 export const RETURN_BOOK_FAILURE = 'RETURN_BOOK_FAILURE'
 
-
 //Action creators
 /**
- * 
- * 
- * @export
- * @param {any} bookData 
- * @returns 
+ * @param {object} bookData 
+ * @returns {object} of return books state
  */
-export function returnbookRequest(bookData) {
+export const returnBookRequest = (bookData) => {
   return {
     type: RETURN_BOOK_REQUEST,
     isReturning: true,
@@ -20,13 +16,10 @@ export function returnbookRequest(bookData) {
   }
 }
 /**
- * 
- * 
- * @export
- * @param {any} response 
- * @returns 
+ * @param {string} response 
+ * @returns {object} of return books state
  */
-export function returnbookResponse(response) {
+export const returnBookResponse = (response) => {
   return {
     type: RETURN_BOOK_SUCCESS,
     isReturning: false,
@@ -34,13 +27,10 @@ export function returnbookResponse(response) {
   }
 }
 /**
- * 
- * 
- * @export
- * @param {any} error 
- * @returns 
+ * @param {string} error 
+ * @returns {object} of return books state
  */
-export function returnbookError(error) {
+export const returnBookError = (error) => {
   return {
     type: RETURN_BOOK_FAILURE,
     isReturning: false,

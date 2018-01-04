@@ -6,12 +6,12 @@ import jwt from 'jsonwebtoken';
 
 
 import {
-  getunreturnedbooksError, getunreturnedbooksReponse,
-  getunreturnedbooksRequest, GET_UNRETURNED_BOOKS_FAILURE,
+  getUnreturnedBookError, getUnreturnedBookReponse,
+  getUnreturnedBookRequest, GET_UNRETURNED_BOOKS_FAILURE,
   GET_UNRETURNED_BOOKS_REQUEST, GET_UNRETURNED_BOOKS_SUCCESS
-} from '../../actions/getunreturnedBooks';
+} from '../../actions/getUnreturnedBook';
 
-import getunreturnedBooks from '../../src/actions/getunreturnedBooks';
+import getUnreturnedBook from '../../src/actions/getUnreturnedBook';
 import books from '../../__mock__/book';
 import localStorageMock from '../../__mock__/localStorage';
 
@@ -29,35 +29,35 @@ const response = {
   error: 'Books can not be fetched'
 };
 
-describe('Test getUnreturnedBooks Actions', () => {
-  it('should create an action to send getunreturnedbooks request', () => {
+describe('Test getUnreturnedBook Actions', () => {
+  it('should create an action to send getUnreturnedBook request', () => {
     const expectedAction = {
       type: GET_UNRETURNED_BOOKS_REQUEST,
       isFetching: true,
       isFetched: false,
     };
-    expect(getunreturnedbooksRequest()).toEqual(expectedAction);
+    expect(getUnreturnedBookRequest()).toEqual(expectedAction);
   });
 
-  it('should create an action to send getunreturnedbooks successful', () => {
+  it('should create an action to send getUnreturnedBook successful', () => {
     const expectedAction = {
       type: GET_UNRETURNED_BOOKS_SUCCESS,
       isFetching: false,
       isFetched: true,
       data: response.result
     };
-    expect(getunreturnedbooksReponse(response.result)).toEqual(expectedAction);
+    expect(getUnreturnedBookReponse(response.result)).toEqual(expectedAction);
   });
 
 
-  it('should create an action to send getunreturnedbooks failed', () => {
+  it('should create an action to send getUnreturnedBook failed', () => {
     const expectedAction = {
       type: GET_UNRETURNED_BOOKS_FAILURE,
       isFetching: false,
       isFetched: false,
       error: response.error
     };
-    expect(getunreturnedbooksError(response.error)).toEqual(expectedAction);
+    expect(getUnreturnedBookError(response.error)).toEqual(expectedAction);
   });
 
   it('should return borrowed books resources if the request is successful', () => {
@@ -80,7 +80,7 @@ describe('Test getUnreturnedBooks Actions', () => {
         data: response.unreturnedBook
       },
     ];
-    return store.dispatch(getunreturnedBooks(token))
+    return store.dispatch(getUnreturnedBook(token))
       .then(() => {
         expect(actions).toEqual(expectedActions);
         store.clearActions();

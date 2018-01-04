@@ -1,6 +1,6 @@
 import { browserHistory } from 'react-router';
 import jwtDecode from 'jwt-decode';
-import { changepasswordError, changepasswordRequest, changepasswordResponse } from '../../actions/changePassword';
+import { changePasswordError, changePasswordRequest, changePasswordResponse } from '../../actions/changePassword';
 import { validatePasswordChange } from '../helperFunctions/validatePasswordChange';
 /**
  * @export changePassword
@@ -12,10 +12,10 @@ export const changePassword = (userData, token) => {
   let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;
   return async (dispatch) => {
-    dispatch(changepasswordRequest(userData));
+    dispatch(changePasswordRequest(userData));
     const validationResponse = await validatePasswordChange(userData);
     if (validationResponse !== '') {
-      dispatch(changepasswordError(validationResponse));
+      dispatch(changePasswordError(validationResponse));
     }
     else {
       const response = await fetch('/api/v2/users/' + userId + '/password', {
@@ -29,8 +29,8 @@ export const changePassword = (userData, token) => {
       })
       const jsonResponse = await response.json().then(jsonRes => jsonRes)
       response.status === 200 ?
-        dispatch(changepasswordResponse(jsonResponse.message)) :
-        dispatch(changepasswordError(jsonResponse.message))
+        dispatch(changePasswordResponse(jsonResponse.message)) :
+        dispatch(changePasswordError(jsonResponse.message))
     }
   }
 }

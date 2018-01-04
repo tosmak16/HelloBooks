@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import { uploadimageError, uploadimageRequest, uploadimageResponse } from '../../actions/UploadImages';
+import { uploadImageError, uploadImageRequest, uploadImageResponse } from '../../actions/uploadImage';
 
 const upload_preset = process.env.UPLOAD_PRESET;
 /**
@@ -14,14 +14,14 @@ export const uploadImage = (file) => {
   data.append('file', file);
   data.append('upload_preset', upload_preset);
   return async (dispatch) => {
-    dispatch(uploadimageRequest(data));
+    dispatch(uploadImageRequest(data));
     const response = await fetch('https://api.cloudinary.com/v1_1/tosmak/upload', {
       method: 'POST',
       body: data
     })
     const jsonResponse = await response.json().then(jsonRes => jsonRes)
-    response.status >= 400 ? dispatch(uploadimageError('Bad request')) :
-      dispatch(uploadimageResponse(jsonResponse.secure_url));
+    response.status >= 400 ? dispatch(uploadImageError('Bad request')) :
+      dispatch(uploadImageResponse(jsonResponse.secure_url));
   }
 }
 export default uploadImage;

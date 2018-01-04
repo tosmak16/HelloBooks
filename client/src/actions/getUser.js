@@ -1,27 +1,23 @@
-import axios from 'axios';
-import {
-  browserHistory
-} from 'react-router';
+import { browserHistory } from 'react-router';
 import jwtDecode from 'jwt-decode';
-
 import {
-  getuserdetailsError,
-  getuserdetailsReponse,
-  getuserdetailsRequest
-} from '../../actions/getUserDetails';
+  getUserError,
+  getUserReponse,
+  getUserRequest
+} from '../../actions/getUser';
 
 /**
- * @export getUserdetails
+ * @export getUser
  * @description it sends request to get user's details
  * @param {string} token 
  * @returns {action} dispacted actions
  */
-export default function getUserdetails(token) {
+export default function getUser(token) {
   let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;
 
   return async (dispatch) => {
-    dispatch(getuserdetailsRequest());
+    dispatch(getUserRequest());
 
     const response = await fetch('/api/v2/users/' + userId, {
       method: 'GET',
@@ -33,7 +29,7 @@ export default function getUserdetails(token) {
     })
     const jsonResponse = await response.json().then(jsonRes => jsonRes)
     response.status === 200 ?
-      dispatch(getuserdetailsReponse(jsonResponse.userDetails)) :
-      dispatch(getuserdetailsError(jsonResponse.message))
+      dispatch(getUserReponse(jsonResponse.userDetails)) :
+      dispatch(getUserError(jsonResponse.message))
   };
 }

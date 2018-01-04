@@ -52,12 +52,12 @@ describe('Login Page Component test', () => {
   });
 
   it('should test and take snapshot of LoginPage', () => {
-    const tree = render.create(<Login resetPasswordStatus='' resetUserPassword={mockFuction} googleAuthSignIn={mockFuction} userSignin={mockFuction} getbooks={mockFuction} login={{ error: 'error' }} />);
+    const tree = render.create(<Login resetPasswordStatus='' resetUserPassword={mockFuction} googleAuthSignIn={mockFuction} userSignin={mockFuction} getBooks={mockFuction} login={{ error: 'error' }} />);
     expect(tree).toMatchSnapshot();
   });
 
   it('should test and take snapshot of connected loginpPage', () => {
-    const tree = render.create(<connectLoginPage resetPasswordStatus='' resetUserPassword={mockFuction} googleAuthSignIn={mockFuction} userSignin={mockFuction} getbooks={mockFuction} log={{ error: 'error' }} />);
+    const tree = render.create(<connectLoginPage resetPasswordStatus='' resetUserPassword={mockFuction} googleAuthSignIn={mockFuction} userSignin={mockFuction} getBooks={mockFuction} log={{ error: 'error' }} />);
     expect(tree).toMatchSnapshot();
   });
 

@@ -3,16 +3,13 @@ export const UPLOAD_AVATAR_REQUEST = 'UPLOAD_AVATAR_REQUEST'
 export const UPLOAD_AVATAR_SUCCESS = 'UPLOAD_AVATAR_SUCCESS'
 export const UPLOAD_AVATAR_FAILURE = 'UPLOAD_AVATAR_FAILURE'
 
-
 //Action creators
 /**
- * 
- * 
- * @export
- * @param {any} data 
- * @returns 
+
+ * @param {object} data 
+ * @returns {object} of upload Image state
  */
-export function uploadProfileImageRequest(data) {
+export const uploadProfileImageRequest = (data) => {
   return {
     type: UPLOAD_AVATAR_REQUEST,
     isUploading: true,
@@ -20,13 +17,10 @@ export function uploadProfileImageRequest(data) {
   }
 }
 /**
- * 
- * 
- * @export
- * @param {any} response 
- * @returns 
+ * @param {string} response 
+ * @returns {object} of upload Image state
  */
-export function uploadProfileImageResponse(response) {
+export const uploadProfileImageResponse = (response) => {
   return {
     type: UPLOAD_AVATAR_SUCCESS,
     isUploading: false,
@@ -34,13 +28,10 @@ export function uploadProfileImageResponse(response) {
   }
 }
 /**
- * 
- * 
- * @export
- * @param {any} error 
- * @returns 
+ * @param {string} error 
+ * @returns {object} of upload Image state
  */
-export function uploadProfileImageError(error) {
+export const uploadProfileImageError = (error) => {
   return {
     type: UPLOAD_AVATAR_FAILURE,
     isUploading: false,

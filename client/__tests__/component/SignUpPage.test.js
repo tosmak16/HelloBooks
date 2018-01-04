@@ -35,7 +35,7 @@ describe('SignupPage', () => {
   });
 
   it('should test and take snapshot of SignUpPage', () => {
-    const tree = render.create(<SignUpPage userSignup={mockFuction} register={{ error: '' }} />);
+    const tree = render.create(<SignUpPage signup={mockFuction} register={{ error: '' }} />);
 
     expect(tree).toMatchSnapshot();
   });

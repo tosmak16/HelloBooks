@@ -5,14 +5,14 @@ import $ from 'jquery';
 import _ from 'lodash';
 import AdminSidebar from '../AdminSidebar';
 import UpdateBooksPage from '../UpdateBooksPage';
-import { getbooks } from '../../../actions/getBooks';
+import { getBooks } from '../../../actions/getBooks';
 import refreshPage from '../../../actions/refreshPage';
-import searchbooks from '../../../actions/searchbooks';
-import { updateBook } from '../../../actions/updateBooks';
+import searchBook from '../../../actions/searchBook';
+import { updateBook } from '../../../actions/updateBook';
 import { uploadImage } from '../../../actions/uploadImage';
-import { uploadFile } from '../../../actions/uploadBookFile';
+import { uploadFile } from '../../../actions/uploadFile';
 import { updateBookDetailsTemp } from '../HelperFunctions/updateBookDetailsTemp';
-import { logout } from '../../../actions/logoutAction';
+import { logout } from '../../../actions/logout';
 import { validateBookDetails } from '../../../helperFunctions/validateBookDetails';
 
 /**
@@ -75,7 +75,7 @@ class UpdateBooksContainer extends React.Component {
    */
   componentDidMount() {
     if (!this.props.isFetched) {
-      this.props.getbooks(true);
+      this.props.getBooks(true);
     }
     $(document).ready(() => {
       $('.modal').modal();
@@ -363,7 +363,7 @@ class UpdateBooksContainer extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
     if (event.target.value.length > 3 && this.state.filterBy !== '') {
       this.setState({ error: '', show: true, });
-      this.props.searchbooks(this.state.filterBy, this.state.searchText, this.props.bookData);
+      this.props.searchBook(this.state.filterBy, this.state.searchText, this.props.bookData);
     }
   }
   /**
@@ -457,11 +457,11 @@ UpdateBooksContainer.propTypes = {
   bookData: PropTypes.arrayOf(PropTypes.any).isRequired,
   fileUrl: PropTypes.string.isRequired,
   filteredData: PropTypes.arrayOf(PropTypes.any).isRequired,
-  getbooks: PropTypes.func.isRequired,
+  getBooks: PropTypes.func.isRequired,
   imageUrl: PropTypes.string.isRequired,
   isFetched: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired,
-  searchbooks: PropTypes.func.isRequired,
+  searchBook: PropTypes.func.isRequired,
   updateBook: PropTypes.func.isRequired,
   updateItem: PropTypes.arrayOf(PropTypes.any).isRequired,
   uploadFile: PropTypes.func.isRequired,
@@ -476,16 +476,16 @@ const mapStateToProps = function mapStateToProps(state) {
   return {
     isFetched: state.books[0].isFetched,
     bookData: state.books[0].data,
-    filteredData: state.getFilteredBooks[0].filteredData,
+    filteredData: state.filteredBooks[0].filteredData,
     imageUrl: state.uploadImages[0].response,
     updateItem: state.updateBooks,
     fileUrl: state.bookFileUpload[0].response,
   };
 };
 export default connect(mapStateToProps, {
-  getbooks,
+  getBooks,
   refreshPage,
-  searchbooks,
+  searchBook,
   updateBook,
   uploadImage,
   uploadFile,

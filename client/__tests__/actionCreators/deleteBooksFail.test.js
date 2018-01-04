@@ -5,15 +5,15 @@ import fetchMock from 'fetch-mock';
 import jwt from 'jsonwebtoken';
 
 import {
-  deletebookError,
-  deletebookRequest,
-  deletebookResponse,
+  deleteBookError,
+  deleteBookRequest,
+  deleteBookResponse,
   DELETE_BOOK_FAILURE,
   DELETE_BOOK_SUCCESS,
   DELETE_BOOK_REQUEST
-} from '../../actions/deleteBooks';
+} from '../../actions/deleteBook';
 
-import { deleteBook } from '../../src/actions/deleteBooks';
+import { deleteBook } from '../../src/actions/deleteBook';
 import localStorageMock from '../../__mock__/localStorage';
 
 import book from '../../__mock__/book';

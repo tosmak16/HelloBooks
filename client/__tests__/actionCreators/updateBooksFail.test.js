@@ -7,9 +7,9 @@ import jwt from 'jsonwebtoken';
 import {
   UPDATE_BOOK_FAILURE,
   UPDATE_BOOK_REQUEST,
-} from '../../actions/updateBooks';
+} from '../../actions/updateBook';
 
-import { updateBook } from '../../src/actions/updateBooks';
+import { updateBook } from '../../src/actions/updateBook';
 import localStorageMock from '../../__mock__/localStorage';
 
 import book from '../../__mock__/book';

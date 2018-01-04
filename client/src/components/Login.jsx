@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import LogininForm from './LoginForm';
 import { Footer } from './Footer';
-import userSignin from '../actions/loginAction';
-import { getbooks } from '../actions/getBooks';
+import userSignin from '../actions/login';
+import { getBooks } from '../actions/getBooks';
 import { googleAuthSignIn } from '../actions/googleAuthSignIn';
 import { resetUserPassword } from '../actions/resetUserPassword';
 
@@ -19,7 +19,7 @@ export const Login = props => (
   <div>
     <div id="logininForm" className="row">
       <LogininForm
-        getbooks={props.getbooks}
+        getbooks={props.getBooks}
         userSignin={props.userSignin}
         googleAuthSignIn={props.googleAuthSignIn}
         login={props.login}
@@ -31,7 +31,7 @@ export const Login = props => (
   </div>
 );
 Login.propTypes = {
-  getbooks: PropTypes.func.isRequired,
+  getBooks: PropTypes.func.isRequired,
   login: PropTypes.objectOf(PropTypes.any).isRequired,
   userSignin: PropTypes.func.isRequired,
   googleAuthSignIn: PropTypes.func.isRequired,
@@ -52,7 +52,7 @@ function mapStateToProps(state) {
 export default connect((mapStateToProps),
   {
     userSignin,
-    getbooks,
+    getBooks,
     googleAuthSignIn,
     resetUserPassword
   })(Login);

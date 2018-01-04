@@ -5,15 +5,15 @@ import fetchMock from 'fetch-mock';
 import jwt from 'jsonwebtoken';
 
 import {
-  uploadbookError,
-  uploadbookRequest,
-  uploadbookResponse,
+  uploadBookError,
+  uploadBookRequest,
+  uploadBookResponse,
   UPLOAD_BOOK_FAILURE,
   UPLOAD_BOOK_SUCCESS,
   UPLOAD_BOOK_REQUEST
 } from '../../actions/uploadBooks';
 
-import { uploadBook } from '../../src/actions/uploadBooks';
+import { uploadBook } from '../../src/actions/uploadBook';
 import localStorageMock from '../../__mock__/localStorage';
 
 import book from '../../__mock__/book';
@@ -46,7 +46,7 @@ describe('Test upload book Actions', () => {
       isUploading: true,
       bookData: action.bookData
     };
-    expect(uploadbookRequest(action.bookData)).toEqual(expectedAction);
+    expect(uploadBookRequest(action.bookData)).toEqual(expectedAction);
   });
 
   it('should create an action to send upload book response', () => {
@@ -55,7 +55,7 @@ describe('Test upload book Actions', () => {
       isUploading: false,
       response: action.response
     };
-    expect(uploadbookResponse(action.response)).toEqual(expectedAction);
+    expect(uploadBookResponse(action.response)).toEqual(expectedAction);
   });
 
   it('should create an action to send upload book error', () => {
@@ -64,7 +64,7 @@ describe('Test upload book Actions', () => {
       isUploading: false,
       error: action.error
     };
-    expect(uploadbookError(action.error)).toEqual(expectedAction);
+    expect(uploadBookError(action.error)).toEqual(expectedAction);
   });
 
   it('should upload books if the request is successful', () => {

@@ -5,14 +5,12 @@ import $ from 'jquery';
 import _ from 'lodash';
 import AdminSidebar from '../AdminSidebar';
 import UploadBooksPage from '../UploadBooksPage';
-import { getbooks } from '../../../actions/getBooks';
-import { uploadBook } from '../../../actions/uploadBooks';
+import { getBooks } from '../../../actions/getBooks';
+import { uploadBook } from '../../../actions/uploadBook';
 import { uploadImage } from '../../../actions/uploadImage';
-import { uploadFile } from '../../../actions/uploadBookFile';
-import { logout } from '../../../actions/logoutAction';
-import {
-  validateBookDetails
-} from '../../../helperFunctions/validateBookDetails';
+import { uploadFile } from '../../../actions/uploadFile';
+import { logout } from '../../../actions/logout';
+import { validateBookDetails } from '../../../helperFunctions/validateBookDetails';
 
 /**
  * @description UpdateBooks Connected component
@@ -64,7 +62,7 @@ class UploadBooksContainer extends React.Component {
    */
   componentDidMount() {
     if (!this.props.isFetched) {
-      this.props.getbooks(true);
+      this.props.getBooks(true);
     }
     $(document).ready(() => {
       $('.modal').modal();
@@ -205,7 +203,7 @@ class UploadBooksContainer extends React.Component {
       error: '',
       message: '',
     });
-    setTimeout(() => { this.props.getbooks(true); }, 3000);
+    setTimeout(() => { this.props.getBooks(true); }, 3000);
   }
   /**
    * @param {object} event
@@ -295,7 +293,7 @@ class UploadBooksContainer extends React.Component {
 
 UploadBooksContainer.propTypes = {
   fileUrl: PropTypes.string.isRequired,
-  getbooks: PropTypes.func.isRequired,
+  getBooks: PropTypes.func.isRequired,
   imageUrl: PropTypes.string.isRequired,
   isFetched: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired,
@@ -319,7 +317,7 @@ const mapStateToProps = function mapStateToProps(state) {
 };
 
 export default connect(mapStateToProps, {
-  getbooks,
+  getBooks,
   uploadBook,
   uploadImage,
   uploadFile,

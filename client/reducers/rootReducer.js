@@ -1,14 +1,12 @@
 import { combineReducers } from 'redux';
 
-import popMessages from './popMessages';
 import auth from './auth';
 import register from './register';
 import login from './login';
 import books from './books';
-import getFilteredBooks from '../reducers/getFilteredBooks';
+import filteredBooks from '../reducers/filteredBooks';
 import category from './category';
 import selectedBookDetails from './selectedBookDetails';
-import counter from './counter';
 import borrowBooks from './borrowBooks';
 import displayMessages from './displayMessages';
 import uploadBooks from './uploadBooks';
@@ -16,10 +14,10 @@ import uploadImages from './uploadImages';
 import deleteBooks from './deleteBooks';
 import refreshPage from './refreshPage';
 import updateBooks from './updateBooks';
-import getborrowedBooks from './getborrowedBooks';
-import getunreturnedBooks from './getunreturnedBooks';
+import borrowedBooksHistory from './borrowedBooksHistory';
+import unreturnedBooks from './unreturnedBooks';
 import returnBooks from './returnBooks';
-import UserDetails from './UserDetails';
+import userDetail from './userDetail';
 import updateUser from './updateUser';
 import passwordChange from './passwordChange';
 import userProfileImage from './userProfileImage';
@@ -27,15 +25,13 @@ import bookFileUpload from './bookFileUpload';
 import resetPassword from './resetPassword';
 
 export default combineReducers({
-  popMessages,
   auth,
   register,
   login,
   books,
-  getFilteredBooks,
+  filteredBooks,
   category,
   selectedBookDetails,
-  counter,
   borrowBooks,
   displayMessages,
   uploadBooks,
@@ -43,10 +39,10 @@ export default combineReducers({
   deleteBooks,
   refreshPage,
   updateBooks,
-  getborrowedBooks,
-  getunreturnedBooks,
+  borrowedBooksHistory,
+  unreturnedBooks,
   returnBooks,
-  UserDetails,
+  userDetail,
   updateUser,
   passwordChange,
   userProfileImage,

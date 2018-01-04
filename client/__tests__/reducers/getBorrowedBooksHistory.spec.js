@@ -3,9 +3,9 @@ import expect from 'expect';
 import {
   GET_BORROWED_BOOKS_FAILURE, GET_BORROWED_BOOKS_REQUEST,
   GET_BORROWED_BOOKS_SUCCESS
-} from '../../actions/getborrowedBooks';
+} from '../../actions/getBorrowedBook';
 
-import reducer from '../../reducers/getborrowedBooks';
+import reducer from '../../reducers/borrowedBooksHistory';
 import books from '../../__mock__/book';
 
 

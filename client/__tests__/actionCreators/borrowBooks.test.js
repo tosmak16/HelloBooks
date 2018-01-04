@@ -13,7 +13,7 @@ import {
   BORROW_BOOK_SUCCESS,
 } from '../../actions/borrowBook';
 
-import borrowBooks from '../../src/actions/borrowBooks';
+import borrowBooks from '../../src/actions/borrowBook';
 import localStorageMock from '../../__mock__/localStorage';
 
 window.localStorage = localStorageMock;

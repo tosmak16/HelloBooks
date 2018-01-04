@@ -4,7 +4,7 @@ import {
   UPLOAD_IMAGE_FAILURE,
   UPLOAD_IMAGE_REQUEST,
   UPLOAD_IMAGE_SUCCESS
-} from '../../actions/UploadImages';
+} from '../../actions/uploadImage';
 
 import reducer from '../../reducers/uploadImages';
 import book from '../../__mock__/book';

@@ -9,10 +9,10 @@ import {
   UPLOAD_IMAGE_FAILURE,
   UPLOAD_IMAGE_REQUEST,
   UPLOAD_IMAGE_SUCCESS,
-  uploadimageError,
-  uploadimageRequest,
-  uploadimageResponse
-} from '../../actions/UploadImages';
+  uploadImageError,
+  uploadImageRequest,
+  uploadImageResponse
+} from '../../actions/uploadImage';
 
 import { uploadImage } from '../../src/actions/uploadImage';
 import book from '../../__mock__/book';

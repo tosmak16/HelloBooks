@@ -9,7 +9,7 @@ import {
   LOGIN_REQUEST,
 } from '../../actions/loginActions';
 
-import userSignin from '../../src/actions/loginAction';
+import userSignin from '../../src/actions/login';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);

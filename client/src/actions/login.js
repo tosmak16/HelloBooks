@@ -2,15 +2,15 @@ import jwtDecode from 'jwt-decode';
 import { browserHistory } from 'react-router';
 import 'whatwg-fetch'
 import { loginError, loginRequest, loginResponse } from '../../actions/loginActions';
-import { setCurrentuser } from '../../actions/setCurrentuser';
+import { setCurrentUserAuth } from '../../actions/setCurrentUserAuth';
 import { validateLoginDetails } from '../helperFunctions/validateLoginDetails';
 /** 
- * @export userSignin
+ * @export login
  * @description it sends request and  dispatches user login request, error and response
  * @param {object} userData 
  * @returns {action} dispacted actions
  */
-export default function userSignin(userData) {
+export default function login(userData) {
   return async dispatch => {
     dispatch(loginRequest(userData));
     const validationResponse = await validateLoginDetails(userData)
@@ -35,7 +35,7 @@ export default function userSignin(userData) {
         const token = jsonResponse.token;
         window.localStorage.setItem('jwtToken', token);
         const decodedToken = jwtDecode(token);
-        dispatch(setCurrentuser(decodedToken));
+        dispatch(setCurrentUserAuth(decodedToken));
         process.env.NODE_ENV === 'test' || Materialize.toast(response.message, 1000, 'green');
         dispatch(loginResponse(jsonResponse.message));
         if (localStorage.jwtToken && decodedToken.role.toString() === 'user') {

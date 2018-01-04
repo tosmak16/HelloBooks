@@ -5,15 +5,15 @@ import fetchMock from 'fetch-mock';
 import jwt from 'jsonwebtoken';
 
 import {
-  updatebookError,
-  updatebookRequest,
-  updatebookResponse,
+  updateBookError,
+  updateBookRequest,
+  updateBookResponse,
   UPDATE_BOOK_FAILURE,
   UPDATE_BOOK_REQUEST,
   UPDATE_BOOK_SUCCESS
-} from '../../actions/updateBooks';
+} from '../../actions/updateBook';
 
-import { updateBook } from '../../src/actions/updateBooks';
+import { updateBook } from '../../src/actions/updateBook';
 import localStorageMock from '../../__mock__/localStorage';
 
 import book from '../../__mock__/book';
@@ -46,7 +46,7 @@ describe('Test update book Actions', () => {
       isUpdating: true,
       bookData: action.bookData
     };
-    expect(updatebookRequest(action.bookData)).toEqual(expectedAction);
+    expect(updateBookRequest(action.bookData)).toEqual(expectedAction);
   });
 
   it('should create an action to send update book response', () => {
@@ -55,7 +55,7 @@ describe('Test update book Actions', () => {
       isUpdating: false,
       response: action.response
     };
-    expect(updatebookResponse(action.response)).toEqual(expectedAction);
+    expect(updateBookResponse(action.response)).toEqual(expectedAction);
   });
 
   it('should create an action to send update book error', () => {
@@ -64,7 +64,7 @@ describe('Test update book Actions', () => {
       isUpdating: false,
       error: action.error
     };
-    expect(updatebookError(action.error)).toEqual(expectedAction);
+    expect(updateBookError(action.error)).toEqual(expectedAction);
   });
 
   it('should update books if the request is successful', () => {

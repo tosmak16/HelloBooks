@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
 import PropTypes from 'prop-types';
 import $ from 'jquery';
-import getUserdetails from '../../../actions/getUserDetails';
+import getUserdetails from '../../../actions/getUser';
 import DashboardSidebar from '../DashboardSidebar';
 import { ChangePasswordForm } from '../ChangePasswordForm';
-import updateUser from '../../../actions/updateuserDetails';
-import { uploadAvatar } from '../../../actions/uploadUserAvatar';
-import changePassword from '../../../actions/changePassword';
-import { logout } from '../../../actions/logoutAction';
+import updateUser from '../../../actions/updateUser';
+import { uploadUserAvatar } from '../../../actions/uploadUserAvatar';
+import { changePassword } from '../../../actions/changePassword';
+import { logout } from '../../../actions/logout';
 
 /**
  * @export
@@ -174,7 +174,7 @@ export class ChangePasswordPage extends React.Component {
               userData={this.props.userData}
               message={this.props.message}
               updateUser={this.props.updateUser}
-              uploadAvatar={this.props.uploadAvatar}
+              uploadAvatar={this.props.uploadUserAvatar}
             />
             <ChangePasswordForm
               handleClick={this.handleClick}
@@ -183,8 +183,6 @@ export class ChangePasswordPage extends React.Component {
               handleInputChange={this.handleInputChange}
               handleSave={this.handleSave}
               state={this.state}
-            // passwordChange={this.props.passwordChange}
-            // changePassword={this.props.changePassword}
             />
           </div>
         </div>
@@ -202,7 +200,7 @@ ChangePasswordPage.propTypes = {
   message: PropTypes.string.isRequired,
   passwordChange: PropTypes.arrayOf(PropTypes.any).isRequired,
   updateUser: PropTypes.func.isRequired,
-  uploadAvatar: PropTypes.func.isRequired,
+  uploadUserAvatar: PropTypes.func.isRequired,
   userData: PropTypes.arrayOf(PropTypes.any).isRequired,
 
 };
@@ -213,7 +211,7 @@ ChangePasswordPage.propTypes = {
  */
 function mapStateToProps(state) {
   return {
-    userData: state.UserDetails[0].data,
+    userData: state.userDetail[0].data,
     imageUrl: state.userProfileImage[0].response,
     error: state.updateUser[0].error.toString(),
     message: state.updateUser[0].data.toString(),
@@ -224,7 +222,7 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, {
   getUserdetails,
   updateUser,
-  uploadAvatar,
+  uploadUserAvatar,
   changePassword,
   logout
 })(ChangePasswordPage);

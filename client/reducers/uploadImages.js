@@ -1,4 +1,4 @@
-import { UPLOAD_IMAGE_FAILURE, UPLOAD_IMAGE_SUCCESS, UPLOAD_IMAGE_REQUEST } from '../actions/UploadImages';
+import { UPLOAD_IMAGE_FAILURE, UPLOAD_IMAGE_SUCCESS, UPLOAD_IMAGE_REQUEST } from '../actions/uploadImage';
 
 const initialState = [{
   data: '',

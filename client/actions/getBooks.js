@@ -2,13 +2,10 @@ export const GET_ALL_BOOKS_REQUEST = 'GET_ALL_BOOKS_REQUEST';
 export const GET_ALL_BOOKS_SUCCESS = 'GET_ALL_BOOKS_SUCCESS';
 export const GET_ALL_BOOKS_FAILURE = 'GET_ALL_BOOKS_FAILURE';
 
-/**
- * 
- * 
- * @export
- * @returns 
+/** 
+ * @returns {object} of get books state
  */
-export function getbooksRequest() {
+export const getBooksRequest = () => {
   return {
     type: GET_ALL_BOOKS_REQUEST,
     isFetching: true,
@@ -16,13 +13,10 @@ export function getbooksRequest() {
   }
 }
 /**
- * 
- * 
- * @export
- * @param {any} data 
- * @returns 
+ * @param {object} data 
+ * @returns {object} of get books state
  */
-export function getbooksReponse(data) {
+export const getBooksReponse = (data) => {
   return {
     type: GET_ALL_BOOKS_SUCCESS,
     isFetching: false,
@@ -31,13 +25,10 @@ export function getbooksReponse(data) {
   }
 }
 /**
- * 
- * 
- * @export
- * @param {any} error 
- * @returns 
+ * @param {string} error 
+ * @returns {object} of get books state
  */
-export function getbooksError(error) {
+export const getBooksError = (error) => {
   return {
     type: GET_ALL_BOOKS_FAILURE,
     isFetching: false,

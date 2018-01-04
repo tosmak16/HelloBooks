@@ -8,9 +8,9 @@ import jwt from 'jsonwebtoken';
 import {
   GET_USER_DETAILS_FAILURE,
   GET_USER_DETAILS_REQUEST,
-} from '../../actions/getUserDetails';
+} from '../../actions/getUser';
 
-import getUserDetails from '../../src/actions/getUserDetails';
+import getUser from '../../src/actions/getUser';
 import user from '../../__mock__/user';
 import localStorageMock from '../../__mock__/localStorage';
 
@@ -49,7 +49,7 @@ describe('Test get user Actions', () => {
         error: action.error
       },
     ];
-    return store.dispatch(getUserDetails(token))
+    return store.dispatch(getUser(token))
       .then(() => {
         expect(actions).toEqual(expectedActions);
         store.clearActions();

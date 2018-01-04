@@ -6,15 +6,15 @@ import jwt from 'jsonwebtoken';
 
 
 import {
-  getborrowedbooksError,
-  getborrowedbooksReponse,
-  getborrowedbooksRequest,
+  getBorrowedBookError,
+  getBorrowedBookReponse,
+  getBorrowedBookRequest,
   GET_BORROWED_BOOKS_FAILURE,
   GET_BORROWED_BOOKS_REQUEST,
   GET_BORROWED_BOOKS_SUCCESS
-} from '../../actions/getborrowedBooks';
+} from '../../actions/getBorrowedBook';
 
-import getborrowedBooks from '../../src/actions/getborrowedBooks';
+import getBorrowedBook from '../../src/actions/getBorrowedBook';
 import books from '../../__mock__/book';
 import localStorageMock from '../../__mock__/localStorage';
 
@@ -31,34 +31,34 @@ const response = {
   borrowBooks: books.slice(0, 3)
 };
 
-describe('Test getBorrowedBooks Actions', () => {
-  it('should create an action to send getborrowedbooks request', () => {
+describe('Test getBorrowedBook Actions', () => {
+  it('should create an action to send getBorrowedBook request', () => {
     const expectedAction = {
       type: GET_BORROWED_BOOKS_REQUEST,
       isFetching: true,
       isFetched: false,
     };
-    expect(getborrowedbooksRequest()).toEqual(expectedAction);
+    expect(getBorrowedBookRequest()).toEqual(expectedAction);
   });
 
-  it('should create an action to return getborrowedbooks response', () => {
+  it('should create an action to return getBorrowedBook response', () => {
     const expectedAction = {
       type: GET_BORROWED_BOOKS_SUCCESS,
       isFetching: false,
       isFetched: true,
       data: []
     };
-    expect(getborrowedbooksReponse([])).toEqual(expectedAction);
+    expect(getBorrowedBookReponse([])).toEqual(expectedAction);
   });
 
-  it('should create an action that returns getborrowedbooks failure', () => {
+  it('should create an action that returns getBorrowedBook failure', () => {
     const expectedAction = {
       type: GET_BORROWED_BOOKS_FAILURE,
       isFetching: false,
       isFetched: false,
       error: []
     };
-    expect(getborrowedbooksError([])).toEqual(expectedAction);
+    expect(getBorrowedBookError([])).toEqual(expectedAction);
   });
 
   it('should return borrowed books resources if the request is successful', () => {
@@ -81,7 +81,7 @@ describe('Test getBorrowedBooks Actions', () => {
         data: response.borrowBooks
       },
     ];
-    return store.dispatch(getborrowedBooks(token))
+    return store.dispatch(getBorrowedBook(token))
       .then(() => {
         expect(actions).toEqual(expectedActions);
         store.clearActions();

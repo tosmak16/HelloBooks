@@ -6,11 +6,8 @@ export const BORROW_BOOK_FAILURE = 'BORROW_BOOK_FAILURE'
 
 //Action creators
 /**
- * 
- * 
- * @export
- * @param {any} userData 
- * @returns 
+ * @param {object} userData 
+ * @returns {object} of borrow books state
  */
 export function borrowBookRequest(userData) {
   return {
@@ -21,11 +18,8 @@ export function borrowBookRequest(userData) {
   }
 }
 /**
- * 
- * 
- * @export
- * @param {any} response 
- * @returns 
+ * @param {string} response 
+ * @returns {object} of borrow books state
  */
 export function borrowBookResponse(response) {
   return {
@@ -36,11 +30,8 @@ export function borrowBookResponse(response) {
   }
 }
 /**
- * 
- * 
- * @export
- * @param {any} error 
- * @returns 
+ * @param {string} error 
+ * @returns {object} of borrow books state
  */
 export function borrowBookError(error) {
   return {

@@ -1,7 +1,7 @@
 import { browserHistory } from 'react-router';
 import 'whatwg-fetch'
 import jwtDecode from 'jwt-decode';
-import { setCurrentuser } from '../../actions/setCurrentuser';
+import { setCurrentUserAuth } from '../../actions/setCurrentUserAuth';
 import { signupError, signupRequest, signupResponse } from '../../actions/signupActions';
 /**
  * @export googleAuthSignIn
@@ -37,7 +37,7 @@ export const googleAuthSignIn = (googleUserData) => {
       const token = jsonResponse.token;
       window.localStorage.setItem('jwtToken', token);
       const decodedToken = jwtDecode(token);
-      dispatch(setCurrentuser(decodedToken));
+      dispatch(setCurrentUserAuth(decodedToken));
       dispatch(signupResponse(jsonResponse.message));
       process.env.NODE_ENV === 'test' || Materialize.toast(jsonResponse.message, 1000, 'green');
       if (localStorage.jwtToken && decodedToken.role.toString() === 'user') {

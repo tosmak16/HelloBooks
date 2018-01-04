@@ -1,26 +1,25 @@
-import axios from 'axios';
 import { browserHistory } from 'react-router';
 import jwtDecode from 'jwt-decode';
 import 'whatwg-fetch'
 
 
 import {
-  getborrowedbooksError,
-  getborrowedbooksRequest,
-  getborrowedbooksReponse
-} from '../../actions/getborrowedBooks';
+  getBorrowedBookError,
+  getBorrowedBookRequest,
+  getBorrowedBookReponse
+} from '../../actions/getBorrowedBook';
 
 /**
- * @export getborrowedBooks
+ * @export getBorrowedBook
  * @description it sends  get borrowedbooks request
  * @param {string} token 
  * @returns {action} dispacted actions
  */
-export default function getborrowedBooks(token) {
+export default function getBorrowedBook(token) {
   let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;
   return async (dispatch) => {
-    dispatch(getborrowedbooksRequest());
+    dispatch(getBorrowedBookRequest());
     const response = await fetch('/api/v2/user/' + userId + '/books', {
       method: 'GET',
       body: { token },
@@ -28,7 +27,7 @@ export default function getborrowedBooks(token) {
     })
     const jsonResponse = await response.json().then(jsonRes => jsonRes)
     response.status === 200 ?
-      dispatch(getborrowedbooksReponse(jsonResponse.borrowBooks)) :
-      dispatch(getborrowedbooksError(jsonResponse.message))
+      dispatch(getBorrowedBookReponse(jsonResponse.borrowBooks)) :
+      dispatch(getBorrowedBookError(jsonResponse.message))
   };
 }

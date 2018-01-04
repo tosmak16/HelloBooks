@@ -8,9 +8,9 @@ import jwt from 'jsonwebtoken';
 import {
   GET_UNRETURNED_BOOKS_FAILURE,
   GET_UNRETURNED_BOOKS_REQUEST,
-} from '../../actions/getunreturnedBooks';
+} from '../../actions/getUnreturnedBook';
 
-import getunreturnedBooks from '../../src/actions/getunreturnedBooks';
+import getUnreturnedBook from '../../src/actions/getUnreturnedBook';
 import localStorageMock from '../../__mock__/localStorage';
 
 window.localStorage = localStorageMock;
@@ -24,7 +24,7 @@ const response = {
   message: 'Books can not be fetched',
 };
 
-describe('Test getUnreturnedBooks Actions failed', () => {
+describe('Test getUnreturnedBook Actions failed', () => {
   it('should not return unreturn books resources if the request is not successful', () => {
     fetchMock.get(`/api/v2/users/${1}/books?returned=false`,
       { status: 403, body: response });
@@ -44,7 +44,7 @@ describe('Test getUnreturnedBooks Actions failed', () => {
         error: response.message
       },
     ];
-    return store.dispatch(getunreturnedBooks(token))
+    return store.dispatch(getUnreturnedBook(token))
       .then(() => {
         expect(actions).toEqual(expectedActions);
         store.clearActions();

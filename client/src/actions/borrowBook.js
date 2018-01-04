@@ -1,16 +1,15 @@
 import jwtDecode from 'jwt-decode';
-import axios from 'axios';
 import 'whatwg-fetch'
 import { borrowBookError, borrowBookRequest, borrowBookResponse } from '../../actions/borrowBook';
 
 /**
  * @description this is borrow books action controller
- * @export borrowBooks
+ * @export borrowBook
  * @param {string} token 
  * @param {string} bookId 
  * @returns {action} dispacted actions
  */
-export const borrowBooks = (token, bookId) => {
+export const borrowBook = (token, bookId) => {
   let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;
   return async (dispatch) => {
@@ -30,4 +29,4 @@ export const borrowBooks = (token, bookId) => {
       dispatch(borrowBookError(jsonResponse.message))
   }
 }
-export default borrowBooks;
+export default borrowBook;

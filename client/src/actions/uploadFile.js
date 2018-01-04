@@ -23,5 +23,4 @@ export const uploadFile = (file) => {
       dispatch(uploadFileResponse(jsonResponse.secure_url));
   }
 }
-const uploadBookFile = uploadFile;
-export default uploadBookFile;
+export default uploadFile;

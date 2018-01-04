@@ -3,12 +3,9 @@ export const GET_BORROWED_BOOKS_SUCCESS = 'GET_BORROWED_BOOKS_SUCCESS';
 export const GET_BORROWED_BOOKS_FAILURE = 'GET_BORROWED_BOOKS_FAILURE';
 
 /**
- * 
- * 
- * @export
- * @returns 
+ * @returns {object} of borrowed books state
  */
-export function getborrowedbooksRequest() {
+export const getBorrowedBookRequest = () => {
   return {
     type: GET_BORROWED_BOOKS_REQUEST,
     isFetching: true,
@@ -16,13 +13,10 @@ export function getborrowedbooksRequest() {
   }
 }
 /**
- * 
- * 
- * @export
- * @param {any} data 
- * @returns 
+ * @param {object} data 
+ * @returns {object} of borrowed books state
  */
-export function getborrowedbooksReponse(data) {
+export const getBorrowedBookReponse = (data) => {
   return {
     type: GET_BORROWED_BOOKS_SUCCESS,
     isFetching: false,
@@ -31,13 +25,10 @@ export function getborrowedbooksReponse(data) {
   }
 }
 /**
- * 
- * 
- * @export
- * @param {any} error 
- * @returns 
+ * @param {string} error 
+ * @returns {object} of borrowed books state
  */
-export function getborrowedbooksError(error) {
+export const getBorrowedBookError = (error) => {
   return {
     type: GET_BORROWED_BOOKS_FAILURE,
     isFetching: false,

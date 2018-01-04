@@ -4,7 +4,7 @@ import {
   UPDATE_BOOK_FAILURE,
   UPDATE_BOOK_REQUEST,
   UPDATE_BOOK_SUCCESS
-} from '../../actions/updateBooks';
+} from '../../actions/updateBook';
 
 import reducer from '../../reducers/updateBooks';
 import book from '../../__mock__/book';

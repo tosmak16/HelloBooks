@@ -1,7 +1,6 @@
-import axios from 'axios';
 import { browserHistory } from 'react-router';
 import isEmpty from 'lodash/isEmpty';
-import { deletebookError, deletebookRequest, deletebookResponse } from '../../actions/deleteBooks';
+import { deleteBookError, deleteBookRequest, deleteBookResponse } from '../../actions/deleteBook';
 
 /**
  * @export deleteBook
@@ -13,7 +12,7 @@ import { deletebookError, deletebookRequest, deletebookResponse } from '../../ac
  */
 export const deleteBook = (bookData, token) => {
   return async (dispatch) => {
-    dispatch(deletebookRequest(bookData));
+    dispatch(deleteBookRequest(bookData));
     const response = await fetch('/api/v2/books/' + bookData, {
       method: 'DELETE',
       headers: {
@@ -24,10 +23,10 @@ export const deleteBook = (bookData, token) => {
     })
     if (response.status >= 400) {
       const jsonResponse = await response.json().then(jsonRes => jsonRes)
-      dispatch(deletebookError(jsonResponse.message));
+      dispatch(deleteBookError(jsonResponse.message));
     }
     else {
-      dispatch(deletebookResponse('book has been deleted'));
+      dispatch(deleteBookResponse('book has been deleted'));
     }
   }
 }

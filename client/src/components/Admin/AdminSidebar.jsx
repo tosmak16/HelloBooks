@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import PropTypes from 'prop-types';
 
 /**
@@ -11,6 +11,7 @@ const AdminSidebar = (props) => {
   const handleLogout = (event) => {
     event.preventDefault();
     props.logout();
+    browserHistory.push('/login');
   };
   return (
     <div className="row">

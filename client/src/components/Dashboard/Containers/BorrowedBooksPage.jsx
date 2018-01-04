@@ -4,17 +4,17 @@ import _ from 'lodash';
 import PropTypes from 'prop-types';
 import $ from 'jquery';
 
-import getUserdetails from '../../../actions/getUserDetails';
+import getUserdetails from '../../../actions/getUser';
 import DashboardSidebar from '../DashboardSidebar';
 import { BorrowedbooksTable } from '../BorrowedbooksTable';
 import refreshPage from '../../../actions/refreshPage';
-import getborrowedBooks from '../../../actions/getborrowedBooks';
-import { getbooks } from '../../../actions/getBooks';
-import returnbook from '../../../actions/returnBooks';
-import getunreturnedBooks from '../../../actions/getunreturnedBooks';
-import updateUser from '../../../actions/updateuserDetails';
-import { uploadAvatar } from '../../../actions/uploadUserAvatar';
-import { logout } from '../../../actions/logoutAction';
+import getBorrowedBook from '../../../actions/getBorrowedBook';
+import { getBooks } from '../../../actions/getBooks';
+import returnBook from '../../../actions/returnBook';
+import getUnreturnedBook from '../../../actions//getUnreturnedBook';
+import updateUser from '../../../actions/updateUser';
+import { uploadUserAvatar } from '../../../actions/uploadUserAvatar';
+import { logout } from '../../../actions/logout';
 
 /**
  * @export
@@ -59,11 +59,11 @@ export class BorrowedBooksPage extends React.Component {
       $('.modal').modal();
     });
     if (_.isEmpty(this.props.unreturnedBooksData)) {
-      this.props.getunreturnedBooks(localStorage.jwtToken);
+      this.props.getUnreturnedBook(localStorage.jwtToken);
     }
 
     if (_.isEmpty(this.props.bookData)) {
-      this.props.getbooks(true);
+      this.props.getBooks(true);
     }
   }
 
@@ -95,8 +95,8 @@ export class BorrowedBooksPage extends React.Component {
     }
     if (nextProps.isRefreshed) {
       this.props.refreshPage(false);
-      this.props.getunreturnedBooks(localStorage.jwtToken);
-      this.props.getborrowedBooks(localStorage.jwtToken);
+      this.props.getUnreturnedBook(localStorage.jwtToken);
+      this.props.getBorrowedBook(localStorage.jwtToken);
     }
   }
   /**
@@ -132,7 +132,7 @@ export class BorrowedBooksPage extends React.Component {
    */
   handleYes(event) {
     event.preventDefault();
-    this.props.returnbook(this.state, localStorage.jwtToken);
+    this.props.returnBook(this.state, localStorage.jwtToken);
     this.setState({
       displayPreloader: 'block',
       pointer: true,
@@ -198,7 +198,7 @@ export class BorrowedBooksPage extends React.Component {
               userData={this.props.userData}
               message={this.props.message}
               updateUser={this.props.updateUser}
-              uploadAvatar={this.props.uploadAvatar}
+              uploadAvatar={this.props.uploadUserAvatar}
             />
             {
               !_.isEmpty(this.props.bookData) &&
@@ -225,9 +225,9 @@ BorrowedBooksPage.propTypes = {
   unreturnedBooksData: PropTypes.arrayOf(PropTypes.any).isRequired,
   bookData: PropTypes.arrayOf(PropTypes.any).isRequired,
   error: PropTypes.string.isRequired,
-  getbooks: PropTypes.func.isRequired,
-  getborrowedBooks: PropTypes.func.isRequired,
-  getunreturnedBooks: PropTypes.func.isRequired,
+  getBooks: PropTypes.func.isRequired,
+  getBorrowedBook: PropTypes.func.isRequired,
+  getUnreturnedBook: PropTypes.func.isRequired,
   getUserdetails: PropTypes.func.isRequired,
   imageUrl: PropTypes.string.isRequired,
   isRefreshed: PropTypes.bool.isRequired,
@@ -235,9 +235,9 @@ BorrowedBooksPage.propTypes = {
   logout: PropTypes.func.isRequired,
   message: PropTypes.string.isRequired,
   refreshPage: PropTypes.func.isRequired,
-  returnbook: PropTypes.func.isRequired,
+  returnBook: PropTypes.func.isRequired,
   updateUser: PropTypes.func.isRequired,
-  uploadAvatar: PropTypes.func.isRequired,
+  uploadUserAvatar: PropTypes.func.isRequired,
   userData: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
@@ -247,25 +247,24 @@ BorrowedBooksPage.propTypes = {
  */
 function mapStateToProps(state) {
   return {
-    userData: state.UserDetails[0].data,
+    userData: state.userDetail[0].data,
     isRefreshed: state.refreshPage[0].isRefreshed,
     bookData: state.books[0].data,
     returnBooksItem: state.returnBooks,
-    unreturnedBooksData: state.getunreturnedBooks[0].data,
+    unreturnedBooksData: state.unreturnedBooks[0].data,
     imageUrl: state.userProfileImage[0].response,
     error: state.updateUser[0].error.toString(),
     message: state.updateUser[0].data.toString(),
-
   };
 }
 export default connect(mapStateToProps, {
-  getunreturnedBooks,
-  returnbook,
-  getborrowedBooks,
-  getbooks,
+  getUnreturnedBook,
+  returnBook,
+  getBorrowedBook,
+  getBooks,
   getUserdetails,
   refreshPage,
   updateUser,
-  uploadAvatar,
+  uploadUserAvatar,
   logout,
 })(BorrowedBooksPage);

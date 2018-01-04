@@ -2,13 +2,10 @@ export const GET_UNRETURNED_BOOKS_REQUEST = 'GET_UNRETURNED_BOOKS_REQUEST';
 export const GET_UNRETURNED_BOOKS_SUCCESS = 'GET_UNRETURNED_BOOKS_SUCCESS';
 export const GET_UNRETURNED_BOOKS_FAILURE = 'GET_UNRETURNED_BOOKS_FAILURE';
 
-/**
- * 
- * 
- * @export
- * @returns 
+/** 
+ * @returns {object} unreturned books state 
  */
-export function getunreturnedbooksRequest() {
+export const getUnreturnedBookRequest = () => {
   return {
     type: GET_UNRETURNED_BOOKS_REQUEST,
     isFetching: true,
@@ -16,13 +13,10 @@ export function getunreturnedbooksRequest() {
   }
 }
 /**
- * 
- * 
- * @export
- * @param {any} data 
- * @returns 
+ * @param {object} data 
+ * @returns {object} unreturned books state 
  */
-export function getunreturnedbooksReponse(data) {
+export const getUnreturnedBookReponse = (data) => {
   return {
     type: GET_UNRETURNED_BOOKS_SUCCESS,
     isFetching: false,
@@ -31,13 +25,10 @@ export function getunreturnedbooksReponse(data) {
   }
 }
 /**
- * 
- * 
- * @export
- * @param {any} error 
- * @returns 
+ * @param {string} error 
+ * @returns {object} unreturned books state 
  */
-export function getunreturnedbooksError(error) {
+export const getUnreturnedBookError = (error) => {
   return {
     type: GET_UNRETURNED_BOOKS_FAILURE,
     isFetching: false,

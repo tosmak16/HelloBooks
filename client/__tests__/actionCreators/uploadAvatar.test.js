@@ -14,7 +14,7 @@ import {
   uploadProfileImageResponse
 } from '../../actions/uploadAvatar';
 
-import { uploadAvatar } from '../../src/actions/uploadUserAvatar';
+import { uploadUserAvatar } from '../../src/actions/uploadUserAvatar';
 import user from '../../__mock__/user';
 import localStorageMock from '../../__mock__/localStorage';
 
@@ -89,7 +89,7 @@ describe('Test upload profile picture Actions', () => {
         response: action.secure_url
       },
     ];
-    return store.dispatch(uploadAvatar(action.userData))
+    return store.dispatch(uploadUserAvatar(action.userData))
       .then(() => {
         expect(actions).toEqual(expectedActions);
         store.clearActions();

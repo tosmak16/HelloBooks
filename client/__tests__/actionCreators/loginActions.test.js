@@ -18,7 +18,7 @@ import {
   LOGIN_SUCCESS
 } from '../../actions/loginActions';
 
-import userSignin from '../../src/actions/loginAction';
+import userSignin from '../../src/actions/login';
 import localStorageMock from '../../__mock__/localStorage';
 
 window.localStorage = localStorageMock;

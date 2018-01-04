@@ -6,12 +6,12 @@ import jwt from 'jsonwebtoken';
 
 
 import {
-  returnbookError, returnbookRequest,
-  returnbookResponse, RETURN_BOOK_FAILURE,
+  returnBookError, returnBookRequest,
+  returnBookResponse, RETURN_BOOK_FAILURE,
   RETURN_BOOK_REQUEST, RETURN_BOOK_SUCCESS
 } from '../../actions/returnBook';
 
-import returnedBooks from '../../src/actions/returnBooks';
+import returnBook from '../../src/actions/returnBook';
 import books from '../../__mock__/book';
 import localStorageMock from '../../__mock__/localStorage';
 
@@ -37,30 +37,30 @@ const response = {
 };
 
 describe('Test return books Actions', () => {
-  it('should create an action to send returnedbooks request', () => {
+  it('should create an action to send returnBook request', () => {
     const expectedAction = {
       type: RETURN_BOOK_REQUEST,
       isReturning: true,
       bookData: action.bookData
     };
-    expect(returnbookRequest(action.bookData)).toEqual(expectedAction);
+    expect(returnBookRequest(action.bookData)).toEqual(expectedAction);
   });
 
-  it('should create an action to send returnedbooks response', () => {
+  it('should create an action to send returnBook response', () => {
     const expectedAction = {
       type: RETURN_BOOK_SUCCESS,
       isReturning: false,
       response: action.response
     };
-    expect(returnbookResponse(action.response)).toEqual(expectedAction);
+    expect(returnBookResponse(action.response)).toEqual(expectedAction);
   });
-  it('should create an action to send returnedbooks error', () => {
+  it('should create an action to send returnBook error', () => {
     const expectedAction = {
       type: RETURN_BOOK_FAILURE,
       isReturning: false,
       error: action.error
     };
-    expect(returnbookError(action.error)).toEqual(expectedAction);
+    expect(returnBookError(action.error)).toEqual(expectedAction);
   });
 
   it('should return book if the request is successful', () => {
@@ -82,7 +82,7 @@ describe('Test return books Actions', () => {
         response: action.response
       },
     ];
-    return store.dispatch(returnedBooks(payload.bookData, token))
+    return store.dispatch(returnBook(payload.bookData, token))
       .then(() => {
         expect(actions).toEqual(expectedActions);
         store.clearActions();

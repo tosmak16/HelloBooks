@@ -4,12 +4,12 @@ import { uploadProfileImageError, uploadProfileImageRequest, uploadProfileImageR
 
 const upload_preset = process.env.UPLOAD_PRESET;
 /**
- * @export uploadAvatar
+ * @export uploadUserAvatar
  * @description it dispatches action for upload user's avatar request and response
  * @param {object} file 
  * @returns {action} dispacted actions
  */
-export const uploadAvatar = (file) => {
+export const uploadUserAvatar = (file) => {
   const data = new FormData();
   data.append('file', file);
   data.append('upload_preset', upload_preset);
@@ -24,4 +24,4 @@ export const uploadAvatar = (file) => {
       dispatch(uploadProfileImageResponse(jsonResponse.secure_url));
   }
 }
-export default uploadAvatar;
+export default uploadUserAvatar;

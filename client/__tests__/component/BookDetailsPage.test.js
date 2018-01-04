@@ -97,9 +97,9 @@ describe('Test book Details page components and container', () => {
       bookData={initialState.books[0].data}
       book={initialState.selectedBookDetails}
       borrowBookItem={initialState.borrowBooks}
-      borrowBooks={mockFuction}
+      borrowBook={mockFuction}
       checkBookDetails={mockFuction}
-      showbooksByCategory={mockFuction}
+      displayBooksByCategory={mockFuction}
     />);
     expect(tree).toMatchSnapshot();
   });
@@ -109,9 +109,9 @@ describe('Test book Details page components and container', () => {
       bookData={[]}
       book={[]}
       borrowBookItem={initialState.borrowBooks}
-      borrowBooks={mockFuction}
+      borrowBook={mockFuction}
       checkBookDetails={mockFuction}
-      showbooksByCategory={mockFuction}
+      displayBooksByCategory={mockFuction}
 
     />);
     expect(tree).toMatchSnapshot();
