@@ -442,7 +442,7 @@ exports[`Login Page Component test should test and take snapshot of LoginPage 1`
 
 exports[`Login Page Component test should test and take snapshot of connected loginpPage 1`] = `
 <connectLoginPage
-  getbooks={[Function]}
+  getBooks={[Function]}
   googleAuthSignIn={[Function]}
   log={
     Object {

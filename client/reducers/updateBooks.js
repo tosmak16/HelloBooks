@@ -1,4 +1,4 @@
-import { UPDATE_BOOK_FAILURE, UPDATE_BOOK_SUCCESS, UPDATE_BOOK_REQUEST } from '../actions/updateBooks';
+import { UPDATE_BOOK_FAILURE, UPDATE_BOOK_SUCCESS, UPDATE_BOOK_REQUEST } from '../actions/updateBook';
 
 const initialState = [{
   data: '',

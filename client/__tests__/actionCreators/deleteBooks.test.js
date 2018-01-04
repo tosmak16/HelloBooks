@@ -5,15 +5,15 @@ import fetchMock from 'fetch-mock';
 import jwt from 'jsonwebtoken';
 
 import {
-  deletebookError,
-  deletebookRequest,
-  deletebookResponse,
+  deleteBookError,
+  deleteBookRequest,
+  deleteBookResponse,
   DELETE_BOOK_FAILURE,
   DELETE_BOOK_SUCCESS,
   DELETE_BOOK_REQUEST
-} from '../../actions/deleteBooks';
+} from '../../actions/deleteBook';
 
-import { deleteBook } from '../../src/actions/deleteBooks';
+import { deleteBook } from '../../src/actions/deleteBook';
 import localStorageMock from '../../__mock__/localStorage';
 
 import book from '../../__mock__/book';
@@ -46,7 +46,7 @@ describe('Test delete book Actions', () => {
       isDeleting: true,
       bookData: action.bookData
     };
-    expect(deletebookRequest(action.bookData)).toEqual(expectedAction);
+    expect(deleteBookRequest(action.bookData)).toEqual(expectedAction);
   });
 
   it('should create an action to send delete book response', () => {
@@ -55,7 +55,7 @@ describe('Test delete book Actions', () => {
       isDeleting: false,
       response: action.response
     };
-    expect(deletebookResponse(action.response)).toEqual(expectedAction);
+    expect(deleteBookResponse(action.response)).toEqual(expectedAction);
   });
 
   it('should create an action to send delete book error', () => {
@@ -64,7 +64,7 @@ describe('Test delete book Actions', () => {
       isDeleting: false,
       error: action.error
     };
-    expect(deletebookError(action.error)).toEqual(expectedAction);
+    expect(deleteBookError(action.error)).toEqual(expectedAction);
   });
 
 

@@ -4,7 +4,7 @@ import {
   DELETE_BOOK_FAILURE,
   DELETE_BOOK_REQUEST,
   DELETE_BOOK_SUCCESS
-} from '../../actions/deleteBooks';
+} from '../../actions/deleteBook';
 
 import reducer from '../../reducers/deleteBooks';
 import book from '../../__mock__/book';

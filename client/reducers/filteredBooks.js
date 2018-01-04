@@ -1,13 +1,13 @@
-import { COUNTER_ACTION } from '../actions/counter';
+import { SEARCH_BOOKS } from '../actions/filterBooks';
 
 const initialState = [{
-  count: '',
+  filteredData: [],
 }];
 export default (state = initialState, action) => {
   switch (action.type) {
-    case COUNTER_ACTION:
+    case SEARCH_BOOKS:
       return [{
-        count: action.counter
+        filteredData: action.data,
       }, ...state];
     default: return state;
   }

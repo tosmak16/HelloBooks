@@ -8,9 +8,9 @@ import jwt from 'jsonwebtoken';
 import {
   GET_BORROWED_BOOKS_FAILURE,
   GET_BORROWED_BOOKS_REQUEST,
-} from '../../actions/getborrowedBooks';
+} from '../../actions/getBorrowedBook';
 
-import getborrowedBooks from '../../src/actions/getborrowedBooks';
+import getBorrowedBook from '../../src/actions/getBorrowedBook';
 import localStorageMock from '../../__mock__/localStorage';
 
 window.localStorage = localStorageMock;
@@ -24,7 +24,7 @@ const response = {
   message: 'borrowed books can not be fetch',
 };
 
-describe('Test getBorrowedBooks failed Actions', () => {
+describe('Test getBorrowedBook failed Actions', () => {
   it('should not return borrowed books resources if the request is not successful', () => {
     fetchMock.get(`/api/v2/user/${1}/books`,
       { status: 400, body: response });
@@ -45,7 +45,7 @@ describe('Test getBorrowedBooks failed Actions', () => {
         error: response.message
       },
     ];
-    return store.dispatch(getborrowedBooks(token))
+    return store.dispatch(getBorrowedBook(token))
       .then(() => {
         expect(actions).toEqual(expectedActions);
         store.clearActions();

@@ -9,7 +9,7 @@ import {
   UPLOAD_BOOK_REQUEST
 } from '../../actions/uploadBooks';
 
-import { uploadBook } from '../../src/actions/uploadBooks';
+import { uploadBook } from '../../src/actions/uploadBook';
 import localStorageMock from '../../__mock__/localStorage';
 
 import book from '../../__mock__/book';

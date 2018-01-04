@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { setCurrentuser } from '../../actions/setCurrentuser';
+import { setCurrentUserAuth } from '../../actions/setCurrentUserAuth';
 /** 
  * @export logout
  * @description it dispatch actions to log out a user
@@ -9,7 +9,7 @@ export const logout = () => {
   localStorage.clear()
   process.env.NODE_ENV === 'test' || Materialize.toast('You are signed out', 5000, 'red');
   return (dispatch) => {
-    dispatch(setCurrentuser({}));
+    dispatch(setCurrentUserAuth({}));
     try {
       const auth2 = gapi.auth2.getAuthInstance();
       auth2.signOut().then(() =>

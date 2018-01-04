@@ -3,7 +3,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { SET_USER } from '../../actions/actionTypes';
 import '../../public/js/googlePlatformScript/googlePlatform';
-import logout from '../../src/actions/logoutAction';
+import logout from '../../src/actions/logout';
 import localStorageMock from '../../__mock__/localStorage';
 
 

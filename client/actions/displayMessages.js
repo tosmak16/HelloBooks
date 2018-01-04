@@ -1,12 +1,9 @@
 import { DISPLAY_MESSAGE } from './actionTypes';
 /**
- * 
- * 
- * @export
- * @param {any} message 
+ * @param {string} message 
  * @returns 
  */
-export function displayMessage(message) {
+export const displayMessage = (message) => {
   return {
     type: DISPLAY_MESSAGE,
     message

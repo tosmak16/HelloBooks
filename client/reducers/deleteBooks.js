@@ -1,4 +1,4 @@
-import { DELETE_BOOK_FAILURE, DELETE_BOOK_SUCCESS, DELETE_BOOK_REQUEST } from '../actions/deleteBooks';
+import { DELETE_BOOK_FAILURE, DELETE_BOOK_SUCCESS, DELETE_BOOK_REQUEST } from '../actions/deleteBook';
 
 const initialState = [{
   data: '',

@@ -3,10 +3,10 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import lodash from 'lodash';
 
-import { showBooksByCategory, SEARCH_BOOKS, getFilteredBooks, SHOW_BOOKS_BY_CATEGORY } from '../../actions/getFilteredBooks';
+import { searchFilteredBooks, SEARCH_BOOKS, filteredByCategory, SHOW_BOOKS_BY_CATEGORY } from '../../actions/filterBooks';
 import books from '../../__mock__/book';
-import showbooksByCategory from '../../src/actions/showbooksByCategory';
-import searchbooks from '../../src/actions/searchbooks';
+import displayBooksByCategory from '../../src/actions/displayBooksByCategory';
+import searchBook from '../../src/actions/searchBook';
 
 
 const middlewares = [thunk];
@@ -34,7 +34,7 @@ describe('Test showBooksByCategory action creator', () => {
       category: response.category
     };
 
-    expect(showBooksByCategory(response.data, response.category)).toEqual(expectedAction);
+    expect(filteredByCategory(response.data, response.category)).toEqual(expectedAction);
   });
 
   it('should filter books data by searching', () => {
@@ -43,7 +43,7 @@ describe('Test showBooksByCategory action creator', () => {
       data: response.data
     };
 
-    expect(getFilteredBooks(response.data)).toEqual(expectedAction);
+    expect(searchFilteredBooks(response.data)).toEqual(expectedAction);
   });
 
   it('should dispatch action to return books by category', () => {
@@ -57,7 +57,7 @@ describe('Test showBooksByCategory action creator', () => {
         category: response.category
       },
     ];
-    store.dispatch(showbooksByCategory(selectedCategory, response.data));
+    store.dispatch(displayBooksByCategory(selectedCategory, response.data));
 
     expect(actions).toEqual(expectedActions);
   });
@@ -72,7 +72,7 @@ describe('Test showBooksByCategory action creator', () => {
         data: [response.data[1]]
       },
     ];
-    store.dispatch(searchbooks(response.filterBy, 'LATE', response.data));
+    store.dispatch(searchBook(response.filterBy, 'LATE', response.data));
 
     expect(actions).toEqual(expectedActions);
   });
@@ -87,7 +87,7 @@ describe('Test showBooksByCategory action creator', () => {
         data: [response.data[2], response.data[6]]
       },
     ];
-    store.dispatch(searchbooks('category', 'Music', response.data));
+    store.dispatch(searchBook('category', 'Music', response.data));
 
     expect(actions).toEqual(expectedActions);
   });
@@ -102,7 +102,7 @@ describe('Test showBooksByCategory action creator', () => {
         data: [response.data[1]]
       },
     ];
-    store.dispatch(searchbooks('author', 'Adam', response.data));
+    store.dispatch(searchBook('author', 'Adam', response.data));
 
     expect(actions).toEqual(expectedActions);
   });
@@ -117,7 +117,7 @@ describe('Test showBooksByCategory action creator', () => {
         data: [response.data[1]]
       },
     ];
-    store.dispatch(searchbooks('isbn', '234560878', response.data));
+    store.dispatch(searchBook('isbn', '234560878', response.data));
 
     expect(actions).toEqual(expectedActions);
   });
@@ -132,7 +132,7 @@ describe('Test showBooksByCategory action creator', () => {
         data: [response.data[6]]
       },
     ];
-    store.dispatch(searchbooks(response.filterBy, 'SONG', response.data));
+    store.dispatch(searchBook(response.filterBy, 'SONG', response.data));
 
     expect(actions).toEqual(expectedActions);
   });
@@ -147,7 +147,7 @@ describe('Test showBooksByCategory action creator', () => {
         data: [response.data[7]]
       },
     ];
-    store.dispatch(searchbooks(response.filterBy, 'THE ILIAD', response.data));
+    store.dispatch(searchBook(response.filterBy, 'THE ILIAD', response.data));
 
     expect(actions).toEqual(expectedActions);
   });

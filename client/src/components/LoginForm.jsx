@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Input, Row } from 'react-materialize';
-import $ from 'jquery';
 import { ResetPasswordModal } from './modal/ResetPasswordModal';
 
 /**
@@ -49,6 +48,7 @@ export class LoginForm extends React.Component {
     });
   }
   /**
+   * @param {object} nextProps
    * @memberof LoginForm
    * @returns {void}
    */

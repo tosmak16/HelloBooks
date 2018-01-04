@@ -6,9 +6,9 @@ import jwt from 'jsonwebtoken';
 
 
 import {
-  changepasswordError, CHANGE_PASSWORD_FAILURE,
-  changepasswordRequest, CHANGE_PASSWORD_REQUEST,
-  changepasswordResponse, CHANGE_PASSWORD_SUCCESS
+  changePasswordError, CHANGE_PASSWORD_FAILURE,
+  changePasswordRequest, CHANGE_PASSWORD_REQUEST,
+  changePasswordResponse, CHANGE_PASSWORD_SUCCESS
 } from '../../actions/changePassword';
 
 import changePassword from '../../src/actions/changePassword';
@@ -40,7 +40,7 @@ describe('Test change paswword Actions', () => {
       isSending: true,
       userData: action.userData,
     };
-    expect(changepasswordRequest(action.userData)).toEqual(expectedAction);
+    expect(changePasswordRequest(action.userData)).toEqual(expectedAction);
   });
 
   it('should create an action to send changePassword response', () => {
@@ -49,7 +49,7 @@ describe('Test change paswword Actions', () => {
       isSending: false,
       response: action.response
     };
-    expect(changepasswordResponse(action.response)).toEqual(expectedAction);
+    expect(changePasswordResponse(action.response)).toEqual(expectedAction);
   });
 
   it('should create an action to send changePassword error', () => {
@@ -58,7 +58,7 @@ describe('Test change paswword Actions', () => {
       isSending: false,
       error: action.error
     };
-    expect(changepasswordError(action.error)).toEqual(expectedAction);
+    expect(changePasswordError(action.error)).toEqual(expectedAction);
   });
 
   it('should change password if the request is successful', () => {

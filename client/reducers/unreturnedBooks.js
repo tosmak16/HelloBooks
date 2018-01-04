@@ -1,27 +1,31 @@
-import { GET_USER_DETAILS_FAILURE, GET_USER_DETAILS_SUCCESS, GET_USER_DETAILS_REQUEST } from '../actions/getUserDetails';
+import { GET_UNRETURNED_BOOKS_FAILURE, GET_UNRETURNED_BOOKS_SUCCESS, GET_UNRETURNED_BOOKS_REQUEST } from '../actions/getUnreturnedBook';
 
 const initialState = [{
   isFetching: false,
+  isFetched: false,
   data: [],
   error: '',
 }];
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_USER_DETAILS_REQUEST:
+    case GET_UNRETURNED_BOOKS_REQUEST:
       return [{
         isFetching: true,
+        isFetched: false,
         data: [],
         error: '',
       }, ...state];
-    case GET_USER_DETAILS_SUCCESS:
+    case GET_UNRETURNED_BOOKS_SUCCESS:
       return [{
         isFetching: false,
+        isFetched: true,
         data: action.data,
         error: '',
       }, ...state];
-    case GET_USER_DETAILS_FAILURE:
+    case GET_UNRETURNED_BOOKS_FAILURE:
       return [{
         isFetching: false,
+        isFetched: false,
         data: [],
         error: action.error,
       }, ...state];

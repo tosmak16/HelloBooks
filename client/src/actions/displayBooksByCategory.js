@@ -1,18 +1,16 @@
 import lodash from 'lodash'
-
-import { showBooksByCategory } from '../../actions/getFilteredBooks'
+import { filteredByCategory } from '../../actions/filterBooks'
 
 /**
- * @export showbooksByCategory
+ * @export displayBooksByCategory
  * @description it dispatch actions to show books by category
  * @param {string} selectedCategory 
  * @param {object} data 
  * @returns {action} dispacted actions
  */
-export default function showbooksByCategory(selectedCategory, data) {
+export default function displayBooksByCategory(selectedCategory, data) {
   const filteredData = lodash.filter(data, ['category', selectedCategory]);
-
   return (dispatch) => {
-    dispatch(showBooksByCategory(filteredData, selectedCategory));
+    dispatch(filteredByCategory(filteredData, selectedCategory));
   }
 }

@@ -2,28 +2,20 @@
 export const REFRESH_PAGE = 'REFRESH_PAGE'
 export const UNDO_REFRESH_PAGE = 'UNDO_REFRESH_PAGE'
 
-
-
 //Action creators
 /**
- * 
- * 
- * @export
- * @returns 
+ * @returns {object} of refreash page state
  */
-export function refresh() {
+export const refresh = () => {
   return {
     type: REFRESH_PAGE,
     isRefreshed: true,
   }
 }
 /**
- * 
- * 
- * @export
- * @returns 
+ * @returns {object} of refreash page state
  */
-export function undoRefresh() {
+export const undoRefresh = () => {
   return {
     type: UNDO_REFRESH_PAGE,
     isRefreshed: false,

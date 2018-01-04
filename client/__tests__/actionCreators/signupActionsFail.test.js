@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import fetchMock from 'fetch-mock';
 
 import { SIGNUP_FAILURE, SIGNUP_REQUEST } from '../../actions/signupActions';
-import { userSignup } from '../../src/actions/signupAction';
+import { signup } from '../../src/actions/signup';
 
 
 const middlewares = [thunk];
@@ -47,7 +47,7 @@ describe('Test signupActions fail', () => {
       },
 
     ];
-    return store.dispatch(userSignup(wrongPayload))
+    return store.dispatch(signup(wrongPayload))
       .then(() => {
         expect(actions).toEqual(expectedActions);
         store.clearActions();
@@ -79,7 +79,7 @@ describe('Test signupActions fail', () => {
       },
 
     ];
-    return store.dispatch(userSignup(wrongPayload))
+    return store.dispatch(signup(wrongPayload))
       .then(() => {
         expect(actions).toEqual(expectedActions);
         store.clearActions();

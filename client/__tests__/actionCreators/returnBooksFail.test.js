@@ -10,7 +10,7 @@ import {
   RETURN_BOOK_REQUEST,
 } from '../../actions/returnBook';
 
-import returnedBooks from '../../src/actions/returnBooks';
+import returnBook from '../../src/actions/returnBook';
 import books from '../../__mock__/book';
 import localStorageMock from '../../__mock__/localStorage';
 
@@ -55,7 +55,7 @@ describe('Test return books Actions', () => {
         error: action.error
       },
     ];
-    return store.dispatch(returnedBooks(payload.bookData, token))
+    return store.dispatch(returnBook(payload.bookData, token))
       .then(() => {
         expect(actions).toEqual(expectedActions);
         store.clearActions();

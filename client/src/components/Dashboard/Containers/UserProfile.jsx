@@ -4,12 +4,12 @@ import isEmpty from 'lodash/isEmpty';
 import PropTypes from 'prop-types';
 import $ from 'jquery';
 
-import getUserdetails from '../../../actions/getUserDetails';
+import getUserdetails from '../../../actions/getUser';
 import DashboardSidebar from '../DashboardSidebar';
 import { UserProfileForm } from '../UserProfileForm';
-import updateUser from '../../../actions/updateuserDetails';
-import { uploadAvatar } from '../../../actions/uploadUserAvatar';
-import { logout } from '../../../actions/logoutAction';
+import updateUser from '../../../actions/updateUser';
+import { uploadUserAvatar } from '../../../actions/uploadUserAvatar';
+import { logout } from '../../../actions/logout';
 import { updateUserDetailsTemp } from '../HelperFunctions/updateUserDetailsTemp';
 import { setUserDetailsState } from '../HelperFunctions/setUserDetailsState';
 import { validateUserDetailsUpdate } from '../../../helperFunctions/validateUserDetailsUpdate';
@@ -223,7 +223,7 @@ export class UserProfile extends React.Component {
               userData={this.props.userData}
               message={this.props.message}
               updateUser={this.props.updateUser}
-              uploadAvatar={this.props.uploadAvatar}
+              uploadAvatar={this.props.uploadUserAvatar}
             />
             <UserProfileForm
               handleClick={this.handleClick}
@@ -247,7 +247,7 @@ UserProfile.propTypes = {
   logout: PropTypes.func.isRequired,
   message: PropTypes.string.isRequired,
   updateUser: PropTypes.func.isRequired,
-  uploadAvatar: PropTypes.func.isRequired,
+  uploadUserAvatar: PropTypes.func.isRequired,
   userData: PropTypes.arrayOf(PropTypes.any).isRequired,
   userItem: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
@@ -258,8 +258,8 @@ UserProfile.propTypes = {
  */
 function mapStateToProps(state) {
   return {
-    userData: state.UserDetails[0].data,
-    userDataError: state.UserDetails[0].error,
+    userData: state.userDetail[0].data,
+    userDataError: state.userDetail[0].error,
     userItem: state.updateUser,
     imageUrl: state.userProfileImage[0].response,
     error: state.updateUser[0].error.toString(),
@@ -270,6 +270,6 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, {
   getUserdetails,
   updateUser,
-  uploadAvatar,
+  uploadUserAvatar,
   logout
 })(UserProfile);

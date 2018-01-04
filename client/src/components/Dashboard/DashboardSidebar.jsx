@@ -2,7 +2,7 @@ import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 import PropTypes from 'prop-types';
 import $ from 'jquery';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
 import ActivityLoader from '../preloader/ActivityLoader';
@@ -189,6 +189,7 @@ class DashboardSidebar extends React.Component {
   handleLogout(event) {
     event.preventDefault();
     this.props.logout();
+    browserHistory.push('/login');
   }
   /**
    * @memberof DashboardSidebar

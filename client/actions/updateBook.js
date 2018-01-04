@@ -6,13 +6,10 @@ export const UPDATE_BOOK_FAILURE = 'UPDATE_BOOK_FAILURE'
 
 //Action creators
 /**
- * 
- * 
- * @export
- * @param {any} bookData 
- * @returns 
+ * @param {object} bookData 
+ * @returns {object} of update books state
  */
-export function updatebookRequest(bookData) {
+export const updateBookRequest = (bookData) => {
   return {
     type: UPDATE_BOOK_REQUEST,
     isUpdating: true,
@@ -20,13 +17,10 @@ export function updatebookRequest(bookData) {
   }
 }
 /**
- * 
- * 
- * @export
- * @param {any} response 
- * @returns 
+ * @param {string} response 
+ * @returns {object} of update books state
  */
-export function updatebookResponse(response) {
+export const updateBookResponse = (response) => {
   return {
     type: UPDATE_BOOK_SUCCESS,
     isUpdating: false,
@@ -34,13 +28,10 @@ export function updatebookResponse(response) {
   }
 }
 /**
- * 
- * 
- * @export
- * @param {any} error 
- * @returns 
+ * @param {string} error 
+ * @returns {object} of update books state
  */
-export function updatebookError(error) {
+export const updateBookError = (error) => {
   return {
     type: UPDATE_BOOK_FAILURE,
     isUpdating: false,

@@ -5,12 +5,12 @@ import _ from 'lodash';
 import BooksPhoto from './BooksPhoto';
 import SideBar from '../SideBar';
 import BooksFilter from './BooksFilter';
-import getbooks from '../../actions/getBooks';
+import { getBooks } from '../../actions/getBooks';
 import BooksCollection from './BooksCollection';
 import BooksCategory from './BooksCategory';
-import searchbooks from '../../actions/searchbooks';
-import checkBookDetails from '../../actions/checkBookDetails';
-import showbooksByCategory from '../../actions/showbooksByCategory';
+import searchBook from '../../actions/searchBook';
+import { checkBookDetails } from '../../actions/checkBookDetails';
+import displayBooksByCategory from '../../actions/displayBooksByCategory';
 
 /**
  * @export
@@ -58,7 +58,7 @@ export class BooksPage extends React.Component {
  */
   componentDidMount() {
     if (!this.props.isFetched) {
-      this.props.getbooks(false);
+      this.props.getBooks(false);
     }
   }
   /**
@@ -85,7 +85,7 @@ export class BooksPage extends React.Component {
     if (this.state.filterBy !== '') {
       this.setState({ error: '', bookIsFound: true });
       if (this.state.filterBy && this.state.searchText && !_.isEmpty(this.props.bookData)) {
-        this.props.searchbooks(this.state.filterBy, this.state.searchText, this.props.bookData);
+        this.props.searchBook(this.state.filterBy, this.state.searchText, this.props.bookData);
         this.setState({ booksCollectionDisplay: true });
       }
     }
@@ -121,7 +121,7 @@ export class BooksPage extends React.Component {
           <div className="">
             <SideBar
               bookData={this.props.bookData}
-              showbooksByCategory={this.props.showbooksByCategory}
+              showbooksByCategory={this.props.displayBooksByCategory}
             />
           </div>
           <div id="book_body" className="">
@@ -131,7 +131,7 @@ export class BooksPage extends React.Component {
                 handleSelected={this.bookFilterHandleSelected}
                 handleChange={this.bookFilterHandleChange}
                 checkBookDetails={this.bookCollectionHandleClick}
-                searchbooks={this.props.searchbooks}
+                searchbooks={this.props.searchBook}
                 filteredData={this.props.filteredData}
                 bookData={this.props.bookData}
               />
@@ -161,10 +161,10 @@ BooksPage.propTypes = {
   checkBookDetails: PropTypes.func.isRequired,
   bookData: PropTypes.arrayOf(PropTypes.any).isRequired,
   filteredData: PropTypes.arrayOf(PropTypes.any).isRequired,
-  getbooks: PropTypes.func.isRequired,
+  getBooks: PropTypes.func.isRequired,
   isFetched: PropTypes.bool.isRequired,
-  searchbooks: PropTypes.func.isRequired,
-  showbooksByCategory: PropTypes.func.isRequired
+  searchBook: PropTypes.func.isRequired,
+  displayBooksByCategory: PropTypes.func.isRequired
 };
 /**
  * @param {arrrayOfobject} state
@@ -175,12 +175,12 @@ function mapStateToProps(state) {
     isFetched: state.books[0].isFetched,
     bookData: state.books[0].data,
     categoryData: state.category,
-    filteredData: state.getFilteredBooks[0].filteredData,
+    filteredData: state.filteredBooks[0].filteredData,
   };
 }
 export default connect(mapStateToProps, {
-  getbooks,
-  searchbooks,
+  getBooks,
+  searchBook,
   checkBookDetails,
-  showbooksByCategory
+  displayBooksByCategory
 })(BooksPage);

@@ -6,12 +6,12 @@ import jwt from 'jsonwebtoken';
 
 
 import {
-  getuserdetailsError, getuserdetailsReponse,
-  getuserdetailsRequest, GET_USER_DETAILS_FAILURE,
+  getUserError, getUserReponse,
+  getUserRequest, GET_USER_DETAILS_FAILURE,
   GET_USER_DETAILS_REQUEST, GET_USER_DETAILS_SUCCESS
-} from '../../actions/getUserDetails';
+} from '../../actions/getUser';
 
-import getUserDetails from '../../src/actions/getUserDetails';
+import getUser from '../../src/actions/getUser';
 import user from '../../__mock__/user';
 import localStorageMock from '../../__mock__/localStorage';
 
@@ -36,30 +36,30 @@ const response = {
 
 
 describe('Test get user Actions', () => {
-  it('should create an action to send getUserDetails request', () => {
+  it('should create an action to send getUser request', () => {
     const expectedAction = {
       type: GET_USER_DETAILS_REQUEST,
       isFetching: true,
     };
-    expect(getuserdetailsRequest()).toEqual(expectedAction);
+    expect(getUserRequest()).toEqual(expectedAction);
   });
 
-  it('should create an action to send getUserDetails response', () => {
+  it('should create an action to send getUser response', () => {
     const expectedAction = {
       type: GET_USER_DETAILS_SUCCESS,
       isFetching: false,
       data: action.userData
     };
-    expect(getuserdetailsReponse(action.userData)).toEqual(expectedAction);
+    expect(getUserReponse(action.userData)).toEqual(expectedAction);
   });
 
-  it('should create an action to send getUserDetails failed', () => {
+  it('should create an action to send getUser failed', () => {
     const expectedAction = {
       type: GET_USER_DETAILS_FAILURE,
       isFetching: false,
       error: action.error
     };
-    expect(getuserdetailsError(action.error)).toEqual(expectedAction);
+    expect(getUserError(action.error)).toEqual(expectedAction);
   });
 
   it('should return books resources if the request is successful', () => {
@@ -80,7 +80,7 @@ describe('Test get user Actions', () => {
         data: action.userData
       },
     ];
-    return store.dispatch(getUserDetails(token))
+    return store.dispatch(getUser(token))
       .then(() => {
         expect(actions).toEqual(expectedActions);
         store.clearActions();

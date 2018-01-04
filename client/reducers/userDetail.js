@@ -1,31 +1,27 @@
-import { GET_BORROWED_BOOKS_FAILURE, GET_BORROWED_BOOKS_SUCCESS, GET_BORROWED_BOOKS_REQUEST } from '../actions/getborrowedBooks';
+import { GET_USER_DETAILS_FAILURE, GET_USER_DETAILS_SUCCESS, GET_USER_DETAILS_REQUEST } from '../actions/getUser';
 
 const initialState = [{
   isFetching: false,
-  isFetched: false,
   data: [],
   error: '',
 }];
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_BORROWED_BOOKS_REQUEST:
+    case GET_USER_DETAILS_REQUEST:
       return [{
         isFetching: true,
-        isFetched: false,
         data: [],
         error: '',
       }, ...state];
-    case GET_BORROWED_BOOKS_SUCCESS:
+    case GET_USER_DETAILS_SUCCESS:
       return [{
         isFetching: false,
-        isFetched: true,
         data: action.data,
         error: '',
       }, ...state];
-    case GET_BORROWED_BOOKS_FAILURE:
+    case GET_USER_DETAILS_FAILURE:
       return [{
         isFetching: false,
-        isFetched: false,
         data: [],
         error: action.error,
       }, ...state];

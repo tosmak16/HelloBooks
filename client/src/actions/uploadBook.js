@@ -1,6 +1,6 @@
 import { browserHistory } from 'react-router';
 import { uploadImage } from './uploadImage';
-import { uploadbookError, uploadbookRequest, uploadbookResponse } from '../../actions/uploadBooks';
+import { uploadBookError, uploadBookRequest, uploadBookResponse } from '../../actions/uploadBooks';
 
 /** 
  * @export uploadBook
@@ -11,7 +11,7 @@ import { uploadbookError, uploadbookRequest, uploadbookResponse } from '../../ac
  */
 export const uploadBook = (bookData, token) => {
   return async (dispatch) => {
-    dispatch(uploadbookRequest(bookData));
+    dispatch(uploadBookRequest(bookData));
     const response = await fetch('/api/v2/books', {
       method: 'POST',
       headers: {
@@ -23,8 +23,8 @@ export const uploadBook = (bookData, token) => {
     })
     const jsonResponse = await response.json().then(jsonRes => jsonRes)
     response.status === 200 ?
-      dispatch(uploadbookResponse(jsonResponse.message)) :
-      dispatch(uploadbookError(jsonResponse.message))
+      dispatch(uploadBookResponse(jsonResponse.message)) :
+      dispatch(uploadBookError(jsonResponse.message))
   }
 }
 export default uploadBook;

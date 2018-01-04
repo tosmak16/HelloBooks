@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import fetchMock from 'fetch-mock';
 
 import { signupError, signupRequest, signupResponse, SIGNUP_FAILURE, SIGNUP_SUCCESS, SIGNUP_REQUEST } from '../../actions/signupActions';
-import { userSignup } from '../../src/actions/signupAction';
+import { signup } from '../../src/actions/signup';
 import { DISPLAY_MESSAGE } from '../../actions/actionTypes';
 
 const middlewares = [thunk];
@@ -73,7 +73,7 @@ describe('Test signupActions', () => {
         response: 'Registration successful'
       }
     ];
-    return store.dispatch(userSignup(payload))
+    return store.dispatch(signup(payload))
       .then(() => {
         expect(actions).toEqual(expectedActions);
         store.clearActions();

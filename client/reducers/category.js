@@ -1,4 +1,4 @@
-import { SHOW_BOOKS_BY_CATEGORY } from '../actions/getFilteredBooks';
+import { SHOW_BOOKS_BY_CATEGORY } from '../actions/filterBooks';
 
 const initialState = [{
   category: '',

@@ -3,15 +3,12 @@ export const DELETE_BOOK_REQUEST = 'DELETE_BOOK_REQUEST'
 export const DELETE_BOOK_SUCCESS = 'DELETE_BOOK_SUCCESS'
 export const DELETE_BOOK_FAILURE = 'DELETE_BOOK_FAILURE'
 
-/**
- * 
- * 
- * @export
- * @param {any} bookData 
- * @returns 
+/** 
+ * @param {object} bookData 
+ * @returns {object} of deleteBook state
  */
 //Action creators
-export function deletebookRequest(bookData) {
+export function deleteBookRequest(bookData) {
   return {
     type: DELETE_BOOK_REQUEST,
     isDeleting: true,
@@ -21,11 +18,10 @@ export function deletebookRequest(bookData) {
 /**
  * 
  * 
- * @export
- * @param {any} response 
- * @returns 
+ * @param {string} response 
+ * @returns {object} of deleteBook state
  */
-export function deletebookResponse(response) {
+export function deleteBookResponse(response) {
   return {
     type: DELETE_BOOK_SUCCESS,
     isDeleting: false,
@@ -35,11 +31,10 @@ export function deletebookResponse(response) {
 /**
  * 
  * 
- * @export
- * @param {any} error 
- * @returns 
+ * @param {string} error 
+ * @returns {object} of deleteBook state
  */
-export function deletebookError(error) {
+export function deleteBookError(error) {
   return {
     type: DELETE_BOOK_FAILURE,
     isDeleting: false,

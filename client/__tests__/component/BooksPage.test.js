@@ -46,7 +46,7 @@ describe('Test BooksPage component', () => {
       categoryData: '',
       selectedCategory: false,
     }],
-    getFilteredBooks: [{
+    filteredBooks: [{
       filteredData: [],
     }]
   };
@@ -64,12 +64,12 @@ describe('Test BooksPage component', () => {
     const tree = render.create(<BooksPage
       categoryData={[]}
       isFetched={!initialState.books[0].isFetched}
-      getbooks={mockFuction}
+      getBooks={mockFuction}
       bookData={[{ id: 1, name: 'hello' }]}
-      showbooksByCategory={mockFuction}
+      displayBooksByCategory={mockFuction}
       filteredData={[{ id: 1, bookTitle: 'love' }]}
       checkBookDetails={mockFuction}
-      searchbooks={mockFuction}
+      searchBook={mockFuction}
     />);
     expect(tree).toMatchSnapshot();
   });
@@ -79,7 +79,7 @@ describe('Test BooksPage component', () => {
       data={[{ name: 'hello' }]}
       filteredData={[{ id: 1, bookTitle: 'love' }]}
       checkBookDetails={mockFuction}
-      searchbooks={mockFuction}
+      searchBook={mockFuction}
       state={state}
       handleChange={mockFuction}
       handleSelected={mockFuction}
@@ -148,7 +148,7 @@ describe('Test BooksPage component', () => {
     expect(wrapper.find(BooksPage).prop('bookData')).toEqual(initialState.books[0].data);
     expect(wrapper.find(BooksPage).prop('isFetched')).toEqual(initialState.books[0].isFetched);
     expect(wrapper.find(BooksPage).prop('categoryData')).toEqual(initialState.category);
-    expect(wrapper.find(BooksPage).prop('filteredData')).toEqual(initialState.getFilteredBooks[0].filteredData);
+    expect(wrapper.find(BooksPage).prop('filteredData')).toEqual(initialState.filteredBooks[0].filteredData);
   });
 
   it('should test and take snapshot of Card box', () => {
@@ -223,10 +223,10 @@ describe('Test BooksPage component', () => {
       checkBookDetails={mockFuction}
       bookData={book}
       filteredData={book}
-      getbooks={mockFuction}
+      getBooks={mockFuction}
       isFetched={false}
-      searchbooks={mockFuction}
-      showbooksByCategory={mockFuction}
+      searchBook={mockFuction}
+      displayBooksByCategory={mockFuction}
     />);
     wrapper.instance().handleFuction = mockFuction;
     wrapper.update();
@@ -259,10 +259,10 @@ describe('Test BooksPage component', () => {
       checkBookDetails={mockFuction}
       bookData={[]}
       filteredData={book}
-      getbooks={mockFuction}
+      getBooks={mockFuction}
       isFetched={false}
-      searchbooks={mockFuction}
-      showbooksByCategory={mockFuction}
+      searchBook={mockFuction}
+      displayBooksByCategory={mockFuction}
     />);
     wrapper.instance().handleFuction = mockFuction;
     wrapper.update();

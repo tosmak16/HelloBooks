@@ -7,7 +7,7 @@ import { validateUserDetails } from '../helperFunctions/validateUserDetails';
  * @param {object} userData 
  * @returns {action} dispacted actions
  */
-export const userSignup = (userData) => {
+export const signup = (userData) => {
   let error = '';
   return async (dispatch) => {
     dispatch(signupRequest(userData));
@@ -38,5 +38,4 @@ export const userSignup = (userData) => {
     }
   };
 }
-const signupAction = userSignup;
-export default signupAction;
+export default signup;

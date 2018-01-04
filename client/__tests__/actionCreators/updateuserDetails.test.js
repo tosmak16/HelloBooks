@@ -5,15 +5,15 @@ import fetchMock from 'fetch-mock';
 import jwt from 'jsonwebtoken';
 
 import {
-  updateuserError,
-  updateuserRequest,
-  updateuserResponse,
+  updateUserError,
+  updateUserRequest,
+  updateUserResponse,
   UPDATE_USER_FAILURE,
   UPDATE_USER_REQUEST,
   UPDATE_USER_SUCCESS
 } from '../../actions/updateUser';
 
-import updateUser from '../../src/actions/updateuserDetails';
+import updateUser from '../../src/actions/updateUser';
 import localStorageMock from '../../__mock__/localStorage';
 
 import user from '../../__mock__/user';
@@ -47,7 +47,7 @@ describe('Test update user Actions', () => {
       isUpdating: true,
       data: action.userData
     };
-    expect(updateuserRequest(action.userData)).toEqual(expectedAction);
+    expect(updateUserRequest(action.userData)).toEqual(expectedAction);
   });
 
   it('should create an action to send update user response', () => {
@@ -56,7 +56,7 @@ describe('Test update user Actions', () => {
       isUpdating: false,
       response: action.response
     };
-    expect(updateuserResponse(action.response)).toEqual(expectedAction);
+    expect(updateUserResponse(action.response)).toEqual(expectedAction);
   });
 
   it('should create an action to send update user error', () => {
@@ -65,7 +65,7 @@ describe('Test update user Actions', () => {
       isUpdating: false,
       error: action.error
     };
-    expect(updateuserError(action.error)).toEqual(expectedAction);
+    expect(updateUserError(action.error)).toEqual(expectedAction);
   });
 
   it('should update user if the request is successful', () => {

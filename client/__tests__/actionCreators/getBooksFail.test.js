@@ -10,7 +10,7 @@ import {
   GET_ALL_BOOKS_REQUEST,
 } from '../../actions/getBooks';
 
-import getbooks from '../../src/actions/getBooks';
+import getBooks from '../../src/actions/getBooks';
 import localStorageMock from '../../__mock__/localStorage';
 
 window.localStorage = localStorageMock;
@@ -45,7 +45,7 @@ describe('Test getBooks Actions failed', () => {
         error: response.message
       },
     ];
-    return store.dispatch(getbooks(true))
+    return store.dispatch(getBooks(true))
       .then(() => {
         expect(actions).toEqual(expectedActions);
         store.clearActions();

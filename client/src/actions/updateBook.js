@@ -1,18 +1,18 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 import { uploadImage } from './uploadImage';
-import { updatebookError, updatebookRequest, updatebookResponse } from '../../actions/updateBooks';
+import { updateBookError, updateBookRequest, updateBookResponse } from '../../actions/updateBook';
 
 /**
  * @export updateBook
- * @description it dispatch actions for updatebooks request and response
+ * @description it dispatch actions for updateBooks request and response
  * @param {object} bookData 
  * @param {string} token 
  * @returns {action} dispacted actions
  */
 export const updateBook = (bookData, token) => {
   return async (dispatch) => {
-    dispatch(updatebookRequest(bookData));
+    dispatch(updateBookRequest(bookData));
     const response = await fetch('/api/v2/books/' + bookData.bookId, {
       method: 'PUT',
       headers: {
@@ -24,9 +24,8 @@ export const updateBook = (bookData, token) => {
     })
     const jsonResponse = await response.json().then(jsonRes => jsonRes)
     response.status === 200 ?
-      dispatch(updatebookResponse(jsonResponse.message)) :
-      dispatch(updatebookError(jsonResponse.message))
+      dispatch(updateBookResponse(jsonResponse.message)) :
+      dispatch(updateBookError(jsonResponse.message))
   }
 }
-const updateBooks = updateBook;
-export default updateBooks;
+export default updateBook;

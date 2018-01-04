@@ -9,10 +9,10 @@ import {
   UPLOAD_IMAGE_FAILURE,
   UPLOAD_IMAGE_REQUEST,
   UPLOAD_IMAGE_SUCCESS,
-  uploadimageError,
-  uploadimageRequest,
-  uploadimageResponse
-} from '../../actions/UploadImages';
+  uploadImageError,
+  uploadImageRequest,
+  uploadImageResponse
+} from '../../actions/uploadImage';
 
 import { uploadImage } from '../../src/actions/uploadImage';
 import book from '../../__mock__/book';
@@ -50,7 +50,7 @@ describe('Test upload cover image Actions', () => {
       isUploading: true,
       imageData: action.bookData
     };
-    expect(uploadimageRequest(action.bookData)).toEqual(expectedAction);
+    expect(uploadImageRequest(action.bookData)).toEqual(expectedAction);
   });
 
   it('should create an action to send upload cover image response', () => {
@@ -59,7 +59,7 @@ describe('Test upload cover image Actions', () => {
       isUploading: false,
       response: action.response
     };
-    expect(uploadimageResponse(action.response)).toEqual(expectedAction);
+    expect(uploadImageResponse(action.response)).toEqual(expectedAction);
   });
 
   it('should create an action to send upload cover image error', () => {
@@ -68,7 +68,7 @@ describe('Test upload cover image Actions', () => {
       isUploading: false,
       error: action.error
     };
-    expect(uploadimageError(action.error)).toEqual(expectedAction);
+    expect(uploadImageError(action.error)).toEqual(expectedAction);
   });
 
   it('should return books resources if the request is successful', () => {

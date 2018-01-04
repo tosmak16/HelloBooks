@@ -17,7 +17,7 @@ import './public/js/jquery';
 import './public/js/dashboard';
 
 import './public/scss/materialize.scss';
-import { setCurrentuser } from './actions/setCurrentuser';
+import { setCurrentUserAuth } from './actions/setCurrentUserAuth';
 import './public/font-awesome-4.7.0/fonts/fontawesome-webfont.eot';
 import './public/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf';
 import './public/font-awesome-4.7.0/fonts/fontawesome-webfont.woff';
@@ -44,7 +44,7 @@ const store = createStore(
   compose(applyMiddleware(thunk),
     window.devToolsExtension ? window.devToolsExtension() : f => f));
 if (localStorage.jwtToken) {
-  store.dispatch(setCurrentuser(jwtDecode(localStorage.jwtToken)));
+  store.dispatch(setCurrentUserAuth(jwtDecode(localStorage.jwtToken)));
 }
 export default store;
 render(

@@ -4,9 +4,9 @@ import {
   GET_UNRETURNED_BOOKS_FAILURE,
   GET_UNRETURNED_BOOKS_REQUEST,
   GET_UNRETURNED_BOOKS_SUCCESS
-} from '../../actions/getunreturnedBooks';
+} from '../../actions/getUnreturnedBook';
 
-import reducer from '../../reducers/getunreturnedBooks';
+import reducer from '../../reducers/unreturnedBooks';
 import books from '../../__mock__/book';
 
 

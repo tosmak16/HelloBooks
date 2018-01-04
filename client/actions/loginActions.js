@@ -3,16 +3,12 @@ export const LOGIN_REQUEST = 'LOGIN_REQUEST'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_FAILURE = 'LOGIN_FAILURE'
 
-
 //Action creators
 /**
- * 
- * 
- * @export
- * @param {any} userData 
- * @returns 
+ * @param {object} userData 
+ * @returns {object} of login state
  */
-export function loginRequest(userData) {
+export const loginRequest = (userData) => {
   return {
     type: LOGIN_REQUEST,
     isFetching: true,
@@ -21,13 +17,10 @@ export function loginRequest(userData) {
   }
 }
 /**
- * 
- * 
- * @export
- * @param {any} response 
- * @returns 
+ * @param {string} response 
+ * @returns {object} of login state
  */
-export function loginResponse(response) {
+export const loginResponse = (response) => {
   return {
     type: LOGIN_SUCCESS,
     isFetching: false,
@@ -36,13 +29,10 @@ export function loginResponse(response) {
   }
 }
 /**
- * 
- * 
- * @export
- * @param {any} error 
- * @returns 
+ * @param {string} error 
+ * @returns {object} of login state
  */
-export function loginError(error) {
+export const loginError = (error) => {
   return {
     type: LOGIN_FAILURE,
     isFetching: false,

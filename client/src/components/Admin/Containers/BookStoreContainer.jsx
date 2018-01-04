@@ -5,13 +5,13 @@ import $ from 'jquery';
 import _ from 'lodash';
 import BookStorePage from '../BookStorePage';
 import AdminSidebar from '../AdminSidebar';
-import { getbooks } from '../../../actions/getBooks';
-import { deleteBook } from '../../../actions/deleteBooks';
+import { getBooks } from '../../../actions/getBooks';
+import { deleteBook } from '../../../actions/deleteBook';
 import refreshPage from '../../../actions/refreshPage';
-import searchbooks from '../../../actions/searchbooks';
-import { getbooksReponse } from '../../../../actions/getBooks';
+import searchBook from '../../../actions/searchBook';
+import { getBooksReponse } from '../../../../actions/getBooks';
 import store from '../../../../index';
-import { logout } from '../../../actions/logoutAction';
+import { logout } from '../../../actions/logout';
 
 
 /**
@@ -53,7 +53,7 @@ class BookStoreContainer extends React.Component {
    */
   componentDidMount() {
     if (!this.props.isFetched) {
-      this.props.getbooks(true);
+      this.props.getBooks(true);
     }
     $(document).ready(() => {
       $('.modal').modal();
@@ -83,7 +83,7 @@ class BookStoreContainer extends React.Component {
         const newBookData = this.state.bookData;
         this.state.bookData = [...newBookData.slice(0, bookIndex),
           ...newBookData.slice(bookIndex + 1)];
-        store.dispatch(getbooksReponse(this.state.bookData));
+        store.dispatch(getBooksReponse(this.state.bookData));
         $('#modal3').modal('open');
         this.setState({
           serverResponded: false,
@@ -96,7 +96,7 @@ class BookStoreContainer extends React.Component {
       this.setState({
         displayPreloader: 'block'
       });
-      this.props.searchbooks('bookTitle', '', []);
+      this.props.searchBook('bookTitle', '', []);
     } this.setState({
       displayPreloader: 'none'
     });
@@ -113,7 +113,7 @@ class BookStoreContainer extends React.Component {
         error: '',
         filterBookLoaded: true
       });
-      this.props.searchbooks(this.state.filterBy, this.state.searchText, this.props.bookData
+      this.props.searchBook(this.state.filterBy, this.state.searchText, this.props.bookData
       );
     }
   }
@@ -207,13 +207,13 @@ BookStoreContainer.propTypes = {
   bookData: PropTypes.arrayOf(PropTypes.any).isRequired,
   deleteBook: PropTypes.func.isRequired,
   filteredData: PropTypes.arrayOf(PropTypes.any).isRequired,
-  getbooks: PropTypes.func.isRequired,
+  getBooks: PropTypes.func.isRequired,
   isFetched: PropTypes.bool.isRequired,
   isRefreshed: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired,
   deleteBookResponse: PropTypes.arrayOf(PropTypes.any).isRequired,
   refreshPage: PropTypes.func.isRequired,
-  searchbooks: PropTypes.func.isRequired,
+  searchBook: PropTypes.func.isRequired,
 };
 
 /**
@@ -223,7 +223,7 @@ BookStoreContainer.propTypes = {
 const mapStateToProps = function mapStateToProps(state) {
   return {
     bookData: state.books[0].data,
-    filteredData: state.getFilteredBooks[0].filteredData,
+    filteredData: state.filteredBooks[0].filteredData,
     isRefreshed: state.refreshPage[0].isRefreshed,
     deleteBookResponse: state.deleteBooks,
     isFetched: state.books[0].isFetched,
@@ -231,9 +231,9 @@ const mapStateToProps = function mapStateToProps(state) {
 };
 
 export default connect(mapStateToProps, {
-  getbooks,
+  getBooks,
   deleteBook,
   refreshPage,
-  searchbooks,
+  searchBook,
   logout,
 })(BookStoreContainer);
