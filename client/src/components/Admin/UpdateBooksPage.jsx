@@ -105,8 +105,8 @@ const UpdateBooksPage = (props) => {
           />
         </div>
         <div className="form-group input-field">
-          <textarea
-            type="textarea"
+          <input
+            type="text"
             name="summary"
             className="form-control validate"
             id="ebookSummary"

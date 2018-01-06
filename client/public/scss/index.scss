@@ -21,16 +21,27 @@ background-color: #3d1112;
 	opacity: 1;
 	color: #3d1112;
 	border-style: double;
-	background-color: lightgoldenrodyellow;
+	background-color: #f3e1a2b8 !important;
 	border-width: 10px;
 	width: 400px;
 	margin-top: 20px;
-
-	border-radius: 41px;
 	max-width: 437px;
-	/* border: blue; */
 	box-shadow: 1px 1px 10px 10px rgba(86, 9, 9, 0.25);
-	border: solid #fbfbd2 2px;
+
+}
+#logininForm > div > form{
+	border: 20px;
+	border-color: burlywood;
+	opacity: 1;
+	color: #3d1112;
+	border-style: double;
+	background-color: #f3e1a2b8 !important;
+	border-width: 10px;
+	width: 400px;
+	margin-top: 20px;
+	width: 360px;
+	max-width: 437px;
+	box-shadow: 1px 1px 10px 10px rgba(86, 9, 9, 0.25);
 
 }
 
@@ -58,7 +69,6 @@ color: #3d1112 !important;
 
 #gplus{
     margin-right: 10px;
-
 }
 
 #stockInput{
@@ -68,8 +78,6 @@ div #searchbarr{
     margin-top: 10px;
     margin-left: 80px;
 }
-
-
 #create-btn{
     background-color: #3d1112 ;
     color: white;
@@ -179,8 +187,37 @@ h2,h3{
     
 
     body {
-  background-color:lightgoldenrodyellow;
+  background-color:#f3e1a2b8;
+  background: url('https://res.cloudinary.com/tosmak/image/upload/v1515272191/body_slab_quvpa0.jpg');
 }
+
+ div > label{
+	color: black;
+}
+#ubookSummary #ebookSummary {
+	background-color: transparent;
+    width: 310px;
+}
+label{
+	color: black !important;
+}
+textarea{
+	color: black !important;
+}
+
+#img_body{
+	height: 250px;
+}
+#book_details_wrapper > div.row > div > div.col.s10.col.m7.col.l7 > div:nth-child(8) > p{
+	color: black;
+}
+
+input{
+	background-color: transparent !important;
+	background:  transparent !important;
+	height: 35px !important;
+}
+
 
 .form-signin {
   max-width: 330px;

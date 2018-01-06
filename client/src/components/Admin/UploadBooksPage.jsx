@@ -89,8 +89,8 @@ const UploadBooksPage = (props) => {
         </div>
         <div className="form-group input-field">
           <label htmlFor="ubookSummary" />
-          <textarea
-            type="textarea"
+          <input
+            type="text"
             name="summary"
             className="form-control validate"
             id="ubookSummary"
