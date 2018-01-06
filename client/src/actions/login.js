@@ -28,7 +28,7 @@ export default function login(userData) {
       })
       const jsonResponse = await response.json().then(jsonRes => jsonRes)
       if (response.status >= 400) {
-        process.env.NODE_ENV === 'test' || Materialize.toast(jsonResponse.message, 1000, 'red');
+        Materialize.toast(jsonResponse.message, 1000, 'red');
         dispatch(loginError(jsonResponse.message));
       }
       else {
@@ -36,8 +36,8 @@ export default function login(userData) {
         window.localStorage.setItem('jwtToken', token);
         const decodedToken = jwtDecode(token);
         dispatch(setCurrentUserAuth(decodedToken));
-        process.env.NODE_ENV === 'test' || Materialize.toast(response.message, 1000, 'green');
         dispatch(loginResponse(jsonResponse.message));
+        Materialize.toast(jsonResponse.message, 1000, 'green');
         if (localStorage.jwtToken && decodedToken.role.toString() === 'user') {
           browserHistory.push('/books')
         }

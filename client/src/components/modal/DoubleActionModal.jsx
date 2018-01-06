@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { Link } from 'react-router';
 /**
  * @param {object} props
  * @returns {views} modal
@@ -12,17 +12,17 @@ const DoubleActionModal = props => (
       <p>{props.bookTitle}</p>
     </div>
     <div className="modal-footer">
-      <a
+      <Link
         href=""
         onClick={props.onHandleClose}
-        className="modal-action modal-close waves-effect waves-brown btn-flat"
-      >NO</a>
-      <a
+        className="double-button-no modal-action modal-close waves-effect waves-brown btn-flat"
+      >NO</Link>
+      <Link
         href=""
         onClick={props.onHandleClick}
         type="submit"
-        className="modal-action modal-close waves-effect waves-brown btn-flat"
-      >YES</a>
+        className="double-button-yes modal-action modal-close waves-effect waves-brown btn-flat"
+      >YES</Link>
     </div>
   </div>
 );

@@ -13,7 +13,7 @@ export const signup = (userData) => {
     dispatch(signupRequest(userData));
     const validationResponse = await validateUserDetails(userData)
     if (validationResponse !== '') {
-      process.env.NODE_ENV === 'test' || Materialize.toast(validationResponse, 1000, 'red');
+      Materialize.toast(validationResponse, 1000, 'red');
       dispatch(signupError(validationResponse));
     }
     else {
@@ -27,11 +27,11 @@ export const signup = (userData) => {
       })
       const jsonResponse = await response.json().then(jsonRes => jsonRes)
       if (response.status >= 400) {
-        process.env.NODE_ENV === 'test' || Materialize.toast(jsonResponse.message, 1000, 'red');
+        Materialize.toast(jsonResponse.message, 1000, 'red');
         dispatch(signupError(jsonResponse.message));
       }
       else {
-        process.env.NODE_ENV === 'test' || Materialize.toast(jsonResponse.message, 1000, 'green');
+        Materialize.toast(jsonResponse.message, 1000, 'green');
         dispatch(signupResponse(jsonResponse.message));
         process.env.NODE_ENV === 'test' || browserHistory.push('/login');
       }

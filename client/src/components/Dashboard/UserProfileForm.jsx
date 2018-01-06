@@ -86,6 +86,14 @@ export const UserProfileForm = (props) => {
           <option value="Silver">Silver</option>
           <option value="Gold">Gold</option>
         </select>
+        <div className="form-group">
+          <button
+            id="editbtn"
+            type="button"
+            onClick={handleEdit}
+            className="btn btn-primary pbtn"
+          >{buttonText}</button>
+        </div>
 
         <SingleActionModal
           id={'modalE'}
@@ -107,14 +115,6 @@ export const UserProfileForm = (props) => {
           heading={'Do you want to update your details?'}
         />
 
-        <div className="input-field inline">
-          <button
-            id="editbtn"
-            type="button"
-            onClick={handleEdit}
-            className="btn btn-primary pbtn"
-          >{buttonText}</button>
-        </div>
 
         <div
           style={{ display: displayPreloader.toString() }}

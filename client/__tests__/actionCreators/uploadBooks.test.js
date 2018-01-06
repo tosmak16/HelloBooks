@@ -69,7 +69,7 @@ describe('Test upload book Actions', () => {
 
   it('should upload books if the request is successful', () => {
     fetchMock.post('/api/v2/books',
-      JSON.stringify(response));
+      { status: 201, body: response });
 
     const initialState = {};
     const store = mockStore(initialState);

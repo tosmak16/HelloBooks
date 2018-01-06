@@ -30,9 +30,6 @@ const AdminSidebar = (props) => {
               <Link to={'/admin/updatebook'} ><i className="material-icons left">system_update</i>Update Book</Link>
             </li>
             <li>
-              <Link href="#"><i className="material-icons left">lock</i>Change Password</Link>
-            </li>
-            <li>
               <Link to="/login" onClick={handleLogout}><i
                 className="material-icons left"
               >exit_to_app</i>Logout</Link>

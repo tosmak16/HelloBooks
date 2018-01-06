@@ -15,7 +15,7 @@ export const resetUserPassword = (userData) => {
   return async (dispatch) => {
     if (_.isEmpty(userData) || !userData.match(validEmail)) {
       const errorMessage = await 'valid email address is required'
-      process.env.NODE_ENV === 'test' || Materialize.toast(errorMessage, 1000, 'red');
+      Materialize.toast(errorMessage, 1000, 'red');
       return dispatch(resetPasswordError(errorMessage));
     }
     dispatch(resetPasswordRequest(userData));

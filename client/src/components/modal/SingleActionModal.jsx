@@ -10,7 +10,7 @@ const SingleActionModal = props => (
   <div id={props.id} className="modal">
     <div className="modal-content">
       <h5>{props.heading}</h5>
-      <p>{props.message}</p>
+      <p className="response-message-holder">{props.message}</p>
     </div>
     <div className="modal-footer">
       <a

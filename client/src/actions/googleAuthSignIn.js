@@ -30,7 +30,7 @@ export const googleAuthSignIn = (googleUserData) => {
     })
     const jsonResponse = await response.json().then(jsonRes => jsonRes)
     if (response.status >= 400) {
-      process.env.NODE_ENV === 'test' || Materialize.toast(jsonResponse.message, 1000, 'red');
+      Materialize.toast(jsonResponse.message, 1000, 'red');
       dispatch(signupError(jsonResponse.message));
     }
     else {
@@ -39,7 +39,7 @@ export const googleAuthSignIn = (googleUserData) => {
       const decodedToken = jwtDecode(token);
       dispatch(setCurrentUserAuth(decodedToken));
       dispatch(signupResponse(jsonResponse.message));
-      process.env.NODE_ENV === 'test' || Materialize.toast(jsonResponse.message, 1000, 'green');
+      Materialize.toast(jsonResponse.message, 1000, 'green');
       if (localStorage.jwtToken && decodedToken.role.toString() === 'user') {
         browserHistory.push('/books')
       }

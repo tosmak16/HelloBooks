@@ -105,6 +105,7 @@ const UploadBooksPage = (props) => {
             <span>File</span>
 
             <input
+              name="imageFileInput"
               className="fileInput"
               id="photoInput"
               onChange={handleImageChange}
@@ -122,8 +123,9 @@ const UploadBooksPage = (props) => {
           <div id="filebtn" className="btn">
             <span>File</span>
             <input
+              name="pdfFileInput"
               className="fileInput"
-              id="photoInput"
+              id="pdfFileInput"
               onChange={handleFileChange}
               type="file"
               accept=".pdf"
