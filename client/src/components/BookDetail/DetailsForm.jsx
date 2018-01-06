@@ -88,14 +88,14 @@ class DetailsForm extends React.Component {
           error: sortedData.error,
           display: false,
         });
-        process.env.NODE_ENV === 'test' || $('#modal2').modal('open');
+        $('#modal2').modal('open');
       } else if (!_.isEmpty(sortedData.response) && this.state.display) {
         this.state.bookData[this.state.bookIndex].stockNumber -= 1;
         this.setState({
           message: sortedData.response,
           display: false,
         });
-        process.env.NODE_ENV === 'test' || $('#modal3').modal('open');
+        $('#modal3').modal('open');
       }
     }
   }
@@ -120,7 +120,7 @@ class DetailsForm extends React.Component {
       displayPreloader: 'block'
     });
     this.props.borrowBooks(localStorage.jwtToken, localStorage.bookId);
-    process.env.NODE_ENV === 'test' || $('#modal1').modal('close');
+    $('#modal1').modal('close');
   }
 
   /**
@@ -133,7 +133,7 @@ class DetailsForm extends React.Component {
     this.setState({
       errorFix: true,
     });
-    process.env.NODE_ENV === 'test' || $('#modal1').modal('open');
+    $('#modal1').modal('open');
   }
 
   /**
@@ -143,7 +143,7 @@ class DetailsForm extends React.Component {
    */
   handleClose(event) {
     event.preventDefault();
-    process.env.NODE_ENV === 'test' || $('#modal1').modal('close');
+    $('#modal1').modal('close');
     this.setState({
       errorFix: true,
     });
@@ -157,8 +157,8 @@ class DetailsForm extends React.Component {
   handleExit(event) {
     event.preventDefault();
 
-    process.env.NODE_ENV === 'test' || $('#modal2').modal('close');
-    process.env.NODE_ENV === 'test' || $('#modal3').modal('close');
+    $('#modal2').modal('close');
+    $('#modal3').modal('close');
     this.setState({
       errorFix: true,
     });
@@ -172,26 +172,26 @@ class DetailsForm extends React.Component {
     const displayError = (<div id="modal2" className="modal">
       <div className="modal-content">
         <h5>Oh!</h5>
-        <p>{this.state.error}</p>
+        <p className="displayErrorMessage" >{this.state.error}</p>
       </div>
       <div className="modal-footer">
         <a
           href=""
           onClick={this.handleExit}
-          className="modal-action modal-close waves-effect waves-brown btn-flat"
+          className="error-modal-close modal-action modal-close waves-effect waves-brown btn-flat"
         >Close</a>
       </div>
     </div>);
     const displaySuccess = (<div id="modal3" className="modal">
       <div className="modal-content">
         <h5>Wow!</h5>
-        <p>{this.state.message}</p>
+        <p className="displaySuccessMessage">{this.state.message}</p>
       </div>
       <div className="modal-footer">
         <a
           href=""
           onClick={this.handleExit}
-          className="modal-action modal-close waves-effect waves-brown btn-flat"
+          className="success-modal-close modal-action modal-close waves-effect waves-brown btn-flat"
         >Close</a>
       </div>
     </div>);
@@ -222,11 +222,13 @@ class DetailsForm extends React.Component {
                 </div>
                 <div className="modal-footer">
                   <a
+                    id="btn-no"
                     href=""
                     onClick={this.handleClose}
                     className="modal-action modal-close waves-effect waves-brown btn-flat"
                   >NO</a>
                   <a
+                    id="btn-yes"
                     href=""
                     onClick={this.handleClick}
                     className="modal-action modal-close waves-effect waves-brown btn-flat"

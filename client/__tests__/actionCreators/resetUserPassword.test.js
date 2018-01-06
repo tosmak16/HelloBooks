@@ -31,6 +31,9 @@ const response = {
   message: 'password reset successfully',
   result: user[0]
 };
+const badRequestResponse = {
+  message: action.error
+}
 
 describe('Test Reset paswword Actions', () => {
   it('should create an action to send resetPassword request', () => {
@@ -89,7 +92,7 @@ describe('Test Reset paswword Actions', () => {
 
   it('should not reset password if email deos not exist', () => {
     fetchMock.putOnce(`/api/v2/users/resetPassword`,
-      { status: 400, body: response });
+      { status: 400, body: badRequestResponse });
 
     const initialState = {};
     const store = mockStore(initialState);

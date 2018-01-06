@@ -7,7 +7,7 @@ import { setCurrentUserAuth } from '../../actions/setCurrentUserAuth';
  */
 export const logout = () => {
   localStorage.clear()
-  process.env.NODE_ENV === 'test' || Materialize.toast('You are signed out', 5000, 'red');
+  Materialize.toast('You are signed out', 5000, 'red');
   return (dispatch) => {
     dispatch(setCurrentUserAuth({}));
     try {

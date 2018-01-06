@@ -234,6 +234,7 @@ class UploadBooksContainer extends React.Component {
         });
       };
     };
+
     reader.onloadend = () => {
       this.setState({
         file,

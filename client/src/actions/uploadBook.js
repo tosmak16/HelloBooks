@@ -22,7 +22,7 @@ export const uploadBook = (bookData, token) => {
       body: JSON.stringify(bookData)
     })
     const jsonResponse = await response.json().then(jsonRes => jsonRes)
-    response.status === 200 ?
+    response.status === 201 ?
       dispatch(uploadBookResponse(jsonResponse.message)) :
       dispatch(uploadBookError(jsonResponse.message))
   }
