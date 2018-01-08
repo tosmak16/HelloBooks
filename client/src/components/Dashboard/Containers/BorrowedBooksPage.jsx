@@ -18,14 +18,20 @@ import { logout } from '../../../actions/logout';
 import NoResourceComponent from '../../NoResourceComponent';
 
 /**
- * @export
+ * @description it's a connected components that servers all props for Unreturned Books
+ * 
+ * @export BorrowedBooksPage
+ * 
  * @class BorrowedBooksPage
+ * 
  * @extends {React.Component}
  */
 export class BorrowedBooksPage extends React.Component {
   /**
-   * Creates an instance of BorrowedbooksTable.
+   * @description Creates an instance of BorrowedbooksTable.
+   * 
    * @param {object} props
+   * 
    * @memberof BorrowedbooksTable
    */
   constructor(props) {
@@ -51,6 +57,7 @@ export class BorrowedBooksPage extends React.Component {
   }
   /** 
    * @memberof BorrowedBooksPage
+   * 
    * @returns {void}
    */
   componentDidMount() {
@@ -71,7 +78,9 @@ export class BorrowedBooksPage extends React.Component {
 
   /**
    * @param {object} nextProps
+   * 
    * @memberof BorrowedbooksTable
+   * 
    * @returns {void}
    */
   componentWillReceiveProps(nextProps) {
@@ -112,7 +121,9 @@ export class BorrowedBooksPage extends React.Component {
   }
   /**
  * @param {object} event
+ * 
  * @memberof BorrowedbooksTable
+ * 
  * @returns{void}
  */
   handleClick(event) {
@@ -127,7 +138,9 @@ export class BorrowedBooksPage extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof BorrowedbooksTable
+   * 
    * @returns{void}
    */
   handleExit(event) {
@@ -138,7 +151,9 @@ export class BorrowedBooksPage extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof BorrowedbooksTable
+   * 
    * @returns{void}
    */
   handleYes(event) {
@@ -152,7 +167,9 @@ export class BorrowedBooksPage extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof BorrowedbooksTable
+   * 
    * @returns{void}
    */
   handleNo(event) {
@@ -164,7 +181,9 @@ export class BorrowedBooksPage extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof BorrowedbooksTable
+   * 
    * @returns{void}
    */
   handleRead(event) {
@@ -181,7 +200,9 @@ export class BorrowedBooksPage extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof BorrowedbooksTable
+   * 
    * @returns {void}
    */
   handleClose(event) {
@@ -194,7 +215,9 @@ export class BorrowedBooksPage extends React.Component {
   }
   /**
    * @function render
+   * 
    * @returns {views} containing some unconnected component
+   * 
    * @memberof BorrowedBooksPage
    */
   render() {
@@ -236,7 +259,6 @@ export class BorrowedBooksPage extends React.Component {
     );
   }
 }
-
 BorrowedBooksPage.propTypes = {
   unreturnedBooksData: PropTypes.arrayOf(PropTypes.any).isRequired,
   bookData: PropTypes.arrayOf(PropTypes.any).isRequired,
@@ -256,7 +278,6 @@ BorrowedBooksPage.propTypes = {
   uploadUserAvatar: PropTypes.func.isRequired,
   userData: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
-
 /**
  * @param {arrayOfObject} state
  * @returns {object} of reducers state

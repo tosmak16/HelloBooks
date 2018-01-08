@@ -7,17 +7,21 @@ import { setCurrentUserAuth } from '../../../actions/setCurrentUserAuth';
 
 /**
  * @description HOC which serves has registered user authentication middle ware
+ * 
  * @param {class} Component
+ * 
  * @returns {views} componenr
  */
 export default function (Component) {
   /**
    * @class UserAuth
+   * 
    * @extends {React.Component}
    */
   class UserAuth extends React.Component {
     /**
      * @memberof UserAuth
+     * 
      * @returns {void}
      */
     componentWillMount() {
@@ -30,9 +34,11 @@ export default function (Component) {
       });
     }
     /**
-     * @returns {void}
      * @param {object} nextProps
+     * 
      * @memberof UserAuth
+     * 
+     * @returns {void}
      */
     componentWillUpdate() {
       jwt.verify(localStorage.jwtToken, process.env.SECRET, (err) => {
@@ -45,6 +51,7 @@ export default function (Component) {
     }
     /**
      * @returns {views} component and it's props
+     * 
      * @memberof UserAuth
      */
     render() {
@@ -53,6 +60,5 @@ export default function (Component) {
       );
     }
   }
-
   return UserAuth;
 }

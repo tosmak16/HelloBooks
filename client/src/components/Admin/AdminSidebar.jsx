@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 
 /**
  * @description it compose of admin side bar
+ * 
  * @returns {views} containing admin side nav bar
+ * 
  * @param {object} props
  */
 const AdminSidebar = (props) => {

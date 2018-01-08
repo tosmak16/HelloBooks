@@ -6,6 +6,7 @@ export const RETURN_BOOK_FAILURE = 'RETURN_BOOK_FAILURE'
 //Action creators
 /**
  * @param {object} bookData 
+ * 
  * @returns {object} of return books state
  */
 export const returnBookRequest = (bookData) => {
@@ -17,6 +18,7 @@ export const returnBookRequest = (bookData) => {
 }
 /**
  * @param {string} response 
+ * 
  * @returns {object} of return books state
  */
 export const returnBookResponse = (response) => {
@@ -28,6 +30,7 @@ export const returnBookResponse = (response) => {
 }
 /**
  * @param {string} error 
+ * 
  * @returns {object} of return books state
  */
 export const returnBookError = (error) => {

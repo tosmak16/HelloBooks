@@ -4,8 +4,10 @@ import _ from 'lodash';
 /** *************************************** */
 /**
  * @description this method valdiates user registration parameters
+ * 
  * @param {object} requestBody 
- * @returns {object} responseMessage
+ * 
+ * @returns {object} response Message
  */
 export const validateGoogleAuthRequest = (requestBody) => {
   const { password, username, email, firstName, lastName } = requestBody;

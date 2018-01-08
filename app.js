@@ -5,7 +5,7 @@ import path from 'path';
 import http from 'http';
 import dotenv from 'dotenv';
 import swaggerJSDoc from 'swagger-jsdoc';
-
+import expressValidator from 'express-validator';
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
@@ -47,6 +47,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false,
 }));
+app.use(expressValidator());
 // Require routes into the application.
 route(app);
 // serves swagger

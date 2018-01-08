@@ -3,9 +3,13 @@ import { uploadImage } from './uploadImage';
 import { returnBookError, returnBookRequest, returnBookResponse } from '../../actions/returnBook';
 /**
  * @export returnBook
+ * 
  * @description it dispatches actions for return book request and response 
+ * 
  * @param {object} bookData 
+ * 
  * @param {string} token 
+ * 
  * @returns {action} dispacted actions
  */
 export default function returnBook(bookData, token) {

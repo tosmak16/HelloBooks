@@ -1,8 +1,12 @@
 import React from 'react';
 
 /**
+ * @description This componet is should to notify a user that books are not available
+ * 
  * @function NoResourceComponent
+ * 
  * @param {object} props
+ * 
  * @returns {views} Searchbar element and properties
  */
 const NoResourceComponent = () =>
@@ -23,8 +27,6 @@ const NoResourceComponent = () =>
         src="http://res.cloudinary.com/tosmak/image/upload/v1515058191/smiley_sad_wdjuay.png"
         alt="emptyShelfIcon"
       />
-
     </div>
   </div>);
-
 export default NoResourceComponent;

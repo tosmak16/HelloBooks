@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 /**
  * @function CategorySelect
+ * 
  * @param {object} props
+ * 
  * @returns {views} containing select input field
  */
 const CategorySelect = props => (
@@ -26,5 +28,4 @@ CategorySelect.propTypes = {
   onHandleSelected: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
 };
-
 export default CategorySelect;

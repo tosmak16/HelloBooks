@@ -5,6 +5,7 @@ export const DELETE_BOOK_FAILURE = 'DELETE_BOOK_FAILURE'
 
 /** 
  * @param {object} bookData 
+ * 
  * @returns {object} of deleteBook state
  */
 //Action creators
@@ -16,9 +17,8 @@ export function deleteBookRequest(bookData) {
   }
 }
 /**
- * 
- * 
  * @param {string} response 
+ * 
  * @returns {object} of deleteBook state
  */
 export function deleteBookResponse(response) {
@@ -29,9 +29,8 @@ export function deleteBookResponse(response) {
   }
 }
 /**
- * 
- * 
  * @param {string} error 
+ * 
  * @returns {object} of deleteBook state
  */
 export function deleteBookError(error) {

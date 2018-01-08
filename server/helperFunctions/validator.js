@@ -6,7 +6,9 @@ const validNumber = /^[0-9]+$/;
 /** *************************************** */
 /**
  * @description valdiates bookId in the body of a request
+ * 
  * @param {string} bookId 
+ * 
  * @returns {object} responseMesaage
  */
 export const validateIds = async (bookId) => {
@@ -27,7 +29,9 @@ export const validateIds = async (bookId) => {
 /** *************************************** */
 /**
  * @description valdiates user login parameters 
+ * 
  * @param {object} requestBody 
+ * 
  * @returns {object} responseMessage in json 
  */
 export const checkUserInput = async (requestBody) => {

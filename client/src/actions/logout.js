@@ -2,7 +2,9 @@ import $ from 'jquery';
 import { setCurrentUserAuth } from '../../actions/setCurrentUserAuth';
 /** 
  * @export logout
+ * 
  * @description it dispatch actions to log out a user
+ * 
  * @returns {action} dispacted actions
  */
 export const logout = () => {

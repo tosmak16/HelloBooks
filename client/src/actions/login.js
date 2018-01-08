@@ -6,8 +6,11 @@ import { setCurrentUserAuth } from '../../actions/setCurrentUserAuth';
 import { validateLoginDetails } from '../helperFunctions/validateLoginDetails';
 /** 
  * @export login
+ * 
  * @description it sends request and  dispatches user login request, error and response
+ * 
  * @param {object} userData 
+ * 
  * @returns {action} dispacted actions
  */
 export default function login(userData) {

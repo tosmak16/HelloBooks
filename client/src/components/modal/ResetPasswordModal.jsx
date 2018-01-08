@@ -2,8 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /**
+ * @description displays password  modal for password reset
+ * 
  * @function ResetPasswordModal
+ * 
  * @param {object} props
+ * 
  * @returns {view} modal
  */
 export const ResetPasswordModal = (props) => {

@@ -5,8 +5,11 @@ import { uploadImageError, uploadImageRequest, uploadImageResponse } from '../..
 const upload_preset = process.env.UPLOAD_PRESET;
 /**
  * @export uploadImage
+ * 
  * @description it dispatches action for upload image request and response
+ * 
  * @param {object} file 
+ * 
  * @returns {action} dispacted actions
  */
 export const uploadImage = (file) => {

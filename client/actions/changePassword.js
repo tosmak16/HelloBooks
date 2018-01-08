@@ -7,6 +7,7 @@ export const CHANGE_PASSWORD_FAILURE = 'CHANGE_PASSWORD_FAILURE'
 //Action creators
 /**
  * @param {object} userData 
+ * 
  * @returns {object} of change password state
  */
 export const changePasswordRequest = (userData) => {
@@ -18,6 +19,7 @@ export const changePasswordRequest = (userData) => {
 }
 /**
  * @param {string} response 
+ * 
  * @returns {object} of change password state
  */
 export const changePasswordResponse = (response) => {
@@ -29,6 +31,7 @@ export const changePasswordResponse = (response) => {
 }
 /**
  * @param {string} error 
+ * 
  * @returns {object} of change password state
  */
 export const changePasswordError = (error) => {

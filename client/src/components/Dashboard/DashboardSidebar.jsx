@@ -10,14 +10,18 @@ import ActivityLoader from '../preloader/ActivityLoader';
 let displayPreloader = 'none';
 /**
  * @class DashboardSidebar
+ * 
  * @extends {React.Component}
  */
 class DashboardSidebar extends React.Component {
   /**
    * Creates an instance of DashboardSidebar.
+   * 
    * @param {object} props
+   * 
    * @memberof DashboardSidebar
-   *  @returns {void}
+   * 
+   * @returns {void}
    */
   constructor(props) {
     super(props);
@@ -49,8 +53,9 @@ class DashboardSidebar extends React.Component {
   }
   /**
    * @param {object} nextProps
+   * 
    * @memberof DashboardSidebar
-   *  @returns {void}
+   * 
    *  @returns {void}
    */
   componentWillReceiveProps(nextProps) {
@@ -87,8 +92,11 @@ class DashboardSidebar extends React.Component {
 
   /**
    * @function handleClick
+   * 
    * @param {object} event
+   * 
    * @memberof DashboardSidebar
+   * 
    *  @returns {void}
    */
   handleClick(event) {
@@ -104,8 +112,11 @@ class DashboardSidebar extends React.Component {
   }
   /**
    * @function handleClose
+   * 
    * @param {object} event
+   * 
    * @memberof DashboardSidebar
+   * 
    *  @returns {void}
    */
   handleClose(event) {
@@ -117,9 +128,12 @@ class DashboardSidebar extends React.Component {
   }
   /**
    * @function handleExit
+   * 
    * @param {object} event
+   * 
    * @memberof DashboardSidebar
-   *  @returns {void}
+   * 
+   * @returns {void}
    */
   handleExit(event) {
     event.preventDefault();
@@ -134,9 +148,12 @@ class DashboardSidebar extends React.Component {
 
   /**
    * @function handleEdit
+   * 
    * @param {object} event
+   * 
    * @memberof DashboardSidebar
-   *  @returns {void}
+   * 
+   * @returns {void}
    */
   handleEdit(event) {
     event.preventDefault();
@@ -153,9 +170,13 @@ class DashboardSidebar extends React.Component {
 
   /**
    * @function handleImageChange
+   * 
    * @param {object} event
+   * 
    * @param {boolean} [set=true]
+   * 
    * @memberof DashboardSidebar
+   * 
    * @returns {void}
    */
   handleImageChange(event, set = true) {
@@ -183,8 +204,10 @@ class DashboardSidebar extends React.Component {
 
   /**
    * @param {object} event
+   * 
    * @memberof DashboardSidebar
-   *  @returns {void}
+   * 
+   * @returns {void}
    */
   handleLogout(event) {
     event.preventDefault();
@@ -193,6 +216,7 @@ class DashboardSidebar extends React.Component {
   }
   /**
    * @memberof DashboardSidebar
+   * 
    * @returns {views} containing side navigation link
    */
   render() {
@@ -289,7 +313,6 @@ class DashboardSidebar extends React.Component {
     );
   }
 }
-
 DashboardSidebar.propTypes = {
   userData: PropTypes.arrayOf(PropTypes.any).isRequired,
   error: PropTypes.string.isRequired,
@@ -299,6 +322,5 @@ DashboardSidebar.propTypes = {
   updateUser: PropTypes.func.isRequired,
   uploadAvatar: PropTypes.func.isRequired
 };
-
 export default DashboardSidebar;
 

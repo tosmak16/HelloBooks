@@ -8,9 +8,12 @@ import db from '../models/index';
 /** *************************************** */
 /**
  * @description it handles change password request
+ * 
  * @param {object} body 
+ * 
  * @param {object} params 
- * @returns {object} response 
+ * 
+ * @returns {object} response message
  */
 export const handlePasswordChange = async (body, params) => {
   let response = { status: 200, message: 'okay' };

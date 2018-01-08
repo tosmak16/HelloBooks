@@ -1,7 +1,8 @@
 import { DISPLAY_MESSAGE } from './actionTypes';
 /**
  * @param {string} message 
- * @returns 
+ * 
+ * @returns {object} of display message state
  */
 export const displayMessage = (message) => {
   return {

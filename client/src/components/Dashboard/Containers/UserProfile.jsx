@@ -15,14 +15,18 @@ import { setUserDetailsState } from '../HelperFunctions/setUserDetailsState';
 import { validateUserDetailsUpdate } from '../../../helperFunctions/validateUserDetailsUpdate';
 
 /**
- * @export
+ * @export UserProfile
+ * 
  * @class UserProfile
+ * 
  * @extends {React.Component}
  */
 export class UserProfile extends React.Component {
   /**
  * Creates an instance of UserProfileForm.
+ * 
  * @param {object} props
+ * 
  * @memberof UserProfileForm
  */
   constructor(props) {
@@ -61,7 +65,9 @@ export class UserProfile extends React.Component {
   }
   /**
     * @function componentDidMount
+    *
     * @memberof UserProfile
+    *
     * @returns {void}
     */
   componentWillMount() {
@@ -77,7 +83,9 @@ export class UserProfile extends React.Component {
   }
   /**
   * @param {object} nextProps
+  *
   * @memberof UserProfileForm
+  *
   * @returns {void}
   */
   componentWillReceiveProps(nextProps) {
@@ -117,7 +125,9 @@ export class UserProfile extends React.Component {
   }
   /**
   * @param {object} event
+  *
   * @memberof UserProfileForm
+  *
   * @returns {void}
   */
   handleExit(event) {
@@ -134,7 +144,9 @@ export class UserProfile extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof UserProfileForm
+   * 
    * @returns {void}
    */
   handleInputChange(event) {
@@ -142,8 +154,11 @@ export class UserProfile extends React.Component {
   }
   /**
    * @function handleClose
+   * 
    * @param {object} event
+   * 
    * @memberof UserProfileForm
+   * 
    * @returns {void}
    */
   handleClose(event) {
@@ -156,8 +171,11 @@ export class UserProfile extends React.Component {
 
   /**
    * @function handleEdit
+   * 
    * @param {object} event
+   * 
    * @memberof UserProfileForm
+   * 
    * @returns {void}
    */
   handleEdit(event) {
@@ -192,8 +210,11 @@ export class UserProfile extends React.Component {
   }
   /**
    * @function handleClick
+   * 
    * @param {oject} event
+   * 
    * @memberof UserProfileForm
+   * 
    * @returns {void}
    */
   handleClick(event) {
@@ -208,7 +229,9 @@ export class UserProfile extends React.Component {
   }
   /**
    * @function render
+   * 
    *  @returns {void}
+   * 
    * @memberof UserProfile
    */
   render() {
@@ -254,6 +277,7 @@ UserProfile.propTypes = {
 
 /**
  * @param {arrayOfObject} state
+ * 
  *  @returns {object} of some reducer state
  */
 function mapStateToProps(state) {

@@ -17,13 +17,17 @@ import { validateBookDetails } from '../../../helperFunctions/validateBookDetail
 
 /**
  * @description UpdateBooks Connected component
+ * 
  * @class UpdateBooksContainer
+ * 
  * @extends {React.Component}
  */
 class UpdateBooksContainer extends React.Component {
   /**
  * @description Creates an instance of UpdateBooksPage.
+ * 
  * @param {object} props
+ * 
  * @memberof UpdateBooksPage
  */
   constructor(props) {
@@ -71,6 +75,7 @@ class UpdateBooksContainer extends React.Component {
   }
   /**
    * @memberof UpdateBooksContainer
+   * 
    * @returns {void}
    */
   componentDidMount() {
@@ -82,9 +87,11 @@ class UpdateBooksContainer extends React.Component {
     });
   }
   /**
-  * @param {object} nextProps
-  * @memberof UpdateBooksPage
-  * @returns {void}
+   * @param {object} nextProps
+   * 
+   * @memberof UpdateBooksPage
+   * 
+   * @returns {void}
   */
   componentWillReceiveProps(nextProps) {
     if (this.props.isFetched) {
@@ -229,7 +236,9 @@ class UpdateBooksContainer extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof UpdateBooksPage
+   * 
    * @returns {void}
    */
   handleClick(event) {
@@ -271,7 +280,9 @@ class UpdateBooksContainer extends React.Component {
 
   /**
    * @param {object} event
+   * 
    * @memberof UpdateBooksPage
+   * 
    * @returns {void}
    */
   handleOpen(event) {
@@ -315,7 +326,9 @@ class UpdateBooksContainer extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof UpdateBooksPage
+   * 
    * @returns {void}
    */
   handleClose(event) {
@@ -330,7 +343,9 @@ class UpdateBooksContainer extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof UpdateBooksPage
+   * 
    * @returns {void}
    */
   handleExit(event) {
@@ -346,7 +361,9 @@ class UpdateBooksContainer extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof UpdateBooksPage
+   * 
    * @returns {void}
    */
   handleInputChange(event) {
@@ -355,7 +372,9 @@ class UpdateBooksContainer extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof UpdateBooksPage
+   * 
    * @returns {void}
    */
   handleChange(event) {
@@ -368,7 +387,9 @@ class UpdateBooksContainer extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof UpdateBooksPage
+   * 
    * @returns {void}
    */
   handleImageChange(event) {
@@ -398,7 +419,9 @@ class UpdateBooksContainer extends React.Component {
 
   /**
    * @param {object} event
+   * 
    * @memberof UpdateBooksPage
+   * 
    * @returns {void}
    */
   handleFileChange(event) {
@@ -416,7 +439,9 @@ class UpdateBooksContainer extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof UpdateBooksPage
+   * 
    * @returns {void}
    */
   handleSelected(event) {
@@ -425,6 +450,7 @@ class UpdateBooksContainer extends React.Component {
   }
   /**
    * @returns {void}
+   * 
    * @memberof UpdateBooksContainer
    */
   render() {
@@ -470,6 +496,7 @@ UpdateBooksContainer.propTypes = {
 };
 /**
  * @param {arrayOfObject} state
+ * 
  * @returns {object} of someredux state
  */
 const mapStateToProps = function mapStateToProps(state) {

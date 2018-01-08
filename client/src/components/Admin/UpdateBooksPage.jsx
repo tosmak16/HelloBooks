@@ -8,8 +8,11 @@ import ActivityLoader from '../preloader/ActivityLoader';
 
 /**
  * @description updateBooksPage unconnected component
+ * 
  * @function UpdateBooksPage
+ * 
  * @returns {views} Upload books form
+ * 
  * @param {object} props
  */
 const UpdateBooksPage = (props) => {

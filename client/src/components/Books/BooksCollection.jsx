@@ -3,17 +3,19 @@ import PropTypes from 'prop-types';
 
 /**
  * @function BooksCollection
+ * 
  * @param {object} props
+ * 
  * @returns {views} BookCollection
  */
 const BooksCollection = (props) => {
   /**
-   * @returns
    * @memberof BooksCollection
+   * 
    * @returns {views} with collection of searched books
    */
   const { bookData, heading, checkBookDetails } = props;
-  const litt = bookData.map(item => (<li key={item.id} className="collection-item avatar">
+  const bookCollectionRow = bookData.map(item => (<li key={item.id} className="collection-item avatar">
     <img
       key={item.id}
       name={item.id}
@@ -39,7 +41,7 @@ const BooksCollection = (props) => {
       <div className=" row ">
         <div className="">
           <ul className="collection ">
-            {litt}
+            {bookCollectionRow}
           </ul>
         </div>
       </div>

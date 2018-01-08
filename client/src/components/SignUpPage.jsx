@@ -6,10 +6,15 @@ import { Footer } from './Footer';
 import { signup } from '../actions/signup';
 
 /**
+ * @description Sign up page Connected component
+ * 
  * @export SignUpPage
+ * 
  * @function SignUpPage
+ * 
  * @param {object} props
- * @returns {views} return
+ * 
+ * @returns {views} Components
  */
 export const SignUpPage = props => (
   <div>
@@ -31,7 +36,8 @@ SignUpPage.propTypes = {
 };
 /**
  * @param {arrayOfObject} state
- * @returns {object} registe state
+ * 
+ * @returns {object} register state
 */
 const mapStateToProps = function mapStateToProps(state) {
   return {

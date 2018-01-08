@@ -7,7 +7,9 @@ import { handleUpdateUser } from './handleUpdateUser';
 /** *************************************** */
 /**
  * @description it handles reset password request
+ * 
  * @param {string} email 
+ * 
  * @returns {object} response message
  */
 export const handleResetPassword = async (email) => {

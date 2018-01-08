@@ -4,7 +4,9 @@ import Table from './Table';
 
 /**
  * @param {object} props
+ * 
  * @function BooksList
+ * 
  * @return {views} Book Table
  */
 const BooksList = (props) => {

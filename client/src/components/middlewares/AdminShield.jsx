@@ -6,17 +6,21 @@ import jwtDecode from 'jwt-decode';
 
 /**
  * @description HOC which serves has admim authentication middle ware
+ * 
  * @param {class} Component
+ * 
  * @returns {views} component
  */
 export default function (Component) {
   /**
    * @class AdminAuth
+   * 
    * @extends {React.Component}
    */
   class AdminAuth extends React.Component {
     /**
      * @memberof AdminAuth
+     * 
      * @returns {void}
      */
     componentWillMount() {
@@ -32,7 +36,9 @@ export default function (Component) {
     }
     /**
      * @param {object} nextProps
+     * 
      * @memberof AdminAuth
+     * 
      * @returns {void}
      */
     componentWillUpdate(nextProps) {
@@ -48,6 +54,7 @@ export default function (Component) {
     }
     /**
      * @returns {views} component and it's props
+     * 
      * @memberof AdminAuth
      */
     render() {
@@ -61,6 +68,7 @@ export default function (Component) {
   };
   /**
    * @param {arrayOfObject} state
+   * 
    * @returns {objedct} of auth reducer
    */
   function mapStateToProps(state) {

@@ -7,6 +7,7 @@ export const UPDATE_BOOK_FAILURE = 'UPDATE_BOOK_FAILURE'
 //Action creators
 /**
  * @param {object} bookData 
+ * 
  * @returns {object} of update books state
  */
 export const updateBookRequest = (bookData) => {
@@ -18,6 +19,7 @@ export const updateBookRequest = (bookData) => {
 }
 /**
  * @param {string} response 
+ * 
  * @returns {object} of update books state
  */
 export const updateBookResponse = (response) => {
@@ -29,6 +31,7 @@ export const updateBookResponse = (response) => {
 }
 /**
  * @param {string} error 
+ * 
  * @returns {object} of update books state
  */
 export const updateBookError = (error) => {

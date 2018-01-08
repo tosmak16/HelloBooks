@@ -5,10 +5,14 @@ import db from '../models/index';
 /** *************************************** */
 /**
  * @description it checks if a user has exceed his borrowing limit
+ * 
  * @param {object} queryObject 
+ * 
  * @param {arrray} queryFilterArray 
+ * 
  * @param {string} numberOfBorrowedBooks 
- * @returns {object} response
+ * 
+ * @returns {object} response message
  */
 export const checkBorrowLimit = async (queryObject, queryFilterArray, numberOfBorrowedBooks) => {
   let response = {};

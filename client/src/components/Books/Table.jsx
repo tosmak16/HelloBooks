@@ -4,7 +4,9 @@ import TableRow from './TableRow';
 
 /**
  * @function Table
+ * 
  * @return {views} Table 
+ * 
  * @param {object} props
  */
 const Table = (props) => {

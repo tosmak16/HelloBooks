@@ -1,10 +1,8 @@
 import $ from 'jquery';
-import React from 'react';
 
-global.$ = global.jQuery = $;
-
+global.$ = $;
 $.prototype.modal = () => { };
-
+$.prototype.collapsible = () => { };
 global.Materialize = {
   toast: () => { }
 };

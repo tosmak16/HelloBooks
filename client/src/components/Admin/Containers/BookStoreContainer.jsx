@@ -16,13 +16,17 @@ import { logout } from '../../../actions/logout';
 
 /**
  * @description BookStore Connected component
+ * 
  * @class BookStoreContainer
+ * 
  * @extends {React.Component}
  */
 class BookStoreContainer extends React.Component {
   /**
  * @description Creates an instance of BookStorePage.
+ * 
  * @param {object} props
+ * 
  * @memberof BookStorePage
  */
   constructor(props) {
@@ -49,6 +53,7 @@ class BookStoreContainer extends React.Component {
   }
   /**
    * @memberof BookStoreContainer
+   * 
    * @returns {void}
    */
   componentDidMount() {
@@ -61,7 +66,9 @@ class BookStoreContainer extends React.Component {
   }
   /**
    * @param {object} nextProps
+   * 
    * @memberof BookStorePage
+   * 
    * @returns {void}
    */
   componentWillReceiveProps(nextProps) {
@@ -103,7 +110,9 @@ class BookStoreContainer extends React.Component {
   }
   /**
  * @param {object} event
+ * 
  * @memberof BookStorePage
+ * 
  * @returns {void}
  */
   handleChange(event) {
@@ -119,7 +128,9 @@ class BookStoreContainer extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof BookStorePage
+   * 
    * @returns {void}
    */
   handleSelected(event) {
@@ -127,7 +138,9 @@ class BookStoreContainer extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof BookStorePage
+   * 
    * @returns {void}
    */
   handleExit(event) {
@@ -138,7 +151,9 @@ class BookStoreContainer extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof BookStorePage
+   * 
    * @returns {void}
    */
   handleDelete(event) {
@@ -150,7 +165,9 @@ class BookStoreContainer extends React.Component {
 
   /**
    * @param {object} event
+   * 
    * @memberof BookStorePage
+   * 
    * @returns {void}
    */
   handleYes(event) {
@@ -164,7 +181,9 @@ class BookStoreContainer extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof BookStorePage
+   * 
    * @returns {void}
    */
   handleNo(event) {
@@ -176,6 +195,7 @@ class BookStoreContainer extends React.Component {
   }
   /**
    * @returns {void}
+   * 
    * @memberof BookStoreContainer
    */
   render() {
@@ -202,7 +222,6 @@ class BookStoreContainer extends React.Component {
     );
   }
 }
-
 BookStoreContainer.propTypes = {
   bookData: PropTypes.arrayOf(PropTypes.any).isRequired,
   deleteBook: PropTypes.func.isRequired,
@@ -215,9 +234,9 @@ BookStoreContainer.propTypes = {
   refreshPage: PropTypes.func.isRequired,
   searchBook: PropTypes.func.isRequired,
 };
-
 /**
  * @param {arrayOfObject} state
+ * 
  * @returns {object} of some redux state
  */
 const mapStateToProps = function mapStateToProps(state) {
@@ -229,7 +248,6 @@ const mapStateToProps = function mapStateToProps(state) {
     isFetched: state.books[0].isFetched,
   };
 };
-
 export default connect(mapStateToProps, {
   getBooks,
   deleteBook,

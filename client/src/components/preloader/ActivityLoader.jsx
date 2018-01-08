@@ -1,7 +1,10 @@
 import React from 'react';
 
 /**
+ * @description This component servers as preloader when waiting for resoureces
+ * 
  * @function ActivityLoader
+ * 
  * @returns {view} containing activity loader elememnt
  */
 const ActivityLoader = () => (

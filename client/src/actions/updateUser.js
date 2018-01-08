@@ -4,9 +4,13 @@ import { uploadImage } from './uploadImage';
 import { updateUserError, updateUserRequest, updateUserResponse } from '../../actions/updateUser';
 /**
  * @export updateUser
+ * 
  * @description it dispatches action for update user details reuest and response
+ * 
  * @param {object} userData 
+ * 
  * @param {string} token 
+ * 
  * @returns {action} dispacted actions
  */
 export default function updateUser(userData, token) {

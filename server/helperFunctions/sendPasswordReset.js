@@ -1,7 +1,6 @@
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 
-
 dotenv.config();
 /**
  * @description it sends email to user for password reset details

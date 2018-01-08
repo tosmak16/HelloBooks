@@ -1,12 +1,17 @@
 export default {
   /**
-   * auth method serves  as middleware for user authentication only
+   * @description auth method serves  as middleware for user authentication only
    * it verifies token.
-   * @function auth
-   * @param {object} req
-   * @param {object} res
+   * 
+   * @function userAuth
+   * 
+   * @param {object} req HTTP request
+   * 
+   * @param {object} res HTTP response
+   * 
    * @param {function} next
-   * @returns { object } res
+   * 
+   * @returns { object } response object
    */
   userAuth(req, res, next) {
     if (req.params.userId.toString() !== req.decoded.id.toString()) {

@@ -6,8 +6,10 @@ import CategorySelect from '../select/CategorySelect';
 
 /** 
  * @description renders select, searchbar and searched books collection
+ * 
  * @param {object} props 
- * @returns {views} select, searchbar and searched books collection
+ * 
+ * @returns {views} select, searchbar and searched books collection component
  */
 const BooksFilter = (props) => {
   const { handleChange, handleSelected, filteredData, checkBookDetails, state } = props;
@@ -36,7 +38,6 @@ const BooksFilter = (props) => {
     </div >
   );
 };
-
 BooksFilter.propTypes = {
   state: PropTypes.objectOf(PropTypes.any).isRequired,
   checkBookDetails: PropTypes.func.isRequired,

@@ -54,6 +54,7 @@
     "es6-promise": "^4.1.1",
     "expect": "^21.2.0",
     "express": "^4.15.4",
+    "express-validator": "^4.3.0",
     "file-loader": "^0.11.2",
     "file-system": "^2.2.2",
     "hammerjs": "^2.0.8",

@@ -1,17 +1,20 @@
 import isEmpty from 'lodash/isEmpty';
 import db from '../models/index';
 import { validateIds } from '../helperFunctions/validator';
-import { bookDetailsValidator } from '../helperFunctions/bookDetailsValidator';
 import { queryBooks } from '../helperFunctions/databaseQuery';
 import { updateBooksValidator } from '../helperFunctions/updateBooksValidator';
 
 export default {
   /**
    * @method addbook
-   * @desc This method handles add books request
-   * @param { object} req request
-   * @param { object} res response
-   * @returns { object } response
+   * 
+   * @description This method handles add books request
+   * 
+   * @param { object} req HTTP request
+   * 
+   * @param { object} res HTTP response
+   * 
+   * @returns { object } response meesgae
    */
   addBook(req, res) {
     if (req.decoded.role.toString() === 'user') {
@@ -21,50 +24,46 @@ export default {
     }
     const { bookTitle, author, category, isbn, stockNumber,
       image, bookFileUrl, summary } = req.body;
-    bookDetailsValidator(req.body)
-      .then((validationErrorMessage) => {
-        if (validationErrorMessage) {
-          return res.status(400).send({
-            message: validationErrorMessage
-          });
-        }
-        /* query database by isbn to check if a book already exist */
-        queryBooks({
-          isbn: isbn.toString()
-        }).then((bookResult) => {
-          if (bookResult) {
-            return res.status(400).send({
-              message: 'isbn must be unique'
-            });
-          }
-          return db.Books
-            .create({
-              bookTitle,
-              author,
-              category,
-              isbn,
-              stockNumber,
-              image,
-              summary,
-              bookFile: bookFileUrl,
-            })
-            .then(bookReport => res.status(201).send({
-              message: 'Book has been added to store',
-              bookReport
-            }))
-            .catch(errorMessage => res.status(500).send({
-              message: errorMessage
-            }));
+    /* query database by isbn to check if a book already exist */
+    queryBooks({
+      isbn: isbn.toString()
+    }).then((bookResult) => {
+      if (bookResult) {
+        return res.status(400).send({
+          message: 'isbn must be unique'
         });
-      });
+      }
+      return db.Books
+        .create({
+          bookTitle,
+          author,
+          category,
+          isbn,
+          stockNumber,
+          image,
+          summary,
+          bookFile: bookFileUrl,
+        })
+        .then(bookReport => res.status(201).send({
+          message: 'Book has been added to store',
+          bookReport
+        }))
+        .catch(errorMessage => res.status(500).send({
+          message: errorMessage
+        }));
+    });
   },
 
   /**
    * @method getAllBooks
+   * 
    * @desc This method handles get all books request
-   * @param { object } req request
-   * @param { object} res response
-   * @returns { object } response
+   * 
+   * @param { object } req HTTP request
+   * 
+   * @param { object} res HTTP response
+   * 
+   * @returns { object } response meesgae
    */
   getAllBooks(req, res) {
     return db.Books
@@ -88,10 +87,14 @@ export default {
 
   /**
    * @method UpdateBook
+   * 
    * @desc This method handles edit book request
-   * @param { object} req request
-   * @param { object} res response
-   * @returns { object } response
+   * 
+   * @param { object} req HTTP request
+   * 
+   * @param { object} res HTTP response
+   * 
+   * @returns { object } response meesgae
    */
   updateBook(req, res) {
     if (req.decoded.role === 'user') {
@@ -155,10 +158,14 @@ export default {
   },
   /**
    * @method deletebooks
+   * 
    * @desc This method handles delete books request
-   * @param { object } req request
-   * @param { object} res response
-   * @returns { object } response
+   * 
+   * @param { object } req HTTP request
+   * 
+   * @param { object} res HTTP response
+   * 
+   * @returns { object } response meesgae
    */
   deleteBooks(req, res) {
     if (req.decoded.role === 'user') {

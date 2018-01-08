@@ -1,7 +1,9 @@
 import _ from 'lodash';
 /**
  * @description update book state
+ * 
  * @param {object} bookState 
+ * 
  * @returns {void}
  */
 export const updateBookDetailsTemp = (bookState) => {

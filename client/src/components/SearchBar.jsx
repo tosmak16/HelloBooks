@@ -2,8 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /**
+ * @description it's a functional component for search Input
+ * 
  * @function SearchBar
+ * 
  * @param {object} props
+ * 
  * @returns {views} Searchbar element and properties
  */
 const SearchBar = props =>
@@ -21,14 +25,10 @@ const SearchBar = props =>
       <label className="label-icon" htmlFor="search">
         <i className="material-icons">search</i></label>
     </div>
-  )
-  ;
-
+  );
 SearchBar.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
 };
-
-
 export default SearchBar;

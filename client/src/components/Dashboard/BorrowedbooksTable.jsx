@@ -9,8 +9,12 @@ import ActivityLoader from '../preloader/ActivityLoader';
 
 
 /**
+ * @description Displays Borrowed Books Table
+ * 
  * @function BorrowedbooksTable
+ * 
  * @param {object} props
+ * 
  * @return {views} BorrowedBooks Tbale
  */
 export const BorrowedbooksTable = (props) => {

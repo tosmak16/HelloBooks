@@ -4,7 +4,9 @@ import { Link } from 'react-router';
 
 /**
  * @description table row component
+ * 
  * @param {object} props
+ * 
  * @returns {view} containing table list of book details
  */
 const Tablerow = (props) => {
@@ -25,10 +27,8 @@ const Tablerow = (props) => {
     </tr >
   );
 };
-
 Tablerow.propTypes = {
   onDelete: PropTypes.func.isRequired,
   book: PropTypes.objectOf(PropTypes.any).isRequired,
 };
-
 export default Tablerow;

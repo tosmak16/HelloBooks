@@ -6,6 +6,7 @@ export const UPLOAD_BOOK_FAILURE = 'UPLOAD_BOOK_FAILURE'
 //Action creators
 /**
  * @param {object} bookData 
+ * 
  * @returns {object} of upload books state
  */
 export const uploadBookRequest = (bookData) => {
@@ -17,6 +18,7 @@ export const uploadBookRequest = (bookData) => {
 }
 /**
  * @param {string} response 
+ * 
  * @returns {object} of upload books state
  */
 export const uploadBookResponse = (response) => {
@@ -28,6 +30,7 @@ export const uploadBookResponse = (response) => {
 }
 /**
  * @param {string} error 
+ * 
  * @returns {object} of upload books state
  */
 export const uploadBookError = (error) => {

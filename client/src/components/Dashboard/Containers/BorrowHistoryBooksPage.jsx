@@ -15,16 +15,21 @@ import { uploadUserAvatar } from '../../../actions/uploadUserAvatar';
 import { logout } from '../../../actions/logout';
 import NoResourceComponent from '../../NoResourceComponent';
 
-
 /**
- * @export
+ * @description it's a connected components that servers all props for Unreturned Books
+ * 
+ * @export BorrowHistoryBooksPage
+ * 
  * @class BorrowHistoryBooksPage
+ * 
  * @extends {React.Component}
  */
 export class BorrowHistoryBooksPage extends React.Component {
   /**
  * Creates an instance of BorrowHistoryBooksPage.
+ * 
  * @param {object} props
+ * 
  * @memberof BorrowHistoryBooksPage
  */
   constructor(props) {
@@ -35,6 +40,7 @@ export class BorrowHistoryBooksPage extends React.Component {
   }
   /**
    * @memberof BorrowHistoryBooksPage
+   * 
    * @returns {void}
    */
   componentDidMount() {
@@ -52,9 +58,11 @@ export class BorrowHistoryBooksPage extends React.Component {
     }
   }
   /**
-  * @returns {void}
   * @param {object} nextProps
+  *
   * @memberof BorrowHistoryBooksPage
+  *
+  * @returns {void}
   */
   componentWillReceiveProps(nextProps) {
     if (nextProps.isRefreshed) {
@@ -73,7 +81,9 @@ export class BorrowHistoryBooksPage extends React.Component {
   }
   /**
    * @function render
+   * 
    * @returns {void}
+   * 
    * @memberof BorrowHistoryBooksPage
    */
   render() {
@@ -111,7 +121,6 @@ export class BorrowHistoryBooksPage extends React.Component {
     );
   }
 }
-
 BorrowHistoryBooksPage.propTypes = {
   borrowBooksHistoryDate: PropTypes.arrayOf(PropTypes.any).isRequired,
   bookData: PropTypes.arrayOf(PropTypes.any).isRequired,
@@ -128,9 +137,9 @@ BorrowHistoryBooksPage.propTypes = {
   uploadUserAvatar: PropTypes.func.isRequired,
   userData: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
-
 /**
  * @param {object} state
+ * 
  * @returns {object} containing reducers state
  */
 function mapStateToProps(state) {
@@ -144,7 +153,6 @@ function mapStateToProps(state) {
     message: state.updateUser[0].data.toString(),
   };
 }
-
 export default connect(mapStateToProps, {
   getBorrowedBook,
   getBooks,

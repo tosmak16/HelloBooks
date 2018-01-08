@@ -2,6 +2,7 @@ export const SEARCH_BOOKS = 'SEARCH_BOOKS';
 export const SHOW_BOOKS_BY_CATEGORY = 'SHOW_BOOKS_BY_CATEGORY';
 /**
  * @param {object} data 
+ * 
  * @returns {object} of searched books
  */
 export const searchFilteredBooks = (data) => {
@@ -11,8 +12,10 @@ export const searchFilteredBooks = (data) => {
   };
 }
 /**
- * @param {any} data 
- * @param {any} category 
+ * @param {object} data 
+ * 
+ * @param {string} category 
+ * 
  * @returns {object} of filtered books
  */
 export const filteredByCategory = (data, category) => {

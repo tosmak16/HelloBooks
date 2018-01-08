@@ -6,8 +6,11 @@ import _ from 'lodash';
 /** *************************************** */
 /**
  * @description handles update userdetails 
+ * 
  * @param {object} userData 
+ * 
  * @param {number} userId 
+ * 
  * @returns {object} response
  */
 export const validateUserDetailsUpdate = async (userData) => {

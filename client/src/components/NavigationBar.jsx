@@ -6,12 +6,15 @@ import { logout } from '../actions/logout';
 
 /**
  * @description Nav bar functional component
+ * 
  * @argument {object} props
+ * 
  * @returns {views} navigation bar
  */
 const NavigationBar = (props) => {
   /**
     * @param {object} event
+    
     * @returns {void} 
    */
   const handleLogout = (event) => {
@@ -115,6 +118,7 @@ NavigationBar.propTypes = {
 };
 /**
  * @param {arrayOfObject} state
+ * 
  * @returns {object} of some reduxreducers
  */
 function mapStateToProps(state) {
@@ -122,5 +126,4 @@ function mapStateToProps(state) {
     auth: state.auth[0],
   };
 }
-
 export default connect(mapStateToProps, { logout })(NavigationBar);

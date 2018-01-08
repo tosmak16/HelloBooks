@@ -5,8 +5,10 @@ import db from '../models/index';
 /** *************************************** */
 /**
  * @description an async function that checks if a book is still avaliable
+ * 
  * @param {object} queryObject 
- * @returns {object} response
+ * 
+ * @returns {object} response message
  */
 export const checkBookStockNumber = async (queryObject) => {
   let response = { status: 200, message: 'okay', bookTitle: '' };

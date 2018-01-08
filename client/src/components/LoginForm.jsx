@@ -7,15 +7,20 @@ import { ResetPasswordModal } from './modal/ResetPasswordModal';
 
 /**
  * @export LoginForm
+ * 
  * @description Login form un connected component
+ * 
  * @class LoginForm
+ * 
  * @extends {React.Component}
  */
 export class LoginForm extends React.Component {
   /**
    * @description Creates an instance of LoginForm.
    * Login form  class method
+   * 
    * @param {object} props
+   * 
    * @memberof LoginForm
    */
   constructor(props) {
@@ -39,6 +44,7 @@ export class LoginForm extends React.Component {
   }
   /**
    * @memberof LoginForm
+   * 
    * @returns {void}
    */
   componentDidMount() {
@@ -55,7 +61,9 @@ export class LoginForm extends React.Component {
   }
   /**
    * @param {object} nextProps
+   * 
    * @memberof LoginForm
+   * 
    * @returns {void}
    */
   componentWillReceiveProps(nextProps) {
@@ -68,7 +76,9 @@ export class LoginForm extends React.Component {
   }
   /**
   * @param {object} response
+
   * @memberof LoginForm
+
   * @returns {void}
   */
   onSignIn(response) {
@@ -94,7 +104,9 @@ export class LoginForm extends React.Component {
 
   /**
    * @param {event} event
+   * 
    * @memberof LoginForm
+   * 
    * @returns {void}
    */
   handleChange(event) {
@@ -102,7 +114,9 @@ export class LoginForm extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof LoginForm
+   * 
    * @returns {void}
    */
   handleSubmit(event) {
@@ -113,7 +127,9 @@ export class LoginForm extends React.Component {
   }
   /**
  * @param {object} event
+ * 
  * @memberof LoginForm
+ * 
  * @returns {void}
  */
   handleClose() {
@@ -124,7 +140,9 @@ export class LoginForm extends React.Component {
 
   /**
  * @param {object} event
+ * 
  * @memberof LoginForm
+ * 
  * @returns {void}
  */
   handleSendMail() {
@@ -133,7 +151,9 @@ export class LoginForm extends React.Component {
 
   /**
  * @param {object} event
+ * 
  * @memberof LoginForm
+ * 
  * @returns {void}
  */
   handleInputEmailChange(event) {
@@ -143,7 +163,9 @@ export class LoginForm extends React.Component {
   }
   /**
   * @param {object} event
+
   * @memberof LoginForm
+
   * @returns {void}
   */
   renderResetPasswordModal() {
@@ -151,16 +173,14 @@ export class LoginForm extends React.Component {
       displayModal: true
     });
   }
-
-
   /**
    * @returns {views} with input fields
+   * 
    * @memberof LoginForm
    */
   render() {
     const { error } = this.props.login;
     return (
-
       <div>
         <form onSubmit={this.handleSubmit} className="form-signin" action="books.html" >
           <h5 className="form-signin-heading text-center pull-center">Please Login In</h5>
@@ -248,7 +268,6 @@ export class LoginForm extends React.Component {
     );
   }
 }
-
 LoginForm.propTypes = {
   getbooks: PropTypes.func.isRequired,
   login: PropTypes.objectOf(PropTypes.any).isRequired,
@@ -257,6 +276,4 @@ LoginForm.propTypes = {
   resetUserPassword: PropTypes.func.isRequired,
   resetPasswordStatus: PropTypes.string.isRequired
 };
-
-
 export default LoginForm;

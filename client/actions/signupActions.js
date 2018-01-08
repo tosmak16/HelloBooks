@@ -5,6 +5,11 @@ export const SIGNUP_FAILURE = 'SIGNUP_FAILURE'
 
 
 //Action creators
+/**
+ * @param {object} userData 
+ * 
+ * @returns {object} of signup state
+ */
 export const signupRequest = (userData) => {
   return {
     type: SIGNUP_REQUEST,
@@ -13,6 +18,11 @@ export const signupRequest = (userData) => {
     userData
   }
 }
+/**
+ * @param {string} resposne 
+ * 
+ * @returns {object} of signup state
+ */
 export const signupResponse = (response) => {
   return {
     type: SIGNUP_SUCCESS,
@@ -21,7 +31,11 @@ export const signupResponse = (response) => {
     response
   }
 }
-
+/**
+ * @param {string} error 
+ * 
+ * @returns {object} of signup state
+ */
 export const signupError = (error) => {
   return {
     type: SIGNUP_FAILURE,

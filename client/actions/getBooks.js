@@ -13,7 +13,8 @@ export const getBooksRequest = () => {
   }
 }
 /**
- * @param {object} data 
+ * @param {object} data - books data
+ * 
  * @returns {object} of get books state
  */
 export const getBooksReponse = (data) => {
@@ -25,7 +26,8 @@ export const getBooksReponse = (data) => {
   }
 }
 /**
- * @param {string} error 
+ * @param {string} error
+ *  
  * @returns {object} of get books state
  */
 export const getBooksError = (error) => {

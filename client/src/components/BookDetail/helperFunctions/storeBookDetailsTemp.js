@@ -1,7 +1,9 @@
 
 /** 
  * @description helper function to store book details in local storage
+ * 
  * @param {objedct} filteredData 
+ * 
  * @returns {void}
  */
 export const storeBookDetailsTemp = (filteredData) => {

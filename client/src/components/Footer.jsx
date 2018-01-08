@@ -2,7 +2,10 @@ import React from 'react';
 import { Link } from 'react-router';
 
 /**
+ * @description This component contains footer
+ * 
  *@function Footer
+
  *@returns {views} footer
  */
 export const Footer = () => (

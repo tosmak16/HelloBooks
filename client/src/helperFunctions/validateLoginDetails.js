@@ -4,7 +4,9 @@ import _ from 'lodash';
 /** *************************************** */
 /**
  * @description valdiates user login parameters
+ * 
  * @param {object} userData 
+ * 
  * @returns {object} responseMessage in json 
  */
 export const validateLoginDetails = async (userData) => {

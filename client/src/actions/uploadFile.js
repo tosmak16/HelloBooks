@@ -4,8 +4,11 @@ import { uploadFileError, uploadFileRequest, uploadFileResponse } from '../../ac
 const upload_preset = process.env.UPLOAD_PRESET;
 /**
  * @export uploadFile
+ * 
  * @description it dispact action for upload book file request and response
+ * 
  * @param {object} file 
+ * 
  * @returns {action} dispacted actions
  */
 export const uploadFile = (file) => {

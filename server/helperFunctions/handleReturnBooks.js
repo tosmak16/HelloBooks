@@ -8,8 +8,10 @@ const validNumber = /^[0-9]+$/;
 /** *************************************** */
 /**
  * @description handles return books request
+ * 
  * @param {object} borrowedBookId 
- * @returns {object} response
+ * 
+ * @returns {object} response message
  */
 export const handleReturnBooks = async (borrowedBookId) => {
   let response = { status: 200, message: 'okay' };

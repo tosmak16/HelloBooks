@@ -1,6 +1,8 @@
 /**
  * @description helper function to setting userdetail's state
+ * 
  * @param {object} self 
+ * 
  * @returns {void}
  */
 export const setUserDetailsState = (self) => {

@@ -5,7 +5,9 @@ import db from '../models/index';
 /** *************************************** */
 /** 
  * @description handles find one query for book table 
+ * 
  * @param {object} queryObject 
+ * 
  * @returns {object } books in json
  */
 export const queryBooks = queryObject => db.Books
@@ -17,7 +19,9 @@ export const queryBooks = queryObject => db.Books
 /** *************************************** */
 /**
  * @description handles find one query for user table
+ * 
  * @param {object} queryObject 
+ * 
  * @returns {object} users in json
  */
 export const queryUsers = queryObject => db.Users
@@ -30,8 +34,11 @@ export const queryUsers = queryObject => db.Users
 /** *************************************** */
 /**
  * @description handles different query for book table
+ * 
  * @param {object} queryObject 
+ * 
  * @param {string} queryType 
+ * 
  * @returns {object} borrowedBooks in json
  */
 export const queryBorrowedBook = (queryObject, queryType) => {
@@ -49,7 +56,9 @@ export const queryBorrowedBook = (queryObject, queryType) => {
 /** *************************************** */
 /**
  * @description checks if returned value is a boolean 
+ * 
  * @param {string} returned 
+ * 
  * @returns {string} message
  */
 export const checkQueryValidity = (returned) => {

@@ -13,7 +13,8 @@ export const getBorrowedBookRequest = () => {
   }
 }
 /**
- * @param {object} data 
+ * @param {object} data - borrowed books data
+ * 
  * @returns {object} of borrowed books state
  */
 export const getBorrowedBookReponse = (data) => {
@@ -26,6 +27,7 @@ export const getBorrowedBookReponse = (data) => {
 }
 /**
  * @param {string} error 
+ * 
  * @returns {object} of borrowed books state
  */
 export const getBorrowedBookError = (error) => {

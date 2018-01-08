@@ -13,14 +13,18 @@ import { checkBookDetails } from '../../actions/checkBookDetails';
 import displayBooksByCategory from '../../actions/displayBooksByCategory';
 
 /**
- * @export
+ * @export BooksPage
+ * 
  * @class BooksPage
+ * 
  * @extends {React.Component}
  */
 export class BooksPage extends React.Component {
   /**
    * Creates an instance of BooksFilter.
+   * 
    * @param {object} props
+   * 
    * @memberof BooksPage
    */
   constructor(props) {
@@ -39,6 +43,7 @@ export class BooksPage extends React.Component {
   }
   /**
    * @memberof BooksPage
+   * 
    * @returns {void}
    */
   componentWillMount() {
@@ -54,6 +59,7 @@ export class BooksPage extends React.Component {
   }
   /**
  * @memberof BooksPage
+ * 
  * @returns {void}
  */
   componentDidMount() {
@@ -63,8 +69,11 @@ export class BooksPage extends React.Component {
   }
   /**
   * @function componentWillReceiveProps
+  *
   * @param {object} nextProps
+  *
   * @memberof BooksCategory
+  *
   * @returns {void}
   */
   componentWillReceiveProps(nextProps) {
@@ -76,8 +85,11 @@ export class BooksPage extends React.Component {
   }
   /**
   * @description
+  *
   * @param {object} event
+  *
   * @memberof BooksPage
+  *
   * @returns {void}
   */
   bookFilterHandleChange(event) {
@@ -92,7 +104,9 @@ export class BooksPage extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof BooksPage
+   * 
    * @returns {void}
    */
   bookFilterHandleSelected(event) {
@@ -103,8 +117,11 @@ export class BooksPage extends React.Component {
   }
   /**
  * @param {object} event
+ * 
  * @param {boolean} [set=true]
+ * 
  * @memberof BooksPage
+ * 
  * @returns {void}
  */
   bookCollectionHandleClick(event) {
@@ -112,6 +129,7 @@ export class BooksPage extends React.Component {
   }
   /**
    * @returns {views} with siderbar, bookfilter and bookcategory component
+   * 
    * @memberof BooksPage
    */
   render() {
@@ -168,6 +186,7 @@ BooksPage.propTypes = {
 };
 /**
  * @param {arrrayOfobject} state
+ * 
  * @returns {objects} of reducer state
  */
 function mapStateToProps(state) {

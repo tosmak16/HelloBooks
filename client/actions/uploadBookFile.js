@@ -6,6 +6,7 @@ export const UPLOAD_FILE_FAILURE = 'UPLOAD_FILE_FAILURE'
 //Action creators
 /**
  * @param {object} fileData 
+ * 
  * @returns {object} of upload book file state
  */
 export const uploadFileRequest = (fileData) => {
@@ -17,6 +18,7 @@ export const uploadFileRequest = (fileData) => {
 }
 /**
  * @param {string} response 
+ * 
  * @returns {object} of upload book file state
  */
 export const uploadFileResponse = (response) => {
@@ -28,6 +30,7 @@ export const uploadFileResponse = (response) => {
 }
 /**
  * @param {string} error 
+ * 
  * @returns {object} of upload book file state
  */
 export const uploadFileError = (error) => {

@@ -3,14 +3,18 @@ import { Button, Input, Row } from 'react-materialize';
 
 import PropTypes from 'prop-types';
 /**
- * @export
+ * @description SignuP Form is a presentational component
+ * 
+ * @export SignUpForm
+ * 
  * @class SignUpForm
+ * 
  * @extends {React.Component}
  */
 export class SignUpForm extends React.Component {
   /**
-   * *
    * @param {object} props
+   * 
    * @memberof SignUpForm
    */
   constructor(props) {
@@ -48,7 +52,9 @@ export class SignUpForm extends React.Component {
   }
   /**
    * @function render
-   * @returns {views} with input fields used for signup
+   * 
+   * @returns {views} components
+   * 
    * @memberof SignUpForm
    */
   render() {
@@ -135,11 +141,9 @@ export class SignUpForm extends React.Component {
     );
   }
 }
-
 SignUpForm.propTypes = {
   register: PropTypes.objectOf(PropTypes.any).isRequired,
   userSignup: PropTypes.func.isRequired,
 };
-
 export default SignUpForm;
 

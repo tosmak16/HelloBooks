@@ -4,7 +4,9 @@ import { signupError, signupRequest, signupResponse } from '../../actions/signup
 import { validateUserDetails } from '../helperFunctions/validateUserDetails';
 /**
  * @description it dispatch action for signup request and response
+ * 
  * @param {object} userData 
+ * 
  * @returns {action} dispacted actions
  */
 export const signup = (userData) => {

@@ -6,6 +6,7 @@ export const UPLOAD_IMAGE_FAILURE = 'UPLOAD_IMAGE_FAILURE'
 //Action creators
 /**
  * @param {object} imageData 
+ * 
  * @returns {object} of upload book cover image state
  */
 export const uploadImageRequest = (imageData) => {
@@ -17,6 +18,7 @@ export const uploadImageRequest = (imageData) => {
 }
 /**
  * @param {string} response 
+ * 
  * @returns {object} of upload book cover image state
  */
 export const uploadImageResponse = (response) => {
@@ -28,6 +30,7 @@ export const uploadImageResponse = (response) => {
 }
 /**
  * @param {string} error 
+ * 
  * @returns {object} of upload book cover image state
  */
 export const uploadImageError = (error) => {
