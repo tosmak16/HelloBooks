@@ -48,16 +48,12 @@ export class LoginForm extends React.Component {
    * @returns {void}
    */
   componentDidMount() {
-    $.getScript('https://apis.google.com/js/platform.js')
-      .done(() => {
-        // execute any gapi calls here...
-        gapi.signin2.render('g-signin2', {
-          scope: 'profile email',
-          height: 40,
-          width: 298,
-          longtitle: false,
-        });
-      });
+    gapi.signin2.render('g-signin2', {
+      scope: 'profile email',
+      height: 40,
+      width: 298,
+      longtitle: false,
+    });
   }
   /**
    * @param {object} nextProps
@@ -89,17 +85,13 @@ export class LoginForm extends React.Component {
    * @returns {void}
    */
   handleGoogleSignin() {
-    $.getScript('https://apis.google.com/js/platform.js')
-      .done(() => {
-        // execute any gapi calls here...
-        gapi.signin2.render('g-signin2', {
-          scope: 'profile email',
-          height: 40,
-          width: 298,
-          longtitle: false,
-          onsuccess: this.onSignIn
-        });
-      });
+    gapi.signin2.render('g-signin2', {
+      scope: 'profile email',
+      height: 40,
+      width: 298,
+      longtitle: false,
+      onsuccess: this.onSignIn
+    });
   }
 
   /**
