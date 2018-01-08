@@ -5,8 +5,11 @@ import _ from 'lodash';
 /** *************************************** */
 /**
  * @description it handles change password request
+ * 
  * @param {object} userData 
+ * 
  * @param {object} params 
+ * 
  * @returns {object} response 
  */
 export const validatePasswordChange = async (userData) => {

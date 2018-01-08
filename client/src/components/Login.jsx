@@ -10,9 +10,13 @@ import { resetUserPassword } from '../actions/resetUserPassword';
 
 /**
  * @description connnected login page
+ * 
  * @param {object} props
+ * 
  * @export Login
- * @function Loginin
+ * 
+ * @function Login
+ * 
  * @returns {views} login form
  */
 export const Login = props => (
@@ -40,7 +44,9 @@ Login.propTypes = {
 };
 /**
  *@function mapStateToProps
+
  * @param {object} state
+ * 
  * @returns {object} login
  */
 function mapStateToProps(state) {

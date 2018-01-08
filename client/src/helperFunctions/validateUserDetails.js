@@ -1,12 +1,14 @@
 import _ from 'lodash';
 
-const validEmail = /[a-zA-Z]+[a-zA-Z0-9]*@[a-z]+.[a-z]+$/;
+const validEmail = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"|"_+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
 /** *************************************** */
 /* valdiates user registration parameters */
 /** *************************************** */
 /**
  * @description this method valdiates user registration parameters
+ * 
  * @param {object} userData 
+ * 
  * @returns {object} responseMessage
  */
 export const validateUserDetails = async (userData) => {

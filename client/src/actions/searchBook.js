@@ -4,10 +4,15 @@ import { searchFilteredBooks } from '../../actions/filterBooks';
 
 /**
  * @export searchBook
+ * 
  * @description it dispatch actions to search for books
+ * 
  * @param {string} filterBy 
+ * 
  * @param {string} searchText 
+ * 
  * @param {array} data 
+ * 
  * @returns {action} dispacted actions
  */
 export default function searchBook(filterBy, searchText, data) {

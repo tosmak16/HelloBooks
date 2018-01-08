@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 let borrowDate = [];
 let returnDate = [];
 /**
+ * @description Displays Borrowed Books History Table row
+ * 
  * @param {object} props
+ * 
  * @returns {views} containing user's borrowing history
  */
 export function BookHistoryTableRow(props) {

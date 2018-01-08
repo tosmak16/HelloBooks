@@ -1,6 +1,8 @@
 /**
  * @description it gets bookdetails stored in local storage
+ * 
  * @param {object} filteredData 
+ * 
  * @returns {void}
  */
 export const getStoredBookDetails = (filteredData) => {

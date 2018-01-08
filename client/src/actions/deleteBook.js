@@ -4,10 +4,14 @@ import { deleteBookError, deleteBookRequest, deleteBookResponse } from '../../ac
 
 /**
  * @export deleteBook
+ * 
  * @description sends delete books request and dispatch appropiate based on 
  * the recieved response
+ * 
  * @param {object} bookData 
+ * 
  * @param {string} token 
+ * 
  * @returns {action} dispacted actions
  */
 export const deleteBook = (bookData, token) => {

@@ -6,8 +6,11 @@ import ActivityLoader from '../preloader/ActivityLoader';
 
 /**
  * @description uploadBooks unconnected component
+ * 
  * @function UploadBooksPage
+ * 
  * @param {object} props
+ * 
  * @returns {views} UploadBook form
  */
 const UploadBooksPage = (props) => {
@@ -180,6 +183,4 @@ UploadBooksPage.propTypes = {
   handleOpen: PropTypes.func.isRequired,
   state: PropTypes.objectOf(PropTypes.any).isRequired
 };
-
-
 export default UploadBooksPage;

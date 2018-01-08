@@ -2,13 +2,15 @@ import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 import jwtDecode from 'jwt-decode';
 
-
 dotenv.config();
 /**
  * @description it handles sending email notification to admin when a user borrows
  * or returns a book
+ * 
  * @param {string} token 
+ * 
  * @param {string} emailMessage 
+ *  
  * @returns {object} message
  */
 export const sendMail = (token, emailMessage) => {

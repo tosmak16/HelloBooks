@@ -5,8 +5,11 @@ import { setCurrentUserAuth } from '../../actions/setCurrentUserAuth';
 import { signupError, signupRequest, signupResponse } from '../../actions/signupActions';
 /**
  * @export googleAuthSignIn
+ * 
  * @description it sends user's google signin details
+ * 
  * @param {object} googleUserData 
+ * 
  * @returns {action} dispacted actions
  */
 export const googleAuthSignIn = (googleUserData) => {

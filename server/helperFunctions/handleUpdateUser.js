@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import db from '../models/index';
 import bcrypt from 'bcrypt';
+import db from '../models/index';
 
 const validNumber = /^[0-9]+$/;
 
@@ -11,9 +11,12 @@ const validNumber = /^[0-9]+$/;
 /** *************************************** */
 /**
  * @description handles update userdetails
+ * 
  * @param {object} body 
+ * 
  * @param {number} userId 
- * @returns {object} response
+ * 
+ * @returns {object} response message
  */
 export const handleUpdateUser = async (body, userId) => {
   let response = { status: 200, message: 'okay' };

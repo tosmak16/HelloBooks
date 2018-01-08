@@ -4,9 +4,13 @@ import { borrowBookError, borrowBookRequest, borrowBookResponse } from '../../ac
 
 /**
  * @description this is borrow books action controller
+ * 
  * @export borrowBook
+ * 
  * @param {string} token 
+ * 
  * @param {string} bookId 
+ * 
  * @returns {action} dispacted actions
  */
 export const borrowBook = (token, bookId) => {

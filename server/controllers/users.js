@@ -2,7 +2,6 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import db from '../models/index';
 import { validateIds, checkUserInput } from '../helperFunctions/validator';
-import { userDetailsValidator } from '../helperFunctions/userDetailsValidator';
 import { queryUsers, checkQueryValidity, queryBorrowedBook } from '../helperFunctions/databaseQuery';
 import { checkBorrowLimit } from '../helperFunctions/checkBorrowLimit';
 import { checkBookStockNumber } from '../helperFunctions/checkBookStockNumber';
@@ -17,59 +16,59 @@ import { sendPasswordReset } from '../helperFunctions/sendPasswordReset';
 export default {
   /**
    * @method signup
-   * @desc this method is used for user registration
-   * @param { object } req request
-   * @param { object} res response
-   * @returns { object } response
+   * 
+   * @description this method is used for user registration
+   * 
+   * @param { object } req HTTP request
+   * 
+   * @param { object} res HTTP response
+   * 
+   * @returns { object } response message message 
    */
   signup(req, res) {
-    /* checks if required details are inputed if not sends status 400 message */
-    userDetailsValidator(req.body)
-      .then((validationError) => {
-        if (validationError) {
-          return res.status(400).send({ message: validationError });
+    const { username, password, firstName, lastName, email } = req.body;
+    /* query database by username to check if a user already exist */
+    queryUsers({ username: username.toLowerCase().toString() }).then((userResult) => {
+      if (userResult) {
+        return res.status(409).send({ message: 'username already exist' });
+      }
+      /* query database by email to check if a email already exist */
+      queryUsers({
+        email: email.toLowerCase().toString()
+      }).then((userEmailResult) => {
+        /* if email  already exist */
+        if (userEmailResult) {
+          return res.status(409).send({ message: 'email already exist' });
         }
-        const { username, password, firstName, lastName, email } = req.body;
-        /* query database by username to check if a user already exist */
-        queryUsers({ username: username.toLowerCase().toString() }).then((userResult) => {
-          if (userResult) {
-            return res.status(409).send({ message: 'username already exist' });
-          }
-          /* query database by email to check if a email already exist */
-          queryUsers({
-            email: email.toLowerCase().toString()
-          }).then((userEmailResult) => {
-            /* if email  already exist */
-            if (userEmailResult) {
-              return res.status(409).send({ message: 'email already exist' });
-            }
-            /* if email does not exist create user account */
-            db.Users.create({
-              username: username.toLowerCase(),
-              password,
-              firstName,
-              lastName,
-              email: email.toLowerCase(),
-              role: process.env.NODE_ENV === 'test' && req.body.role ? 'admin' : 'user'
-            })
-              .then(storedDetails => res.status(201).send({
-                message: 'Account created', storedDetails,
-              }))
-              .catch((errorMessage) => {
-                res.status(500).send({
-                  message: 'server error',
-                  errorMessage
-                });
-              });
+        /* if email does not exist create user account */
+        db.Users.create({
+          username: username.toLowerCase(),
+          password,
+          firstName,
+          lastName,
+          email: email.toLowerCase(),
+          role: process.env.NODE_ENV === 'test' && req.body.role ? 'admin' : 'user'
+        })
+          .then(storedDetails => res.status(201).send({
+            message: 'Account created', storedDetails,
+          }))
+          .catch((errorMessage) => {
+            res.status(500).send({
+              message: 'server error',
+              errorMessage
+            });
           });
-        });
       });
+    });
   },
   /**
    * @description it handles google signup and login request
-   * @param {object} req request
-   * @param {oject} res  response
-   * @returns {object} response
+   * 
+   * @param {object} req HTTP request
+   * 
+   * @param {oject} res HTTP response
+   * 
+   * @returns {object} response message 
    */
   googleSignupAuth(req, res) {
     const { username, email, password, firstName, lastName } = req.body;
@@ -126,10 +125,14 @@ export default {
   },
   /**
    * @method signin
-   * @desc this method ensures registered users can login
-   * @param { object } req request
-   * @param { object} res response
-   * @returns { object } response
+   * 
+   * @description this method ensures registered users can login
+   * 
+   * @param { object } req HTTP request
+   * 
+   * @param { object} res HTTP response
+   * 
+   * @returns { object } response message message
    */
   signin(req, res) {
     /* check user's username and password if it is defined */
@@ -165,10 +168,14 @@ export default {
   },
   /**
    * @method list
-   * @desc This is a method used for displaying list of users
-   * @param { object } req request
-   * @param { object} res response
-   * @returns { object } response
+   * 
+   * @description This is a method used for displaying list of users
+   * 
+   * @param { object } req HTTP request
+   * 
+   * @param { object} res HTTP response
+   * 
+   * @returns { object } response message message
    */
   getUserList(req, res) {
     if (req.decoded.role === 'user') {
@@ -193,10 +200,14 @@ export default {
   },
   /**
    * @method borrowbooks
-   * @desc This method  handles borrowing books action
-   * @param { object } req request
-   * @param { object} res response
-   * @returns { object } response
+   * 
+   * @description This method  handles borrowing books action
+   * 
+   * @param { object } req HTTP request
+   * 
+   * @param { object} res HTTP response
+   * 
+   * @returns { object } response message message
    */
   borrowBooks(req, res) {
     const { bookId } = req.body;
@@ -267,11 +278,15 @@ export default {
   },
   /**
    * @method getUnreturnedbooks
-   * @desc This is a method that performs the action of listing
-   * @desc all borrowed books that are yet to be returned
-   * @param { object } req request
-   * @param { object} res response
-   * @returns { object } response
+   * 
+   * @description This is a method that performs the action of listing
+   * all borrowed books that are yet to be returned
+   * 
+   * @param { object } req HTTP request
+   * 
+   * @param { object} res HTTP response
+   * 
+   * @returns { object } response message message
    */
   getUnreturnedBooks(req, res) {
     const returnedQueryIsBoolean = checkQueryValidity(req.query.returned);
@@ -298,10 +313,14 @@ export default {
 
   /**
    * @method returnBooks
-   * @desc This method handles return borrowed books request
-   * @param { object } req request
-   * @param { object} res response
-   * @returns { object } response
+   * 
+   * @description This method handles return borrowed books request
+   * 
+   * @param { object } req HTTP request
+   * 
+   * @param { object} res HTTP response
+   * 
+   * @returns { object } response message
    */
   returnBooks(req, res) {
     handleReturnBooks(req.body.Id)
@@ -320,10 +339,14 @@ export default {
 
   /**
    * @method getBorrowedbooks
-   * @desc This method handles borrowed books history request
-   * @param { object } req request
-   * @param { object} res response
-   * @returns { object } response
+   * 
+   * @description This method handles borrowed books history request
+   * 
+   * @param { object } req HTTP request
+   * 
+   * @param { object} res HTTP response
+   * 
+   * @returns { object } response message
    */
   getBorrowedBooks(req, res) {
     return db.BorrowedBooks
@@ -349,10 +372,14 @@ export default {
 
   /**
    * @method getUserDetails
+   * 
    * @description this method handles get user details request
-   * @param {object} req request
-   * @param {object} res response
-   * @returns {object} response
+   * 
+   * @param {object} req HTTP request
+   * 
+   * @param {object} res HTTP response
+   * 
+   * @returns {object} response message
    */
   getUserDetails(req, res) {
     return db.Users
@@ -379,10 +406,14 @@ export default {
   },
   /**
    * @method updateUser
+   * 
    * @description this method handles edit user details request
-   * @param {object} req request
-   * @param {object} res response
-   * @returns { object } response
+   * 
+   * @param {object} req HTTP request
+   * 
+   * @param {object} res HTTP response
+   * 
+   * @returns { object } response message
    */
   updateUser(req, res) {
     handleUpdateUser(req.body, req.params.userId)
@@ -392,10 +423,14 @@ export default {
   },
   /**
    * @method changePassword
+   * 
    * @description this method handles changes password request
-   * @param {object} req request
-   * @param {object} res response
-   * @returns {object} response
+   * 
+   * @param {object} req HTTP request
+   * 
+   * @param {object} res HTTP response
+   * 
+   * @returns {object} response message
    */
   changePassword(req, res) {
     handlePasswordChange(req.body, req.params)
@@ -408,10 +443,14 @@ export default {
   },
   /**
  * @method resetPassword
+ * 
  * @description this method handles reset password request
- * @param {object} req request
- * @param {object} res response
- * @returns {object} response
+ * 
+ * @param {object} req HTTP request
+ * 
+ * @param {object} res HTTP response
+ * 
+ * @returns {object} response message
  */
   resetPassword(req, res) {
     const { email } = req.body;

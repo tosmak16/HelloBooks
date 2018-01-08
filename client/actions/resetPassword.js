@@ -7,6 +7,7 @@ export const RESET_PASSWORD_FAILURE = 'RESET_PASSWORD_FAILURE'
 //Action creators
 /**
  * @param {object} data 
+ * 
  * @returns {object} of reset password state
  */
 export const resetPasswordRequest = (data) => {
@@ -18,6 +19,7 @@ export const resetPasswordRequest = (data) => {
 }
 /**
  * @param {string} response 
+ * 
  * @returns {object} of reset password state
  */
 export const resetPasswordResponse = (response) => {
@@ -29,6 +31,7 @@ export const resetPasswordResponse = (response) => {
 }
 /**
  * @param {string} error 
+ * 
  * @returns {object} of reset password state
  */
 export const resetPasswordError = (error) => {

@@ -4,8 +4,11 @@ import { changePasswordError, changePasswordRequest, changePasswordResponse } fr
 import { validatePasswordChange } from '../helperFunctions/validatePasswordChange';
 /**
  * @export changePassword
+ * 
  * @param {object} userData 
+ * 
  * @param {string} token 
+ * 
  * @returns {action} dispacted actions
  */
 export const changePassword = (userData, token) => {

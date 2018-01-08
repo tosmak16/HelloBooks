@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 /**
  * @function TableRow
+ * 
  * @param {object} props
+ * 
  * @returns {views} Table row 
  */
 const TableRow = (props) => {

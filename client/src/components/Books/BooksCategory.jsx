@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import lodash from 'lodash';
 import BooksCollection from './BooksCollection';
 /**
- *@function BooksCategory
- *@param {object} props 
- *@return {view} books collection
+ * @function BooksCategory
+ * 
+ * @param {object} props 
+ * 
+ * @return {view} books collection
  */
 const BooksCategory = (props) => {
   const { checkBookDetails, state } = props;

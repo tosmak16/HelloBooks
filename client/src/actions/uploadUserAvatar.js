@@ -5,8 +5,11 @@ import { uploadProfileImageError, uploadProfileImageRequest, uploadProfileImageR
 const upload_preset = process.env.UPLOAD_PRESET;
 /**
  * @export uploadUserAvatar
+ * 
  * @description it dispatches action for upload user's avatar request and response
+ * 
  * @param {object} file 
+ * 
  * @returns {action} dispacted actions
  */
 export const uploadUserAvatar = (file) => {

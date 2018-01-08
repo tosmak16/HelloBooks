@@ -2,6 +2,10 @@ import booksController from '../controllers/books';
 import authController from '../middleWare/auth';
 import usersController from '../controllers/users';
 import userAuth from '../middleWare/userAuth';
+import {
+  userDetailsValidator,
+  bookDetailsValidator,
+} from '../middleWare/requestBodyValidator';
 
 
 export default (app) => {
@@ -133,7 +137,7 @@ export default (app) => {
    *       500:
    *         description: Server Error
    */
-  app.post('/api/v2/users/signup', usersController.signup);
+  app.post('/api/v2/users/signup', userDetailsValidator, usersController.signup);
   /* This is sign in route */
   /**
    * @swagger
@@ -192,7 +196,7 @@ export default (app) => {
    *       500:
    *         description: server error
    */
-  app.post('/api/v2/books', booksController.addBook);
+  app.post('/api/v2/books', bookDetailsValidator, booksController.addBook);
   /* This route to delete books */
   /**
    * @swagger

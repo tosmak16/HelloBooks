@@ -12,14 +12,22 @@ import { changePassword } from '../../../actions/changePassword';
 import { logout } from '../../../actions/logout';
 
 /**
- * @export
+ * @description Displays change password component
+ * 
+ * @export ChangePasswordPage
+ * 
  * @class ChangePasswordPage
+ * 
  * @extends {React.Component}
+ * 
+ * @returns {views} Components
  */
 export class ChangePasswordPage extends React.Component {
   /**
   * Creates an instance of ChangePasswordForm.
+  *
   * @param {object} props
+  *
   * @memberof ChangePasswordPage
   */
   constructor(props) {
@@ -42,7 +50,9 @@ export class ChangePasswordPage extends React.Component {
   }
   /**
    * @function compenentWillReceiveProps
+   * 
    * @memberof ChangePasswordPage
+   * 
    * @returns {void}
    */
   componentWillMount() {
@@ -55,7 +65,9 @@ export class ChangePasswordPage extends React.Component {
   }
   /**
   * @param {object} nextProps
+  *
   * @memberof ChangePasswordPage
+  *
   * @returns {void}
   */
   componentWillReceiveProps(nextProps) {
@@ -84,7 +96,9 @@ export class ChangePasswordPage extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof ChangePasswordForm
+   * 
    * @returns {void}
    */
   handleClose(event) {
@@ -95,8 +109,10 @@ export class ChangePasswordPage extends React.Component {
     });
   }
   /**
-   *@returns {void}
+   * @returns {void}
+   *
    * @param {object} event
+   * 
    * @memberof ChangePasswordForm
    */
   handleExit(event) {
@@ -109,8 +125,10 @@ export class ChangePasswordPage extends React.Component {
     });
   }
   /**
-   *@returns {void}
+   * @returns {void}
+   * 
    * @param {object} event
+   * 
    * @memberof ChangePasswordForm
    */
   handleClick(event) {
@@ -124,15 +142,19 @@ export class ChangePasswordPage extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof ChangePasswordForm
-   *  @returns {void}
+   * 
+   * @returns {void}
    */
   handleInputChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
   /**
    * @param {object} event
+   * 
    * @memberof ChangePasswordForm
+   * 
    * @returns {void}
    */
   handleSave(event) {
@@ -159,7 +181,9 @@ export class ChangePasswordPage extends React.Component {
   }
   /**
    * @function render
+   * 
    * @returns {void}
+   * 
    * @memberof ChangePasswordPage
    */
   render() {
@@ -206,7 +230,8 @@ ChangePasswordPage.propTypes = {
 };
 
 /**
- * @param {any} state
+ * @param {object} state
+ * 
  * @returns {void}
  */
 function mapStateToProps(state) {
@@ -218,7 +243,6 @@ function mapStateToProps(state) {
     passwordChange: state.passwordChange,
   };
 }
-
 export default connect(mapStateToProps, {
   getUserdetails,
   updateUser,

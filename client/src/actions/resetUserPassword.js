@@ -6,8 +6,11 @@ import resetPassword from '../../reducers/resetPassword';
 
 /**
  * @export resetUserPassword
+ * 
  * @description it dispatches actions for password reset request and response
+ * 
  * @param {string} userData 
+ * 
  * @returns {action} dispacted actions
  */
 export const resetUserPassword = (userData) => {

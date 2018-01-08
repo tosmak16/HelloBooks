@@ -8,7 +8,9 @@ import Cardbox from './Cardbox';
 
 /**
  * @function BooksPhoto
+ * 
  * @return {view} Cardbox
+ * 
  * @param {object} props
  */
 const BooksPhoto = (props) => {

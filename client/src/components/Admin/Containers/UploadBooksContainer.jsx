@@ -14,13 +14,17 @@ import { validateBookDetails } from '../../../helperFunctions/validateBookDetail
 
 /**
  * @description UpdateBooks Connected component
+ * 
  * @class UploadBooksContainer
+ * 
  * @extends {React.Component}
  */
 class UploadBooksContainer extends React.Component {
   /**
    * Creates an instance of UploadBooksPage.
+   * 
    * @param {object} props
+   * 
    * @memberof UploadBooksPage
    */
   constructor(props) {
@@ -58,6 +62,7 @@ class UploadBooksContainer extends React.Component {
   }
   /**
    * @memberof UploadBooksContainer
+   * 
    * @returns {void}
    */
   componentDidMount() {
@@ -70,7 +75,9 @@ class UploadBooksContainer extends React.Component {
   }
   /**
    * @param {object} nextProps
+   * 
    * @memberof UploadBooksPage
+   * 
    * @returns {void}
    */
   componentWillReceiveProps(nextProps) {
@@ -139,7 +146,9 @@ class UploadBooksContainer extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof UploadBooksPage
+   * 
    * @returns {void}
    */
   handleClick(event) {
@@ -156,7 +165,9 @@ class UploadBooksContainer extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof UploadBooksPage
+   * 
    * @returns {void}
    */
   handleOpen(event) {
@@ -180,7 +191,9 @@ class UploadBooksContainer extends React.Component {
   }
   /**
    * @param {object} event
+   * '
    * @memberof UploadBooksPage
+   * 
    * @returns {void}
    */
   handleClose(event) {
@@ -192,7 +205,9 @@ class UploadBooksContainer extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof UploadBooksPage
+   * 
    * @returns {void}
    */
   handleExit(event) {
@@ -207,7 +222,9 @@ class UploadBooksContainer extends React.Component {
   }
   /**
    * @param {object} event
+   * 
    * @memberof UploadBooksPage
+   * 
    * @returns {void}
    */
   handleChange(event) {
@@ -216,7 +233,9 @@ class UploadBooksContainer extends React.Component {
 
   /**
    * @param {object} event
+   * 
    * @memberof UploadBooksPage
+   * 
    * @returns {void}
    */
   handleImageChange(event) {
@@ -246,7 +265,9 @@ class UploadBooksContainer extends React.Component {
 
   /**
    * @param {object} event
+   * 
    * @memberof UploadBooksPage
+   * 
    * @returns {void}
    */
   handleFileChange(event) {
@@ -265,6 +286,7 @@ class UploadBooksContainer extends React.Component {
 
   /**
    * @returns {views} containing uploadbook and admin sidebar component
+   * 
    * @memberof UploadBooksContainer
    */
   render() {
@@ -306,6 +328,7 @@ UploadBooksContainer.propTypes = {
 
 /**
  * @param {arrayOfObject} state
+ * 
  * @returns {object} of some redux state
  */
 const mapStateToProps = function mapStateToProps(state) {
@@ -316,7 +339,6 @@ const mapStateToProps = function mapStateToProps(state) {
     fileUrl: state.bookFileUpload[0].response,
   };
 };
-
 export default connect(mapStateToProps, {
   getBooks,
   uploadBook,

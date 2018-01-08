@@ -4,13 +4,18 @@ import { Document, Page } from 'react-pdf/build/entry.noworker';
 
 let pageNumberCount = 1;
 /**
+ * @description this component displays pdf reader
+ * 
  * @class PdfReader
+ * 
  * @extends {Component}
  */
 class PdfReader extends Component {
   /**
-   * @param {object} props '
+   * @param {object} props 
+   * '
    * @description Creates an instance of PdfReader.
+   * 
    * @memberof PdfReader
    */
   constructor(props) {
@@ -26,8 +31,11 @@ class PdfReader extends Component {
   }
   /**
    * @description this method handles loading of document
+   * 
    * @memberof PdfReader
+   * 
    * @method handleDocumentLoad
+   * 
    * @returns {void}
    */
   handleDocumentLoad({ numPages }) {
@@ -35,8 +43,11 @@ class PdfReader extends Component {
   }
   /**
    * @method handleNext
+   * 
    * @memberof PdfReader
+   * 
    * @description this method helps to navigate to next page number
+   * 
    * @returns {void}
    */
   handleNext() {
@@ -50,8 +61,11 @@ class PdfReader extends Component {
   }
   /**
     * @method handleNext
+
     * @memberof PdfReader
+
     * @description this method helps to navigate to previous page number
+
     * @returns {void}
     */
   handlePrev() {
@@ -65,7 +79,9 @@ class PdfReader extends Component {
   }
   /**
    * @returns {view} book
+   * 
    * @memberof PdfReader
+   * 
    * @description displays the document loaded
    */
   render() {

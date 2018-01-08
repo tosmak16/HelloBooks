@@ -7,17 +7,21 @@ import { setCurrentUserAuth } from '../../../actions/setCurrentUserAuth';
 
 /**
  * @description HOC which serves has registered user authentication middle ware
+ * 
  * @param {class} Component
+ * 
  * @returns {views} componenr
  */
 export default function (Component) {
   /**
    * @class LoginAuth
+   * 
    * @extends {React.Component}
    */
   class LoginAuth extends React.Component {
     /**
      * @memberof LoginAuth
+     * 
      * @returns {void}
      */
     componentWillMount() {
@@ -32,7 +36,9 @@ export default function (Component) {
     }
     /**
      * @returns {void}
+     * 
      * @param {object} nextProps
+     * 
      * @memberof LoginAuth
      */
     componentWillUpdate() {
@@ -47,6 +53,7 @@ export default function (Component) {
     }
     /**
      * @returns {views} component and it's props
+     * 
      * @memberof LoginAuth
      */
     render() {
@@ -55,6 +62,5 @@ export default function (Component) {
       );
     }
   }
-
   return LoginAuth;
 }

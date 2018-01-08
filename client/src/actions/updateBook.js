@@ -5,9 +5,13 @@ import { updateBookError, updateBookRequest, updateBookResponse } from '../../ac
 
 /**
  * @export updateBook
+ * 
  * @description it dispatch actions for updateBooks request and response
+ * 
  * @param {object} bookData 
+ * 
  * @param {string} token 
+ * 
  * @returns {action} dispacted actions
  */
 export const updateBook = (bookData, token) => {

@@ -5,8 +5,12 @@ import SingleActionModal from '../modal/SingleActionModal';
 import ActivityLoader from '../preloader/ActivityLoader';
 
 /**
+ * @description Displays Users Profile form
+ * 
  * @function UserProfileForm
+ * 
  * @param {object} props
+ * 
  * @returns {views} UserProfileForm
  */
 export const UserProfileForm = (props) => {
@@ -114,8 +118,6 @@ export const UserProfileForm = (props) => {
           bookTitle={''}
           heading={'Do you want to update your details?'}
         />
-
-
         <div
           style={{ display: displayPreloader.toString() }}
           id="activity-loader-id"
@@ -123,12 +125,10 @@ export const UserProfileForm = (props) => {
         >
           <ActivityLoader />
         </div>
-
       </form>
     </div>
   );
 };
-
 UserProfileForm.propTypes = {
   handleClick: PropTypes.func.isRequired,
   handleClose: PropTypes.func.isRequired,
@@ -137,6 +137,4 @@ UserProfileForm.propTypes = {
   handleInputChange: PropTypes.func.isRequired,
   state: PropTypes.objectOf(PropTypes.any).isRequired
 };
-
-
 export default UserProfileForm;

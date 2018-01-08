@@ -7,6 +7,7 @@ export const UPLOAD_AVATAR_FAILURE = 'UPLOAD_AVATAR_FAILURE'
 /**
 
  * @param {object} data 
+ * 
  * @returns {object} of upload Image state
  */
 export const uploadProfileImageRequest = (data) => {
@@ -18,6 +19,7 @@ export const uploadProfileImageRequest = (data) => {
 }
 /**
  * @param {string} response 
+ * 
  * @returns {object} of upload Image state
  */
 export const uploadProfileImageResponse = (response) => {
@@ -29,6 +31,7 @@ export const uploadProfileImageResponse = (response) => {
 }
 /**
  * @param {string} error 
+ * 
  * @returns {object} of upload Image state
  */
 export const uploadProfileImageError = (error) => {

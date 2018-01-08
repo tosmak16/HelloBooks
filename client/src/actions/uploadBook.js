@@ -4,9 +4,13 @@ import { uploadBookError, uploadBookRequest, uploadBookResponse } from '../../ac
 
 /** 
  * @export uploadBook
+ * 
  * @description it dispatches actions for upload books request and response
+ * 
  * @param {object} bookData 
+ * 
  * @param {string} token 
+ * 
  * @returns {action} dispacted actions
  */
 export const uploadBook = (bookData, token) => {

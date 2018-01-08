@@ -117,7 +117,7 @@ describe('Check for user registration', () => {
       .send(user)
       .end((err, res) => {
         res.should.have.status(400);
-        expect(res.body.message).to.equal('firstName length should be more than 2')
+        expect(res.body.message).to.equal('first name length should be at least 2')
         done();
       });
   });
@@ -137,7 +137,7 @@ describe('Check for user registration', () => {
       .send(user)
       .end((err, res) => {
         res.should.have.status(400);
-        expect(res.body.message).to.equal('lastName length should be more than 2')
+        expect(res.body.message).to.equal('last name length should be at least 2')
         done();
       });
   });
@@ -328,8 +328,19 @@ describe('Check for Add books API route', () => {
   });
 
   it('should return 403 Acceess denied if the user is not an admin', (done) => {
+    const books = {
+      bookTitle: 'Borrowing brilliance',
+      author: 'David kord Murray',
+      category: 'Educational',
+      isbn: '1225467890976567',
+      stockNumber: '0',
+      image: 'l9.jpg',
+      summary: 'hfhgvhgnvhgvhvhvhgvh',
+      bookFileUrl: 'l9.pdf'
+    };
     chai.request(server)
       .post('/api/v2/books')
+      .send(books)
       .set('token', userToken)
       .end((err, res) => {
         res.should.have.status(403)
@@ -354,7 +365,7 @@ describe('Check for Add books API route', () => {
       .set('token', adminToken)
       .end((err, res) => {
         res.should.have.status(400);
-        expect(res.body.message).to.equal('bookTitle is required')
+        expect(res.body.message).to.equal('book title is required')
         done();
       });
   });

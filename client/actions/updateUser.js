@@ -6,6 +6,7 @@ export const UPDATE_USER_FAILURE = 'UPDATE_USER_FAILURE'
 //Action creators
 /**
  * @param {object} data 
+ * 
  * @returns {object} of update users state
  */
 export const updateUserRequest = (data) => {
@@ -17,6 +18,7 @@ export const updateUserRequest = (data) => {
 }
 /**
  * @param {string} response 
+ * 
  * @returns {object} of update users state
  */
 export const updateUserResponse = (response) => {
@@ -28,6 +30,7 @@ export const updateUserResponse = (response) => {
 }
 /**
  * @param {string} error 
+ * 
  * @returns {object} of update users state
  */
 export const updateUserError = (error) => {

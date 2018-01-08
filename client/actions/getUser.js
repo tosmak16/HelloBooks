@@ -13,6 +13,7 @@ export const getUserRequest = () => {
 }
 /**
  * @param {object} data 
+ * 
  * @returns {object} of user state
  */
 export const getUserReponse = (data) => {
@@ -24,6 +25,7 @@ export const getUserReponse = (data) => {
 }
 /**
  * @param {string} error 
+ * 
  * @returns {object} of user state
  */
 export const getUserError = (error) => {

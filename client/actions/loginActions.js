@@ -6,6 +6,7 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE'
 //Action creators
 /**
  * @param {object} userData 
+ * 
  * @returns {object} of login state
  */
 export const loginRequest = (userData) => {
@@ -18,6 +19,7 @@ export const loginRequest = (userData) => {
 }
 /**
  * @param {string} response 
+ * 
  * @returns {object} of login state
  */
 export const loginResponse = (response) => {
@@ -30,6 +32,7 @@ export const loginResponse = (response) => {
 }
 /**
  * @param {string} error 
+ * 
  * @returns {object} of login state
  */
 export const loginError = (error) => {

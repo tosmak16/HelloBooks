@@ -3,8 +3,12 @@ import filterBy from 'lodash/filter';
 import PropTypes from 'prop-types';
 import { BookHistoryTableRow } from '../Dashboard/BookHistoryTableRow';
 /**
+ * @description Displays Borrowed Books History Table
+ * 
  * @function BorrowHistoryTable
+ * 
  * @param {object} props
+ * 
  * @return {views} BookHistoryTable
  */
 export const BorrowHistoryTable = (props) => {

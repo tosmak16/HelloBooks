@@ -4,13 +4,18 @@ import { Link } from 'react-router';
 import $ from 'jquery';
 
 /**
+ * @description  Side Bar Component
+ * 
  * @param {object} props 
- * @returns {views} login form
+ * 
+ * @returns {views} side bar componets
  */
 const SideBar = (props) => {
   /**
    * @param {object} event
+   * 
    * @memberof SideBar
+   * 
    * @returns {void}
    */
   const handleClick = (event) => {
@@ -18,13 +23,16 @@ const SideBar = (props) => {
   };
   /**
    * @param {object} event
+   * 
    * @param {boolean} [set=true]
+   * 
    * @memberof SideBar
+   * 
    * @returns {void}
    */
   const handleCollapse = (event, set = true) => {
     if (set) {
-      process.env.NODE_ENV === 'test' || $('.collapsible').collapsible();
+      $('.collapsible').collapsible();
     }
   };
   return (

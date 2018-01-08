@@ -2,7 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 /**
+ * @description This modal is used for user feedback when no or yes response is required
+ * 
  * @param {object} props
+ * 
  * @returns {views} modal
  */
 const DoubleActionModal = props => (

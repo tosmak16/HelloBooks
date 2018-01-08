@@ -5,8 +5,12 @@ import SingleActionModal from '../modal/SingleActionModal';
 import ActivityLoader from '../preloader/ActivityLoader';
 
 /**
+ * @description Displays Change password Form
+ * 
  * @function ChangePasswordForm
+ * 
  * @param {object} props
+ * 
  * @returns {views} changepassword form
  */
 export const ChangePasswordForm = (props) => {

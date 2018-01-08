@@ -9,13 +9,17 @@ import { removeStoredBookDetails } from '../BookDetail/helperFunctions/removeSto
 
 /**
  * @description Book detail unconnected component
+ * 
  * @class DetailsForm
+ * 
  * @extends {React.Component}
  */
 class DetailsForm extends React.Component {
   /**
    * Creates and initialize an instance of DetailsForm.
+   * 
    * @param {object} props
+   * 
    * @memberof DetailsForm
    */
   constructor(props) {
@@ -36,6 +40,7 @@ class DetailsForm extends React.Component {
   }
   /**
    * @memberof DetailsForm
+   * 
    * @returns {void}
    */
   componentWillMount() {
@@ -66,6 +71,7 @@ class DetailsForm extends React.Component {
   }
   /**
   * @memberof DetailsForm
+  *
   * @returns {void}
   */
   componentDidMount() {
@@ -74,7 +80,9 @@ class DetailsForm extends React.Component {
 
   /**
    * @param {object} nextProps
+   * 
    * @memberof DetailsForm
+   * 
    * @returns {void}
    */
   componentWillReceiveProps(nextProps) {
@@ -102,6 +110,7 @@ class DetailsForm extends React.Component {
 
   /**
    * @memberof DetailsForm
+   * 
    * @returns {void}
    */
   componentWillUnmount() {
@@ -109,9 +118,11 @@ class DetailsForm extends React.Component {
   }
 
   /**
-   *@returns {void}
-   *@param {object} event
-   *@memberof DetailsForm
+   * @returns {void}
+   * 
+   * @param {object} event
+   * 
+   * @memberof DetailsForm
    */
   handleClick(event) {
     event.preventDefault();
@@ -125,7 +136,9 @@ class DetailsForm extends React.Component {
 
   /**
    * @param {object} event
+   * 
    * @memberof DetailsForm
+   * 
    * @returns {void}
    */
   handleOpen(event) {
@@ -138,7 +151,9 @@ class DetailsForm extends React.Component {
 
   /**
    * @param {object} event
+   * 
    * @memberof DetailsForm
+   * 
    * @returns {void}
    */
   handleClose(event) {
@@ -151,7 +166,9 @@ class DetailsForm extends React.Component {
 
   /**
    * @param {object} event
+   * 
    * @memberof DetailsForm
+   * 
    * @returns {void}
    */
   handleExit(event) {
@@ -166,6 +183,7 @@ class DetailsForm extends React.Component {
 
   /**
    * @returns {views} containing book details
+   * 
    * @memberof DetailsForm
    */
   render() {
@@ -195,8 +213,6 @@ class DetailsForm extends React.Component {
         >Close</a>
       </div>
     </div>);
-
-
     return (
       <div className="container" id="book_details_wrapper">
         <div className="row">
@@ -253,14 +269,17 @@ class DetailsForm extends React.Component {
 
           </div>
         </div>
-        <div style={{ display: this.state.displayPreloader.toString() }} id="activity-loader-id" className="activity">
+        <div
+          style={{ display: this.state.displayPreloader.toString() }}
+          id="activity-loader-id"
+          className="activity"
+        >
           <ActivityLoader />
         </div>
       </div>
     );
   }
 }
-
 DetailsForm.propTypes = {
   book: PropTypes.arrayOf(PropTypes.any).isRequired,
   borrowBooks: PropTypes.func.isRequired,

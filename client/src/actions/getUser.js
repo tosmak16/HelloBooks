@@ -8,17 +8,18 @@ import {
 
 /**
  * @export getUser
+ * 
  * @description it sends request to get user's details
+ * 
  * @param {string} token 
+ * 
  * @returns {action} dispacted actions
  */
 export default function getUser(token) {
   let decodedToken = jwtDecode(token);
   let userId = decodedToken.id;
-
   return async (dispatch) => {
     dispatch(getUserRequest());
-
     const response = await fetch('/api/v2/users/' + userId, {
       method: 'GET',
       headers: {

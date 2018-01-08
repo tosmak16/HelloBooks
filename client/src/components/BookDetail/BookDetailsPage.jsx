@@ -8,13 +8,16 @@ import { borrowBook } from '../../actions/borrowBook';
 import displayBooksByCategory from '../../actions/displayBooksByCategory';
 
 /**
- * @description it's a connected component
+ * @description it's a connected component for Bookdetails page
+ * 
  * @param {object} props
+ * 
  * @returns {views} containing sidebar and details form
  */
 export const BookDetailsPage = props =>
   /**
    * @returns {views} with sidebar and bookDetails form
+   * 
    * @memberof BookDetailsPage
    */
   (
@@ -42,6 +45,7 @@ BookDetailsPage.propTypes = {
 };
 /**
  * @param {object} state
+ * 
  * @returns {object} of some reducer state
  */
 const mapStateToProps = state => ({
@@ -49,7 +53,6 @@ const mapStateToProps = state => ({
   book: state.selectedBookDetails,
   borrowBookItem: state.borrowBooks,
 });
-
 export default connect(mapStateToProps, {
   checkBookDetails,
   displayBooksByCategory,

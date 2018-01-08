@@ -1,5 +1,6 @@
 /**
  * @description helper function to remove book details stored in local storage
+ * 
  * @returns {void}
  */
 export const removeStoredBookDetails = () => {

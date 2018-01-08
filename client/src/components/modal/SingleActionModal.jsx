@@ -2,8 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /**
+ * @description This modal is used for user's feedback when a single response is required
+ * 
  * @function SingleActionModal
+ * 
  * @param {object} props
+ * 
  * @returns {view} modal
  */
 const SingleActionModal = props => (

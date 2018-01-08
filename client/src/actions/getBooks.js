@@ -4,8 +4,11 @@ import { getBooksError, getBooksRequest, getBooksReponse } from '../../actions/g
 
 /**
  * @export getBooks
+ * 
  * @description it sends get books request
+ * 
  * @param {boolean} set 
+ * 
  * @returns {action} dispacted actions
  */
 export const getBooks = (set) => {
