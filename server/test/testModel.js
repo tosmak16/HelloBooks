@@ -1,10 +1,6 @@
 process.env.NODE_ENV = 'test';
 import jwt from 'jsonwebtoken';
-import sequelise from 'sequelize';
-import pg from 'pg';
-import pgh from 'pg-hstore';
 import chai from 'chai';
-import sinon from 'sinon';
 import chaiHttp from 'chai-http';
 import server from '../../app';
 import auth from '../middleWare/auth';
@@ -17,12 +13,8 @@ import mockedBooks from '../../client/__mock__/book';
 import BorrowedBook from '../models/BorrowedBook';
 
 const book = mockedBooks[0];
-
-
 const should = chai.should();
 const expect = chai.expect;
-
-
 const user = {
   username: 'userg',
   password: '123456',

@@ -134,7 +134,10 @@ export class BorrowedBooksPage extends React.Component {
       bookId,
       Id: selectedBookIndex,
     });
-    $('#modal1').modal('open');
+    $(document).ready(() => {
+      $('.modal').modal();
+      $('#modal1').modal('open');
+    });
   }
   /**
    * @param {object} event
