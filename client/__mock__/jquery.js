@@ -6,3 +6,4 @@ $.prototype.collapsible = () => { };
 global.Materialize = {
   toast: () => { }
 };
+
