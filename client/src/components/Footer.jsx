@@ -4,8 +4,8 @@ import { Link } from 'react-router';
 /**
  * @description This component contains footer
  * 
- *@function Footer
-
+ * @function Footer
+ *
  *@returns {views} footer
  */
 export const Footer = () => (
@@ -14,14 +14,6 @@ export const Footer = () => (
       <div className=" col l12 col m12 col s12">
         <div className="footer-left col l4 col m4 col s12">
           <h3>Hello<span>Books</span></h3>
-          <p className="footer-links">
-            <Link to={'http//:'}>Home</Link>
-            <Link to={'http//:'}>Blog</Link>
-            <Link to={'http//:'}>Pricing</Link>
-            <Link to={'http//:'}>About</Link>
-            <Link to={'http//:'}>Faq</Link>
-            <Link to={'http//:'}>Contact</Link>
-          </p>
           <p className="footer-company-name">Tosmak &copy; 2017</p>
         </div>
         <div className="footer-center col l4 col m4 col s12">

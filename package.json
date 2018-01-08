@@ -19,7 +19,8 @@
     "migrate:test:db": "sequelize db:migrate",
     "heroku": "babel-node ./app.js",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "e2e:test": "NODE_ENV=e2eTest ./node_modules/.bin/nightwatch"
+    "e2e:test": "NODE_ENV=e2eTest ./node_modules/.bin/nightwatch",
+    "startTest": "concurrently --kill-others \" npm run start:dev\" \"npm run e2e:test\""
   },
   "keywords": [
     "style guide",
@@ -46,6 +47,7 @@
     "chai-http": "^3.0.0",
     "classnames": "^2.2.5",
     "cloudinary-core": "^2.3.0",
+    "concurrently": "^3.5.1",
     "connect-busboy": "0.0.2",
     "crypto-js": "^3.1.9-1",
     "css-loader": "^0.28.5",
@@ -55,7 +57,6 @@
     "expect": "^21.2.0",
     "express": "^4.15.4",
     "express-validator": "^4.3.0",
-    "file-loader": "^0.11.2",
     "file-system": "^2.2.2",
     "hammerjs": "^2.0.8",
     "heroku-cli": "^6.13.10",
@@ -134,12 +135,14 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
     "fetch-mock": "^5.12.2",
+    "file-loader": "^0.11.2",
     "jest": "^21.2.0",
     "jest-babel-istanbul": "^0.1.0",
     "mocha-coveralls-reporter": "0.0.5",
     "nightwatch": "^0.9.19",
     "nodemon": "^1.11.0",
     "nyc": "^11.3.0",
-    "redux-mock-store": "^1.3.0"
+    "redux-mock-store": "^1.3.0",
+    "url-loader": "^0.6.2"
   }
 }

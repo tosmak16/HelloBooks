@@ -1,10 +1,6 @@
 process.env.NODE_ENV = 'test';
 import jwt from 'jsonwebtoken';
-import sequelise from 'sequelize';
-import pg from 'pg';
-import pgh from 'pg-hstore';
 import chai from 'chai';
-import sinon from 'sinon';
 import chaiHttp from 'chai-http';
 import server from '../../app';
 import auth from '../middleWare/auth';
@@ -12,25 +8,18 @@ import User from '../models/User';
 import Book from '../models/Book';
 import borrowbook from '../models/BorrowedBook';
 
-
 const should = chai.should();
 const expect = chai.expect;
-
-
 chai.use(chaiHttp);
 let userToken;
 let adminToken;
 let fakeUserToken;
-const next = sinon.spy();
 
 fakeUserToken = jwt.sign({
   id: 13,
   user: 'Tosmak',
   role: 'user'
-}, 'encoded');
-
-
-
+}, process.env.SECRET);
 
 // Registration test
 describe('Check for user registration', () => {
@@ -223,8 +212,6 @@ describe('Check for login ', () => {
         done();
       });
   });
-
-
   it('should not allow the user to login if username and password are incorrct', (done) => {
     const user = {
       username: 'user',

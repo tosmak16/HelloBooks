@@ -229,17 +229,18 @@ class DashboardSidebar extends React.Component {
                 <div id="imageborder">
                   <div className="file-field input-field">
                     <div id="filebtn" style={{ marginLeft: '5px', color: 'white' }} className="">
-                      <span />
-                      {!_.isEmpty(this.props.userData[0])
-                        && <img
-                          id="userimg"
-                          src={this.state.imagePreviewUrl ?
-                            this.state.imagePreviewUrl :
-                            !isEmpty(this.props.userData[0].profileImage) ? this.props.userData[0].profileImage : 'https://res.cloudinary.com/tosmak/image/upload/v1507297483/userimg_cxeszl.png'}
-                          width="120"
-                          height="120"
-                          alt="images"
-                        />}
+                      <span >
+                        {!_.isEmpty(this.props.userData[0])
+                          && <img
+                            id="userimg"
+                            src={this.state.imagePreviewUrl ?
+                              this.state.imagePreviewUrl :
+                              !isEmpty(this.props.userData[0].profileImage) ? this.props.userData[0].profileImage : 'https://res.cloudinary.com/tosmak/image/upload/v1507297483/userimg_cxeszl.png'}
+                            width="120"
+                            height="120"
+                            alt="images"
+                          />}
+                      </span>
                       <input
                         disabled={this.state.disabled}
                         className="fileInput"
@@ -249,7 +250,6 @@ class DashboardSidebar extends React.Component {
                         accept=".png, .jpg, .jpeg"
                         placeholder="Upload profile image"
                       />
-
                     </div>
                     <div className="file-path-wrapper">
                       <input className="file-path validate" style={{ width: '100px' }} type="text" placeholder="Upload profile image" />

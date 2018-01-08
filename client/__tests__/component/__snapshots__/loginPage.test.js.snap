@@ -302,46 +302,6 @@ exports[`Login Page Component test should test and take snapshot of LoginPage 1`
             </span>
           </h3>
           <p
-            className="footer-links"
-          >
-            <a
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Home
-            </a>
-            <a
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Blog
-            </a>
-            <a
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Pricing
-            </a>
-            <a
-              onClick={[Function]}
-              style={Object {}}
-            >
-              About
-            </a>
-            <a
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Faq
-            </a>
-            <a
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Contact
-            </a>
-          </p>
-          <p
             className="footer-company-name"
           >
             Tosmak © 2017

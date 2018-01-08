@@ -8,3 +8,4 @@ template
 .env_sample
 package-lock.json
 coverage
+e2eTestReport
