@@ -26,6 +26,7 @@ const UpdateBooksPage = (props) => {
         action=""
         encType="multipart/form-data"
       >
+        <h4 className="sub-header"> Edit book</h4>
         <div className="">
           <div className="">
             <CategorySelect
@@ -41,7 +42,6 @@ const UpdateBooksPage = (props) => {
             />
           </div>
         </div >
-        <h4 className="sub-header"> Edit book</h4>
         <div className="form-group input-field">
           <input
             disabled={!state.isDisabled}
