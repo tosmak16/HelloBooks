@@ -299,3 +299,15 @@ color: #3d1112 !important;
    border-right: 1px solid gray;
    border-top: 5px solid gray;
 }
+
+#ubookTitle #ubookAuthor #ubookCat #uISBN #ustock{
+    height: 35px;
+}
+#ebookAuthor, #ebookTitle, #ebookCat, #eISBN, #ebookSummary, #estock{
+    height: 35px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+#b_page > form, #bh_table > form{
+    margin-top: 0px;
+}

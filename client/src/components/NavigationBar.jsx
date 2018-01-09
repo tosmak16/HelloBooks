@@ -1,8 +1,10 @@
 import React from 'react';
-import { Link, browserHistory } from 'react-router';
+import jwtDecode from 'jwt-decode';
 import { PropTypes } from 'prop-types';
+import { Link, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { logout } from '../actions/logout';
+
 
 /**
  * @description Nav bar functional component
@@ -12,9 +14,10 @@ import { logout } from '../actions/logout';
  * @returns {views} navigation bar
  */
 const NavigationBar = (props) => {
+  let decodedToken = '';
   /**
     * @param {object} event
-    
+    *
     * @returns {void} 
    */
   const handleLogout = (event) => {
@@ -23,10 +26,14 @@ const NavigationBar = (props) => {
     browserHistory.push('/login');
   };
   const { isAuthenticated, user } = props.auth;
+  isAuthenticated ? decodedToken = jwtDecode(localStorage.jwtToken) : decodedToken;
   const userLinks = (
     <div>
       <ul id="nav-mobile" className="right hide-on-small-only navbar_list">
         <li><Link href="/books" >Catalogue</Link></li>
+        {isAuthenticated && decodedToken.role.toString() === 'admin' && <li><Link className="user-profile-nav" href="/admin" ><i
+          className="material-icons left"
+        >store</i>Store</Link></li>}
         <li><Link className="user-profile-nav" href="/dashboard/userprofile" ><i
           className="material-icons left"
         >account_circle</i>{user.user} profile</Link></li>
@@ -38,6 +45,9 @@ const NavigationBar = (props) => {
     <div>
       <ul id="nav-mobile" className="left hide-on-med-and-up navbar_list ">
         <li><Link href="/books" >Catalogue</Link></li>
+        {isAuthenticated && decodedToken.role.toString() === 'admin' && <li><Link className="user-profile-nav" href="/admin" ><i
+          className="material-icons left"
+        >store</i> Store</Link></li>}
         <li><Link className="user-profile-nav" href="/dashboard/userprofile" ><i
           className="material-icons left"
         >account_circle</i>{
