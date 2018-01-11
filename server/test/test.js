@@ -37,7 +37,10 @@ describe('Check for user registration', () => {
       .send(user)
       .end((err, res) => {
         res.should.have.status(201);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Account created')
+        expect(res.body.storedDetails.username).to.equal(user.username);
+        expect(res.body.storedDetails).to.be.an('object');
         done();
       });
   });
@@ -58,12 +61,15 @@ describe('Check for user registration', () => {
       .send(user)
       .end((err, res) => {
         res.should.have.status(201);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Account created')
+        expect(res.body.storedDetails.username).to.equal(user.username);
+        expect(res.body.storedDetails).to.be.an('object');
         done();
       });
   });
 
-  it('it should not register the user because first name parameter was not inputed', (done) => {
+  it('should not register the user because first name parameter was not inputed', (done) => {
     chai.request(server)
       .post('/api/v2/users/signup')
       .end((err, res) => {
@@ -72,7 +78,7 @@ describe('Check for user registration', () => {
         done();
       });
   });
-  it('it should not register the user because last name parameter was not inputed', (done) => {
+  it('should not register the user because last name parameter was not inputed', (done) => {
     const user = {
       username: 'admin',
       password: '123456',
@@ -86,12 +92,13 @@ describe('Check for user registration', () => {
       .send(user)
       .end((err, res) => {
         res.should.have.status(400);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('last name is required')
         done();
       });
   });
 
-  it('it should not register the user because first name parameter length is less than two', (done) => {
+  it('should not register the user because first name parameter length is less than two', (done) => {
     const user = {
       username: 'admin',
       password: '123456',
@@ -106,12 +113,13 @@ describe('Check for user registration', () => {
       .send(user)
       .end((err, res) => {
         res.should.have.status(400);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('first name length should be at least 2')
         done();
       });
   });
 
-  it('it should not register the user because last name parameter length is less than two', (done) => {
+  it('should not register the user because last name parameter length is less than two', (done) => {
     const user = {
       username: 'admin',
       password: '123456',
@@ -126,6 +134,7 @@ describe('Check for user registration', () => {
       .send(user)
       .end((err, res) => {
         res.should.have.status(400);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('last name length should be at least 2')
         done();
       });
@@ -147,12 +156,13 @@ describe('Check for user registration', () => {
       .send(user)
       .end((err, res) => {
         res.should.have.status(409);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('username already exist')
         done();
       });
   });
 
-  it('should not register user if the length of firstname is less than 3 and if all required parameters are inputed', (done) => {
+  it('should not register user if email does exist and if all required parameters are inputed', (done) => {
     const user = {
       username: 'admins',
       password: '123456',
@@ -167,6 +177,7 @@ describe('Check for user registration', () => {
       .send(user)
       .end((err, res) => {
         res.should.have.status(409);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('email already exist')
         done();
       });
@@ -175,10 +186,11 @@ describe('Check for user registration', () => {
 
 // sign in test
 describe('Check for login ', () => {
-  it('should not allow the user to login if username not defined', (done) => {
+  it('should not allow the user to login if username is not defined', (done) => {
     chai.request(server)
       .post('/api/v2/users/signin')
       .end((err, res) => {
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('username is required')
         res.should.have.status(400);
         done();
@@ -192,6 +204,7 @@ describe('Check for login ', () => {
       .post('/api/v2/users/signin')
       .send(user)
       .end((err, res) => {
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('password is required')
         res.should.have.status(400);
         done();
@@ -206,9 +219,12 @@ describe('Check for login ', () => {
       .post('/api/v2/users/signin')
       .send(user)
       .end((err, res) => {
-        userToken = res.body.token
+        expect(res.body.token).to.be.a('string');
+        expect(res.body.token).not.to.be.an('undefined');
         res.should.have.status(200)
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('You have successfully logged in')
+        userToken = res.body.token
         done();
       });
   });
@@ -222,6 +238,7 @@ describe('Check for login ', () => {
       .send(user)
       .end((err, res) => {
         res.should.have.status(400)
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('please enter valid details')
         done();
       });
@@ -237,6 +254,7 @@ describe('Check for login ', () => {
       .send(user)
       .end((err, res) => {
         adminToken = res.body.token;
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('You have successfully logged in')
         res.should.have.status(200);
         done();
@@ -250,17 +268,19 @@ describe('Check for token for user authentication', () => {
     chai.request(server)
       .post('/api/v2/users/1/books')
       .end((err, res) => {
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Token not provided')
         res.should.have.status(404);
         done();
       });
   });
 
-  it('should return Invalid user if wrong token  is provided in the request', (done) => {
+  it('should return Invalid user if wrong token is provided in the request', (done) => {
     chai.request(server)
       .post('/api/v2/users/1/books')
       .set('token', userToken + '1')
       .end((err, res) => {
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Invalid user')
         res.should.have.status(401);
         done();
@@ -286,6 +306,7 @@ describe('Check for Add books API route', () => {
       .send(books)
       .set('token', adminToken)
       .end((err, res) => {
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Book has been added to store')
         res.should.have.status(201);
         done();
@@ -308,6 +329,9 @@ describe('Check for Add books API route', () => {
       .send(books)
       .set('token', adminToken)
       .end((err, res) => {
+        expect(res.body.message).to.be.a('string');
+        expect(res.body.bookReport).to.be.a('object');
+        expect(res.body.bookReport.bookTitle).to.equal(books.bookTitle);
         expect(res.body.message).to.equal('Book has been added to store')
         res.should.have.status(201);
         done();
@@ -331,12 +355,13 @@ describe('Check for Add books API route', () => {
       .set('token', userToken)
       .end((err, res) => {
         res.should.have.status(403)
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Access Denied!')
         done();
       });
   });
 
-  it('should return 400 bad request if the user is an admin but book title is not defined', (done) => {
+  it('should return 400 book Title is required if the user is an admin but book title is not defined', (done) => {
     const books = {
       author: 'David kord Murray',
       category: 'Educational',
@@ -352,11 +377,12 @@ describe('Check for Add books API route', () => {
       .set('token', adminToken)
       .end((err, res) => {
         res.should.have.status(400);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('book title is required')
         done();
       });
   });
-  it('should return 400 bad request if the user is an admin but author is not defined', (done) => {
+  it('should return 400 author is required if the user is an admin but author is not defined', (done) => {
     const books = {
       bookTitle: 'Borrowing brilliance',
       category: 'Educational',
@@ -372,12 +398,13 @@ describe('Check for Add books API route', () => {
       .set('token', adminToken)
       .end((err, res) => {
         res.should.have.status(400);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('author is required')
         done();
       });
   });
 
-  it('should return 400 bad request if the user is an admin but category is not defined', (done) => {
+  it('should return 400 book category is required if the user is an admin but category is not defined', (done) => {
     const books = {
       bookTitle: 'Borrowing brilliance',
       author: 'David kord Murray',
@@ -393,13 +420,13 @@ describe('Check for Add books API route', () => {
       .set('token', adminToken)
       .end((err, res) => {
         res.should.have.status(400);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('book category is required')
         done();
       });
   });
 
-
-  it('should return error if the same isbn number is used for another book', (done) => {
+  it('should return error if the same isbn number is already in use for another book', (done) => {
     const books = {
       bookTitle: 'Time Mchine',
       author: 'David lome',
@@ -416,6 +443,7 @@ describe('Check for Add books API route', () => {
       .set('token', adminToken)
       .end((err, res) => {
         res.should.have.status(400);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('isbn must be unique')
         done();
       });
@@ -423,12 +451,13 @@ describe('Check for Add books API route', () => {
 });
 // borrow books API route Test
 describe('check borrowbooks route', () => {
-  it('should return 401 if user is invalid ', (done) => {
+  it('should return 401 Invalid Identity if user is invalid ', (done) => {
     chai.request(server)
       .post('/api/v2/users/2/books')
       .set('token', userToken)
       .end((err, res) => {
         res.should.have.status(401);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Invalid Identity')
         done();
       });
@@ -440,6 +469,7 @@ describe('check borrowbooks route', () => {
       .set('token', userToken)
       .end((err, res) => {
         res.should.have.status(400);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('sorry, bookId can not be undefined')
         done();
       });
@@ -455,6 +485,7 @@ describe('check borrowbooks route', () => {
       })
       .end((err, res) => {
         res.should.have.status(404);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Book Not Found')
         done();
       });
@@ -470,12 +501,13 @@ describe('check borrowbooks route', () => {
       })
       .end((err, res) => {
         res.should.have.status(404);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Book Not available in stock')
         done();
       });
   });
 
-  it('should allow user to borrow a book if number in stock is not zero', (done) => {
+  it('should allow user to borrow a book if book is available', (done) => {
     const bookId = '1';
     chai.request(server)
       .post('/api/v2/users/1/books')
@@ -499,6 +531,7 @@ describe('check borrowbooks route', () => {
       })
       .end((err, res) => {
         res.should.have.status(403);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('You have borrowed this book before !')
         done();
       });
@@ -513,6 +546,7 @@ describe('check borrowbooks route', () => {
       })
       .end((err, res) => {
         res.should.have.status(403);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Sorry you can not borrow more than 1 books')
         done();
       });
@@ -527,6 +561,7 @@ describe('Check for return borrowed books API route', () => {
       .set('token', userToken)
       .end((err, res) => {
         res.should.have.status(401);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Invalid Identity');
         done();
       });
@@ -538,6 +573,7 @@ describe('Check for return borrowed books API route', () => {
       .set('token', userToken)
       .end((err, res) => {
         res.should.have.status(400);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('borrowedBook Id is required')
         done();
       });
@@ -552,6 +588,7 @@ describe('Check for return borrowed books API route', () => {
       })
       .end((err, res) => {
         res.should.have.status(401);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Invalid Identity');
         done();
       });
@@ -566,13 +603,12 @@ describe('Check for return borrowed books API route', () => {
         Id
       })
       .end((err, res) => {
-        //res.should.have.status(200);
+        res.should.have.status(200);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('book has been returned successfully');
         done();
       });
   });
-
-
   it('should return record not found if the book was not borrowed', (done) => {
     const bookId = '1';
     const Id = '100';
@@ -585,6 +621,7 @@ describe('Check for return borrowed books API route', () => {
       })
       .end((err, res) => {
         res.should.have.status(404);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Record not found');
         done();
       });
@@ -600,6 +637,7 @@ describe('Check for return borrowed books API route', () => {
       })
       .end((err, res) => {
         res.should.have.status(403);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('This book has been returned before');
         done();
       });
@@ -607,7 +645,6 @@ describe('Check for return borrowed books API route', () => {
 });
 
 // Test for unreturned books
-
 describe('Check for unreturned books API route', () => {
   it('should return 403 invalid Identity', (done) => {
     chai.request(server)
@@ -615,6 +652,7 @@ describe('Check for unreturned books API route', () => {
       .set('token', userToken)
       .end((err, res) => {
         res.should.have.status(401);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Invalid Identity');
         done();
       });
@@ -625,6 +663,7 @@ describe('Check for unreturned books API route', () => {
       .set('token', userToken)
       .end((err, res) => {
         res.should.have.status(401);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Invalid Identity')
         done();
       });
@@ -636,6 +675,7 @@ describe('Check for unreturned books API route', () => {
       .end((err, res) => {
         res.should.have.status(401);
         expect(res.body.message).to.equal('Invalid user')
+        expect(res.body.message).to.be.a('string');
         done();
       });
   });
@@ -646,6 +686,8 @@ describe('Check for unreturned books API route', () => {
       .set('token', userToken)
       .end((err, res) => {
         res.should.have.status(200);
+        expect(res.body.message).to.be.a('string');
+        expect(res.body.unreturnedBook).to.be.an('array');
         expect(res.body.message).to.equal('Borrowed books history retrieved')
         done();
       });
@@ -660,6 +702,7 @@ describe('Check for Delete books API route', () => {
       .set('token', userToken)
       .end((err, res) => {
         res.should.have.status(403);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Access Denied!')
         done();
       });
@@ -671,6 +714,7 @@ describe('Check for Delete books API route', () => {
       .set('token', adminToken)
       .end((err, res) => {
         res.should.have.status(404);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Book does not exist')
         done();
       });
@@ -681,6 +725,7 @@ describe('Check for Delete books API route', () => {
       .delete('/api/v2/books/2')
       .set('token', adminToken)
       .end((err, res) => {
+        expect(res.body).to.be.an('object');
         res.should.have.status(204);
         done();
       });
@@ -688,7 +733,6 @@ describe('Check for Delete books API route', () => {
 });
 
 // // Test Edit books API route
-
 describe('Check for Update books API route', () => {
   it('should return 403 Acceess denied if the user is not an admin', (done) => {
     chai.request(server)
@@ -696,6 +740,7 @@ describe('Check for Update books API route', () => {
       .set('token', userToken)
       .end((err, res) => {
         res.should.have.status(403);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Access Denied!');
         done();
       });
@@ -707,6 +752,7 @@ describe('Check for Update books API route', () => {
 
       .end((err, res) => {
         res.should.have.status(400);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('sorry, book identity must be a number');
         done();
       });
@@ -718,6 +764,7 @@ describe('Check for Update books API route', () => {
 
       .end((err, res) => {
         res.should.have.status(404);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Book does not exist');
         done();
       });
@@ -732,6 +779,9 @@ describe('Check for Update books API route', () => {
       })
       .end((err, res) => {
         res.should.have.status(200);
+        expect(res.body.message).to.be.a('string');
+        expect(res.body.book).to.be.an('object');
+        expect(res.body.book.author).to.equal(author)
         expect(res.body.message).to.equal('Book has been updated');
         done();
       });
@@ -746,6 +796,8 @@ describe('Check for get all books api', () => {
       .set('token', userToken)
       .end((err, res) => {
         res.should.have.status(200);
+        expect(res.body.books).to.be.an('array');
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Success!');
         done();
       });
@@ -760,6 +812,7 @@ describe('Check for get all users api', () => {
       .set('token', adminToken)
       .end((err, res) => {
         res.should.have.status(200);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Success!');
         done();
       });
@@ -771,6 +824,7 @@ describe('Check for get all users api', () => {
       .set('token', userToken)
       .end((err, res) => {
         res.should.have.status(403);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Access Denied!')
         done();
       });
@@ -778,7 +832,6 @@ describe('Check for get all users api', () => {
 });
 
 //Test getBorrowedBooks controller
-
 describe('Check for getBorrowedBooks api route', () => {
   it('should return 403 invalid Identity', (done) => {
     chai.request(server)
@@ -786,6 +839,7 @@ describe('Check for getBorrowedBooks api route', () => {
       .set('token', userToken)
       .end((err, res) => {
         res.should.have.status(401);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Invalid Identity');
         done();
       });
@@ -796,6 +850,7 @@ describe('Check for getBorrowedBooks api route', () => {
       .set('token', userToken)
       .end((err, res) => {
         res.should.have.status(200);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Borrowed books history retrieved')
         done();
       });
@@ -803,7 +858,6 @@ describe('Check for getBorrowedBooks api route', () => {
 });
 
 //Test getUserDetails
-
 describe('Check for getUserDetails api route', () => {
   it('should return 403 invalid Identity', (done) => {
     chai.request(server)
@@ -811,6 +865,7 @@ describe('Check for getUserDetails api route', () => {
       .set('token', userToken)
       .end((err, res) => {
         res.should.have.status(401);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Invalid Identity');
         done();
       });
@@ -821,6 +876,7 @@ describe('Check for getUserDetails api route', () => {
       .set('token', userToken)
       .end((err, res) => {
         res.should.have.status(200);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Success!')
         done();
       });
@@ -828,7 +884,6 @@ describe('Check for getUserDetails api route', () => {
 });
 
 //Test Update user
-
 describe('Check for updateuser details api route', () => {
   it('should return 403 invalid Identity', (done) => {
     chai.request(server)
@@ -836,6 +891,7 @@ describe('Check for updateuser details api route', () => {
       .set('token', userToken)
       .end((err, res) => {
         res.should.have.status(401);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Invalid Identity');
         done();
       });
@@ -846,6 +902,7 @@ describe('Check for updateuser details api route', () => {
       .set('token', fakeUserToken)
       .end((err, res) => {
         res.should.have.status(401);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('User does not exist')
         done();
       });
@@ -859,6 +916,7 @@ describe('Check for updateuser details api route', () => {
       })
       .end((err, res) => {
         res.should.have.status(200);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Details has been updated')
         done();
       });
@@ -873,6 +931,7 @@ describe('Check for change password api route', () => {
       .set('token', userToken)
       .end((err, res) => {
         res.should.have.status(401);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Invalid Identity');
         done();
       });
@@ -886,6 +945,7 @@ describe('Check for change password api route', () => {
       })
       .end((err, res) => {
         res.should.have.status(400);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('new password is required')
         done();
       });
@@ -900,6 +960,7 @@ describe('Check for change password api route', () => {
       })
       .end((err, res) => {
         res.should.have.status(406);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Current password is wrong')
         done();
       });
@@ -915,6 +976,7 @@ describe('Check for change password api route', () => {
       })
       .end((err, res) => {
         res.should.have.status(200);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Password has been changed')
         done();
       });
@@ -928,6 +990,7 @@ describe('Check for reset password api route', () => {
       .send({ email: '' })
       .end((err, res) => {
         res.should.have.status(400);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Email is required');
         done();
       });
@@ -949,6 +1012,7 @@ describe('Check for reset password api route', () => {
       .send({ email: 'usera1@gmail.commmmm' })
       .end((err, res) => {
         res.should.have.status(400);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Sorry email does not exist');
         done();
       });
@@ -960,6 +1024,7 @@ describe('Check for reset password api route', () => {
       .send({ email: 'usera1@gmail.com' })
       .end((err, res) => {
         res.should.have.status(200);
+        expect(res.body.message).to.be.a('string');
         expect(res.body.message).to.equal('Successful! Check your email for password reset details');
         done();
       });
@@ -980,6 +1045,7 @@ describe('Check for reset password api route', () => {
         .send(user)
         .end((err, res) => {
           res.should.have.status(200);
+          expect(res.body.message).to.be.a('string');
           expect(res.body.message).to.equal('You have successfully logged in');
           done();
         });
@@ -997,6 +1063,7 @@ describe('Check for reset password api route', () => {
         .send(user2)
         .end((err, res) => {
           res.should.have.status(201);
+          expect(res.body.message).to.be.a('string');
           expect(res.body.message).to.equal('You have successfully sign up');
           done();
         });
@@ -1014,6 +1081,7 @@ describe('Check for reset password api route', () => {
         .send(user3)
         .end((err, res) => {
           res.should.have.status(400);
+          expect(res.body.message).to.be.a('string');
           expect(res.body.message).to.equal('invalid account details');
           done();
         });
