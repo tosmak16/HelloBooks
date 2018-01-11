@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route, IndexRoute, Redirect } from 'react-router';
 
 import App from '../components/App';
 import LoginPage from '../components/Login';
@@ -36,5 +36,6 @@ export default
     <Route path="/admin/bookstore" component={AdminShield(BookStoreContainer)} />
     <Route path="/admin/uploadbook" component={AdminShield(UploadBooksContainer)} />
     <Route path="/admin/updatebook" component={AdminShield(UpdateBooksContainer)} />
+    <Redirect from="/*" to="/login" component={LoginPage} />
   </Route>
 );

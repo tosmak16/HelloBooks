@@ -173,6 +173,7 @@ const UploadBooksPage = (props) => {
     </div>
   );
 };
+
 UploadBooksPage.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired,

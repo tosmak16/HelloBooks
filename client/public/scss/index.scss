@@ -445,3 +445,54 @@ div.toast{
 .resize-input{
 	height: 10px;
 }
+
+
+// table style
+
+.shelf{
+	background-color: rgba(99, 67, 29, 0.501);
+	height: 70px;
+	width:100px;
+  }
+  
+  .vertical{
+	border-left: 2px solid rgb(99, 67, 29);
+	border-right: 2px solid  rgb(99, 67, 29);
+  }
+  
+  .horizontal{
+	border-bottom: 2px solid rgb(99, 67, 29);
+  }
+
+  .table-cover{
+	  margin-top: 20px;
+  }
+
+  .hr-common{
+	box-shadow: 0px 10px 10px 3px rgba(33, 25, 16, 0.631);
+	height: 10px;
+	width: 90px;
+	margin: 0px;
+  }
+  .brown-hr{
+	border: 2px solid saddlebrown;
+	background-color: burlywood;
+	border-left: none;
+
+  }
+  
+  .white-hr{
+	border: 2px solid black;
+	background-color: white;
+	border-left: none;
+  }
+  
+  .black-hr{
+	border: 2px solid rgb(102, 71, 30);
+	background-color: rgb(191, 173, 151);
+	border-left: none;
+	padding-right: -100px;
+  }
+.down-shelf{
+	background-color: rgba(99, 67, 29, 0.796);
+}

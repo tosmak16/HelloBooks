@@ -10,13 +10,11 @@ import { setCurrentUserAuth } from '../../actions/setCurrentUserAuth';
 export const logout = () => {
   localStorage.clear()
   Materialize.toast('You are signed out', 5000, 'red');
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(setCurrentUserAuth({}));
     try {
       const auth2 = gapi.auth2.getAuthInstance();
-      auth2.signOut().then(() =>
-        'User signed out.'
-      );
+      await auth2.signOut()
     } catch (error) {
       return 'User Signed Out'
     }
