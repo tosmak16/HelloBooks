@@ -8,7 +8,7 @@
     "build": "NODE_ENV=production webpack --config webpack.prod.js --progress",
     "test": "NODE_ENV=test npm run db:drop && NODE_ENV=test npm run migrate:db && NODE_ENV=test nyc --reporter=html --reporter=text babel-node ./node_modules/mocha/bin/_mocha server/test/**.js --presets es2015,stage-2 && npm run client:test",
     "tests": "nyc jest ./client/__tests__/",
-    "client:test": "NODE_ENV=test jest ./client/__tests__/ -i",
+    "client:test": "NODE_ENV=test jest ./client/__tests__/ -i -- -u",
     "start": "NODE_ENV=production babel-node ./app.js ",
     "start:dev": "NODE_ENV=development babel-node ./app.js ",
     "start:e2e": "babel-node ./app.js ",

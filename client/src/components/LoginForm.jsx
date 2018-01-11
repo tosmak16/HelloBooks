@@ -257,6 +257,7 @@ export class LoginForm extends React.Component {
           />
         }
       </div>
+
     );
   }
 }

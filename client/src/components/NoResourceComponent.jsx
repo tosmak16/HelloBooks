@@ -24,7 +24,7 @@ const NoResourceComponent = () =>
       </p>
       <img
         id="emptyShelfIcon"
-        src="http://res.cloudinary.com/tosmak/image/upload/v1515058191/smiley_sad_wdjuay.png"
+        src="https://res.cloudinary.com/tosmak/image/upload/v1515058191/smiley_sad_wdjuay.png"
         alt="emptyShelfIcon"
       />
     </div>
