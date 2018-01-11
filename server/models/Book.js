@@ -92,7 +92,7 @@ export default (sequelize, DataTypes) => {
       validate: {
         len: {
           args: [0, 500],
-          msg: 'summary should be more than 3 characters long',
+          msg: 'summary ranges between 0 and 500',
         },
       },
 
