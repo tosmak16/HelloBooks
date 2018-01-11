@@ -13,8 +13,6 @@ module.exports = {
     publicPath: '/',
   },
   plugins: [
-    // it exchanges, adds, or removes modules while an application is running without a page reload.
-    new webpack.HotModuleReplacementPlugin(),
     // it Automatically load modules instead of having to import or require them everywhere
     new webpack.ProvidePlugin({
       $: 'jquery',
