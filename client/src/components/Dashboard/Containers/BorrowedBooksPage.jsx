@@ -61,6 +61,7 @@ export class BorrowedBooksPage extends React.Component {
    * @returns {void}
    */
   componentDidMount() {
+    document.title = 'BorrowedBooksPage';
     if (_.isEmpty(this.props.userData)) {
       this.props.getUserdetails(localStorage.jwtToken);
     }

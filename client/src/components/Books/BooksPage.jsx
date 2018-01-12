@@ -133,6 +133,7 @@ export class BooksPage extends React.Component {
    * @memberof BooksPage
    */
   render() {
+    document.title = 'Books';
     return (
       <div className="">
         <div className="row">

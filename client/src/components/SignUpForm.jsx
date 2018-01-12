@@ -58,6 +58,8 @@ export class SignUpForm extends React.Component {
    * @memberof SignUpForm
    */
   render() {
+    document.title = 'SignupPage';
+
     const { error } = this.props.register;
     return (
       <form onSubmit={this.handleSubmit} className="form-signin" action="/login">

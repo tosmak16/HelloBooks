@@ -235,6 +235,7 @@ export class UserProfile extends React.Component {
    * @memberof UserProfile
    */
   render() {
+    document.title = 'UserProfile';
     return (
       <div >
         <div className="row">

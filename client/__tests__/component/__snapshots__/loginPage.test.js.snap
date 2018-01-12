@@ -97,7 +97,6 @@ exports[`Login Page Component test should test and take snapshot of LoginForm 1`
       Sign in
     </button>
     <div
-      data-onsuccess={[Function]}
       id="g-signin2"
       onClick={[Function]}
       style={
@@ -542,7 +541,6 @@ exports[`Login Page Component test should test and take snapshot of LoginPage 1`
               Sign in
             </button>
             <div
-              data-onsuccess={[Function]}
               id="g-signin2"
               onClick={[Function]}
               style={

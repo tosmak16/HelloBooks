@@ -44,6 +44,7 @@ export class BorrowHistoryBooksPage extends React.Component {
    * @returns {void}
    */
   componentDidMount() {
+    document.title = 'BorrowedBooksHistoryPage';
     if (isEmpty(this.props.userData)) {
       this.props.getUserdetails(localStorage.jwtToken);
     }

@@ -187,6 +187,7 @@ export class ChangePasswordPage extends React.Component {
    * @memberof ChangePasswordPage
    */
   render() {
+    document.title = 'ChangePasswordPage';
     return (
       <div >
         <div className="row">
