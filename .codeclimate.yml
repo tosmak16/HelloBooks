@@ -18,14 +18,17 @@ exclude_paths:
 - node_modules/
 - client/
 checks:
-  file-lines:
-    enabled: false
-  complex-logic:
-    enabled: false
-  method-complexity:
-      enabled: false
   method-lines:
-      enabled: false
-  nested-control-flow:
-      enabled: false
+    config:
+      threshold: 70
+  complex-logic:
+    config:
+      threshold: 25
+  method-complexity:
+    config:
+      threshold: 8
+  return-statements:
+    config:
+      threshold: 20
+      
 
