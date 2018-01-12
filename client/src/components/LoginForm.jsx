@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Input, Row } from 'react-materialize';
-import $ from 'jquery';
 import { ResetPasswordModal } from './modal/ResetPasswordModal';
-
 
 /**
  * @export LoginForm
@@ -30,7 +28,8 @@ export class LoginForm extends React.Component {
       password: '',
       errors: '',
       displayModal: false,
-      userEmailText: ''
+      userEmailText: '',
+      isLoggedIn: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -53,6 +52,8 @@ export class LoginForm extends React.Component {
       height: 40,
       width: 298,
       longtitle: false,
+      onsuccess: this.onSignIn,
+      onFailure: this.onSignIn
     });
   }
   /**
@@ -78,19 +79,26 @@ export class LoginForm extends React.Component {
   * @returns {void}
   */
   onSignIn(response) {
-    this.props.googleAuthSignIn(response);
+    if (this.state.isLoggedIn) {
+      this.props.googleAuthSignIn(response);
+    }
+    this.state.isLoggedIn = false;
   }
   /**
    * @memberof LoginForm
    * @returns {void}
    */
   handleGoogleSignin() {
+    this.setState({
+      isLoggedIn: true
+    });
     gapi.signin2.render('g-signin2', {
       scope: 'profile email',
       height: 40,
       width: 298,
       longtitle: false,
-      onsuccess: this.onSignIn
+      onsuccess: this.onSignIn,
+      onFailure: this.onSignIn
     });
   }
 
@@ -171,6 +179,7 @@ export class LoginForm extends React.Component {
    * @memberof LoginForm
    */
   render() {
+    document.title = 'Home|Login';
     const { error } = this.props.login;
     return (
       <div>
@@ -233,8 +242,18 @@ export class LoginForm extends React.Component {
             }}
             id="g-signin2"
             onClick={this.handleGoogleSignin}
-            data-onsuccess={this.onSignIn}
           />
+          {/* <div className="input-field">
+            <GoogleLogin
+              clientId={process.env.CLIENT_ID}
+              onSuccess={this.onSignIn}
+              onFailure={this.onSignIn}
+            >
+              <i className="fa fa-google-plus fa_custom fa-1x" />
+              <span className="google-text">Google</span>
+            </GoogleLogin>
+          // </div> */}
+
           <p>
             <label htmlFor="forgot_pass" >
               <button

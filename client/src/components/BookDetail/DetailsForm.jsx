@@ -75,6 +75,7 @@ class DetailsForm extends React.Component {
   * @returns {void}
   */
   componentDidMount() {
+    document.title = 'DetailsPage';
     storeBookDetailsTemp(this.state.filteredData);
   }
 

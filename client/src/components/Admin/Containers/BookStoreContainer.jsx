@@ -57,6 +57,7 @@ class BookStoreContainer extends React.Component {
    * @returns {void}
    */
   componentDidMount() {
+    document.title = 'BooksStorePage';
     if (!this.props.isFetched) {
       this.props.getBooks(true);
     }

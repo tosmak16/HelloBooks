@@ -66,6 +66,8 @@ class UploadBooksContainer extends React.Component {
    * @returns {void}
    */
   componentDidMount() {
+    document.title = 'UploadBooksPage';
+
     if (!this.props.isFetched) {
       this.props.getBooks(true);
     }
