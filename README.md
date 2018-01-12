@@ -67,7 +67,7 @@ PUT          | [ /api/books/:bookId](#modify-book-infor)                | API 
 ## Technology
 **HelloBooks** makes use of a host of modern technologies. The core ones are:
 Hello Books API is built with the following technologies;
-- [JavaScript] (ES6)
+- [JavaScript](https://www.javascript.com/)
 - [React](https://facebook.github.io/react/)
 - [Redux](http://redux.js.org/)
 - [NodeJs](https://nodejs.org)
@@ -83,7 +83,9 @@ Hello Books API is built with the following technologies;
   - Create a `.env` file in your root directory as described in `.env.sample` file
   - Start the app with `npm start`
 ## Testing
-  - Run Test `npm  test`  
+  - Run Server Test `npm  test`  
+  - Run Client Test `npm run client:test`
+  - Run End to End Test `npm run e2e:test`
 
 ## Contribution
 - Fork this repository to your GitHub account
