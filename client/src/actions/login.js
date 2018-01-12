@@ -41,13 +41,9 @@ export default function login(userData) {
         dispatch(setCurrentUserAuth(decodedToken));
         dispatch(loginResponse(jsonResponse.message));
         Materialize.toast(jsonResponse.message, 1000, 'green');
-        if (localStorage.jwtToken && decodedToken.role.toString() === 'user') {
-          browserHistory.push('/books')
-        }
-        else if (localStorage.jwtToken && decodedToken.role.toString() === 'admin') {
+        decodedToken.role.toString() === 'user' ?
+          browserHistory.push('/books') :
           browserHistory.push('/admin')
-        }
-
       }
 
     }

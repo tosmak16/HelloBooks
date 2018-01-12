@@ -2,14 +2,12 @@ import expect from 'expect';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import fetchMock from 'fetch-mock';
-
 import { signupError, signupRequest, signupResponse, SIGNUP_FAILURE, SIGNUP_SUCCESS, SIGNUP_REQUEST } from '../../actions/signupActions';
 import { signup } from '../../src/actions/signup';
 import { DISPLAY_MESSAGE } from '../../actions/actionTypes';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
-
 
 const payload = {
   username: 'pggthe',

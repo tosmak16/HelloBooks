@@ -31,7 +31,7 @@ describe('Test checkBookDetails Actions', () => {
     const initialState = {};
     const store = mockStore(initialState);
     const actions = store.getActions();
-    return store.dispatch(checkBookDetails(action.data, false))
+    return store.dispatch(checkBookDetails(action.data, true))
       .then(() => {
         expect(actions).toEqual(expectedAction);
         store.clearActions();

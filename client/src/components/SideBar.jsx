@@ -22,18 +22,12 @@ const SideBar = (props) => {
     props.showbooksByCategory(event.target.name, props.bookData);
   };
   /**
-   * @param {object} event
-   * 
-   * @param {boolean} [set=true]
-   * 
    * @memberof SideBar
    * 
    * @returns {void}
    */
-  const handleCollapse = (event, set = true) => {
-    if (set) {
-      $('.collapsible').collapsible();
-    }
+  const handleCollapse = () => {
+    $('.collapsible').collapsible();
   };
   return (
     <div className="row">

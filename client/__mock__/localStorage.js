@@ -1,18 +1,18 @@
-let localStorage = {};
 
-export default {
+export const localStorage = {
   setItem(key, value) {
-    return Object.assign(localStorage, { [key]: value });
+    return Object.assign(window.localStorage, { [key]: value });
   },
   getItem(key) {
-    return localStorage[key];
+    return window.localStorage[key];
   },
   clear() {
-    localStorage = {};
+    window.localStorage = {};
   },
 
   removeItem(key) {
-    return delete localStorage[key];
+    return delete window.localStorage[key];
   }
 
 };
+export default localStorage;

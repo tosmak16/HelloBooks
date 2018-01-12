@@ -52,5 +52,68 @@ describe('Test LoginActions failed', () => {
       })
       .catch();
   });
+  it('returns username is required when user is invalid', () => {
+    payload.username = '';
+    response.message = 'username is required';
+    fetchMock.post('/api/v2/users/signin',
+      { status: 400, body: response });
+
+    const initialState = {};
+    const store = mockStore(initialState);
+    const actions = store.getActions();
+    const expectedActions = [
+      {
+        type: LOGIN_REQUEST,
+        isFetching: true,
+        isAuthenticated: false,
+        userData: payload
+      },
+      {
+        type: LOGIN_FAILURE,
+        isFetching: false,
+        isAuthenticated: false,
+        error: response.message
+      }
+    ];
+    return store.dispatch(userSignin(payload))
+      .then(() => {
+        expect(actions).toEqual(expectedActions);
+        store.clearActions();
+        fetchMock.reset();
+      })
+      .catch();
+  });
+  it('returns password is required when password is undefined', () => {
+    payload.username = 'chgvhvjhb';
+    payload.password = '';
+    response.message = 'password is required';
+    fetchMock.post('/api/v2/users/signin',
+      { status: 400, body: response });
+
+    const initialState = {};
+    const store = mockStore(initialState);
+    const actions = store.getActions();
+    const expectedActions = [
+      {
+        type: LOGIN_REQUEST,
+        isFetching: true,
+        isAuthenticated: false,
+        userData: payload
+      },
+      {
+        type: LOGIN_FAILURE,
+        isFetching: false,
+        isAuthenticated: false,
+        error: response.message
+      }
+    ];
+    return store.dispatch(userSignin(payload))
+      .then(() => {
+        expect(actions).toEqual(expectedActions);
+        store.clearActions();
+        fetchMock.reset();
+      })
+      .catch();
+  });
 });
 

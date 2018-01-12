@@ -22,7 +22,7 @@ let wrapper;
 window.localStorage = localStorageMock;
 
 localStorage.setItem('image', books[0].image);
-window.localStorage.setItem('bookTitle', books[0].bookTitle);
+localStorage.setItem('bookTitle', books[0].bookTitle);
 
 localStorage.setItem('category', books[0].category);
 localStorage.setItem('isbn', books[0].isbn);

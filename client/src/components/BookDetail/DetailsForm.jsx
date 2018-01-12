@@ -64,10 +64,7 @@ class DetailsForm extends React.Component {
     if (this.props.bookData.length === 0) {
       getStoredBookDetails(this.state.filteredData);
     }
-
-    $(document).ready(() => {
-      $('.modal').modal();
-    });
+    $('.modal').modal();
   }
   /**
   * @memberof DetailsForm
@@ -77,6 +74,7 @@ class DetailsForm extends React.Component {
   componentDidMount() {
     document.title = 'DetailsPage';
     storeBookDetailsTemp(this.state.filteredData);
+    $('.modal').modal();
   }
 
   /**

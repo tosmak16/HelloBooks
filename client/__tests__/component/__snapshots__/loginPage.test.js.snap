@@ -119,16 +119,6 @@ exports[`Login Page Component test should test and take snapshot of LoginForm 1`
         </button>
       </label>
     </p>
-    <a
-      className=""
-      href="/signup"
-      id="createbtn"
-    >
-       
-      <b>
-        Create account
-      </b>
-    </a>
   </form>
 </div>
 `;
@@ -563,16 +553,6 @@ exports[`Login Page Component test should test and take snapshot of LoginPage 1`
                 </button>
               </label>
             </p>
-            <a
-              className=""
-              href="/signup"
-              id="createbtn"
-            >
-               
-              <b>
-                Create account
-              </b>
-            </a>
           </form>
         </div>
       </div>
@@ -628,15 +608,7 @@ exports[`Login Page Component test should test and take snapshot of LoginPage 1`
             <i
               className="fa fa-envelope"
             />
-            <p>
-              <a
-                href="tosmak16@gmail.com"
-                onClick={[Function]}
-                style={Object {}}
-              >
-                tosmak16@gmail.com
-              </a>
-            </p>
+            <p />
           </div>
         </div>
         <div
@@ -654,40 +626,7 @@ exports[`Login Page Component test should test and take snapshot of LoginPage 1`
           </div>
           <div
             className="footer-icons"
-          >
-            <a
-              onClick={[Function]}
-              style={Object {}}
-            >
-              <i
-                className="fa fa-facebook"
-              />
-            </a>
-            <a
-              onClick={[Function]}
-              style={Object {}}
-            >
-              <i
-                className="fa fa-twitter"
-              />
-            </a>
-            <a
-              onClick={[Function]}
-              style={Object {}}
-            >
-              <i
-                className="fa fa-linkedin"
-              />
-            </a>
-            <a
-              onClick={[Function]}
-              style={Object {}}
-            >
-              <i
-                className="fa fa-github"
-              />
-            </a>
-          </div>
+          />
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router';
 import { Input, Row } from 'react-materialize';
 import { ResetPasswordModal } from './modal/ResetPasswordModal';
 
@@ -252,7 +253,7 @@ export class LoginForm extends React.Component {
               > Forgot Password ? </button>
             </label>
           </p>
-          <a href="/signup" id="createbtn" className="" > <b>Create account</b></a>
+          <Link to="/signup" id="createbtn" className="" > <b>Create account</b></Link>
         </form >
         {
           this.state.displayModal

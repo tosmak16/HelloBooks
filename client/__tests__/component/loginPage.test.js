@@ -78,6 +78,7 @@ describe('Login Page Component test', () => {
     wrapper.instance().handleChange(e);
     wrapper.update();
     wrapper.instance().componentWillReceiveProps(nextProps)
+
   });
 
   it('should test for handle submit function and error state', () => {
@@ -90,13 +91,18 @@ describe('Login Page Component test', () => {
     wrapper.instance().handleSubmit(event);
     wrapper.update();
     wrapper.instance().componentWillReceiveProps(nextProps)
+    wrapper.instance().setState({
+      isLoggedIn: true
+    })
     wrapper.instance().onSignIn()
     wrapper.instance().handleGoogleSignin()
+    wrapper.instance().setState({
+      isLoggedIn: false
+    })
+    wrapper.instance().onSignIn()
     wrapper.instance().handleClose()
     wrapper.instance().handleSendMail()
     wrapper.instance().handleInputEmailChange(e)
     wrapper.instance().renderResetPasswordModal()
-
-
   });
 });

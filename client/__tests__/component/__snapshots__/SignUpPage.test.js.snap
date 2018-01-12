@@ -230,15 +230,7 @@ exports[`SignupPage should test and take snapshot of SignUpPage 1`] = `
             <i
               className="fa fa-envelope"
             />
-            <p>
-              <a
-                href="tosmak16@gmail.com"
-                onClick={[Function]}
-                style={Object {}}
-              >
-                tosmak16@gmail.com
-              </a>
-            </p>
+            <p />
           </div>
         </div>
         <div
@@ -256,40 +248,7 @@ exports[`SignupPage should test and take snapshot of SignUpPage 1`] = `
           </div>
           <div
             className="footer-icons"
-          >
-            <a
-              onClick={[Function]}
-              style={Object {}}
-            >
-              <i
-                className="fa fa-facebook"
-              />
-            </a>
-            <a
-              onClick={[Function]}
-              style={Object {}}
-            >
-              <i
-                className="fa fa-twitter"
-              />
-            </a>
-            <a
-              onClick={[Function]}
-              style={Object {}}
-            >
-              <i
-                className="fa fa-linkedin"
-              />
-            </a>
-            <a
-              onClick={[Function]}
-              style={Object {}}
-            >
-              <i
-                className="fa fa-github"
-              />
-            </a>
-          </div>
+          />
         </div>
       </div>
     </div>
