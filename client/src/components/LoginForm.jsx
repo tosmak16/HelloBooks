@@ -243,17 +243,6 @@ export class LoginForm extends React.Component {
             id="g-signin2"
             onClick={this.handleGoogleSignin}
           />
-          {/* <div className="input-field">
-            <GoogleLogin
-              clientId={process.env.CLIENT_ID}
-              onSuccess={this.onSignIn}
-              onFailure={this.onSignIn}
-            >
-              <i className="fa fa-google-plus fa_custom fa-1x" />
-              <span className="google-text">Google</span>
-            </GoogleLogin>
-          // </div> */}
-
           <p>
             <label htmlFor="forgot_pass" >
               <button

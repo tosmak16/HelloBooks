@@ -15,16 +15,23 @@ import _ from 'lodash';
 export const validatePasswordChange = async (userData) => {
   const {
     oldPassword,
-    newPassword
+    newPassword,
+    confirmPassword,
   } = userData;
   const response = await Promise.resolve(
     _.isEmpty(oldPassword) ?
       'current password is required'
       : _.isEmpty(newPassword) ?
         'new password is required'
-        : oldPassword === newPassword ?
-          'Oh! sorry you can not use the same password'
-          : ''
+        : _.isEmpty(confirmPassword) ?
+          'Comfirm Password the required fields'
+          : oldPassword === newPassword ?
+            'Oh! sorry you can not use the same password'
+            : newPassword !== confirmPassword ?
+              'new password and confirm password does not match'
+              : newPassword.length < 6 ?
+                'password length must be more than 5'
+                : ''
   );
   return response;
 };

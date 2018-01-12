@@ -1,7 +1,6 @@
 import { browserHistory } from 'react-router';
 import jwtDecode from 'jwt-decode';
 import { changePasswordError, changePasswordRequest, changePasswordResponse } from '../../actions/changePassword';
-import { validatePasswordChange } from '../helperFunctions/validatePasswordChange';
 /**
  * @export changePassword
  * 
@@ -16,25 +15,20 @@ export const changePassword = (userData, token) => {
   let userId = decodedToken.id;
   return async (dispatch) => {
     dispatch(changePasswordRequest(userData));
-    const validationResponse = await validatePasswordChange(userData);
-    if (validationResponse !== '') {
-      dispatch(changePasswordError(validationResponse));
-    }
-    else {
-      const response = await fetch('/api/v2/users/' + userId + '/password', {
-        method: 'PUT',
-        headers: {
-          'Accept': 'application/json, text/plain, */*',
-          'Content-Type': 'application/json',
-          token
-        },
-        body: JSON.stringify(userData)
-      })
-      const jsonResponse = await response.json().then(jsonRes => jsonRes)
-      response.status === 200 ?
-        dispatch(changePasswordResponse(jsonResponse.message)) :
-        dispatch(changePasswordError(jsonResponse.message))
-    }
+
+    const response = await fetch('/api/v2/users/' + userId + '/password', {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+        token
+      },
+      body: JSON.stringify(userData)
+    })
+    const jsonResponse = await response.json().then(jsonRes => jsonRes)
+    response.status === 200 ?
+      dispatch(changePasswordResponse(jsonResponse.message)) :
+      dispatch(changePasswordError(jsonResponse.message))
   }
 }
 export default changePassword;

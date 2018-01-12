@@ -25,38 +25,102 @@ const NavigationBar = (props) => {
     props.logout();
     browserHistory.push('/login');
   };
+
+  const triggerDropdown = () => { $('.dropdown-button').dropdown(); };
+
   const { isAuthenticated, user } = props.auth;
   isAuthenticated ? decodedToken = jwtDecode(localStorage.jwtToken) : decodedToken;
   const userLinks = (
     <div>
       <ul id="nav-mobile" className="right hide-on-small-only navbar_list">
-        <li><Link href="/books" >Catalogue</Link></li>
-        {isAuthenticated && decodedToken.role.toString() === 'admin' && <li><Link className="user-profile-nav" href="/admin" ><i
-          className="material-icons left"
-        >store</i>Store</Link></li>}
-        <li><Link className="user-profile-nav" href="/dashboard/userprofile" ><i
-          className="material-icons left"
-        >account_circle</i>{user.user} profile</Link></li>
-        <li><Link to={'/login'} onClick={handleLogout} ><i className="material-icons left">exit_to_app</i> Log out</Link></li>
+        <li><Link to="/books" >Catalogue</Link></li>
+        {isAuthenticated && decodedToken.role.toString() === 'admin'
+          &&
+          <li>
+            <Link className="user-profile-nav" to="/admin" >
+              <i
+                className="material-icons left"
+              >store
+              </i>Store
+            </Link>
+          </li>}
+        <li>
+          <Link
+            className="dropdown-button"
+            to=""
+            onClick={triggerDropdown}
+            data-activates="dropdown1"
+          >
+            {`${user.user}`}
+            <i className="material-icons right">
+              arrow_drop_down
+            </i>
+          </Link>
+        </li>
       </ul>
+      <div>
+        <ul id="dropdown1" className="dropdown-content drop-down-width">
+          <li><Link
+            className="user-profile-nav navbar-drop-down"
+            to="/dashboard/userprofile"
+          >
+            <i
+              className="material-icons left"
+            >account_circle</i>{user.user}</Link></li>
+          <li>
+            <Link to={'/login'} className="navbar-drop-down" onClick={handleLogout} >
+              <i className="material-icons left">
+                exit_to_app
+              </i>
+              Log out
+            </Link>
+          </li>
+        </ul>
+      </div>
     </div >
   );
   const userLinks2 = (
     <div>
       <ul id="nav-mobile" className="left hide-on-med-and-up navbar_list ">
-        <li><Link href="/books" >Catalogue</Link></li>
-        {isAuthenticated && decodedToken.role.toString() === 'admin' && <li><Link className="user-profile-nav" href="/admin" ><i
-          className="material-icons left"
-        >store</i> Store</Link></li>}
-        <li><Link className="user-profile-nav" href="/dashboard/userprofile" ><i
-          className="material-icons left"
-        >account_circle</i>{
-          user.user} profile</Link></li>
-        <li><Link to={'/login'} onClick={handleLogout} ><i className="material-icons left">exit_to_app</i> Log out</Link></li>
+        <li><Link to="/books" >Catalogue</Link></li>
+        {isAuthenticated && decodedToken.role.toString() === 'admin' && <li>
+          <Link className="user-profile-nav" to="/admin" >
+            <i className="material-icons left">store</i>Store</Link></li>}
+        <li>
+          <Link
+            className="dropdown-button"
+            to=""
+            onClick={triggerDropdown}
+            data-activates="dropdown2"
+          >
+            {`${user.user}`}
+            <i className="material-icons right">
+              arrow_drop_down
+            </i>
+          </Link>
+        </li>
       </ul>
+      <div>
+        <ul id="dropdown2" className="dropdown-content drop-down-width">
+          <li><Link
+            className="user-profile-nav navbar-drop-down"
+            to="/dashboard/userprofile"
+          >
+            <i
+              className="material-icons left"
+            >account_circle</i>{user.user}</Link></li>
+          <li>
+            <Link to={'/login'} className="navbar-drop-down" onClick={handleLogout} >
+              <i className="material-icons left">
+                exit_to_app
+              </i>
+              Log out
+            </Link>
+          </li>
+        </ul>
+      </div>
     </div >
   );
-
   const guestLinks = (
     <ul id="nav-mobile" className="right hide-on-small-only ">
       <li>
@@ -64,13 +128,23 @@ const NavigationBar = (props) => {
           to="/signup"
           id="signup"
           className="waves-effect waves-light btn-sm btn-flat"
-        ><i className="material-icons left">account_box</i> Sign Up</Link>
+        >
+          <i className="material-icons left">
+            account_box
+          </i>
+          Sign Up
+        </Link>
       </li>
       <li><Link
         to="/login"
         id="login"
         className="waves-effect waves-light btn-sm btn-flat"
-      ><i className="material-icons left">exit_to_app</i> Sign In</Link></li>
+      ><i className="material-icons left">
+          exit_to_app
+        </i>
+        Sign In
+      </Link>
+      </li>
     </ul>
   );
   const guestLinks2 = (
@@ -80,13 +154,22 @@ const NavigationBar = (props) => {
           to="/signup"
           id="signup"
           className="waves-effect waves-light btn-sm btn-flat"
-        ><i className="material-icons left">account_box</i> Sign Up</Link>
+        ><i className="material-icons left">
+            account_box
+          </i>
+          Sign Up
+        </Link>
       </li>
       <li><Link
         to="/login"
         id="login"
         className="waves-effect waves-light btn-sm btn-flat"
-      ><i className="material-icons left">exit_to_app</i> Sign In</Link></li>
+      ><i className="material-icons left">
+          exit_to_app
+        </i>
+        Sign In
+      </Link>
+      </li>
     </ul>
   );
   return (
@@ -99,7 +182,12 @@ const NavigationBar = (props) => {
                 id="hello"
                 className="brand-logo left"
                 to="/books"
-              ><i className="material-icons left"> collections</i>HelloBooks</Link>
+              >
+                <i className="material-icons left">
+                  collections
+                </i>
+                HelloBooks
+              </Link>
             </div>
             <div style={{ marginRight: '30px' }}>
               {isAuthenticated ? userLinks : guestLinks}
@@ -118,7 +206,6 @@ const NavigationBar = (props) => {
         </nav>
       </div>
     </div>
-
   );
 };
 
