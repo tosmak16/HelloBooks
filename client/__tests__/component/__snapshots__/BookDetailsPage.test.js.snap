@@ -16,404 +16,110 @@ exports[`Test book Details page components and container should test and take sn
         <li>
           <div
             className="collapsible-header"
-          >
-            <a
-              className="heada"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              <b>
-                SCIENCE&TECH
-              </b>
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Science"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Science
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Technology"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Technology
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Computer"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Computer
-            </a>
-          </div>
+          />
         </li>
         <li>
           <div
             className="collapsible-header"
-          >
-            <a
-              className="heada"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              <b>
-                LITERATURE
-              </b>
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Fiction"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Fiction
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Mystery"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Mystery
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Romance"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Romance
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Sci-Fiction"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Sci-Fiction
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Adventure"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Adventure
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Action"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Action
-            </a>
-          </div>
+          />
         </li>
         <li>
           <div
             className="collapsible-header"
-          >
-            <a
-              className="heada"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              <b>
-                STYLE AND ART
-              </b>
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Arts"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Arts
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Languages"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Languages
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Fashion"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Fashion
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Food"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Food
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Games"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Games
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Music"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Music
-            </a>
-          </div>
+          />
         </li>
         <li>
           <div
             className="collapsible-header"
-          >
-            <a
-              className="heada"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              <b>
-                CAREER & MONEY
-              </b>
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Management"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Management
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Accounting"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Accounting
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Entrepreneurship"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Entrepreneurship
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Leadership"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Leadership
-            </a>
-          </div>
+          />
         </li>
         <li>
           <div
             className="collapsible-header"
-          >
-            <a
-              className="heada"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              <b>
-                PERSONAL GROWTH
-              </b>
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Psychology"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Psychology
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Relationships"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Relationships
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Self-Improvement"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Self-Improvement
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Religion"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Religion
-            </a>
-          </div>
+          />
         </li>
         <li>
           <div
             className="collapsible-header"
-          >
-            <a
-              className="heada"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              <b>
-                HEALTH & FITNESS
-              </b>
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Fitness"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Fitness
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Nutrition"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Nutrition
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Sports"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Sports
-            </a>
-          </div>
+          />
         </li>
       </ul>
     </div>
@@ -662,404 +368,110 @@ exports[`Test book Details page components and container should test and take sn
         <li>
           <div
             className="collapsible-header"
-          >
-            <a
-              className="heada"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              <b>
-                SCIENCE&TECH
-              </b>
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Science"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Science
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Technology"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Technology
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Computer"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Computer
-            </a>
-          </div>
+          />
         </li>
         <li>
           <div
             className="collapsible-header"
-          >
-            <a
-              className="heada"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              <b>
-                LITERATURE
-              </b>
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Fiction"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Fiction
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Mystery"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Mystery
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Romance"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Romance
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Sci-Fiction"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Sci-Fiction
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Adventure"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Adventure
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Action"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Action
-            </a>
-          </div>
+          />
         </li>
         <li>
           <div
             className="collapsible-header"
-          >
-            <a
-              className="heada"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              <b>
-                STYLE AND ART
-              </b>
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Arts"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Arts
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Languages"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Languages
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Fashion"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Fashion
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Food"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Food
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Games"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Games
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Music"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Music
-            </a>
-          </div>
+          />
         </li>
         <li>
           <div
             className="collapsible-header"
-          >
-            <a
-              className="heada"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              <b>
-                CAREER & MONEY
-              </b>
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Management"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Management
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Accounting"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Accounting
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Entrepreneurship"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Entrepreneurship
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Leadership"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Leadership
-            </a>
-          </div>
+          />
         </li>
         <li>
           <div
             className="collapsible-header"
-          >
-            <a
-              className="heada"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              <b>
-                PERSONAL GROWTH
-              </b>
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Psychology"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Psychology
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Relationships"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Relationships
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Self-Improvement"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Self-Improvement
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Religion"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Religion
-            </a>
-          </div>
+          />
         </li>
         <li>
           <div
             className="collapsible-header"
-          >
-            <a
-              className="heada"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              <b>
-                HEALTH & FITNESS
-              </b>
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Fitness"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Fitness
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Nutrition"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Nutrition
-            </a>
-          </div>
+          />
           <div
             className="collapsible-body"
-          >
-            <a
-              className="boda"
-              name="Sports"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Sports
-            </a>
-          </div>
+          />
         </li>
       </ul>
     </div>

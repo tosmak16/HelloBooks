@@ -30,7 +30,8 @@ const payload = {
   password: '123456'
 };
 
-let token = jwt.sign({ id: 1, user: 'Tosmak', role: 'admin' }, 'eded');
+let token = jwt.sign({ id: 1, user: 'Tosmak', role: 'user' }, 'eded');
+
 
 describe('Test LoginActions', () => {
   it('should create an action to send login request', () => {
@@ -63,7 +64,9 @@ describe('Test LoginActions', () => {
     expect(loginError('username and password is incorrect')).toEqual(expectedAction);
   });
 
-  it('should sign in an admin successfully', () => {
+
+
+  it('should sign in a user successfully', () => {
     fetchMock.post('/api/v2/users/signin', JSON.stringify({ token, status: 200, message: 'logged in successfully' }));
 
     const initialState = {};

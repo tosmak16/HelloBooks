@@ -35,7 +35,7 @@ export const signup = (userData) => {
       else {
         Materialize.toast(jsonResponse.message, 1000, 'green');
         dispatch(signupResponse(jsonResponse.message));
-        process.env.NODE_ENV === 'test' || browserHistory.push('/login');
+        browserHistory.push('/login');
       }
     }
   };

@@ -43,12 +43,9 @@ export const googleAuthSignIn = (googleUserData) => {
       dispatch(setCurrentUserAuth(decodedToken));
       dispatch(signupResponse(jsonResponse.message));
       Materialize.toast(jsonResponse.message, 1000, 'green');
-      if (localStorage.jwtToken && decodedToken.role.toString() === 'user') {
-        browserHistory.push('/books')
-      }
-      else if (localStorage.jwtToken && decodedToken.role.toString() === 'admin') {
+      decodedToken.role.toString() === 'user' ?
+        browserHistory.push('/books') :
         browserHistory.push('/admin')
-      }
     }
   };
 }

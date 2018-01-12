@@ -38,14 +38,13 @@ const userData = {
   lastName: payload.w3.wea
 }
 
-
-describe('Test admin googleAuthSignin', () => {
-  const token = jwt.sign({ id: 1, user: 'Tosmak', role: 'admin' }, 'encd');
-  const response = {
-    message: 'Registration successful',
-    token
-  }
-  it('creates SIGNUP_SUCCESS when admin has been registered', () => {
+describe('Test user googleAuthSignin', () => {
+  it('creates SIGNUP_SUCCESS when user has been registered', () => {
+    const userToken = jwt.sign({ id: 1, user: 'Tosmak', role: 'user' }, 'ened');
+    const response = {
+      message: 'Registration successful',
+      token: userToken
+    }
     fetchMock.postOnce('/api/v2/users/googleAuth',
       { status: 201, body: response });
 
@@ -61,7 +60,7 @@ describe('Test admin googleAuthSignin', () => {
       },
       {
         type: SET_USER,
-        user: jwtDecode(token),
+        user: jwtDecode(userToken),
       },
       {
         type: SIGNUP_SUCCESS,
@@ -79,5 +78,4 @@ describe('Test admin googleAuthSignin', () => {
       .catch();
   });
 });
-
 
