@@ -15,7 +15,7 @@ pdfjsLib.PDFJS.workerSrc = '../../build/webpack/pdf.worker.bundle.js';
 const store = createStore(
   rootReducer,
   compose(applyMiddleware(thunk),
-    window.devToolsExtension ? window.devToolsExtension() : f => f));
+    window.devToolsExtension && process.env.NODE_ENV === 'development' ? window.devToolsExtension() : f => f));
 if (localStorage.jwtToken) {
   store.dispatch(setCurrentUserAuth(jwtDecode(localStorage.jwtToken)));
 }

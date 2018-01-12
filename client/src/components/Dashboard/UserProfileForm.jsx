@@ -28,7 +28,7 @@ export const UserProfileForm = (props) => {
             id="firstname"
             className="form-control validate"
             placeholder="First Name"
-            required
+
             value={firstName}
             name="firstName"
             onChange={handleInputChange}
@@ -42,7 +42,7 @@ export const UserProfileForm = (props) => {
             id="lastname"
             className="form-control validate"
             placeholder="Last Name"
-            required
+
             value={lastName}
             name="lastName"
             onChange={handleInputChange}
@@ -56,7 +56,7 @@ export const UserProfileForm = (props) => {
             id="inputSignUpEmail"
             className="form-control validate"
             placeholder="Email address"
-            required
+
 
             value={email}
             name="email"
@@ -71,7 +71,7 @@ export const UserProfileForm = (props) => {
             id="inputPhoneNumber"
             className="form-control validate"
             placeholder="phone number"
-            required
+
             value={mobileNumber}
             name="mobileNumber"
             onChange={handleInputChange}

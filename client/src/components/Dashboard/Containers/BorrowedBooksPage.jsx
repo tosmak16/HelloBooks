@@ -118,6 +118,7 @@ export class BorrowedBooksPage extends React.Component {
       this.props.refreshPage(false);
       this.props.getUnreturnedBook(localStorage.jwtToken);
       this.props.getBorrowedBook(localStorage.jwtToken);
+      this.props.getBooks(false);
     }
   }
   /**

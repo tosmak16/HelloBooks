@@ -10,6 +10,7 @@ import updateUser from '../../../actions/updateUser';
 import { uploadUserAvatar } from '../../../actions/uploadUserAvatar';
 import { changePassword } from '../../../actions/changePassword';
 import { logout } from '../../../actions/logout';
+import { validatePasswordChange } from '../../../helperFunctions/validatePasswordChange';
 
 /**
  * @description Displays change password component
@@ -159,25 +160,18 @@ export class ChangePasswordPage extends React.Component {
    */
   handleSave(event) {
     event.preventDefault();
-    if (!this.state.newPassword || !this.state.oldPassword || !this.state.confirmPassword) {
-      this.setState({
-        error: 'Please enter the required fields',
-      });
-    } else if (this.state.newPassword !== this.state.confirmPassword) {
-      this.setState({
-        error: 'new password and confirm password does not match',
-      });
-    } else if (this.state.newPassword.length < 6) {
-      this.setState({
-        error: 'password length must be more than 5',
-      });
-    } else {
-      this.setState({
-        error: '',
-      });
-
-      $('#modalOpen').modal('open');
-    }
+    validatePasswordChange(this.state).then((responseMessage) => {
+      if (responseMessage !== '') {
+        this.setState({
+          error: responseMessage
+        });
+      } else {
+        this.setState({
+          error: '',
+        });
+        $('#modalOpen').modal('open');
+      }
+    });
   }
   /**
    * @function render

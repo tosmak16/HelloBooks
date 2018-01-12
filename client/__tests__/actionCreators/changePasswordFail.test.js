@@ -22,7 +22,7 @@ const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 const action = {
-  userData: { oldPassword: '123456', newPassword: '1234565' },
+  userData: { oldPassword: '123456', newPassword: '1234565', confirmPassword: '1234565' },
 };
 
 const response = {
