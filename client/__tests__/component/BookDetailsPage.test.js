@@ -30,16 +30,6 @@ localStorage.setItem('stocknumber', books[0].stocknumber);
 localStorage.setItem('author', books[0].author);
 localStorage.setItem('summary', books[0].summary);
 
-localStorage.removeItem('bookId');
-localStorage.removeItem('id');
-
-localStorage.removeItem('category');
-localStorage.removeItem('isbn');
-localStorage.removeItem('stocknumber');
-localStorage.removeItem('author');
-localStorage.removeItem('summary');
-localStorage.removeItem('bookTitle');
-localStorage.removeItem('image');
 
 
 describe('Test book Details page components and container', () => {
@@ -85,7 +75,6 @@ describe('Test book Details page components and container', () => {
   store = mockStore(initialState);
 
   beforeEach(() => {
-    window.localStorage.setItem('bookId', '1');
     $(document).ready(() => {
       $('.modal').modal();
     });
@@ -133,6 +122,7 @@ describe('Test book Details page components and container', () => {
     const nextProps = {
       borrowBookItem: [{ error: '', response: 'success' }]
     };
+    window.localStorage.setItem('bookId', '2');
     wrapper = shallow(<DetailsForm
       bookData={books}
       borrowBooks={mockFuction}
@@ -161,6 +151,7 @@ describe('Test book Details page components and container', () => {
     const nextProps = {
       borrowBookItem: [{ error: 'there is error', response: 'success' }]
     };
+    window.localStorage.setItem('bookId', '1');
     wrapper = shallow(<DetailsForm
       bookData={books}
       borrowBooks={mockFuction}
@@ -181,8 +172,9 @@ describe('Test book Details page components and container', () => {
 
   it('should test if BookDetails component props contains error message on on update', () => {
     const nextProps = {
-      borrowBookItem: [{ error: 'there is error', response: 'success' }]
+      borrowBookItem: [{ error: 'there is error', response: '' }]
     };
+    localStorage.removeItem('id');
     wrapper = shallow(<DetailsForm
       bookData={books}
       borrowBooks={mockFuction}
