@@ -16,7 +16,7 @@ exclude_paths:
 - server/test/
 - template/
 - node_modules/
-- client/
+- client/public/
 checks:
   method-lines:
     config:
