@@ -13,8 +13,7 @@ export const logout = () => {
   return async (dispatch) => {
     dispatch(setCurrentUserAuth({}));
     try {
-      const auth2 = gapi.auth2.getAuthInstance();
-      await auth2.signOut()
+      gapi.auth2.getAuthInstance().signOut()
     } catch (error) {
       return 'User Signed Out'
     }
