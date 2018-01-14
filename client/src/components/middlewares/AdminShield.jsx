@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router';
 import jwtDecode from 'jwt-decode';
+import store from '../../../index';
+import { setCurrentUserAuth } from '../../../actions/setCurrentUserAuth';
 
 /**
  * @description HOC which serves has admim authentication middle ware
@@ -58,6 +60,11 @@ export default function (Component) {
      * @memberof AdminAuth
      */
     render() {
+      window.onbeforeunload = () => {
+        store.dispatch(setCurrentUserAuth({}));
+        localStorage.clear();
+        return '';
+      };
       return (
         <Component {...this.props} />
       );
@@ -71,10 +78,8 @@ export default function (Component) {
    * 
    * @returns {objedct} of auth reducer
    */
-  function mapStateToProps(state) {
-    return {
-      isAuthenticated: state.auth[0].isAuthenticated,
-    };
-  }
+  const mapStateToProps = state => ({
+    isAuthenticated: state.auth[0].isAuthenticated,
+  });
   return connect(mapStateToProps)(AdminAuth);
 }

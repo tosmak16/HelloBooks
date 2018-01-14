@@ -55,6 +55,11 @@ export default function (Component) {
      * @memberof UserAuth
      */
     render() {
+      window.onbeforeunload = () => {
+        store.dispatch(setCurrentUserAuth({}));
+        localStorage.clear();
+        return '';
+      };
       return (
         <Component {...this.props} />
       );

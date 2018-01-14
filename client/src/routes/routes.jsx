@@ -16,12 +16,13 @@ import AdminShield from '../components/middlewares/AdminShield';
 import UploadBooksContainer from '../components/Admin/Containers/UploadBooksContainer';
 import UpdateBooksContainer from '../components/Admin/Containers/UpdateBooksContainer';
 import LoginAuth from '../components/middlewares/LoginAuth';
+import IndexShield from '../components/middlewares/IndexShield';
 
 
 export default
 (
   <Route path="/" component={App}>
-    <IndexRoute component={LoginPage} />
+    <IndexRoute component={IndexShield(LoginPage)} />
     <Route path="/login" component={LoginAuth(LoginPage)} />
     <Route path="/signup" component={LoginAuth(SignupPage)} />
     <Route path="/books" component={BookPage} />
