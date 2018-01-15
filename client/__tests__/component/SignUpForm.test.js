@@ -18,20 +18,21 @@ describe('Signup Form Component test', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('should test for handle change function for changing input state', () => {
+  it('should change input state when handleChange is called', () => {
     wrapper = shallow(<SignUpForm userSignup={mockFuction} register={{ error: '' }} />);
     wrapper.instance().handeleFuction = mockFuction;
     wrapper.update();
     wrapper.instance().handleChange(e);
     wrapper.update();
-    expect(wrapper.instance().state.Tosmak).toBe("1000");
+    expect(wrapper.instance().state[e.target.name]).toBe(e.target.value);
   });
 
-  it('should test for handle submit function and error state', () => {
+  it('should update error state and trigger userSignup function when handle submit function is called', () => {
     wrapper = shallow(<SignUpForm userSignup={mockFuction} register={{ error: 'hello' }} />);
     wrapper.instance().handeleFuction = mockFuction;
     wrapper.update();
     wrapper.instance().handleSubmit(event);
-    wrapper.update();
+    expect(wrapper.instance().state.errors).toBe('');
+    expect(wrapper.instance().props.userSignup).toHaveBeenCalled();
   });
 });

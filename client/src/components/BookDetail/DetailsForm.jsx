@@ -90,13 +90,13 @@ class DetailsForm extends React.Component {
       displayPreloader: 'none'
     });
     if (this.state.display) {
-      if (!_.isEmpty(sortedData.error) && this.state.display) {
+      if (!_.isEmpty(sortedData.error)) {
         this.setState({
           error: sortedData.error,
           display: false,
         });
         $('#modal2').modal('open');
-      } else if (!_.isEmpty(sortedData.response) && this.state.display) {
+      } else if (!_.isEmpty(sortedData.response)) {
         this.state.bookData[this.state.bookIndex].stockNumber -= 1;
         this.setState({
           message: sortedData.response,
@@ -172,7 +172,6 @@ class DetailsForm extends React.Component {
    */
   handleExit(event) {
     event.preventDefault();
-
     $('#modal2').modal('close');
     $('#modal3').modal('close');
     this.setState({

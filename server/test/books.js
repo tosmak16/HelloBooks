@@ -12,7 +12,6 @@ const books = [
     summary: 'Lorem Ipronic typesetting, remaininised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
     brdate: '2017-10-04T04:55:40.623+01',
     rdate: '2017-10-04T04:55:40.623+01',
-    createdAt: '2017-10-04T04:55:40.623+01',
   },
   {
     id: 2,
@@ -26,7 +25,6 @@ const books = [
     summary: 'It is a long established fact thaorem Ipsu uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)',
     brdate: '2017-10-04T04:55:40.623+01',
     rdate: '2017-10-04T04:55:40.623+01',
-    createdAt: '2017-10-04T04:55:40.623+01',
   },
   {
     id: 3,
@@ -40,7 +38,6 @@ const books = [
     summary: 'There are many variations of passages of Lorem Ipsum available, but the majority orem Ipsum generators on the Internet tend to repeat predefined chunks as necessary',
     brdate: '2017-10-04T04:55:40.623+01',
     rdate: '2017-10-04T04:55:40.623+01',
-    createdAt: '2017-10-04T04:55:40.623+01',
   },
   {
     id: 4,
@@ -54,7 +51,6 @@ const books = [
     summary: 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from ',
     brdate: '2017-10-04T04:55:40.623+01',
     rdate: '2017-10-04T04:55:40.623+01',
-    createdAt: '2017-10-04T04:55:40.623+01',
   },
   {
     id: 5,
@@ -68,7 +64,6 @@ const books = [
     summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Urum.',
     brdate: '2017-10-04T04:55:40.623+01',
     rdate: '2017-10-04T04:55:40.623+01',
-    createdAt: '2017-10-04T04:55:40.623+01',
   },
   {
     id: 6,
@@ -82,7 +77,6 @@ const books = [
     summary: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium?',
     brdate: '2017-10-04T04:55:40.623+01',
     rdate: '2017-10-04T04:55:40.623+01',
-    createdAt: '2017-10-04T04:55:40.623+01',
   },
   {
     id: 7,
@@ -109,7 +103,6 @@ const books = [
     summary: 'At vero eos et accusamus et iuse delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.',
     brdate: '2017-10-04T04:55:40.623+01',
     rdate: '2017-10-04T04:55:40.623+01',
-    createdAt: '2017-10-04T04:55:40.623+01',
   },
 ];
 

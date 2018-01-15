@@ -9,10 +9,11 @@ import Book from '../models/Book';
 import BorrowBook from '../models/BorrowedBook';
 import db from '../models/index';
 import bcrypt from 'bcrypt';
-import mockedBooks from '../../client/__mock__/book';
+import mockedBooks from './books';
 import BorrowedBook from '../models/BorrowedBook';
 
-const book = mockedBooks[0];
+let book = mockedBooks[0];
+
 const should = chai.should();
 const expect = chai.expect;
 const user = {

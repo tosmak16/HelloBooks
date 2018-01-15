@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test BooksPage component should test and take snapshot of Card box 1`] = `
+exports[`Test BooksPage component should render and take snapshot of Card box 1`] = `
 <div
   id="card_div"
 >
@@ -55,7 +55,7 @@ exports[`Test BooksPage component should test and take snapshot of Card box 1`] 
 </div>
 `;
 
-exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] = `
+exports[`Test BooksPage component should render and take snapshot of Side Bar 1`] = `
 <div
   className="row"
 >
@@ -180,13 +180,13 @@ exports[`Test BooksPage component should test and take snapshot of Side Bar 1`] 
 </div>
 `;
 
-exports[`Test BooksPage component should test and take snapshot of booksCategoryPage 1`] = `
+exports[`Test BooksPage component should render and take snapshot of booksCategoryPage 1`] = `
 <div
   className="row"
 />
 `;
 
-exports[`Test BooksPage component should test and take snapshot of booksCollectionPage 1`] = `
+exports[`Test BooksPage component should render and take snapshot of booksCollectionPage 1`] = `
 <div
   className="col m10 offset-m2 col l10 offset-l2 col s12 main"
 >
@@ -249,7 +249,7 @@ exports[`Test BooksPage component should test and take snapshot of booksCollecti
 </div>
 `;
 
-exports[`Test BooksPage component should test and take snapshot of booksFilterPage when bookIsFound is false 1`] = `
+exports[`Test BooksPage component should render and take snapshot of booksFilterPage when bookIsFound is false 1`] = `
 <div
   className="container-fluid"
   id="booksearchbar"
@@ -356,7 +356,7 @@ exports[`Test BooksPage component should test and take snapshot of booksFilterPa
 </div>
 `;
 
-exports[`Test BooksPage component should test and take snapshot of booksFilterPage when bookIsFound is true 1`] = `
+exports[`Test BooksPage component should render and take snapshot of booksFilterPage when bookIsFound is true 1`] = `
 <div
   className="container-fluid"
   id="booksearchbar"
@@ -504,7 +504,7 @@ exports[`Test BooksPage component should test and take snapshot of booksFilterPa
 </div>
 `;
 
-exports[`Test BooksPage component should test and take snapshot of booksPage 1`] = `
+exports[`Test BooksPage component should render and take snapshot of booksPage 1`] = `
 <div
   className=""
 >
@@ -865,7 +865,7 @@ exports[`Test BooksPage component should test and take snapshot of booksPage 1`]
 </div>
 `;
 
-exports[`Test BooksPage component should test and take snapshot of booksphotoPage 1`] = `
+exports[`Test BooksPage component should render and take snapshot of booksphotoPage 1`] = `
 <div
   className="col m10 offset-m2 col l10 offset-l2 col s12 main"
 >
@@ -878,6 +878,63 @@ exports[`Test BooksPage component should test and take snapshot of booksphotoPag
   <div
     className="row"
   >
+    <div
+      className="col m5 col l3 col s6"
+    >
+      <div
+        id="card_div"
+      >
+        <div
+          className="container"
+          id="img_holder"
+        >
+          <img
+            alt="Avatar"
+            className="image"
+            id="book_img"
+            src="l7.jpg"
+            style={
+              Object {
+                "height": "200px",
+                "width": "150px",
+              }
+            }
+          />
+          <div
+            className="middle"
+          >
+            <label
+              className="text"
+              htmlFor="book_img"
+              style={
+                Object {
+                  "fontSize": "12px",
+                  "fontStyle": "bold",
+                }
+              }
+            >
+               
+              THE SONG AND THE SILENCE
+            </label>
+            <button
+              className="text"
+              name={7}
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "width": "120px",
+                }
+              }
+              type="btn-sm"
+            >
+              Read
+            </button>
+          </div>
+        </div>
+      </div>
+       
+    </div>
     <div
       className="col m5 col l3 col s6"
     >
@@ -1204,120 +1261,6 @@ exports[`Test BooksPage component should test and take snapshot of booksphotoPag
             <button
               className="text"
               name={6}
-              onClick={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "transparent",
-                  "width": "120px",
-                }
-              }
-              type="btn-sm"
-            >
-              Read
-            </button>
-          </div>
-        </div>
-      </div>
-       
-    </div>
-    <div
-      className="col m5 col l3 col s6"
-    >
-      <div
-        id="card_div"
-      >
-        <div
-          className="container"
-          id="img_holder"
-        >
-          <img
-            alt="Avatar"
-            className="image"
-            id="book_img"
-            src="l7.jpg"
-            style={
-              Object {
-                "height": "200px",
-                "width": "150px",
-              }
-            }
-          />
-          <div
-            className="middle"
-          >
-            <label
-              className="text"
-              htmlFor="book_img"
-              style={
-                Object {
-                  "fontSize": "12px",
-                  "fontStyle": "bold",
-                }
-              }
-            >
-               
-              THE SONG AND THE SILENCE
-            </label>
-            <button
-              className="text"
-              name={7}
-              onClick={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "transparent",
-                  "width": "120px",
-                }
-              }
-              type="btn-sm"
-            >
-              Read
-            </button>
-          </div>
-        </div>
-      </div>
-       
-    </div>
-    <div
-      className="col m5 col l3 col s6"
-    >
-      <div
-        id="card_div"
-      >
-        <div
-          className="container"
-          id="img_holder"
-        >
-          <img
-            alt="Avatar"
-            className="image"
-            id="book_img"
-            src="l8.jpg"
-            style={
-              Object {
-                "height": "200px",
-                "width": "150px",
-              }
-            }
-          />
-          <div
-            className="middle"
-          >
-            <label
-              className="text"
-              htmlFor="book_img"
-              style={
-                Object {
-                  "fontSize": "12px",
-                  "fontStyle": "bold",
-                }
-              }
-            >
-               
-              THE ILIAD HOMMER
-            </label>
-            <button
-              className="text"
-              name={8}
               onClick={[Function]}
               style={
                 Object {

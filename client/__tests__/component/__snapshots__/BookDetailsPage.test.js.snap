@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test book Details page components and container should test and take snapshot of books detailsPage when data and book array are empty 1`] = `
+exports[`Test book Details page components and container should render and take snapshot of books detailsPage when data and book array are empty 1`] = `
 <div>
   <div
     className="row"
@@ -352,7 +352,7 @@ exports[`Test book Details page components and container should test and take sn
 </div>
 `;
 
-exports[`Test book Details page components and container should test and take snapshot of booksDetailsPage 1`] = `
+exports[`Test book Details page components and container should render and take snapshot of booksDetailsPage 1`] = `
 <div>
   <div
     className="row"
@@ -704,7 +704,7 @@ exports[`Test book Details page components and container should test and take sn
 </div>
 `;
 
-exports[`Test book Details page components and container should test and take snapshot of details form when data and book array are empty 1`] = `
+exports[`Test book Details page components and container should render and take snapshot of details form when data and book array are empty 1`] = `
 <div
   className="container"
   id="book_details_wrapper"
