@@ -219,8 +219,8 @@ exports[`Test BooksPage component should render and take snapshot of booksCollec
           />
           <p />
           <button
-            className="btn-sm btn-warning shop"
-            id="wishbtn"
+            className="btn-sm btn-warning shop book-col-btn"
+            id={1}
             name={1}
             onClick={[Function]}
             type="button"
@@ -472,8 +472,8 @@ exports[`Test BooksPage component should render and take snapshot of booksFilter
               </span>
               <p />
               <button
-                className="btn-sm btn-warning shop"
-                id="wishbtn"
+                className="btn-sm btn-warning shop book-col-btn"
+                id={1}
                 name={1}
                 onClick={[Function]}
                 type="button"
@@ -831,8 +831,8 @@ exports[`Test BooksPage component should render and take snapshot of booksPage 1
                   />
                   <p />
                   <button
-                    className="btn-sm btn-warning shop"
-                    id="wishbtn"
+                    className="btn-sm btn-warning shop book-col-btn"
+                    id={1}
                     name={1}
                     onClick={[Function]}
                     type="button"
