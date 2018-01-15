@@ -60,11 +60,6 @@ export default function (Component) {
      * @memberof AdminAuth
      */
     render() {
-      window.onbeforeunload = () => {
-        store.dispatch(setCurrentUserAuth({}));
-        localStorage.clear();
-        return '';
-      };
       return (
         <Component {...this.props} />
       );
