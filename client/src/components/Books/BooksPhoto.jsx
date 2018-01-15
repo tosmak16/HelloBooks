@@ -19,7 +19,7 @@ const BooksPhoto = (props) => {
   const filteredData = [];
   let bookLimit = 0;
   sortedData.forEach((element) => {
-    if (bookLimit < 7) { filteredData.push(element); }
+    if (bookLimit < 8) { filteredData.push(element); }
     bookLimit += 1;
   });
   const cardbox = filteredData.map(item =>
@@ -39,6 +39,4 @@ BooksPhoto.propTypes = {
   checkBookDetails: PropTypes.func.isRequired,
   bookData: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
-
-
 export default BooksPhoto;
