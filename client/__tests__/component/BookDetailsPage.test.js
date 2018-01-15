@@ -81,7 +81,7 @@ describe('Test book Details page components and container', () => {
     wrapper = mount(<Provider store={store}><ConnectedBookDetailsPage /></Provider>);
   });
 
-  it('should test and take snapshot of booksDetailsPage', () => {
+  it('should render and take snapshot of booksDetailsPage', () => {
     const tree = render.create(<BookDetailsPage
       bookData={initialState.books[0].data}
       book={initialState.selectedBookDetails}
@@ -93,7 +93,7 @@ describe('Test book Details page components and container', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('should test and take snapshot of books detailsPage when data and book array are empty', () => {
+  it('should render and take snapshot of books detailsPage when data and book array are empty', () => {
     const tree = render.create(<BookDetailsPage
       bookData={[]}
       book={[]}
@@ -106,7 +106,7 @@ describe('Test book Details page components and container', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('should test and take snapshot of details form when data and book array are empty', () => {
+  it('should render and take snapshot of details form when data and book array are empty', () => {
     const tree = render.create(<DetailsForm
       bookData={[]}
       book={[]}
@@ -118,7 +118,132 @@ describe('Test book Details page components and container', () => {
     />);
     expect(tree).toMatchSnapshot();
   });
-  it('should test if BookDetails component props contains error message on on update', () => {
+  it('should call checkBookDetails when BookDetails component mount', () => {
+    window.localStorage.setItem('bookId', '1');
+    const nextProps = {
+      borrowBookItem: [{ error: '', response: 'success' }]
+    };
+    wrapper = shallow(<DetailsForm
+      bookData={books}
+      borrowBooks={mockFuction}
+      book={books}
+      filteredData={books}
+      getbooks={mockFuction}
+      borrowBookItem={books}
+      checkBookDetails={mockFuction}
+      showbooksByCategory={mockFuction}
+    />);
+    wrapper.instance().componentWillMount();
+    expect(wrapper.instance().props.checkBookDetails).toHaveBeenCalled();
+  });
+  it('should call checkBookDetails when BookDetails component mount', () => {
+    window.localStorage.setItem('bookId', '1');
+    const nextProps = {
+      borrowBookItem: [{ error: '', response: 'success' }]
+    };
+    wrapper = shallow(<DetailsForm
+      bookData={books}
+      borrowBooks={mockFuction}
+      book={books}
+      filteredData={books}
+      getbooks={mockFuction}
+      borrowBookItem={books}
+      checkBookDetails={mockFuction}
+      showbooksByCategory={mockFuction}
+    />);
+    wrapper.instance().componentWillMount();
+    expect(wrapper.instance().props.checkBookDetails).toHaveBeenCalled();
+  });
+  it('should update sate when BookDetails component mount and book Id exist in locals storage', () => {
+    window.localStorage.setItem('id', '1');
+    const nextProps = {
+      borrowBookItem: [{ error: '', response: 'success' }]
+    };
+    wrapper = shallow(<DetailsForm
+      bookData={books}
+      borrowBooks={mockFuction}
+      book={books}
+      filteredData={books}
+      getbooks={mockFuction}
+      borrowBookItem={books}
+      checkBookDetails={mockFuction}
+      showbooksByCategory={mockFuction}
+    />);
+    wrapper.instance().componentWillMount();
+    expect(wrapper.instance().state.bookData).toEqual([]);
+  });
+  it('should update sate when handle click function is called', () => {
+    wrapper = shallow(<DetailsForm
+      bookData={books}
+      borrowBooks={mockFuction}
+      book={books}
+      filteredData={books}
+      getbooks={mockFuction}
+      borrowBookItem={books}
+      checkBookDetails={mockFuction}
+      showbooksByCategory={mockFuction}
+    />);
+    wrapper.instance().handleClick(event);
+    expect(wrapper.instance().state.display).toEqual(true);
+    expect(wrapper.instance().state.displayPreloader).toEqual('block');
+  });
+  it('should update error fix sate when handle open function is called', () => {
+    wrapper = shallow(<DetailsForm
+      bookData={books}
+      borrowBooks={mockFuction}
+      book={books}
+      filteredData={books}
+      getbooks={mockFuction}
+      borrowBookItem={books}
+      checkBookDetails={mockFuction}
+      showbooksByCategory={mockFuction}
+    />);
+    wrapper.instance().handleOpen(event);
+    expect(wrapper.instance().state.errorFix).toEqual(true);
+  });
+  it('should update error fix sate when handle close function is called', () => {
+    wrapper = shallow(<DetailsForm
+      bookData={books}
+      borrowBooks={mockFuction}
+      book={books}
+      filteredData={books}
+      getbooks={mockFuction}
+      borrowBookItem={books}
+      checkBookDetails={mockFuction}
+      showbooksByCategory={mockFuction}
+    />);
+    wrapper.instance().handleClose(event);
+    expect(wrapper.instance().state.errorFix).toEqual(true);
+  });
+  it('should update error fix sate when handle close function is called', () => {
+    wrapper = shallow(<DetailsForm
+      bookData={books}
+      borrowBooks={mockFuction}
+      book={books}
+      filteredData={books}
+      getbooks={mockFuction}
+      borrowBookItem={books}
+      checkBookDetails={mockFuction}
+      showbooksByCategory={mockFuction}
+    />);
+    wrapper.instance().handleExit(event);
+    expect(wrapper.instance().state.errorFix).toEqual(true);
+  });
+  it('should update error fix sate when handle close function is called', () => {
+    wrapper = shallow(<DetailsForm
+      bookData={books}
+      borrowBooks={mockFuction}
+      book={books}
+      filteredData={books}
+      getbooks={mockFuction}
+      borrowBookItem={books}
+      checkBookDetails={mockFuction}
+      showbooksByCategory={mockFuction}
+    />);
+    wrapper.instance().componentWillUnmount();
+    expect(window.localStorage.bookId).toEqual(undefined);
+  });
+  it('should update message state when BookDetails component receieve props with success message and display is block ', () => {
     const nextProps = {
       borrowBookItem: [{ error: '', response: 'success' }]
     };
@@ -140,14 +265,9 @@ describe('Test book Details page components and container', () => {
     });
     wrapper.update();
     wrapper.instance().componentWillReceiveProps(nextProps);
-    wrapper.instance().componentWillMount();
-    wrapper.instance().componentWillUnmount();
-    wrapper.instance().handleClick(event);
-    wrapper.instance().handleOpen(event);
-    wrapper.instance().handleExit(event);
-    wrapper.instance().handleClose(event);
+    expect(wrapper.instance().state.message).toEqual(nextProps.borrowBookItem[0].response);
   });
-  it('should test if BookDetails component display state is block', () => {
+  it('should update error state when BookDetails component receive props with error and display is block ', () => {
     const nextProps = {
       borrowBookItem: [{ error: 'there is error', response: 'success' }]
     };
@@ -166,11 +286,10 @@ describe('Test book Details page components and container', () => {
     wrapper.instance().setState({
       display: 'block',
     });
-    wrapper.instance().componentWillReceiveProps(nextProps);;
-    wrapper.instance().componentWillMount();
+    wrapper.instance().componentWillReceiveProps(nextProps);
+    expect(wrapper.instance().state.error).toEqual(nextProps.borrowBookItem[0].error);
   });
-
-  it('should test if BookDetails component props contains error message on on update', () => {
+  it('should not update error state when BookDetails component receive props with error and display is not block ', () => {
     const nextProps = {
       borrowBookItem: [{ error: 'there is error', response: '' }]
     };
@@ -190,10 +309,30 @@ describe('Test book Details page components and container', () => {
     wrapper.instance().setState({
       display: '',
     });
-    wrapper.update();
     wrapper.instance().componentWillReceiveProps(nextProps);
-    wrapper.instance().componentWillMount();
-    wrapper.update();
+    expect(wrapper.instance().state.error).toEqual('');
   });
-
+  it('should not update error and message state when BookDetails component receive empty and display is block ', () => {
+    const nextProps = {
+      borrowBookItem: [{ error: '', response: '' }]
+    };
+    localStorage.removeItem('id');
+    wrapper = shallow(<DetailsForm
+      bookData={books}
+      borrowBooks={mockFuction}
+      book={books}
+      filteredData={books}
+      getbooks={mockFuction}
+      borrowBookItem={books}
+      checkBookDetails={mockFuction}
+      showbooksByCategory={mockFuction}
+    />);
+    wrapper.instance().handleFuction = mockFuction;
+    wrapper.update();
+    wrapper.instance().setState({
+      display: 'block',
+    });
+    wrapper.instance().componentWillReceiveProps(nextProps);
+    expect(wrapper.instance().state.displayPreloader).toEqual('none');
+  });
 })

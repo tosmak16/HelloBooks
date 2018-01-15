@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login Page Component test should test and take snapshot of LoginForm 1`] = `
+exports[`Login Page Component test should render and take snapshot of LoginForm 1`] = `
 <div>
   <form
     action="books.html"
@@ -123,7 +123,7 @@ exports[`Login Page Component test should test and take snapshot of LoginForm 1`
 </div>
 `;
 
-exports[`Login Page Component test should test and take snapshot of LoginPage 1`] = `
+exports[`Login Page Component test should render and take snapshot of LoginPage 1`] = `
 <div>
   <div
     className="container"
@@ -634,7 +634,7 @@ exports[`Login Page Component test should test and take snapshot of LoginPage 1`
 </div>
 `;
 
-exports[`Login Page Component test should test and take snapshot of connected loginpPage 1`] = `
+exports[`Login Page Component test should render and take snapshot of connected loginpPage 1`] = `
 <connectLoginPage
   getBooks={[Function]}
   googleAuthSignIn={[Function]}

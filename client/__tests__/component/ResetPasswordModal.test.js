@@ -13,14 +13,11 @@ import { ResetPasswordModal } from '../../src/components/modal/ResetPasswordModa
 
 const middlewares = [thunk]; // add your middlewares like `redux-thunk
 const mockFuction = jest.fn();
-
 const mockStore = configureMockStore(middlewares);
 let store;
 let wrapper;
-
-
 describe('Test book Details page components and container', () => {
-  it('should test and take snapshot of ResetPasswordModal', () => {
+  it('should render and take snapshot of ResetPasswordModal', () => {
     const tree = render.create(<ResetPasswordModal
       userEmailText=''
       handleSendMail={mockFuction}
