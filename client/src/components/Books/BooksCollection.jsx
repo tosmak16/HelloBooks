@@ -26,11 +26,11 @@ const BooksCollection = (props) => {
     <span className="title">{item.bookTitle}</span>
     <p>{item.author}</p>
     <button
-      id="wishbtn"
+      id={item.id}
       name={item.id}
       onClick={checkBookDetails}
       type="button"
-      className="btn-sm btn-warning shop"
+      className="btn-sm btn-warning shop book-col-btn"
     >Check details</button>
     <a href="#!" className="secondary-content"><i key={item.id} style={{ color: 'orange' }} className="material-icons ">grade</i></a>
   </li>));
