@@ -17,12 +17,12 @@ import UploadBooksContainer from '../components/Admin/Containers/UploadBooksCont
 import UpdateBooksContainer from '../components/Admin/Containers/UpdateBooksContainer';
 import LoginAuth from '../components/middlewares/LoginAuth';
 import IndexShield from '../components/middlewares/IndexShield';
-
+import { LandingPage } from '../components/LandingPage';
 
 export default
 (
   <Route path="/" component={App}>
-    <IndexRoute component={IndexShield(LoginPage)} />
+    <IndexRoute component={IndexShield(LandingPage)} />
     <Route path="/login" component={LoginAuth(LoginPage)} />
     <Route path="/signup" component={LoginAuth(SignupPage)} />
     <Route path="/books" component={BookPage} />

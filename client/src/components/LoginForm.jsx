@@ -180,7 +180,7 @@ export class LoginForm extends React.Component {
    * @memberof LoginForm
    */
   render() {
-    document.title = 'Home|Login';
+    document.title = 'Login Page';
     const { error } = this.props.login;
     return (
       <div>

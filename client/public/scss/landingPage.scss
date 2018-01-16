@@ -1,161 +1,45 @@
-div.welcome {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+.con {
+    background: url(http://res.cloudinary.com/tosmak/image/upload/e_brightness:-32/v1515665735/back_dwpldl.jpg);
+    background-size: cover;
+    background-position: center;
+    color: white;
+    height: 800px;
+    max-height: 800px;
 }
 
-main {
-  flex: 1 0 auto;
+.h1-landing {
+    font-weight: 700;
+    font-size: 5em;
 }
 
-h1.title,
-.footer-copyright a {
-  font-family: 'Architects Daughter', cursive;
-  text-transform: uppercase;
-  font-weight: 900;
+.content {
+    text-align: center;
+    height: 1000px;
+    margin-top: -85px;
+    padding-top: 30%;
+    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1);
 }
 
-/* start welcome animation */
-
-div.welcome {
-  background:  #fbfbd2;
-  overflow: hidden;
-  -webkit-font-smoothing: antialiased;
+@media (max-width: 600px) {
+    .content {
+        text-align: center;
+        height: 1000px;
+        margin-top: -185px;
+        padding-top: 60%;
+        text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1);
+    }
 }
 
-.welcome .splash {
-  height: 0px;
-  padding: 0px;
-  border: 130em solid  #595951;
-  position: fixed;
-  left: 50%;
-  top: 100%;
-  display: block;
-  box-sizing: initial;
-  overflow: hidden;
-
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  animation: puff 0.5s 1.8s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, borderRadius 0.2s 2.3s linear forwards;
+.hr-landing {
+    width: 400px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.welcome #welcome {
-  background:  #827168 ;
-  width: 56px;
-  height: 56px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  overflow: hidden;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  animation: init 0.5s 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, moveDown 1s 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards, moveUp 1s 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, materia 0.5s 2.7s cubic-bezier(0.86, 0, 0.07, 1) forwards, hide 2s 2.9s ease forwards;
+.landing-button {
+    background-color: burlywood !important;
 }
 
-/* moveIn */
-.welcome header,
-.welcome a.btn {
-  opacity: 0;
-  animation: moveIn 2s 3.1s ease forwards;
+.footer-set {
+    margin-top: -80px;
 }
-
-@keyframes init {
-  0% {
-    width: 0px;
-    height: 0px;
-  }
-  100% {
-    width: 56px;
-    height: 56px;
-    margin-top: 0px;
-    opacity: 1;
-  }
-}
-
-@keyframes puff {
-  0% {
-    top: 100%;
-    height: 0px;
-    padding: 0px;
-  }
-  100% {
-    top: 50%;
-    height: 100%;
-    padding: 0px 100%;
-  }
-}
-
-@keyframes borderRadius {
-  0% {
-    border-radius: 50%;
-  }
-  100% {
-    border-radius: 0px;
-  }
-}
-
-@keyframes moveDown {
-  0% {
-    top: 50%;
-  }
-  50% {
-    top: 40%;
-  }
-  100% {
-    top: 100%;
-  }
-}
-
-@keyframes moveUp {
-  0% {
-    background: #93776d;
-    top: 100%;
-  }
-  50% {
-    top: 40%;
-  }
-  100% {
-    top: 50%;
-    background:  #fbfbd2;
-  }
-}
-
-@keyframes materia {
-  0% {
-    background:  #fbfbd2;
-  }
-  50% {
-    background:  #fbfbd2;
-    top: 26px;
-  }
-  100% {
-    background:  #fbfbd2;
-    width: 100%;
-    height: 64px;
-    border-radius: 0px;
-    top: 26px;
-  }
-}
-
-@keyframes moveIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes hide {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-// #land_wel{
-//   color: rgba(142, 15, 15, 0.74);
-// }
