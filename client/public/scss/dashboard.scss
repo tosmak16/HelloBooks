@@ -401,20 +401,90 @@ color: #3d1112 !important;
       transform: translateY(-50%);
     }
   }
-  #pdf_wrapper{
-    z-index: 1000;
-    display: block;
-    background-color: rgba(0, 0, 0, 0.51);
-    width: 1000px;
-    height: 1000px;
-    position: fixed;
-    bottom: 0px;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    margin-top: 65px;
-    margin-left: 250px;
-  }
+@media (max-width: 1500px) {
+    #pdf_wrapper {
+        z-index: 1000;
+        display: block;
+        background-color: rgba(0, 0, 0, 0.51);
+        width: 1500px;
+        height: 1000px;
+        position: fixed;
+        bottom: 0px;
+        top: 0px;
+        left: -200px;
+        right: 0px;
+        margin-top: 65px;
+        margin-left: 200px;
+    }
+}
+
+@media (max-width: 1200px) {
+    #pdf_wrapper {
+        z-index: 1000;
+        display: block;
+        background-color: rgba(0, 0, 0, 0.51);
+        width: 1500px;
+        height: 1000px;
+        position: fixed;
+        bottom: 0px;
+        top: 0px;
+        left: -200px;
+        right: 0px;
+        margin-top: 65px;
+        margin-left: 180px;
+    }
+}
+
+@media (max-width: 1100px) {
+    #pdf_wrapper {
+        z-index: 1000;
+        display: block;
+        background-color: rgba(0, 0, 0, 0.51);
+        width: 1500px;
+        height: 1000px;
+        position: fixed;
+        bottom: 0px;
+        top: 0px;
+        left: -200px;
+        right: 0px;
+        margin-top: 65px;
+        margin-left: 50px;
+    }
+}
+
+@media (max-width: 920px) {
+    #pdf_wrapper {
+        z-index: 1000;
+        display: block;
+        background-color: rgba(0, 0, 0, 0.51);
+        width: 1500px;
+        height: 1000px;
+        position: fixed;
+        bottom: 0px;
+        top: 0px;
+        left: -200px;
+        right: 0px;
+        margin-top: 65px;
+        margin-left: -150px;
+    }
+}
+
+@media (max-width: 720px) {
+    #pdf_wrapper {
+        z-index: 1000;
+        display: block;
+        background-color: rgba(0, 0, 0, 0.51);
+        width: 1500px;
+        height: 1000px;
+        position: fixed;
+        bottom: 0px;
+        top: 0px;
+        left: -200px;
+        right: 0px;
+        margin-top: 100px;
+        margin-left: -250px;
+    }
+}
 
   #pdf_reader{
       display: block;
