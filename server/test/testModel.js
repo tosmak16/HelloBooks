@@ -33,7 +33,7 @@ const borrowbook = {
 
 
 describe('User Model Test', () => {
-  it('it should create a new user if all details are correctly inputed', (done) => {
+  it('should create a new user if all details are correctly inputed', (done) => {
     db.Users.create(user)
       .then((userDetails) => {
         expect(userDetails.username).to.equal(user.username);
@@ -43,44 +43,48 @@ describe('User Model Test', () => {
         done();
       })
   })
-  it('it should return error message when firstname is less than one', (done) => {
+  it('should return error message when firstname is less than one', (done) => {
     const testMockUser = user;
     testMockUser.firstName = 'l';
     db.Users.create(testMockUser)
       .then()
       .catch((response) => {
+        expect(response.errors[0].message).to.be.a('string');
         expect(response.errors[0].message.toString()).to.equal('Firstname should range between 2 to 50 charaters');
         done();
       })
   })
-  it('it should return error message when lastname is less than one', (done) => {
+  it('should return error message when lastname is less than one', (done) => {
     const testMockUser = user;
     testMockUser.firstName = 'lll';
     testMockUser.lastName = 'l';
     db.Users.create(testMockUser)
       .then()
       .catch((response) => {
+        expect(response.errors[0].message).to.be.a('string');
         expect(response.errors[0].message.toString()).to.equal('Lastname should range between 2 to 50 charaters');
         done();
       })
   })
 
-  it('it should return error message when email is less than two', (done) => {
+  it('should return error message when email is less than two', (done) => {
     const testMockUser = user;
     testMockUser.email = 'l';
     db.Users.create(user)
       .then()
       .catch((response) => {
+        expect(response.errors[0].message).to.be.a('string');
         expect(response.errors[0].message.toString()).to.equal('Email field must contain a valid email address');
         done();
       })
   })
-  it('it should return error message when password is not defined', (done) => {
+  it('should return error message when password is not defined', (done) => {
     const testMockUser = user;
     testMockUser.password = '';
     db.Users.create(user)
       .then()
       .catch((response) => {
+        expect(response.errors[0].message).to.be.a('string');
         expect(response.errors[0].message.toString()).to.equal('password cannot be empty');
         done();
       })
@@ -88,11 +92,12 @@ describe('User Model Test', () => {
 })
 
 describe('Book Model Test', () => {
-  it('it should create a book if all details are correctly inputed', (done) => {
+  it('should create a book if all details are correctly inputed', (done) => {
     book.isbn = '123456789034';
     book.id = 20;
     db.Books.create(book)
       .then((createdBookDetails) => {
+        expect(createdBookDetails).to.be.an('object');
         expect(createdBookDetails.bookTitle).to.equal(book.bookTitle);
         expect(createdBookDetails.author).to.equal(book.author);
         expect(createdBookDetails.category).to.equal(book.category);
@@ -104,47 +109,51 @@ describe('Book Model Test', () => {
       })
   })
 
-  it('it should return error message when bookTitle is not inputed', (done) => {
+  it('should return error message when bookTitle is not inputed', (done) => {
     const testMockBook = book;
     testMockBook.bookTitle = '';
     db.Books.create(testMockBook)
       .then()
       .catch((response) => {
+        expect(response.errors[0].message).to.be.a('string');
         expect(response.errors[0].message.toString()).to.equal('book title cannot be empty');
         done();
       })
   })
-  it('it should return error message when author is not inputed', (done) => {
+  it('should return error message when author is not inputed', (done) => {
     const testMockBook = book;
     testMockBook.bookTitle = 'foo bar'
     testMockBook.author = '';
     db.Books.create(testMockBook)
       .then()
       .catch((response) => {
+        expect(response.errors[0].message).to.be.a('string');
         expect(response.errors[0].message.toString()).to.equal('author cannot be empty');
         done();
       })
   })
 
-  it('it should return error message when stockNumber is not inputed', (done) => {
+  it('should return error message when stockNumber is not inputed', (done) => {
     const testMockBook = book;
     testMockBook.stockNumber = ''
     testMockBook.author = 'jack ben';
     db.Books.create(testMockBook)
       .then()
       .catch((response) => {
+        expect(response.errors[0].message).to.be.a('string');
         expect(response.errors[0].message.toString()).to.equal('number in stock cannot be empty');
         done();
       })
   })
 
-  it('it should return error message when isbn is not inputed', (done) => {
+  it('should return error message when isbn is not inputed', (done) => {
     const testMockBook = book;
     testMockBook.stockNumber = 70
     testMockBook.isbn = '';
     db.Books.create(testMockBook)
       .then()
       .catch((response) => {
+        expect(response.errors[0].message).to.be.a('string');
         expect(response.errors[0].message.toString()).to.equal('Isbn cannot be empty');
         done();
       })
@@ -152,7 +161,7 @@ describe('Book Model Test', () => {
 })
 
 describe('BorrowedBook Model Test', () => {
-  it('it should create a borrowed Book resource if all details are correctly inputed', (done) => {
+  it('should create a borrowed Book resource if all details are correctly inputed', (done) => {
     db.BorrowedBooks.create(borrowbook)
       .then((borrowbookDetails) => {
         expect(borrowbookDetails.get().bookId).to.equal(borrowbook.bookId);
@@ -166,6 +175,7 @@ describe('BorrowedBook Model Test', () => {
         userId: 1
       },
     }).then((borrowedBookedFound) => {
+      expect(borrowedBookedFound).to.be.an('array');
       expect(borrowedBookedFound[0].dataValues.bookId).to.equal(borrowbook.bookId);
       expect(borrowedBookedFound[0].dataValues.userId).to.equal(borrowbook.userId);
       done();
