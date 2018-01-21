@@ -49,7 +49,7 @@ describe('User Model Test', () => {
     db.Users.create(testMockUser)
       .then()
       .catch((response) => {
-        expect(response.errors[0].message.toString()).to.equal('Firstname should be longer than two characters');
+        expect(response.errors[0].message.toString()).to.equal('Firstname should range between 2 to 50 charaters');
         done();
       })
   })
@@ -60,7 +60,7 @@ describe('User Model Test', () => {
     db.Users.create(testMockUser)
       .then()
       .catch((response) => {
-        expect(response.errors[0].message.toString()).to.equal('Lastname should be longer than two characters');
+        expect(response.errors[0].message.toString()).to.equal('Lastname should range between 2 to 50 charaters');
         done();
       })
   })
@@ -71,7 +71,7 @@ describe('User Model Test', () => {
     db.Users.create(user)
       .then()
       .catch((response) => {
-        expect(response.errors[0].message.toString()).to.equal('Field must contain a valid email address');
+        expect(response.errors[0].message.toString()).to.equal('Email field must contain a valid email address');
         done();
       })
   })

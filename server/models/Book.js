@@ -14,7 +14,7 @@ export default (sequelize, DataTypes) => {
         },
         len: {
           args: [3, 50],
-          msg: 'book title should be more than 3 characters long',
+          msg: 'Book title should be at the range of 3 to 50 charaters',
         },
       },
     },
@@ -32,7 +32,7 @@ export default (sequelize, DataTypes) => {
         },
         len: {
           args: [3, 50],
-          msg: 'Author name should be more than 3 characters long',
+          msg: 'Author name should be at the range of 3 to 50 charaters',
         },
       },
     },
@@ -46,7 +46,7 @@ export default (sequelize, DataTypes) => {
         },
         is: {
           args: /(\w)/i,
-          msg: 'category only contain strings',
+          msg: 'Book Category only contain strings',
         },
       },
     },
@@ -60,7 +60,7 @@ export default (sequelize, DataTypes) => {
         },
         len: {
           args: [6 - 12],
-          msg: 'Isbn should be 6 and 12 digits',
+          msg: 'Isbn should be between 6 and 12 digit number',
         },
       },
     },
@@ -92,7 +92,7 @@ export default (sequelize, DataTypes) => {
       validate: {
         len: {
           args: [0, 500],
-          msg: 'summary ranges between 0 and 500',
+          msg: 'Book summary ranges between 0 and 500',
         },
       },
 

@@ -12,7 +12,7 @@ export default (sequelize, DataTypes) => {
         },
         len: {
           args: [3, 100],
-          msg: 'username should be longer than two characters',
+          msg: 'username should be at the range of three to fifty charaters',
         },
       },
     },
@@ -36,7 +36,7 @@ export default (sequelize, DataTypes) => {
         },
         isEmail: {
           args: true,
-          msg: 'Field must contain a valid email address',
+          msg: 'Email field must contain a valid email address',
         },
       },
     },
@@ -54,7 +54,7 @@ export default (sequelize, DataTypes) => {
         },
         len: {
           args: [2, 100],
-          msg: 'Firstname should be longer than two characters',
+          msg: 'Firstname should range between 2 to 50 charaters',
         },
       },
     },
@@ -72,7 +72,7 @@ export default (sequelize, DataTypes) => {
         },
         len: {
           args: [2, 100],
-          msg: 'Lastname should be longer than two characters',
+          msg: 'Lastname should range between 2 to 50 charaters',
         },
       },
     },
@@ -102,7 +102,7 @@ export default (sequelize, DataTypes) => {
         },
         len: {
           args: [2, 15],
-          msg: 'mobile number should be 2 to 15 digits',
+          msg: 'mobile number should range between 2 to 15 digits',
         },
 
       },
