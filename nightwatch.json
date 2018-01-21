@@ -1,6 +1,6 @@
 {
   "src_folders": [
-    "client/e2eTest/"
+    "e2eTest/"
   ],
   "output_folder": "e2eTestReport",
   "selenium": {
