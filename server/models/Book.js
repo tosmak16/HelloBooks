@@ -32,7 +32,7 @@ export default (sequelize, DataTypes) => {
         },
         len: {
           args: [3, 50],
-          msg: 'Author name should be at the range of 3 to 50 charaters',
+          msg: 'author should be at the range of 3 to 50 charaters',
         },
       },
     },
@@ -56,11 +56,11 @@ export default (sequelize, DataTypes) => {
       validate: {
         notEmpty: {
           args: true,
-          msg: 'Isbn cannot be empty',
+          msg: 'isbn cannot be empty',
         },
         len: {
           args: [6 - 12],
-          msg: 'Isbn should be between 6 and 12 digit number',
+          msg: 'isbn should be between 6 and 12 digit number',
         },
       },
     },
@@ -92,7 +92,7 @@ export default (sequelize, DataTypes) => {
       validate: {
         len: {
           args: [0, 500],
-          msg: 'Book summary ranges between 0 and 500',
+          msg: 'book summary ranges between 0 and 500',
         },
       },
 
