@@ -12,7 +12,7 @@ export default (sequelize, DataTypes) => {
         },
         len: {
           args: [3, 50],
-          msg: 'username should be at the range of three to fifty charaters',
+          msg: 'username should be at the range of 3 to 50 charaters',
         },
       },
     },
