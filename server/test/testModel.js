@@ -154,7 +154,7 @@ describe('Book Model Test', () => {
       .then()
       .catch((response) => {
         expect(response.errors[0].message).to.be.a('string');
-        expect(response.errors[0].message.toString()).to.equal('Isbn cannot be empty');
+        expect(response.errors[0].message.toString()).to.equal('isbn cannot be empty' to equal');
         done();
       })
   })
