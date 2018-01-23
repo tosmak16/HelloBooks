@@ -14,7 +14,7 @@ export default (sequelize, DataTypes) => {
         },
         len: {
           args: [3, 50],
-          msg: 'Book title should be at the range of 3 to 50 charaters',
+          msg: 'book title should be at the range of 3 to 50 charaters',
         },
       },
     },
@@ -42,11 +42,11 @@ export default (sequelize, DataTypes) => {
       validate: {
         notEmpty: {
           args: true,
-          msg: 'category cannot be empty',
+          msg: 'book category cannot be empty',
         },
         is: {
           args: /(\w)/i,
-          msg: 'Book Category only contain strings',
+          msg: 'book Category only contain strings',
         },
       },
     },
