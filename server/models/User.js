@@ -11,7 +11,7 @@ export default (sequelize, DataTypes) => {
           msg: 'username cannot be empty',
         },
         len: {
-          args: [3, 100],
+          args: [3, 50],
           msg: 'username should be at the range of three to fifty charaters',
         },
       },
@@ -53,7 +53,7 @@ export default (sequelize, DataTypes) => {
           msg: 'firstname can only contain strings',
         },
         len: {
-          args: [2, 100],
+          args: [2, 50],
           msg: 'Firstname should range between 2 to 50 charaters',
         },
       },
@@ -71,7 +71,7 @@ export default (sequelize, DataTypes) => {
           msg: 'lastname can only contain strings',
         },
         len: {
-          args: [2, 100],
+          args: [2, 50],
           msg: 'Lastname should range between 2 to 50 charaters',
         },
       },
