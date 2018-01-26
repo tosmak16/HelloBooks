@@ -1,4 +1,11 @@
-import booksController from '../controllers/books';
+import {
+  addBook,
+  deleteBooks,
+  updateBook,
+  getAllBooks,
+  addCategory,
+  getCategories
+} from '../controllers/books';
 import authController from '../middleWare/auth';
 import usersController from '../controllers/users';
 import userAuth from '../middleWare/userAuth';
@@ -106,7 +113,7 @@ export default (app) => {
    *       500:
    *         description: server error
    */
-  app.get('/api/v2/books', booksController.getAllBooks);
+  app.get('/api/v2/books', getAllBooks);
   /* This is sign up route */
   /**
    * @swagger
@@ -196,7 +203,57 @@ export default (app) => {
    *       500:
    *         description: server error
    */
-  app.post('/api/v2/books', bookDetailsValidator, booksController.addBook);
+  app.post('/api/v2/books', bookDetailsValidator, addBook);
+  /**
+   * @swagger
+   * /categories:
+   *   post:
+   *     description: Adds categories
+   *     produces:
+   *       - application/json
+   *     parameters:
+   *       - name: categoryName
+   *         description: category object
+   *         in: body
+   *         required: true
+   *         schema:
+   *           $ref: '#/definitions/category'
+   *       - name: token
+   *         description: authentication token
+   *         in: header
+   *         required: true
+   *         type: string
+   *     responses:
+   *       201:
+   *         description: Book category has been added to store
+   *       400:
+   *         description: Bad request error
+   *       500:
+   *         description: server error
+   */
+  app.post('/api/v2/categories', addCategory);
+  /**
+   * @swagger
+   * /categories:
+   *   get:
+   *     description: Gets categories
+   *     produces:
+   *       - application/json
+   *     parameters:
+   *       - name: token
+   *         description: authentication token
+   *         in: header
+   *         required: true
+   *         type: string
+   *     responses:
+   *       200:
+   *         description: Book category has been fetched
+   *       400:
+   *         description: Bad request error
+   *       500:
+   *         description: server error
+   */
+  app.get('/api/v2/categories', getCategories);
   /* This route to delete books */
   /**
    * @swagger
@@ -234,7 +291,7 @@ export default (app) => {
    *       500:
    *         description: server error
    */
-  app.delete('/api/v2/books/:bookId', booksController.deleteBooks);
+  app.delete('/api/v2/books/:bookId', deleteBooks);
   /* This route to modify books details */
   /**
    * @swagger
@@ -270,7 +327,7 @@ export default (app) => {
    *       500:
    *         description: server error
    */
-  app.put('/api/v2/books/:bookId', booksController.updateBook);
+  app.put('/api/v2/books/:bookId', updateBook);
   /* This route get list of all users */
   /**
    * @swagger

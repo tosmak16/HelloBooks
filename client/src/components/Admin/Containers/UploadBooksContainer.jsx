@@ -11,6 +11,7 @@ import { uploadImage } from '../../../actions/uploadImage';
 import { uploadFile } from '../../../actions/uploadFile';
 import { logout } from '../../../actions/logout';
 import { validateBookDetails } from '../../../helperFunctions/validateBookDetails';
+import { getBooksCategory } from '../../../actions/getBooksCategory';
 
 /**
  * @description UpdateBooks Connected component
@@ -50,7 +51,8 @@ class UploadBooksContainer extends React.Component {
       bookFile: '',
       bookFileUrl: '',
       uploadingBookCoverImage: false,
-      displayPreloader: 'none'
+      displayPreloader: 'none',
+      categoryData: []
     };
     this.handleImageChange = this.handleImageChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -59,6 +61,7 @@ class UploadBooksContainer extends React.Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleExit = this.handleExit.bind(this);
     this.handleFileChange = this.handleFileChange.bind(this);
+    this.handleCategorySelect = this.handleCategorySelect.bind(this);
   }
   /**
    * @memberof UploadBooksContainer
@@ -70,6 +73,9 @@ class UploadBooksContainer extends React.Component {
 
     if (!this.props.isFetched) {
       this.props.getBooks(true);
+    }
+    if (this.state.categoryData.length === 0) {
+      this.props.getBooksCategory(localStorage.jwtToken);
     }
     $(document).ready(() => {
       $('.modal').modal();
@@ -144,6 +150,12 @@ class UploadBooksContainer extends React.Component {
         });
         setTimeout(() => { this.props.uploadBook(this.state, localStorage.jwtToken); }, 1000);
       }
+    }
+    const { isLoaded, categoryData } = nextProps.bookCategoriesState;
+    if (isLoaded === 'true' && isLoaded !== this.props.bookCategoriesState.isLoaded) {
+      this.setState({
+        categoryData
+      });
     }
   }
   /**
@@ -285,6 +297,17 @@ class UploadBooksContainer extends React.Component {
     };
     reader.readAsDataURL(bookFile);
   }
+  /**
+   * @param {object} event
+   * 
+   * @memberof UploadBooksPage
+   * 
+   * @returns {void}
+   */
+  handleCategorySelect(event) {
+    event.preventDefault();
+    this.setState({ [event.target.name]: event.target.value });
+  }
 
   /**
    * @returns {views} containing uploadbook and admin sidebar component
@@ -308,6 +331,7 @@ class UploadBooksContainer extends React.Component {
               handleImageChange={this.handleImageChange}
               handleOpen={this.handleOpen}
               state={this.state}
+              handleCategorySelect={this.handleCategorySelect}
             />
           </div>
         </div>
@@ -317,8 +341,10 @@ class UploadBooksContainer extends React.Component {
 }
 
 UploadBooksContainer.propTypes = {
+  bookCategoriesState: PropTypes.objectOf(PropTypes.any).isRequired,
   fileUrl: PropTypes.string.isRequired,
   getBooks: PropTypes.func.isRequired,
+  getBooksCategory: PropTypes.func.isRequired,
   imageUrl: PropTypes.string.isRequired,
   isFetched: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired,
@@ -339,6 +365,7 @@ const mapStateToProps = function mapStateToProps(state) {
     imageUrl: state.uploadImages[0].response,
     uploadBookItem: state.uploadBooks,
     fileUrl: state.bookFileUpload[0].response,
+    bookCategoriesState: state.bookCategoriesList[0]
   };
 };
 export default connect(mapStateToProps, {
@@ -346,5 +373,6 @@ export default connect(mapStateToProps, {
   uploadBook,
   uploadImage,
   uploadFile,
-  logout
+  logout,
+  getBooksCategory
 })(UploadBooksContainer);

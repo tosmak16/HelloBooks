@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
 import ActivityLoader from '../preloader/ActivityLoader';
+import { BooksCategorySelect } from '../select/BooksCategorySelect';
 
 /**
  * @description uploadBooks unconnected component
@@ -15,7 +16,7 @@ import ActivityLoader from '../preloader/ActivityLoader';
  */
 const UploadBooksPage = (props) => {
   const {
-    state, handleChange, handleClick, handleClose,
+    state, handleCategorySelect, handleChange, handleClick, handleClose,
     handleExit, handleFileChange, handleImageChange, handleOpen
   } = props;
   return (
@@ -52,31 +53,22 @@ const UploadBooksPage = (props) => {
             />
           </div>
         </div>
-        <div className="row">
-          <div className="form-group input-field">
-            <input
-              type="text"
-              name="category"
-              value={state.category}
-              className="form-control validate col l5  col m5 col s12"
-              id="ubookCat"
-              placeholder="Category"
-              required
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group input-field">
-            <input
-              type="text"
-              name="isbn"
-              className="form-control validate col l5 offset-l1 col m5 offset-m1 col s12"
-              id="uISBN"
-              placeholder="ISBN"
-              required
-              value={state.isbn}
-              onChange={handleChange}
-            />
-          </div>
+        <BooksCategorySelect
+          onHandleSelected={handleCategorySelect}
+          value={state.category}
+          categoryData={state.categoryData}
+        />
+        <div className="form-group input-field">
+          <input
+            type="text"
+            name="isbn"
+            className="form-control validate col l12 col s12"
+            id="uISBNn"
+            placeholder="ISBN"
+            required
+            value={state.isbn}
+            onChange={handleChange}
+          />
         </div>
         <div className="form-group input-field">
           <input
@@ -175,6 +167,7 @@ const UploadBooksPage = (props) => {
 };
 
 UploadBooksPage.propTypes = {
+  handleCategorySelect: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired,
   handleClose: PropTypes.func.isRequired,

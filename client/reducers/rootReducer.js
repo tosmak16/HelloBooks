@@ -23,6 +23,8 @@ import passwordChange from './passwordChange';
 import userProfileImage from './userProfileImage';
 import bookFileUpload from './bookFileUpload';
 import resetPassword from './resetPassword';
+import booksCategory from './booksCategory';
+import bookCategoriesList from './bookCategoriesList';
 
 export default combineReducers({
   auth,
@@ -47,5 +49,7 @@ export default combineReducers({
   passwordChange,
   userProfileImage,
   bookFileUpload,
-  resetPassword
+  resetPassword,
+  booksCategory,
+  bookCategoriesList
 });

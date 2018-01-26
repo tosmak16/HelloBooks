@@ -47,6 +47,5 @@ module.exports = {
         },
       },
     }),
-
   down: queryInterface => queryInterface.dropTable('BorrowedBooks'),
 };

@@ -14,7 +14,7 @@ import { uploadFile } from '../../../actions/uploadFile';
 import { updateBookDetailsTemp } from '../HelperFunctions/updateBookDetailsTemp';
 import { logout } from '../../../actions/logout';
 import { validateBookDetails } from '../../../helperFunctions/validateBookDetails';
-
+import { getBooksCategory } from '../../../actions/getBooksCategory';
 /**
  * @description UpdateBooks Connected component
  * 
@@ -61,7 +61,9 @@ class UpdateBooksContainer extends React.Component {
       updatingBookFile: false,
       displayPreloader: 'none',
       imageLoaded: false,
-      bookData: []
+      bookData: [],
+      bookCategory: '',
+      categoryData: []
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -72,6 +74,7 @@ class UpdateBooksContainer extends React.Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleExit = this.handleExit.bind(this);
     this.handleFileChange = this.handleFileChange.bind(this);
+    this.handleCategorySelect = this.handleCategorySelect.bind(this);
   }
   /**
    * @memberof UpdateBooksContainer
@@ -84,10 +87,14 @@ class UpdateBooksContainer extends React.Component {
     if (!this.props.isFetched) {
       this.props.getBooks(true);
     }
+    if (this.state.categoryData.length === 0) {
+      this.props.getBooksCategory(localStorage.jwtToken);
+    }
     $(document).ready(() => {
       $('.modal').modal();
     });
   }
+
   /**
    * @param {object} nextProps
    * 
@@ -234,6 +241,12 @@ class UpdateBooksContainer extends React.Component {
         });
         setTimeout(() => { this.props.uploadFile(this.state.bookFile); }, 1000);
       }
+    }
+    const { isLoaded, categoryData } = nextProps.bookCategoriesState;
+    if (isLoaded === 'true' && isLoaded !== this.props.bookCategoriesState.isLoaded) {
+      this.setState({
+        categoryData
+      });
     }
   }
   /**
@@ -451,6 +464,17 @@ class UpdateBooksContainer extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
   /**
+   * @param {object} event
+   * 
+   * @memberof UpdateBooksPage
+   * 
+   * @returns {void}
+   */
+  handleCategorySelect(event) {
+    event.preventDefault();
+    this.setState({ [event.target.name]: event.target.value });
+  }
+  /**
    * @returns {void}
    * 
    * @memberof UpdateBooksContainer
@@ -474,6 +498,7 @@ class UpdateBooksContainer extends React.Component {
               handleOpen={this.handleOpen}
               handleInputChange={this.handleInputChange}
               state={this.state}
+              handleCategorySelect={this.handleCategorySelect}
             />
           </div>
         </div>
@@ -482,9 +507,11 @@ class UpdateBooksContainer extends React.Component {
   }
 }
 UpdateBooksContainer.propTypes = {
+  bookCategoriesState: PropTypes.objectOf(PropTypes.any).isRequired,
   bookData: PropTypes.arrayOf(PropTypes.any).isRequired,
   fileUrl: PropTypes.string.isRequired,
   filteredData: PropTypes.arrayOf(PropTypes.any).isRequired,
+  getBooksCategory: PropTypes.func.isRequired,
   getBooks: PropTypes.func.isRequired,
   imageUrl: PropTypes.string.isRequired,
   isFetched: PropTypes.bool.isRequired,
@@ -509,6 +536,7 @@ const mapStateToProps = function mapStateToProps(state) {
     imageUrl: state.uploadImages[0].response,
     updateItem: state.updateBooks,
     fileUrl: state.bookFileUpload[0].response,
+    bookCategoriesState: state.bookCategoriesList[0]
   };
 };
 export default connect(mapStateToProps, {
@@ -518,5 +546,6 @@ export default connect(mapStateToProps, {
   updateBook,
   uploadImage,
   uploadFile,
-  logout
+  logout,
+  getBooksCategory
 })(UpdateBooksContainer);

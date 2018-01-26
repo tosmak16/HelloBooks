@@ -12,7 +12,8 @@ import searchBook from '../../../actions/searchBook';
 import { getBooksReponse } from '../../../../actions/getBooks';
 import store from '../../../../index';
 import { logout } from '../../../actions/logout';
-
+import { addBooksCategory } from '../../../actions/addBooksCategory';
+import { validateCategoryName } from '../../../helperFunctions/validateCategoryName';
 
 /**
  * @description BookStore Connected component
@@ -46,10 +47,13 @@ class BookStoreContainer extends React.Component {
       errorFix: true,
       displayPreloader: 'none',
       filterBookLoaded: false,
-      bookData: []
+      bookData: [],
+      bookCategoryText: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSelected = this.handleChange.bind(this);
+    this.handleAddCategory = this.handleAddCategory.bind(this);
+    this.handleCategoryChange = this.handleCategoryChange.bind(this);
   }
   /**
    * @memberof BookStoreContainer
@@ -108,14 +112,30 @@ class BookStoreContainer extends React.Component {
     } this.setState({
       displayPreloader: 'none'
     });
+    const { isLoaded, responseMessage, errorMessage } = nextProps.bookCategoryState;
+    if (isLoaded === 'true' && isLoaded !== this.props.bookCategoryState.isLoaded) {
+      this.setState({
+        message: responseMessage,
+        bookCategoryText: ''
+      });
+      Materialize.toast(responseMessage, 1000, 'green');
+      $('#modal3').modal('open');
+    }
+    if (isLoaded === 'false' && isLoaded !== this.props.bookCategoryState.isLoaded) {
+      this.setState({
+        errors: errorMessage,
+      });
+      Materialize.toast(errorMessage, 1000, 'red');
+      $('#modal2').modal('open');
+    }
   }
   /**
- * @param {object} event
- * 
- * @memberof BookStorePage
- * 
- * @returns {void}
- */
+   * @param {object} event
+   * 
+   * @memberof BookStorePage
+   * 
+   * @returns {void}
+   */
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
     if (event.target.value.length > 3 && this.state.filterBy !== '') {
@@ -195,6 +215,41 @@ class BookStoreContainer extends React.Component {
     });
   }
   /**
+  * @param {object} event
+  * 
+  * @memberof BookStorePage
+  * 
+  * @returns {void}
+  */
+  handleCategoryChange(event) {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  }
+  /**
+  * @param {object} event
+  * 
+  * @memberof BookStorePage
+  * 
+  * @returns {void}
+  */
+  handleAddCategory() {
+    const { bookCategoryText } = this.state;
+    validateCategoryName(bookCategoryText)
+      .then((responseData) => {
+        if (responseData.status === 'error') {
+          this.setState({
+            errors: responseData.message
+          });
+          Materialize.toast(responseData.message, 1000, 'red');
+          $('#modal2').modal('open');
+        } else {
+          this.props.addBooksCategory(bookCategoryText, localStorage.jwtToken);
+        }
+      });
+  }
+  /**
    * @returns {void}
    * 
    * @memberof BookStoreContainer
@@ -216,6 +271,8 @@ class BookStoreContainer extends React.Component {
               handleSelected={this.handleSelected}
               handleYes={this.handleYes}
               state={this.state}
+              handleAddCategory={this.handleAddCategory}
+              handleCategoryChange={this.handleCategoryChange}
             />
           </div>
         </div>
@@ -224,7 +281,9 @@ class BookStoreContainer extends React.Component {
   }
 }
 BookStoreContainer.propTypes = {
+  addBooksCategory: PropTypes.func.isRequired,
   bookData: PropTypes.arrayOf(PropTypes.any).isRequired,
+  bookCategoryState: PropTypes.objectOf(PropTypes.any).isRequired,
   deleteBook: PropTypes.func.isRequired,
   filteredData: PropTypes.arrayOf(PropTypes.any).isRequired,
   getBooks: PropTypes.func.isRequired,
@@ -247,6 +306,7 @@ const mapStateToProps = function mapStateToProps(state) {
     isRefreshed: state.refreshPage[0].isRefreshed,
     deleteBookResponse: state.deleteBooks,
     isFetched: state.books[0].isFetched,
+    bookCategoryState: state.booksCategory[0]
   };
 };
 export default connect(mapStateToProps, {
@@ -255,4 +315,5 @@ export default connect(mapStateToProps, {
   refreshPage,
   searchBook,
   logout,
+  addBooksCategory,
 })(BookStoreContainer);

@@ -5,6 +5,7 @@ import SearchBar from '../SearchBar';
 import DoubleActionModal from '../modal/DoubleActionModal';
 import SingleActionModal from '../modal/SingleActionModal';
 import ActivityLoader from '../preloader/ActivityLoader';
+import { BooksCategorySelect } from '../select/BooksCategorySelect';
 
 /**
  * @description updateBooksPage unconnected component
@@ -16,7 +17,7 @@ import ActivityLoader from '../preloader/ActivityLoader';
  * @param {object} props
  */
 const UpdateBooksPage = (props) => {
-  const { state, handleChange, handleClick, handleClose, handleExit,
+  const { state, handleCategorySelect, handleChange, handleClick, handleClose, handleExit,
     handleFileChange, handleImageChange, handleInputChange,
     handleOpen, handleSelected } = props;
   return (
@@ -68,19 +69,11 @@ const UpdateBooksPage = (props) => {
             onChange={handleInputChange}
           />
         </div>
-        <div className="form-group input-field">
-          <input
-            name="category"
-            disabled={!state.isDisabled}
-            type="text"
-            value={state.category}
-            className="form-control validate"
-            id="ebookCat"
-            placeholder="Category"
-            required
-            onChange={handleInputChange}
-          />
-        </div>
+        <BooksCategorySelect
+          onHandleSelected={handleCategorySelect}
+          value={state.category}
+          categoryData={state.categoryData}
+        />
         <div className="form-group input-field">
           <input
             name="isbn"
@@ -198,6 +191,7 @@ const UpdateBooksPage = (props) => {
   );
 };
 UpdateBooksPage.propTypes = {
+  handleCategorySelect: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired,
   handleClose: PropTypes.func.isRequired,

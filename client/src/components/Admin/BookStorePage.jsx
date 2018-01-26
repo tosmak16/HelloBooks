@@ -18,8 +18,8 @@ import ActivityLoader from '../preloader/ActivityLoader';
  */
 const BookStorePage = (props) => {
   const { filteredData, state, handleSelected, handleChange,
-    handleDelete, handleExit, handleNo, handleYes } = props;
-  const { filterBookLoaded, errors, displayPreloader, message, filterBy, searchText } = state;
+    handleDelete, handleExit, handleNo, handleYes, handleAddCategory, handleCategoryChange } = props;
+  const { filterBookLoaded, errors, displayPreloader, message, filterBy, searchText, bookCategoryText } = state;
   const tablerow = filteredData.map(book =>
     (<TableRow
       key={book.id}
@@ -50,6 +50,32 @@ const BookStorePage = (props) => {
     <div id="bb_table" className="row">
       <div className=" col l10 offset-l2 col m10 offset-m2 col s12">
         <div className="row">
+          <div className="col l6 col m6 col s12">
+            <input
+              placeholder="Enter Category Name"
+              type="text"
+              name="bookCategoryText"
+              id="bookCategory"
+              value={bookCategoryText}
+              onChange={handleCategoryChange}
+            />
+          </div>
+          <div className="col l3  col m3 col s12">
+            <button
+              style={{
+                marginTop: '10px',
+                backgroundColor: '#5f2e2d'
+              }}
+              id="addCategoryButton"
+              type="button"
+              onClick={handleAddCategory}
+              className="btn btn-primary col l12  col m12 col s12"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+        <div className="row">
           <div className="col l3  col m3 col s12 ">
             <CategorySelect
               onHandleSelected={handleSelected}
@@ -64,43 +90,47 @@ const BookStorePage = (props) => {
             />
           </div>
         </div >
+
         {filteredData.length !== 0 && filterBookLoaded &&
           <h4 className="sub-header"> Search result</h4>}
         {filteredData.length === 0 && filterBookLoaded &&
           <h4 className="sub-header">No Search result</h4>}
         {filteredData.length !== 0 && filterBookLoaded && tableholder}
-        <SingleActionModal
-          id={'modal3'}
-          heading={'Done!'}
-          message={message || ''}
-          onHandleExit={handleExit}
-        />
-        <SingleActionModal
-          id={'modal2'}
-          heading={'Oh!'}
-          message={errors || ''}
-          onHandleExit={handleExit}
-        />
-        <DoubleActionModal
-          id={'modal1'}
-          onHandleClick={handleYes}
-          onHandleClose={handleNo}
-          bookTitle={''}
-          heading={'Do you want to remove this book from store?'}
-        />
-        <div
-          style={{ display: displayPreloader.toString() }}
-          id="activity-loader-id"
-          className="activity"
-        >
-          <ActivityLoader />
-        </div>
+      </div>
+      <SingleActionModal
+        id={'modal3'}
+        heading={'Done!'}
+        message={message || ''}
+        onHandleExit={handleExit}
+      />
+      <SingleActionModal
+        id={'modal2'}
+        heading={'Oh!'}
+        message={errors || ''}
+        onHandleExit={handleExit}
+      />
+      <DoubleActionModal
+        id={'modal1'}
+        onHandleClick={handleYes}
+        onHandleClose={handleNo}
+        bookTitle={''}
+        heading={'Do you want to remove this book from store?'}
+      />
+      <div
+        style={{ display: displayPreloader.toString() }}
+        id="activity-loader-id"
+        className="activity"
+      >
+        <ActivityLoader />
       </div>
     </div>
+
   );
 };
 BookStorePage.propTypes = {
   filteredData: PropTypes.arrayOf(PropTypes.any).isRequired,
+  handleAddCategory: PropTypes.func.isRequired,
+  handleCategoryChange: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired,
   handleExit: PropTypes.func.isRequired,
