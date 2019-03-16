@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "engines" : { "node" : "8.0.0" } ,
   "scripts": {
     "heroku-postbuild": "NODE_ENV=production  npm run db:drop && npm run migrate:db && npm run db:seed && npm run build",
     "build": "NODE_ENV=production webpack --config webpack.prod.js --progress",
