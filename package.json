@@ -7,7 +7,7 @@
     "node": "8.0.0"
   },
   "scripts": {
-    "heroku-postbuild": "NODE_ENV=production  npm run db:drop && npm run migrate:db && npm run db:seed && npm run build",
+    "heroku-postbuild": "NODE_ENV=production npm run build",
     "build": "NODE_ENV=production webpack --config webpack.prod.js --progress",
     "test": "NODE_ENV=test npm run db:drop && NODE_ENV=test npm run migrate:db && NODE_ENV=test nyc --reporter=html --reporter=text babel-node ./node_modules/mocha/bin/_mocha server/test/**.js --presets es2015,stage-2",
     "tests": "nyc jest ./client/__tests__/",
