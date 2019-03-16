@@ -21,7 +21,6 @@ export const getBooks = (set) => {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
-      body: { token },
       headers: { token },
     })
     const jsonResponse = await response.json().then(jsonRes => jsonRes)

@@ -25,7 +25,6 @@ export default function getBorrowedBook(token) {
     dispatch(getBorrowedBookRequest());
     const response = await fetch('/api/v2/user/' + userId + '/books', {
       method: 'GET',
-      body: { token },
       headers: { token },
     })
     const jsonResponse = await response.json().then(jsonRes => jsonRes)

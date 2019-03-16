@@ -24,7 +24,6 @@ export default function getUnreturnedBook(token) {
     dispatch(getUnreturnedBookRequest());
     const response = await fetch('/api/v2/users/' + userId + '/books?returned=false', {
       method: 'GET',
-      body: { token },
       headers: { token },
     })
     const jsonResponse = await response.json().then(jsonRes => jsonRes)
